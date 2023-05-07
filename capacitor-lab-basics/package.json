@@ -1,0 +1,42 @@
+{
+  "name": "capacitor-lab-basics",
+  "version": "1.8.0-dev.6",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/capacitor-lab-basics.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "CAPACITOR_LAB_BASICS",
+    "preload": [
+      "../sherpa/lib/Tween-r12.js"
+    ],
+    "phetLibs": [
+      "twixt"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "phet-io": {
+      "wrappers": [
+        "phet-io-wrapper-lab-book"
+      ]
+    },
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "todo-should-have-issue": "off",
+      "no-view-imported-from-model": "off"
+    }
+  }
+}

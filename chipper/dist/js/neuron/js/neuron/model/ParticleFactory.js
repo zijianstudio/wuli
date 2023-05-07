@@ -1,0 +1,37 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Factory class for Particle
+ *
+ * @Sharfudeen Ashraf (for Ghent University)
+ */
+
+import neuron from '../../neuron.js';
+import ParticleType from './ParticleType.js';
+import PotassiumIon from './PotassiumIon.js';
+import SodiumIon from './SodiumIon.js';
+const ParticleFactory = {
+  /**
+   * factory method for creating a particle of the specified type
+   * @param {ParticleType} particleType - ParticleType enum constants
+   * @returns {Particle}
+   * @public
+   */
+  createParticle(particleType) {
+    let newParticle = null;
+    switch (particleType) {
+      case ParticleType.POTASSIUM_ION:
+        newParticle = new PotassiumIon();
+        break;
+      case ParticleType.SODIUM_ION:
+        newParticle = new SodiumIon();
+        break;
+      default:
+        assert && assert(false, 'Error: Unrecognized particle type.');
+    }
+    return newParticle;
+  }
+};
+neuron.register('ParticleFactory', ParticleFactory);
+export default ParticleFactory;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJuZXVyb24iLCJQYXJ0aWNsZVR5cGUiLCJQb3Rhc3NpdW1Jb24iLCJTb2RpdW1Jb24iLCJQYXJ0aWNsZUZhY3RvcnkiLCJjcmVhdGVQYXJ0aWNsZSIsInBhcnRpY2xlVHlwZSIsIm5ld1BhcnRpY2xlIiwiUE9UQVNTSVVNX0lPTiIsIlNPRElVTV9JT04iLCJhc3NlcnQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlBhcnRpY2xlRmFjdG9yeS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNC0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBGYWN0b3J5IGNsYXNzIGZvciBQYXJ0aWNsZVxyXG4gKlxyXG4gKiBAU2hhcmZ1ZGVlbiBBc2hyYWYgKGZvciBHaGVudCBVbml2ZXJzaXR5KVxyXG4gKi9cclxuXHJcbmltcG9ydCBuZXVyb24gZnJvbSAnLi4vLi4vbmV1cm9uLmpzJztcclxuaW1wb3J0IFBhcnRpY2xlVHlwZSBmcm9tICcuL1BhcnRpY2xlVHlwZS5qcyc7XHJcbmltcG9ydCBQb3Rhc3NpdW1Jb24gZnJvbSAnLi9Qb3Rhc3NpdW1Jb24uanMnO1xyXG5pbXBvcnQgU29kaXVtSW9uIGZyb20gJy4vU29kaXVtSW9uLmpzJztcclxuXHJcbmNvbnN0IFBhcnRpY2xlRmFjdG9yeSA9IHtcclxuICAvKipcclxuICAgKiBmYWN0b3J5IG1ldGhvZCBmb3IgY3JlYXRpbmcgYSBwYXJ0aWNsZSBvZiB0aGUgc3BlY2lmaWVkIHR5cGVcclxuICAgKiBAcGFyYW0ge1BhcnRpY2xlVHlwZX0gcGFydGljbGVUeXBlIC0gUGFydGljbGVUeXBlIGVudW0gY29uc3RhbnRzXHJcbiAgICogQHJldHVybnMge1BhcnRpY2xlfVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBjcmVhdGVQYXJ0aWNsZSggcGFydGljbGVUeXBlICkge1xyXG4gICAgbGV0IG5ld1BhcnRpY2xlID0gbnVsbDtcclxuXHJcbiAgICBzd2l0Y2goIHBhcnRpY2xlVHlwZSApIHtcclxuICAgICAgY2FzZSBQYXJ0aWNsZVR5cGUuUE9UQVNTSVVNX0lPTjpcclxuICAgICAgICBuZXdQYXJ0aWNsZSA9IG5ldyBQb3Rhc3NpdW1Jb24oKTtcclxuICAgICAgICBicmVhaztcclxuICAgICAgY2FzZSBQYXJ0aWNsZVR5cGUuU09ESVVNX0lPTjpcclxuICAgICAgICBuZXdQYXJ0aWNsZSA9IG5ldyBTb2RpdW1Jb24oKTtcclxuICAgICAgICBicmVhaztcclxuICAgICAgZGVmYXVsdDpcclxuICAgICAgICBhc3NlcnQgJiYgYXNzZXJ0KCBmYWxzZSwgJ0Vycm9yOiBVbnJlY29nbml6ZWQgcGFydGljbGUgdHlwZS4nICk7XHJcbiAgICB9XHJcbiAgICByZXR1cm4gbmV3UGFydGljbGU7XHJcbiAgfVxyXG59O1xyXG5cclxubmV1cm9uLnJlZ2lzdGVyKCAnUGFydGljbGVGYWN0b3J5JywgUGFydGljbGVGYWN0b3J5ICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBQYXJ0aWNsZUZhY3Rvcnk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE1BQU0sTUFBTSxpQkFBaUI7QUFDcEMsT0FBT0MsWUFBWSxNQUFNLG1CQUFtQjtBQUM1QyxPQUFPQyxZQUFZLE1BQU0sbUJBQW1CO0FBQzVDLE9BQU9DLFNBQVMsTUFBTSxnQkFBZ0I7QUFFdEMsTUFBTUMsZUFBZSxHQUFHO0VBQ3RCO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxjQUFjQSxDQUFFQyxZQUFZLEVBQUc7SUFDN0IsSUFBSUMsV0FBVyxHQUFHLElBQUk7SUFFdEIsUUFBUUQsWUFBWTtNQUNsQixLQUFLTCxZQUFZLENBQUNPLGFBQWE7UUFDN0JELFdBQVcsR0FBRyxJQUFJTCxZQUFZLENBQUMsQ0FBQztRQUNoQztNQUNGLEtBQUtELFlBQVksQ0FBQ1EsVUFBVTtRQUMxQkYsV0FBVyxHQUFHLElBQUlKLFNBQVMsQ0FBQyxDQUFDO1FBQzdCO01BQ0Y7UUFDRU8sTUFBTSxJQUFJQSxNQUFNLENBQUUsS0FBSyxFQUFFLG9DQUFxQyxDQUFDO0lBQ25FO0lBQ0EsT0FBT0gsV0FBVztFQUNwQjtBQUNGLENBQUM7QUFFRFAsTUFBTSxDQUFDVyxRQUFRLENBQUUsaUJBQWlCLEVBQUVQLGVBQWdCLENBQUM7QUFFckQsZUFBZUEsZUFBZSJ9

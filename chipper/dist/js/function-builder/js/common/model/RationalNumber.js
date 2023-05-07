@@ -1,0 +1,199 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * A wrapper around BigRational.js. Since this wraps only the portion of BigRational.js needed by this simulation,
+ * it's unlikely to be useful in other sims, and inappropriate to move to a common-code repository.
+ *
+ * Requires BigInteger.js and BigRational.js to be added to phet.preload in package.json.
+ * See https://github.com/peterolson/BigRational.js
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import functionBuilder from '../../functionBuilder.js';
+export default class RationalNumber {
+  /**
+   * @param numerator
+   * @param denominator
+   */
+  constructor(numerator, denominator) {
+    assert && assert(Number.isInteger(numerator));
+    assert && assert(Number.isInteger(denominator));
+
+    // @private {BigRational} bigRat is a global created by preloading BigRational.js
+    this.bigRational = bigRat(numerator, denominator);
+  }
+
+  /**
+   * Gets the numerator. Assumes that BigRational stores its value in reduced form.
+   *
+   * @returns {number}
+   * @public
+   */
+  getNumerator() {
+    return this.bigRational.numerator.valueOf();
+  }
+  get numerator() {
+    return this.getNumerator();
+  }
+
+  /**
+   * Gets the denominator. Assumes that BigRational stores its value in reduced form.
+   *
+   * @returns {number}
+   * @public
+   */
+  getDenominator() {
+    return this.bigRational.denominator.valueOf();
+  }
+  get denominator() {
+    return this.getDenominator();
+  }
+
+  /**
+   * Two rational numbers are equal if their values are equal.
+   * E.g. they can have different numerators and denominators, but still represent the same number.
+   *
+   * @param {RationalNumber} rationalNumber
+   * @returns {boolean}
+   * @public
+   */
+  equals(rationalNumber) {
+    return rationalNumber.valueOf() === this.valueOf();
+  }
+
+  /**
+   * Gets the value of this RationalNumber.
+   *
+   * @returns {number}
+   * @public
+   */
+  valueOf() {
+    return this.bigRational.valueOf();
+  }
+
+  /**
+   * String representation, do not rely on the format of this!
+   *
+   * @returns {string}
+   * @public
+   */
+  toString() {
+    return this.bigRational.toString();
+  }
+
+  /**
+   * Adds this RationalNumber and an integer, returns a new instance.
+   *
+   * @param {number} integerValue
+   * @returns {RationalNumber}
+   * @public
+   */
+  plus(integerValue) {
+    assert && assert(Number.isInteger(integerValue));
+    return toRationalNumber(this.bigRational.plus(integerValue));
+  }
+
+  /**
+   * Subtracts this RationalNumber and an integer, returns a new instance.
+   *
+   * @param {number} integerValue
+   * @returns {RationalNumber}
+   * @public
+   */
+  minus(integerValue) {
+    assert && assert(Number.isInteger(integerValue));
+    return toRationalNumber(this.bigRational.minus(integerValue));
+  }
+
+  /**
+   * Multiplies this RationalNumber and an integer, returns a new instance.
+   *
+   * @param {number} integerValue
+   * @returns {RationalNumber}
+   * @public
+   */
+  times(integerValue) {
+    assert && assert(Number.isInteger(integerValue));
+    return toRationalNumber(this.bigRational.times(integerValue));
+  }
+
+  /**
+   * Divides this RationalNumber by an integer, returns a new instance.
+   *
+   * @param {number} integerValue
+   * @returns {RationalNumber}
+   * @public
+   */
+  divide(integerValue) {
+    assert && assert(Number.isInteger(integerValue));
+    return toRationalNumber(this.bigRational.divide(integerValue));
+  }
+
+  /**
+   * Absolute value of this RationalNumber, returns a new instance.
+   *
+   * @returns {RationalNumber}
+   * @public
+   */
+  abs() {
+    return toRationalNumber(this.bigRational.abs());
+  }
+
+  /**
+   * Is this RationalNumber an integer?
+   *
+   * @returns {boolean}
+   * @public
+   */
+  isInteger() {
+    return this.valueOf() % 1 === 0;
+  }
+
+  /**
+   * Gets the whole number part of this RationalNumber's value.
+   *
+   * @returns {number}
+   * @public
+   */
+  wholeNumberPart() {
+    const value = this.bigRational.valueOf();
+    return (value < 0 ? -1 : 1) * Math.floor(Math.abs(value));
+  }
+
+  /**
+   * Gets the fractional part of this RationalNumber's value, returns a new instance.
+   *
+   * @returns {RationalNumber}
+   * @public
+   */
+  fractionPart() {
+    return this.minus(this.wholeNumberPart());
+  }
+
+  /**
+   * Creates a RationalNumber from an integer.
+   *
+   * @param {number} integerValue
+   * @returns {RationalNumber}
+   * @public
+   * @static
+   */
+  static withInteger(integerValue) {
+    assert && assert(Number.isInteger(integerValue));
+    return new RationalNumber(integerValue, 1);
+  }
+}
+
+/**
+ * Converts a BigRational to a RationalNumber
+ * @param {BigRational} bigRational
+ * @returns {RationalNumber}
+ */
+function toRationalNumber(bigRational) {
+  // BigRational.js does not export type BigRational. This verification works only when unminified.
+  assert && assert(bigRational.constructor.name === 'BigRational');
+  return new RationalNumber(bigRational.numerator.valueOf(), bigRational.denominator.valueOf());
+}
+functionBuilder.register('RationalNumber', RationalNumber);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmdW5jdGlvbkJ1aWxkZXIiLCJSYXRpb25hbE51bWJlciIsImNvbnN0cnVjdG9yIiwibnVtZXJhdG9yIiwiZGVub21pbmF0b3IiLCJhc3NlcnQiLCJOdW1iZXIiLCJpc0ludGVnZXIiLCJiaWdSYXRpb25hbCIsImJpZ1JhdCIsImdldE51bWVyYXRvciIsInZhbHVlT2YiLCJnZXREZW5vbWluYXRvciIsImVxdWFscyIsInJhdGlvbmFsTnVtYmVyIiwidG9TdHJpbmciLCJwbHVzIiwiaW50ZWdlclZhbHVlIiwidG9SYXRpb25hbE51bWJlciIsIm1pbnVzIiwidGltZXMiLCJkaXZpZGUiLCJhYnMiLCJ3aG9sZU51bWJlclBhcnQiLCJ2YWx1ZSIsIk1hdGgiLCJmbG9vciIsImZyYWN0aW9uUGFydCIsIndpdGhJbnRlZ2VyIiwibmFtZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiUmF0aW9uYWxOdW1iZXIuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTYtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSB3cmFwcGVyIGFyb3VuZCBCaWdSYXRpb25hbC5qcy4gU2luY2UgdGhpcyB3cmFwcyBvbmx5IHRoZSBwb3J0aW9uIG9mIEJpZ1JhdGlvbmFsLmpzIG5lZWRlZCBieSB0aGlzIHNpbXVsYXRpb24sXHJcbiAqIGl0J3MgdW5saWtlbHkgdG8gYmUgdXNlZnVsIGluIG90aGVyIHNpbXMsIGFuZCBpbmFwcHJvcHJpYXRlIHRvIG1vdmUgdG8gYSBjb21tb24tY29kZSByZXBvc2l0b3J5LlxyXG4gKlxyXG4gKiBSZXF1aXJlcyBCaWdJbnRlZ2VyLmpzIGFuZCBCaWdSYXRpb25hbC5qcyB0byBiZSBhZGRlZCB0byBwaGV0LnByZWxvYWQgaW4gcGFja2FnZS5qc29uLlxyXG4gKiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BldGVyb2xzb24vQmlnUmF0aW9uYWwuanNcclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5pbXBvcnQgZnVuY3Rpb25CdWlsZGVyIGZyb20gJy4uLy4uL2Z1bmN0aW9uQnVpbGRlci5qcyc7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBSYXRpb25hbE51bWJlciB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSBudW1lcmF0b3JcclxuICAgKiBAcGFyYW0gZGVub21pbmF0b3JcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggbnVtZXJhdG9yLCBkZW5vbWluYXRvciApIHtcclxuXHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBOdW1iZXIuaXNJbnRlZ2VyKCBudW1lcmF0b3IgKSApO1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggTnVtYmVyLmlzSW50ZWdlciggZGVub21pbmF0b3IgKSApO1xyXG5cclxuICAgIC8vIEBwcml2YXRlIHtCaWdSYXRpb25hbH0gYmlnUmF0IGlzIGEgZ2xvYmFsIGNyZWF0ZWQgYnkgcHJlbG9hZGluZyBCaWdSYXRpb25hbC5qc1xyXG4gICAgdGhpcy5iaWdSYXRpb25hbCA9IGJpZ1JhdCggbnVtZXJhdG9yLCBkZW5vbWluYXRvciApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0cyB0aGUgbnVtZXJhdG9yLiBBc3N1bWVzIHRoYXQgQmlnUmF0aW9uYWwgc3RvcmVzIGl0cyB2YWx1ZSBpbiByZWR1Y2VkIGZvcm0uXHJcbiAgICpcclxuICAgKiBAcmV0dXJucyB7bnVtYmVyfVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBnZXROdW1lcmF0b3IoKSB7IHJldHVybiB0aGlzLmJpZ1JhdGlvbmFsLm51bWVyYXRvci52YWx1ZU9mKCk7IH1cclxuXHJcbiAgZ2V0IG51bWVyYXRvcigpIHsgcmV0dXJuIHRoaXMuZ2V0TnVtZXJhdG9yKCk7IH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0cyB0aGUgZGVub21pbmF0b3IuIEFzc3VtZXMgdGhhdCBCaWdSYXRpb25hbCBzdG9yZXMgaXRzIHZhbHVlIGluIHJlZHVjZWQgZm9ybS5cclxuICAgKlxyXG4gICAqIEByZXR1cm5zIHtudW1iZXJ9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGdldERlbm9taW5hdG9yKCkgeyByZXR1cm4gdGhpcy5iaWdSYXRpb25hbC5kZW5vbWluYXRvci52YWx1ZU9mKCk7IH1cclxuXHJcbiAgZ2V0IGRlbm9taW5hdG9yKCkgeyByZXR1cm4gdGhpcy5nZXREZW5vbWluYXRvcigpOyB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFR3byByYXRpb25hbCBudW1iZXJzIGFyZSBlcXVhbCBpZiB0aGVpciB2YWx1ZXMgYXJlIGVxdWFsLlxyXG4gICAqIEUuZy4gdGhleSBjYW4gaGF2ZSBkaWZmZXJlbnQgbnVtZXJhdG9ycyBhbmQgZGVub21pbmF0b3JzLCBidXQgc3RpbGwgcmVwcmVzZW50IHRoZSBzYW1lIG51bWJlci5cclxuICAgKlxyXG4gICAqIEBwYXJhbSB7UmF0aW9uYWxOdW1iZXJ9IHJhdGlvbmFsTnVtYmVyXHJcbiAgICogQHJldHVybnMge2Jvb2xlYW59XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGVxdWFscyggcmF0aW9uYWxOdW1iZXIgKSB7XHJcbiAgICByZXR1cm4gKCByYXRpb25hbE51bWJlci52YWx1ZU9mKCkgPT09IHRoaXMudmFsdWVPZigpICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBHZXRzIHRoZSB2YWx1ZSBvZiB0aGlzIFJhdGlvbmFsTnVtYmVyLlxyXG4gICAqXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgdmFsdWVPZigpIHtcclxuICAgIHJldHVybiB0aGlzLmJpZ1JhdGlvbmFsLnZhbHVlT2YoKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFN0cmluZyByZXByZXNlbnRhdGlvbiwgZG8gbm90IHJlbHkgb24gdGhlIGZvcm1hdCBvZiB0aGlzIVxyXG4gICAqXHJcbiAgICogQHJldHVybnMge3N0cmluZ31cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgdG9TdHJpbmcoKSB7XHJcbiAgICByZXR1cm4gdGhpcy5iaWdSYXRpb25hbC50b1N0cmluZygpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQWRkcyB0aGlzIFJhdGlvbmFsTnVtYmVyIGFuZCBhbiBpbnRlZ2VyLCByZXR1cm5zIGEgbmV3IGluc3RhbmNlLlxyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGludGVnZXJWYWx1ZVxyXG4gICAqIEByZXR1cm5zIHtSYXRpb25hbE51bWJlcn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgcGx1cyggaW50ZWdlclZhbHVlICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggTnVtYmVyLmlzSW50ZWdlciggaW50ZWdlclZhbHVlICkgKTtcclxuICAgIHJldHVybiB0b1JhdGlvbmFsTnVtYmVyKCB0aGlzLmJpZ1JhdGlvbmFsLnBsdXMoIGludGVnZXJWYWx1ZSApICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBTdWJ0cmFjdHMgdGhpcyBSYXRpb25hbE51bWJlciBhbmQgYW4gaW50ZWdlciwgcmV0dXJucyBhIG5ldyBpbnN0YW5jZS5cclxuICAgKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBpbnRlZ2VyVmFsdWVcclxuICAgKiBAcmV0dXJucyB7UmF0aW9uYWxOdW1iZXJ9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIG1pbnVzKCBpbnRlZ2VyVmFsdWUgKSB7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBOdW1iZXIuaXNJbnRlZ2VyKCBpbnRlZ2VyVmFsdWUgKSApO1xyXG4gICAgcmV0dXJuIHRvUmF0aW9uYWxOdW1iZXIoIHRoaXMuYmlnUmF0aW9uYWwubWludXMoIGludGVnZXJWYWx1ZSApICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBNdWx0aXBsaWVzIHRoaXMgUmF0aW9uYWxOdW1iZXIgYW5kIGFuIGludGVnZXIsIHJldHVybnMgYSBuZXcgaW5zdGFuY2UuXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge251bWJlcn0gaW50ZWdlclZhbHVlXHJcbiAgICogQHJldHVybnMge1JhdGlvbmFsTnVtYmVyfVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICB0aW1lcyggaW50ZWdlclZhbHVlICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggTnVtYmVyLmlzSW50ZWdlciggaW50ZWdlclZhbHVlICkgKTtcclxuICAgIHJldHVybiB0b1JhdGlvbmFsTnVtYmVyKCB0aGlzLmJpZ1JhdGlvbmFsLnRpbWVzKCBpbnRlZ2VyVmFsdWUgKSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRGl2aWRlcyB0aGlzIFJhdGlvbmFsTnVtYmVyIGJ5IGFuIGludGVnZXIsIHJldHVybnMgYSBuZXcgaW5zdGFuY2UuXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge251bWJlcn0gaW50ZWdlclZhbHVlXHJcbiAgICogQHJldHVybnMge1JhdGlvbmFsTnVtYmVyfVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBkaXZpZGUoIGludGVnZXJWYWx1ZSApIHtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIE51bWJlci5pc0ludGVnZXIoIGludGVnZXJWYWx1ZSApICk7XHJcbiAgICByZXR1cm4gdG9SYXRpb25hbE51bWJlciggdGhpcy5iaWdSYXRpb25hbC5kaXZpZGUoIGludGVnZXJWYWx1ZSApICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBBYnNvbHV0ZSB2YWx1ZSBvZiB0aGlzIFJhdGlvbmFsTnVtYmVyLCByZXR1cm5zIGEgbmV3IGluc3RhbmNlLlxyXG4gICAqXHJcbiAgICogQHJldHVybnMge1JhdGlvbmFsTnVtYmVyfVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBhYnMoKSB7XHJcbiAgICByZXR1cm4gdG9SYXRpb25hbE51bWJlciggdGhpcy5iaWdSYXRpb25hbC5hYnMoKSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogSXMgdGhpcyBSYXRpb25hbE51bWJlciBhbiBpbnRlZ2VyP1xyXG4gICAqXHJcbiAgICogQHJldHVybnMge2Jvb2xlYW59XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGlzSW50ZWdlcigpIHtcclxuICAgIHJldHVybiAoIHRoaXMudmFsdWVPZigpICUgMSA9PT0gMCApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0cyB0aGUgd2hvbGUgbnVtYmVyIHBhcnQgb2YgdGhpcyBSYXRpb25hbE51bWJlcidzIHZhbHVlLlxyXG4gICAqXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgd2hvbGVOdW1iZXJQYXJ0KCkge1xyXG4gICAgY29uc3QgdmFsdWUgPSB0aGlzLmJpZ1JhdGlvbmFsLnZhbHVlT2YoKTtcclxuICAgIHJldHVybiAoIHZhbHVlIDwgMCA/IC0xIDogMSApICogTWF0aC5mbG9vciggTWF0aC5hYnMoIHZhbHVlICkgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEdldHMgdGhlIGZyYWN0aW9uYWwgcGFydCBvZiB0aGlzIFJhdGlvbmFsTnVtYmVyJ3MgdmFsdWUsIHJldHVybnMgYSBuZXcgaW5zdGFuY2UuXHJcbiAgICpcclxuICAgKiBAcmV0dXJucyB7UmF0aW9uYWxOdW1iZXJ9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGZyYWN0aW9uUGFydCgpIHtcclxuICAgIHJldHVybiB0aGlzLm1pbnVzKCB0aGlzLndob2xlTnVtYmVyUGFydCgpICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDcmVhdGVzIGEgUmF0aW9uYWxOdW1iZXIgZnJvbSBhbiBpbnRlZ2VyLlxyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGludGVnZXJWYWx1ZVxyXG4gICAqIEByZXR1cm5zIHtSYXRpb25hbE51bWJlcn1cclxuICAgKiBAcHVibGljXHJcbiAgICogQHN0YXRpY1xyXG4gICAqL1xyXG4gIHN0YXRpYyB3aXRoSW50ZWdlciggaW50ZWdlclZhbHVlICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggTnVtYmVyLmlzSW50ZWdlciggaW50ZWdlclZhbHVlICkgKTtcclxuICAgIHJldHVybiBuZXcgUmF0aW9uYWxOdW1iZXIoIGludGVnZXJWYWx1ZSwgMSApO1xyXG4gIH1cclxufVxyXG5cclxuLyoqXHJcbiAqIENvbnZlcnRzIGEgQmlnUmF0aW9uYWwgdG8gYSBSYXRpb25hbE51bWJlclxyXG4gKiBAcGFyYW0ge0JpZ1JhdGlvbmFsfSBiaWdSYXRpb25hbFxyXG4gKiBAcmV0dXJucyB7UmF0aW9uYWxOdW1iZXJ9XHJcbiAqL1xyXG5mdW5jdGlvbiB0b1JhdGlvbmFsTnVtYmVyKCBiaWdSYXRpb25hbCApIHtcclxuXHJcbiAgLy8gQmlnUmF0aW9uYWwuanMgZG9lcyBub3QgZXhwb3J0IHR5cGUgQmlnUmF0aW9uYWwuIFRoaXMgdmVyaWZpY2F0aW9uIHdvcmtzIG9ubHkgd2hlbiB1bm1pbmlmaWVkLlxyXG4gIGFzc2VydCAmJiBhc3NlcnQoIGJpZ1JhdGlvbmFsLmNvbnN0cnVjdG9yLm5hbWUgPT09ICdCaWdSYXRpb25hbCcgKTtcclxuICByZXR1cm4gbmV3IFJhdGlvbmFsTnVtYmVyKCBiaWdSYXRpb25hbC5udW1lcmF0b3IudmFsdWVPZigpLCBiaWdSYXRpb25hbC5kZW5vbWluYXRvci52YWx1ZU9mKCkgKTtcclxufVxyXG5cclxuZnVuY3Rpb25CdWlsZGVyLnJlZ2lzdGVyKCAnUmF0aW9uYWxOdW1iZXInLCBSYXRpb25hbE51bWJlciApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLGVBQWUsTUFBTSwwQkFBMEI7QUFFdEQsZUFBZSxNQUFNQyxjQUFjLENBQUM7RUFFbEM7QUFDRjtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsU0FBUyxFQUFFQyxXQUFXLEVBQUc7SUFF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

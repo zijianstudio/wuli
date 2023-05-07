@@ -1,0 +1,40 @@
+{
+  "name": "balancing-act",
+  "version": "1.3.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/balancing-act.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "BALANCING_ACT",
+    "phetLibs": [
+      "vegas",
+      "twixt"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet",
+      "phet-io"
+    ],
+    "simFeatures": {
+      "supportsSound": true
+    },
+    "simulation": true,
+    "phet-io": {
+      "validation": false
+    },
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "todo-should-have-issue": "off"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Hra",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Hra"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Deset",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Deset"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Dvacet",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Dvacet"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Jednotky",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Jednotky"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Desítková mřížka",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Desítková mřížka"
+      }
+    ]
+  },
+  "word": {
+    "value": "Slovo",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Slovo"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Slovo ({{language}})",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Slovo ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Vybrat hru!",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Vybrat hru!"
+      }
+    ]
+  },
+  "games": {
+    "value": "Hry",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Hry"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Hra s čísly",
+    "history": [
+      {
+        "userId": 315698,
+        "timestamp": 1670708207993,
+        "oldValue": "",
+        "newValue": "Hra s čísly"
+      }
+    ]
+  }
+}

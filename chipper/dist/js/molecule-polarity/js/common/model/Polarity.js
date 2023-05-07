@@ -1,0 +1,10 @@
+// Copyright 2020-2022, University of Colorado Boulder
+
+/**
+ * Enumeration for polarity of the plates.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+export const PolarityValues = ['positive', 'negative'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQb2xhcml0eVZhbHVlcyJdLCJzb3VyY2VzIjpbIlBvbGFyaXR5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIwLTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEVudW1lcmF0aW9uIGZvciBwb2xhcml0eSBvZiB0aGUgcGxhdGVzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmV4cG9ydCBjb25zdCBQb2xhcml0eVZhbHVlcyA9IFsgJ3Bvc2l0aXZlJywgJ25lZ2F0aXZlJyBdIGFzIGNvbnN0O1xyXG5leHBvcnQgdHlwZSBQb2xhcml0eSA9ICggdHlwZW9mIFBvbGFyaXR5VmFsdWVzIClbbnVtYmVyXTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBTyxNQUFNQSxjQUFjLEdBQUcsQ0FBRSxVQUFVLEVBQUUsVUFBVSxDQUFXIn0=

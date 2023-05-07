@@ -1,0 +1,222 @@
+// Copyright 2020-2022, University of Colorado Boulder
+
+/**
+ * IntroBallSystem is a BallSystem sub-type for the 'Intro' screen. IntroBallSystems only have 2 fixed Balls and the
+ * numberOfBallsProperty cannot be mutated.
+ *
+ * In the 'Intro' screen, there are 'Change in Momentum' vectors that appear 'briefly' when the momentum of a Ball
+ * collides and changes momentum with another Ball. IntroBallSystem will keep track of the momentum of the two Balls
+ * and compute the change in momentum vector. The vector is rendered out-of-bounds of the PlayArea to reduce clutter.
+ * After a collision, the change in momentum vectors are fully opaque for a set time-period. Then, after this
+ * time-period, the opacity linearly reduces for another set period of time. The opacity of the vectors are also
+ * modeled in this class.
+ *
+ * In the design, the 'Change in Momentum' vectors are only shown for collisions that occur AFTER the visibility
+ * checkbox is checked, meaning the components of the change in momentum vectors are always 0 if the checkbox isn't
+ * checked and are only updated if and only if the checkbox is checked. Thus, the changeInMomentumVisibleProperty is in
+ * the model.
+ *
+ * Additionally, the view renders a 'Change in Momentum' string over where the two Balls collided, (there are no
+ * ball-to-border collisions in 'Intro'). This collision point can only be computed inside of IntroCollisionEngine.js,
+ * which will signal to the IntroBallSystem that a collision between the two balls has occurred, passing the collision
+ * point and time. This will then trigger changes in the changeInMomentumOpacityProperty over time.
+ *
+ * @author Brandon Li
+ */
+
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import Multilink from '../../../../axon/js/Multilink.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import Property from '../../../../axon/js/Property.js';
+import Range from '../../../../dot/js/Range.js';
+import RangeWithValue from '../../../../dot/js/RangeWithValue.js';
+import Utils from '../../../../dot/js/Utils.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
+import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import merge from '../../../../phet-core/js/merge.js';
+import AssertUtils from '../../../../phetcommon/js/AssertUtils.js';
+import collisionLab from '../../collisionLab.js';
+import CollisionLabQueryParameters from '../../common/CollisionLabQueryParameters.js';
+import BallState from '../../common/model/BallState.js';
+import BallSystem from '../../common/model/BallSystem.js';
+import IntroPlayArea from './IntroPlayArea.js';
+
+// constants
+const CHANGE_IN_MOMENTUM_VISIBLE_PERIOD = CollisionLabQueryParameters.changeInMomentumVisiblePeriod;
+const CHANGE_IN_MOMENTUM_FADE_PERIOD = CollisionLabQueryParameters.changeInMomentumFadePeriod;
+const NUMBER_OF_BALLS = 2;
+const OPACITY_RANGE = new Range(0, 1);
+class IntroBallSystem extends BallSystem {
+  /**
+   * @param {IntroPlayArea} playArea
+   * @param {Property.<number>} elapsedTimeProperty
+   * @param {Object} [options]
+   */
+  constructor(playArea, elapsedTimeProperty, options) {
+    assert && assert(playArea instanceof IntroPlayArea, `invalid playArea: ${playArea}`);
+    assert && AssertUtils.assertPropertyOf(elapsedTimeProperty, 'number');
+    options = merge({
+      numberOfBallsRange: new RangeWithValue(NUMBER_OF_BALLS, NUMBER_OF_BALLS, NUMBER_OF_BALLS),
+      pathsVisibleInitially: false
+    }, options);
+    super(IntroBallSystem.INITIAL_BALL_STATES, playArea, options);
+
+    // Verify that there is a fixed number of Balls in the 'Intro' screen.
+    assert && this.numberOfBallsProperty.link(numberOfBalls => assert(numberOfBalls === NUMBER_OF_BALLS));
+
+    // Verify that Paths are never visible for the 'Explore 1D' screen.
+    assert && this.pathsVisibleProperty.link(pathVisible => assert(!pathVisible));
+
+    //----------------------------------------------------------------------------------------
+
+    // @public {Property.<boolean>} - indicates if the 'Change in Momentum' vectors are visible. This is in the model since
+    //                             the change in momentum vectors are only updated after the visibility checkbox is
+    //                             checked and are zero when false. Set externally in the view.
+    this.changeInMomentumVisibleProperty = new BooleanProperty(false);
+
+    // @public (read-only) {Property.<number>} - the opacity of the 'Change in Momentum' vectors. Set internally in this
+    //                                           class but can be read by the view.
+    this.changeInMomentumOpacityProperty = new NumberProperty(0);
+
+    // @public (read-only) {Property.<Vector2|null>} - the collision point of the Balls in the 'Intro' BallSystem. If
+    //                                                 this changes to a non-null position, a collision has happened and
+    //                                                 will trigger changes in the changeInMomentumOpacityProperty over
+    //                                                 time. Null means a collision-point is not yet defined.
+    this.collisionPointProperty = new Property(null, {
+      isValidValue: value => value instanceof Vector2 || value === null,
+      reentrant: true
+    });
+
+    // @public (read-only) {number|null} - indicates when the collision between the two Balls occurred. Null indicates
+    //                                     the collision-time is not yet defined.
+    this.collisionContactTime = null;
+
+    // @public (read-only) {Map.<Ball, Vector2Property>} - Map of a Ball to its associated 'Change in Momentum' vector.
+    this.ballToChangeInMomentumProperty = new Map();
+
+    //----------------------------------------------------------------------------------------
+
+    // Populate the Map. There are a fixed number of Balls in the IntroBallSystem and Balls are never disposed.
+    this.balls.forEach(ball => {
+      // Map the ball to a change in momentum Property.
+      this.ballToChangeInMomentumProperty.set(ball, new Vector2Property(Vector2.ZERO));
+
+      // Observe when the momentum of the Ball changes and compute the change in momentum. Currently, DerivedProperties
+      // have no support for passing the previous values, so we have to use a normal Property link to compute the change
+      // in momentum. Link lasts for the life-time of the sim as Balls are never disposed.
+      ball.momentumProperty.lazyLink((ballMomentum, previousBallMomentum) => {
+        assert && assert(ballMomentum.y === 0 && previousBallMomentum.y === 0);
+        if (this.changeInMomentumVisibleProperty.value && !ball.userControlledProperty.value) {
+          // Only update the change in momentum if they are visible, as documented above. Also don't update the change
+          // in momentum from user-manipulation (like dragging the velocity of the Ball).
+          this.ballToChangeInMomentumProperty.get(ball).value = ballMomentum.minus(previousBallMomentum);
+        }
+      });
+    });
+
+    //----------------------------------------------------------------------------------------
+
+    // Observe when the collision-point is set or when the elapsedTimeProperty changes. If the collision-time is
+    // defined, meaning that a collision between the two balls has occurred, the changeInMomentumOpacityProperty
+    // is degraded based on how far the total elapsed time has passed the time of collision. Multilink never disposed.
+    Multilink.multilink([this.collisionPointProperty, elapsedTimeProperty], (collisionPoint, elapsedTime) => {
+      if (Number.isFinite(this.collisionContactTime)) {
+        // Compute the time since the collision.
+        const timeSinceCollision = elapsedTime - this.collisionContactTime;
+        if (timeSinceCollision < 0) {
+          // If the time since the collision is negative, the sim has reversed back to when the collision occurred. This
+          // clears the change in momentum vectors. See https://github.com/phetsims/collision-lab/issues/85
+          this.clearChangeInMomentum();
+        } else if (timeSinceCollision <= CHANGE_IN_MOMENTUM_VISIBLE_PERIOD) {
+          // If the time is less than the CHANGE_IN_MOMENTUM_VISIBLE_PERIOD, it is still fully opaque.
+          this.changeInMomentumOpacityProperty.value = 1;
+        } else {
+          // Convenience reference to the total time the Change in Momentum vectors are visible.
+          const totalChangeInMomentumLifetime = CHANGE_IN_MOMENTUM_VISIBLE_PERIOD + CHANGE_IN_MOMENTUM_FADE_PERIOD;
+
+          // Use a linear mapping to linearly decrease the opacity in this time period.
+          this.changeInMomentumOpacityProperty.value = Utils.linear(CHANGE_IN_MOMENTUM_VISIBLE_PERIOD, totalChangeInMomentumLifetime, OPACITY_RANGE.max, OPACITY_RANGE.min, Math.min(timeSinceCollision, totalChangeInMomentumLifetime));
+        }
+      }
+    });
+
+    //----------------------------------------------------------------------------------------
+
+    // Observe when the 'Change in Momentum' visibility is toggled to false. When this happens, the change in momentum
+    // vectors should be cleared. This is because the 'Change in Momentum' vectors only are calculated AFTER the
+    // visibility checkbox is checked. Link persists for the life-time of the sim.
+    this.changeInMomentumVisibleProperty.lazyLink(changeInMomentVisible => {
+      !changeInMomentVisible && this.clearChangeInMomentum();
+    });
+
+    // Observe when the user is controlling any of the Balls and clear the change in momentum vectors. See
+    // https://github.com/phetsims/collision-lab/issues/85. Link lasts for the life-time of the sim.
+    this.ballSystemUserControlledProperty.lazyLink(userControlled => {
+      userControlled && this.clearChangeInMomentum();
+    });
+  }
+
+  /**
+   * 'Clears' the 'change in momentum' related fields of this class.
+   * @public
+   *
+   * This is invoked in the following scenarios:
+   *   - the reset all button is pressed.
+   *   - the restart button is pressed.
+   *   - when the 'Change in Momentum' checkbox is un-checked.
+   *   - when the Ball is user-manipulated, either by dragging or from the Keypad.
+   */
+  clearChangeInMomentum() {
+    this.collisionPointProperty.reset();
+    this.changeInMomentumOpacityProperty.reset();
+    this.collisionContactTime = null;
+    this.ballToChangeInMomentumProperty.forEach(changeInMomentumProperty => {
+      changeInMomentumProperty.reset();
+    });
+  }
+
+  /**
+   * Resets the IntroBallSystem.
+   * @public
+   * @override
+   */
+  reset() {
+    super.reset();
+    this.changeInMomentumVisibleProperty.reset();
+    this.clearChangeInMomentum();
+  }
+
+  /**
+   * Restarts the IntroBallSystem.
+   * @public
+   * @override
+   *
+   * See https://github.com/phetsims/collision-lab/issues/76 for context on the differences between reset and restart.
+   */
+  restart() {
+    super.restart();
+    this.clearChangeInMomentum();
+  }
+
+  /**
+   * Registers a collision between the two balls of the 'Intro' screen, if the change in momentum vectors are visible.
+   * This is called from inside of IntroCollisionEngine.
+   * @public
+   *
+   * @param {Vector2} collisionPoint - the exact position of where the 2 Balls collided.
+   * @param {number} collisionContactTime - when the 2 Balls collided.
+   */
+  registerChangeInMomentumCollision(collisionPoint, collisionContactTime) {
+    assert && assert(this.changeInMomentumVisibleProperty.value);
+    assert && assert(collisionPoint instanceof Vector2 && collisionPoint.y === 0, `invalid collisionPoint: ${collisionPoint}`);
+    assert && assert(typeof collisionContactTime === 'number' && collisionContactTime >= 0, `invalid collisionContactTime: ${collisionContactTime}`);
+    this.collisionContactTime = collisionContactTime;
+    this.collisionPointProperty.value = collisionPoint;
+  }
+}
+
+// @public (read-only) {BallState[]} - the initial BallStates of all Balls in the 'Intro' screen.
+IntroBallSystem.INITIAL_BALL_STATES = [new BallState(new Vector2(-1, 0), new Vector2(1, 0), 0.5), new BallState(new Vector2(1, 0), new Vector2(-0.5, 0), 1.5)];
+collisionLab.register('IntroBallSystem', IntroBallSystem);
+export default IntroBallSystem;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCb29sZWFuUHJvcGVydHkiLCJNdWx0aWxpbmsiLCJOdW1iZXJQcm9wZXJ0eSIsIlByb3BlcnR5IiwiUmFuZ2UiLCJSYW5nZVdpdGhWYWx1ZSIsIlV0aWxzIiwiVmVjdG9yMiIsIlZlY3RvcjJQcm9wZXJ0eSIsIm1lcmdlIiwiQXNzZXJ0VXRpbHMiLCJjb2xsaXNpb25MYWIiLCJDb2xsaXNpb25MYWJRdWVyeVBhcmFtZXRlcnMiLCJCYWxsU3RhdGUiLCJCYWxsU3lzdGVtIiwiSW50cm9QbGF5QXJlYSIsIkNIQU5HRV9JTl9NT01FTlRVTV9WSVNJQkxFX1BFUklPRCIsImNoYW5nZUluTW9tZW50dW1WaXNpYmxlUGVyaW9kIiwiQ0hBTkdFX0lOX01PTUVOVFVNX0ZBREVfUEVSSU9EIiwiY2hhbmdlSW5Nb21lbnR1bUZhZGVQZXJpb2QiLCJOVU1CRVJfT0ZfQkFMTFMiLCJPUEFDSVRZX1JBTkdFIiwiSW50cm9CYWxsU3lzdGVtIiwiY29uc3RydWN0b3IiLCJwbGF5QXJlYSIsImVsYXBzZWRUaW1lUHJvcGVydHkiLCJvcHRpb25zIiwiYXNzZXJ0IiwiYXNzZXJ0UHJvcGVydHlPZiIsIm51bWJlck9mQmFsbHNSYW5nZSIsInBhdGhzVmlzaWJsZUluaXRpYWxseSIsIklOSVRJQUxfQkFMTF9TVEFURVMiLCJudW1iZXJPZkJhbGxzUHJvcGVydHkiLCJsaW5rIiwibnVtYmVyT2ZCYWxscyIsInBhdGhzVmlzaWJsZVByb3BlcnR5IiwicGF0aFZpc2libGUiLCJjaGFuZ2VJbk1vbWVudHVtVmlzaWJsZVByb3BlcnR5IiwiY2hhbmdlSW5Nb21lbnR1bU9wYWNpdHlQcm9wZXJ0eSIsImNvbGxpc2lvblBvaW50UHJvcGVydHkiLCJpc1ZhbGlkVmFsdWUiLCJ2YWx1ZSIsInJlZW50cmFudCIsImNvbGxpc2lvbkNvbnRhY3RUaW1lIiwiYmFsbFRvQ2hhbmdlSW5Nb21lbnR1bVByb3BlcnR5IiwiTWFwIiwiYmFsbHMiLCJmb3JFYWNoIiwiYmFsbCIsInNldCIsIlpFUk8iLCJtb21lbnR1bVByb3BlcnR5IiwibGF6eUxpbmsiLCJiYWxsTW9tZW50dW0iLCJwcmV2aW91c0JhbGxNb21lbnR1bSIsInkiLCJ1c2VyQ29udHJvbGxlZFByb3BlcnR5IiwiZ2V0IiwibWludXMiLCJtdWx0aWxpbmsiLCJjb2xsaXNpb25Qb2ludCIsImVsYXBzZWRUaW1lIiwiTnVtYmVyIiwiaXNGaW5pdGUiLCJ0aW1lU2luY2VDb2xsaXNpb24iLCJjbGVhckNoYW5nZUluTW9tZW50dW0iLCJ0b3RhbENoYW5nZUluTW9tZW50dW1MaWZldGltZSIsImxpbmVhciIsIm1heCIsIm1pbiIsIk1hdGgiLCJjaGFuZ2VJbk1vbWVudFZpc2libGUiLCJiYWxsU3lzdGVtVXNlckNvbnRyb2xsZWRQcm9wZXJ0eSIsInVzZXJDb250cm9sbGVkIiwicmVzZXQiLCJjaGFuZ2VJbk1vbWVudHVtUHJvcGVydHkiLCJyZXN0YXJ0IiwicmVnaXN0ZXJDaGFuZ2VJbk1vbWVudHVtQ29sbGlzaW9uIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJJbnRyb0JhbGxTeXN0ZW0uanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogSW50cm9CYWxsU3lzdGVtIGlzIGEgQmFsbFN5c3RlbSBzdWItdHlwZSBmb3IgdGhlICdJbnRybycgc2NyZWVuLiBJbnRyb0JhbGxTeXN0ZW1zIG9ubHkgaGF2ZSAyIGZpeGVkIEJhbGxzIGFuZCB0aGVcclxuICogbnVtYmVyT2ZCYWxsc1Byb3BlcnR5IGNhbm5vdCBiZSBtdXRhdGVkLlxyXG4gKlxyXG4gKiBJbiB0aGUgJ0ludHJvJyBzY3JlZW4sIHRoZXJlIGFyZSAnQ2hhbmdlIGluIE1vbWVudHVtJyB2ZWN0b3JzIHRoYXQgYXBwZWFyICdicmllZmx5JyB3aGVuIHRoZSBtb21lbnR1bSBvZiBhIEJhbGxcclxuICogY29sbGlkZXMgYW5kIGNoYW5nZXMgbW9tZW50dW0gd2l0aCBhbm90aGVyIEJhbGwuIEludHJvQmFsbFN5c3RlbSB3aWxsIGtlZXAgdHJhY2sgb2YgdGhlIG1vbWVudHVtIG9mIHRoZSB0d28gQmFsbHNcclxuICogYW5kIGNvbXB1dGUgdGhlIGNoYW5nZSBpbiBtb21lbnR1bSB2ZWN0b3IuIFRoZSB2ZWN0b3IgaXMgcmVuZGVyZWQgb3V0LW9mLWJvdW5kcyBvZiB0aGUgUGxheUFyZWEgdG8gcmVkdWNlIGNsdXR0ZXIuXHJcbiAqIEFmdGVyIGEgY29sbGlzaW9uLCB0aGUgY2hhbmdlIGluIG1vbWVudHVtIHZlY3RvcnMgYXJlIGZ1bGx5IG9wYXF1ZSBmb3IgYSBzZXQgdGltZS1wZXJpb2QuIFRoZW4sIGFmdGVyIHRoaXNcclxuICogdGltZS1wZXJpb2QsIHRoZSBvcGFjaXR5IGxpbmVhcmx5IHJlZHVjZXMgZm9yIGFub3RoZXIgc2V0IHBlcmlvZCBvZiB0aW1lLiBUaGUgb3BhY2l0eSBvZiB0aGUgdmVjdG9ycyBhcmUgYWxzb1xyXG4gKiBtb2RlbGVkIGluIHRoaXMgY2xhc3MuXHJcbiAqXHJcbiAqIEluIHRoZSBkZXNpZ24sIHRoZSAnQ2hhbmdlIGluIE1vbWVudHVtJyB2ZWN0b3JzIGFyZSBvbmx5IHNob3duIGZvciBjb2xsaXNpb25zIHRoYXQgb2NjdXIgQUZURVIgdGhlIHZpc2liaWxpdHlcclxuICogY2hlY2tib3ggaXMgY2hlY2tlZCwgbWVhbmluZyB0aGUgY29tcG9uZW50cyBvZiB0aGUgY2hhbmdlIGluIG1vbWVudHVtIHZlY3RvcnMgYXJlIGFsd2F5cyAwIGlmIHRoZSBjaGVja2JveCBpc24ndFxyXG4gKiBjaGVja2VkIGFuZCBhcmUgb25seSB1cGRhdGVkIGlmIGFuZCBvbmx5IGlmIHRoZSBjaGVja2JveCBpcyBjaGVja2VkLiBUaHVzLCB0aGUgY2hhbmdlSW5Nb21lbnR1bVZpc2libGVQcm9wZXJ0eSBpcyBpblxyXG4gKiB0aGUgbW9kZWwuXHJcbiAqXHJcbiAqIEFkZGl0aW9uYWxseSwgdGhlIHZpZXcgcmVuZGVycyBhICdDaGFuZ2UgaW4gTW9tZW50dW0nIHN0cmluZyBvdmVyIHdoZXJlIHRoZSB0d28gQmFsbHMgY29sbGlkZWQsICh0aGVyZSBhcmUgbm9cclxuICogYmFsbC10by1ib3JkZXIgY29sbGlzaW9ucyBpbiAnSW50cm8nKS4gVGhpcyBjb2xsaXNpb24gcG9pbnQgY2FuIG9ubHkgYmUgY29tcHV0ZWQgaW5zaWRlIG9mIEludHJvQ29sbGlzaW9uRW5naW5lLmpzLFxyXG4gKiB3aGljaCB3aWxsIHNpZ25hbCB0byB0aGUgSW50cm9CYWxsU3lzdGVtIHRoYXQgYSBjb2xsaXNpb24gYmV0d2VlbiB0aGUgdHdvIGJhbGxzIGhhcyBvY2N1cnJlZCwgcGFzc2luZyB0aGUgY29sbGlzaW9uXHJcbiAqIHBvaW50IGFuZCB0aW1lLiBUaGlzIHdpbGwgdGhlbiB0cmlnZ2VyIGNoYW5nZXMgaW4gdGhlIGNoYW5nZUluTW9tZW50dW1PcGFjaXR5UHJvcGVydHkgb3ZlciB0aW1lLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEJyYW5kb24gTGlcclxuICovXHJcblxyXG5pbXBvcnQgQm9vbGVhblByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvQm9vbGVhblByb3BlcnR5LmpzJztcclxuaW1wb3J0IE11bHRpbGluayBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL011bHRpbGluay5qcyc7XHJcbmltcG9ydCBOdW1iZXJQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL051bWJlclByb3BlcnR5LmpzJztcclxuaW1wb3J0IFByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgUmFuZ2UgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1JhbmdlLmpzJztcclxuaW1wb3J0IFJhbmdlV2l0aFZhbHVlIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9SYW5nZVdpdGhWYWx1ZS5qcyc7XHJcbmltcG9ydCBVdGlscyBmcm9tICcuLi8uLi8uLi8uLi9kb3QvanMvVXRpbHMuanMnO1xyXG5pbXBvcnQgVmVjdG9yMiBmcm9tICcuLi8uLi8uLi8uLi9kb3QvanMvVmVjdG9yMi5qcyc7XHJcbmltcG9ydCBWZWN0b3IyUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjJQcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBtZXJnZSBmcm9tICcuLi8uLi8uLi8uLi9waGV0LWNvcmUvanMvbWVyZ2UuanMnO1xyXG5pbXBvcnQgQXNzZXJ0VXRpbHMgZnJvbSAnLi4vLi4vLi4vLi4vcGhldGNvbW1vbi9qcy9Bc3NlcnRVdGlscy5qcyc7XHJcbmltcG9ydCBjb2xsaXNpb25MYWIgZnJvbSAnLi4vLi4vY29sbGlzaW9uTGFiLmpzJztcclxuaW1wb3J0IENvbGxpc2lvbkxhYlF1ZXJ5UGFyYW1ldGVycyBmcm9tICcuLi8uLi9jb21tb24vQ29sbGlzaW9uTGFiUXVlcnlQYXJhbWV0ZXJzLmpzJztcclxuaW1wb3J0IEJhbGxTdGF0ZSBmcm9tICcuLi8uLi9jb21tb24vbW9kZWwvQmFsbFN0YXRlLmpzJztcclxuaW1wb3J0IEJhbGxTeXN0ZW0gZnJvbSAnLi4vLi4vY29tbW9uL21vZGVsL0JhbGxTeXN0ZW0uanMnO1xyXG5pbXBvcnQgSW50cm9QbGF5QXJlYSBmcm9tICcuL0ludHJvUGxheUFyZWEuanMnO1xyXG5cclxuLy8gY29uc3RhbnRzXHJcbmNvbnN0IENIQU5HRV9JTl9NT01FTlRVTV9WSVNJQkxFX1BFUklPRCA9IENvbGxpc2lvbkxhYlF1ZXJ5UGFyYW1ldGVycy5jaGFuZ2VJbk1vbWVudHVtVmlzaWJsZVBlcmlvZDtcclxuY29uc3QgQ0hBTkdFX0lOX01PTUVOVFVNX0ZBREVfUEVSSU9EID0gQ29sbGlzaW9uTGFiUXVlcnlQYXJhbWV0ZXJzLmNoYW5nZUluTW9tZW50dW1GYWRlUGVyaW9kO1xyXG5jb25zdCBOVU1CRVJfT0ZfQkFMTFMgPSAyO1xyXG5jb25zdCBPUEFDSVRZX1JBTkdFID0gbmV3IFJhbmdlKCAwLCAxICk7XHJcblxyXG5jbGFzcyBJbnRyb0JhbGxTeXN0ZW0gZXh0ZW5kcyBCYWxsU3lzdGVtIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtJbnRyb1BsYXlBcmVhfSBwbGF5QXJlYVxyXG4gICAqIEBwYXJhbSB7UHJvcGVydHkuPG51bWJlcj59IGVsYXBzZWRUaW1lUHJvcGVydHlcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHBsYXlBcmVhLCBlbGFwc2VkVGltZVByb3BlcnR5LCBvcHRpb25zICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggcGxheUFyZWEgaW5zdGFuY2VvZiBJbnRyb1BsYXlBcmVhLCBgaW52YWxpZCBwbGF5QXJlYTogJHtwbGF5QXJlYX1gICk7XHJcbiAgICBhc3NlcnQgJiYgQXNzZXJ0VXRpbHMuYXNzZXJ0UHJvcGVydHlPZiggZWxhcHNlZFRpbWVQcm9wZXJ0eSwgJ251bWJlcicgKTtcclxuXHJcbiAgICBvcHRpb25zID0gbWVyZ2UoIHtcclxuXHJcbiAgICAgIG51bWJlck9mQmFsbHNSYW5nZTogbmV3IFJhbmdlV2l0aFZhbHVlKCBOVU1CRVJfT0ZfQkFMTFMsIE5VTUJFUl9PRl9CQUxMUywgTlVNQkVSX09GX0JBTExTICksXHJcbiAgICAgIHBhdGhzVmlzaWJsZUluaXRpYWxseTogZmFsc2VcclxuXHJcbiAgICB9LCBvcHRpb25zICk7XHJcblxyXG4gICAgc3VwZXIoIEludHJvQmFsbFN5c3RlbS5JTklUSUFMX0JBTExfU1RBVEVTLCBwbGF5QXJlYSwgb3B0aW9ucyApO1xyXG5cclxuICAgIC8vIFZlcmlmeSB0aGF0IHRoZXJlIGlzIGEgZml4ZWQgbnVtYmVyIG9mIEJhbGxzIGluIHRoZSAnSW50cm8nIHNjcmVlbi5cclxuICAgIGFzc2VydCAmJiB0aGlzLm51bWJlck9mQmFsbHNQcm9wZXJ0eS5saW5rKCBudW1iZXJPZkJhbGxzID0+IGFzc2VydCggbnVtYmVyT2ZCYWxscyA9PT0gTlVNQkVSX09GX0JBTExTICkgKTtcclxuXHJcbiAgICAvLyBWZXJpZnkgdGhhdCBQYXRocyBhcmUgbmV2ZXIgdmlzaWJsZSBmb3IgdGhlICdFeHBsb3JlIDFEJyBzY3JlZW4uXHJcbiAgICBhc3NlcnQgJiYgdGhpcy5wYXRoc1Zpc2libGVQcm9wZXJ0eS5saW5rKCBwYXRoVmlzaWJsZSA9PiBhc3NlcnQoICFwYXRoVmlzaWJsZSApICk7XHJcblxyXG4gICAgLy8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXHJcblxyXG4gICAgLy8gQHB1YmxpYyB7UHJvcGVydHkuPGJvb2xlYW4+fSAtIGluZGljYXRlcyBpZiB0aGUgJ0NoYW5nZSBpbiBNb21lbnR1bScgdmVjdG9ycyBhcmUgdmlzaWJsZS4gVGhpcyBpcyBpbiB0aGUgbW9kZWwgc2luY2VcclxuICAgIC8vICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aGUgY2hhbmdlIGluIG1vbWVudHVtIHZlY3RvcnMgYXJlIG9ubHkgdXBkYXRlZCBhZnRlciB0aGUgdmlzaWJpbGl0eSBjaGVja2JveCBpc1xyXG4gICAgLy8gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNoZWNrZWQgYW5kIGFyZSB6ZXJvIHdoZW4gZmFsc2UuIFNldCBleHRlcm5hbGx5IGluIHRoZSB2aWV3LlxyXG4gICAgdGhpcy5jaGFuZ2VJbk1vbWVudHVtVmlzaWJsZVByb3BlcnR5ID0gbmV3IEJvb2xlYW5Qcm9wZXJ0eSggZmFsc2UgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIChyZWFkLW9ubHkpIHtQcm9wZXJ0eS48bnVtYmVyPn0gLSB0aGUgb3BhY2l0eSBvZiB0aGUgJ0NoYW5nZSBpbiBNb21lbnR1bScgdmVjdG9ycy4gU2V0IGludGVybmFsbHkgaW4gdGhpc1xyXG4gICAgLy8gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3MgYnV0IGNhbiBiZSByZWFkIGJ5IHRoZSB2aWV3LlxyXG4gICAgdGhpcy5jaGFuZ2VJbk1vbWVudHVtT3BhY2l0eVByb3BlcnR5ID0gbmV3IE51bWJlclByb3BlcnR5KCAwICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7UHJvcGVydHkuPFZlY3RvcjJ8bnVsbD59IC0gdGhlIGNvbGxpc2lvbiBwb2ludCBvZiB0aGUgQmFsbHMgaW4gdGhlICdJbnRybycgQmFsbFN5c3RlbS4gSWZcclxuICAgIC8vICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRoaXMgY2hhbmdlcyB0byBhIG5vbi1udWxsIHBvc2l0aW9uLCBhIGNvbGxpc2lvbiBoYXMgaGFwcGVuZWQgYW5kXHJcbiAgICAvLyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB3aWxsIHRyaWdnZXIgY2hhbmdlcyBpbiB0aGUgY2hhbmdlSW5Nb21lbnR1bU9wYWNpdHlQcm9wZXJ0eSBvdmVyXHJcbiAgICAvLyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aW1lLiBOdWxsIG1lYW5zIGEgY29sbGlzaW9uLXBvaW50IGlzIG5vdCB5ZXQgZGVmaW5lZC5cclxuICAgIHRoaXMuY29sbGlzaW9uUG9pbnRQcm9wZXJ0eSA9IG5ldyBQcm9wZXJ0eSggbnVsbCwge1xyXG4gICAgICBpc1ZhbGlkVmFsdWU6IHZhbHVlID0+IHZhbHVlIGluc3RhbmNlb2YgVmVjdG9yMiB8fCB2YWx1ZSA9PT0gbnVsbCxcclxuICAgICAgcmVlbnRyYW50OiB0cnVlXHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7bnVtYmVyfG51bGx9IC0gaW5kaWNhdGVzIHdoZW4gdGhlIGNvbGxpc2lvbiBiZXR3ZWVuIHRoZSB0d28gQmFsbHMgb2NjdXJyZWQuIE51bGwgaW5kaWNhdGVzXHJcbiAgICAvLyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aGUgY29sbGlzaW9uLXRpbWUgaXMgbm90IHlldCBkZWZpbmVkLlxyXG4gICAgdGhpcy5jb2xsaXNpb25Db250YWN0VGltZSA9IG51bGw7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7TWFwLjxCYWxsLCBWZWN0b3IyUHJvcGVydHk+fSAtIE1hcCBvZiBhIEJhbGwgdG8gaXRzIGFzc29jaWF0ZWQgJ0NoYW5nZSBpbiBNb21lbnR1bScgdmVjdG9yLlxyXG4gICAgdGhpcy5iYWxsVG9DaGFuZ2VJbk1vbWVudHVtUHJvcGVydHkgPSBuZXcgTWFwKCk7XHJcblxyXG4gICAgLy8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXHJcblxyXG4gICAgLy8gUG9wdWxhdGUgdGhlIE1hcC4gVGhlcmUgYXJlIGEgZml4ZWQgbnVtYmVyIG9mIEJhbGxzIGluIHRoZSBJbnRyb0JhbGxTeXN0ZW0gYW5kIEJhbGxzIGFyZSBuZXZlciBkaXNwb3NlZC5cclxuICAgIHRoaXMuYmFsbHMuZm9yRWFjaCggYmFsbCA9PiB7XHJcblxyXG4gICAgICAvLyBNYXAgdGhlIGJhbGwgdG8gYSBjaGFuZ2UgaW4gbW9tZW50dW0gUHJvcGVydHkuXHJcbiAgICAgIHRoaXMuYmFsbFRvQ2hhbmdlSW5Nb21lbnR1bVByb3BlcnR5LnNldCggYmFsbCwgbmV3IFZlY3RvcjJQcm9wZXJ0eSggVmVjdG9yMi5aRVJPICkgKTtcclxuXHJcbiAgICAgIC8vIE9ic2VydmUgd2hlbiB0aGUgbW9tZW50dW0gb2YgdGhlIEJhbGwgY2hhbmdlcyBhbmQgY29tcHV0ZSB0aGUgY2hhbmdlIGluIG1vbWVudHVtLiBDdXJyZW50bHksIERlcml2ZWRQcm9wZXJ0aWVzXHJcbiAgICAgIC8vIGhhdmUgbm8gc3VwcG9ydCBmb3IgcGFzc2luZyB0aGUgcHJldmlvdXMgdmFsdWVzLCBzbyB3ZSBoYXZlIHRvIHVzZSBhIG5vcm1hbCBQcm9wZXJ0eSBsaW5rIHRvIGNvbXB1dGUgdGhlIGNoYW5nZVxyXG4gICAgICAvLyBpbiBtb21lbnR1bS4gTGluayBsYXN0cyBmb3IgdGhlIGxpZmUtdGltZSBvZiB0aGUgc2ltIGFzIEJhbGxzIGFyZSBuZXZlciBkaXNwb3NlZC5cclxuICAgICAgYmFsbC5tb21lbnR1bVByb3BlcnR5LmxhenlMaW5rKCAoIGJhbGxNb21lbnR1bSwgcHJldmlvdXNCYWxsTW9tZW50dW0gKSA9PiB7XHJcbiAgICAgICAgYXNzZXJ0ICYmIGFzc2VydCggYmFsbE1vbWVudHVtLnkgPT09IDAgJiYgcHJldmlvdXNCYWxsTW9tZW50dW0ueSA9PT0gMCApO1xyXG5cclxuICAgICAgICBpZiAoIHRoaXMuY2hhbmdlSW5Nb21lbnR1bVZpc2libGVQcm9wZXJ0eS52YWx1ZSAmJiAhYmFsbC51c2VyQ29udHJvbGxlZFByb3BlcnR5LnZhbHVlICkge1xyXG5cclxuICAgICAgICAgIC8vIE9ubHkgdXBkYXRlIHRoZSBjaGFuZ2UgaW4gbW9tZW50dW0gaWYgdGhleSBhcmUgdmlzaWJsZSwgYXMgZG9jdW1lbnRlZCBhYm92ZS4gQWxzbyBkb24ndCB1cGRhdGUgdGhlIGNoYW5nZVxyXG4gICAgICAgICAgLy8gaW4gbW9tZW50dW0gZnJvbSB1c2VyLW1hbmlwdWxhdGlvbiAobGlrZSBkcmFnZ2luZyB0aGUgdmVsb2NpdHkgb2YgdGhlIEJhbGwpLlxyXG4gICAgICAgICAgdGhpcy5iYWxsVG9DaGFuZ2VJbk1vbWVudHVtUHJvcGVydHkuZ2V0KCBiYWxsICkudmFsdWUgPSBiYWxsTW9tZW50dW0ubWludXMoIHByZXZpb3VzQmFsbE1vbWVudHVtICk7XHJcbiAgICAgICAgfVxyXG4gICAgICB9ICk7XHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXHJcblxyXG4gICAgLy8gT2JzZXJ2ZSB3aGVuIHRoZSBjb2xsaXNpb24tcG9pbnQgaXMgc2V0IG9yIHdoZW4gdGhlIGVsYXBzZWRUaW1lUHJvcGVydHkgY2hhbmdlcy4gSWYgdGhlIGNvbGxpc2lvbi10aW1lIGlzXHJcbiAgICAvLyBkZWZpbmVkLCBtZWFuaW5nIHRoYXQgYSBjb2xsaXNpb24gYmV0d2VlbiB0aGUgdHdvIGJhbGxzIGhhcyBvY2N1cnJlZCwgdGhlIGNoYW5nZUluTW9tZW50dW1PcGFjaXR5UHJvcGVydHlcclxuICAgIC8vIGlzIGRlZ3JhZGVkIGJhc2VkIG9uIGhvdyBmYXIgdGhlIHRvdGFsIGVsYXBzZWQgdGltZSBoYXMgcGFzc2VkIHRoZSB0aW1lIG9mIGNvbGxpc2lvbi4gTXVsdGlsaW5rIG5ldmVyIGRpc3Bvc2VkLlxyXG4gICAgTXVsdGlsaW5rLm11bHRpbGluayggWyB0aGlzLmNvbGxpc2lvblBvaW50UHJvcGVydHksIGVsYXBzZWRUaW1lUHJvcGVydHkgXSwgKCBjb2xsaXNpb25Qb2ludCwgZWxhcHNlZFRpbWUgKSA9PiB7XHJcbiAgICAgIGlmICggTnVtYmVyLmlzRmluaXRlKCB0aGlzLmNvbGxpc2lvbkNvbnRhY3RUaW1lICkgKSB7XHJcblxyXG4gICAgICAgIC8vIENvbXB1dGUgdGhlIHRpbWUgc2luY2UgdGhlIGNvbGxpc2lvbi5cclxuICAgICAgICBjb25zdCB0aW1lU2luY2VDb2xsaXNpb24gPSBlbGFwc2VkVGltZSAtIHRoaXMuY29sbGlzaW9uQ29udGFjdFRpbWU7XHJcblxyXG4gICAgICAgIGlmICggdGltZVNpbmNlQ29sbGlzaW9uIDwgMCApIHtcclxuXHJcbiAgICAgICAgICAvLyBJZiB0aGUgdGltZSBzaW5jZSB0aGUgY29sbGlzaW9uIGlzIG5lZ2F0aXZlLCB0aGUgc2ltIGhhcyByZXZlcnNlZCBiYWNrIHRvIHdoZW4gdGhlIGNvbGxpc2lvbiBvY2N1cnJlZC4gVGhpc1xyXG4gICAgICAgICAgLy8gY2xlYXJzIHRoZSBjaGFuZ2UgaW4gbW9tZW50dW0gdmVjdG9ycy4gU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9waGV0c2ltcy9jb2xsaXNpb24tbGFiL2lzc3Vlcy84NVxyXG4gICAgICAgICAgdGhpcy5jbGVhckNoYW5nZUluTW9tZW50dW0oKTtcclxuICAgICAgICB9XHJcbiAgICAgICAgZWxzZSBpZiAoIHRpbWVTaW5jZUNvbGxpc2lvbiA8PSBDSEFOR0VfSU5fTU9NRU5UVU1fVklTSUJMRV9QRVJJT0QgKSB7XHJcblxyXG4gICAgICAgICAgLy8gSWYgdGhlIHRpbWUgaXMgbGVzcyB0aGFuIHRoZSBDSEFOR0VfSU5fTU9NRU5UVU1fVklTSUJMRV9QRVJJT0QsIGl0IGlzIHN0aWxsIGZ1bGx5IG9wYXF1ZS5cclxuICAgICAgICAgIHRoaXMuY2hhbmdlSW5Nb21lbnR1bU9wYWNpdHlQcm9wZXJ0eS52YWx1ZSA9IDE7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGVsc2Uge1xyXG5cclxuICAgICAgICAgIC8vIENvbnZlbmllbmNlIHJlZmVyZW5jZSB0byB0aGUgdG90YWwgdGltZSB0aGUgQ2hhbmdlIGluIE1vbWVudHVtIHZlY3RvcnMgYXJlIHZpc2libGUuXHJcbiAgICAgICAgICBjb25zdCB0b3RhbENoYW5nZUluTW9tZW50dW1MaWZldGltZSA9IENIQU5HRV9JTl9NT01FTlRVTV9WSVNJQkxFX1BFUklPRCArIENIQU5HRV9JTl9NT01FTlRVTV9GQURFX1BFUklPRDtcclxuXHJcbiAgICAgICAgICAvLyBVc2UgYSBsaW5lYXIgbWFwcGluZyB0byBsaW5lYXJseSBkZWNyZWFzZSB0aGUgb3BhY2l0eSBpbiB0aGlzIHRpbWUgcGVyaW9kLlxyXG4gICAgICAgICAgdGhpcy5jaGFuZ2VJbk1vbWVudHVtT3BhY2l0eVByb3BlcnR5LnZhbHVlID0gVXRpbHMubGluZWFyKCBDSEFOR0VfSU5fTU9NRU5UVU1fVklTSUJMRV9QRVJJT0QsXHJcbiAgICAgICAgICAgIHRvdGFsQ2hhbmdlSW5Nb21lbnR1bUxpZmV0aW1lLFxyXG4gICAgICAgICAgICBPUEFDSVRZX1JBTkdFLm1heCxcclxuICAgICAgICAgICAgT1BBQ0lUWV9SQU5HRS5taW4sXHJcbiAgICAgICAgICAgIE1hdGgubWluKCB0aW1lU2luY2VDb2xsaXNpb24sIHRvdGFsQ2hhbmdlSW5Nb21lbnR1bUxpZmV0aW1lICkgKTtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH0gKTtcclxuXHJcbiAgICAvLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cclxuXHJcbiAgICAvLyBPYnNlcnZlIHdoZW4gdGhlICdDaGFuZ2UgaW4gTW9tZW50dW0nIHZpc2liaWxpdHkgaXMgdG9nZ2xlZCB0byBmYWxzZS4gV2hlbiB0aGlzIGhhcHBlbnMsIHRoZSBjaGFuZ2UgaW4gbW9tZW50dW1cclxuICAgIC8vIHZlY3RvcnMgc2hvdWxkIGJlIGNsZWFyZWQuIFRoaXMgaXMgYmVjYXVzZSB0aGUgJ0NoYW5nZSBpbiBNb21lbnR1bScgdmVjdG9ycyBvbmx5IGFyZSBjYWxjdWxhdGVkIEFGVEVSIHRoZVxyXG4gICAgLy8gdmlzaWJpbGl0eSBjaGVja2JveCBpcyBjaGVja2VkLiBMaW5rIHBlcnNpc3RzIGZvciB0aGUgbGlmZS10aW1lIG9mIHRoZSBzaW0uXHJcbiAgICB0aGlzLmNoYW5nZUluTW9tZW50dW1WaXNpYmxlUHJvcGVydHkubGF6eUxpbmsoIGNoYW5nZUluTW9tZW50VmlzaWJsZSA9PiB7XHJcbiAgICAgICFjaGFuZ2VJbk1vbWVudFZpc2libGUgJiYgdGhpcy5jbGVhckNoYW5nZUluTW9tZW50dW0oKTtcclxuICAgIH0gKTtcclxuXHJcbiAgICAvLyBPYnNlcnZlIHdoZW4gdGhlIHVzZXIgaXMgY29udHJvbGxpbmcgYW55IG9mIHRoZSBCYWxscyBhbmQgY2xlYXIgdGhlIGNoYW5nZSBpbiBtb21lbnR1bSB2ZWN0b3JzLiBTZWVcclxuICAgIC8vIGh0dHBzOi8vZ2l0aHViLmNvbS9waGV0c2ltcy9jb2xsaXNpb24tbGFiL2lzc3Vlcy84NS4gTGluayBsYXN0cyBmb3IgdGhlIGxpZmUtdGltZSBvZiB0aGUgc2ltLlxyXG4gICAgdGhpcy5iYWxsU3lzdGVtVXNlckNvbnRyb2xsZWRQcm9wZXJ0eS5sYXp5TGluayggdXNlckNvbnRyb2xsZWQgPT4ge1xyXG4gICAgICB1c2VyQ29udHJvbGxlZCAmJiB0aGlzLmNsZWFyQ2hhbmdlSW5Nb21lbnR1bSgpO1xyXG4gICAgfSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogJ0NsZWFycycgdGhlICdjaGFuZ2UgaW4gbW9tZW50dW0nIHJlbGF0ZWQgZmllbGRzIG9mIHRoaXMgY2xhc3MuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogVGhpcyBpcyBpbnZva2VkIGluIHRoZSBmb2xsb3dpbmcgc2NlbmFyaW9zOlxyXG4gICAqICAgLSB0aGUgcmVzZXQgYWxsIGJ1dHRvbiBpcyBwcmVzc2VkLlxyXG4gICAqICAgLSB0aGUgcmVzdGFydCBidXR0b24gaXMgcHJlc3NlZC5cclxuICAgKiAgIC0gd2hlbiB0aGUgJ0NoYW5nZSBpbiBNb21lbnR1bScgY2hlY2tib3ggaXMgdW4tY2hlY2tlZC5cclxuICAgKiAgIC0gd2hlbiB0aGUgQmFsbCBpcyB1c2VyLW1hbmlwdWxhdGVkLCBlaXRoZXIgYnkgZHJhZ2dpbmcgb3IgZnJvbSB0aGUgS2V5cGFkLlxyXG4gICAqL1xyXG4gIGNsZWFyQ2hhbmdlSW5Nb21lbnR1bSgpIHtcclxuICAgIHRoaXMuY29sbGlzaW9uUG9pbnRQcm9wZXJ0eS5yZXNldCgpO1xyXG4gICAgdGhpcy5jaGFuZ2VJbk1vbWVudHVtT3BhY2l0eVByb3BlcnR5LnJlc2V0KCk7XHJcbiAgICB0aGlzLmNvbGxpc2lvbkNvbnRhY3RUaW1lID0gbnVsbDtcclxuICAgIHRoaXMuYmFsbFRvQ2hhbmdlSW5Nb21lbnR1bVByb3BlcnR5LmZvckVhY2goIGNoYW5nZUluTW9tZW50dW1Qcm9wZXJ0eSA9PiB7IGNoYW5nZUluTW9tZW50dW1Qcm9wZXJ0eS5yZXNldCgpOyB9ICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBSZXNldHMgdGhlIEludHJvQmFsbFN5c3RlbS5cclxuICAgKiBAcHVibGljXHJcbiAgICogQG92ZXJyaWRlXHJcbiAgICovXHJcbiAgcmVzZXQoKSB7XHJcbiAgICBzdXBlci5yZXNldCgpO1xyXG4gICAgdGhpcy5jaGFuZ2VJbk1vbWVudHVtVmlzaWJsZVByb3BlcnR5LnJlc2V0KCk7XHJcbiAgICB0aGlzLmNsZWFyQ2hhbmdlSW5Nb21lbnR1bSgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVzdGFydHMgdGhlIEludHJvQmFsbFN5c3RlbS5cclxuICAgKiBAcHVibGljXHJcbiAgICogQG92ZXJyaWRlXHJcbiAgICpcclxuICAgKiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2NvbGxpc2lvbi1sYWIvaXNzdWVzLzc2IGZvciBjb250ZXh0IG9uIHRoZSBkaWZmZXJlbmNlcyBiZXR3ZWVuIHJlc2V0IGFuZCByZXN0YXJ0LlxyXG4gICAqL1xyXG4gIHJlc3RhcnQoKSB7XHJcbiAgICBzdXBlci5yZXN0YXJ0KCk7XHJcbiAgICB0aGlzLmNsZWFyQ2hhbmdlSW5Nb21lbnR1bSgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVnaXN0ZXJzIGEgY29sbGlzaW9uIGJldHdlZW4gdGhlIHR3byBiYWxscyBvZiB0aGUgJ0ludHJvJyBzY3JlZW4sIGlmIHRoZSBjaGFuZ2UgaW4gbW9tZW50dW0gdmVjdG9ycyBhcmUgdmlzaWJsZS5cclxuICAgKiBUaGlzIGlzIGNhbGxlZCBmcm9tIGluc2lkZSBvZiBJbnRyb0NvbGxpc2lvbkVuZ2luZS5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge1ZlY3RvcjJ9IGNvbGxpc2lvblBvaW50IC0gdGhlIGV4YWN0IHBvc2l0aW9uIG9mIHdoZXJlIHRoZSAyIEJhbGxzIGNvbGxpZGVkLlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBjb2xsaXNpb25Db250YWN0VGltZSAtIHdoZW4gdGhlIDIgQmFsbHMgY29sbGlkZWQuXHJcbiAgICovXHJcbiAgcmVnaXN0ZXJDaGFuZ2VJbk1vbWVudHVtQ29sbGlzaW9uKCBjb2xsaXNpb25Qb2ludCwgY29sbGlzaW9uQ29udGFjdFRpbWUgKSB7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0aGlzLmNoYW5nZUluTW9tZW50dW1WaXNpYmxlUHJvcGVydHkudmFsdWUgKTtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGNvbGxpc2lvblBvaW50IGluc3RhbmNlb2YgVmVjdG9yMiAmJiBjb2xsaXNpb25Qb2ludC55ID09PSAwLCBgaW52YWxpZCBjb2xsaXNpb25Qb2ludDogJHtjb2xsaXNpb25Qb2ludH1gICk7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0eXBlb2YgY29sbGlzaW9uQ29udGFjdFRpbWUgPT09ICdudW1iZXInICYmIGNvbGxpc2lvbkNvbnRhY3RUaW1lID49IDAsIGBpbnZhbGlkIGNvbGxpc2lvbkNvbnRhY3RUaW1lOiAke2NvbGxpc2lvbkNvbnRhY3RUaW1lfWAgKTtcclxuXHJcbiAgICB0aGlzLmNvbGxpc2lvbkNvbnRhY3RUaW1lID0gY29sbGlzaW9uQ29udGFjdFRpbWU7XHJcbiAgICB0aGlzLmNvbGxpc2lvblBvaW50UHJvcGVydHkudmFsdWUgPSBjb2xsaXNpb25Qb2ludDtcclxuICB9XHJcbn1cclxuXHJcbi8vIEBwdWJsaWMgKHJlYWQtb25seSkge0JhbGxTdGF0ZVtdfSAtIHRoZSBpbml0aWFsIEJhbGxTdGF0ZXMgb2YgYWxsIEJhbGxzIGluIHRoZSAnSW50cm8nIHNjcmVlbi5cclxuSW50cm9CYWxsU3lzdGVtLklOSVRJQUxfQkFMTF9TVEFURVMgPSBbXHJcbiAgbmV3IEJhbGxTdGF0ZSggbmV3IFZlY3RvcjIoIC0xLCAwICksIG5ldyBWZWN0b3IyKCAxLCAwICksIDAuNSApLFxyXG4gIG5ldyBCYWxsU3RhdGUoIG5ldyBWZWN0b3IyKCAxLCAwICksIG5ldyBWZWN0b3IyKCAtMC41LCAwICksIDEuNSApXHJcbl07XHJcblxyXG5jb2xsaXNpb25MYWIucmVnaXN0ZXIoICdJbnRyb0JhbGxTeXN0ZW0nLCBJbnRyb0JhbGxTeXN0ZW0gKTtcclxuZXhwb3J0IGRlZmF1bHQgSW50cm9CYWxsU3lzdGVtOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxlQUFlLE1BQU0sd0NBQXdDO0FBQ3BFLE9BQU9DLFNBQVMsTUFBTSxrQ0FBa0M7QUFDeEQsT0FBT0MsY0FBYyxNQUFNLHVDQUF1QztBQUNsRSxPQUFPQyxRQUFRLE1BQU0saUNBQWlDO0FBQ3RELE9BQU9DLEtBQUssTUFBTSw2QkFBNkI7QUFDL0MsT0FBT0MsY0FBYyxNQUFNLHNDQUFzQztBQUNqRSxPQUFPQyxLQUFLLE1BQU0sNkJBQTZCO0FBQy9DLE9BQU9DLE9BQU8sTUFBTSwrQkFBK0I7QUFDbkQsT0FBT0MsZUFBZSxNQUFNLHVDQUF1QztBQUNuRSxPQUFPQyxLQUFLLE1BQU0sbUNBQW1DO0FBQ3JELE9BQU9DLFdBQVcsTUFBTSwwQ0FBMEM7QUFDbEUsT0FBT0MsWUFBWSxNQUFNLHVCQUF1QjtBQUNoRCxPQUFPQywyQkFBMkIsTUFBTSw2Q0FBNkM7QUFDckYsT0FBT0MsU0FBUyxNQUFNLGlDQUFpQztBQUN2RCxPQUFPQyxVQUFVLE1BQU0sa0NBQWtDO0FBQ3pELE9BQU9DLGFBQWEsTUFBTSxvQkFBb0I7O0FBRTlDO0FBQ0EsTUFBTUMsaUNBQWlDLEdBQUdKLDJCQUEyQixDQUFDSyw2QkFBNkI7QUFDbkcsTUFBTUMsOEJBQThCLEdBQUdOLDJCQUEyQixDQUFDTywwQkFBMEI7QUFDN0YsTUFBTUMsZUFBZSxHQUFHLENBQUM7QUFDekIsTUFBTUMsYUFBYSxHQUFHLElBQUlqQixLQUFLLENBQUUsQ0FBQyxFQUFFLENBQUUsQ0FBQztBQUV2QyxNQUFNa0IsZUFBZSxTQUFTUixVQUFVLENBQUM7RUFFdkM7QUFDRjtBQUNBO0FBQ0E7QUFD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

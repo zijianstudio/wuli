@@ -1,0 +1,1 @@
+See circuit-construction-kit-common/doc/implementation-notes.md

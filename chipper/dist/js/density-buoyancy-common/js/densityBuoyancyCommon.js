@@ -1,0 +1,11 @@
+// Copyright 2019-2022, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this simulation.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('densityBuoyancyCommon');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJkZW5zaXR5QnVveWFuY3lDb21tb24udHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTktMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ3JlYXRlcyB0aGUgbmFtZXNwYWNlIGZvciB0aGlzIHNpbXVsYXRpb24uXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgTmFtZXNwYWNlIGZyb20gJy4uLy4uL3BoZXQtY29yZS9qcy9OYW1lc3BhY2UuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgbmV3IE5hbWVzcGFjZSggJ2RlbnNpdHlCdW95YW5jeUNvbW1vbicgKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsU0FBUyxNQUFNLGlDQUFpQztBQUV2RCxlQUFlLElBQUlBLFNBQVMsQ0FBRSx1QkFBd0IsQ0FBQyJ9

@@ -1,0 +1,37 @@
+{
+  "name": "gravity-force-lab-basics",
+  "version": "1.2.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/gravity-force-lab-basics.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "GRAVITY_FORCE_LAB_BASICS",
+    "phetLibs": [
+      "inverse-square-law-common",
+      "gravity-force-lab",
+      "tappi"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simFeatures": {
+      "supportsInteractiveDescription": true,
+      "supportsVoicing": true,
+      "supportsSound": true
+    },
+    "simulation": true,
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

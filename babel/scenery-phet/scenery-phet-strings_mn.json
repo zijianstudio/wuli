@@ -1,0 +1,792 @@
+{
+  "keyboardHelpDialog.adjust": {
+    "value": "Тохируулах",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "Тохируулах"
+      }
+    ]
+  },
+  "keyboardHelpDialog.basicActions": {
+    "value": "Үндсэн үйлдлүүд",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Үндсэн Үйлдлүүд",
+        "explanation": null
+      },
+      {
+        "userId": 578876,
+        "timestamp": 1675331311901,
+        "oldValue": "Үндсэн Үйлдлүүд",
+        "newValue": "Үндсэн үйлдлүүд"
+      }
+    ]
+  },
+  "keyboardHelpDialog.exitADialog": {
+    "value": "Диалогоос гарах",
+    "history": [
+      {
+        "userId": 578876,
+        "timestamp": 1534419050285,
+        "oldValue": "",
+        "newValue": "Диалогоос гарах",
+        "explanation": null
+      }
+    ]
+  },
+  "speed.fast": {
+    "value": "Түргэн",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "Түргэн"
+      }
+    ]
+  },
+  "key.home": {
+    "value": "",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549616477064,
+        "oldValue": "",
+        "newValue": "Эх",
+        "explanation": null
+      },
+      {
+        "userId": 348103,
+        "timestamp": 1649128248722,
+        "oldValue": "Эх",
+        "newValue": ""
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMaximumPattern": {
+    "value": "{{maximum}} руу үсрэх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "{{maximum}} руу үсрэх"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMinimumPattern": {
+    "value": "{{minimum}} руу үсрэх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "{{minimum}} уруу үсрэх"
+      },
+      {
+        "userId": 578876,
+        "timestamp": 1675331311901,
+        "oldValue": "{{minimum}} уруу үсрэх",
+        "newValue": "{{minimum}} руу үсрэх"
+      }
+    ]
+  },
+  "keyboardHelpDialog.maximum": {
+    "value": "хамгийн их",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "хамгийн их"
+      }
+    ]
+  },
+  "keyboardHelpDialog.minimum": {
+    "value": "хамгийн бага",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "хамгийн бага"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveBetweenItemsInAGroup": {
+    "value": "Бүлэг доторх дүрс хооронд шилжих",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Бүлэг доторх дүрс хооронд шилжих",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToNextItemOrGroup": {
+    "value": "Дараагийн дүрс эсвэл бүлэгт шилжих",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Дараагийн дүрс эсвэл бүлэгт шилжих",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToPreviousItemOrGroup": {
+    "value": "Өмнөх дүрс эсвэл бүлэгт шилжих",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Өмнөх дүрс эсвэл бүлэгт шилжих",
+        "explanation": null
+      }
+    ]
+  },
+  "speed.normal": {
+    "value": "Хэвийн",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549552419762,
+        "oldValue": "",
+        "newValue": "Хэвийн",
+        "explanation": null
+      }
+    ]
+  },
+  "key.option": {
+    "value": "Сонголт",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1675827175774,
+        "oldValue": "",
+        "newValue": "Сонголт"
+      }
+    ]
+  },
+  "keyboardHelpDialog.or": {
+    "value": "эсвэл",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "эсвэл",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.timingControls.pauseOrPlayAction": {
+    "value": "Түр зогс эсвэл тоглуул",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1675827175774,
+        "oldValue": "",
+        "newValue": "Түр зогс эсвэл тоглуул"
+      }
+    ]
+  },
+  "key.pageDown": {
+    "value": "Дэлгэц доош",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Дэлгэц доош",
+        "explanation": null
+      }
+    ]
+  },
+  "key.pageUp": {
+    "value": "Дэлгэц дээш",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Дэлгэц дээш",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.pressButtons": {
+    "value": "Товч дар",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Товч дар",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.slider": {
+    "value": "гулсагч",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "гулсагч"
+      }
+    ]
+  },
+  "keyboardHelpDialog.sliderControls": {
+    "value": "Гулсагчийн хяналтын самбар",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1550018245883,
+        "oldValue": "",
+        "newValue": "Гулсагчийн хяналтын самбар",
+        "explanation": null
+      }
+    ]
+  },
+  "speed.slow": {
+    "value": "Удаан",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549552419763,
+        "oldValue": "",
+        "newValue": "Удаан",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.timingControls.timingControls": {
+    "value": "Хугацааны тохируулга",
+    "history": [
+      {
+        "userId": 578876,
+        "timestamp": 1675331311901,
+        "oldValue": "",
+        "newValue": "Хугацааны тохируулга"
+      }
+    ]
+  },
+  "keyboardHelpDialog.toggleCheckboxes": {
+    "value": "Сонголт хийх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "Сонголт хийх"
+      }
+    ]
+  },
+  "keyboardHelpDialog.verbInLargerStepsPattern": {
+    "value": "{{verb}} илүү том алхам",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "{{verb}} илүү том алхам"
+      }
+    ]
+  },
+  "keyboardHelpDialog.verbInSmallerStepsPattern": {
+    "value": "{{verb}} дутуу жижиг алхам",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1637926656394,
+        "oldValue": "",
+        "newValue": "{{verb}} дутуу жижиг алхам"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.popUpListPattern": {
+    "value": "1. {{thingPlural}} дээш гарах жагсаалт",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "1. {{thingPlural}} дээш гарах жагсаалт"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.moveThroughPattern": {
+    "value": "2. {{thingPlural}} дотор шилж",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "2. {{thingPlural}} дотор шилж"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.chooseNewPattern": {
+    "value": "3. Шинэ {{thingSingular}} сонго",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "3. Шинэ {{thingSingular}} сонго"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.closeWithoutChanging": {
+    "value": "4. Жагсаалтыг өөрчлөхгүйгээр хаах",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "4. Жагсаалтыг өөрчлөхгүйгээр хаах"
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseHeadingPattern": {
+    "value": "Авах ба Орхих {{thing}}",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549445296825,
+        "oldValue": "",
+        "newValue": "Авах ба Орхих {{thing}}",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseLabelPattern": {
+    "value": "Авах ба орхих {{thing}}",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549445296825,
+        "oldValue": "",
+        "newValue": "Авах ба орхих {{thing}}",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.option": {
+    "value": "сонголт",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "сонголт"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.options": {
+    "value": "сонголтууд",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "сонголтууд"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.headingString": {
+    "value": "Цэсийг нээх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1670158389314,
+        "oldValue": "",
+        "newValue": "Цэсийг нээх"
+      }
+    ]
+  },
+  "webglWarning.contextLossReload": {
+    "value": "Дахих",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549545764387,
+        "oldValue": "",
+        "newValue": "Дахих",
+        "explanation": null
+      }
+    ]
+  },
+  "webglWarning.contextLossFailure": {
+    "value": "Уучлаарай, Дэлгэцийн алдаа",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549545764387,
+        "oldValue": "",
+        "newValue": "Уучлаарай, Дэлгэцийн алдаа",
+        "explanation": null
+      }
+    ]
+  },
+  "webglWarning.body": {
+    "value": "WebGL нь боломжгүй. Нэмж суралцахыг товш.",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549545764387,
+        "oldValue": "",
+        "newValue": "WebGL нь боломжгүй. Нэмж суралцахыг товш.",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.chooseAThingPattern": {
+    "value": "{{thingTitle}} сонго",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "{{thingTitle}} сонго"
+      }
+    ]
+  },
+  "eight": {
+    "value": "найм",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "найм"
+      }
+    ]
+  },
+  "five": {
+    "value": "тав",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "тав"
+      }
+    ]
+  },
+  "four": {
+    "value": "дөрөв",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "дөрөв"
+      }
+    ]
+  },
+  "nine": {
+    "value": "ес",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "ес"
+      }
+    ]
+  },
+  "one": {
+    "value": "нэг",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "нэг"
+      }
+    ]
+  },
+  "seven": {
+    "value": "долоо",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "долоо"
+      }
+    ]
+  },
+  "six": {
+    "value": "зургаа",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "зургаа"
+      }
+    ]
+  },
+  "ten": {
+    "value": "арав",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "арав"
+      }
+    ]
+  },
+  "three": {
+    "value": "гурав",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "гурав"
+      }
+    ]
+  },
+  "two": {
+    "value": "хоёр",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "хоёр"
+      }
+    ]
+  },
+  "zero": {
+    "value": "тэг",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1638001059573,
+        "oldValue": "",
+        "newValue": "тэг"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToNextItem": {
+    "value": "Дараагийн дүрсэд шилжих",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Дараагийн дүрсэд шилжих",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToPreviousItem": {
+    "value": "Өмнөх дүрсэд шилжих",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549440850517,
+        "oldValue": "",
+        "newValue": "Өмнөх дүрсэд шилжих",
+        "explanation": null
+      }
+    ]
+  },
+  "rulerCapitalized": {
+    "value": "Шугам",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1575293775775,
+        "oldValue": "",
+        "newValue": "Шугам",
+        "explanation": null
+      }
+    ]
+  },
+  "ruler": {
+    "value": "Шугам",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1575293775775,
+        "oldValue": "",
+        "newValue": "Шугам",
+        "explanation": null
+      }
+    ]
+  },
+  "shortCircuit": {
+    "value": "Богино холболт!",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1556283915635,
+        "oldValue": "",
+        "newValue": "Богино холболт!",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustInLargerSteps": {
+    "value": "Томсгох алхамын тохируулга",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549525164638,
+        "oldValue": "",
+        "newValue": "Томсгох алхамын тохируулга",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustInSmallerSteps": {
+    "value": "Жижигсгэх алхамын тохируулга",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549525164638,
+        "oldValue": "",
+        "newValue": "Жижигсгэх алхамын тохируулга",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustSlider": {
+    "value": "Хуудсын тохируулга",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549525164638,
+        "oldValue": "",
+        "newValue": "Хуудсын тохируулга",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.generalNavigation": {
+    "value": "Ерөнхий Чиглүүлэг",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1550018245882,
+        "oldValue": "",
+        "newValue": "Ерөнхий Чиглүүлэг",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMaximum": {
+    "value": "Их рүү үсрэх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549525164638,
+        "oldValue": "",
+        "newValue": "Их рүү үсрэх",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMinimum": {
+    "value": "Бага руу үсрэх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549525164638,
+        "oldValue": "",
+        "newValue": "Бага руу үсрэх",
+        "explanation": null
+      }
+    ]
+  },
+  "webglWarning.title": {
+    "value": "Гаралтын чанарыг сулруулан үзэх",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549545764387,
+        "oldValue": "",
+        "newValue": "Гаралтын чанарыг сулруулан үзэх",
+        "explanation": null
+      }
+    ]
+  },
+  "webglWarning.ie11StencilBody": {
+    "value": "Windows-ын нэмэлтийг санал болгосноор суулгаад Internet Explorer сайжруул",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549545764387,
+        "oldValue": "",
+        "newValue": "Windows-ын нэмэлтийг санал болгосноор суулгаад Internet Explorer сайжруул",
+        "explanation": null
+      }
+    ]
+  },
+  "cool": {
+    "value": "Хүйтэн",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549507953905,
+        "oldValue": "",
+        "newValue": "Хүйтэн",
+        "explanation": null
+      }
+    ]
+  },
+  "heat": {
+    "value": "Халуун",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549507953905,
+        "oldValue": "",
+        "newValue": "Халуун",
+        "explanation": null
+      }
+    ]
+  },
+  "frequencyUnitsPattern": {
+    "value": "{{frequency}} ТГц",
+    "history": [
+      {
+        "userId": 348103,
+        "timestamp": 1549445296825,
+        "oldValue": "",
+        "newValue": "{{frequency}} ТГц",
+        "explanation": null
+      }
+    ]
+  },
+  "units_nm": {
+    "value": "нм",
+    "history": [
+      {
+        "userId": 578876,
+        "timestamp": 1534242385962,
+        "oldValue": "",
+        "newValue": "нм",
+        "explanation": null
+      }
+    ]
+  }
+}

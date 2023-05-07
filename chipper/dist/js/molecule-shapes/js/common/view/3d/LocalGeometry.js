@@ -1,0 +1,44 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Provides access to renderer-specific geometries which are otherwise identical. We can't share geometries across
+ * three.js renderers, so we must resort to making one copy per renderer.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import moleculeShapes from '../../../moleculeShapes.js';
+class LocalGeometry {
+  /*
+   * @param {THREE.Geometry} masterGeometry - The geometry to clone for each renderer
+   */
+  constructor(masterGeometry) {
+    this.masterGeometry = masterGeometry;
+
+    // renderers[i] "owns" geometries[i]
+    this.renderers = []; // @private {Array.<THREE.Renderer>}
+    this.geometries = []; // @private {Array.<THREE.Geometry>}
+  }
+
+  /**
+   * Returns the copy of the geometry corresponding to the provided three.js renderer.
+   * @public
+   *
+   * @param {THREE.Renderer} renderer
+   * @returns {THREE.Geometry}
+   */
+  get(renderer) {
+    for (let i = 0; i < this.renderers.length; i++) {
+      if (this.renderers[i] === renderer) {
+        return this.geometries[i];
+      }
+    }
+    this.renderers.push(renderer);
+    const geometry = this.masterGeometry.clone();
+    this.geometries.push(geometry);
+    return geometry;
+  }
+}
+moleculeShapes.register('LocalGeometry', LocalGeometry);
+export default LocalGeometry;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtb2xlY3VsZVNoYXBlcyIsIkxvY2FsR2VvbWV0cnkiLCJjb25zdHJ1Y3RvciIsIm1hc3Rlckdlb21ldHJ5IiwicmVuZGVyZXJzIiwiZ2VvbWV0cmllcyIsImdldCIsInJlbmRlcmVyIiwiaSIsImxlbmd0aCIsInB1c2giLCJnZW9tZXRyeSIsImNsb25lIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJMb2NhbEdlb21ldHJ5LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFByb3ZpZGVzIGFjY2VzcyB0byByZW5kZXJlci1zcGVjaWZpYyBnZW9tZXRyaWVzIHdoaWNoIGFyZSBvdGhlcndpc2UgaWRlbnRpY2FsLiBXZSBjYW4ndCBzaGFyZSBnZW9tZXRyaWVzIGFjcm9zc1xyXG4gKiB0aHJlZS5qcyByZW5kZXJlcnMsIHNvIHdlIG11c3QgcmVzb3J0IHRvIG1ha2luZyBvbmUgY29weSBwZXIgcmVuZGVyZXIuXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgbW9sZWN1bGVTaGFwZXMgZnJvbSAnLi4vLi4vLi4vbW9sZWN1bGVTaGFwZXMuanMnO1xyXG5cclxuY2xhc3MgTG9jYWxHZW9tZXRyeSB7XHJcbiAgLypcclxuICAgKiBAcGFyYW0ge1RIUkVFLkdlb21ldHJ5fSBtYXN0ZXJHZW9tZXRyeSAtIFRoZSBnZW9tZXRyeSB0byBjbG9uZSBmb3IgZWFjaCByZW5kZXJlclxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBtYXN0ZXJHZW9tZXRyeSApIHtcclxuICAgIHRoaXMubWFzdGVyR2VvbWV0cnkgPSBtYXN0ZXJHZW9tZXRyeTtcclxuXHJcbiAgICAvLyByZW5kZXJlcnNbaV0gXCJvd25zXCIgZ2VvbWV0cmllc1tpXVxyXG4gICAgdGhpcy5yZW5kZXJlcnMgPSBbXTsgLy8gQHByaXZhdGUge0FycmF5LjxUSFJFRS5SZW5kZXJlcj59XHJcbiAgICB0aGlzLmdlb21ldHJpZXMgPSBbXTsgLy8gQHByaXZhdGUge0FycmF5LjxUSFJFRS5HZW9tZXRyeT59XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBSZXR1cm5zIHRoZSBjb3B5IG9mIHRoZSBnZW9tZXRyeSBjb3JyZXNwb25kaW5nIHRvIHRoZSBwcm92aWRlZCB0aHJlZS5qcyByZW5kZXJlci5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge1RIUkVFLlJlbmRlcmVyfSByZW5kZXJlclxyXG4gICAqIEByZXR1cm5zIHtUSFJFRS5HZW9tZXRyeX1cclxuICAgKi9cclxuICBnZXQoIHJlbmRlcmVyICkge1xyXG4gICAgZm9yICggbGV0IGkgPSAwOyBpIDwgdGhpcy5yZW5kZXJlcnMubGVuZ3RoOyBpKysgKSB7XHJcbiAgICAgIGlmICggdGhpcy5yZW5kZXJlcnNbIGkgXSA9PT0gcmVuZGVyZXIgKSB7XHJcbiAgICAgICAgcmV0dXJuIHRoaXMuZ2VvbWV0cmllc1sgaSBdO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgdGhpcy5yZW5kZXJlcnMucHVzaCggcmVuZGVyZXIgKTtcclxuICAgIGNvbnN0IGdlb21ldHJ5ID0gdGhpcy5tYXN0ZXJHZW9tZXRyeS5jbG9uZSgpO1xyXG4gICAgdGhpcy5nZW9tZXRyaWVzLnB1c2goIGdlb21ldHJ5ICk7XHJcblxyXG4gICAgcmV0dXJuIGdlb21ldHJ5O1xyXG4gIH1cclxufVxyXG5cclxubW9sZWN1bGVTaGFwZXMucmVnaXN0ZXIoICdMb2NhbEdlb21ldHJ5JywgTG9jYWxHZW9tZXRyeSApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgTG9jYWxHZW9tZXRyeTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxjQUFjLE1BQU0sNEJBQTRCO0FBRXZELE1BQU1DLGFBQWEsQ0FBQztFQUNsQjtBQUNGO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsY0FBYyxFQUFHO0lBQzVCLElBQUksQ0FBQ0EsY0FBYyxHQUFHQSxjQUFjOztJQUVwQztJQUNBLElBQUksQ0FBQ0MsU0FBUyxHQUFHLEVBQUUsQ0FBQyxDQUFDO0lBQ3JCLElBQUksQ0FBQ0MsVUFBVSxHQUFHLEVBQUUsQ0FBQyxDQUFDO0VBQ3hCOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLEdBQUdBLENBQUVDLFFBQVEsRUFBRztJQUNkLEtBQU0sSUFBSUMsQ0FBQyxHQUFHLENBQUMsRUFBRUEsQ0FBQyxHQUFHLElBQUksQ0FBQ0osU0FBUyxDQUFDSyxNQUFNLEVBQUVELENBQUMsRUFBRSxFQUFHO01BQ2hELElBQUssSUFBSSxDQUFDSixTQUFTLENBQUVJLENBQUMsQ0FBRSxLQUFLRCxRQUFRLEVBQUc7UUFDdEMsT0FBTyxJQUFJLENBQUNGLFVBQVUsQ0FBRUcsQ0FBQyxDQUFFO01BQzdCO0lBQ0Y7SUFFQSxJQUFJLENBQUNKLFNBQVMsQ0FBQ00sSUFBSSxDQUFFSCxRQUFTLENBQUM7SUFDL0IsTUFBTUksUUFBUSxHQUFHLElBQUksQ0FBQ1IsY0FBYyxDQUFDUyxLQUFLLENBQUMsQ0FBQztJQUM1QyxJQUFJLENBQUNQLFVBQVUsQ0FBQ0ssSUFBSSxDQUFFQyxRQUFTLENBQUM7SUFFaEMsT0FBT0EsUUFBUTtFQUNqQjtBQUNGO0FBRUFYLGNBQWMsQ0FBQ2EsUUFBUSxDQUFFLGVBQWUsRUFBRVosYUFBYyxDQUFDO0FBRXpELGVBQWVBLGFBQWEifQ==

@@ -1,0 +1,31 @@
+{
+  "name": "resistance-in-a-wire",
+  "version": "1.7.0-dev.5",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/resistance-in-a-wire.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "RESISTANCE_IN_A_WIRE",
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simFeatures": {
+      "supportsSound": true,
+      "supportsInteractiveDescription": true
+    },
+    "simulation": true,
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

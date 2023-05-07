@@ -1,0 +1,10 @@
+// Copyright 2022, University of Colorado Boulder
+
+/**
+ * RaysType is a union type for the different representations of rays, as set by the 'Rays' radio button group.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+export const RaysTypeValues = ['marginal', 'principal', 'many', 'none'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJSYXlzVHlwZVZhbHVlcyJdLCJzb3VyY2VzIjpbIlJheXNUeXBlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIyLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBSYXlzVHlwZSBpcyBhIHVuaW9uIHR5cGUgZm9yIHRoZSBkaWZmZXJlbnQgcmVwcmVzZW50YXRpb25zIG9mIHJheXMsIGFzIHNldCBieSB0aGUgJ1JheXMnIHJhZGlvIGJ1dHRvbiBncm91cC5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5leHBvcnQgY29uc3QgUmF5c1R5cGVWYWx1ZXMgPSBbICdtYXJnaW5hbCcsICdwcmluY2lwYWwnLCAnbWFueScsICdub25lJyBdIGFzIGNvbnN0O1xyXG5leHBvcnQgdHlwZSBSYXlzVHlwZSA9ICggdHlwZW9mIFJheXNUeXBlVmFsdWVzIClbbnVtYmVyXTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBTyxNQUFNQSxjQUFjLEdBQUcsQ0FBRSxVQUFVLEVBQUUsV0FBVyxFQUFFLE1BQU0sRUFBRSxNQUFNLENBQVcifQ==

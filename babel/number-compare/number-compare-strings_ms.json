@@ -1,0 +1,46 @@
+{
+  "screen.compare": {
+    "value": "Bandingkan",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Bandingkan"
+      }
+    ]
+  },
+  "isLessThan": {
+    "value": "{{smallerNumber}} adalah kurang daripada {{greaterNumber}}",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "{{smallerNumber}} adalah kurang daripada {{greaterNumber}}"
+      }
+    ]
+  },
+  "isGreaterThan": {
+    "value": "{{greaterNumber}}  adalah besar daripada {{smallerNumber}}",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "{{greaterNumber}}  adalah besar daripada {{smallerNumber}}"
+      }
+    ]
+  },
+  "isEqualTo": {
+    "value": "{{equalNumberLeft}} adalah sama dengan {{equalNumberRight}}",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "{{equalNumberLeft}} adalah sama dengan {{equalNumberRight}}"
+      }
+    ]
+  }
+}

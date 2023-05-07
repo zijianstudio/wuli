@@ -1,0 +1,95 @@
+@import "../common.css";
+
+:root {
+  --side-nav-width: 290px;
+
+  --light-eggplant: #f4f2f9;
+  --gray: #6c6c6c;
+  --pink: #e01e5a;
+
+  --short-transition: 0.3s ease;
+}
+
+#index-page {
+  width: 100%;
+  height: 100%;
+}
+
+#side-nav {
+  width: var(--side-nav-width);
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--light-eggplant);
+  border-right: 1px solid var(--gray-light);
+}
+
+.title-container {
+  margin: 14px 10px;
+  padding-bottom: 4px;
+  overflow: auto;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+img.title-image {
+  width: 120px;
+  display: inline-block;
+  float: left;
+}
+
+h1.title-text {
+  display: inline-block;
+  font-family: var(--default-font-family);
+  font-weight: 100;
+  font-size: 48px;
+  margin: 2px 0 0 8px;
+  float: left;
+}
+
+.nav-buttons {
+  margin-top: 20px;
+}
+
+button.nav-button {
+  width: 283px;
+  display: block;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--default-font-family);
+  font-size: 17px;
+  font-weight: 300;
+  padding: 7px 7px 6px;
+  margin: 0 8px;
+  border: 1px solid transparent;
+  color: var(--gray);
+  transition: var(--short-transition);
+}
+
+button.nav-button:hover {
+  color: var(--pink);
+  transition: var(--short-transition);
+}
+
+button.nav-button:focus {
+  color: var(--pink);
+  transition: var(--short-transition);
+  outline: none;
+}
+
+button.nav-button.selected {
+  color: var(--pink);
+  background: white;
+  border-color: var(--gray-light);
+  border-right: none;
+  transition: var(--short-transition);
+}
+
+#selected-page {
+  width: calc(100% - var(--side-nav-width));
+  height: 100%;
+  position: absolute;
+  left: var(--side-nav-width);
+  top: 0;
+}

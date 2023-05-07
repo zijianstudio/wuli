@@ -1,0 +1,1148 @@
+{
+  "keyboardHelpDialog.hyphen": {
+    "value": "-",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "-"
+      }
+    ]
+  },
+  "key.alt": {
+    "value": "የቁልፍ ሰሌዳ.Alt",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ለውጥ"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483584,
+        "oldValue": "ለውጥ",
+        "newValue": "የቁልፍ ሰሌዳ.Alt"
+      }
+    ]
+  },
+  "keyboardHelpDialog.basicActions": {
+    "value": "ዋና ተግባራት",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ዋና ተግባራት"
+      }
+    ]
+  },
+  "key.capsLock": {
+    "value": "የቁልፍ ሰሌዳ.Caps Lock (ካፕስ ሎክ ፊደል መቀየርያ)",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "Caps Lock"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "Caps Lock",
+        "newValue": "ካፕስ ሎክ (ፊደል መቀየርያ)"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483584,
+        "oldValue": "ካፕስ ሎክ (ፊደል መቀየርያ)",
+        "newValue": "የቁልፍ ሰሌዳ.Caps Lock (ካፕስ ሎክ ፊደል መቀየርያ)"
+      }
+    ]
+  },
+  "key.end": {
+    "value": "መጨረሻ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "መጨረሻ"
+      }
+    ]
+  },
+  "key.enter": {
+    "value": "ግባ/ቢ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ግባ"
+      },
+      {
+        "userId": 852474,
+        "timestamp": 1650265592966,
+        "oldValue": "ግባ",
+        "newValue": "አስገባ/ቢ"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "አስገባ/ቢ",
+        "newValue": "ግባ/ቢ"
+      }
+    ]
+  },
+  "key.esc": {
+    "value": "የቁልፍ ሰሌዳ.Esc (ዝለል)",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "Esc"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "Esc",
+        "newValue": "እለፍ/ፊ"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661891384361,
+        "oldValue": "እለፍ/ፊ",
+        "newValue": "ዝለል"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483584,
+        "oldValue": "ዝለል",
+        "newValue": "የቁልፍ ሰሌዳ.Esc (ዝለል)"
+      }
+    ]
+  },
+  "keyboardHelpDialog.exitADialog": {
+    "value": "ከውይይት ውጣ/ጭ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ከውይይቱ ውጣ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ከውይይቱ ውጣ።",
+        "newValue": "ከውይይቱ ውጣ/ጭ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661891384361,
+        "oldValue": "ከውይይቱ ውጣ/ጭ።",
+        "newValue": "ከውይይት ውጣ/ጭ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1662807914529,
+        "oldValue": "ከውይይት ውጣ/ጭ።",
+        "newValue": "ከውይይት ውጣ/ጭ"
+      }
+    ]
+  },
+  "key.fn": {
+    "value": "የቁልፍ ሰሌዳ.Fn",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "Fn"
+      },
+      {
+        "userId": 852474,
+        "timestamp": 1660407968433,
+        "oldValue": "Fn",
+        "newValue": "ቁልፍ ኤፍ ኤን "
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661891384361,
+        "oldValue": "ቁልፍ ኤፍ ኤን ",
+        "newValue": "Fn"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483584,
+        "oldValue": "Fn",
+        "newValue": "የቁልፍ ሰሌዳ.Fn"
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseHeadingPattern": {
+    "value": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ያዝ ወይም ልቀቅ {{thing}}"
+      },
+      {
+        "userId": 852474,
+        "timestamp": 1650265592966,
+        "oldValue": "ያዝ ወይም ልቀቅ {{thing}}",
+        "newValue": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}",
+        "newValue": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseLabelPattern": {
+    "value": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ያዝ ወይም ልቀቅ {{thing}}"
+      },
+      {
+        "userId": 852474,
+        "timestamp": 1650265592966,
+        "oldValue": "ያዝ ወይም ልቀቅ {{thing}}",
+        "newValue": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}",
+        "newValue": "ያዝ/ዥ ወይም ልቀቅ/ቂ {{thing}}"
+      }
+    ]
+  },
+  "key.home": {
+    "value": "ቤት",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ቤት"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveBetweenItemsInAGroup": {
+    "value": "በቡድን ውስጥ ባሉ ምርጫዎች መካከል ሂድ/ጅ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "",
+        "newValue": "በቡድን ውስጥ ባሉ ምርጫዎች መካከል ሂድ/ጅ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToNextItemOrGroup": {
+    "value": "ወደሚቀጥለው ምርጫ ወይም ቡድን ሂድ/ጅ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ወደሚቀጥለው እቃ ሂድ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ወደሚቀጥለው እቃ ሂድ።",
+        "newValue": "ወደሚቀጥለው ምርጫ ወይም ቡድን ሂድ/ጅ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToPreviousItemOrGroup": {
+    "value": "ወደቅድሙ ምርጫ ወይም ቡድን ሂድ/ጅ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ወደቅድሙ እቃ ሂድ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ወደቅድሙ እቃ ሂድ።",
+        "newValue": "ወደቅድሙ ምርጫ ወይም ቡድን ሂድ/ጅ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.or": {
+    "value": "ወይም",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ወይም"
+      }
+    ]
+  },
+  "key.pageDown": {
+    "value": "የቁልፍ ሰሌዳ.Pg Dn (ታችኛው ገጽ)",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "Pg Dn"
+      },
+      {
+        "userId": 852474,
+        "timestamp": 1650265592966,
+        "oldValue": "Pg Dn",
+        "newValue": "ገጽ ወደ ታች "
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ገጽ ወደ ታች ",
+        "newValue": "ታችኛው ገጽ"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483585,
+        "oldValue": "ታችኛው ገጽ",
+        "newValue": "የቁልፍ ሰሌዳ.Pg Dn (ታችኛው ገጽ)"
+      }
+    ]
+  },
+  "key.pageUp": {
+    "value": "የቁልፍ ሰሌዳ.Pg Up (ላይኛው ገጽ)",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "Pg Up"
+      },
+      {
+        "userId": 852474,
+        "timestamp": 1650265592966,
+        "oldValue": "Pg Up",
+        "newValue": "ገጽ ወደ ላይ "
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ገጽ ወደ ላይ ",
+        "newValue": "ላይኛው ገጽ"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483585,
+        "oldValue": "ላይኛው ገጽ",
+        "newValue": "የቁልፍ ሰሌዳ.Pg Up (ላይኛው ገጽ)"
+      }
+    ]
+  },
+  "keyboardHelpDialog.pressButtons": {
+    "value": "ቁልፎቹን ተጫን/ኝ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ቁልፎቹን ተቻኑ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "ቁልፎቹን ተቻኑ።",
+        "newValue": "ቁልፎቹን ተጫን/ኝ።"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1662807914529,
+        "oldValue": "ቁልፎቹን ተጫን/ኝ።",
+        "newValue": "ቁልፎቹን ተጫን/ኝ"
+      }
+    ]
+  },
+  "key.shift": {
+    "value": "ቀይር",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ለውጥ "
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661891384361,
+        "oldValue": "ለውጥ ",
+        "newValue": "ቀይር"
+      }
+    ]
+  },
+  "key.space": {
+    "value": "የቁልፍ ሰሌዳ.space (ቦታ መግፍያ)",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ህዋ"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661891384361,
+        "oldValue": "ህዋ",
+        "newValue": "ቦታ መግፍያ"
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483585,
+        "oldValue": "ቦታ መግፍያ",
+        "newValue": "የቁልፍ ሰሌዳ.space (ቦታ መግፍያ)"
+      }
+    ]
+  },
+  "key.tab": {
+    "value": "የቁልፍ ሰሌዳ.Tab (ትር) ",
+    "history": [
+      {
+        "userId": 852474,
+        "timestamp": 1650265592966,
+        "oldValue": "",
+        "newValue": "ትር "
+      },
+      {
+        "userId": 915681,
+        "timestamp": 1666548483585,
+        "oldValue": "ትር ",
+        "newValue": "የቁልፍ ሰሌዳ.Tab (ትር) "
+      }
+    ]
+  },
+  "keyboardHelpDialog.toggleCheckboxes": {
+    "value": "መምረጫ ሳጥኖች",
+    "history": [
+      {
+        "userId": 852474,
+        "timestamp": 1660407968433,
+        "oldValue": "",
+        "newValue": "አመልካች ሳጥኖችን ቀይር"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661891384361,
+        "oldValue": "አመልካች ሳጥኖችን ቀይር",
+        "newValue": "መምረጫ ሳጥኖች"
+      }
+    ]
+  },
+  "measuringTapeReadoutPattern": {
+    "value": "{{distance}} {{units}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "{{distance}} {{units}}"
+      }
+    ]
+  },
+  "symbol.resistivity": {
+    "value": "ρ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ρ"
+      }
+    ]
+  },
+  "symbol.ohms": {
+    "value": "Ω",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "Ω"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustInLargerSteps": {
+    "value": "በትልልቅ ደረጃዎች አስተካክል",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1664619442123,
+        "oldValue": "",
+        "newValue": "በትልልቅ ደረጃዎች አስተካክል"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustInSmallerSteps": {
+    "value": "በትንንሽ ደረጃዎች አስተካክል",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1664619442123,
+        "oldValue": "",
+        "newValue": "በትንንሽ ደረጃዎች አስተካክል"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustSlider": {
+    "value": "ተንሸራታቹን አስተካክል",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1664619442123,
+        "oldValue": "",
+        "newValue": "ተንሸራታቹን አስተካክል"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMaximum": {
+    "value": "ወደ ትልቁ ዝለል",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1664619442123,
+        "oldValue": "",
+        "newValue": "ወደ ትልቁ ዝለል"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMinimum": {
+    "value": "ወደ ትንሹ ዝለል",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1664619442123,
+        "oldValue": "",
+        "newValue": "ወደ ትንሹ ዝለል"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToNextItem": {
+    "value": "ወደሚቀጥለው ምርጫ ሂድ/ጅ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895464831,
+        "oldValue": "",
+        "newValue": "ወደሚቀጥለው ምርጫ ሂድ/ጅ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToPreviousItem": {
+    "value": "ወደቀደመው ምርጫ ሂድ/ጅ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895464831,
+        "oldValue": "",
+        "newValue": "ወደቀደመው ምርጫ ሂድ/ጅ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.sliderControls": {
+    "value": "ማንሸራተቻ መቆጣጠርያዎች",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ማንሸራተቻ መቆጣጠርያዎች"
+      }
+    ]
+  },
+  "shortCircuit": {
+    "value": "አጭር ሰርኩይት",
+    "history": [
+      {
+        "userId": 1044666,
+        "timestamp": 1664362194043,
+        "oldValue": "",
+        "newValue": "አጭር ሰርኩይት"
+      }
+    ]
+  },
+  "webglWarning.contextLossReload": {
+    "value": "እንደገና ጫን/ኝ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661894627059,
+        "oldValue": "",
+        "newValue": "እንደገና ጫን/ኝ"
+      }
+    ]
+  },
+  "webglWarning.contextLossFailure": {
+    "value": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል። ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661894627059,
+        "oldValue": "",
+        "newValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል።\r\n"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661896367178,
+        "oldValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል።\r\n",
+        "newValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል።\r\n\n"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1661897460527,
+        "oldValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል።\r\n\n",
+        "newValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል።\r\n\r\n"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1662807914529,
+        "oldValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል።\r\n\r\n",
+        "newValue": "ይቅርታ፣ የግራፊክስ ስህተት ተከስቷል። "
+      }
+    ]
+  },
+  "webglWarning.body": {
+    "value": "WebGL አልነቃም ወይም አይገኝም። የበለጠ ለማወቅ ጠቅ ያድርጉ።",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661894627059,
+        "oldValue": "",
+        "newValue": "WebGL አልነቃም ወይም አይገኝም። የበለጠ ለማወቅ ጠቅ ያድርጉ"
+      },
+      {
+        "userId": 672644,
+        "timestamp": 1662807914529,
+        "oldValue": "WebGL አልነቃም ወይም አይገኝም። የበለጠ ለማወቅ ጠቅ ያድርጉ",
+        "newValue": "WebGL አልነቃም ወይም አይገኝም። የበለጠ ለማወቅ ጠቅ ያድርጉ።"
+      }
+    ]
+  },
+  "wavelength": {
+    "value": "የሞገድ ርዝመት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1662800254449,
+        "oldValue": "",
+        "newValue": "የሞገድ ርዝመት"
+      }
+    ]
+  },
+  "wavelengthNMValuePattern": {
+    "value": "{0} nm",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1662800254449,
+        "oldValue": "",
+        "newValue": "{0} nm"
+      }
+    ]
+  },
+  "cool": {
+    "value": "ቀዝቃዛ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661893353591,
+        "oldValue": "",
+        "newValue": "ቀዝቃዛ"
+      }
+    ]
+  },
+  "heat": {
+    "value": "ሙቀት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661893353591,
+        "oldValue": "",
+        "newValue": "ሙቀት"
+      }
+    ]
+  },
+  "speed.normal": {
+    "value": "መደበኛ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "",
+        "newValue": "መደበኛ"
+      }
+    ]
+  },
+  "speed.slow": {
+    "value": "በዝግታ",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "በዝግታ"
+      }
+    ]
+  },
+  "comboBoxDisplay.valueUnits": {
+    "value": "{{value}} {{units}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661893353591,
+        "oldValue": "",
+        "newValue": "{{value}} {{units}}"
+      }
+    ]
+  },
+  "webglWarning.title": {
+    "value": "በዝቅተኛ ግራፊክስ ጥራት በመሮጥ ላይ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661896367178,
+        "oldValue": "",
+        "newValue": "በዝቅተኛ ግራፊክስ ጥራት በመሮጥ ላይ"
+      }
+    ]
+  },
+  "webglWarning.ie11StencilBody": {
+    "value": "የሚመከሩ የዊንዶውስ ዝመናዎችን በመጫን ኢንተርኔት ኤክስፕሎረርን ያዘምኑ።",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661896367178,
+        "oldValue": "",
+        "newValue": "የሚመከሩ የዊንዶውስ ዝመናዎችን በመጫን ኢንተርኔት ኤክስፕሎረርን ያዘምኑ።"
+      }
+    ]
+  },
+  "key.toGrabOrRelease": {
+    "value": "ወደ <b>ያዝ/ዥ</b>ወይም <b>ልቀቅ/ቂ</b>",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895464831,
+        "oldValue": "",
+        "newValue": "ወደ <b>ያዝ/ዥ</b>ወይም <b>ልቀቅ/ቂ</b>"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.popUpListPattern": {
+    "value": "ብቅ ባይ ዝርዝር {{thingPlural}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ብቅ ባይ ዝርዝር {{thingPlural}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.moveThroughPattern": {
+    "value": "ማለፍ {{thingPlural}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ማለፍ {{thingPlural}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.chooseNewPattern": {
+    "value": "አዲስ ምረጥ {{thingSingular}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "አዲስ ምረጥ {{thingSingular}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.closeWithoutChanging": {
+    "value": "ምንም ሳይቀየር ዝርዝሩን ዝጋ/ጊ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ምንም ሳይቀየር ዝርዝሩን ዝጋ/ጊ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjust": {
+    "value": "አስተካክል/ይ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "አስተካክል/ይ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.chooseAThingPattern": {
+    "value": "ምረጥ/ጭ {{thingTitle}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ምረጥ/ጭ {{thingTitle}}"
+      }
+    ]
+  },
+  "eight": {
+    "value": "ስምንት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ስምንት"
+      }
+    ]
+  },
+  "five": {
+    "value": "አምስት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "አምስት"
+      }
+    ]
+  },
+  "four": {
+    "value": "አራት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "አራት"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMaximumPattern": {
+    "value": "ዝለል {{maximum}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ዝለል {{maximum}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMinimumPattern": {
+    "value": "ዝለል{{minimum}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ዝለል{{minimum}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.maximum": {
+    "value": "ከፍተኛ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ከፍተኛ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.minimum": {
+    "value": "ዝቅተኛ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ዝቅተኛ"
+      }
+    ]
+  },
+  "nine": {
+    "value": "ዘጠኝ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ዘጠኝ"
+      }
+    ]
+  },
+  "one": {
+    "value": "አንድ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "አንድ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.option": {
+    "value": "አማራጭ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "አማራጭ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.options": {
+    "value": "አማራጮች",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "አማራጮች"
+      }
+    ]
+  },
+  "seven": {
+    "value": "ሰባት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ሰባት"
+      }
+    ]
+  },
+  "six": {
+    "value": "ስድስት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ስድስት"
+      }
+    ]
+  },
+  "keyboardHelpDialog.slider": {
+    "value": "ማንሸራተቻ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ማንሸራተቻ"
+      }
+    ]
+  },
+  "ten": {
+    "value": "አስር",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "አስር"
+      }
+    ]
+  },
+  "three": {
+    "value": "ሶስት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ሶስት"
+      }
+    ]
+  },
+  "two": {
+    "value": "ሁለት",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ሁለት"
+      }
+    ]
+  },
+  "zero": {
+    "value": "ዜሮ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661895122239,
+        "oldValue": "",
+        "newValue": "ዜሮ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.verbInLargerStepsPattern": {
+    "value": "{{verb}} በትላልቅ ደረጃዎች",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "{{verb}} በትላልቅ ደረጃዎች"
+      }
+    ]
+  },
+  "keyboardHelpDialog.verbInSmallerStepsPattern": {
+    "value": "{{verb}} በትንሽ ደረጃዎች",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "{{verb}} በትንሽ ደረጃዎች"
+      }
+    ]
+  },
+  "keyboardHelpDialog.verbSliderPattern": {
+    "value": "{{verb}} {{slider}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "{{verb}} {{slider}}"
+      }
+    ]
+  },
+  "key.k": {
+    "value": "K",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661893353591,
+        "oldValue": "",
+        "newValue": "K"
+      }
+    ]
+  },
+  "key.l": {
+    "value": "ሊ.",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661893353591,
+        "oldValue": "",
+        "newValue": "ሊ."
+      }
+    ]
+  },
+  "speed.fast": {
+    "value": "ፈጣን",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626591585357,
+        "oldValue": "",
+        "newValue": "ፈጣን"
+      }
+    ]
+  },
+  "rulerCapitalized": {
+    "value": "ማስመርያ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661892867762,
+        "oldValue": "",
+        "newValue": "ማስመርያ"
+      }
+    ]
+  },
+  "ruler": {
+    "value": "ማስመርያ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1661892867762,
+        "oldValue": "",
+        "newValue": "ማስመርያ"
+      }
+    ]
+  },
+  "keyboardHelpDialog.comboBox.headingString": {
+    "value": "ክፍት የሆነ ምናሌ ብቅ አድርግ",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653047792307,
+        "oldValue": "",
+        "newValue": "ክፍት የሆነ ምናሌ ብቅ አድርግ"
+      }
+    ]
+  },
+  "stopwatchValueUnitsPattern": {
+    "value": "{{value}} {{units}}",
+    "history": [
+      {
+        "userId": 672644,
+        "timestamp": 1653045937076,
+        "oldValue": "",
+        "newValue": "{{value}} {{units}}"
+      }
+    ]
+  },
+  "units_nm": {
+    "value": "nm",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626535722091,
+        "oldValue": "",
+        "newValue": "nm"
+      }
+    ]
+  },
+  "WavelengthSlider.pattern_0wavelength_1units": {
+    "value": "{0}{1}",
+    "history": [
+      {
+        "userId": 133844,
+        "timestamp": 1626535722091,
+        "oldValue": "",
+        "newValue": "{0}{1}"
+      }
+    ]
+  }
+}

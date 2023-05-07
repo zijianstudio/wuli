@@ -1,0 +1,14 @@
+{
+  "fractions-intro.title": {
+    "value": "Fractions: Intro"
+  },
+  "screen.intro": {
+    "value": "Intro"
+  },
+  "screen.game": {
+    "value": "Game"
+  },
+  "screen.lab": {
+    "value": "Lab"
+  }
+}

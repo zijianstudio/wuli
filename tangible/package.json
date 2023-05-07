@@ -1,0 +1,25 @@
+{
+  "name": "tangible",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/tangible.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "TANGIBLE",
+    "supportsOutputJS": true,
+    "simFeatures": {
+      "supportsDynamicLocale": true
+    }
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "globals": {
+      "mediaPipeDependencies": "readonly"
+    }
+  }
+}

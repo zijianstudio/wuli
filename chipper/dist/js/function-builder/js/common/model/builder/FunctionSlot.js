@@ -1,0 +1,71 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * A function slot in a builder.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import functionBuilder from '../../../functionBuilder.js';
+
+// constants
+const NO_FUNCTION_INSTANCE = null; // used to indicate the absence of function instance
+
+export default class FunctionSlot {
+  /**
+   * @param {Vector2} position - position of the slot in the global coordinate frame
+   */
+  constructor(position) {
+    // @public (read-only)
+    this.position = position;
+
+    // @public {AbstractFunction|null} the function instance that occupies the slot, possibly empty
+    this.functionInstance = NO_FUNCTION_INSTANCE;
+  }
+
+  /**
+   * Is this slot empty?
+   *
+   * @returns {boolean}
+   * @public
+   */
+  isEmpty() {
+    return this.functionInstance === NO_FUNCTION_INSTANCE;
+  }
+
+  /**
+   * Clears the slot, makes it empty.
+   *
+   * @public
+   */
+  clear() {
+    this.functionInstance = NO_FUNCTION_INSTANCE;
+  }
+
+  /**
+   * Does this slot contain a specified function instance?
+   *
+   * @param {AbstractFunction} functionInstance
+   * @returns {boolean}
+   * @public
+   */
+  contains(functionInstance) {
+    assert && assert(functionInstance); // so we don't accidentally test whether the slot is empty
+    return this.functionInstance === functionInstance;
+  }
+
+  /**
+   * Is the slot invertible? Meaning, can a card be dragged backwards through this slot?
+   *
+   * @returns {boolean}
+   * @public
+   */
+  isInvertible() {
+    return this.isEmpty() || this.functionInstance.invertible;
+  }
+}
+
+// @public @static used to indicate the absence of a valid slot number
+FunctionSlot.NO_SLOT_NUMBER = -1;
+functionBuilder.register('FunctionSlot', FunctionSlot);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmdW5jdGlvbkJ1aWxkZXIiLCJOT19GVU5DVElPTl9JTlNUQU5DRSIsIkZ1bmN0aW9uU2xvdCIsImNvbnN0cnVjdG9yIiwicG9zaXRpb24iLCJmdW5jdGlvbkluc3RhbmNlIiwiaXNFbXB0eSIsImNsZWFyIiwiY29udGFpbnMiLCJhc3NlcnQiLCJpc0ludmVydGlibGUiLCJpbnZlcnRpYmxlIiwiTk9fU0xPVF9OVU1CRVIiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkZ1bmN0aW9uU2xvdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNi0yMDIzLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBBIGZ1bmN0aW9uIHNsb3QgaW4gYSBidWlsZGVyLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBmdW5jdGlvbkJ1aWxkZXIgZnJvbSAnLi4vLi4vLi4vZnVuY3Rpb25CdWlsZGVyLmpzJztcclxuXHJcbi8vIGNvbnN0YW50c1xyXG5jb25zdCBOT19GVU5DVElPTl9JTlNUQU5DRSA9IG51bGw7IC8vIHVzZWQgdG8gaW5kaWNhdGUgdGhlIGFic2VuY2Ugb2YgZnVuY3Rpb24gaW5zdGFuY2VcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEZ1bmN0aW9uU2xvdCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7VmVjdG9yMn0gcG9zaXRpb24gLSBwb3NpdGlvbiBvZiB0aGUgc2xvdCBpbiB0aGUgZ2xvYmFsIGNvb3JkaW5hdGUgZnJhbWVcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggcG9zaXRpb24gKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KVxyXG4gICAgdGhpcy5wb3NpdGlvbiA9IHBvc2l0aW9uO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge0Fic3RyYWN0RnVuY3Rpb258bnVsbH0gdGhlIGZ1bmN0aW9uIGluc3RhbmNlIHRoYXQgb2NjdXBpZXMgdGhlIHNsb3QsIHBvc3NpYmx5IGVtcHR5XHJcbiAgICB0aGlzLmZ1bmN0aW9uSW5zdGFuY2UgPSBOT19GVU5DVElPTl9JTlNUQU5DRTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIElzIHRoaXMgc2xvdCBlbXB0eT9cclxuICAgKlxyXG4gICAqIEByZXR1cm5zIHtib29sZWFufVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBpc0VtcHR5KCkge1xyXG4gICAgcmV0dXJuICggdGhpcy5mdW5jdGlvbkluc3RhbmNlID09PSBOT19GVU5DVElPTl9JTlNUQU5DRSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ2xlYXJzIHRoZSBzbG90LCBtYWtlcyBpdCBlbXB0eS5cclxuICAgKlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBjbGVhcigpIHtcclxuICAgIHRoaXMuZnVuY3Rpb25JbnN0YW5jZSA9IE5PX0ZVTkNUSU9OX0lOU1RBTkNFO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRG9lcyB0aGlzIHNsb3QgY29udGFpbiBhIHNwZWNpZmllZCBmdW5jdGlvbiBpbnN0YW5jZT9cclxuICAgKlxyXG4gICAqIEBwYXJhbSB7QWJzdHJhY3RGdW5jdGlvbn0gZnVuY3Rpb25JbnN0YW5jZVxyXG4gICAqIEByZXR1cm5zIHtib29sZWFufVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBjb250YWlucyggZnVuY3Rpb25JbnN0YW5jZSApIHtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGZ1bmN0aW9uSW5zdGFuY2UgKTsgIC8vIHNvIHdlIGRvbid0IGFjY2lkZW50YWxseSB0ZXN0IHdoZXRoZXIgdGhlIHNsb3QgaXMgZW1wdHlcclxuICAgIHJldHVybiAoIHRoaXMuZnVuY3Rpb25JbnN0YW5jZSA9PT0gZnVuY3Rpb25JbnN0YW5jZSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogSXMgdGhlIHNsb3QgaW52ZXJ0aWJsZT8gTWVhbmluZywgY2FuIGEgY2FyZCBiZSBkcmFnZ2VkIGJhY2t3YXJkcyB0aHJvdWdoIHRoaXMgc2xvdD9cclxuICAgKlxyXG4gICAqIEByZXR1cm5zIHtib29sZWFufVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBpc0ludmVydGlibGUoKSB7XHJcbiAgICByZXR1cm4gKCB0aGlzLmlzRW1wdHkoKSB8fCB0aGlzLmZ1bmN0aW9uSW5zdGFuY2UuaW52ZXJ0aWJsZSApO1xyXG4gIH1cclxufVxyXG5cclxuLy8gQHB1YmxpYyBAc3RhdGljIHVzZWQgdG8gaW5kaWNhdGUgdGhlIGFic2VuY2Ugb2YgYSB2YWxpZCBzbG90IG51bWJlclxyXG5GdW5jdGlvblNsb3QuTk9fU0xPVF9OVU1CRVIgPSAtMTtcclxuXHJcbmZ1bmN0aW9uQnVpbGRlci5yZWdpc3RlciggJ0Z1bmN0aW9uU2xvdCcsIEZ1bmN0aW9uU2xvdCApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxlQUFlLE1BQU0sNkJBQTZCOztBQUV6RDtBQUNBLE1BQU1DLG9CQUFvQixHQUFHLElBQUksQ0FBQyxDQUFDOztBQUVuQyxlQUFlLE1BQU1DLFlBQVksQ0FBQztFQUVoQztBQUNGO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsUUFBUSxFQUFHO0lBRXRCO0lBQ0EsSUFBSSxDQUFDQSxRQUFRLEdBQUdBLFFBQVE7O0lBRXhCO0lBQ0EsSUFBSSxDQUFDQyxnQkFBZ0IsR0FBR0osb0JBQW9CO0VBQzlDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFSyxPQUFPQSxDQUFBLEVBQUc7SUFDUixPQUFTLElBQUksQ0FBQ0QsZ0JBQWdCLEtBQUtKLG9CQUFvQjtFQUN6RDs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VNLEtBQUtBLENBQUEsRUFBRztJQUNOLElBQUksQ0FBQ0YsZ0JBQWdCLEdBQUdKLG9CQUFvQjtFQUM5Qzs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFTyxRQUFRQSxDQUFFSCxnQkFBZ0IsRUFBRztJQUMzQkksTUFBTSxJQUFJQSxNQUFNLENBQUVKLGdCQUFpQixDQUFDLENBQUMsQ0FBRTtJQUN2QyxPQUFTLElBQUksQ0FBQ0EsZ0JBQWdCLEtBQUtBLGdCQUFnQjtFQUNyRDs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUssWUFBWUEsQ0FBQSxFQUFHO0lBQ2IsT0FBUyxJQUFJLENBQUNKLE9BQU8sQ0FBQyxDQUFDLElBQUksSUFBSSxDQUFDRCxnQkFBZ0IsQ0FBQ00sVUFBVTtFQUM3RDtBQUNGOztBQUVBO0FBQ0FULFlBQVksQ0FBQ1UsY0FBYyxHQUFHLENBQUMsQ0FBQztBQUVoQ1osZUFBZSxDQUFDYSxRQUFRLENBQUUsY0FBYyxFQUFFWCxZQUFhLENBQUMifQ==

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  See snapshot-comparison.js for query parameters. Capable of running through sims in multiple passes (in-between
+  code changes) to see if there is any behavioral change in the sim resulting from that change.
+-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <title>Simulation Snapshot Comparison</title>
+
+  <style type="text/css">
+    html body {
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+<script src="../../query-string-machine/js/QueryStringMachine.js"></script>
+<script src="../../assert/js/assert.js"></script>
+<script type="module">
+  // preload dependencies as modules and set them to window
+
+  import arrayDifference from '../../phet-core/js/arrayDifference.js';
+
+  window.arrayDifference = arrayDifference;
+</script>
+<script src="../js/image-compare.js"></script>
+<script src="../js/snapshot-comparison.js"></script>
+</body>
+</html>

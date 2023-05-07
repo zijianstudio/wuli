@@ -1,0 +1,42 @@
+{
+  "name": "balloons-and-static-electricity",
+  "version": "1.6.0-dev.2",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/balloons-and-static-electricity.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "generatedUnitTests": true,
+    "requirejsNamespace": "BALLOONS_AND_STATIC_ELECTRICITY",
+    "phetLibs": [
+      "vibe",
+      "tappi",
+      "griddle"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simFeatures": {
+      "supportsSound": true,
+      "supportsInteractiveDescription": true
+    },
+    "simulation": true,
+    "phet-io": {
+      "wrappers": [
+        "phet-io-wrapper-haptics"
+      ]
+    },
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

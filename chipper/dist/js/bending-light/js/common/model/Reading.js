@@ -1,0 +1,70 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * A single (immutable) reading for the intensity meter.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Chandrashekar Bemagoni (Actual Concepts)
+ */
+
+import Utils from '../../../../dot/js/Utils.js';
+import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
+import MathSymbols from '../../../../scenery-phet/js/MathSymbols.js';
+import BendingLightStrings from '../../BendingLightStrings.js';
+import bendingLight from '../../bendingLight.js';
+
+// strings
+const pattern0ValuePercentStringProperty = BendingLightStrings.pattern_0value_percentStringProperty;
+
+// constants
+const VALUE_DECIMALS = 2;
+class Reading {
+  static MISS = {
+    value: 0,
+    format(value) {
+      return '';
+    },
+    /**
+     * Get string to display on intensity sensor
+     */
+    getString: () => MathSymbols.NO_VALUE,
+    /**
+     * Determines whether ray hit the intensity sensor or not
+     */
+    isHit: () => false
+  };
+
+  /**
+   * A single reading for the intensity meter
+   *
+   * @param value - the text to be shown on the intensity meter
+   */
+  constructor(value) {
+    // (read-only)
+    this.value = value;
+  }
+
+  /**
+   * Get string to display on intensity sensor
+   */
+  getString() {
+    return this.format(this.value * 100);
+  }
+
+  /**
+   * @param value - value to be displayed on intensity meter
+   */
+  format(value) {
+    return StringUtils.format(pattern0ValuePercentStringProperty.value, Utils.toFixed(value, VALUE_DECIMALS));
+  }
+
+  /**
+   * Determines whether ray hit the intensity sensor or not
+   */
+  isHit() {
+    return true;
+  }
+}
+bendingLight.register('Reading', Reading);
+export default Reading;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJVdGlscyIsIlN0cmluZ1V0aWxzIiwiTWF0aFN5bWJvbHMiLCJCZW5kaW5nTGlnaHRTdHJpbmdzIiwiYmVuZGluZ0xpZ2h0IiwicGF0dGVybjBWYWx1ZVBlcmNlbnRTdHJpbmdQcm9wZXJ0eSIsInBhdHRlcm5fMHZhbHVlX3BlcmNlbnRTdHJpbmdQcm9wZXJ0eSIsIlZBTFVFX0RFQ0lNQUxTIiwiUmVhZGluZyIsIk1JU1MiLCJ2YWx1ZSIsImZvcm1hdCIsImdldFN0cmluZyIsIk5PX1ZBTFVFIiwiaXNIaXQiLCJjb25zdHJ1Y3RvciIsInRvRml4ZWQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlJlYWRpbmcudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSBzaW5nbGUgKGltbXV0YWJsZSkgcmVhZGluZyBmb3IgdGhlIGludGVuc2l0eSBtZXRlci5cclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICogQGF1dGhvciBDaGFuZHJhc2hla2FyIEJlbWFnb25pIChBY3R1YWwgQ29uY2VwdHMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IFV0aWxzIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9VdGlscy5qcyc7XHJcbmltcG9ydCBTdHJpbmdVdGlscyBmcm9tICcuLi8uLi8uLi8uLi9waGV0Y29tbW9uL2pzL3V0aWwvU3RyaW5nVXRpbHMuanMnO1xyXG5pbXBvcnQgTWF0aFN5bWJvbHMgZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS1waGV0L2pzL01hdGhTeW1ib2xzLmpzJztcclxuaW1wb3J0IEJlbmRpbmdMaWdodFN0cmluZ3MgZnJvbSAnLi4vLi4vQmVuZGluZ0xpZ2h0U3RyaW5ncy5qcyc7XHJcbmltcG9ydCBiZW5kaW5nTGlnaHQgZnJvbSAnLi4vLi4vYmVuZGluZ0xpZ2h0LmpzJztcclxuXHJcbi8vIHN0cmluZ3NcclxuY29uc3QgcGF0dGVybjBWYWx1ZVBlcmNlbnRTdHJpbmdQcm9wZXJ0eSA9IEJlbmRpbmdMaWdodFN0cmluZ3MucGF0dGVybl8wdmFsdWVfcGVyY2VudFN0cmluZ1Byb3BlcnR5O1xyXG5cclxuLy8gY29uc3RhbnRzXHJcbmNvbnN0IFZBTFVFX0RFQ0lNQUxTID0gMjtcclxuXHJcbmNsYXNzIFJlYWRpbmcge1xyXG4gIHB1YmxpYyByZWFkb25seSB2YWx1ZTogbnVtYmVyO1xyXG4gIHB1YmxpYyBzdGF0aWMgcmVhZG9ubHkgTUlTUyA9IHtcclxuICAgIHZhbHVlOiAwLFxyXG4gICAgZm9ybWF0KCB2YWx1ZTogbnVtYmVyICk6IHN0cmluZyB7cmV0dXJuICcnO30sXHJcblxyXG4gICAgLyoqXHJcbiAgICAgKiBHZXQgc3RyaW5nIHRvIGRpc3BsYXkgb24gaW50ZW5zaXR5IHNlbnNvclxyXG4gICAgICovXHJcbiAgICBnZXRTdHJpbmc6ICgpOiBzdHJpbmcgPT4gTWF0aFN5bWJvbHMuTk9fVkFMVUUsXHJcblxyXG4gICAgLyoqXHJcbiAgICAgKiBEZXRlcm1pbmVzIHdoZXRoZXIgcmF5IGhpdCB0aGUgaW50ZW5zaXR5IHNlbnNvciBvciBub3RcclxuICAgICAqL1xyXG4gICAgaXNIaXQ6ICgpOiBib29sZWFuID0+IGZhbHNlXHJcbiAgfTtcclxuXHJcbiAgLyoqXHJcbiAgICogQSBzaW5nbGUgcmVhZGluZyBmb3IgdGhlIGludGVuc2l0eSBtZXRlclxyXG4gICAqXHJcbiAgICogQHBhcmFtIHZhbHVlIC0gdGhlIHRleHQgdG8gYmUgc2hvd24gb24gdGhlIGludGVuc2l0eSBtZXRlclxyXG4gICAqL1xyXG4gIHB1YmxpYyBjb25zdHJ1Y3RvciggdmFsdWU6IG51bWJlciApIHtcclxuXHJcbiAgICAvLyAocmVhZC1vbmx5KVxyXG4gICAgdGhpcy52YWx1ZSA9IHZhbHVlO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0IHN0cmluZyB0byBkaXNwbGF5IG9uIGludGVuc2l0eSBzZW5zb3JcclxuICAgKi9cclxuICBwdWJsaWMgZ2V0U3RyaW5nKCk6IHN0cmluZyB7XHJcbiAgICByZXR1cm4gdGhpcy5mb3JtYXQoIHRoaXMudmFsdWUgKiAxMDAgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB2YWx1ZSAtIHZhbHVlIHRvIGJlIGRpc3BsYXllZCBvbiBpbnRlbnNpdHkgbWV0ZXJcclxuICAgKi9cclxuICBwdWJsaWMgZm9ybWF0KCB2YWx1ZTogbnVtYmVyICk6IHN0cmluZyB7XHJcbiAgICByZXR1cm4gU3RyaW5nVXRpbHMuZm9ybWF0KCBwYXR0ZXJuMFZhbHVlUGVyY2VudFN0cmluZ1Byb3BlcnR5LnZhbHVlLCBVdGlscy50b0ZpeGVkKCB2YWx1ZSwgVkFMVUVfREVDSU1BTFMgKSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRGV0ZXJtaW5lcyB3aGV0aGVyIHJheSBoaXQgdGhlIGludGVuc2l0eSBzZW5zb3Igb3Igbm90XHJcbiAgICovXHJcbiAgcHVibGljIGlzSGl0KCk6IGJvb2xlYW4ge1xyXG4gICAgcmV0dXJuIHRydWU7XHJcbiAgfVxyXG59XHJcblxyXG5iZW5kaW5nTGlnaHQucmVnaXN0ZXIoICdSZWFkaW5nJywgUmVhZGluZyApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgUmVhZGluZzsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxLQUFLLE1BQU0sNkJBQTZCO0FBQy9DLE9BQU9DLFdBQVcsTUFBTSwrQ0FBK0M7QUFDdkUsT0FBT0MsV0FBVyxNQUFNLDRDQUE0QztBQUNwRSxPQUFPQyxtQkFBbUIsTUFBTSw4QkFBOEI7QUFDOUQsT0FBT0MsWUFBWSxNQUFNLHVCQUF1Qjs7QUFFaEQ7QUFDQSxNQUFNQyxrQ0FBa0MsR0FBR0YsbUJBQW1CLENBQUNHLG9DQUFvQzs7QUFFbkc7QUFDQSxNQUFNQyxjQUFjLEdBQUcsQ0FBQztBQUV4QixNQUFNQyxPQUFPLENBQUM7RUFFWixPQUF1QkMsSUFBSSxHQUFHO0lBQzVCQyxLQUFLLEVBQUUsQ0FBQztJQUNSQyxNQUFNQSxDQUFFRCxLQUFhLEVBQVc7TUFBQyxPQUFPLEVBQUU7SUFBQyxDQUFDO0lBRTVDO0FBQ0o7QUFDQTtJQUNJRSxTQUFTLEVBQUVBLENBQUEsS0FBY1YsV0FBVyxDQUFDVyxRQUFRO0lBRTdDO0FBQ0o7QUFDQTtJQUNJQyxLQUFLLEVBQUVBLENBQUEsS0FBZTtFQUN4QixDQUFDOztFQUVEO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDU0MsV0FBV0EsQ0FBRUwsS0FBYSxFQUFHO0lBRWxDO0lBQ0EsSUFBSSxDQUFDQSxLQUFLLEdBQUdBLEtBQUs7RUFDcEI7O0VBRUE7QUFDRjtBQUNBO0VBQ1NFLFNBQVNBLENBQUEsRUFBVztJQUN6QixPQUFPLElBQUksQ0FBQ0QsTUFBTSxDQUFFLElBQUksQ0FBQ0QsS0FBSyxHQUFHLEdBQUksQ0FBQztFQUN4Qzs7RUFFQTtBQUNGO0FBQ0E7RUFDU0MsTUFBTUEsQ0FBRUQsS0FBYSxFQUFXO0lBQ3JDLE9BQU9ULFdBQVcsQ0FBQ1UsTUFBTSxDQUFFTixrQ0FBa0MsQ0FBQ0ssS0FBSyxFQUFFVixLQUFLLENBQUNnQixPQUFPLENBQUVOLEtBQUssRUFBRUgsY0FBZSxDQUFFLENBQUM7RUFDL0c7O0VBRUE7QUFDRjtBQUNBO0VBQ1NPLEtBQUtBLENBQUEsRUFBWTtJQUN0QixPQUFPLElBQUk7RUFDYjtBQUNGO0FBRUFWLFlBQVksQ0FBQ2EsUUFBUSxDQUFFLFNBQVMsRUFBRVQsT0FBUSxDQUFDO0FBRTNDLGVBQWVBLE9BQU8ifQ==

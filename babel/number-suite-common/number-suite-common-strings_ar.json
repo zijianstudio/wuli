@@ -1,0 +1,255 @@
+{
+  "zero": {
+    "value": "صفر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "صفر"
+      }
+    ]
+  },
+  "one": {
+    "value": "واحد",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "واحد"
+      }
+    ]
+  },
+  "two": {
+    "value": "اثنان",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "اثنان"
+      }
+    ]
+  },
+  "three": {
+    "value": "ثلاثة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ثلاثة"
+      }
+    ]
+  },
+  "four": {
+    "value": "أربعة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "أربعة"
+      }
+    ]
+  },
+  "five": {
+    "value": "خمسة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "خمسة"
+      }
+    ]
+  },
+  "six": {
+    "value": "ستة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ستة"
+      }
+    ]
+  },
+  "seven": {
+    "value": "سبعة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "سبعة"
+      }
+    ]
+  },
+  "eight": {
+    "value": "ثمانية",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ثمانية"
+      }
+    ]
+  },
+  "nine": {
+    "value": "تسعة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "تسعة"
+      }
+    ]
+  },
+  "ten": {
+    "value": "عشرة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "عشرة"
+      }
+    ]
+  },
+  "eleven": {
+    "value": "أحد عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "أحد عشر"
+      }
+    ]
+  },
+  "twelve": {
+    "value": "اثني عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "اثني عشر"
+      }
+    ]
+  },
+  "thirteen": {
+    "value": "ثلاثة عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ثلاثة عشر"
+      }
+    ]
+  },
+  "fourteen": {
+    "value": "أربعة عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "أربعة عشر"
+      }
+    ]
+  },
+  "fifteen": {
+    "value": "خمسة عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "خمسة عشر"
+      }
+    ]
+  },
+  "sixteen": {
+    "value": "ستة عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ستة عشر"
+      }
+    ]
+  },
+  "seventeen": {
+    "value": "سبعة عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "سبعة عشر"
+      }
+    ]
+  },
+  "eighteen": {
+    "value": "ثمانية عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ثمانية عشر"
+      }
+    ]
+  },
+  "nineteen": {
+    "value": "تسعة عشر",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "تسعة عشر"
+      }
+    ]
+  },
+  "twenty": {
+    "value": "عشرين",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "عشرين"
+      }
+    ]
+  },
+  "objects": {
+    "value": "أشياء",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "أشياء"
+      }
+    ]
+  },
+  "total": {
+    "value": "المجموع",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "المجموع"
+      }
+    ]
+  }
+}

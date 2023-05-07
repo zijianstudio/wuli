@@ -1,0 +1,11 @@
+// Copyright 2016-2020, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this simulation.
+ *
+ * @author Matt Pennington (PhET Interactive Simulations)
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('massesAndSprings');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJtYXNzZXNBbmRTcHJpbmdzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE2LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIENyZWF0ZXMgdGhlIG5hbWVzcGFjZSBmb3IgdGhpcyBzaW11bGF0aW9uLlxyXG4gKlxyXG4gKiBAYXV0aG9yIE1hdHQgUGVubmluZ3RvbiAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgTmFtZXNwYWNlIGZyb20gJy4uLy4uL3BoZXQtY29yZS9qcy9OYW1lc3BhY2UuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgbmV3IE5hbWVzcGFjZSggJ21hc3Nlc0FuZFNwcmluZ3MnICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLFNBQVMsTUFBTSxpQ0FBaUM7QUFFdkQsZUFBZSxJQUFJQSxTQUFTLENBQUUsa0JBQW1CLENBQUMifQ==

@@ -1,0 +1,33 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * A collection of data related to user input, for the purposes of the Vibration project. While
+ * the simulation is running we will collect the data of this class and save in the
+ * VibrationTestEventRecorder collection. When the user is finished playing with the sim, the data
+ * will be saved and sent to the containing Swift app, eventually to be saved as a file and
+ * emailed to the team for research and presentation purposes.
+ *
+ * This is NOT to be used in production code.
+ *
+ * @author Jesse Greenberg
+ */
+
+import tappi from '../tappi.js';
+class VibrationTestEvent {
+  /**
+   * @param {number|null} x - x coordinate of the event (in the global coordinate frame)
+   * @param {number|null} y - y coordinate of the event (in the global coordinate frame)
+   * @param {number} time - time since simulation launch of the event
+   * @param {string|null} name - any classifying name to mark the event
+   */
+  constructor(x, y, time, name) {
+    // @public (read-only)
+    this.x = x;
+    this.y = y;
+    this.time = time;
+    this.name = name;
+  }
+}
+tappi.register('VibrationTestEvent', VibrationTestEvent);
+export default VibrationTestEvent;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ0YXBwaSIsIlZpYnJhdGlvblRlc3RFdmVudCIsImNvbnN0cnVjdG9yIiwieCIsInkiLCJ0aW1lIiwibmFtZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiVmlicmF0aW9uVGVzdEV2ZW50LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBBIGNvbGxlY3Rpb24gb2YgZGF0YSByZWxhdGVkIHRvIHVzZXIgaW5wdXQsIGZvciB0aGUgcHVycG9zZXMgb2YgdGhlIFZpYnJhdGlvbiBwcm9qZWN0LiBXaGlsZVxyXG4gKiB0aGUgc2ltdWxhdGlvbiBpcyBydW5uaW5nIHdlIHdpbGwgY29sbGVjdCB0aGUgZGF0YSBvZiB0aGlzIGNsYXNzIGFuZCBzYXZlIGluIHRoZVxyXG4gKiBWaWJyYXRpb25UZXN0RXZlbnRSZWNvcmRlciBjb2xsZWN0aW9uLiBXaGVuIHRoZSB1c2VyIGlzIGZpbmlzaGVkIHBsYXlpbmcgd2l0aCB0aGUgc2ltLCB0aGUgZGF0YVxyXG4gKiB3aWxsIGJlIHNhdmVkIGFuZCBzZW50IHRvIHRoZSBjb250YWluaW5nIFN3aWZ0IGFwcCwgZXZlbnR1YWxseSB0byBiZSBzYXZlZCBhcyBhIGZpbGUgYW5kXHJcbiAqIGVtYWlsZWQgdG8gdGhlIHRlYW0gZm9yIHJlc2VhcmNoIGFuZCBwcmVzZW50YXRpb24gcHVycG9zZXMuXHJcbiAqXHJcbiAqIFRoaXMgaXMgTk9UIHRvIGJlIHVzZWQgaW4gcHJvZHVjdGlvbiBjb2RlLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEplc3NlIEdyZWVuYmVyZ1xyXG4gKi9cclxuXHJcbmltcG9ydCB0YXBwaSBmcm9tICcuLi90YXBwaS5qcyc7XHJcblxyXG5jbGFzcyBWaWJyYXRpb25UZXN0RXZlbnQge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcnxudWxsfSB4IC0geCBjb29yZGluYXRlIG9mIHRoZSBldmVudCAoaW4gdGhlIGdsb2JhbCBjb29yZGluYXRlIGZyYW1lKVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfG51bGx9IHkgLSB5IGNvb3JkaW5hdGUgb2YgdGhlIGV2ZW50IChpbiB0aGUgZ2xvYmFsIGNvb3JkaW5hdGUgZnJhbWUpXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHRpbWUgLSB0aW1lIHNpbmNlIHNpbXVsYXRpb24gbGF1bmNoIG9mIHRoZSBldmVudFxyXG4gICAqIEBwYXJhbSB7c3RyaW5nfG51bGx9IG5hbWUgLSBhbnkgY2xhc3NpZnlpbmcgbmFtZSB0byBtYXJrIHRoZSBldmVudFxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCB4LCB5LCB0aW1lLCBuYW1lICkge1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSlcclxuICAgIHRoaXMueCA9IHg7XHJcbiAgICB0aGlzLnkgPSB5O1xyXG4gICAgdGhpcy50aW1lID0gdGltZTtcclxuICAgIHRoaXMubmFtZSA9IG5hbWU7XHJcbiAgfVxyXG59XHJcblxyXG50YXBwaS5yZWdpc3RlciggJ1ZpYnJhdGlvblRlc3RFdmVudCcsIFZpYnJhdGlvblRlc3RFdmVudCApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgVmlicmF0aW9uVGVzdEV2ZW50O1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsS0FBSyxNQUFNLGFBQWE7QUFFL0IsTUFBTUMsa0JBQWtCLENBQUM7RUFFdkI7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLENBQUMsRUFBRUMsQ0FBQyxFQUFFQyxJQUFJLEVBQUVDLElBQUksRUFBRztJQUU5QjtJQUNBLElBQUksQ0FBQ0gsQ0FBQyxHQUFHQSxDQUFDO0lBQ1YsSUFBSSxDQUFDQyxDQUFDLEdBQUdBLENBQUM7SUFDVixJQUFJLENBQUNDLElBQUksR0FBR0EsSUFBSTtJQUNoQixJQUFJLENBQUNDLElBQUksR0FBR0EsSUFBSTtFQUNsQjtBQUNGO0FBRUFOLEtBQUssQ0FBQ08sUUFBUSxDQUFFLG9CQUFvQixFQUFFTixrQkFBbUIsQ0FBQztBQUUxRCxlQUFlQSxrQkFBa0IifQ==

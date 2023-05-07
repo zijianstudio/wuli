@@ -1,0 +1,245 @@
+// Copyright 2015-2021, University of Colorado Boulder
+
+/**
+ * A sub-component of an Instance that handles matters relating to whether fitted blocks should not fit if possible.
+ * We mostly mark our own drawables as fittable, and track whether our subtree is all fittable (so that common-ancestor
+ * fits can determine if their bounds will change).
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import TinyEmitter from '../../../axon/js/TinyEmitter.js';
+import { scenery } from '../imports.js';
+class Fittability {
+  /**
+   * @param {Instance} instance - Our Instance, never changes.
+   */
+  constructor(instance) {
+    // @private {Instance}
+    this.instance = instance;
+  }
+
+  /**
+   * Responsible for initialization and cleaning of this. If the parameters are both null, we'll want to clean our
+   * external references (like Instance does).
+   * @public
+   *
+   * @param {Display|null} display
+   * @param {Trail|null} trail
+   * @returns {Fittability} - Returns this, to allow chaining.
+   */
+  initialize(display, trail) {
+    this.display = display; // @private {Display}
+    this.trail = trail; // @private {Trail}
+    this.node = trail && trail.lastNode(); // @private {Node}
+
+    // @public {boolean} - When our instance's node has a particular combination of features and/or flags (like
+    // preventDefault:true) that should make any FittedBlock containing drawables under that node OR that would
+    // include the bounds of the node in its FittedBlock to not compute the relevant fit (e.g. have it take up the
+    // full display instead).
+    this.selfFittable = !!trail && this.isSelfFitSupported();
+
+    // @public {boolean} - Whether this instance AND all of its ancestor instances (down to the root instance for the
+    // display) all are self-fittable.
+    this.ancestorsFittable = this.selfFittable;
+
+    // @public {number} - The number of children whose subtrees have an unfittable instance, plus 1 if this instance
+    // itself is unfittable. Using a number allows us to quickly increment/decrement when a particular child changes
+    // its fittability (so we don't have to check other subtrees or traverse further up the tree). For a more
+    // complete description of this technique, see RendererSummary.
+    // This is important, since if it's 0, it indicates that this entire subtree has NO unfittable content. Thus if
+    // a FittedBlock's common ancestor (for the common-ancestor fit) is this instance, we shouldn't have issues
+    // updating our bounds.
+    this.subtreeUnfittableCount = this.selfFittable ? 0 : 1;
+
+    // @public {TinyEmitter} - Called with no arguments when the subtree fittability changes (whether
+    // subtreeUnfittableCount is greater than zero or not).
+    this.subtreeFittabilityChangeEmitter = this.subtreeFittabilityChangeEmitter || new TinyEmitter();
+    return this; // allow chaining
+  }
+
+  /**
+   * Easy access to our parent Instance's Fittability, if it exists.
+   * @private
+   *
+   * @returns {Fittability|null}
+   */
+  get parent() {
+    return this.instance.parent ? this.instance.parent.fittability : null;
+  }
+
+  /**
+   * Called when the instance is updating its rendering state (as any fittability changes to existing instances will
+   * trigger an update there).
+   * @public
+   */
+  checkSelfFittability() {
+    const newSelfFittable = this.isSelfFitSupported();
+    if (this.selfFittable !== newSelfFittable) {
+      this.updateSelfFittable();
+    }
+  }
+
+  /**
+   * Whether our node's performance flags allows the subtree to be fitted.
+   * @private
+   *
+   * Any updates to flags (for instance, a 'dynamic' flag perhaps?) should be added here.
+   *
+   * @returns {boolean}
+   */
+  isSelfFitSupported() {
+    return !this.node.isPreventFit();
+  }
+
+  /**
+   * Called when our parent just became fittable. Responsible for flagging subtrees with the ancestorsFittable flag,
+   * up to the point where they are fittable.
+   * @private
+   */
+  markSubtreeFittable() {
+    // Bail if we can't be fittable ourselves
+    if (!this.selfFittable) {
+      return;
+    }
+    this.ancestorsFittable = true;
+    const children = this.instance.children;
+    for (let i = 0; i < children.length; i++) {
+      children[i].fittability.markSubtreeFittable();
+    }
+
+    // Update the Instance's drawables, so that their blocks can potentially now be fitted.
+    this.instance.updateDrawableFittability(true);
+  }
+
+  /**
+   * Called when our parent just became unfittable and we are fittable. Responsible for flagging subtrees with
+   * the !ancestorsFittable flag, up to the point where they are unfittable.
+   * @private
+   */
+  markSubtreeUnfittable() {
+    // Bail if we are already unfittable
+    if (!this.ancestorsFittable) {
+      return;
+    }
+    this.ancestorsFittable = false;
+    const children = this.instance.children;
+    for (let i = 0; i < children.length; i++) {
+      children[i].fittability.markSubtreeUnfittable();
+    }
+
+    // Update the Instance's drawables, so that their blocks can potentially now be prevented from being fitted.
+    this.instance.updateDrawableFittability(false);
+  }
+
+  /**
+   * Called when our Node's self fit-ability has changed.
+   * @private
+   */
+  updateSelfFittable() {
+    const newSelfFittable = this.isSelfFitSupported();
+    assert && assert(this.selfFittable !== newSelfFittable);
+    this.selfFittable = newSelfFittable;
+    if (this.selfFittable && (!this.parent || this.parent.ancestorsFittable)) {
+      this.markSubtreeFittable();
+    } else if (!this.selfFittable) {
+      this.markSubtreeUnfittable();
+    }
+    if (this.selfFittable) {
+      this.decrementSubtreeUnfittableCount();
+    } else {
+      this.incrementSubtreeUnfittableCount();
+    }
+  }
+
+  /**
+   * A child instance's subtree became unfittable, OR our 'self' became unfittable. This is responsible for updating
+   * the subtreeFittableCount for this instance AND up to all ancestors that would be affected by the change.
+   * @private
+   */
+  incrementSubtreeUnfittableCount() {
+    this.subtreeUnfittableCount++;
+
+    // If now something in our subtree can't be fitted, we need to notify our parent
+    if (this.subtreeUnfittableCount === 1) {
+      this.parent && this.parent.incrementSubtreeUnfittableCount();
+
+      // Notify anything listening that the condition ( this.subtreeUnfittableCount > 0 ) changed.
+      this.subtreeFittabilityChangeEmitter.emit();
+    }
+  }
+
+  /**
+   * A child instance's subtree became fittable, OR our 'self' became fittable. This is responsible for updating
+   * the subtreeFittableCount for this instance AND up to all ancestors that would be affected by the change.
+   * @private
+   */
+  decrementSubtreeUnfittableCount() {
+    this.subtreeUnfittableCount--;
+
+    // If now our subtree can all be fitted, we need to notify our parent
+    if (this.subtreeUnfittableCount === 0) {
+      this.parent && this.parent.decrementSubtreeUnfittableCount();
+
+      // Notify anything listening that the condition ( this.subtreeUnfittableCount > 0 ) changed.
+      this.subtreeFittabilityChangeEmitter.emit();
+    }
+  }
+
+  /**
+   * Called when an instance is added as a child to our instance. Updates necessary counts.
+   * @public
+   *
+   * @param {Fittability} childFittability - The Fittability of the new child instance.
+   */
+  onInsert(childFittability) {
+    if (!this.ancestorsFittable) {
+      childFittability.markSubtreeUnfittable();
+    }
+    if (childFittability.subtreeUnfittableCount > 0) {
+      this.incrementSubtreeUnfittableCount();
+    }
+  }
+
+  /**
+   * Called when a child instance is removed from our instance. Updates necessary counts.
+   * @public
+   *
+   * @param {Fittability} childFittability - The Fittability of the old child instance.
+   */
+  onRemove(childFittability) {
+    if (!this.ancestorsFittable) {
+      childFittability.markSubtreeFittable();
+    }
+    if (childFittability.subtreeUnfittableCount > 0) {
+      this.decrementSubtreeUnfittableCount();
+    }
+  }
+
+  /**
+   * Sanity checks that run when slow assertions are enabled. Enforces the invariants of the Fittability subsystem.
+   * @public
+   */
+  audit() {
+    if (assertSlow) {
+      assertSlow(this.selfFittable === this.isSelfFitSupported(), 'selfFittable diverged from isSelfFitSupported()');
+      assertSlow(this.ancestorsFittable === ((this.parent ? this.parent.ancestorsFittable : true) && this.selfFittable), 'Our ancestorsFittable should be false if our parent or our self is not fittable.');
+
+      // Our subtree unfittable count should be the sum of children that have a non-zero count, plus 1 if our self
+      // is not fittable
+      let subtreeUnfittableCount = 0;
+      if (!this.selfFittable) {
+        subtreeUnfittableCount++;
+      }
+      _.each(this.instance.children, instance => {
+        if (instance.fittability.subtreeUnfittableCount > 0) {
+          subtreeUnfittableCount++;
+        }
+      });
+      assertSlow(this.subtreeUnfittableCount === subtreeUnfittableCount, 'Incorrect subtreeUnfittableCount');
+    }
+  }
+}
+scenery.register('Fittability', Fittability);
+export default Fittability;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJUaW55RW1pdHRlciIsInNjZW5lcnkiLCJGaXR0YWJpbGl0eSIsImNvbnN0cnVjdG9yIiwiaW5zdGFuY2UiLCJpbml0aWFsaXplIiwiZGlzcGxheSIsInRyYWlsIiwibm9kZSIsImxhc3ROb2RlIiwic2VsZkZpdHRhYmxlIiwiaXNTZWxmRml0U3VwcG9ydGVkIiwiYW5jZXN0b3JzRml0dGFibGUiLCJzdWJ0cmVlVW5maXR0YWJsZUNvdW50Iiwic3VidHJlZUZpdHRhYmlsaXR5Q2hhbmdlRW1pdHRlciIsInBhcmVudCIsImZpdHRhYmlsaXR5IiwiY2hlY2tTZWxmRml0dGFiaWxpdHkiLCJuZXdTZWxmRml0dGFibGUiLCJ1cGRhdGVTZWxmRml0dGFibGUiLCJpc1ByZXZlbnRGaXQiLCJtYXJrU3VidHJlZUZpdHRhYmxlIiwiY2hpbGRyZW4iLCJpIiwibGVuZ3RoIiwidXBkYXRlRHJhd2FibGVGaXR0YWJpbGl0eSIsIm1hcmtTdWJ0cmVlVW5maXR0YWJsZSIsImFzc2VydCIsImRlY3JlbWVudFN1YnRyZWVVbmZpdHRhYmxlQ291bnQiLCJpbmNyZW1lbnRTdWJ0cmVlVW5maXR0YWJsZUNvdW50IiwiZW1pdCIsIm9uSW5zZXJ0IiwiY2hpbGRGaXR0YWJpbGl0eSIsIm9uUmVtb3ZlIiwiYXVkaXQiLCJhc3NlcnRTbG93IiwiXyIsImVhY2giLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkZpdHRhYmlsaXR5LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE1LTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEEgc3ViLWNvbXBvbmVudCBvZiBhbiBJbnN0YW5jZSB0aGF0IGhhbmRsZXMgbWF0dGVycyByZWxhdGluZyB0byB3aGV0aGVyIGZpdHRlZCBibG9ja3Mgc2hvdWxkIG5vdCBmaXQgaWYgcG9zc2libGUuXHJcbiAqIFdlIG1vc3RseSBtYXJrIG91ciBvd24gZHJhd2FibGVzIGFzIGZpdHRhYmxlLCBhbmQgdHJhY2sgd2hldGhlciBvdXIgc3VidHJlZSBpcyBhbGwgZml0dGFibGUgKHNvIHRoYXQgY29tbW9uLWFuY2VzdG9yXHJcbiAqIGZpdHMgY2FuIGRldGVybWluZSBpZiB0aGVpciBib3VuZHMgd2lsbCBjaGFuZ2UpLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IFRpbnlFbWl0dGVyIGZyb20gJy4uLy4uLy4uL2F4b24vanMvVGlueUVtaXR0ZXIuanMnO1xyXG5pbXBvcnQgeyBzY2VuZXJ5IH0gZnJvbSAnLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5jbGFzcyBGaXR0YWJpbGl0eSB7XHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtJbnN0YW5jZX0gaW5zdGFuY2UgLSBPdXIgSW5zdGFuY2UsIG5ldmVyIGNoYW5nZXMuXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGluc3RhbmNlICkge1xyXG4gICAgLy8gQHByaXZhdGUge0luc3RhbmNlfVxyXG4gICAgdGhpcy5pbnN0YW5jZSA9IGluc3RhbmNlO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVzcG9uc2libGUgZm9yIGluaXRpYWxpemF0aW9uIGFuZCBjbGVhbmluZyBvZiB0aGlzLiBJZiB0aGUgcGFyYW1ldGVycyBhcmUgYm90aCBudWxsLCB3ZSdsbCB3YW50IHRvIGNsZWFuIG91clxyXG4gICAqIGV4dGVybmFsIHJlZmVyZW5jZXMgKGxpa2UgSW5zdGFuY2UgZG9lcykuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtEaXNwbGF5fG51bGx9IGRpc3BsYXlcclxuICAgKiBAcGFyYW0ge1RyYWlsfG51bGx9IHRyYWlsXHJcbiAgICogQHJldHVybnMge0ZpdHRhYmlsaXR5fSAtIFJldHVybnMgdGhpcywgdG8gYWxsb3cgY2hhaW5pbmcuXHJcbiAgICovXHJcbiAgaW5pdGlhbGl6ZSggZGlzcGxheSwgdHJhaWwgKSB7XHJcbiAgICB0aGlzLmRpc3BsYXkgPSBkaXNwbGF5OyAvLyBAcHJpdmF0ZSB7RGlzcGxheX1cclxuICAgIHRoaXMudHJhaWwgPSB0cmFpbDsgLy8gQHByaXZhdGUge1RyYWlsfVxyXG4gICAgdGhpcy5ub2RlID0gdHJhaWwgJiYgdHJhaWwubGFzdE5vZGUoKTsgLy8gQHByaXZhdGUge05vZGV9XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7Ym9vbGVhbn0gLSBXaGVuIG91ciBpbnN0YW5jZSdzIG5vZGUgaGFzIGEgcGFydGljdWxhciBjb21iaW5hdGlvbiBvZiBmZWF0dXJlcyBhbmQvb3IgZmxhZ3MgKGxpa2VcclxuICAgIC8vIHByZXZlbnREZWZhdWx0OnRydWUpIHRoYXQgc2hvdWxkIG1ha2UgYW55IEZpdHRlZEJsb2NrIGNvbnRhaW5pbmcgZHJhd2FibGVzIHVuZGVyIHRoYXQgbm9kZSBPUiB0aGF0IHdvdWxkXHJcbiAgICAvLyBpbmNsdWRlIHRoZSBib3VuZHMgb2YgdGhlIG5vZGUgaW4gaXRzIEZpdHRlZEJsb2NrIHRvIG5vdCBjb21wdXRlIHRoZSByZWxldmFudCBmaXQgKGUuZy4gaGF2ZSBpdCB0YWtlIHVwIHRoZVxyXG4gICAgLy8gZnVsbCBkaXNwbGF5IGluc3RlYWQpLlxyXG4gICAgdGhpcy5zZWxmRml0dGFibGUgPSAhIXRyYWlsICYmIHRoaXMuaXNTZWxmRml0U3VwcG9ydGVkKCk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7Ym9vbGVhbn0gLSBXaGV0aGVyIHRoaXMgaW5zdGFuY2UgQU5EIGFsbCBvZiBpdHMgYW5jZXN0b3IgaW5zdGFuY2VzIChkb3duIHRvIHRoZSByb290IGluc3RhbmNlIGZvciB0aGVcclxuICAgIC8vIGRpc3BsYXkpIGFsbCBhcmUgc2VsZi1maXR0YWJsZS5cclxuICAgIHRoaXMuYW5jZXN0b3JzRml0dGFibGUgPSB0aGlzLnNlbGZGaXR0YWJsZTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtudW1iZXJ9IC0gVGhlIG51bWJlciBvZiBjaGlsZHJlbiB3aG9zZSBzdWJ0cmVlcyBoYXZlIGFuIHVuZml0dGFibGUgaW5zdGFuY2UsIHBsdXMgMSBpZiB0aGlzIGluc3RhbmNlXHJcbiAgICAvLyBpdHNlbGYgaXMgdW5maXR0YWJsZS4gVXNpbmcgYSBudW1iZXIgYWxsb3dzIHVzIHRvIHF1aWNrbHkgaW5jcmVtZW50L2RlY3JlbWVudCB3aGVuIGEgcGFydGljdWxhciBjaGlsZCBjaGFuZ2VzXHJcbiAgICAvLyBpdHMgZml0dGFiaWxpdHkgKHNvIHdlIGRvbid0IGhhdmUgdG8gY2hlY2sgb3RoZXIgc3VidHJlZXMgb3IgdHJhdmVyc2UgZnVydGhlciB1cCB0aGUgdHJlZSkuIEZvciBhIG1vcmVcclxuICAgIC8vIGNvbXBsZXRlIGRlc2NyaXB0aW9uIG9mIHRoaXMgdGVjaG5pcXVlLCBzZWUgUmVuZGVyZXJTdW1tYXJ5LlxyXG4gICAgLy8gVGhpcyBpcyBpbXBvcnRhbnQsIHNpbmNlIGlmIGl0J3MgMCwgaXQgaW5kaWNhdGVzIHRoYXQgdGhpcyBlbnRpcmUgc3VidHJlZSBoYXMgTk8gdW5maXR0YWJsZSBjb250ZW50LiBUaHVzIGlmXHJcbiAgICAvLyBhIEZpdHRlZEJsb2NrJ3MgY29tbW9uIGFuY2VzdG9yIChmb3IgdGhlIGNvbW1vbi1hbmNlc3RvciBmaXQpIGlzIHRoaXMgaW5zdGFuY2UsIHdlIHNob3VsZG4ndCBoYXZlIGlzc3Vlc1xyXG4gICAgLy8gdXBkYXRpbmcgb3VyIGJvdW5kcy5cclxuICAgIHRoaXMuc3VidHJlZVVuZml0dGFibGVDb3VudCA9IHRoaXMuc2VsZkZpdHRhYmxlID8gMCA6IDE7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7VGlueUVtaXR0ZXJ9IC0gQ2FsbGVkIHdpdGggbm8gYXJndW1lbnRzIHdoZW4gdGhlIHN1YnRyZWUgZml0dGFiaWxpdHkgY2hhbmdlcyAod2hldGhlclxyXG4gICAgLy8gc3VidHJlZVVuZml0dGFibGVDb3VudCBpcyBncmVhdGVyIHRoYW4gemVybyBvciBub3QpLlxyXG4gICAgdGhpcy5zdWJ0cmVlRml0dGFiaWxpdHlDaGFuZ2VFbWl0dGVyID0gdGhpcy5zdWJ0cmVlRml0dGFiaWxpdHlDaGFuZ2VFbWl0dGVyIHx8IG5ldyBUaW55RW1pdHRlcigpO1xyXG5cclxuICAgIHJldHVybiB0aGlzOyAvLyBhbGxvdyBjaGFpbmluZ1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRWFzeSBhY2Nlc3MgdG8gb3VyIHBhcmVudCBJbnN0YW5jZSdzIEZpdHRhYmlsaXR5LCBpZiBpdCBleGlzdHMuXHJcbiAgICogQHByaXZhdGVcclxuICAgKlxyXG4gICAqIEByZXR1cm5zIHtGaXR0YWJpbGl0eXxudWxsfVxyXG4gICAqL1xyXG4gIGdldCBwYXJlbnQoKSB7XHJcbiAgICByZXR1cm4gdGhpcy5pbnN0YW5jZS5wYXJlbnQgPyB0aGlzLmluc3RhbmNlLnBhcmVudC5maXR0YWJpbGl0eSA6IG51bGw7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDYWxsZWQgd2hlbiB0aGUgaW5zdGFuY2UgaXMgdXBkYXRpbmcgaXRzIHJlbmRlcmluZyBzdGF0ZSAoYXMgYW55IGZpdHRhYmlsaXR5IGNoYW5nZXMgdG8gZXhpc3RpbmcgaW5zdGFuY2VzIHdpbGxcclxuICAgKiB0cmlnZ2VyIGFuIHVwZGF0ZSB0aGVyZSkuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGNoZWNrU2VsZkZpdHRhYmlsaXR5KCkge1xyXG4gICAgY29uc3QgbmV3U2VsZkZpdHRhYmxlID0gdGhpcy5pc1NlbGZGaXRTdXBwb3J0ZWQoKTtcclxuICAgIGlmICggdGhpcy5zZWxmRml0dGFibGUgIT09IG5ld1NlbGZGaXR0YWJsZSApIHtcclxuICAgICAgdGhpcy51cGRhdGVTZWxmRml0dGFibGUoKTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFdoZXRoZXIgb3VyIG5vZGUncyBwZXJmb3JtYW5jZSBmbGFncyBhbGxvd3MgdGhlIHN1YnRyZWUgdG8gYmUgZml0dGVkLlxyXG4gICAqIEBwcml2YXRlXHJcbiAgICpcclxuICAgKiBBbnkgdXBkYXRlcyB0byBmbGFncyAoZm9yIGluc3RhbmNlLCBhICdkeW5hbWljJyBmbGFnIHBlcmhhcHM/KSBzaG91bGQgYmUgYWRkZWQgaGVyZS5cclxuICAgKlxyXG4gICAqIEByZXR1cm5zIHtib29sZWFufVxyXG4gICAqL1xyXG4gIGlzU2VsZkZpdFN1cHBvcnRlZCgpIHtcclxuICAgIHJldHVybiAhdGhpcy5ub2RlLmlzUHJldmVudEZpdCgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ2FsbGVkIHdoZW4gb3VyIHBhcmVudCBqdXN0IGJlY2FtZSBmaXR0YWJsZS4gUmVzcG9uc2libGUgZm9yIGZsYWdnaW5nIHN1YnRyZWVzIHdpdGggdGhlIGFuY2VzdG9yc0ZpdHRhYmxlIGZsYWcsXHJcbiAgICogdXAgdG8gdGhlIHBvaW50IHdoZXJlIHRoZXkgYXJlIGZpdHRhYmxlLlxyXG4gICAqIEBwcml2YXRlXHJcbiAgICovXHJcbiAgbWFya1N1YnRyZWVGaXR0YWJsZSgpIHtcclxuICAgIC8vIEJhaWwgaWYgd2UgY2FuJ3QgYmUgZml0dGFibGUgb3Vyc2VsdmVzXHJcbiAgICBpZiAoICF0aGlzLnNlbGZGaXR0YWJsZSApIHtcclxuICAgICAgcmV0dXJuO1xyXG4gICAgfVxyXG5cclxuICAgIHRoaXMuYW5jZXN0b3JzRml0dGFibGUgPSB0cnVlO1xyXG5cclxuICAgIGNvbnN0IGNoaWxkcmVuID0gdGhpcy5pbnN0YW5jZS5jaGlsZHJlbjtcclxuICAgIGZvciAoIGxldCBpID0gMDsgaSA8IGNoaWxkcmVuLmxlbmd0aDsgaSsrICkge1xyXG4gICAgICBjaGlsZHJlblsgaSBdLmZpdHRhYmlsaXR5Lm1hcmtTdWJ0cmVlRml0dGFibGUoKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBVcGRhdGUgdGhlIEluc3RhbmNlJ3MgZHJhd2FibGVzLCBzbyB0aGF0IHRoZWlyIGJsb2NrcyBjYW4gcG90ZW50aWFsbHkgbm93IGJlIGZpdHRlZC5cclxuICAgIHRoaXMuaW5zdGFuY2UudXBkYXRlRHJhd2FibGVGaXR0YWJpbGl0eSggdHJ1ZSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ2FsbGVkIHdoZW4gb3VyIHBhcmVudCBqdXN0IGJlY2FtZSB1bmZpdHRhYmxlIGFuZCB3ZSBhcmUgZml0dGFibGUuIFJlc3BvbnNpYmxlIGZvciBmbGFnZ2luZyBzdWJ0cmVlcyB3aXRoXHJcbiAgICogdGhlICFhbmNlc3RvcnNGaXR0YWJsZSBmbGFnLCB1cCB0byB0aGUgcG9pbnQgd2hlcmUgdGhleSBhcmUgdW5maXR0YWJsZS5cclxuICAgKiBAcHJpdmF0ZVxyXG4gICAqL1xyXG4gIG1hcmtTdWJ0cmVlVW5maXR0YWJsZSgpIHtcclxuICAgIC8vIEJhaWwgaWYgd2UgYXJlIGFscmVhZHkgdW5maXR0YWJsZVxyXG4gICAgaWYgKCAhdGhpcy5hbmNlc3RvcnNGaXR0YWJsZSApIHtcclxuICAgICAgcmV0dXJuO1xyXG4gICAgfVxyXG5cclxuICAgIHRoaXMuYW5jZXN0b3JzRml0dGFibGUgPSBmYWxzZTtcclxuXHJcbiAgICBjb25zdCBjaGlsZHJlbiA9IHRoaXMuaW5zdGFuY2UuY2hpbGRyZW47XHJcbiAgICBmb3IgKCBsZXQgaSA9IDA7IGkgPCBjaGlsZHJlbi5sZW5ndGg7IGkrKyApIHtcclxuICAgICAgY2hpbGRyZW5bIGkgXS5maXR0YWJpbGl0eS5tYXJrU3VidHJlZVVuZml0dGFibGUoKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBVcGRhdGUgdGhlIEluc3RhbmNlJ3MgZHJhd2FibGVzLCBzbyB0aGF0IHRoZWlyIGJsb2NrcyBjYW4gcG90ZW50aWFsbHkgbm93IGJlIHByZXZlbnRlZCBmcm9tIGJlaW5nIGZpdHRlZC5cclxuICAgIHRoaXMuaW5zdGFuY2UudXBkYXRlRHJhd2FibGVGaXR0YWJpbGl0eSggZmFsc2UgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIENhbGxlZCB3aGVuIG91ciBOb2RlJ3Mgc2VsZiBmaXQtYWJpbGl0eSBoYXMgY2hhbmdlZC5cclxuICAgKiBAcHJpdmF0ZVxyXG4gICAqL1xyXG4gIHVwZGF0ZVNlbGZGaXR0YWJsZSgpIHtcclxuICAgIGNvbnN0IG5ld1NlbGZGaXR0YWJsZSA9IHRoaXMuaXNTZWxmRml0U3VwcG9ydGVkKCk7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0aGlzLnNlbGZGaXR0YWJsZSAhPT0gbmV3U2VsZkZpdHRhYmxlICk7XHJcblxyXG4gICAgdGhpcy5zZWxmRml0dGFibGUgPSBuZXdTZWxmRml0dGFibGU7XHJcblxyXG4gICAgaWYgKCB0aGlzLnNlbGZGaXR0YWJsZSAmJiAoICF0aGlzLnBhcmVudCB8fCB0aGlzLnBhcmVudC5hbmNlc3RvcnNGaXR0YWJsZSApICkge1xyXG4gICAgICB0aGlzLm1hcmtTdWJ0cmVlRml0dGFibGUoKTtcclxuICAgIH1cclxuICAgIGVsc2UgaWYgKCAhdGhpcy5zZWxmRml0dGFibGUgKSB7XHJcbiAgICAgIHRoaXMubWFya1N1YnRyZWVVbmZpdHRhYmxlKCk7XHJcbiAgICB9XHJcblxyXG4gICAgaWYgKCB0aGlzLnNlbGZGaXR0YWJsZSApIHtcclxuICAgICAgdGhpcy5kZWNyZW1lbnRTdWJ0cmVlVW5maXR0YWJsZUNvdW50KCk7XHJcbiAgICB9XHJcbiAgICBlbHNlIHtcclxuICAgICAgdGhpcy5pbmNyZW1lbnRTdWJ0cmVlVW5maXR0YWJsZUNvdW50KCk7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBBIGNoaWxkIGluc3RhbmNlJ3Mgc3VidHJlZSBiZWNhbWUgdW5maXR0YWJsZSwgT1Igb3VyICdzZWxmJyBiZWNhbWUgdW5maXR0YWJsZS4gVGhpcyBpcyByZXNwb25zaWJsZSBmb3IgdXBkYXRpbmdcclxuICAgKiB0aGUgc3VidHJlZUZpdHRhYmxlQ291bnQgZm9yIHRoaXMgaW5zdGFuY2UgQU5EIHVwIHRvIGFsbCBhbmNlc3RvcnMgdGhhdCB3b3VsZCBiZSBhZmZlY3RlZCBieSB0aGUgY2hhbmdlLlxyXG4gICAqIEBwcml2YXRlXHJcbiAgICovXHJcbiAgaW5jcmVtZW50U3VidHJlZVVuZml0dGFibGVDb3VudCgpIHtcclxuICAgIHRoaXMuc3VidHJlZVVuZml0dGFibGVDb3VudCsrO1xyXG5cclxuICAgIC8vIElmIG5vdyBzb21ldGhpbmcgaW4gb3VyIHN1YnRyZWUgY2FuJ3QgYmUgZml0dGVkLCB3ZSBuZWVkIHRvIG5vdGlmeSBvdXIgcGFyZW50XHJcbiAgICBpZiAoIHRoaXMuc3VidHJlZVVuZml0dGFibGVDb3VudCA9PT0gMSApIHtcclxuICAgICAgdGhpcy5wYXJlbnQgJiYgdGhpcy5wYXJlbnQuaW5jcmVtZW50U3VidHJlZVVuZml0dGFibGVDb3VudCgpO1xyXG5cclxuICAgICAgLy8gTm90aWZ5IGFueXRoaW5nIGxpc3RlbmluZyB0aGF0IHRoZSBjb25kaXRpb24gKCB0aGlzLnN1YnRyZWVVbmZpdHRhYmxlQ291bnQgPiAwICkgY2hhbmdlZC5cclxuICAgICAgdGhpcy5zdWJ0cmVlRml0dGFiaWxpdHlDaGFuZ2VFbWl0dGVyLmVtaXQoKTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEEgY2hpbGQgaW5zdGFuY2UncyBzdWJ0cmVlIGJlY2FtZSBmaXR0YWJsZSwgT1Igb3VyICdzZWxmJyBiZWNhbWUgZml0dGFibGUuIFRoaXMgaXMgcmVzcG9uc2libGUgZm9yIHVwZGF0aW5nXHJcbiAgICogdGhlIHN1YnRyZWVGaXR0YWJsZUNvdW50IGZvciB0aGlzIGluc3RhbmNlIEFORCB1cCB0byBhbGwgYW5jZXN0b3JzIHRoYXQgd291bGQgYmUgYWZmZWN0ZWQgYnkgdGhlIGNoYW5nZS5cclxuICAgKiBAcHJpdmF0ZVxyXG4gICAqL1xyXG4gIGRlY3JlbWVudFN1YnRyZWVVbmZpdHRhYmxlQ291bnQoKSB7XHJcbiAgICB0aGlzLnN1YnRyZWVVbmZpdHRhYmxlQ291bnQtLTtcclxuXHJcbiAgICAvLyBJZiBub3cgb3VyIHN1YnRyZWUgY2FuIGFsbCBiZSBmaXR0ZWQsIHdlIG5lZWQgdG8gbm90aWZ5IG91ciBwYXJlbnRcclxuICAgIGlmICggdGhpcy5zdWJ0cmVlVW5maXR0YWJsZUNvdW50ID09PSAwICkge1xyXG4gICAgICB0aGlzLnBhcmVudCAmJiB0aGlzLnBhcmVudC5kZWNyZW1lbnRTdWJ0cmVlVW5maXR0YWJsZUNvdW50KCk7XHJcblxyXG4gICAgICAvLyBOb3RpZnkgYW55dGhpbmcgbGlzdGVuaW5nIHRoYXQgdGhlIGNvbmRpdGlvbiAoIHRoaXMuc3VidHJlZVVuZml0dGFibGVDb3VudCA+IDAgKSBjaGFuZ2VkLlxyXG4gICAgICB0aGlzLnN1YnRyZWVGaXR0YWJpbGl0eUNoYW5nZUVtaXR0ZXIuZW1pdCgpO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ2FsbGVkIHdoZW4gYW4gaW5zdGFuY2UgaXMgYWRkZWQgYXMgYSBjaGlsZCB0byBvdXIgaW5zdGFuY2UuIFVwZGF0ZXMgbmVjZXNzYXJ5IGNvdW50cy5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge0ZpdHRhYmlsaXR5fSBjaGlsZEZpdHRhYmlsaXR5IC0gVGhlIEZpdHRhYmlsaXR5IG9mIHRoZSBuZXcgY2hpbGQgaW5zdGFuY2UuXHJcbiAgICovXHJcbiAgb25JbnNlcnQoIGNoaWxkRml0dGFiaWxpdHkgKSB7XHJcbiAgICBpZiAoICF0aGlzLmFuY2VzdG9yc0ZpdHRhYmxlICkge1xyXG4gICAgICBjaGlsZEZpdHRhYmlsaXR5Lm1hcmtTdWJ0cmVlVW5maXR0YWJsZSgpO1xyXG4gICAgfVxyXG5cclxuICAgIGlmICggY2hpbGRGaXR0YWJpbGl0eS5zdWJ0cmVlVW5maXR0YWJsZUNvdW50ID4gMCApIHtcclxuICAgICAgdGhpcy5pbmNyZW1lbnRTdWJ0cmVlVW5maXR0YWJsZUNvdW50KCk7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDYWxsZWQgd2hlbiBhIGNoaWxkIGluc3RhbmNlIGlzIHJlbW92ZWQgZnJvbSBvdXIgaW5zdGFuY2UuIFVwZGF0ZXMgbmVjZXNzYXJ5IGNvdW50cy5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge0ZpdHRhYmlsaXR5fSBjaGlsZEZpdHRhYmlsaXR5IC0gVGhlIEZpdHRhYmlsaXR5IG9mIHRoZSBvbGQgY2hpbGQgaW5zdGFuY2UuXHJcbiAgICovXHJcbiAgb25SZW1vdmUoIGNoaWxkRml0dGFiaWxpdHkgKSB7XHJcbiAgICBpZiAoICF0aGlzLmFuY2VzdG9yc0ZpdHRhYmxlICkge1xyXG4gICAgICBjaGlsZEZpdHRhYmlsaXR5Lm1hcmtTdWJ0cmVlRml0dGFibGUoKTtcclxuICAgIH1cclxuXHJcbiAgICBpZiAoIGNoaWxkRml0dGFiaWxpdHkuc3VidHJlZVVuZml0dGFibGVDb3VudCA+IDAgKSB7XHJcbiAgICAgIHRoaXMuZGVjcmVtZW50U3VidHJlZVVuZml0dGFibGVDb3VudCgpO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogU2FuaXR5IGNoZWNrcyB0aGF0IHJ1biB3aGVuIHNsb3cgYXNzZXJ0aW9ucyBhcmUgZW5hYmxlZC4gRW5mb3JjZXMgdGhlIGludmFyaWFudHMgb2YgdGhlIEZpdHRhYmlsaXR5IHN1YnN5c3RlbS5cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgYXVkaXQoKSB7XHJcbiAgICBpZiAoIGFzc2VydFNsb3cgKSB7XHJcbiAgICAgIGFzc2VydFNsb3coIHRoaXMuc2VsZkZpdHRhYmxlID09PSB0aGlzLmlzU2VsZkZpdFN1cHBvcnRlZCgpLFxyXG4gICAgICAgICdzZWxmRml0dGFibGUgZGl2ZXJnZWQgZnJvbSBpc1NlbGZGaXRTdXBwb3J0ZWQoKScgKTtcclxuXHJcbiAgICAgIGFzc2VydFNsb3coIHRoaXMuYW5jZXN0b3JzRml0dGFibGUgPT09ICggKCB0aGlzLnBhcmVudCA/IHRoaXMucGFyZW50LmFuY2VzdG9yc0ZpdHRhYmxlIDogdHJ1ZSApICYmIHRoaXMuc2VsZkZpdHRhYmxlICksXHJcbiAgICAgICAgJ091ciBhbmNlc3RvcnNGaXR0YWJsZSBzaG91bGQgYmUgZmFsc2UgaWYgb3VyIHBhcmVudCBvciBvdXIgc2VsZiBpcyBub3QgZml0dGFibGUuJyApO1xyXG5cclxuICAgICAgLy8gT3VyIHN1YnRyZWUgdW5maXR0YWJsZSBjb3VudCBzaG91bGQgYmUgdGhlIHN1bSBvZiBjaGlsZHJlbiB0aGF0IGhhdmUgYSBub24temVybyBjb3VudCwgcGx1cyAxIGlmIG91ciBzZWxmXHJcbiAgICAgIC8vIGlzIG5vdCBmaXR0YWJsZVxyXG4gICAgICBsZXQgc3VidHJlZVVuZml0dGFibGVDb3VudCA9IDA7XHJcbiAgICAgIGlmICggIXRoaXMuc2VsZkZpdHRhYmxlICkge1xyXG4gICAgICAgIHN1YnRyZWVVbmZpdHRhYmxlQ291bnQrKztcclxuICAgICAgfVxyXG4gICAgICBfLmVhY2goIHRoaXMuaW5zdGFuY2UuY2hpbGRyZW4sIGluc3RhbmNlID0+IHtcclxuICAgICAgICBpZiAoIGluc3RhbmNlLmZpdHRhYmlsaXR5LnN1YnRyZWVVbmZpdHRhYmxlQ291bnQgPiAwICkge1xyXG4gICAgICAgICAgc3VidHJlZVVuZml0dGFibGVDb3VudCsrO1xyXG4gICAgICAgIH1cclxuICAgICAgfSApO1xyXG4gICAgICBhc3NlcnRTbG93KCB0aGlzLnN1YnRyZWVVbmZpdHRhYmxlQ291bnQgPT09IHN1YnRyZWVVbmZpdHRhYmxlQ291bnQsICdJbmNvcnJlY3Qgc3VidHJlZVVuZml0dGFibGVDb3VudCcgKTtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdGaXR0YWJpbGl0eScsIEZpdHRhYmlsaXR5ICk7XHJcbmV4cG9ydCBkZWZhdWx0IEZpdHRhYmlsaXR5OyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsV0FBVyxNQUFNLGlDQUFpQztBQUN6RCxTQUFTQyxPQUFPLFFBQVEsZUFBZTtBQUV2QyxNQUFNQyxXQUFXLENBQUM7RUFDaEI7QUFDRjtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFFBQVEsRUFBRztJQUN0QjtJQUNBLElBQUksQ0FB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

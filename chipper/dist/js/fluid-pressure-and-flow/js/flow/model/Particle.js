@@ -1,0 +1,62 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Model for a simple spherical particle (Modified from watertower's WaterDrop). The red dots and black grid dots
+ * in flow sim are modelled as Particles. Model contains properties for radius, color, position etc.
+ *
+ * Since so many particles are moving in every frame, it is too much overhead to model them using Property.link,
+ * and they are rendered in a CanvasNode.  Hence the values are modeled directly as attributes (without axon Properties).
+ *
+ * @author Siddhartha Chinthapally (Actual Concepts)
+ */
+
+import fluidPressureAndFlow from '../../fluidPressureAndFlow.js';
+class Particle {
+  /**
+   * @param {number} xPosition of the particle in meters
+   * @param {number} fractionUpPipe represents the fractional position w.r.t to the cross section height. Takes a value between (0,1).
+   * @param {Pipe} container holding the particle
+   * @param {number} radius of the particle
+   * @param {string} color of the particle
+   */
+  constructor(xPosition, fractionUpPipe, container, radius, color) {
+    // position along the pipe's horizontal axis.
+    this.xPosition = xPosition;
+
+    // how far up the pipe, 0 = bottom, 1 = top
+    this.fractionUpPipe = fractionUpPipe;
+
+    // the pipe within which the particle travels
+    this.container = container;
+    this.radius = radius; // in meters
+    this.color = color;
+  }
+
+  /**
+   * get particle x position
+   * @public
+   */
+  getX() {
+    return this.xPosition;
+  }
+
+  /**
+   * get particle Y position
+   * @public
+   */
+  getY() {
+    return this.container.fractionToPosition(this.xPosition, this.fractionUpPipe);
+  }
+
+  /**
+   * Set the particle x position
+   * @param {number} x position in meters
+   * @public
+   */
+  setX(x) {
+    this.xPosition = x;
+  }
+}
+fluidPressureAndFlow.register('Particle', Particle);
+export default Particle;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmbHVpZFByZXNzdXJlQW5kRmxvdyIsIlBhcnRpY2xlIiwiY29uc3RydWN0b3IiLCJ4UG9zaXRpb24iLCJmcmFjdGlvblVwUGlwZSIsImNvbnRhaW5lciIsInJhZGl1cyIsImNvbG9yIiwiZ2V0WCIsImdldFkiLCJmcmFjdGlvblRvUG9zaXRpb24iLCJzZXRYIiwieCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiUGFydGljbGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTW9kZWwgZm9yIGEgc2ltcGxlIHNwaGVyaWNhbCBwYXJ0aWNsZSAoTW9kaWZpZWQgZnJvbSB3YXRlcnRvd2VyJ3MgV2F0ZXJEcm9wKS4gVGhlIHJlZCBkb3RzIGFuZCBibGFjayBncmlkIGRvdHNcclxuICogaW4gZmxvdyBzaW0gYXJlIG1vZGVsbGVkIGFzIFBhcnRpY2xlcy4gTW9kZWwgY29udGFpbnMgcHJvcGVydGllcyBmb3IgcmFkaXVzLCBjb2xvciwgcG9zaXRpb24gZXRjLlxyXG4gKlxyXG4gKiBTaW5jZSBzbyBtYW55IHBhcnRpY2xlcyBhcmUgbW92aW5nIGluIGV2ZXJ5IGZyYW1lLCBpdCBpcyB0b28gbXVjaCBvdmVyaGVhZCB0byBtb2RlbCB0aGVtIHVzaW5nIFByb3BlcnR5LmxpbmssXHJcbiAqIGFuZCB0aGV5IGFyZSByZW5kZXJlZCBpbiBhIENhbnZhc05vZGUuICBIZW5jZSB0aGUgdmFsdWVzIGFyZSBtb2RlbGVkIGRpcmVjdGx5IGFzIGF0dHJpYnV0ZXMgKHdpdGhvdXQgYXhvbiBQcm9wZXJ0aWVzKS5cclxuICpcclxuICogQGF1dGhvciBTaWRkaGFydGhhIENoaW50aGFwYWxseSAoQWN0dWFsIENvbmNlcHRzKVxyXG4gKi9cclxuXHJcbmltcG9ydCBmbHVpZFByZXNzdXJlQW5kRmxvdyBmcm9tICcuLi8uLi9mbHVpZFByZXNzdXJlQW5kRmxvdy5qcyc7XHJcblxyXG5jbGFzcyBQYXJ0aWNsZSB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB4UG9zaXRpb24gb2YgdGhlIHBhcnRpY2xlIGluIG1ldGVyc1xyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBmcmFjdGlvblVwUGlwZSByZXByZXNlbnRzIHRoZSBmcmFjdGlvbmFsIHBvc2l0aW9uIHcuci50IHRvIHRoZSBjcm9zcyBzZWN0aW9uIGhlaWdodC4gVGFrZXMgYSB2YWx1ZSBiZXR3ZWVuICgwLDEpLlxyXG4gICAqIEBwYXJhbSB7UGlwZX0gY29udGFpbmVyIGhvbGRpbmcgdGhlIHBhcnRpY2xlXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHJhZGl1cyBvZiB0aGUgcGFydGljbGVcclxuICAgKiBAcGFyYW0ge3N0cmluZ30gY29sb3Igb2YgdGhlIHBhcnRpY2xlXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHhQb3NpdGlvbiwgZnJhY3Rpb25VcFBpcGUsIGNvbnRhaW5lciwgcmFkaXVzLCBjb2xvciApIHtcclxuXHJcbiAgICAvLyBwb3NpdGlvbiBhbG9uZyB0aGUgcGlwZSdzIGhvcml6b250YWwgYXhpcy5cclxuICAgIHRoaXMueFBvc2l0aW9uID0geFBvc2l0aW9uO1xyXG5cclxuICAgIC8vIGhvdyBmYXIgdXAgdGhlIHBpcGUsIDAgPSBib3R0b20sIDEgPSB0b3BcclxuICAgIHRoaXMuZnJhY3Rpb25VcFBpcGUgPSBmcmFjdGlvblVwUGlwZTtcclxuXHJcbiAgICAvLyB0aGUgcGlwZSB3aXRoaW4gd2hpY2ggdGhlIHBhcnRpY2xlIHRyYXZlbHNcclxuICAgIHRoaXMuY29udGFpbmVyID0gY29udGFpbmVyO1xyXG5cclxuICAgIHRoaXMucmFkaXVzID0gcmFkaXVzOyAvLyBpbiBtZXRlcnNcclxuICAgIHRoaXMuY29sb3IgPSBjb2xvcjtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIGdldCBwYXJ0aWNsZSB4IHBvc2l0aW9uXHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGdldFgoKSB7XHJcbiAgICByZXR1cm4gdGhpcy54UG9zaXRpb247XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBnZXQgcGFydGljbGUgWSBwb3NpdGlvblxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBnZXRZKCkge1xyXG4gICAgcmV0dXJuIHRoaXMuY29udGFpbmVyLmZyYWN0aW9uVG9Qb3NpdGlvbiggdGhpcy54UG9zaXRpb24sIHRoaXMuZnJhY3Rpb25VcFBpcGUgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFNldCB0aGUgcGFydGljbGUgeCBwb3NpdGlvblxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB4IHBvc2l0aW9uIGluIG1ldGVyc1xyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBzZXRYKCB4ICkge1xyXG4gICAgdGhpcy54UG9zaXRpb24gPSB4O1xyXG4gIH1cclxufVxyXG5cclxuZmx1aWRQcmVzc3VyZUFuZEZsb3cucmVnaXN0ZXIoICdQYXJ0aWNsZScsIFBhcnRpY2xlICk7XHJcbmV4cG9ydCBkZWZhdWx0IFBhcnRpY2xlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLG9CQUFvQixNQUFNLCtCQUErQjtBQUVoRSxNQUFNQyxRQUFRLENBQUM7RUFFYjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxTQUFTLEVBQUVDLGNBQWMsRUFBRUMsU0FBUyxFQUFFQyxNQUFNLEVBQUVDLEtBQUssRUFBRztJQUVqRTtJQUNBLElBQUksQ0FBQ0osU0FBUyxHQUFHQSxTQUFTOztJQUUxQjtJQUNBLElBQUksQ0FBQ0MsY0FBYyxHQUFHQSxjQUFjOztJQUVwQztJQUNBLElBQUksQ0FBQ0MsU0FBUyxHQUFHQSxTQUFTO0lBRTFCLElBQUksQ0FBQ0MsTUFBTSxHQUFHQSxNQUFNLENBQUMsQ0FBQztJQUN0QixJQUFJLENBQUNDLEtBQUssR0FBR0EsS0FBSztFQUNwQjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxJQUFJQSxDQUFBLEVBQUc7SUFDTCxPQUFPLElBQUksQ0FBQ0wsU0FBUztFQUN2Qjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFTSxJQUFJQSxDQUFBLEVBQUc7SUFDTCxPQUFPLElBQUksQ0FBQ0osU0FBUyxDQUFDSyxrQkFBa0IsQ0FBRSxJQUFJLENBQUNQLFNBQVMsRUFBRSxJQUFJLENBQUNDLGNBQWUsQ0FBQztFQUNqRjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VPLElBQUlBLENBQUVDLENBQUMsRUFBRztJQUNSLElBQUksQ0FBQ1QsU0FBUyxHQUFHUyxDQUFDO0VBQ3BCO0FBQ0Y7QUFFQVosb0JBQW9CLENBQUNhLFFBQVEsQ0FBRSxVQUFVLEVBQUVaLFFBQVMsQ0FBQztBQUNyRCxlQUFlQSxRQUFRIn0=

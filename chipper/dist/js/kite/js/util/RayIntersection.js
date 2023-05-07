@@ -1,0 +1,35 @@
+// Copyright 2017-2022, University of Colorado Boulder
+
+/**
+ * An intersection between a ray and a segment.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Utils from '../../../dot/js/Utils.js';
+import { kite } from '../imports.js';
+export default class RayIntersection {
+  /**
+   * @param distance - The distance between the ray's position and the point of intersection
+   * @param point - The location of the intersection
+   * @param normal - The normal (unit vector perpendicular to the segment at the location) at the
+   *                           intersection, such that the dot product between the normal and ray direction is <= 0.
+   * @param wind - The winding number for the intersection. Either 1 or -1, depending on the direction the
+   *                        segment goes relative to the ray (to the left or right). Used for computing Shape
+   *                        intersection via the non-zero fill rule.
+   * @param t - Parametric value (for the segment) of the intersection
+   */
+  constructor(distance, point, normal, wind, t) {
+    assert && assert(isFinite(distance) && distance >= 0, 'invalid distance');
+    assert && assert(Math.abs(normal.magnitude - 1) < 1e-7, 'invalid normal');
+    assert && assert(t >= -1e-10 && t <= 1 + 1e-10, `t out of range: ${t}`);
+    this.point = point;
+    this.normal = normal;
+    this.distance = distance;
+    this.wind = wind;
+    this.t = Utils.clamp(t, 0, 1); // In case it is slightly out of range
+  }
+}
+
+kite.register('RayIntersection', RayIntersection);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJVdGlscyIsImtpdGUiLCJSYXlJbnRlcnNlY3Rpb24iLCJjb25zdHJ1Y3RvciIsImRpc3RhbmNlIiwicG9pbnQiLCJub3JtYWwiLCJ3aW5kIiwidCIsImFzc2VydCIsImlzRmluaXRlIiwiTWF0aCIsImFicyIsIm1hZ25pdHVkZSIsImNsYW1wIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSYXlJbnRlcnNlY3Rpb24udHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQW4gaW50ZXJzZWN0aW9uIGJldHdlZW4gYSByYXkgYW5kIGEgc2VnbWVudC5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBVdGlscyBmcm9tICcuLi8uLi8uLi9kb3QvanMvVXRpbHMuanMnO1xyXG5pbXBvcnQgVmVjdG9yMiBmcm9tICcuLi8uLi8uLi9kb3QvanMvVmVjdG9yMi5qcyc7XHJcbmltcG9ydCB7IGtpdGUgfSBmcm9tICcuLi9pbXBvcnRzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFJheUludGVyc2VjdGlvbiB7XHJcblxyXG4gIHB1YmxpYyBwb2ludDogVmVjdG9yMjtcclxuICBwdWJsaWMgbm9ybWFsOiBWZWN0b3IyO1xyXG4gIHB1YmxpYyBkaXN0YW5jZTogbnVtYmVyO1xyXG4gIHB1YmxpYyB3aW5kOiBudW1iZXI7XHJcbiAgcHVibGljIHQ6IG51bWJlcjtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIGRpc3RhbmNlIC0gVGhlIGRpc3RhbmNlIGJldHdlZW4gdGhlIHJheSdzIHBvc2l0aW9uIGFuZCB0aGUgcG9pbnQgb2YgaW50ZXJzZWN0aW9uXHJcbiAgICogQHBhcmFtIHBvaW50IC0gVGhlIGxvY2F0aW9uIG9mIHRoZSBpbnRlcnNlY3Rpb25cclxuICAgKiBAcGFyYW0gbm9ybWFsIC0gVGhlIG5vcm1hbCAodW5pdCB2ZWN0b3IgcGVycGVuZGljdWxhciB0byB0aGUgc2VnbWVudCBhdCB0aGUgbG9jYXRpb24pIGF0IHRoZVxyXG4gICAqICAgICAgICAgICAgICAgICAgICAgICAgICAgaW50ZXJzZWN0aW9uLCBzdWNoIHRoYXQgdGhlIGRvdCBwcm9kdWN0IGJldHdlZW4gdGhlIG5vcm1hbCBhbmQgcmF5IGRpcmVjdGlvbiBpcyA8PSAwLlxyXG4gICAqIEBwYXJhbSB3aW5kIC0gVGhlIHdpbmRpbmcgbnVtYmVyIGZvciB0aGUgaW50ZXJzZWN0aW9uLiBFaXRoZXIgMSBvciAtMSwgZGVwZW5kaW5nIG9uIHRoZSBkaXJlY3Rpb24gdGhlXHJcbiAgICogICAgICAgICAgICAgICAgICAgICAgICBzZWdtZW50IGdvZXMgcmVsYXRpdmUgdG8gdGhlIHJheSAodG8gdGhlIGxlZnQgb3IgcmlnaHQpLiBVc2VkIGZvciBjb21wdXRpbmcgU2hhcGVcclxuICAgKiAgICAgICAgICAgICAgICAgICAgICAgIGludGVyc2VjdGlvbiB2aWEgdGhlIG5vbi16ZXJvIGZpbGwgcnVsZS5cclxuICAgKiBAcGFyYW0gdCAtIFBhcmFtZXRyaWMgdmFsdWUgKGZvciB0aGUgc2VnbWVudCkgb2YgdGhlIGludGVyc2VjdGlvblxyXG4gICAqL1xyXG4gIHB1YmxpYyBjb25zdHJ1Y3RvciggZGlzdGFuY2U6IG51bWJlciwgcG9pbnQ6IFZlY3RvcjIsIG5vcm1hbDogVmVjdG9yMiwgd2luZDogbnVtYmVyLCB0OiBudW1iZXIgKSB7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBpc0Zpbml0ZSggZGlzdGFuY2UgKSAmJiBkaXN0YW5jZSA+PSAwLCAnaW52YWxpZCBkaXN0YW5jZScgKTtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIE1hdGguYWJzKCBub3JtYWwubWFnbml0dWRlIC0gMSApIDwgMWUtNywgJ2ludmFsaWQgbm9ybWFsJyApO1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggdCA+PSAtMWUtMTAgJiYgdCA8PSAxICsgMWUtMTAsIGB0IG91dCBvZiByYW5nZTogJHt0fWAgKTtcclxuXHJcbiAgICB0aGlzLnBvaW50ID0gcG9pbnQ7XHJcbiAgICB0aGlzLm5vcm1hbCA9IG5vcm1hbDtcclxuICAgIHRoaXMuZGlzdGFuY2UgPSBkaXN0YW5jZTtcclxuICAgIHRoaXMud2luZCA9IHdpbmQ7XHJcbiAgICB0aGlzLnQgPSBVdGlscy5jbGFtcCggdCwgMCwgMSApOyAvLyBJbiBjYXNlIGl0IGlzIHNsaWdodGx5IG91dCBvZiByYW5nZVxyXG4gIH1cclxufVxyXG5cclxua2l0ZS5yZWdpc3RlciggJ1JheUludGVyc2VjdGlvbicsIFJheUludGVyc2VjdGlvbiApO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsS0FBSyxNQUFNLDBCQUEwQjtBQUU1QyxTQUFTQyxJQUFJLFFBQVEsZUFBZTtBQUVwQyxlQUFlLE1BQU1DLGVBQWUsQ0FBQztFQVFuQztBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNTQyxXQUFXQSxDQUFFQyxRQUFnQixFQUFFQyxLQUFjLEVBQUVDLE1BQWUsRUFBRUMsSUFBWSxFQUFFQyxDQUFTLEVBQUc7SUFDL0ZDLE1BQU0sSUFBSUEsTUFBTSxDQUFFQyxRQUFRLENBQUVOLFFBQVMsQ0FBQyxJQUFJQSxRQUFRLElBQUksQ0FBQyxFQUFFLGtCQUFtQixDQUFDO0lBQzdFSyxNQUFNLElBQUlBLE1BQU0sQ0FBRUUsSUFBSSxDQUFDQyxHQUFHLENBQUVOLE1BQU0sQ0FBQ08sU0FBUyxHQUFHLENBQUUsQ0FBQyxHQUFHLElBQUksRUFBRSxnQkFBaUIsQ0FBQztJQUM3RUosTUFBTSxJQUFJQSxNQUFNLENBQUVELENBQUMsSUFBSSxDQUFDLEtBQUssSUFBSUEsQ0FBQyxJQUFJLENBQUMsR0FBRyxLQUFLLEVBQUcsbUJBQWtCQSxDQUFFLEVBQUUsQ0FBQztJQUV6RSxJQUFJLENBQUNILEtBQUssR0FBR0EsS0FBSztJQUNsQixJQUFJLENBQUNDLE1BQU0sR0FBR0EsTUFBTTtJQUNwQixJQUFJLENBQUNGLFFBQVEsR0FBR0EsUUFBUTtJQUN4QixJQUFJLENBQUNHLElBQUksR0FBR0EsSUFBSTtJQUNoQixJQUFJLENBQUNDLENBQUMsR0FBR1IsS0FBSyxDQUFDYyxLQUFLLENBQUVOLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBRSxDQUFDLENBQUMsQ0FBQztFQUNuQztBQUNGOztBQUVBUCxJQUFJLENBQUNjLFFBQVEsQ0FBRSxpQkFBaUIsRUFBRWIsZUFBZ0IsQ0FBQyJ9

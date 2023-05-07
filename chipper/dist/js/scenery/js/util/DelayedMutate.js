@@ -1,0 +1,79 @@
+// Copyright 2022, University of Colorado Boulder
+
+/**
+ * A mixin that delays the mutation of a certain set of mutation keys until AFTER the super() call has fully finished.
+ * This can be wrapped around a type where a mutate( { someKey: ... } ) would cause an error in the super(), and we
+ * want to postpone that until after construction. e.g.:
+ *
+ * const SomeNode = DelayedMutate( 'SomeNode', [ 'someOption' ], class extends SuperNode {
+ *   constructor( options ) {
+ *     super( options );
+ *
+ *     this.someOptionProperty = new Property( something );
+ *   }
+ *
+ *   set someOption( value: Something ) {
+ *     this.someOptionProperty.value = value;
+ *   }
+ *
+ *   get someOption(): Something {
+ *     return this.someOptionProperty.value;
+ *   }
+ * } );
+ *
+ * If this was NOT done, the following would error out:
+ *
+ * new SomeNode( { someOption: something } )
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { scenery } from '../imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+/**
+ * @param name - A unique name for each call, which customizes the internal key names used to track state
+ * @param keys - An array of the mutate option names that should be delayed
+ * @param type - The class we're mixing into
+ */
+const DelayedMutate = (name, keys, type) => {
+  // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
+  // We typecast these to strings to satisfy the type-checker without large amounts of grief. It doesn't seem to be
+  // able to parse that we're using the same keys for each call of this.
+  const pendingOptionsKey = `_${name}PendingOptions`;
+  const isConstructedKey = `_${name}IsConstructed`;
+  return class DelayedMutateMixin extends type {
+    // We need to store different fields in each class, so we use computed properties
+
+    constructor(...args) {
+      super(...args);
+
+      // Mark ourself as constructed, so further mutates will use all of the options
+      this[isConstructedKey] = true;
+
+      // Apply any options that we delayed
+      this.mutate(this[pendingOptionsKey]);
+
+      // Prevent memory leaks by tossing the options data that we've now used
+      this[pendingOptionsKey] = undefined;
+    }
+
+    // Typescript doesn't want an override here, but we're overriding it
+    mutate(options) {
+      // If we're not constructed, we need to save the options for later
+      // NOTE: If we haven't SET the constructed field yet, then it will be undefined (and falsy), so we do a check
+      // for that here.
+      if (options && !this[isConstructedKey]) {
+        // Store delayed options. If we've provided the same option before, we'll want to use the most recent
+        // (so a merge makes sense).
+        this[pendingOptionsKey] = combineOptions(this[pendingOptionsKey] || {}, _.pick(options, keys));
+
+        // We'll still want to mutate with the non-delayed options
+        options = _.omit(options, keys);
+      }
+      return super.mutate(options);
+    }
+  };
+};
+scenery.register('DelayedMutate', DelayedMutate);
+export default DelayedMutate;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5IiwiY29tYmluZU9wdGlvbnMiLCJEZWxheWVkTXV0YXRlIiwibmFtZSIsImtleXMiLCJ0eXBlIiwicGVuZGluZ09wdGlvbnNLZXkiLCJpc0NvbnN0cnVjdGVkS2V5IiwiRGVsYXllZE11dGF0ZU1peGluIiwiY29uc3RydWN0b3IiLCJhcmdzIiwibXV0YXRlIiwidW5kZWZpbmVkIiwib3B0aW9ucyIsIl8iLCJwaWNrIiwib21pdCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRGVsYXllZE11dGF0ZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSBtaXhpbiB0aGF0IGRlbGF5cyB0aGUgbXV0YXRpb24gb2YgYSBjZXJ0YWluIHNldCBvZiBtdXRhdGlvbiBrZXlzIHVudGlsIEFGVEVSIHRoZSBzdXBlcigpIGNhbGwgaGFzIGZ1bGx5IGZpbmlzaGVkLlxyXG4gKiBUaGlzIGNhbiBiZSB3cmFwcGVkIGFyb3VuZCBhIHR5cGUgd2hlcmUgYSBtdXRhdGUoIHsgc29tZUtleTogLi4uIH0gKSB3b3VsZCBjYXVzZSBhbiBlcnJvciBpbiB0aGUgc3VwZXIoKSwgYW5kIHdlXHJcbiAqIHdhbnQgdG8gcG9zdHBvbmUgdGhhdCB1bnRpbCBhZnRlciBjb25zdHJ1Y3Rpb24uIGUuZy46XHJcbiAqXHJcbiAqIGNvbnN0IFNvbWVOb2RlID0gRGVsYXllZE11dGF0ZSggJ1NvbWVOb2RlJywgWyAnc29tZU9wdGlvbicgXSwgY2xhc3MgZXh0ZW5kcyBTdXBlck5vZGUge1xyXG4gKiAgIGNvbnN0cnVjdG9yKCBvcHRpb25zICkge1xyXG4gKiAgICAgc3VwZXIoIG9wdGlvbnMgKTtcclxuICpcclxuICogICAgIHRoaXMuc29tZU9wdGlvblByb3BlcnR5ID0gbmV3IFByb3BlcnR5KCBzb21ldGhpbmcgKTtcclxuICogICB9XHJcbiAqXHJcbiAqICAgc2V0IHNvbWVPcHRpb24oIHZhbHVlOiBTb21ldGhpbmcgKSB7XHJcbiAqICAgICB0aGlzLnNvbWVPcHRpb25Qcm9wZXJ0eS52YWx1ZSA9IHZhbHVlO1xyXG4gKiAgIH1cclxuICpcclxuICogICBnZXQgc29tZU9wdGlvbigpOiBTb21ldGhpbmcge1xyXG4gKiAgICAgcmV0dXJuIHRoaXMuc29tZU9wdGlvblByb3BlcnR5LnZhbHVlO1xyXG4gKiAgIH1cclxuICogfSApO1xyXG4gKlxyXG4gKiBJZiB0aGlzIHdhcyBOT1QgZG9uZSwgdGhlIGZvbGxvd2luZyB3b3VsZCBlcnJvciBvdXQ6XHJcbiAqXHJcbiAqIG5ldyBTb21lTm9kZSggeyBzb21lT3B0aW9uOiBzb21ldGhpbmcgfSApXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgeyBOb2RlLCBOb2RlT3B0aW9ucywgc2NlbmVyeSB9IGZyb20gJy4uL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgQ29uc3RydWN0b3IgZnJvbSAnLi4vLi4vLi4vcGhldC1jb3JlL2pzL3R5cGVzL0NvbnN0cnVjdG9yLmpzJztcclxuaW1wb3J0IHsgY29tYmluZU9wdGlvbnMgfSBmcm9tICcuLi8uLi8uLi9waGV0LWNvcmUvanMvb3B0aW9uaXplLmpzJztcclxuaW1wb3J0IEludGVudGlvbmFsQW55IGZyb20gJy4uLy4uLy4uL3BoZXQtY29yZS9qcy90eXBlcy9JbnRlbnRpb25hbEFueS5qcyc7XHJcblxyXG4vKipcclxuICogQHBhcmFtIG5hbWUgLSBBIHVuaXF1ZSBuYW1lIGZvciBlYWNoIGNhbGwsIHdoaWNoIGN1c3RvbWl6ZXMgdGhlIGludGVybmFsIGtleSBuYW1lcyB1c2VkIHRvIHRyYWNrIHN0YXRlXHJcbiAqIEBwYXJhbSBrZXlzIC0gQW4gYXJyYXkgb2YgdGhlIG11dGF0ZSBvcHRpb24gbmFtZXMgdGhhdCBzaG91bGQgYmUgZGVsYXllZFxyXG4gKiBAcGFyYW0gdHlwZSAtIFRoZSBjbGFzcyB3ZSdyZSBtaXhpbmcgaW50b1xyXG4gKi9cclxuY29uc3QgRGVsYXllZE11dGF0ZSA9IDxTdXBlclR5cGUgZXh0ZW5kcyBDb25zdHJ1Y3RvcjxOb2RlPj4oIG5hbWU6IHN0cmluZywga2V5czogc3RyaW5nW10sIHR5cGU6IFN1cGVyVHlwZSApID0+IHsgLy8gZXNsaW50LWRpc2FibGUtbGluZSBAdHlwZXNjcmlwdC1lc2xpbnQvZXhwbGljaXQtbW9kdWxlLWJvdW5kYXJ5LXR5cGVzXHJcbiAgLy8gV2UgdHlwZWNhc3QgdGhlc2UgdG8gc3RyaW5ncyB0byBzYXRpc2Z5IHRoZSB0eXBlLWNoZWNrZXIgd2l0aG91dCBsYXJnZSBhbW91bnRzIG9mIGdyaWVmLiBJdCBkb2Vzbid0IHNlZW0gdG8gYmVcclxuICAvLyBhYmxlIHRvIHBhcnNlIHRoYXQgd2UncmUgdXNpbmcgdGhlIHNhbWUga2V5cyBmb3IgZWFjaCBjYWxsIG9mIHRoaXMuXHJcbiAgY29uc3QgcGVuZGluZ09wdGlvbnNLZXkgPSBgXyR7bmFtZX1QZW5kaW5nT3B0aW9uc2AgYXMgJ19mYWtlUGVuZGluZ09wdGlvbnNUeXBlJztcclxuICBjb25zdCBpc0NvbnN0cnVjdGVkS2V5ID0gYF8ke25hbWV9SXNDb25zdHJ1Y3RlZGAgYXMgJ19mYWtlSXNDb25zdHJ1Y3RlZFR5cGUnO1xyXG5cclxuICByZXR1cm4gY2xhc3MgRGVsYXllZE11dGF0ZU1peGluIGV4dGVuZHMgdHlwZSB7XHJcblxyXG4gICAgLy8gV2UgbmVlZCB0byBzdG9yZSBkaWZmZXJlbnQgZmllbGRzIGluIGVhY2ggY2xhc3MsIHNvIHdlIHVzZSBjb21wdXRlZCBwcm9wZXJ0aWVzXHJcbiAgICBwcml2YXRlIFsgaXNDb25zdHJ1Y3RlZEtleSBdOiBib29sZWFuO1xyXG4gICAgcHJpdmF0ZSBbIHBlbmRpbmdPcHRpb25zS2V5IF06IE5vZGVPcHRpb25zIHwgdW5kZWZpbmVkO1xyXG5cclxuICAgIHB1YmxpYyBjb25zdHJ1Y3RvciggLi4uYXJnczogSW50ZW50aW9uYWxBbnlbXSApIHtcclxuICAgICAgc3VwZXIoIC4uLmFyZ3MgKTtcclxuXHJcbiAgICAgIC8vIE1hcmsgb3Vyc2VsZiBhcyBjb25zdHJ1Y3RlZCwgc28gZnVydGhlciBtdXRhdGVzIHdpbGwgdXNlIGFsbCBvZiB0aGUgb3B0aW9uc1xyXG4gICAgICB0aGlzWyBpc0NvbnN0cnVjdGVkS2V5IF0gPSB0cnVlO1xyXG5cclxuICAgICAgLy8gQXBwbHkgYW55IG9wdGlvbnMgdGhhdCB3ZSBkZWxheWVkXHJcbiAgICAgIHRoaXMubXV0YXRlKCB0aGlzWyBwZW5kaW5nT3B0aW9uc0tleSBdICk7XHJcblxyXG4gICAgICAvLyBQcmV2ZW50IG1lbW9yeSBsZWFrcyBieSB0b3NzaW5nIHRoZSBvcHRpb25zIGRhdGEgdGhhdCB3ZSd2ZSBub3cgdXNlZFxyXG4gICAgICB0aGlzWyBwZW5kaW5nT3B0aW9uc0tleSBdID0gdW5kZWZpbmVkO1xyXG4gICAgfVxyXG5cclxuICAgIC8vIFR5cGVzY3JpcHQgZG9lc24ndCB3YW50IGFuIG92ZXJyaWRlIGhlcmUsIGJ1dCB3ZSdyZSBvdmVycmlkaW5nIGl0XHJcbiAgICBwdWJsaWMgb3ZlcnJpZGUgbXV0YXRlKCBvcHRpb25zPzogTm9kZU9wdGlvbnMgKTogdGhpcyB7XHJcblxyXG4gICAgICAvLyBJZiB3ZSdyZSBub3QgY29uc3RydWN0ZWQsIHdlIG5lZWQgdG8gc2F2ZSB0aGUgb3B0aW9ucyBmb3IgbGF0ZXJcclxuICAgICAgLy8gTk9URTogSWYgd2UgaGF2ZW4ndCBTRVQgdGhlIGNvbnN0cnVjdGVkIGZpZWxkIHlldCwgdGhlbiBpdCB3aWxsIGJlIHVuZGVmaW5lZCAoYW5kIGZhbHN5KSwgc28gd2UgZG8gYSBjaGVja1xyXG4gICAgICAvLyBmb3IgdGhhdCBoZXJlLlxyXG4gICAgICBpZiAoIG9wdGlvbnMgJiYgIXRoaXNbIGlzQ29uc3RydWN0ZWRLZXkgXSApIHtcclxuICAgICAgICAvLyBTdG9yZSBkZWxheWVkIG9wdGlvbnMuIElmIHdlJ3ZlIHByb3ZpZGVkIHRoZSBzYW1lIG9wdGlvbiBiZWZvcmUsIHdlJ2xsIHdhbnQgdG8gdXNlIHRoZSBtb3N0IHJlY2VudFxyXG4gICAgICAgIC8vIChzbyBhIG1lcmdlIG1ha2VzIHNlbnNlKS5cclxuICAgICAgICB0aGlzWyBwZW5kaW5nT3B0aW9uc0tleSBdID0gY29tYmluZU9wdGlvbnM8Tm9kZU9wdGlvbnM+KCB0aGlzWyBwZW5kaW5nT3B0aW9uc0tleSBdIHx8IHt9LCBfLnBpY2soIG9wdGlvbnMsIGtleXMgKSApO1xyXG5cclxuICAgICAgICAvLyBXZSdsbCBzdGlsbCB3YW50IHRvIG11dGF0ZSB3aXRoIHRoZSBub24tZGVsYXllZCBvcHRpb25zXHJcbiAgICAgICAgb3B0aW9ucyA9IF8ub21pdCggb3B0aW9ucywga2V5cyApO1xyXG4gICAgICB9XHJcblxyXG4gICAgICByZXR1cm4gc3VwZXIubXV0YXRlKCBvcHRpb25zICk7XHJcbiAgICB9XHJcbiAgfTtcclxufTtcclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdEZWxheWVkTXV0YXRlJywgRGVsYXllZE11dGF0ZSApO1xyXG5leHBvcnQgZGVmYXVsdCBEZWxheWVkTXV0YXRlO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUE0QkEsT0FBTyxRQUFRLGVBQWU7QUFFMUQsU0FBU0MsY0FBYyxRQUFRLG9DQUFvQztBQUduRTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsTUFBTUMsYUFBYSxHQUFHQSxDQUF1Q0MsSUFBWSxFQUFFQyxJQUFjLEVBQUVDLElBQWUsS0FBTTtFQUFFO0VBQ2hIO0VBQ0E7RUFDQSxNQUFNQyxpQkFBaUIsR0FBSSxJQUFHSCxJQUFLLGdCQUE0QztFQUMvRSxNQUFNSSxnQkFBZ0IsR0FBSSxJQUFHSixJQUFLLGVBQTBDO0VBRTVFLE9BQU8sTUFBTUssa0JBQWtCLFNBQVNILElBQUksQ0FBQztJQUUzQzs7SUFJT0ksV0FBV0EsQ0FBRSxHQUFHQyxJQUFzQixFQUFHO01BQzlDLEtBQUssQ0FBRSxHQUFHQSxJQUFLLENBQUM7O01BRWhCO01BQ0EsSUFBSSxDQUFFSCxnQkFBZ0IsQ0FBRSxHQUFHLElBQUk7O01BRS9CO01BQ0EsSUFBSSxDQUFDSSxNQUFNLENBQUUsSUFBSSxDQUFFTCxpQkFBaUIsQ0FBRyxDQUFDOztNQUV4QztNQUNBLElBQUksQ0FBRUEsaUJBQWlCLENBQUUsR0FBR00sU0FBUztJQUN2Qzs7SUFFQTtJQUNnQkQsTUFBTUEsQ0FBRUUsT0FBcUIsRUFBUztNQUVwRDtNQUNBO01BQ0E7TUFDQSxJQUFLQSxPQUFPLElBQUksQ0FBQyxJQUFJLENBQUVOLGdCQUFnQixDQUFFLEVBQUc7UUFDMUM7UUFDQTtRQUNBLElBQUksQ0FBRUQsaUJBQWlCLENBQUUsR0FBR0wsY0FBYyxDQUFlLElBQUksQ0FBRUssaUJBQWlCLENBQUUsSUFBSSxDQUFDLENBQUMsRUFBRVEsQ0FBQyxDQUFDQyxJQUFJLENBQUVGLE9BQU8sRUFBRVQsSUFBSyxDQUFFLENBQUM7O1FBRW5IO1FBQ0FTLE9BQU8sR0FBR0MsQ0FBQyxDQUFDRSxJQUFJLENBQUVILE9BQU8sRUFBRVQsSUFBSyxDQUFDO01BQ25DO01BRUEsT0FBTyxLQUFLLENBQUNPLE1BQU0sQ0FBRUUsT0FBUSxDQUFDO0lBQ2hDO0VBQ0YsQ0FBQztBQUNILENBQUM7QUFFRGIsT0FBTyxDQUFDaUIsUUFBUSxDQUFFLGVBQWUsRUFBRWYsYUFBYyxDQUFDO0FBQ2xELGVBQWVBLGFBQWEifQ==

@@ -1,0 +1,1837 @@
+{
+  "ar": {
+    "screen.game": {
+      "value": "لعبة"
+    },
+    "screen.ten": {
+      "value": "عشرة"
+    },
+    "screen.twenty": {
+      "value": "عشرين"
+    },
+    "ones": {
+      "value": "الآحاد"
+    },
+    "tenFrame": {
+      "value": "إطارعشرة"
+    },
+    "word": {
+      "value": "كلمة"
+    },
+    "wordLanguage": {
+      "value": "كلمة({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "اختر لعبتك!"
+    },
+    "games": {
+      "value": "ألعاب"
+    },
+    "number-play.title": {
+      "value": "لعبة العدد"
+    }
+  },
+  "ar_MA": {
+    "screen.game": {
+      "value": "العب"
+    },
+    "screen.ten": {
+      "value": "عشرة"
+    },
+    "screen.twenty": {
+      "value": "عشرون"
+    },
+    "ones": {
+      "value": "وحدات"
+    },
+    "tenFrame": {
+      "value": "شبكة من عشر خانات"
+    },
+    "word": {
+      "value": "العدد بالحروف"
+    },
+    "wordLanguage": {
+      "value": "كلمة ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "اختر لعبتك"
+    },
+    "games": {
+      "value": "ألعاب"
+    },
+    "number-play.title": {
+      "value": "رقم اللعبة"
+    }
+  },
+  "az": {
+    "screen.game": {
+      "value": "Oyun"
+    },
+    "screen.ten": {
+      "value": "10"
+    },
+    "screen.twenty": {
+      "value": "20"
+    },
+    "subitizeTime": {
+      "value": "Sürətli təxmin etmə vaxtı"
+    },
+    "subitizeTimeDescription": {
+      "value": "Sürətli təxmin etmə oyun səviyyələrində obyektlərin göstərildiyi vaxtı təyin edin."
+    },
+    "chooseYourGame": {
+      "value": "Oyununu seç!"
+    },
+    "ones": {
+      "value": "Birliklər"
+    },
+    "countingLevel1Description": {
+      "value": "<b>Hesablama: Səviyyə 1</b> 1-dən 10-a hesabla"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Hesablama: Səviyyə 2</b> 11-dən 20-yə hesabla"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Sürətli təxmin etmə: Səviyyə 1</b> 1-dən 5-ə sürətli təxmin et"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Sürətli təxmin etmə: Səviyyə 2</b> 6-dan 10-a sürətli təxmin et"
+    },
+    "games": {
+      "value": "Oyunlar"
+    },
+    "tenFrames": {
+      "value": "Onluq çərçivələri"
+    },
+    "tenFrame": {
+      "value": "Onluq çərçivəsi"
+    },
+    "word": {
+      "value": "Söz"
+    },
+    "wordLanguage": {
+      "value": "Söz ({{language}})"
+    },
+    "number-play.title": {
+      "value": "Ədəd oyunu"
+    },
+    "automaticallyHearTotal": {
+      "value": "Avtomatik olaraq ümumini eşit"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Qarşılıqlı əlaqə qurarkən ümumi yeniləməni avtomatik eşidin."
+    }
+  },
+  "bn": {
+    "screen.game": {
+      "value": "খেলা "
+    },
+    "screen.ten": {
+      "value": "দশ "
+    },
+    "screen.twenty": {
+      "value": "বিশ "
+    },
+    "ones": {
+      "value": "বেশী"
+    },
+    "tenFrame": {
+      "value": "দশটি  ফ্রেম"
+    },
+    "word": {
+      "value": "শব্দ "
+    },
+    "wordLanguage": {
+      "value": "Word ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "তোমার গেম পছন্দ করো "
+    },
+    "games": {
+      "value": "গেম "
+    },
+    "number-play.title": {
+      "value": "সংখ্যার খেলা "
+    }
+  },
+  "bs": {
+    "screen.game": {
+      "value": "Igra"
+    },
+    "screen.ten": {
+      "value": "Deset"
+    },
+    "screen.twenty": {
+      "value": "Dvadeset"
+    },
+    "ones": {
+      "value": "jedno"
+    },
+    "tenFrame": {
+      "value": "Okvir od deset"
+    },
+    "word": {
+      "value": "riječ"
+    },
+    "wordLanguage": {
+      "value": "riječ ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Odaberi svoju igru!"
+    },
+    "games": {
+      "value": "Igre"
+    },
+    "number-play.title": {
+      "value": "Igre sa brojevima"
+    }
+  },
+  "ca": {
+    "screen.game": {
+      "value": "Joc"
+    },
+    "screen.ten": {
+      "value": "Deu"
+    },
+    "screen.twenty": {
+      "value": "Vint"
+    },
+    "ones": {
+      "value": "Uns"
+    },
+    "tenFrame": {
+      "value": "Quadre per comptar (x10)"
+    },
+    "word": {
+      "value": "Paraula"
+    },
+    "wordLanguage": {
+      "value": "Paraula ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Tria el joc que vulguis!"
+    },
+    "games": {
+      "value": "Jocs"
+    },
+    "number-play.title": {
+      "value": "Joc de números"
+    }
+  },
+  "cs": {
+    "screen.game": {
+      "value": "Hra"
+    },
+    "screen.ten": {
+      "value": "Deset"
+    },
+    "screen.twenty": {
+      "value": "Dvacet"
+    },
+    "ones": {
+      "value": "Jednotky"
+    },
+    "tenFrame": {
+      "value": "Desítková mřížka"
+    },
+    "word": {
+      "value": "Slovo"
+    },
+    "wordLanguage": {
+      "value": "Slovo ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Vybrat hru!"
+    },
+    "games": {
+      "value": "Hry"
+    },
+    "number-play.title": {
+      "value": "Hra s čísly"
+    }
+  },
+  "da": {
+    "screen.game": {
+      "value": "Spil"
+    },
+    "screen.ten": {
+      "value": "Ti"
+    },
+    "screen.twenty": {
+      "value": "Tyve"
+    },
+    "ones": {
+      "value": "Enere"
+    },
+    "tenFrame": {
+      "value": "10´er ramme"
+    },
+    "word": {
+      "value": "Talnavn"
+    },
+    "wordLanguage": {
+      "value": "Ord ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Vælg dit spil!"
+    },
+    "games": {
+      "value": "Spil"
+    },
+    "number-play.title": {
+      "value": "Talleg"
+    },
+    "subitizeTime": {
+      "value": "Anslå tid"
+    },
+    "subitizeTimeDescription": {
+      "value": "Indstil den tid, objekter skal vises i Anslå-spilniveauerne."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Tæller: Level 1</b> Tæl fra 1-10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Tæller: Level 2</b> Tæl fra 11-20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Anslå: Level 1</b> Anslå fra 1-5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Anslå: Level 2</b> Anslå fra 6-10"
+    },
+    "tenFrames": {
+      "value": "10´er rammer"
+    },
+    "automaticallyHearTotal": {
+      "value": "Automatisk hør total"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Hør den samlede opdatering automatisk, mens du interagerer."
+    }
+  },
+  "de": {
+    "screen.game": {
+      "value": "Spiel"
+    },
+    "screen.ten": {
+      "value": "Zehn"
+    },
+    "screen.twenty": {
+      "value": "Zwanzig"
+    },
+    "ones": {
+      "value": "Einer"
+    },
+    "tenFrame": {
+      "value": "Zehner-Rahmen"
+    },
+    "word": {
+      "value": "Wort"
+    },
+    "wordLanguage": {
+      "value": "Wort ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Wähle dein Spiel."
+    },
+    "games": {
+      "value": "Spiele"
+    },
+    "number-play.title": {
+      "value": "Zahlenspiel"
+    }
+  },
+  "el": {
+    "screen.game": {
+      "value": "Παιχνίδι"
+    },
+    "screen.ten": {
+      "value": "Δέκα"
+    },
+    "screen.twenty": {
+      "value": "Είκοσι"
+    },
+    "ones": {
+      "value": "Μονάδες"
+    },
+    "tenFrame": {
+      "value": "Δεκάδα"
+    },
+    "word": {
+      "value": "Λέξη"
+    },
+    "wordLanguage": {
+      "value": "Λέξη ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Επίλεξε το παιχνίδι σου!"
+    },
+    "games": {
+      "value": "Παιχνίδια"
+    },
+    "number-play.title": {
+      "value": "Παίζοντας με αριθμούς"
+    },
+    "subitizeTime": {
+      "value": "Άμεση εκτίμηση χρόνου"
+    },
+    "subitizeTimeDescription": {
+      "value": "Ρυθμίστε τον χρόνο στον οποίο θα εμφανίζονται τα αντικείμενα στα επίπεδα άμεσης εκτίμησης του παιχνιδιού."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Μέτρηση:</b> Επίπεδο 1, από 1-10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Μέτρηση:</b> Επίπεδο 2, από 11-20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Άμεση εκτίμηση:</b> Επίπεδο 1, από 1-5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Άμεση εκτίμηση:</b> Επίπεδο 2</b>, από 6-10"
+    },
+    "tenFrames": {
+      "value": "Δεκάδες"
+    },
+    "automaticallyHearTotal": {
+      "value": "Αυτόματη ακρόαση συνόλου"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Ακούστε τη συνολική ενημέρωση αυτόματα καθώς αλληλεπιδράτε."
+    }
+  },
+  "es": {
+    "screen.game": {
+      "value": "Juego"
+    },
+    "screen.ten": {
+      "value": "Diez"
+    },
+    "screen.twenty": {
+      "value": "Veinte"
+    },
+    "ones": {
+      "value": "Unos"
+    },
+    "tenFrame": {
+      "value": "Marco de Diez"
+    },
+    "word": {
+      "value": "Palabra"
+    },
+    "wordLanguage": {
+      "value": "Palabra ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "¡Elige tu Juego!"
+    },
+    "games": {
+      "value": "Juegos"
+    },
+    "number-play.title": {
+      "value": "Juego de Números"
+    },
+    "subitizeTime": {
+      "value": "Tiempo de Subitización"
+    },
+    "subitizeTimeDescription": {
+      "value": "Establece el tiempo en el que se muestran los objetos en los niveles del juego Subitizar."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Contando: Nivel 1</b> Contar del 1 al 10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Contando: Nivel 2</b> Contar del 11 al 20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Subitizando: Nivel 1</b> Subitizar del 1 al 5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Subitizando: Nivel 2</b> Subitizar del 6 al 10"
+    },
+    "tenFrames": {
+      "value": "Marcos de Diez"
+    },
+    "automaticallyHearTotal": {
+      "value": "Escuchar Automáticamente el Total"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Escucha la actualización total automáticamente mientras interactúas."
+    }
+  },
+  "es_MX": {},
+  "es_PE": {
+    "screen.game": {
+      "value": "Juego"
+    },
+    "screen.ten": {
+      "value": "Diez"
+    },
+    "screen.twenty": {
+      "value": "Veinte"
+    },
+    "ones": {
+      "value": "Unos"
+    },
+    "tenFrame": {
+      "value": "Cuadro de diez"
+    },
+    "word": {
+      "value": "Palabra"
+    },
+    "wordLanguage": {
+      "value": "Palabra ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "¡Escoge tu juego!"
+    },
+    "games": {
+      "value": "Juegos"
+    },
+    "number-play.title": {
+      "value": "Juego de números"
+    }
+  },
+  "eu": {
+    "screen.game": {
+      "value": "Jokoa"
+    },
+    "screen.ten": {
+      "value": "Hamar"
+    },
+    "screen.twenty": {
+      "value": "Hogei"
+    },
+    "ones": {
+      "value": "Batak"
+    },
+    "tenFrame": {
+      "value": "Hamarrekoa"
+    },
+    "word": {
+      "value": "Hitza"
+    },
+    "wordLanguage": {
+      "value": "Hitza ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Aukeratu zure jokoa!"
+    },
+    "games": {
+      "value": "Jolasak"
+    },
+    "number-play.title": {
+      "value": "Zenbaki jolasa"
+    },
+    "subitizeTime": {
+      "value": "Bapatekotasun-denbora"
+    },
+    "subitizeTimeDescription": {
+      "value": "Ezarri objektuak bapatekotasun joko-mailetan erakutsiko diren denbora."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Kontaketa: 1. maila</b> 1etik 10era zenbatu"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Kontaketa: 2. maila</b> 11tik 20ra zenbatu"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Bapatekotasunean: 1. maila</b> Bapatean 1-5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Bapatekotasunean: 2. maila</b> Bapatean 6-10"
+    },
+    "tenFrames": {
+      "value": "Hamarrekoak"
+    },
+    "automaticallyHearTotal": {
+      "value": "Entzun guztira automatikoki"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Entzun guztiraren eguneratze osoa automatikoki elkarreraginean zauden bitartean."
+    }
+  },
+  "fa": {
+    "screen.game": {
+      "value": "بازی"
+    },
+    "screen.ten": {
+      "value": "ده"
+    },
+    "screen.twenty": {
+      "value": "بیست"
+    },
+    "ones": {
+      "value": "یکها"
+    },
+    "tenFrame": {
+      "value": "شانۀ ده خانه"
+    },
+    "word": {
+      "value": "کلمه"
+    },
+    "wordLanguage": {
+      "value": "کلمه ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "بازیت رو انتخاب کن!"
+    },
+    "games": {
+      "value": "بازی ها"
+    },
+    "number-play.title": {
+      "value": "بازی با اعداد"
+    }
+  },
+  "fr": {
+    "screen.game": {
+      "value": "Jeu"
+    },
+    "screen.ten": {
+      "value": "Dix"
+    },
+    "screen.twenty": {
+      "value": "Vingt"
+    },
+    "ones": {
+      "value": "ceux"
+    },
+    "tenFrame": {
+      "value": "Bloc de dix"
+    },
+    "word": {
+      "value": "Mot"
+    },
+    "wordLanguage": {
+      "value": "mot ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Choisis ton jeu!"
+    },
+    "games": {
+      "value": "Jeux"
+    },
+    "number-play.title": {
+      "value": "Jeu de nombres"
+    }
+  },
+  "gu": {
+    "screen.game": {
+      "value": "રમત"
+    },
+    "screen.ten": {
+      "value": "દસ"
+    },
+    "screen.twenty": {
+      "value": "વીસ"
+    },
+    "ones": {
+      "value": "એક વખત"
+    },
+    "tenFrame": {
+      "value": "ચિન્હ"
+    },
+    "word": {
+      "value": "શબ્દ"
+    },
+    "wordLanguage": {
+      "value": "શબ્દ ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "તમારી રમત પસંદ કરો!"
+    },
+    "games": {
+      "value": "રમતો"
+    },
+    "number-play.title": {
+      "value": "અંકોની રમત - જીજ્ઞેશ ખુંટ"
+    }
+  },
+  "ha": {
+    "screen.game": {
+      "value": "Wasa"
+    },
+    "screen.ten": {
+      "value": "Goma"
+    },
+    "screen.twenty": {
+      "value": "Ashirn"
+    },
+    "ones": {
+      "value": "Ones"
+    },
+    "tenFrame": {
+      "value": "Frame goma"
+    },
+    "word": {
+      "value": "Kalma"
+    },
+    "wordLanguage": {
+      "value": "Kalma{{language}}"
+    },
+    "chooseYourGame": {
+      "value": "Zaba wasan ka"
+    },
+    "games": {
+      "value": "Wasani"
+    },
+    "number-play.title": {
+      "value": "Lambar wasa"
+    }
+  },
+  "hi": {
+    "screen.game": {
+      "value": "खेल"
+    },
+    "screen.ten": {
+      "value": "दस"
+    },
+    "screen.twenty": {
+      "value": "बीस"
+    },
+    "ones": {
+      "value": "इकाई"
+    },
+    "tenFrame": {
+      "value": "दस फ्रेम"
+    },
+    "word": {
+      "value": "शब्द"
+    },
+    "wordLanguage": {
+      "value": "शब्द ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "अपना खेल चुनो"
+    },
+    "games": {
+      "value": "खेल"
+    },
+    "number-play.title": {
+      "value": "अंकों का खेल"
+    }
+  },
+  "hr": {
+    "screen.game": {
+      "value": "Igra "
+    },
+    "screen.ten": {
+      "value": "Deset"
+    },
+    "screen.twenty": {
+      "value": "Dvadeset"
+    },
+    "ones": {
+      "value": "Jednom"
+    },
+    "tenFrame": {
+      "value": "U okviru broja deset "
+    },
+    "word": {
+      "value": "Riječ"
+    },
+    "wordLanguage": {
+      "value": "Riječ ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Izaberi igru!"
+    },
+    "games": {
+      "value": "Igre"
+    },
+    "number-play.title": {
+      "value": "Igra brojeva "
+    }
+  },
+  "ht": {
+    "screen.game": {
+      "value": "Jwèt "
+    },
+    "screen.ten": {
+      "value": "Dis"
+    },
+    "screen.twenty": {
+      "value": "Ven"
+    },
+    "ones": {
+      "value": "Sa yo"
+    },
+    "tenFrame": {
+      "value": "Dis kad"
+    },
+    "word": {
+      "value": "Mo"
+    },
+    "wordLanguage": {
+      "value": "Mo ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Chwazi jwèt ou a"
+    },
+    "games": {
+      "value": "Jwèt "
+    },
+    "number-play.title": {
+      "value": "Jwèt ak nonb"
+    }
+  },
+  "ig": {
+    "screen.game": {
+      "value": "Gwuo Egwu"
+    },
+    "screen.ten": {
+      "value": "Iri"
+    },
+    "screen.twenty": {
+      "value": "Iri Abụọ"
+    },
+    "ones": {
+      "value": "Ndị ahụ"
+    },
+    "tenFrame": {
+      "value": "Igbe iri"
+    },
+    "word": {
+      "value": "Okwu"
+    },
+    "wordLanguage": {
+      "value": " okwu ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Họrọ Egwuregwu Gị!"
+    },
+    "games": {
+      "value": "Egwuregwu"
+    },
+    "number-play.title": {
+      "value": "Egwuregwu Nọmba"
+    }
+  },
+  "it": {
+    "screen.game": {
+      "value": "Gioco"
+    },
+    "screen.ten": {
+      "value": "Dieci"
+    },
+    "screen.twenty": {
+      "value": "Venti"
+    },
+    "ones": {
+      "value": "Singoli"
+    },
+    "tenFrame": {
+      "value": "tabella da dieci"
+    },
+    "word": {
+      "value": "Parola"
+    },
+    "wordLanguage": {
+      "value": "Parola ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Scegli il tuo gioco!"
+    },
+    "games": {
+      "value": "Giochi"
+    },
+    "number-play.title": {
+      "value": "Il gioco dei numeri"
+    }
+  },
+  "iw": {
+    "screen.game": {
+      "value": "משחק"
+    },
+    "screen.ten": {
+      "value": "עשר"
+    },
+    "screen.twenty": {
+      "value": "עשרים"
+    },
+    "ones": {
+      "value": "אחדות"
+    },
+    "tenFrame": {
+      "value": "מסגרת עשר"
+    },
+    "word": {
+      "value": "מילה"
+    },
+    "wordLanguage": {
+      "value": "מילה ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "בחירת המשחק שלך!"
+    },
+    "games": {
+      "value": "משחקים"
+    },
+    "number-play.title": {
+      "value": "משחק מספר"
+    }
+  },
+  "ja": {
+    "screen.game": {
+      "value": "ゲーム"
+    },
+    "screen.ten": {
+      "value": "じゅう"
+    },
+    "screen.twenty": {
+      "value": "にじゅう"
+    },
+    "ones": {
+      "value": "いち"
+    },
+    "tenFrame": {
+      "value": "10のわく"
+    },
+    "word": {
+      "value": "ことば"
+    },
+    "wordLanguage": {
+      "value": "ことば ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "ゲームをえらぼう！"
+    },
+    "games": {
+      "value": "ゲーム"
+    },
+    "number-play.title": {
+      "value": "かずあそび"
+    }
+  },
+  "ko": {
+    "screen.game": {
+      "value": "게임"
+    },
+    "screen.ten": {
+      "value": "10"
+    },
+    "screen.twenty": {
+      "value": "20"
+    },
+    "ones": {
+      "value": "하나의"
+    },
+    "tenFrame": {
+      "value": "10개 틀"
+    },
+    "word": {
+      "value": "단어"
+    },
+    "wordLanguage": {
+      "value": "단어 ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "게임을 선택하세요!"
+    },
+    "games": {
+      "value": "게임"
+    },
+    "number-play.title": {
+      "value": "게임 횟수"
+    }
+  },
+  "lg": {
+    "screen.game": {
+      "value": "Omuzannyo"
+    },
+    "screen.ten": {
+      "value": "Kumi"
+    },
+    "screen.twenty": {
+      "value": "Abbiri"
+    },
+    "ones": {
+      "value": "Abbiri mwemu"
+    },
+    "tenFrame": {
+      "value": "Fuleemu Ekkumi"
+    },
+    "word": {
+      "value": "Ebiganbo"
+    },
+    "wordLanguage": {
+      "value": "Ebiganbo ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Londa Omuzannyo Gwo!"
+    },
+    "games": {
+      "value": "Omuzanyo"
+    },
+    "number-play.title": {
+      "value": "Okuzannya Ennamba"
+    }
+  },
+  "mn": {
+    "screen.game": {
+      "value": "Тогло"
+    },
+    "screen.ten": {
+      "value": "Арав"
+    },
+    "screen.twenty": {
+      "value": "Хорь"
+    },
+    "ones": {
+      "value": "Ганц"
+    },
+    "tenFrame": {
+      "value": "Арван хайрцаг"
+    },
+    "word": {
+      "value": "Үгээр"
+    },
+    "wordLanguage": {
+      "value": "({{language}}) Үг"
+    },
+    "chooseYourGame": {
+      "value": "Тоглоомоо Сонго!"
+    },
+    "games": {
+      "value": "Тоглоом"
+    },
+    "number-play.title": {
+      "value": "Тоогоор Тогло"
+    }
+  },
+  "ms": {
+    "screen.game": {
+      "value": "Permainan"
+    },
+    "screen.ten": {
+      "value": "Sepuluh"
+    },
+    "screen.twenty": {
+      "value": "Dua Puluh"
+    },
+    "ones": {
+      "value": "Orang"
+    },
+    "tenFrame": {
+      "value": "Sepuluh Kotak"
+    },
+    "word": {
+      "value": "Perkataan"
+    },
+    "wordLanguage": {
+      "value": "Perkataan ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Pilih Permainan Anda!"
+    },
+    "games": {
+      "value": "Permainan"
+    },
+    "number-play.title": {
+      "value": "Permainan Nombor"
+    }
+  },
+  "nl": {
+    "screen.game": {
+      "value": "Spel"
+    },
+    "screen.ten": {
+      "value": "Tien"
+    },
+    "screen.twenty": {
+      "value": "Twintig"
+    },
+    "ones": {
+      "value": "Enen"
+    },
+    "tenFrame": {
+      "value": "Tien kader"
+    },
+    "word": {
+      "value": "Woord"
+    },
+    "wordLanguage": {
+      "value": "Woord ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Kies jouw spel!"
+    },
+    "games": {
+      "value": "Spellen"
+    },
+    "number-play.title": {
+      "value": "Getallen spel"
+    }
+  },
+  "ny": {
+    "screen.game": {
+      "value": "Masewera"
+    },
+    "screen.ten": {
+      "value": "Khumi"
+    },
+    "screen.twenty": {
+      "value": "Makumi awiri"
+    },
+    "ones": {
+      "value": "ma wanu"
+    },
+    "tenFrame": {
+      "value": "Khumi Frame"
+    },
+    "word": {
+      "value": "Mawu"
+    },
+    "wordLanguage": {
+      "value": "Mawu ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Sankhani Masewera Anu!"
+    },
+    "games": {
+      "value": "Masewera"
+    },
+    "number-play.title": {
+      "value": "Sewerani Nambala"
+    }
+  },
+  "om": {
+    "screen.game": {
+      "value": "Tapha"
+    },
+    "screen.ten": {
+      "value": "Kudhan"
+    },
+    "screen.twenty": {
+      "value": "Diigdama"
+    },
+    "ones": {
+      "value": "Tokkee"
+    },
+    "tenFrame": {
+      "value": "Fireemi Kudhan "
+    },
+    "word": {
+      "value": "Jecha"
+    },
+    "wordLanguage": {
+      "value": "Jecha ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Tapha Keessan Filadhaa!"
+    },
+    "games": {
+      "value": "Taphoota"
+    },
+    "number-play.title": {
+      "value": "Tapha Lakkoofsaa"
+    }
+  },
+  "pl": {
+    "screen.game": {
+      "value": "Gra"
+    },
+    "screen.ten": {
+      "value": "Dziesięć"
+    },
+    "screen.twenty": {
+      "value": "Dwadzieścia"
+    },
+    "ones": {
+      "value": "Jedynki"
+    },
+    "tenFrame": {
+      "value": "Ramka dziesiętna"
+    },
+    "word": {
+      "value": "Słownie"
+    },
+    "wordLanguage": {
+      "value": "Słownie ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Wybierz grę!"
+    },
+    "games": {
+      "value": "Gry"
+    },
+    "number-play.title": {
+      "value": "Gra liczbowa"
+    },
+    "subitizeTime": {
+      "value": "Czas ekspozycji"
+    },
+    "subitizeTimeDescription": {
+      "value": "Ustaw czas wyświetlania obiektów na poziomach gry Szacowanie."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Liczenie: Poziom 1</b>  Licz od 1-10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Liczenie: Poziom 2</b>  Licz od 11-20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Szacowanie: Poziom 1</b>  Szacuj od 1-5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Szacowanie: Poziom 2</b>  Szacuj od 6-10"
+    },
+    "tenFrames": {
+      "value": "Ramki dziesiętne"
+    },
+    "automaticallyHearTotal": {
+      "value": "Automatycznie usłysz sumę"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Usłysz liczebność aktualizowaną automatycznie podczas interakcji."
+    }
+  },
+  "pt_BR": {
+    "screen.game": {
+      "value": "Jogo"
+    },
+    "screen.ten": {
+      "value": "Dez"
+    },
+    "screen.twenty": {
+      "value": "Vinte"
+    },
+    "ones": {
+      "value": "Uns"
+    },
+    "tenFrame": {
+      "value": "Material Dourado"
+    },
+    "word": {
+      "value": "Palavra"
+    },
+    "wordLanguage": {
+      "value": "Palavra ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Escolha Seu Jogo!"
+    },
+    "games": {
+      "value": "Jogos"
+    },
+    "number-play.title": {
+      "value": "Jogos dos Números"
+    },
+    "subitizeTime": {
+      "value": "Subitizar o Tempo"
+    },
+    "subitizeTimeDescription": {
+      "value": "Defina o tempo que os objetos são mostrados nos níveis do jogo Subitizar."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Contagem: Nível 1</b> Contar de 1-10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Contagem: Nível 2</b> Contar de 11-20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Subitizar: Nível 1</b> Subitizar de 1-5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Subitizar: Nível 2</b> Subitizar de 6-10"
+    },
+    "tenFrames": {
+      "value": "Materiais Dourados"
+    },
+    "automaticallyHearTotal": {
+      "value": "Ouvir Automaticamente o Total"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Ouça a atualização total automaticamente enquanto você interage."
+    }
+  },
+  "ro": {
+    "screen.game": {
+      "value": "Jocuri"
+    },
+    "screen.ten": {
+      "value": "Zece"
+    },
+    "screen.twenty": {
+      "value": "Douăzeci"
+    },
+    "ones": {
+      "value": "Unități"
+    },
+    "tenFrame": {
+      "value": "Fișă cu 10 spații"
+    },
+    "word": {
+      "value": "Cuvânt"
+    },
+    "wordLanguage": {
+      "value": "Cuvânt ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Alege-ți jocul!"
+    },
+    "games": {
+      "value": "Jocuri"
+    },
+    "number-play.title": {
+      "value": "Jocul numerelor"
+    },
+    "subitizeTime": {
+      "value": "Setează timpul de estimare"
+    },
+    "subitizeTimeDescription": {
+      "value": "Setați timpul în care sunt afișate obiectele în nivelurile jocului ”Estimează”."
+    },
+    "countingLevel1Description": {
+      "value": "<b>Numără: Nivel 1</b>  Numără de la 1 la 10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Numără: Nivel 2</b>  Numără de la 11 la 20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Estimează: Nivel 1</b>  Numără de la 1 la 5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Estimează: Nivel 2</b>  Numără de la 6 la 10"
+    },
+    "tenFrames": {
+      "value": "Fișe cu 10 spații"
+    },
+    "automaticallyHearTotal": {
+      "value": "Redă automat Totalul"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Actualizarea automată Totalului pe măsură ce interacționați."
+    }
+  },
+  "rw": {
+    "screen.game": {
+      "value": "Umukino"
+    },
+    "screen.ten": {
+      "value": "Icumi"
+    },
+    "screen.twenty": {
+      "value": "Makumyabiri"
+    },
+    "ones": {
+      "value": "Ibinyabumwe"
+    },
+    "tenFrame": {
+      "value": "Ikibariko cy'icumi"
+    },
+    "word": {
+      "value": "Ijambo"
+    },
+    "wordLanguage": {
+      "value": "Ijambo ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Hitamo umukino wawe!"
+    },
+    "games": {
+      "value": "Imikino"
+    },
+    "number-play.title": {
+      "value": "Umukino w'imibare"
+    }
+  },
+  "sk": {
+    "screen.game": {
+      "value": "Hra"
+    },
+    "screen.ten": {
+      "value": "Desať"
+    },
+    "screen.twenty": {
+      "value": "Dvadsať"
+    },
+    "ones": {
+      "value": "Jedničky"
+    },
+    "tenFrame": {
+      "value": "Desiatkový rám"
+    },
+    "word": {
+      "value": "Slovo"
+    },
+    "wordLanguage": {
+      "value": "Slovo ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Vyberte si hru!"
+    },
+    "games": {
+      "value": "Hry"
+    },
+    "number-play.title": {
+      "value": "Hra s číslami"
+    }
+  },
+  "sq": {
+    "screen.game": {
+      "value": "Loja"
+    },
+    "screen.ten": {
+      "value": "Dhjetë"
+    },
+    "screen.twenty": {
+      "value": "Njëzetë"
+    },
+    "ones": {
+      "value": "Njëshat"
+    },
+    "tenFrame": {
+      "value": "Tabela me Dhjetë Kutiza"
+    },
+    "word": {
+      "value": "Fjalë"
+    },
+    "wordLanguage": {
+      "value": "Fjalë ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Zgjidhni Lojën Tuaj!"
+    },
+    "games": {
+      "value": "Lojrat"
+    },
+    "number-play.title": {
+      "value": "Loja e Numrave"
+    }
+  },
+  "sr": {
+    "screen.game": {
+      "value": "Игра"
+    },
+    "screen.ten": {
+      "value": "Десет"
+    },
+    "screen.twenty": {
+      "value": "Двадесет"
+    },
+    "ones": {
+      "value": "једно"
+    },
+    "tenFrame": {
+      "value": "Оквир од десет"
+    },
+    "word": {
+      "value": "реч"
+    },
+    "wordLanguage": {
+      "value": "реч ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Одабери своју игру!"
+    },
+    "games": {
+      "value": "Игре"
+    },
+    "number-play.title": {
+      "value": "Игре са бројевима"
+    }
+  },
+  "st": {
+    "screen.game": {
+      "value": "papali"
+    },
+    "screen.ten": {
+      "value": "leshome"
+    },
+    "screen.twenty": {
+      "value": "mashome a mabeli"
+    },
+    "ones": {
+      "value": "'ngoe"
+    },
+    "tenFrame": {
+      "value": "foreime ea leshome"
+    },
+    "word": {
+      "value": "lentsoe"
+    },
+    "wordLanguage": {
+      "value": "lentsoe ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "khetha papali"
+    },
+    "games": {
+      "value": "lipapali"
+    },
+    "number-play.title": {
+      "value": "papali ea nomoro"
+    }
+  },
+  "sw": {
+    "screen.game": {
+      "value": "Mchezo"
+    },
+    "screen.ten": {
+      "value": "Kumi"
+    },
+    "screen.twenty": {
+      "value": "Ishirini"
+    },
+    "ones": {
+      "value": "Mamoja"
+    },
+    "tenFrame": {
+      "value": "Fungu la Kumi"
+    },
+    "word": {
+      "value": "Neno"
+    },
+    "wordLanguage": {
+      "value": "Neno ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Chagua Mchezo wako!"
+    },
+    "games": {
+      "value": "Michezo"
+    },
+    "number-play.title": {
+      "value": "Mchezo wa Namba"
+    }
+  },
+  "te": {
+    "screen.game": {
+      "value": "ఆట"
+    },
+    "screen.ten": {
+      "value": "పది"
+    },
+    "screen.twenty": {
+      "value": "ఇరవై"
+    },
+    "ones": {
+      "value": "ఒకట్లు"
+    },
+    "tenFrame": {
+      "value": "పది చట్రం"
+    },
+    "word": {
+      "value": "పదం"
+    },
+    "wordLanguage": {
+      "value": "Word ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "నీ ఆటనెంచుకో !"
+    },
+    "games": {
+      "value": "ఆటలు"
+    },
+    "number-play.title": {
+      "value": "సంఖ్యా కేళి ; అనువాదం : ఉడిత్యాల రమణ"
+    }
+  },
+  "tk": {
+    "screen.game": {
+      "value": "Oýun"
+    },
+    "screen.ten": {
+      "value": "On"
+    },
+    "screen.twenty": {
+      "value": "Ýigrimi"
+    },
+    "ones": {
+      "value": "Birler"
+    },
+    "tenFrame": {
+      "value": "Onluk çarçuwa"
+    },
+    "word": {
+      "value": "Söz"
+    },
+    "wordLanguage": {
+      "value": "Söz ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Oýnuňy saýla!"
+    },
+    "games": {
+      "value": "Oýunlar"
+    },
+    "number-play.title": {
+      "value": "San oýny"
+    }
+  },
+  "tr": {
+    "screen.game": {
+      "value": "Oyun"
+    },
+    "screen.ten": {
+      "value": "On"
+    },
+    "screen.twenty": {
+      "value": "Yirmi"
+    },
+    "ones": {
+      "value": "Birlikler"
+    },
+    "tenFrame": {
+      "value": "Onluk Çerçeve"
+    },
+    "word": {
+      "value": "Kelime"
+    },
+    "wordLanguage": {
+      "value": "Kelime ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Oyununu Seç !"
+    },
+    "games": {
+      "value": "Oyunlar"
+    },
+    "number-play.title": {
+      "value": "Sayı Oyunu"
+    }
+  },
+  "tw": {
+    "screen.game": {
+      "value": "Agorɔ"
+    },
+    "screen.ten": {
+      "value": "Edu"
+    },
+    "screen.twenty": {
+      "value": "Aduonu"
+    },
+    "ones": {
+      "value": "Mmaako mmaako"
+    },
+    "tenFrame": {
+      "value": "Frem edu"
+    },
+    "word": {
+      "value": "Asɛm"
+    },
+    "wordLanguage": {
+      "value": "Asɛm ({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Yi wo agorɔ"
+    },
+    "games": {
+      "value": "Agorɔ"
+    },
+    "number-play.title": {
+      "value": "Namba agoro"
+    }
+  },
+  "vi": {
+    "screen.game": {
+      "value": "Game"
+    },
+    "screen.ten": {
+      "value": "10"
+    },
+    "screen.twenty": {
+      "value": "20"
+    },
+    "chooseYourGame": {
+      "value": "Choose Your Game!"
+    },
+    "games": {
+      "value": "Games"
+    },
+    "word": {
+      "value": "Từ"
+    },
+    "wordLanguage": {
+      "value": "Word ({{language}})"
+    },
+    "number-play.title": {
+      "value": "Vui đùa với con số"
+    }
+  },
+  "yo": {
+    "screen.game": {
+      "value": "Ere"
+    },
+    "screen.ten": {
+      "value": "ẹwa"
+    },
+    "screen.twenty": {
+      "value": "Ògún"
+    },
+    "ones": {
+      "value": "Àwọn"
+    },
+    "tenFrame": {
+      "value": "Fireemu mẹwa"
+    },
+    "word": {
+      "value": "Ọrọ"
+    },
+    "wordLanguage": {
+      "value": "oro({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "Yan rẹ Game"
+    },
+    "games": {
+      "value": "Awọn ere"
+    },
+    "number-play.title": {
+      "value": "Nọmba Play"
+    }
+  },
+  "zh_CN": {
+    "screen.game": {
+      "value": "游戏"
+    },
+    "screen.ten": {
+      "value": "10 以内"
+    },
+    "screen.twenty": {
+      "value": "20 以内"
+    },
+    "ones": {
+      "value": "个"
+    },
+    "tenFrame": {
+      "value": "十格"
+    },
+    "word": {
+      "value": "读作"
+    },
+    "wordLanguage": {
+      "value": "读作（{{language}}）"
+    },
+    "chooseYourGame": {
+      "value": "选择一个游戏"
+    },
+    "games": {
+      "value": "游戏"
+    },
+    "number-play.title": {
+      "value": "数字游戏"
+    }
+  },
+  "zh_HK": {
+    "screen.game": {
+      "value": "遊戲"
+    },
+    "screen.ten": {
+      "value": "十"
+    },
+    "screen.twenty": {
+      "value": "二十"
+    },
+    "tenFrame": {
+      "value": "以十為單位的框"
+    },
+    "word": {
+      "value": "文字"
+    },
+    "wordLanguage": {
+      "value": "文字({{language}})"
+    },
+    "chooseYourGame": {
+      "value": "選擇你的遊戲!"
+    },
+    "games": {
+      "value": "遊戲"
+    },
+    "number-play.title": {
+      "value": "數學遊戲"
+    }
+  },
+  "zh_TW": {
+    "screen.game": {
+      "value": "遊戲"
+    },
+    "screen.ten": {
+      "value": "10以內的數"
+    },
+    "screen.twenty": {
+      "value": "20以內的數"
+    },
+    "ones": {
+      "value": "用 1 表示"
+    },
+    "tenFrame": {
+      "value": "數框"
+    },
+    "word": {
+      "value": "單字"
+    },
+    "wordLanguage": {
+      "value": "單字（{{language}}）"
+    },
+    "chooseYourGame": {
+      "value": "選擇一個遊戲！"
+    },
+    "games": {
+      "value": "遊戲"
+    },
+    "number-play.title": {
+      "value": "Number Play_認識數目"
+    }
+  },
+  "en": {
+    "number-play.title": {
+      "value": "Number Play"
+    },
+    "screen.ten": {
+      "value": "Ten"
+    },
+    "screen.twenty": {
+      "value": "Twenty"
+    },
+    "screen.game": {
+      "value": "Game"
+    },
+    "word": {
+      "value": "Word"
+    },
+    "wordLanguage": {
+      "value": "Word ({{language}})"
+    },
+    "tenFrame": {
+      "value": "Ten Frame"
+    },
+    "tenFrames": {
+      "value": "Ten Frames"
+    },
+    "ones": {
+      "value": "Ones"
+    },
+    "chooseYourGame": {
+      "value": "Choose Your Game!"
+    },
+    "countingLevel1Description": {
+      "value": "<b>Counting: Level 1</b>  Count from 1-10"
+    },
+    "countingLevel2Description": {
+      "value": "<b>Counting: Level 2</b>  Count from 11-20"
+    },
+    "subitizingLevel1Description": {
+      "value": "<b>Subitizing: Level 1</b>  Subitize from 1-5"
+    },
+    "subitizingLevel2Description": {
+      "value": "<b>Subitizing: Level 2</b>  Subitize from 6-10"
+    },
+    "games": {
+      "value": "Games"
+    },
+    "automaticallyHearTotal": {
+      "value": "Automatically Hear Total"
+    },
+    "automaticallyHearTotalDescription": {
+      "value": "Hear the total update automatically as you interact."
+    },
+    "subitizeTime": {
+      "value": "Subitize Time"
+    },
+    "subitizeTimeDescription": {
+      "value": "Set the time that objects are shown in the Subitize game levels."
+    }
+  }
+}

@@ -1,0 +1,47 @@
+// Copyright 2013-2023, University of Colorado Boulder
+
+/**
+ * Encapsulation of the font used for PhET simulations.
+ * Provides PhET-specific defaults, and guarantees a fallback for font family.
+ *
+ * Sample use:
+ * new PhetFont( { family: 'Futura', size: 24, weight: 'bold' } )
+ * new PhetFont( 24 )
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import { combineOptions } from '../../phet-core/js/optionize.js';
+import { Font } from '../../scenery/js/imports.js';
+import sceneryPhet from './sceneryPhet.js';
+import sceneryPhetQueryParameters from './sceneryPhetQueryParameters.js';
+export default class PhetFont extends Font {
+  /**
+   * @param providedOptions - number or string indicate the font size, otherwise same options as phet.scenery.Font
+   */
+  constructor(providedOptions) {
+    assert && assert(arguments.length === 0 || arguments.length === 1, 'Too many arguments');
+
+    // convenience constructor: new PhetFont( {number|string} size )
+    let options;
+    if (typeof providedOptions === 'number' || typeof providedOptions === 'string') {
+      options = {
+        size: providedOptions
+      };
+    } else {
+      options = providedOptions || {};
+    }
+
+    // PhET defaults
+    options = combineOptions({
+      family: sceneryPhetQueryParameters.fontFamily
+    }, options);
+
+    // Guarantee a fallback family
+    assert && assert(options.family);
+    options.family = `${options.family}, sans-serif`;
+    super(options);
+  }
+}
+sceneryPhet.register('PhetFont', PhetFont);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21iaW5lT3B0aW9ucyIsIkZvbnQiLCJzY2VuZXJ5UGhldCIsInNjZW5lcnlQaGV0UXVlcnlQYXJhbWV0ZXJzIiwiUGhldEZvbnQiLCJjb25zdHJ1Y3RvciIsInByb3ZpZGVkT3B0aW9ucyIsImFzc2VydCIsImFyZ3VtZW50cyIsImxlbmd0aCIsIm9wdGlvbnMiLCJzaXplIiwiZmFtaWx5IiwiZm9udEZhbWlseSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiUGhldEZvbnQudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTMtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogRW5jYXBzdWxhdGlvbiBvZiB0aGUgZm9udCB1c2VkIGZvciBQaEVUIHNpbXVsYXRpb25zLlxyXG4gKiBQcm92aWRlcyBQaEVULXNwZWNpZmljIGRlZmF1bHRzLCBhbmQgZ3VhcmFudGVlcyBhIGZhbGxiYWNrIGZvciBmb250IGZhbWlseS5cclxuICpcclxuICogU2FtcGxlIHVzZTpcclxuICogbmV3IFBoZXRGb250KCB7IGZhbWlseTogJ0Z1dHVyYScsIHNpemU6IDI0LCB3ZWlnaHQ6ICdib2xkJyB9IClcclxuICogbmV3IFBoZXRGb250KCAyNCApXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IHsgY29tYmluZU9wdGlvbnMgfSBmcm9tICcuLi8uLi9waGV0LWNvcmUvanMvb3B0aW9uaXplLmpzJztcclxuaW1wb3J0IHsgRm9udCwgRm9udE9wdGlvbnMgfSBmcm9tICcuLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgc2NlbmVyeVBoZXQgZnJvbSAnLi9zY2VuZXJ5UGhldC5qcyc7XHJcbmltcG9ydCBzY2VuZXJ5UGhldFF1ZXJ5UGFyYW1ldGVycyBmcm9tICcuL3NjZW5lcnlQaGV0UXVlcnlQYXJhbWV0ZXJzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFBoZXRGb250IGV4dGVuZHMgRm9udCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSBwcm92aWRlZE9wdGlvbnMgLSBudW1iZXIgb3Igc3RyaW5nIGluZGljYXRlIHRoZSBmb250IHNpemUsIG90aGVyd2lzZSBzYW1lIG9wdGlvbnMgYXMgcGhldC5zY2VuZXJ5LkZvbnRcclxuICAgKi9cclxuICBwdWJsaWMgY29uc3RydWN0b3IoIHByb3ZpZGVkT3B0aW9ucz86IG51bWJlciB8IHN0cmluZyB8IEZvbnRPcHRpb25zICkge1xyXG5cclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGFyZ3VtZW50cy5sZW5ndGggPT09IDAgfHwgYXJndW1lbnRzLmxlbmd0aCA9PT0gMSwgJ1RvbyBtYW55IGFyZ3VtZW50cycgKTtcclxuXHJcbiAgICAvLyBjb252ZW5pZW5jZSBjb25zdHJ1Y3RvcjogbmV3IFBoZXRGb250KCB7bnVtYmVyfHN0cmluZ30gc2l6ZSApXHJcbiAgICBsZXQgb3B0aW9uczogRm9udE9wdGlvbnM7XHJcbiAgICBpZiAoIHR5cGVvZiBwcm92aWRlZE9wdGlvbnMgPT09ICdudW1iZXInIHx8IHR5cGVvZiBwcm92aWRlZE9wdGlvbnMgPT09ICdzdHJpbmcnICkge1xyXG4gICAgICBvcHRpb25zID0geyBzaXplOiBwcm92aWRlZE9wdGlvbnMgfTtcclxuICAgIH1cclxuICAgIGVsc2Uge1xyXG4gICAgICBvcHRpb25zID0gcHJvdmlkZWRPcHRpb25zIHx8IHt9O1xyXG4gICAgfVxyXG5cclxuICAgIC8vIFBoRVQgZGVmYXVsdHNcclxuICAgIG9wdGlvbnMgPSBjb21iaW5lT3B0aW9uczxGb250T3B0aW9ucz4oIHtcclxuICAgICAgZmFtaWx5OiBzY2VuZXJ5UGhldFF1ZXJ5UGFyYW1ldGVycy5mb250RmFtaWx5IVxyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIC8vIEd1YXJhbnRlZSBhIGZhbGxiYWNrIGZhbWlseVxyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggb3B0aW9ucy5mYW1pbHkgKTtcclxuICAgIG9wdGlvbnMuZmFtaWx5ID0gYCR7b3B0aW9ucy5mYW1pbHl9LCBzYW5zLXNlcmlmYDtcclxuXHJcbiAgICBzdXBlciggb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuc2NlbmVyeVBoZXQucmVnaXN0ZXIoICdQaGV0Rm9udCcsIFBoZXRGb250ICk7XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsU0FBU0EsY0FBYyxRQUFRLGlDQUFpQztBQUNoRSxTQUFTQyxJQUFJLFFBQXFCLDZCQUE2QjtBQUMvRCxPQUFPQyxXQUFXLE1BQU0sa0JBQWtCO0FBQzFDLE9BQU9DLDBCQUEwQixNQUFNLGlDQUFpQztBQUV4RSxlQUFlLE1BQU1DLFFBQVEsU0FBU0gsSUFBSSxDQUFDO0VBRXpDO0FBQ0Y7QUFDQTtFQUNTSSxXQUFXQSxDQUFFQyxlQUErQyxFQUFHO0lBRXBFQyxNQUFNLElBQUlBLE1BQU0sQ0FBRUMsU0FBUyxDQUFDQyxNQUFNLEtBQUssQ0FBQyxJQUFJRCxTQUFTLENBQUNDLE1BQU0sS0FBSyxDQUFDLEVBQUUsb0JBQXFCLENBQUM7O0lBRTFGO0lBQ0EsSUFBSUMsT0FBb0I7SUFDeEIsSUFBSyxPQUFPSixlQUFlLEtBQUssUUFBUSxJQUFJLE9BQU9BLGVBQWUsS0FBSyxRQUFRLEVBQUc7TUFDaEZJLE9BQU8sR0FBRztRQUFFQyxJQUFJLEVBQUVMO01BQWdCLENBQUM7SUFDckMsQ0FBQyxNQUNJO01BQ0hJLE9BQU8sR0FBR0osZUFBZSxJQUFJLENBQUMsQ0FBQztJQUNqQzs7SUFFQTtJQUNBSSxPQUFPLEdBQUdWLGNBQWMsQ0FBZTtNQUNyQ1ksTUFBTSxFQUFFVCwwQkFBMEIsQ0FBQ1U7SUFDckMsQ0FBQyxFQUFFSCxPQUFRLENBQUM7O0lBRVo7SUFDQUgsTUFBTSxJQUFJQSxNQUFNLENBQUVHLE9BQU8sQ0FBQ0UsTUFBTyxDQUFDO0lBQ2xDRixPQUFPLENBQUNFLE1BQU0sR0FBSSxHQUFFRixPQUFPLENBQUNFLE1BQU8sY0FBYTtJQUVoRCxLQUFLLENBQUVGLE9BQVEsQ0FBQztFQUNsQjtBQUNGO0FBRUFSLFdBQVcsQ0FBQ1ksUUFBUSxDQUFFLFVBQVUsRUFBRVYsUUFBUyxDQUFDIn0=

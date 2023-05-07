@@ -1,0 +1,11 @@
+// Copyright 2019-2020, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this simulation.
+ *
+ * @author Chris Klusendorf (PhET Interactive Simulations)
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('numberPlay');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJudW1iZXJQbGF5LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE5LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIENyZWF0ZXMgdGhlIG5hbWVzcGFjZSBmb3IgdGhpcyBzaW11bGF0aW9uLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIEtsdXNlbmRvcmYgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IE5hbWVzcGFjZSBmcm9tICcuLi8uLi9waGV0LWNvcmUvanMvTmFtZXNwYWNlLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IG5ldyBOYW1lc3BhY2UoICdudW1iZXJQbGF5JyApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxTQUFTLE1BQU0saUNBQWlDO0FBRXZELGVBQWUsSUFBSUEsU0FBUyxDQUFFLFlBQWEsQ0FBQyJ9

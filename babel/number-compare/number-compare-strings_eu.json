@@ -1,0 +1,46 @@
+{
+  "screen.compare": {
+    "value": "Konparatu",
+    "history": [
+      {
+        "userId": 155750,
+        "timestamp": 1651496624930,
+        "oldValue": "",
+        "newValue": "Konparatu"
+      }
+    ]
+  },
+  "isLessThan": {
+    "value": "{{smallerNumber}} baino txikiagoa da {{greaterNumber}}",
+    "history": [
+      {
+        "userId": 155750,
+        "timestamp": 1651496624930,
+        "oldValue": "",
+        "newValue": "{{smallerNumber}} baino txikiagoa da {{greaterNumber}}"
+      }
+    ]
+  },
+  "isGreaterThan": {
+    "value": "{{greaterNumber}} baino handiagoa da {{smallerNumber}}",
+    "history": [
+      {
+        "userId": 155750,
+        "timestamp": 1651496624930,
+        "oldValue": "",
+        "newValue": "{{greaterNumber}} baino handiagoa da {{smallerNumber}}"
+      }
+    ]
+  },
+  "isEqualTo": {
+    "value": "{{equalNumberLeft}} -ren berdina da {{equalNumberRight}}",
+    "history": [
+      {
+        "userId": 155750,
+        "timestamp": 1651496624930,
+        "oldValue": "",
+        "newValue": "{{equalNumberLeft}} -ren berdina da {{equalNumberRight}}"
+      }
+    ]
+  }
+}

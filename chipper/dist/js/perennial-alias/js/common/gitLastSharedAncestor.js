@@ -1,0 +1,29 @@
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * Provides the SHA of the last shared ancestor commit between two targets (branches/SHAs)
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const execute = require('./execute');
+const assert = require('assert');
+
+/**
+ * Provides the SHA of the last shared ancestor commit between two targets (branches/SHAs)
+ * @public
+ *
+ * @param {string} repo - The repository name
+ * @param {string} targetA - Branch/SHA
+ * @param {string} targetB - Branch/SHA
+ * @returns {Promise.<string>} - Resolves to the SHA
+ */
+module.exports = function (repo, targetA, targetB) {
+  assert(typeof repo === 'string');
+  assert(typeof targetA === 'string');
+  assert(typeof targetB === 'string');
+  return execute('git', ['merge-base', targetA, targetB], `../${repo}`).then(stdout => {
+    return Promise.resolve(stdout.trim());
+  });
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleGVjdXRlIiwicmVxdWlyZSIsImFzc2VydCIsIm1vZHVsZSIsImV4cG9ydHMiLCJyZXBvIiwidGFyZ2V0QSIsInRhcmdldEIiLCJ0aGVuIiwic3Rkb3V0IiwiUHJvbWlzZSIsInJlc29sdmUiLCJ0cmltIl0sInNvdXJjZXMiOlsiZ2l0TGFzdFNoYXJlZEFuY2VzdG9yLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBQcm92aWRlcyB0aGUgU0hBIG9mIHRoZSBsYXN0IHNoYXJlZCBhbmNlc3RvciBjb21taXQgYmV0d2VlbiB0d28gdGFyZ2V0cyAoYnJhbmNoZXMvU0hBcylcclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmNvbnN0IGV4ZWN1dGUgPSByZXF1aXJlKCAnLi9leGVjdXRlJyApO1xyXG5jb25zdCBhc3NlcnQgPSByZXF1aXJlKCAnYXNzZXJ0JyApO1xyXG5cclxuLyoqXHJcbiAqIFByb3ZpZGVzIHRoZSBTSEEgb2YgdGhlIGxhc3Qgc2hhcmVkIGFuY2VzdG9yIGNvbW1pdCBiZXR3ZWVuIHR3byB0YXJnZXRzIChicmFuY2hlcy9TSEFzKVxyXG4gKiBAcHVibGljXHJcbiAqXHJcbiAqIEBwYXJhbSB7c3RyaW5nfSByZXBvIC0gVGhlIHJlcG9zaXRvcnkgbmFtZVxyXG4gKiBAcGFyYW0ge3N0cmluZ30gdGFyZ2V0QSAtIEJyYW5jaC9TSEFcclxuICogQHBhcmFtIHtzdHJpbmd9IHRhcmdldEIgLSBCcmFuY2gvU0hBXHJcbiAqIEByZXR1cm5zIHtQcm9taXNlLjxzdHJpbmc+fSAtIFJlc29sdmVzIHRvIHRoZSBTSEFcclxuICovXHJcbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24oIHJlcG8sIHRhcmdldEEsIHRhcmdldEIgKSB7XHJcbiAgYXNzZXJ0KCB0eXBlb2YgcmVwbyA9PT0gJ3N0cmluZycgKTtcclxuICBhc3NlcnQoIHR5cGVvZiB0YXJnZXRBID09PSAnc3RyaW5nJyApO1xyXG4gIGFzc2VydCggdHlwZW9mIHRhcmdldEIgPT09ICdzdHJpbmcnICk7XHJcblxyXG4gIHJldHVybiBleGVjdXRlKCAnZ2l0JywgWyAnbWVyZ2UtYmFzZScsIHRhcmdldEEsIHRhcmdldEIgXSwgYC4uLyR7cmVwb31gICkudGhlbiggc3Rkb3V0ID0+IHtcclxuICAgIHJldHVybiBQcm9taXNlLnJlc29sdmUoIHN0ZG91dC50cmltKCkgKTtcclxuICB9ICk7XHJcbn07XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxNQUFNQSxPQUFPLEdBQUdDLE9BQU8sQ0FBRSxXQUFZLENBQUM7QUFDdEMsTUFBTUMsTUFBTSxHQUFHRCxPQUFPLENBQUUsUUFBUyxDQUFDOztBQUVsQztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQUUsTUFBTSxDQUFDQyxPQUFPLEdBQUcsVUFBVUMsSUFBSSxFQUFFQyxPQUFPLEVBQUVDLE9BQU8sRUFBRztFQUNsREwsTUFBTSxDQUFFLE9BQU9HLElBQUksS0FBSyxRQUFTLENBQUM7RUFDbENILE1BQU0sQ0FBRSxPQUFPSSxPQUFPLEtBQUssUUFBUyxDQUFDO0VBQ3JDSixNQUFNLENBQUUsT0FBT0ssT0FBTyxLQUFLLFFBQVMsQ0FBQztFQUVyQyxPQUFPUCxPQUFPLENBQUUsS0FBSyxFQUFFLENBQUUsWUFBWSxFQUFFTSxPQUFPLEVBQUVDLE9BQU8sQ0FBRSxFQUFHLE1BQUtGLElBQUssRUFBRSxDQUFDLENBQUNHLElBQUksQ0FBRUMsTUFBTSxJQUFJO0lBQ3hGLE9BQU9DLE9BQU8sQ0FBQ0MsT0FBTyxDQUFFRixNQUFNLENBQUNHLElBQUksQ0FBQyxDQUFFLENBQUM7RUFDekMsQ0FBRSxDQUFDO0FBQ0wsQ0FBQyJ9

@@ -1,0 +1,46 @@
+{
+  "screen.compare": {
+    "value": "Linganisha",
+    "history": [
+      {
+        "userId": 1085729,
+        "timestamp": 1664247352572,
+        "oldValue": "",
+        "newValue": "Linganisha"
+      }
+    ]
+  },
+  "isLessThan": {
+    "value": "{{smallerNumber}} ni ndogo kuliko {{greaterNumber}}",
+    "history": [
+      {
+        "userId": 1085729,
+        "timestamp": 1664247352572,
+        "oldValue": "",
+        "newValue": "{{smallerNumber}} ni ndogo kuliko {{greaterNumber}}"
+      }
+    ]
+  },
+  "isGreaterThan": {
+    "value": "{{greaterNumber}} ni kubwa kuliko {{smallerNumber}}",
+    "history": [
+      {
+        "userId": 1085729,
+        "timestamp": 1664247352572,
+        "oldValue": "",
+        "newValue": "{{greaterNumber}} ni kubwa kuliko {{smallerNumber}}"
+      }
+    ]
+  },
+  "isEqualTo": {
+    "value": "{{equalNumberLeft}} inalingana na {{equalNumberRight}}",
+    "history": [
+      {
+        "userId": 1085729,
+        "timestamp": 1664247352572,
+        "oldValue": "",
+        "newValue": "{{equalNumberLeft}} inalingana na {{equalNumberRight}}"
+      }
+    ]
+  }
+}

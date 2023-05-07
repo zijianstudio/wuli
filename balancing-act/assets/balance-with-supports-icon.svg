@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+     width="640px" height="480px" viewBox="0 0 640 480" enable-background="new 0 0 640 480" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="319.4995" y1="79.5" x2="319.4995" y2="399.5005">
+	<stop  offset="0" style="stop-color:#29ABD6"/>
+	<stop  offset="0.6925" style="stop-color:#98E7F3"/>
+	<stop  offset="1" style="stop-color:#C4FFFF"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M589.5,359.5c0,22.092-17.908,40-40,40
+	h-460c-22.091,0-40-17.908-40-40v-240c0-22.091,17.909-40,40-40h460c22.092,0,40,17.909,40,40V359.5z"/>
+<polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="423.497,398.5 397.965,398.5 
+	319.939,246.305 240.801,398.5 217.5,398.5 311.687,218.5 328.311,218.5 "/>
+<rect x="75.5" y="238.5" fill="#C69C6D" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="489" height="12"/>
+<circle fill="#B3B3B3" stroke="#000000" stroke-miterlimit="10" cx="320" cy="228" r="9"/>
+<circle cx="319.75" cy="227.75" r="2.754"/>
+<g>
+	<rect x="106.5" y="250.5" fill="#B3B3B3" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="55" height="148"/>
+	<rect x="90.5" y="377.5" fill="#B3B3B3" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="87" height="22"/>
+</g>
+<g>
+	<rect x="478.5" y="250.5" fill="#B3B3B3" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="55" height="148"/>
+	<rect x="462.5" y="377.5" fill="#B3B3B3" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="87" height="22"/>
+</g>
+</svg>

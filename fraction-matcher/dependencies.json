@@ -1,0 +1,95 @@
+{
+  "comment": "# fraction-matcher 1.3.0-dev.2 Tue Jul 09 2019 18:45:22 GMT-0600 (Mountain Daylight Time)",
+  "assert": {
+    "sha": "d8a2e8992420327ff72a6fc4bb93ec76549ded0e",
+    "branch": "master"
+  },
+  "axon": {
+    "sha": "80c14e83a6d8956112022dc8e99a13fb44ce60b9",
+    "branch": "master"
+  },
+  "brand": {
+    "sha": "40dd405ec950d10e15e957cbda3d97362e925bef",
+    "branch": "master"
+  },
+  "chipper": {
+    "sha": "ea746031aecfad577748e3a97283800e8c3bc987",
+    "branch": "master"
+  },
+  "dot": {
+    "sha": "2074cc6c441c8438af4256231c9b092bbef4d3e5",
+    "branch": "master"
+  },
+  "fraction-matcher": {
+    "sha": "17b63cc7369a2a090b2800088cd12745cd8f4a5c",
+    "branch": "master"
+  },
+  "fractions-common": {
+    "sha": "d265a3056a39ca2b3fe524da29fc8129617d4930",
+    "branch": "master"
+  },
+  "joist": {
+    "sha": "1f1714eae784ad10521d44e112cf809c9bac8ec4",
+    "branch": "master"
+  },
+  "kite": {
+    "sha": "38d4076754ae8dd00024a6973f8cf9d622dfcf5c",
+    "branch": "master"
+  },
+  "phet-core": {
+    "sha": "a97d1d4fbf91a52a2144fcb32452317277821aed",
+    "branch": "master"
+  },
+  "phet-io": {
+    "sha": "638d3f1a3bfde660d61df2b52de596234e2ac4fd",
+    "branch": "master"
+  },
+  "phet-io-wrappers": {
+    "sha": "02bcd0382e253b8197f774a52b56e7c5e5dc6582",
+    "branch": "master"
+  },
+  "phetcommon": {
+    "sha": "412d3d857167437abbd7aacb8a809361dbb701ed",
+    "branch": "master"
+  },
+  "phetmarks": {
+    "sha": "4bc3905a3643e235cb09c380cdf706e4eefc6ef0",
+    "branch": "master"
+  },
+  "query-string-machine": {
+    "sha": "1f64976a20ac1cf35c91c560f5e33df474eceec5",
+    "branch": "master"
+  },
+  "scenery": {
+    "sha": "c032833b81be8cf11d176a7cbd7fefbe520b15a8",
+    "branch": "master"
+  },
+  "scenery-phet": {
+    "sha": "5da2cc0662f3bdc921d9a1f6c47b4cee8cdb986d",
+    "branch": "master"
+  },
+  "sherpa": {
+    "sha": "73a4e2a8c15e764f99ec1e3f1ec2a1b4ab1d3829",
+    "branch": "master"
+  },
+  "sun": {
+    "sha": "e0a45b5ebad14e37eec8c53fbbc306a7e8933a15",
+    "branch": "master"
+  },
+  "tambo": {
+    "sha": "c187df22037d925f7c17cd347daebd1c5341f1cc",
+    "branch": "master"
+  },
+  "tandem": {
+    "sha": "5124322afe8111792f7f0da6ea02cae6dba955b8",
+    "branch": "master"
+  },
+  "twixt": {
+    "sha": "e3d89d511e507dd6de55fbc255ccef3d0d3e98e8",
+    "branch": "master"
+  },
+  "vegas": {
+    "sha": "36d95ccbd70240119074f941df3259e2d4560baf",
+    "branch": "master"
+  }
+}

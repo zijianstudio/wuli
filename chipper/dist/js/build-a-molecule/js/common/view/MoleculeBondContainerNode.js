@@ -1,0 +1,41 @@
+// Copyright 2020-2021, University of Colorado Boulder
+
+/**
+ * Contains "bond breaking" nodes for a single molecule, so they can be cut apart with scissors
+ *
+ * @author Denzell Barnett (PhET Interactive Simulations)
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { Node } from '../../../../scenery/js/imports.js';
+import buildAMolecule from '../../buildAMolecule.js';
+import MoleculeBondNode from './MoleculeBondNode.js';
+class MoleculeBondContainerNode extends Node {
+  /**
+   * @param {Kit} kit
+   * @param {Molecule} molecule
+   */
+  constructor(kit, molecule) {
+    super();
+
+    // @private {Node}
+    this.bondNodes = molecule.bonds.map(bond => {
+      return new MoleculeBondNode(bond, kit);
+    });
+    this.children = this.bondNodes;
+  }
+
+  /**
+   * @public
+   * @override
+   */
+  dispose() {
+    this.bondNodes.forEach(bondNode => {
+      bondNode.dispose();
+    });
+    super.dispose();
+  }
+}
+buildAMolecule.register('MoleculeBondContainerNode', MoleculeBondContainerNode);
+export default MoleculeBondContainerNode;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOb2RlIiwiYnVpbGRBTW9sZWN1bGUiLCJNb2xlY3VsZUJvbmROb2RlIiwiTW9sZWN1bGVCb25kQ29udGFpbmVyTm9kZSIsImNvbnN0cnVjdG9yIiwia2l0IiwibW9sZWN1bGUiLCJib25kTm9kZXMiLCJib25kcyIsIm1hcCIsImJvbmQiLCJjaGlsZHJlbiIsImRpc3Bvc2UiLCJmb3JFYWNoIiwiYm9uZE5vZGUiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIk1vbGVjdWxlQm9uZENvbnRhaW5lck5vZGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAtMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ29udGFpbnMgXCJib25kIGJyZWFraW5nXCIgbm9kZXMgZm9yIGEgc2luZ2xlIG1vbGVjdWxlLCBzbyB0aGV5IGNhbiBiZSBjdXQgYXBhcnQgd2l0aCBzY2lzc29yc1xyXG4gKlxyXG4gKiBAYXV0aG9yIERlbnplbGwgQmFybmV0dCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCB7IE5vZGUgfSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgYnVpbGRBTW9sZWN1bGUgZnJvbSAnLi4vLi4vYnVpbGRBTW9sZWN1bGUuanMnO1xyXG5pbXBvcnQgTW9sZWN1bGVCb25kTm9kZSBmcm9tICcuL01vbGVjdWxlQm9uZE5vZGUuanMnO1xyXG5cclxuY2xhc3MgTW9sZWN1bGVCb25kQ29udGFpbmVyTm9kZSBleHRlbmRzIE5vZGUge1xyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7S2l0fSBraXRcclxuICAgKiBAcGFyYW0ge01vbGVjdWxlfSBtb2xlY3VsZVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBraXQsIG1vbGVjdWxlICkge1xyXG4gICAgc3VwZXIoKTtcclxuXHJcbiAgICAvLyBAcHJpdmF0ZSB7Tm9kZX1cclxuICAgIHRoaXMuYm9uZE5vZGVzID0gbW9sZWN1bGUuYm9uZHMubWFwKCBib25kID0+IHtcclxuICAgICAgcmV0dXJuIG5ldyBNb2xlY3VsZUJvbmROb2RlKCBib25kLCBraXQgKTtcclxuICAgIH0gKTtcclxuICAgIHRoaXMuY2hpbGRyZW4gPSB0aGlzLmJvbmROb2RlcztcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwdWJsaWNcclxuICAgKiBAb3ZlcnJpZGVcclxuICAgKi9cclxuICBkaXNwb3NlKCkge1xyXG4gICAgdGhpcy5ib25kTm9kZXMuZm9yRWFjaCggYm9uZE5vZGUgPT4ge1xyXG4gICAgICBib25kTm9kZS5kaXNwb3NlKCk7XHJcbiAgICB9ICk7XHJcblxyXG4gICAgc3VwZXIuZGlzcG9zZSgpO1xyXG4gIH1cclxufVxyXG5cclxuYnVpbGRBTW9sZWN1bGUucmVnaXN0ZXIoICdNb2xlY3VsZUJvbmRDb250YWluZXJOb2RlJywgTW9sZWN1bGVCb25kQ29udGFpbmVyTm9kZSApO1xyXG5leHBvcnQgZGVmYXVsdCBNb2xlY3VsZUJvbmRDb250YWluZXJOb2RlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLElBQUksUUFBUSxtQ0FBbUM7QUFDeEQsT0FBT0MsY0FBYyxNQUFNLHlCQUF5QjtBQUNwRCxPQUFPQyxnQkFBZ0IsTUFBTSx1QkFBdUI7QUFFcEQsTUFBTUMseUJBQXlCLFNBQVNILElBQUksQ0FBQztFQUMzQztBQUNGO0FBQ0E7QUFDQTtFQUNFSSxXQUFXQSxDQUFFQyxHQUFHLEVBQUVDLFFBQVEsRUFBRztJQUMzQixLQUFLLENBQUMsQ0FBQzs7SUFFUDtJQUNBLElBQUksQ0FBQ0MsU0FBUyxHQUFHRCxRQUFRLENBQUNFLEtBQUssQ0FBQ0MsR0FBRyxDQUFFQyxJQUFJLElBQUk7TUFDM0MsT0FBTyxJQUFJUixnQkFBZ0IsQ0FBRVEsSUFBSSxFQUFFTCxHQUFJLENBQUM7SUFDMUMsQ0FBRSxDQUFDO0lBQ0gsSUFBSSxDQUFDTSxRQUFRLEdBQUcsSUFBSSxDQUFDSixTQUFTO0VBQ2hDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VLLE9BQU9BLENBQUEsRUFBRztJQUNSLElBQUksQ0FBQ0wsU0FBUyxDQUFDTSxPQUFPLENBQUVDLFFBQVEsSUFBSTtNQUNsQ0EsUUFBUSxDQUFDRixPQUFPLENBQUMsQ0FBQztJQUNwQixDQUFFLENBQUM7SUFFSCxLQUFLLENBQUNBLE9BQU8sQ0FBQyxDQUFDO0VBQ2pCO0FBQ0Y7QUFFQVgsY0FBYyxDQUFDYyxRQUFRLENBQUUsMkJBQTJCLEVBQUVaLHlCQUEwQixDQUFDO0FBQ2pGLGVBQWVBLHlCQUF5QiJ9

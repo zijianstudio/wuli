@@ -1,0 +1,20 @@
+{
+  "name": "fractions-common",
+  "version": "1.0.0-dev.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/fractions-common.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "generatedUnitTests": true,
+    "requirejsNamespace": "FRACTIONS_COMMON",
+    "supportsOutputJS": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

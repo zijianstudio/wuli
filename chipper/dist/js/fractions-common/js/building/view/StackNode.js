@@ -1,0 +1,32 @@
+// Copyright 2018-2021, University of Colorado Boulder
+
+/**
+ * Supertype for views for Stacks.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Bounds2 from '../../../../dot/js/Bounds2.js';
+import { Node } from '../../../../scenery/js/imports.js';
+import fractionsCommon from '../../fractionsCommon.js';
+class StackNode extends Node {
+  /**
+   * @param {Stack} stack
+   * @param {Object} [options]
+   */
+  constructor(stack, options) {
+    super({
+      pickable: false
+    });
+
+    // @public {Stack}
+    this.stack = stack;
+
+    // @public {Bounds2} - The ideal layout bounds for this node (that should be used for layout). This should be
+    // defined by the concrete subtype.
+    this.layoutBounds = Bounds2.NOTHING;
+  }
+}
+fractionsCommon.register('StackNode', StackNode);
+export default StackNode;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCb3VuZHMyIiwiTm9kZSIsImZyYWN0aW9uc0NvbW1vbiIsIlN0YWNrTm9kZSIsImNvbnN0cnVjdG9yIiwic3RhY2siLCJvcHRpb25zIiwicGlja2FibGUiLCJsYXlvdXRCb3VuZHMiLCJOT1RISU5HIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTdGFja05vZGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTgtMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogU3VwZXJ0eXBlIGZvciB2aWV3cyBmb3IgU3RhY2tzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IEJvdW5kczIgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL0JvdW5kczIuanMnO1xyXG5pbXBvcnQgeyBOb2RlIH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IGZyYWN0aW9uc0NvbW1vbiBmcm9tICcuLi8uLi9mcmFjdGlvbnNDb21tb24uanMnO1xyXG5cclxuY2xhc3MgU3RhY2tOb2RlIGV4dGVuZHMgTm9kZSB7XHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtTdGFja30gc3RhY2tcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHN0YWNrLCBvcHRpb25zICkge1xyXG4gICAgc3VwZXIoIHtcclxuICAgICAgcGlja2FibGU6IGZhbHNlXHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7U3RhY2t9XHJcbiAgICB0aGlzLnN0YWNrID0gc3RhY2s7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7Qm91bmRzMn0gLSBUaGUgaWRlYWwgbGF5b3V0IGJvdW5kcyBmb3IgdGhpcyBub2RlICh0aGF0IHNob3VsZCBiZSB1c2VkIGZvciBsYXlvdXQpLiBUaGlzIHNob3VsZCBiZVxyXG4gICAgLy8gZGVmaW5lZCBieSB0aGUgY29uY3JldGUgc3VidHlwZS5cclxuICAgIHRoaXMubGF5b3V0Qm91bmRzID0gQm91bmRzMi5OT1RISU5HO1xyXG4gIH1cclxufVxyXG5cclxuZnJhY3Rpb25zQ29tbW9uLnJlZ2lzdGVyKCAnU3RhY2tOb2RlJywgU3RhY2tOb2RlICk7XHJcbmV4cG9ydCBkZWZhdWx0IFN0YWNrTm9kZTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLCtCQUErQjtBQUNuRCxTQUFTQyxJQUFJLFFBQVEsbUNBQW1DO0FBQ3hELE9BQU9DLGVBQWUsTUFBTSwwQkFBMEI7QUFFdEQsTUFBTUMsU0FBUyxTQUFTRixJQUFJLENBQUM7RUFDM0I7QUFDRjtBQUNBO0FBQ0E7RUFDRUcsV0FBV0EsQ0FBRUMsS0FBSyxFQUFFQyxPQUFPLEVBQUc7SUFDNUIsS0FBSyxDQUFFO01BQ0xDLFFBQVEsRUFBRTtJQUNaLENBQUUsQ0FBQzs7SUFFSDtJQUNBLElBQUksQ0FBQ0YsS0FBSyxHQUFHQSxLQUFLOztJQUVsQjtJQUNBO0lBQ0EsSUFBSSxDQUFDRyxZQUFZLEdBQUdSLE9BQU8sQ0FBQ1MsT0FBTztFQUNyQztBQUNGO0FBRUFQLGVBQWUsQ0FBQ1EsUUFBUSxDQUFFLFdBQVcsRUFBRVAsU0FBVSxDQUFDO0FBQ2xELGVBQWVBLFNBQVMifQ==

@@ -1,0 +1,43 @@
+// Copyright 2017-2022, University of Colorado Boulder
+
+/**
+ * This grunt task generates the 800x400 letter-boxed version of the sim screenshot for use in
+ * twitter cards (metadata) on the website simulation pages.
+ *
+ * @author Matt Pennington
+ */
+
+// modules
+const grunt = require('grunt');
+const Jimp = require('jimp'); // eslint-disable-line require-statement-match
+
+/**
+ * @param {string} repo - name of the repository
+ * @returns {Promise.<Buffer>} - Resolves with a PNG {Buffer}
+ */
+module.exports = function (repo) {
+  return new Promise((resolve, reject) => {
+    const fullResImageName = `../${repo}/assets/${repo}-screenshot.png`;
+    if (!grunt.file.exists(fullResImageName)) {
+      grunt.log.writeln(`no image file exists: ${fullResImageName}. Not running task: generate-thumbnails`);
+      return;
+    }
+
+    // The following creates an 800x400 image that is a letter-boxed version of the original size image and
+    // has transparent padding, potentially on all sides.
+    new Jimp(fullResImageName, function () {
+      // eslint-disable-line no-new
+      this.resize(600, 394) // Preserve original dimensions
+      .contain(585, 400) // Resize to allow padding on top/bottom
+      .contain(800, 400) // Add padding on right/left
+      .getBuffer(Jimp.MIME_PNG, (error, pngBuffer) => {
+        if (error) {
+          reject(new Error(error));
+        } else {
+          resolve(pngBuffer);
+        }
+      });
+    });
+  });
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJncnVudCIsInJlcXVpcmUiLCJKaW1wIiwibW9kdWxlIiwiZXhwb3J0cyIsInJlcG8iLCJQcm9taXNlIiwicmVzb2x2ZSIsInJlamVjdCIsImZ1bGxSZXNJbWFnZU5hbWUiLCJmaWxlIiwiZXhpc3RzIiwibG9nIiwid3JpdGVsbiIsInJlc2l6ZSIsImNvbnRhaW4iLCJnZXRCdWZmZXIiLCJNSU1FX1BORyIsImVycm9yIiwicG5nQnVmZmVyIiwiRXJyb3IiXSwic291cmNlcyI6WyJnZW5lcmF0ZVR3aXR0ZXJDYXJkLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFRoaXMgZ3J1bnQgdGFzayBnZW5lcmF0ZXMgdGhlIDgwMHg0MDAgbGV0dGVyLWJveGVkIHZlcnNpb24gb2YgdGhlIHNpbSBzY3JlZW5zaG90IGZvciB1c2UgaW5cclxuICogdHdpdHRlciBjYXJkcyAobWV0YWRhdGEpIG9uIHRoZSB3ZWJzaXRlIHNpbXVsYXRpb24gcGFnZXMuXHJcbiAqXHJcbiAqIEBhdXRob3IgTWF0dCBQZW5uaW5ndG9uXHJcbiAqL1xyXG5cclxuXHJcbi8vIG1vZHVsZXNcclxuY29uc3QgZ3J1bnQgPSByZXF1aXJlKCAnZ3J1bnQnICk7XHJcbmNvbnN0IEppbXAgPSByZXF1aXJlKCAnamltcCcgKTsgLy8gZXNsaW50LWRpc2FibGUtbGluZSByZXF1aXJlLXN0YXRlbWVudC1tYXRjaFxyXG5cclxuLyoqXHJcbiAqIEBwYXJhbSB7c3RyaW5nfSByZXBvIC0gbmFtZSBvZiB0aGUgcmVwb3NpdG9yeVxyXG4gKiBAcmV0dXJucyB7UHJvbWlzZS48QnVmZmVyPn0gLSBSZXNvbHZlcyB3aXRoIGEgUE5HIHtCdWZmZXJ9XHJcbiAqL1xyXG5tb2R1bGUuZXhwb3J0cyA9IGZ1bmN0aW9uKCByZXBvICkge1xyXG4gIHJldHVybiBuZXcgUHJvbWlzZSggKCByZXNvbHZlLCByZWplY3QgKSA9PiB7XHJcbiAgICBjb25zdCBmdWxsUmVzSW1hZ2VOYW1lID0gYC4uLyR7cmVwb30vYXNzZXRzLyR7cmVwb30tc2NyZWVuc2hvdC5wbmdgO1xyXG5cclxuICAgIGlmICggIWdydW50LmZpbGUuZXhpc3RzKCBmdWxsUmVzSW1hZ2VOYW1lICkgKSB7XHJcbiAgICAgIGdydW50LmxvZy53cml0ZWxuKCBgbm8gaW1hZ2UgZmlsZSBleGlzdHM6ICR7ZnVsbFJlc0ltYWdlTmFtZX0uIE5vdCBydW5uaW5nIHRhc2s6IGdlbmVyYXRlLXRodW1ibmFpbHNgICk7XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuXHJcbiAgICAvLyBUaGUgZm9sbG93aW5nIGNyZWF0ZXMgYW4gODAweDQwMCBpbWFnZSB0aGF0IGlzIGEgbGV0dGVyLWJveGVkIHZlcnNpb24gb2YgdGhlIG9yaWdpbmFsIHNpemUgaW1hZ2UgYW5kXHJcbiAgICAvLyBoYXMgdHJhbnNwYXJlbnQgcGFkZGluZywgcG90ZW50aWFsbHkgb24gYWxsIHNpZGVzLlxyXG4gICAgbmV3IEppbXAoIGZ1bGxSZXNJbWFnZU5hbWUsIGZ1bmN0aW9uKCkgeyAvLyBlc2xpbnQtZGlzYWJsZS1saW5lIG5vLW5ld1xyXG4gICAgICB0aGlzLnJlc2l6ZSggNjAwLCAzOTQgKSAvLyBQcmVzZXJ2ZSBvcmlnaW5hbCBkaW1lbnNpb25zXHJcbiAgICAgICAgLmNvbnRhaW4oIDU4NSwgNDAwICkgIC8vIFJlc2l6ZSB0byBhbGxvdyBwYWRkaW5nIG9uIHRvcC9ib3R0b21cclxuICAgICAgICAuY29udGFpbiggODAwLCA0MDAgKSAgLy8gQWRkIHBhZGRpbmcgb24gcmlnaHQvbGVmdFxyXG4gICAgICAgIC5nZXRCdWZmZXIoIEppbXAuTUlNRV9QTkcsICggZXJyb3IsIHBuZ0J1ZmZlciApID0+IHtcclxuICAgICAgICAgIGlmICggZXJyb3IgKSB7XHJcbiAgICAgICAgICAgIHJlamVjdCggbmV3IEVycm9yKCBlcnJvciApICk7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICBlbHNlIHtcclxuICAgICAgICAgICAgcmVzb2x2ZSggcG5nQnVmZmVyICk7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfSApO1xyXG4gICAgfSApO1xyXG4gIH0gKTtcclxufTtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBR0E7QUFDQSxNQUFNQSxLQUFLLEdBQUdDLE9BQU8sQ0FBRSxPQUFRLENBQUM7QUFDaEMsTUFBTUMsSUFBSSxHQUFHRCxPQUFPLENBQUUsTUFBTyxDQUFDLENBQUMsQ0FBQzs7QUFFaEM7QUFDQTtBQUNBO0FBQ0E7QUFDQUUsTUFBTSxDQUFDQyxPQUFPLEdBQUcsVUFBVUMsSUFBSSxFQUFHO0VBQ2hDLE9BQU8sSUFBSUMsT0FBTyxDQUFFLENBQUVDLE9BQU8sRUFBRUMsTUFBTSxLQUFNO0lBQ3pDLE1BQU1DLGdCQUFnQixHQUFJLE1BQUtKLElBQUssV0FBVUEsSUFBSyxpQkFBZ0I7SUFFbkUsSUFBSyxDQUFDTCxLQUFLLENBQUNVLElBQUksQ0FBQ0MsTUFBTSxDQUFFRixnQkFBaUIsQ0FBQyxFQUFHO01BQzVDVCxLQUFLLENBQUNZLEdBQUcsQ0FBQ0MsT0FBTyxDQUFHLHlCQUF3QkosZ0JBQWlCLHlDQUF5QyxDQUFDO01BQ3ZHO0lBQ0Y7O0lBRUE7SUFDQTtJQUNBLElBQUlQLElBQUksQ0FBRU8sZ0JBQWdCLEVBQUUsWUFBVztNQUFFO01BQ3ZDLElBQUksQ0FBQ0ssTUFBTSxDQUFFLEdBQUcsRUFBRSxHQUFJLENBQUMsQ0FBQztNQUFBLENBQ3JCQyxPQUFPLENBQUUsR0FBRyxFQUFFLEdBQUksQ0FBQyxDQUFFO01BQUEsQ0FDckJBLE9BQU8sQ0FBRSxHQUFHLEVBQUUsR0FBSSxDQUFDLENBQUU7TUFBQSxDQUNyQkMsU0FBUyxDQUFFZCxJQUFJLENBQUNlLFFBQVEsRUFBRSxDQUFFQyxLQUFLLEVBQUVDLFNBQVMsS0FBTTtRQUNqRCxJQUFLRCxLQUFLLEVBQUc7VUFDWFYsTUFBTSxDQUFFLElBQUlZLEtBQUssQ0FBRUYsS0FBTSxDQUFFLENBQUM7UUFDOUIsQ0FBQyxNQUNJO1VBQ0hYLE9BQU8sQ0FBRVksU0FBVSxDQUFDO1FBQ3RCO01BQ0YsQ0FBRSxDQUFDO0lBQ1AsQ0FBRSxDQUFDO0VBQ0wsQ0FBRSxDQUFDO0FBQ0wsQ0FBQyJ9

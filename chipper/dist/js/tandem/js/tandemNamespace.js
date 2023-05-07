@@ -1,0 +1,13 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this repository.  By convention, this should have been declared in a file "tandem.js"
+ * But that filename was already used for Tandem.js, so we use the alternate convention discussed in:
+ * https://github.com/phetsims/tandem/issues/5#issuecomment-162597651
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('tandem');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJ0YW5kZW1OYW1lc3BhY2UudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ3JlYXRlcyB0aGUgbmFtZXNwYWNlIGZvciB0aGlzIHJlcG9zaXRvcnkuICBCeSBjb252ZW50aW9uLCB0aGlzIHNob3VsZCBoYXZlIGJlZW4gZGVjbGFyZWQgaW4gYSBmaWxlIFwidGFuZGVtLmpzXCJcclxuICogQnV0IHRoYXQgZmlsZW5hbWUgd2FzIGFscmVhZHkgdXNlZCBmb3IgVGFuZGVtLmpzLCBzbyB3ZSB1c2UgdGhlIGFsdGVybmF0ZSBjb252ZW50aW9uIGRpc2N1c3NlZCBpbjpcclxuICogaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL3RhbmRlbS9pc3N1ZXMvNSNpc3N1ZWNvbW1lbnQtMTYyNTk3NjUxXHJcbiAqXHJcbiAqIEBhdXRob3IgU2FtIFJlaWQgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IE5hbWVzcGFjZSBmcm9tICcuLi8uLi9waGV0LWNvcmUvanMvTmFtZXNwYWNlLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IG5ldyBOYW1lc3BhY2UoICd0YW5kZW0nICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxTQUFTLE1BQU0saUNBQWlDO0FBRXZELGVBQWUsSUFBSUEsU0FBUyxDQUFFLFFBQVMsQ0FBQyJ9

@@ -1,0 +1,16 @@
+// Copyright 2018-2022, University of Colorado Boulder
+
+/**
+ * Unit tests. Please run once in phet brand.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+import './common/model/PrimeFactorizationTests.js';
+import './common/model/PrimesTests.js';
+import './game/model/CollectionFinderTests.js';
+
+// Since our tests are loaded asynchronously, we must direct QUnit to begin the tests
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsiZnJhY3Rpb25zLWNvbW1vbi10ZXN0cy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOC0yMDIyLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBVbml0IHRlc3RzLiBQbGVhc2UgcnVuIG9uY2UgaW4gcGhldCBicmFuZC5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBxdW5pdFN0YXJ0IGZyb20gJy4uLy4uL2NoaXBwZXIvanMvc2ltLXRlc3RzL3F1bml0U3RhcnQuanMnO1xyXG5pbXBvcnQgJy4vY29tbW9uL21vZGVsL1ByaW1lRmFjdG9yaXphdGlvblRlc3RzLmpzJztcclxuaW1wb3J0ICcuL2NvbW1vbi9tb2RlbC9QcmltZXNUZXN0cy5qcyc7XHJcbmltcG9ydCAnLi9nYW1lL21vZGVsL0NvbGxlY3Rpb25GaW5kZXJUZXN0cy5qcyc7XHJcblxyXG4vLyBTaW5jZSBvdXIgdGVzdHMgYXJlIGxvYWRlZCBhc3luY2hyb25vdXNseSwgd2UgbXVzdCBkaXJlY3QgUVVuaXQgdG8gYmVnaW4gdGhlIHRlc3RzXHJcbnF1bml0U3RhcnQoKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsVUFBVSxNQUFNLDBDQUEwQztBQUNqRSxPQUFPLDJDQUEyQztBQUNsRCxPQUFPLCtCQUErQjtBQUN0QyxPQUFPLHVDQUF1Qzs7QUFFOUM7QUFDQUEsVUFBVSxDQUFDLENBQUMifQ==

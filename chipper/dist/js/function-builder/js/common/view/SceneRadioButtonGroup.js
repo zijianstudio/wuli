@@ -1,0 +1,47 @@
+// Copyright 2015-2023, University of Colorado Boulder
+
+/**
+ * Control for selecting a scene.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
+import functionBuilder from '../../functionBuilder.js';
+export default class SceneRadioButtonGroup extends RectangularRadioButtonGroup {
+  /**
+   * @param {Property.<Scene>} selectedSceneProperty
+   * @param {Scene[]} scenes
+   * @param {Object} [options]
+   */
+  constructor(selectedSceneProperty, scenes, options) {
+    options = merge({
+      orientation: 'horizontal',
+      spacing: 20,
+      radioButtonOptions: {
+        baseColor: 'white',
+        xMargin: 10,
+        yMargin: 16,
+        buttonAppearanceStrategyOptions: {
+          selectedLineWidth: 2
+        }
+      }
+    }, options);
+
+    // touchArea optimized for spacing
+    options.touchAreaXDilation = options.spacing / 2 - 1;
+    options.touchAreaYDilation = 5;
+    const content = [];
+    scenes.forEach(scene => {
+      assert && assert(scene.iconNode, 'expected iconNode for scene');
+      content.push({
+        value: scene,
+        createNode: () => scene.iconNode
+      });
+    });
+    super(selectedSceneProperty, content, options);
+  }
+}
+functionBuilder.register('SceneRadioButtonGroup', SceneRadioButtonGroup);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIlJlY3Rhbmd1bGFyUmFkaW9CdXR0b25Hcm91cCIsImZ1bmN0aW9uQnVpbGRlciIsIlNjZW5lUmFkaW9CdXR0b25Hcm91cCIsImNvbnN0cnVjdG9yIiwic2VsZWN0ZWRTY2VuZVByb3BlcnR5Iiwic2NlbmVzIiwib3B0aW9ucyIsIm9yaWVudGF0aW9uIiwic3BhY2luZyIsInJhZGlvQnV0dG9uT3B0aW9ucyIsImJhc2VDb2xvciIsInhNYXJnaW4iLCJ5TWFyZ2luIiwiYnV0dG9uQXBwZWFyYW5jZVN0cmF0ZWd5T3B0aW9ucyIsInNlbGVjdGVkTGluZVdpZHRoIiwidG91Y2hBcmVhWERpbGF0aW9uIiwidG91Y2hBcmVhWURpbGF0aW9uIiwiY29udGVudCIsImZvckVhY2giLCJzY2VuZSIsImFzc2VydCIsImljb25Ob2RlIiwicHVzaCIsInZhbHVlIiwiY3JlYXRlTm9kZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiU2NlbmVSYWRpb0J1dHRvbkdyb3VwLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE1LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIENvbnRyb2wgZm9yIHNlbGVjdGluZyBhIHNjZW5lLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBtZXJnZSBmcm9tICcuLi8uLi8uLi8uLi9waGV0LWNvcmUvanMvbWVyZ2UuanMnO1xyXG5pbXBvcnQgUmVjdGFuZ3VsYXJSYWRpb0J1dHRvbkdyb3VwIGZyb20gJy4uLy4uLy4uLy4uL3N1bi9qcy9idXR0b25zL1JlY3Rhbmd1bGFyUmFkaW9CdXR0b25Hcm91cC5qcyc7XHJcbmltcG9ydCBmdW5jdGlvbkJ1aWxkZXIgZnJvbSAnLi4vLi4vZnVuY3Rpb25CdWlsZGVyLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFNjZW5lUmFkaW9CdXR0b25Hcm91cCBleHRlbmRzIFJlY3Rhbmd1bGFyUmFkaW9CdXR0b25Hcm91cCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7UHJvcGVydHkuPFNjZW5lPn0gc2VsZWN0ZWRTY2VuZVByb3BlcnR5XHJcbiAgICogQHBhcmFtIHtTY2VuZVtdfSBzY2VuZXNcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHNlbGVjdGVkU2NlbmVQcm9wZXJ0eSwgc2NlbmVzLCBvcHRpb25zICkge1xyXG5cclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICBvcmllbnRhdGlvbjogJ2hvcml6b250YWwnLFxyXG4gICAgICBzcGFjaW5nOiAyMCxcclxuICAgICAgcmFkaW9CdXR0b25PcHRpb25zOiB7XHJcbiAgICAgICAgYmFzZUNvbG9yOiAnd2hpdGUnLFxyXG4gICAgICAgIHhNYXJnaW46IDEwLFxyXG4gICAgICAgIHlNYXJnaW46IDE2LFxyXG4gICAgICAgIGJ1dHRvbkFwcGVhcmFuY2VTdHJhdGVneU9wdGlvbnM6IHtcclxuICAgICAgICAgIHNlbGVjdGVkTGluZVdpZHRoOiAyXHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9LCBvcHRpb25zICk7XHJcblxyXG4gICAgLy8gdG91Y2hBcmVhIG9wdGltaXplZCBmb3Igc3BhY2luZ1xyXG4gICAgb3B0aW9ucy50b3VjaEFyZWFYRGlsYXRpb24gPSAoIG9wdGlvbnMuc3BhY2luZyAvIDIgKSAtIDE7XHJcbiAgICBvcHRpb25zLnRvdWNoQXJlYVlEaWxhdGlvbiA9IDU7XHJcblxyXG4gICAgY29uc3QgY29udGVudCA9IFtdO1xyXG4gICAgc2NlbmVzLmZvckVhY2goIHNjZW5lID0+IHtcclxuICAgICAgYXNzZXJ0ICYmIGFzc2VydCggc2NlbmUuaWNvbk5vZGUsICdleHBlY3RlZCBpY29uTm9kZSBmb3Igc2NlbmUnICk7XHJcbiAgICAgIGNvbnRlbnQucHVzaCgge1xyXG4gICAgICAgIHZhbHVlOiBzY2VuZSxcclxuICAgICAgICBjcmVhdGVOb2RlOiAoKSA9PiBzY2VuZS5pY29uTm9kZVxyXG4gICAgICB9ICk7XHJcbiAgICB9ICk7XHJcblxyXG4gICAgc3VwZXIoIHNlbGVjdGVkU2NlbmVQcm9wZXJ0eSwgY29udGVudCwgb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuZnVuY3Rpb25CdWlsZGVyLnJlZ2lzdGVyKCAnU2NlbmVSYWRpb0J1dHRvbkdyb3VwJywgU2NlbmVSYWRpb0J1dHRvbkdyb3VwICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsT0FBT0MsMkJBQTJCLE1BQU0sMkRBQTJEO0FBQ25HLE9BQU9DLGVBQWUsTUFBTSwwQkFBMEI7QUFFdEQsZUFBZSxNQUFNQyxxQkFBcUIsU0FBU0YsMkJBQTJCLENBQUM7RUFFN0U7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFRyxXQUFXQSxDQUFFQyxxQkFBcUIsRUFBRUMsTUFBTSxFQUFFQyxPQUFPLEVBQUc7SUFFcERBLE9BQU8sR0FBR1AsS0FBSyxDQUFFO01BQ2ZRLFdBQVcsRUFBRSxZQUFZO01BQ3pCQyxPQUFPLEVBQUUsRUFBRTtNQUNYQyxrQkFBa0IsRUFBRTtRQUNsQkMsU0FBUyxFQUFFLE9BQU87UUFDbEJDLE9BQU8sRUFBRSxFQUFFO1FBQ1hDLE9BQU8sRUFBRSxFQUFFO1FBQ1hDLCtCQUErQixFQUFFO1VBQy9CQyxpQkFBaUIsRUFBRTtRQUNyQjtNQUNGO0lBQ0YsQ0FBQyxFQUFFUixPQUFRLENBQUM7O0lBRVo7SUFDQUEsT0FBTyxDQUFDUyxrQkFBa0IsR0FBS1QsT0FBTyxDQUFDRSxPQUFPLEdBQUcsQ0FBQyxHQUFLLENBQUM7SUFDeERGLE9BQU8sQ0FBQ1Usa0JBQWtCLEdBQUcsQ0FBQztJQUU5QixNQUFNQyxPQUFPLEdBQUcsRUFBRTtJQUNsQlosTUFBTSxDQUFDYSxPQUFPLENBQUVDLEtBQUssSUFBSTtNQUN2QkMsTUFBTSxJQUFJQSxNQUFNLENBQUVELEtBQUssQ0FBQ0UsUUFBUSxFQUFFLDZCQUE4QixDQUFDO01BQ2pFSixPQUFPLENBQUNLLElBQUksQ0FBRTtRQUNaQyxLQUFLLEVBQUVKLEtBQUs7UUFDWkssVUFBVSxFQUFFQSxDQUFBLEtBQU1MLEtBQUssQ0FBQ0U7TUFDMUIsQ0FBRSxDQUFDO0lBQ0wsQ0FBRSxDQUFDO0lBRUgsS0FBSyxDQUFFakIscUJBQXFCLEVBQUVhLE9BQU8sRUFBRVgsT0FBUSxDQUFDO0VBQ2xEO0FBQ0Y7QUFFQUwsZUFBZSxDQUFDd0IsUUFBUSxDQUFFLHVCQUF1QixFQUFFdkIscUJBQXNCLENBQUMifQ==

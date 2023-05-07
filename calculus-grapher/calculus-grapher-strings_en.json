@@ -1,0 +1,80 @@
+{
+  "calculus-grapher.title": {
+    "value": "Calculus Grapher"
+  },
+  "screen.derivative": {
+    "value": "Derivative"
+  },
+  "screen.integral": {
+    "value": "Integral"
+  },
+  "screen.advanced": {
+    "value": "Advanced"
+  },
+  "screen.lab": {
+    "value": "Lab"
+  },
+  "smooth": {
+    "value": "Smooth"
+  },
+  "symbol.d": {
+    "value": "d"
+  },
+  "symbol.f": {
+    "value": "f"
+  },
+  "symbol.x": {
+    "value": "x"
+  },
+  "symbol.t": {
+    "value": "t"
+  },
+  "discontinuities": {
+    "value": "Discontinuities"
+  },
+  "values": {
+    "value": "Values"
+  },
+  "notation": {
+    "value": "Notation"
+  },
+  "lagrange": {
+    "value": "Lagrange:"
+  },
+  "leibniz": {
+    "value": "Leibniz:"
+  },
+  "variable": {
+    "value": "Variable"
+  },
+  "checkbox.areaUnderCurve": {
+    "value": "Area Under<br>Curve"
+  },
+  "checkbox.tangent": {
+    "value": "Tangent"
+  },
+  "barometer.netSignedArea": {
+    "value": "Net Signed<br>Area"
+  },
+  "barometer.slopeOfTangent": {
+    "value": "Slope of<br>Tangent"
+  },
+  "predict": {
+    "value": "Predict"
+  },
+  "show": {
+    "value": "Show"
+  },
+  "predictPreference": {
+    "value": "Predict"
+  },
+  "valuesPreferenceDescription": {
+    "value": "Shows values on graph axes, reference line, \"Slope of Tangent\", and \"Net Signed Area\"."
+  },
+  "predictPreferenceDescription": {
+    "value": "Adds a mode that allows you to predict f({{variable}})."
+  },
+  "referenceLine": {
+    "value": "Reference<br>Line"
+  }
+}

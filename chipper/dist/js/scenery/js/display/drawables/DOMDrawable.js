@@ -1,0 +1,65 @@
+// Copyright 2016-2022, University of Colorado Boulder
+
+/**
+ * DOM renderer for DOM nodes.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Poolable from '../../../../phet-core/js/Poolable.js';
+import { DOMSelfDrawable, scenery, Utils } from '../../imports.js';
+class DOMDrawable extends DOMSelfDrawable {
+  /**
+   * @param {number} renderer - Renderer bitmask, see Renderer's documentation for more details.
+   * @param {Instance} instance
+   */
+  constructor(renderer, instance) {
+    super(renderer, instance);
+
+    // Apply CSS needed for future CSS transforms to work properly.
+    Utils.prepareForTransform(this.domElement);
+  }
+
+  /**
+   * @public
+   * @override
+   *
+   * @param {number} renderer
+   * @param {Instance} instance
+   */
+  initialize(renderer, instance) {
+    super.initialize(renderer, instance);
+
+    // @public {HTMLElement} - Our primary DOM element. This is exposed as part of the DOMSelfDrawable API.
+    this.domElement = this.node._container;
+  }
+
+  /**
+   * Updates our DOM element so that its appearance matches our node's representation.
+   * @protected
+   *
+   * This implements part of the DOMSelfDrawable required API for subtypes.
+   */
+  updateDOM() {
+    if (this.transformDirty && !this.node._preventTransform) {
+      Utils.applyPreparedTransform(this.getTransformMatrix(), this.domElement);
+    }
+
+    // clear all of the dirty flags
+    this.transformDirty = false;
+  }
+
+  /**
+   * Disposes the drawable.
+   * @public
+   * @override
+   */
+  dispose() {
+    super.dispose();
+    this.domElement = null;
+  }
+}
+scenery.register('DOMDrawable', DOMDrawable);
+Poolable.mixInto(DOMDrawable);
+export default DOMDrawable;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQb29sYWJsZSIsIkRPTVNlbGZEcmF3YWJsZSIsInNjZW5lcnkiLCJVdGlscyIsIkRPTURyYXdhYmxlIiwiY29uc3RydWN0b3IiLCJyZW5kZXJlciIsImluc3RhbmNlIiwicHJlcGFyZUZvclRyYW5zZm9ybSIsImRvbUVsZW1lbnQiLCJpbml0aWFsaXplIiwibm9kZSIsIl9jb250YWluZXIiLCJ1cGRhdGVET00iLCJ0cmFuc2Zvcm1EaXJ0eSIsIl9wcmV2ZW50VHJhbnNmb3JtIiwiYXBwbHlQcmVwYXJlZFRyYW5zZm9ybSIsImdldFRyYW5zZm9ybU1hdHJpeCIsImRpc3Bvc2UiLCJyZWdpc3RlciIsIm1peEludG8iXSwic291cmNlcyI6WyJET01EcmF3YWJsZS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNi0yMDIyLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBET00gcmVuZGVyZXIgZm9yIERPTSBub2Rlcy5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBQb29sYWJsZSBmcm9tICcuLi8uLi8uLi8uLi9waGV0LWNvcmUvanMvUG9vbGFibGUuanMnO1xyXG5pbXBvcnQgeyBET01TZWxmRHJhd2FibGUsIHNjZW5lcnksIFV0aWxzIH0gZnJvbSAnLi4vLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5jbGFzcyBET01EcmF3YWJsZSBleHRlbmRzIERPTVNlbGZEcmF3YWJsZSB7XHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHJlbmRlcmVyIC0gUmVuZGVyZXIgYml0bWFzaywgc2VlIFJlbmRlcmVyJ3MgZG9jdW1lbnRhdGlvbiBmb3IgbW9yZSBkZXRhaWxzLlxyXG4gICAqIEBwYXJhbSB7SW5zdGFuY2V9IGluc3RhbmNlXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHJlbmRlcmVyLCBpbnN0YW5jZSApIHtcclxuICAgIHN1cGVyKCByZW5kZXJlciwgaW5zdGFuY2UgKTtcclxuXHJcbiAgICAvLyBBcHBseSBDU1MgbmVlZGVkIGZvciBmdXR1cmUgQ1NTIHRyYW5zZm9ybXMgdG8gd29yayBwcm9wZXJseS5cclxuICAgIFV0aWxzLnByZXBhcmVGb3JUcmFuc2Zvcm0oIHRoaXMuZG9tRWxlbWVudCApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQHB1YmxpY1xyXG4gICAqIEBvdmVycmlkZVxyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHJlbmRlcmVyXHJcbiAgICogQHBhcmFtIHtJbnN0YW5jZX0gaW5zdGFuY2VcclxuICAgKi9cclxuICBpbml0aWFsaXplKCByZW5kZXJlciwgaW5zdGFuY2UgKSB7XHJcbiAgICBzdXBlci5pbml0aWFsaXplKCByZW5kZXJlciwgaW5zdGFuY2UgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtIVE1MRWxlbWVudH0gLSBPdXIgcHJpbWFyeSBET00gZWxlbWVudC4gVGhpcyBpcyBleHBvc2VkIGFzIHBhcnQgb2YgdGhlIERPTVNlbGZEcmF3YWJsZSBBUEkuXHJcbiAgICB0aGlzLmRvbUVsZW1lbnQgPSB0aGlzLm5vZGUuX2NvbnRhaW5lcjtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFVwZGF0ZXMgb3VyIERPTSBlbGVtZW50IHNvIHRoYXQgaXRzIGFwcGVhcmFuY2UgbWF0Y2hlcyBvdXIgbm9kZSdzIHJlcHJlc2VudGF0aW9uLlxyXG4gICAqIEBwcm90ZWN0ZWRcclxuICAgKlxyXG4gICAqIFRoaXMgaW1wbGVtZW50cyBwYXJ0IG9mIHRoZSBET01TZWxmRHJhd2FibGUgcmVxdWlyZWQgQVBJIGZvciBzdWJ0eXBlcy5cclxuICAgKi9cclxuICB1cGRhdGVET00oKSB7XHJcbiAgICBpZiAoIHRoaXMudHJhbnNmb3JtRGlydHkgJiYgIXRoaXMubm9kZS5fcHJldmVudFRyYW5zZm9ybSApIHtcclxuICAgICAgVXRpbHMuYXBwbHlQcmVwYXJlZFRyYW5zZm9ybSggdGhpcy5nZXRUcmFuc2Zvcm1NYXRyaXgoKSwgdGhpcy5kb21FbGVtZW50ICk7XHJcbiAgICB9XHJcblxyXG4gICAgLy8gY2xlYXIgYWxsIG9mIHRoZSBkaXJ0eSBmbGFnc1xyXG4gICAgdGhpcy50cmFuc2Zvcm1EaXJ0eSA9IGZhbHNlO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRGlzcG9zZXMgdGhlIGRyYXdhYmxlLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKiBAb3ZlcnJpZGVcclxuICAgKi9cclxuICBkaXNwb3NlKCkge1xyXG4gICAgc3VwZXIuZGlzcG9zZSgpO1xyXG5cclxuICAgIHRoaXMuZG9tRWxlbWVudCA9IG51bGw7XHJcbiAgfVxyXG59XHJcblxyXG5zY2VuZXJ5LnJlZ2lzdGVyKCAnRE9NRHJhd2FibGUnLCBET01EcmF3YWJsZSApO1xyXG5cclxuUG9vbGFibGUubWl4SW50byggRE9NRHJhd2FibGUgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IERPTURyYXdhYmxlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0sc0NBQXNDO0FBQzNELFNBQVNDLGVBQWUsRUFBRUMsT0FBTyxFQUFFQyxLQUFLLFFBQVEsa0JBQWtCO0FBRWxFLE1BQU1DLFdBQVcsU0FBU0gsZUFBZSxDQUFDO0VBQ3hDO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VJLFdBQVdBLENBQUVDLFFBQVEsRUFBRUMsUUFBUSxFQUFHO0lBQ2hDLEtBQUssQ0FBRUQsUUFBUSxFQUFFQyxRQUFTLENBQUM7O0lBRTNCO0lBQ0FKLEtBQUssQ0FBQ0ssbUJBQW1CLENBQUUsSUFBSSxDQUFDQyxVQUFXLENBQUM7RUFDOUM7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsVUFBVUEsQ0FBRUosUUFBUSxFQUFFQyxRQUFRLEVBQUc7SUFDL0IsS0FBSyxDQUFDRyxVQUFVLENBQUVKLFFBQVEsRUFBRUMsUUFBUyxDQUFDOztJQUV0QztJQUNBLElBQUksQ0FBQ0UsVUFBVSxHQUFHLElBQUksQ0FBQ0UsSUFBSSxDQUFDQyxVQUFVO0VBQ3hDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxTQUFTQSxDQUFBLEVBQUc7SUFDVixJQUFLLElBQUksQ0FBQ0MsY0FBYyxJQUFJLENBQUMsSUFBSSxDQUFDSCxJQUFJLENBQUNJLGlCQUFpQixFQUFHO01BQ3pEWixLQUFLLENBQUNhLHNCQUFzQixDQUFFLElBQUksQ0FBQ0Msa0JBQWtCLENBQUMsQ0FBQyxFQUFFLElBQUksQ0FBQ1IsVUFBVyxDQUFDO0lBQzVFOztJQUVBO0lBQ0EsSUFBSSxDQUFDSyxjQUFjLEdBQUcsS0FBSztFQUM3Qjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VJLE9BQU9BLENBQUEsRUFBRztJQUNSLEtBQUssQ0FBQ0EsT0FBTyxDQUFDLENBQUM7SUFFZixJQUFJLENBQUNULFVBQVUsR0FBRyxJQUFJO0VBQ3hCO0FBQ0Y7QUFFQVAsT0FBTyxDQUFDaUIsUUFBUSxDQUFFLGFBQWEsRUFBRWYsV0FBWSxDQUFDO0FBRTlDSixRQUFRLENBQUNvQixPQUFPLENBQUVoQixXQUFZLENBQUM7QUFFL0IsZUFBZUEsV0FBVyJ9

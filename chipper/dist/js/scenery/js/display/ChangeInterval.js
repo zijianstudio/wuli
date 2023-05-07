@@ -1,0 +1,194 @@
+// Copyright 2014-2022, University of Colorado Boulder
+
+/**
+ * An interval (implicit consecutive sequence of drawables) that has a recorded change in-between the two ends.
+ * We store the closest drawables to the interval that aren't changed, or null itself to indicate "to the end".
+ *
+ * isEmpty() should be used before checking the endpoints, since it could have a null-to-null state but be empty,
+ * since we arrived at that state from constriction.
+ *
+ * For documentation purposes, an 'internal' drawable is one that is in-between (but not including) our un-changed ends
+ * (drawableBefore and drawableAfter), and 'external' drawables are outside (or including) the un-changed ends.
+ *
+ * For stitching purposes, a ChangeInterval effectively represents two linked lists: the "old" one that was displayed
+ * in the previous frame (using oldNextDrawable for iteration across the drawable linked-list), or the "new" one that
+ * will be displayed in the next frame (using nextDrawable for iteration).
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Poolable from '../../../phet-core/js/Poolable.js';
+import { Drawable, scenery } from '../imports.js';
+class ChangeInterval {
+  /**
+   * @mixes Poolable
+   *
+   * @param {Drawable} drawableBefore
+   * @param {Drawable} drawableAfter
+   */
+  constructor(drawableBefore, drawableAfter) {
+    this.initialize(drawableBefore, drawableAfter);
+  }
+
+  /**
+   * @public
+   *
+   * @param {Drawable} drawableBefore
+   * @param {Drawable} drawableAfter
+   */
+  initialize(drawableBefore, drawableAfter) {
+    assert && assert(drawableBefore === null || drawableBefore instanceof Drawable, 'drawableBefore can either be null to indicate that there is no un-changed drawable before our changes, ' + 'or it can reference an un-changed drawable');
+    assert && assert(drawableAfter === null || drawableAfter instanceof Drawable, 'drawableAfter can either be null to indicate that there is no un-changed drawable after our changes, ' + 'or it can reference an un-changed drawable');
+
+    /*---------------------------------------------------------------------------*
+     * All @public properties
+     *----------------------------------------------------------------------------*/
+
+    // @public {ChangeInterval|null}, singly-linked list
+    this.nextChangeInterval = null;
+
+    // @public {Drawable|null}, the drawable before our ChangeInterval that is not modified. null indicates that we
+    // don't yet have a "before" boundary, and should be connected to the closest drawable that is unchanged.
+    this.drawableBefore = drawableBefore;
+
+    // @public {Drawable|null}, the drawable after our ChangeInterval that is not modified. null indicates that we
+    // don't yet have a "after" boundary, and should be connected to the closest drawable that is unchanged.
+    this.drawableAfter = drawableAfter;
+
+    // @public {boolean} If a null-to-X interval gets collapsed all the way, we want to have a flag that indicates that.
+    // Otherwise, it would be interpreted as a null-to-null change interval ("change everything"), instead of the
+    // correct "change nothing".
+    this.collapsedEmpty = false;
+  }
+
+  /**
+   * Releases references
+   * @public
+   */
+  dispose() {
+    // release our references
+    this.nextChangeInterval = null;
+    this.drawableBefore = null;
+    this.drawableAfter = null;
+    this.freeToPool();
+  }
+
+  /**
+   * Make our interval as tight as possible (we may have over-estimated it before)
+   * @public
+   *
+   * @returns {boolean} - Whether it was changed
+   */
+  constrict() {
+    let changed = false;
+    if (this.isEmpty()) {
+      return true;
+    }
+
+    // Notes: We don't constrict null boundaries, and we should never constrict a non-null boundary to a null
+    // boundary (this the this.drawableX.Xdrawable truthy check), since going from a null-to-X interval to
+    // null-to-null has a completely different meaning. This should be checked by a client of this API.
+
+    while (this.drawableBefore && this.drawableBefore.nextDrawable === this.drawableBefore.oldNextDrawable) {
+      this.drawableBefore = this.drawableBefore.nextDrawable;
+      changed = true;
+
+      // check for a totally-collapsed state
+      if (!this.drawableBefore) {
+        assert && assert(!this.drawableAfter);
+        this.collapsedEmpty = true;
+      }
+
+      // if we are empty, bail out before continuing
+      if (this.isEmpty()) {
+        return true;
+      }
+    }
+    while (this.drawableAfter && this.drawableAfter.previousDrawable === this.drawableAfter.oldPreviousDrawable) {
+      this.drawableAfter = this.drawableAfter.previousDrawable;
+      changed = true;
+
+      // check for a totally-collapsed state
+      if (!this.drawableAfter) {
+        assert && assert(!this.drawableBefore);
+        this.collapsedEmpty = true;
+      }
+
+      // if we are empty, bail out before continuing
+      if (this.isEmpty()) {
+        return true;
+      }
+    }
+    return changed;
+  }
+
+  /**
+   * @public
+   *
+   * @returns {boolean}
+   */
+  isEmpty() {
+    return this.collapsedEmpty || this.drawableBefore !== null && this.drawableBefore === this.drawableAfter;
+  }
+
+  /**
+   * The quantity of "old" internal drawables. Requires the old first/last drawables for the backbone, since
+   * we need that information for null-before/after boundaries.
+   * @public
+   *
+   * @param {Drawable} oldStitchFirstDrawable
+   * @param {Drawable} oldStitchLastDrawable
+   * @returns {number}
+   */
+  getOldInternalDrawableCount(oldStitchFirstDrawable, oldStitchLastDrawable) {
+    const firstInclude = this.drawableBefore ? this.drawableBefore.oldNextDrawable : oldStitchFirstDrawable;
+    const lastExclude = this.drawableAfter; // null is OK here
+
+    let count = 0;
+    for (let drawable = firstInclude; drawable !== lastExclude; drawable = drawable.oldNextDrawable) {
+      count++;
+    }
+    return count;
+  }
+
+  /**
+   * The quantity of "new" internal drawables. Requires the old first/last drawables for the backbone, since
+   * we need that information for null-before/after boundaries.
+   * @public
+   *
+   * @param {Drawable} newStitchFirstDrawable
+   * @param {Drawable} newStitchLastDrawable
+   *
+   * @returns {number}
+   */
+  getNewInternalDrawableCount(newStitchFirstDrawable, newStitchLastDrawable) {
+    const firstInclude = this.drawableBefore ? this.drawableBefore.nextDrawable : newStitchFirstDrawable;
+    const lastExclude = this.drawableAfter; // null is OK here
+
+    let count = 0;
+    for (let drawable = firstInclude; drawable !== lastExclude; drawable = drawable.nextDrawable) {
+      count++;
+    }
+    return count;
+  }
+
+  /**
+   * Creates a ChangeInterval that will be disposed after syncTree is complete (see Display phases).
+   * @public
+   *
+   * @param {Drawable} drawableBefore
+   * @param {Drawable} drawableAfter
+   * @param {Display} display
+   *
+   * @returns {ChangeInterval}
+   */
+  static newForDisplay(drawableBefore, drawableAfter, display) {
+    const changeInterval = ChangeInterval.createFromPool(drawableBefore, drawableAfter);
+    display.markChangeIntervalToDispose(changeInterval);
+    return changeInterval;
+  }
+}
+scenery.register('ChangeInterval', ChangeInterval);
+Poolable.mixInto(ChangeInterval);
+export default ChangeInterval;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQb29sYWJsZSIsIkRyYXdhYmxlIiwic2NlbmVyeSIsIkNoYW5nZUludGVydmFsIiwiY29uc3RydWN0b3IiLCJkcmF3YWJsZUJlZm9yZSIsImRyYXdhYmxlQWZ0ZXIiLCJpbml0aWFsaXplIiwiYXNzZXJ0IiwibmV4dENoYW5nZUludGVydmFsIiwiY29sbGFwc2VkRW1wdHkiLCJkaXNwb3NlIiwiZnJlZVRvUG9vbCIsImNvbnN0cmljdCIsImNoYW5nZWQiLCJpc0VtcHR5IiwibmV4dERyYXdhYmxlIiwib2xkTmV4dERyYXdhYmxlIiwicHJldmlvdXNEcmF3YWJsZSIsIm9sZFByZXZpb3VzRHJhd2FibGUiLCJnZXRPbGRJbnRlcm5hbERyYXdhYmxlQ291bnQiLCJvbGRTdGl0Y2hGaXJzdERyYXdhYmxlIiwib2xkU3RpdGNoTGFzdERyYXdhYmxlIiwiZmlyc3RJbmNsdWRlIiwibGFzdEV4Y2x1ZGUiLCJjb3VudCIsImRyYXdhYmxlIiwiZ2V0TmV3SW50ZXJuYWxEcmF3YWJsZUNvdW50IiwibmV3U3RpdGNoRmlyc3REcmF3YWJsZSIsIm5ld1N0aXRjaExhc3REcmF3YWJsZSIsIm5ld0ZvckRpc3BsYXkiLCJkaXNwbGF5IiwiY2hhbmdlSW50ZXJ2YWwiLCJjcmVhdGVGcm9tUG9vbCIsIm1hcmtDaGFuZ2VJbnRlcnZhbFRvRGlzcG9zZSIsInJlZ2lzdGVyIiwibWl4SW50byJdLCJzb3VyY2VzIjpbIkNoYW5nZUludGVydmFsLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEFuIGludGVydmFsIChpbXBsaWNpdCBjb25zZWN1dGl2ZSBzZXF1ZW5jZSBvZiBkcmF3YWJsZXMpIHRoYXQgaGFzIGEgcmVjb3JkZWQgY2hhbmdlIGluLWJldHdlZW4gdGhlIHR3byBlbmRzLlxyXG4gKiBXZSBzdG9yZSB0aGUgY2xvc2VzdCBkcmF3YWJsZXMgdG8gdGhlIGludGVydmFsIHRoYXQgYXJlbid0IGNoYW5nZWQsIG9yIG51bGwgaXRzZWxmIHRvIGluZGljYXRlIFwidG8gdGhlIGVuZFwiLlxyXG4gKlxyXG4gKiBpc0VtcHR5KCkgc2hvdWxkIGJlIHVzZWQgYmVmb3JlIGNoZWNraW5nIHRoZSBlbmRwb2ludHMsIHNpbmNlIGl0IGNvdWxkIGhhdmUgYSBudWxsLXRvLW51bGwgc3RhdGUgYnV0IGJlIGVtcHR5LFxyXG4gKiBzaW5jZSB3ZSBhcnJpdmVkIGF0IHRoYXQgc3RhdGUgZnJvbSBjb25zdHJpY3Rpb24uXHJcbiAqXHJcbiAqIEZvciBkb2N1bWVudGF0aW9uIHB1cnBvc2VzLCBhbiAnaW50ZXJuYWwnIGRyYXdhYmxlIGlzIG9uZSB0aGF0IGlzIGluLWJldHdlZW4gKGJ1dCBub3QgaW5jbHVkaW5nKSBvdXIgdW4tY2hhbmdlZCBlbmRzXHJcbiAqIChkcmF3YWJsZUJlZm9yZSBhbmQgZHJhd2FibGVBZnRlciksIGFuZCAnZXh0ZXJuYWwnIGRyYXdhYmxlcyBhcmUgb3V0c2lkZSAob3IgaW5jbHVkaW5nKSB0aGUgdW4tY2hhbmdlZCBlbmRzLlxyXG4gKlxyXG4gKiBGb3Igc3RpdGNoaW5nIHB1cnBvc2VzLCBhIENoYW5nZUludGVydmFsIGVmZmVjdGl2ZWx5IHJlcHJlc2VudHMgdHdvIGxpbmtlZCBsaXN0czogdGhlIFwib2xkXCIgb25lIHRoYXQgd2FzIGRpc3BsYXllZFxyXG4gKiBpbiB0aGUgcHJldmlvdXMgZnJhbWUgKHVzaW5nIG9sZE5leHREcmF3YWJsZSBmb3IgaXRlcmF0aW9uIGFjcm9zcyB0aGUgZHJhd2FibGUgbGlua2VkLWxpc3QpLCBvciB0aGUgXCJuZXdcIiBvbmUgdGhhdFxyXG4gKiB3aWxsIGJlIGRpc3BsYXllZCBpbiB0aGUgbmV4dCBmcmFtZSAodXNpbmcgbmV4dERyYXdhYmxlIGZvciBpdGVyYXRpb24pLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IFBvb2xhYmxlIGZyb20gJy4uLy4uLy4uL3BoZXQtY29yZS9qcy9Qb29sYWJsZS5qcyc7XHJcbmltcG9ydCB7IERyYXdhYmxlLCBzY2VuZXJ5IH0gZnJvbSAnLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5jbGFzcyBDaGFuZ2VJbnRlcnZhbCB7XHJcbiAgLyoqXHJcbiAgICogQG1peGVzIFBvb2xhYmxlXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge0RyYXdhYmxlfSBkcmF3YWJsZUJlZm9yZVxyXG4gICAqIEBwYXJhbSB7RHJhd2FibGV9IGRyYXdhYmxlQWZ0ZXJcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggZHJhd2FibGVCZWZvcmUsIGRyYXdhYmxlQWZ0ZXIgKSB7XHJcbiAgICB0aGlzLmluaXRpYWxpemUoIGRyYXdhYmxlQmVmb3JlLCBkcmF3YWJsZUFmdGVyICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge0RyYXdhYmxlfSBkcmF3YWJsZUJlZm9yZVxyXG4gICAqIEBwYXJhbSB7RHJhd2FibGV9IGRyYXdhYmxlQWZ0ZXJcclxuICAgKi9cclxuICBpbml0aWFsaXplKCBkcmF3YWJsZUJlZm9yZSwgZHJhd2FibGVBZnRlciApIHtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGRyYXdhYmxlQmVmb3JlID09PSBudWxsIHx8ICggZHJhd2FibGVCZWZvcmUgaW5zdGFuY2VvZiBEcmF3YWJsZSApLFxyXG4gICAgICAnZHJhd2FibGVCZWZvcmUgY2FuIGVpdGhlciBiZSBudWxsIHRvIGluZGljYXRlIHRoYXQgdGhlcmUgaXMgbm8gdW4tY2hhbmdlZCBkcmF3YWJsZSBiZWZvcmUgb3VyIGNoYW5nZXMsICcgK1xyXG4gICAgICAnb3IgaXQgY2FuIHJlZmVyZW5jZSBhbiB1bi1jaGFuZ2VkIGRyYXdhYmxlJyApO1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggZHJhd2FibGVBZnRlciA9PT0gbnVsbCB8fCAoIGRyYXdhYmxlQWZ0ZXIgaW5zdGFuY2VvZiBEcmF3YWJsZSApLFxyXG4gICAgICAnZHJhd2FibGVBZnRlciBjYW4gZWl0aGVyIGJlIG51bGwgdG8gaW5kaWNhdGUgdGhhdCB0aGVyZSBpcyBubyB1bi1jaGFuZ2VkIGRyYXdhYmxlIGFmdGVyIG91ciBjaGFuZ2VzLCAnICtcclxuICAgICAgJ29yIGl0IGNhbiByZWZlcmVuY2UgYW4gdW4tY2hhbmdlZCBkcmF3YWJsZScgKTtcclxuXHJcbiAgICAvKi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSpcclxuICAgICAqIEFsbCBAcHVibGljIHByb3BlcnRpZXNcclxuICAgICAqLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSovXHJcblxyXG4gICAgLy8gQHB1YmxpYyB7Q2hhbmdlSW50ZXJ2YWx8bnVsbH0sIHNpbmdseS1saW5rZWQgbGlzdFxyXG4gICAgdGhpcy5uZXh0Q2hhbmdlSW50ZXJ2YWwgPSBudWxsO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge0RyYXdhYmxlfG51bGx9LCB0aGUgZHJhd2FibGUgYmVmb3JlIG91ciBDaGFuZ2VJbnRlcnZhbCB0aGF0IGlzIG5vdCBtb2RpZmllZC4gbnVsbCBpbmRpY2F0ZXMgdGhhdCB3ZVxyXG4gICAgLy8gZG9uJ3QgeWV0IGhhdmUgYSBcImJlZm9yZVwiIGJvdW5kYXJ5LCBhbmQgc2hvdWxkIGJlIGNvbm5lY3RlZCB0byB0aGUgY2xvc2VzdCBkcmF3YWJsZSB0aGF0IGlzIHVuY2hhbmdlZC5cclxuICAgIHRoaXMuZHJhd2FibGVCZWZvcmUgPSBkcmF3YWJsZUJlZm9yZTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtEcmF3YWJsZXxudWxsfSwgdGhlIGRyYXdhYmxlIGFmdGVyIG91ciBDaGFuZ2VJbnRlcnZhbCB0aGF0IGlzIG5vdCBtb2RpZmllZC4gbnVsbCBpbmRpY2F0ZXMgdGhhdCB3ZVxyXG4gICAgLy8gZG9uJ3QgeWV0IGhhdmUgYSBcImFmdGVyXCIgYm91bmRhcnksIGFuZCBzaG91bGQgYmUgY29ubmVjdGVkIHRvIHRoZSBjbG9zZXN0IGRyYXdhYmxlIHRoYXQgaXMgdW5jaGFuZ2VkLlxyXG4gICAgdGhpcy5kcmF3YWJsZUFmdGVyID0gZHJhd2FibGVBZnRlcjtcclxuXHJcbiAgICAvLyBAcHVibGljIHtib29sZWFufSBJZiBhIG51bGwtdG8tWCBpbnRlcnZhbCBnZXRzIGNvbGxhcHNlZCBhbGwgdGhlIHdheSwgd2Ugd2FudCB0byBoYXZlIGEgZmxhZyB0aGF0IGluZGljYXRlcyB0aGF0LlxyXG4gICAgLy8gT3RoZXJ3aXNlLCBpdCB3b3VsZCBiZSBpbnRlcnByZXRlZCBhcyBhIG51bGwtdG8tbnVsbCBjaGFuZ2UgaW50ZXJ2YWwgKFwiY2hhbmdlIGV2ZXJ5dGhpbmdcIiksIGluc3RlYWQgb2YgdGhlXHJcbiAgICAvLyBjb3JyZWN0IFwiY2hhbmdlIG5vdGhpbmdcIi5cclxuICAgIHRoaXMuY29sbGFwc2VkRW1wdHkgPSBmYWxzZTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFJlbGVhc2VzIHJlZmVyZW5jZXNcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZGlzcG9zZSgpIHtcclxuICAgIC8vIHJlbGVhc2Ugb3VyIHJlZmVyZW5jZXNcclxuICAgIHRoaXMubmV4dENoYW5nZUludGVydmFsID0gbnVsbDtcclxuICAgIHRoaXMuZHJhd2FibGVCZWZvcmUgPSBudWxsO1xyXG4gICAgdGhpcy5kcmF3YWJsZUFmdGVyID0gbnVsbDtcclxuXHJcbiAgICB0aGlzLmZyZWVUb1Bvb2woKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIE1ha2Ugb3VyIGludGVydmFsIGFzIHRpZ2h0IGFzIHBvc3NpYmxlICh3ZSBtYXkgaGF2ZSBvdmVyLWVzdGltYXRlZCBpdCBiZWZvcmUpXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHJldHVybnMge2Jvb2xlYW59IC0gV2hldGhlciBpdCB3YXMgY2hhbmdlZFxyXG4gICAqL1xyXG4gIGNvbnN0cmljdCgpIHtcclxuICAgIGxldCBjaGFuZ2VkID0gZmFsc2U7XHJcblxyXG4gICAgaWYgKCB0aGlzLmlzRW1wdHkoKSApIHsgcmV0dXJuIHRydWU7IH1cclxuXHJcbiAgICAvLyBOb3RlczogV2UgZG9uJ3QgY29uc3RyaWN0IG51bGwgYm91bmRhcmllcywgYW5kIHdlIHNob3VsZCBuZXZlciBjb25zdHJpY3QgYSBub24tbnVsbCBib3VuZGFyeSB0byBhIG51bGxcclxuICAgIC8vIGJvdW5kYXJ5ICh0aGlzIHRoZSB0aGlzLmRyYXdhYmxlWC5YZHJhd2FibGUgdHJ1dGh5IGNoZWNrKSwgc2luY2UgZ29pbmcgZnJvbSBhIG51bGwtdG8tWCBpbnRlcnZhbCB0b1xyXG4gICAgLy8gbnVsbC10by1udWxsIGhhcyBhIGNvbXBsZXRlbHkgZGlmZmVyZW50IG1lYW5pbmcuIFRoaXMgc2hvdWxkIGJlIGNoZWNrZWQgYnkgYSBjbGllbnQgb2YgdGhpcyBBUEkuXHJcblxyXG4gICAgd2hpbGUgKCB0aGlzLmRyYXdhYmxlQmVmb3JlICYmIHRoaXMuZHJhd2FibGVCZWZvcmUubmV4dERyYXdhYmxlID09PSB0aGlzLmRyYXdhYmxlQmVmb3JlLm9sZE5leHREcmF3YWJsZSApIHtcclxuICAgICAgdGhpcy5kcmF3YWJsZUJlZm9yZSA9IHRoaXMuZHJhd2FibGVCZWZvcmUubmV4dERyYXdhYmxlO1xyXG4gICAgICBjaGFuZ2VkID0gdHJ1ZTtcclxuXHJcbiAgICAgIC8vIGNoZWNrIGZvciBhIHRvdGFsbHktY29sbGFwc2VkIHN0YXRlXHJcbiAgICAgIGlmICggIXRoaXMuZHJhd2FibGVCZWZvcmUgKSB7XHJcbiAgICAgICAgYXNzZXJ0ICYmIGFzc2VydCggIXRoaXMuZHJhd2FibGVBZnRlciApO1xyXG4gICAgICAgIHRoaXMuY29sbGFwc2VkRW1wdHkgPSB0cnVlO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAvLyBpZiB3ZSBhcmUgZW1wdHksIGJhaWwgb3V0IGJlZm9yZSBjb250aW51aW5nXHJcbiAgICAgIGlmICggdGhpcy5pc0VtcHR5KCkgKSB7IHJldHVybiB0cnVlOyB9XHJcbiAgICB9XHJcblxyXG4gICAgd2hpbGUgKCB0aGlzLmRyYXdhYmxlQWZ0ZXIgJiYgdGhpcy5kcmF3YWJsZUFmdGVyLnByZXZpb3VzRHJhd2FibGUgPT09IHRoaXMuZHJhd2FibGVBZnRlci5vbGRQcmV2aW91c0RyYXdhYmxlICkge1xyXG4gICAgICB0aGlzLmRyYXdhYmxlQWZ0ZXIgPSB0aGlzLmRyYXdhYmxlQWZ0ZXIucHJldmlvdXNEcmF3YWJsZTtcclxuICAgICAgY2hhbmdlZCA9IHRydWU7XHJcblxyXG4gICAgICAvLyBjaGVjayBmb3IgYSB0b3RhbGx5LWNvbGxhcHNlZCBzdGF0ZVxyXG4gICAgICBpZiAoICF0aGlzLmRyYXdhYmxlQWZ0ZXIgKSB7XHJcbiAgICAgICAgYXNzZXJ0ICYmIGFzc2VydCggIXRoaXMuZHJhd2FibGVCZWZvcmUgKTtcclxuICAgICAgICB0aGlzLmNvbGxhcHNlZEVtcHR5ID0gdHJ1ZTtcclxuICAgICAgfVxyXG5cclxuICAgICAgLy8gaWYgd2UgYXJlIGVtcHR5LCBiYWlsIG91dCBiZWZvcmUgY29udGludWluZ1xyXG4gICAgICBpZiAoIHRoaXMuaXNFbXB0eSgpICkgeyByZXR1cm4gdHJ1ZTsgfVxyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiBjaGFuZ2VkO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHJldHVybnMge2Jvb2xlYW59XHJcbiAgICovXHJcbiAgaXNFbXB0eSgpIHtcclxuICAgIHJldHVybiB0aGlzLmNvbGxhcHNlZEVtcHR5IHx8ICggdGhpcy5kcmF3YWJsZUJlZm9yZSAhPT0gbnVsbCAmJiB0aGlzLmRyYXdhYmxlQmVmb3JlID09PSB0aGlzLmRyYXdhYmxlQWZ0ZXIgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFRoZSBxdWFudGl0eSBvZiBcIm9sZFwiIGludGVybmFsIGRyYXdhYmxlcy4gUmVxdWlyZXMgdGhlIG9sZCBmaXJzdC9sYXN0IGRyYXdhYmxlcyBmb3IgdGhlIGJhY2tib25lLCBzaW5jZVxyXG4gICAqIHdlIG5lZWQgdGhhdCBpbmZvcm1hdGlvbiBmb3IgbnVsbC1iZWZvcmUvYWZ0ZXIgYm91bmRhcmllcy5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge0RyYXdhYmxlfSBvbGRTdGl0Y2hGaXJzdERyYXdhYmxlXHJcbiAgICogQHBhcmFtIHtEcmF3YWJsZX0gb2xkU3RpdGNoTGFzdERyYXdhYmxlXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKi9cclxuICBnZXRPbGRJbnRlcm5hbERyYXdhYmxlQ291bnQoIG9sZFN0aXRjaEZpcnN0RHJhd2FibGUsIG9sZFN0aXRjaExhc3REcmF3YWJsZSApIHtcclxuICAgIGNvbnN0IGZpcnN0SW5jbHVkZSA9IHRoaXMuZHJhd2FibGVCZWZvcmUgPyB0aGlzLmRyYXdhYmxlQmVmb3JlLm9sZE5leHREcmF3YWJsZSA6IG9sZFN0aXRjaEZpcnN0RHJhd2FibGU7XHJcbiAgICBjb25zdCBsYXN0RXhjbHVkZSA9IHRoaXMuZHJhd2FibGVBZnRlcjsgLy8gbnVsbCBpcyBPSyBoZXJlXHJcblxyXG4gICAgbGV0IGNvdW50ID0gMDtcclxuICAgIGZvciAoIGxldCBkcmF3YWJsZSA9IGZpcnN0SW5jbHVkZTsgZHJhd2FibGUgIT09IGxhc3RFeGNsdWRlOyBkcmF3YWJsZSA9IGRyYXdhYmxlLm9sZE5leHREcmF3YWJsZSApIHtcclxuICAgICAgY291bnQrKztcclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gY291bnQ7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBUaGUgcXVhbnRpdHkgb2YgXCJuZXdcIiBpbnRlcm5hbCBkcmF3YWJsZXMuIFJlcXVpcmVzIHRoZSBvbGQgZmlyc3QvbGFzdCBkcmF3YWJsZXMgZm9yIHRoZSBiYWNrYm9uZSwgc2luY2VcclxuICAgKiB3ZSBuZWVkIHRoYXQgaW5mb3JtYXRpb24gZm9yIG51bGwtYmVmb3JlL2FmdGVyIGJvdW5kYXJpZXMuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtEcmF3YWJsZX0gbmV3U3RpdGNoRmlyc3REcmF3YWJsZVxyXG4gICAqIEBwYXJhbSB7RHJhd2FibGV9IG5ld1N0aXRjaExhc3REcmF3YWJsZVxyXG4gICAqXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKi9cclxuICBnZXROZXdJbnRlcm5hbERyYXdhYmxlQ291bnQoIG5ld1N0aXRjaEZpcnN0RHJhd2FibGUsIG5ld1N0aXRjaExhc3REcmF3YWJsZSApIHtcclxuICAgIGNvbnN0IGZpcnN0SW5jbHVkZSA9IHRoaXMuZHJhd2FibGVCZWZvcmUgPyB0aGlzLmRyYXdhYmxlQmVmb3JlLm5leHREcmF3YWJsZSA6IG5ld1N0aXRjaEZpcnN0RHJhd2FibGU7XHJcbiAgICBjb25zdCBsYXN0RXhjbHVkZSA9IHRoaXMuZHJhd2FibGVBZnRlcjsgLy8gbnVsbCBpcyBPSyBoZXJlXHJcblxyXG4gICAgbGV0IGNvdW50ID0gMDtcclxuICAgIGZvciAoIGxldCBkcmF3YWJsZSA9IGZpcnN0SW5jbHVkZTsgZHJhd2FibGUgIT09IGxhc3RFeGNsdWRlOyBkcmF3YWJsZSA9IGRyYXdhYmxlLm5leHREcmF3YWJsZSApIHtcclxuICAgICAgY291bnQrKztcclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gY291bnQ7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDcmVhdGVzIGEgQ2hhbmdlSW50ZXJ2YWwgdGhhdCB3aWxsIGJlIGRpc3Bvc2VkIGFmdGVyIHN5bmNUcmVlIGlzIGNvbXBsZXRlIChzZWUgRGlzcGxheSBwaGFzZXMpLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7RHJhd2FibGV9IGRyYXdhYmxlQmVmb3JlXHJcbiAgICogQHBhcmFtIHtEcmF3YWJsZX0gZHJhd2FibGVBZnRlclxyXG4gICAqIEBwYXJhbSB7RGlzcGxheX0gZGlzcGxheVxyXG4gICAqXHJcbiAgICogQHJldHVybnMge0NoYW5nZUludGVydmFsfVxyXG4gICAqL1xyXG4gIHN0YXRpYyBuZXdGb3JEaXNwbGF5KCBkcmF3YWJsZUJlZm9yZSwgZHJhd2FibGVBZnRlciwgZGlzcGxheSApIHtcclxuICAgIGNvbnN0IGNoYW5nZUludGVydmFsID0gQ2hhbmdlSW50ZXJ2YWwuY3JlYXRlRnJvbVBvb2woIGRyYXdhYmxlQmVmb3JlLCBkcmF3YWJsZUFmdGVyICk7XHJcbiAgICBkaXNwbGF5Lm1hcmtDaGFuZ2VJbnRlcnZhbFRvRGlzcG9zZSggY2hhbmdlSW50ZXJ2YWwgKTtcclxuICAgIHJldHVybiBjaGFuZ2VJbnRlcnZhbDtcclxuICB9XHJcbn1cclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdDaGFuZ2VJbnRlcnZhbCcsIENoYW5nZUludGVydmFsICk7XHJcblxyXG5Qb29sYWJsZS5taXhJbnRvKCBDaGFuZ2VJbnRlcnZhbCApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQ2hhbmdlSW50ZXJ2YWw7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0sbUNBQW1DO0FBQ3hELFNBQVNDLFFBQVEsRUFBRUMsT0FBTyxRQUFRLGVBQWU7QUFFakQsTUFBTUMsY0FBYyxDQUFDO0VBQ25CO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxjQUFjLEVBQUVDLGFBQWEsRUFBRztJQUMzQyxJQUFJLENBQUNDLFVBQVUsQ0FBRUYsY0FBYyxFQUFFQyxhQUFjLENBQUM7RUFDbEQ7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFVBQVVBLENBQUVGLGNBQWMsRUFBRUMsYUFBYSxFQUFHO0lBQzFDRSxNQUFNLElB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

@@ -1,0 +1,55 @@
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * Model that represents an atomic bond between two atoms.
+ *
+ * @author John Blanco
+ * @author Jesse Greenberg
+ */
+
+import Vector2 from '../../../../../dot/js/Vector2.js';
+import merge from '../../../../../phet-core/js/merge.js';
+import greenhouseEffect from '../../../greenhouseEffect.js';
+class AtomicBond {
+  /**
+   * Constructor for an Atomic Bond between two atoms.
+   *
+   * @param {Atom} atom1 - Atom involved in the bond
+   * @param {Atom} atom2 - Atom involved in the bond
+   * @param {Object} [options]
+   */
+  constructor(atom1, atom2, options) {
+    options = merge({
+      // defaults
+      bondCount: 1,
+      // Indicates whether this is a single, double, triple, etc. bond.
+
+      // {boolean} if true, the atom will be in the top layer in the visualization, to support 3D looking molecules
+      topLayer: false,
+      // offsets for the positions of the bond endpoints, relative to the centers of each atom in model coordinates
+      atom1PositionOffset: new Vector2(0, 0),
+      atom2PositionOffset: new Vector2(0, 0)
+    }, options);
+
+    // @public (read-only)
+    this.atom1 = atom1;
+    this.atom2 = atom2;
+    this.bondCount = options.bondCount;
+    this.topLayer = options.topLayer;
+    this.atom1PositionOffset = options.atom1PositionOffset;
+    this.atom2PositionOffset = options.atom2PositionOffset;
+  }
+
+  // serialization support
+  // @public
+  toStateObject() {
+    return {
+      bondCount: this.bondCount,
+      atom1ID: this.atom1.uniqueID,
+      atom2ID: this.atom2.uniqueID
+    };
+  }
+}
+greenhouseEffect.register('AtomicBond', AtomicBond);
+export default AtomicBond;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwibWVyZ2UiLCJncmVlbmhvdXNlRWZmZWN0IiwiQXRvbWljQm9uZCIsImNvbnN0cnVjdG9yIiwiYXRvbTEiLCJhdG9tMiIsIm9wdGlvbnMiLCJib25kQ291bnQiLCJ0b3BMYXllciIsImF0b20xUG9zaXRpb25PZmZzZXQiLCJhdG9tMlBvc2l0aW9uT2Zmc2V0IiwidG9TdGF0ZU9iamVjdCIsImF0b20xSUQiLCJ1bmlxdWVJRCIsImF0b20ySUQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkF0b21pY0JvbmQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE1vZGVsIHRoYXQgcmVwcmVzZW50cyBhbiBhdG9taWMgYm9uZCBiZXR3ZWVuIHR3byBhdG9tcy5cclxuICpcclxuICogQGF1dGhvciBKb2huIEJsYW5jb1xyXG4gKiBAYXV0aG9yIEplc3NlIEdyZWVuYmVyZ1xyXG4gKi9cclxuXHJcbmltcG9ydCBWZWN0b3IyIGZyb20gJy4uLy4uLy4uLy4uLy4uL2RvdC9qcy9WZWN0b3IyLmpzJztcclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCBncmVlbmhvdXNlRWZmZWN0IGZyb20gJy4uLy4uLy4uL2dyZWVuaG91c2VFZmZlY3QuanMnO1xyXG5cclxuY2xhc3MgQXRvbWljQm9uZCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIENvbnN0cnVjdG9yIGZvciBhbiBBdG9taWMgQm9uZCBiZXR3ZWVuIHR3byBhdG9tcy5cclxuICAgKlxyXG4gICAqIEBwYXJhbSB7QXRvbX0gYXRvbTEgLSBBdG9tIGludm9sdmVkIGluIHRoZSBib25kXHJcbiAgICogQHBhcmFtIHtBdG9tfSBhdG9tMiAtIEF0b20gaW52b2x2ZWQgaW4gdGhlIGJvbmRcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGF0b20xLCBhdG9tMiwgb3B0aW9ucyApIHtcclxuXHJcbiAgICBvcHRpb25zID0gbWVyZ2UoIHtcclxuICAgICAgLy8gZGVmYXVsdHNcclxuICAgICAgYm9uZENvdW50OiAxLCAvLyBJbmRpY2F0ZXMgd2hldGhlciB0aGlzIGlzIGEgc2luZ2xlLCBkb3VibGUsIHRyaXBsZSwgZXRjLiBib25kLlxyXG5cclxuICAgICAgLy8ge2Jvb2xlYW59IGlmIHRydWUsIHRoZSBhdG9tIHdpbGwgYmUgaW4gdGhlIHRvcCBsYXllciBpbiB0aGUgdmlzdWFsaXphdGlvbiwgdG8gc3VwcG9ydCAzRCBsb29raW5nIG1vbGVjdWxlc1xyXG4gICAgICB0b3BMYXllcjogZmFsc2UsXHJcblxyXG4gICAgICAvLyBvZmZzZXRzIGZvciB0aGUgcG9zaXRpb25zIG9mIHRoZSBib25kIGVuZHBvaW50cywgcmVsYXRpdmUgdG8gdGhlIGNlbnRlcnMgb2YgZWFjaCBhdG9tIGluIG1vZGVsIGNvb3JkaW5hdGVzXHJcbiAgICAgIGF0b20xUG9zaXRpb25PZmZzZXQ6IG5ldyBWZWN0b3IyKCAwLCAwICksXHJcbiAgICAgIGF0b20yUG9zaXRpb25PZmZzZXQ6IG5ldyBWZWN0b3IyKCAwLCAwIClcclxuICAgIH0sIG9wdGlvbnMgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIChyZWFkLW9ubHkpXHJcbiAgICB0aGlzLmF0b20xID0gYXRvbTE7XHJcbiAgICB0aGlzLmF0b20yID0gYXRvbTI7XHJcbiAgICB0aGlzLmJvbmRDb3VudCA9IG9wdGlvbnMuYm9uZENvdW50O1xyXG4gICAgdGhpcy50b3BMYXllciA9IG9wdGlvbnMudG9wTGF5ZXI7XHJcbiAgICB0aGlzLmF0b20xUG9zaXRpb25PZmZzZXQgPSBvcHRpb25zLmF0b20xUG9zaXRpb25PZmZzZXQ7XHJcbiAgICB0aGlzLmF0b20yUG9zaXRpb25PZmZzZXQgPSBvcHRpb25zLmF0b20yUG9zaXRpb25PZmZzZXQ7XHJcbiAgfVxyXG5cclxuXHJcbiAgLy8gc2VyaWFsaXphdGlvbiBzdXBwb3J0XHJcbiAgLy8gQHB1YmxpY1xyXG4gIHRvU3RhdGVPYmplY3QoKSB7XHJcbiAgICByZXR1cm4ge1xyXG4gICAgICBib25kQ291bnQ6IHRoaXMuYm9uZENvdW50LFxyXG4gICAgICBhdG9tMUlEOiB0aGlzLmF0b20xLnVuaXF1ZUlELFxyXG4gICAgICBhdG9tMklEOiB0aGlzLmF0b20yLnVuaXF1ZUlEXHJcbiAgICB9O1xyXG4gIH1cclxufVxyXG5cclxuZ3JlZW5ob3VzZUVmZmVjdC5yZWdpc3RlciggJ0F0b21pY0JvbmQnLCBBdG9taWNCb25kICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBBdG9taWNCb25kOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE9BQU8sTUFBTSxrQ0FBa0M7QUFDdEQsT0FBT0MsS0FBSyxNQUFNLHNDQUFzQztBQUN4RCxPQUFPQyxnQkFBZ0IsTUFBTSw4QkFBOEI7QUFFM0QsTUFBTUMsVUFBVSxDQUFDO0VBRWY7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsS0FBSyxFQUFFQyxLQUFLLEVBQUVDLE9BQU8sRUFBRztJQUVuQ0EsT0FBTyxHQUFHTixLQUFLLENBQUU7TUFDZjtNQUNBTyxTQUFTLEVBQUUsQ0FBQztNQUFFOztNQUVkO01BQ0FDLFFBQVEsRUFBRSxLQUFLO01BRWY7TUFDQUMsbUJBQW1CLEVBQUUsSUFBSVYsT0FBTyxDQUFFLENBQUMsRUFBRSxDQUFFLENBQUM7TUFDeENXLG1CQUFtQixFQUFFLElBQUlYLE9BQU8sQ0FBRSxDQUFDLEVBQUUsQ0FBRTtJQUN6QyxDQUFDLEVBQUVPLE9BQVEsQ0FBQzs7SUFFWjtJQUNBLElBQUksQ0FBQ0YsS0FBSyxHQUFHQSxLQUFLO0lBQ2xCLElBQUksQ0FBQ0MsS0FBSyxHQUFHQSxLQUFLO0lBQ2xCLElBQUksQ0FBQ0UsU0FBUyxHQUFHRCxPQUFPLENBQUNDLFNBQVM7SUFDbEMsSUFBSSxDQUFDQyxRQUFRLEdBQUdGLE9BQU8sQ0FBQ0UsUUFBUTtJQUNoQyxJQUFJLENBQUNDLG1CQUFtQixHQUFHSCxPQUFPLENBQUNHLG1CQUFtQjtJQUN0RCxJQUFJLENBQUNDLG1CQUFtQixHQUFHSixPQUFPLENBQUNJLG1CQUFtQjtFQUN4RDs7RUFHQTtFQUNBO0VBQ0FDLGFBQWFBLENBQUEsRUFBRztJQUNkLE9BQU87TUFDTEosU0FBUyxFQUFFLElBQUksQ0FBQ0EsU0FBUztNQUN6QkssT0FBTyxFQUFFLElBQUksQ0FBQ1IsS0FBSyxDQUFDUyxRQUFRO01BQzVCQyxPQUFPLEVBQUUsSUFBSSxDQUFDVCxLQUFLLENBQUNRO0lBQ3RCLENBQUM7RUFDSDtBQUNGO0FBRUFaLGdCQUFnQixDQUFDYyxRQUFRLENBQUUsWUFBWSxFQUFFYixVQUFXLENBQUM7QUFFckQsZUFBZUEsVUFBVSJ9

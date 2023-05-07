@@ -1,0 +1,33 @@
+// Copyright 2022-2023, University of Colorado Boulder
+
+/**
+ * Opens a URL in a popup window or tab if possible.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import scenery from '../scenery.js';
+import { allowLinksProperty } from '../imports.js';
+
+/**
+ * Opens the URL in a new window or tab.
+ * @param url
+ * @param allowPopups - Don't allow openPopup IF we have query parameters AND allowLinks is false,
+ *                   - see https://github.com/phetsims/joist/issues/830
+ *                   - But individual cases (such as screenshot) can override this to be always allowed
+ */
+function openPopup(url, allowPopups = allowLinksProperty.value) {
+  // If available, don't openPopups for fuzzing
+  const fuzzOptOut = phet && phet.chipper && phet.chipper.isFuzzEnabled();
+  if (allowPopups && !fuzzOptOut) {
+    const popupWindow = window.open(url, '_blank'); // open in a new window/tab
+
+    // We can't guarantee the presence of a window object, since if it isn't opened then it will return null.
+    // See https://github.com/phetsims/phet-ios-app/issues/508#issuecomment-520891177 and documentation at
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/open.
+    popupWindow && popupWindow.focus();
+  }
+}
+scenery.register('openPopup', openPopup);
+export default openPopup;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5IiwiYWxsb3dMaW5rc1Byb3BlcnR5Iiwib3BlblBvcHVwIiwidXJsIiwiYWxsb3dQb3B1cHMiLCJ2YWx1ZSIsImZ1enpPcHRPdXQiLCJwaGV0IiwiY2hpcHBlciIsImlzRnV6ekVuYWJsZWQiLCJwb3B1cFdpbmRvdyIsIndpbmRvdyIsIm9wZW4iLCJmb2N1cyIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsib3BlblBvcHVwLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIyLTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE9wZW5zIGEgVVJMIGluIGEgcG9wdXAgd2luZG93IG9yIHRhYiBpZiBwb3NzaWJsZS5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBzY2VuZXJ5IGZyb20gJy4uL3NjZW5lcnkuanMnO1xyXG5pbXBvcnQgeyBhbGxvd0xpbmtzUHJvcGVydHkgfSBmcm9tICcuLi9pbXBvcnRzLmpzJztcclxuXHJcbi8qKlxyXG4gKiBPcGVucyB0aGUgVVJMIGluIGEgbmV3IHdpbmRvdyBvciB0YWIuXHJcbiAqIEBwYXJhbSB1cmxcclxuICogQHBhcmFtIGFsbG93UG9wdXBzIC0gRG9uJ3QgYWxsb3cgb3BlblBvcHVwIElGIHdlIGhhdmUgcXVlcnkgcGFyYW1ldGVycyBBTkQgYWxsb3dMaW5rcyBpcyBmYWxzZSxcclxuICogICAgICAgICAgICAgICAgICAgLSBzZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2pvaXN0L2lzc3Vlcy84MzBcclxuICogICAgICAgICAgICAgICAgICAgLSBCdXQgaW5kaXZpZHVhbCBjYXNlcyAoc3VjaCBhcyBzY3JlZW5zaG90KSBjYW4gb3ZlcnJpZGUgdGhpcyB0byBiZSBhbHdheXMgYWxsb3dlZFxyXG4gKi9cclxuZnVuY3Rpb24gb3BlblBvcHVwKCB1cmw6IHN0cmluZywgYWxsb3dQb3B1cHMgPSBhbGxvd0xpbmtzUHJvcGVydHkudmFsdWUgKTogdm9pZCB7XHJcblxyXG4gIC8vIElmIGF2YWlsYWJsZSwgZG9uJ3Qgb3BlblBvcHVwcyBmb3IgZnV6emluZ1xyXG4gIGNvbnN0IGZ1enpPcHRPdXQgPSBwaGV0ICYmIHBoZXQuY2hpcHBlciAmJiBwaGV0LmNoaXBwZXIuaXNGdXp6RW5hYmxlZCgpO1xyXG5cclxuICBpZiAoIGFsbG93UG9wdXBzICYmICFmdXp6T3B0T3V0ICkge1xyXG4gICAgY29uc3QgcG9wdXBXaW5kb3cgPSB3aW5kb3cub3BlbiggdXJsLCAnX2JsYW5rJyApOyAvLyBvcGVuIGluIGEgbmV3IHdpbmRvdy90YWJcclxuXHJcbiAgICAvLyBXZSBjYW4ndCBndWFyYW50ZWUgdGhlIHByZXNlbmNlIG9mIGEgd2luZG93IG9iamVjdCwgc2luY2UgaWYgaXQgaXNuJ3Qgb3BlbmVkIHRoZW4gaXQgd2lsbCByZXR1cm4gbnVsbC5cclxuICAgIC8vIFNlZSBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvcGhldC1pb3MtYXBwL2lzc3Vlcy81MDgjaXNzdWVjb21tZW50LTUyMDg5MTE3NyBhbmQgZG9jdW1lbnRhdGlvbiBhdFxyXG4gICAgLy8gaHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL1dpbmRvdy9vcGVuLlxyXG4gICAgcG9wdXBXaW5kb3cgJiYgcG9wdXBXaW5kb3cuZm9jdXMoKTtcclxuICB9XHJcbn1cclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdvcGVuUG9wdXAnLCBvcGVuUG9wdXAgKTtcclxuZXhwb3J0IGRlZmF1bHQgb3BlblBvcHVwO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLGVBQWU7QUFDbkMsU0FBU0Msa0JBQWtCLFFBQVEsZUFBZTs7QUFFbEQ7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxTQUFTQyxTQUFTQSxDQUFFQyxHQUFXLEVBQUVDLFdBQVcsR0FBR0gsa0JBQWtCLENBQUNJLEtBQUssRUFBUztFQUU5RTtFQUNBLE1BQU1DLFVBQVUsR0FBR0MsSUFBSSxJQUFJQSxJQUFJLENBQUNDLE9BQU8sSUFBSUQsSUFBSSxDQUFDQyxPQUFPLENBQUNDLGFBQWEsQ0FBQyxDQUFDO0VBRXZFLElBQUtMLFdBQVcsSUFBSSxDQUFDRSxVQUFVLEVBQUc7SUFDaEMsTUFBTUksV0FBVyxHQUFHQyxNQUFNLENBQUNDLElBQUksQ0FBRVQsR0FBRyxFQUFFLFFBQVMsQ0FBQyxDQUFDLENBQUM7O0lBRWxEO0lBQ0E7SUFDQTtJQUNBTyxXQUFXLElBQUlBLFdBQVcsQ0FBQ0csS0FBSyxDQUFDLENBQUM7RUFDcEM7QUFDRjtBQUVBYixPQUFPLENBQUNjLFFBQVEsQ0FBRSxXQUFXLEVBQUVaLFNBQVUsQ0FBQztBQUMxQyxlQUFlQSxTQUFTIn0=

@@ -1,0 +1,39 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * RGBPhotonEventModel
+ *
+ * @author Aaron Davis (PhET Interactive Simulations)
+ */
+
+import Property from '../../../../axon/js/Property.js';
+import colorVision from '../../colorVision.js';
+class RGBPhotonEventModel {
+  /**
+   * Event model that will fire events at a variable rate. An event will occur every 1/rate time units.
+   * @param {Property.<number>} rateProperty
+   */
+  constructor(rateProperty) {
+    assert && assert(rateProperty instanceof Property, 'The rateProperty should be a Property');
+    this.rateProperty = rateProperty; // @private
+  }
+
+  /**
+   * @returns {number}
+   * @public
+   */
+  getPeriodBeforeNextEvent() {
+    const rate = this.rateProperty.get() * 2;
+    assert && assert(rate >= 0, 'We need to have a non-negative rate in order to prevent infinite loops.');
+
+    // make sure that a 0 rate doesn't fire an event
+    if (rate === 0) {
+      return Number.POSITIVE_INFINITY;
+    } else {
+      return 1 / rate;
+    }
+  }
+}
+colorVision.register('RGBPhotonEventModel', RGBPhotonEventModel);
+export default RGBPhotonEventModel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQcm9wZXJ0eSIsImNvbG9yVmlzaW9uIiwiUkdCUGhvdG9uRXZlbnRNb2RlbCIsImNvbnN0cnVjdG9yIiwicmF0ZVByb3BlcnR5IiwiYXNzZXJ0IiwiZ2V0UGVyaW9kQmVmb3JlTmV4dEV2ZW50IiwicmF0ZSIsImdldCIsIk51bWJlciIsIlBPU0lUSVZFX0lORklOSVRZIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSR0JQaG90b25FdmVudE1vZGVsLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFJHQlBob3RvbkV2ZW50TW9kZWxcclxuICpcclxuICogQGF1dGhvciBBYXJvbiBEYXZpcyAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9Qcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBjb2xvclZpc2lvbiBmcm9tICcuLi8uLi9jb2xvclZpc2lvbi5qcyc7XHJcblxyXG5jbGFzcyBSR0JQaG90b25FdmVudE1vZGVsIHtcclxuXHJcbiAgLyoqXHJcbiAgICogRXZlbnQgbW9kZWwgdGhhdCB3aWxsIGZpcmUgZXZlbnRzIGF0IGEgdmFyaWFibGUgcmF0ZS4gQW4gZXZlbnQgd2lsbCBvY2N1ciBldmVyeSAxL3JhdGUgdGltZSB1bml0cy5cclxuICAgKiBAcGFyYW0ge1Byb3BlcnR5LjxudW1iZXI+fSByYXRlUHJvcGVydHlcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggcmF0ZVByb3BlcnR5ICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggcmF0ZVByb3BlcnR5IGluc3RhbmNlb2YgUHJvcGVydHksICdUaGUgcmF0ZVByb3BlcnR5IHNob3VsZCBiZSBhIFByb3BlcnR5JyApO1xyXG5cclxuICAgIHRoaXMucmF0ZVByb3BlcnR5ID0gcmF0ZVByb3BlcnR5OyAvLyBAcHJpdmF0ZVxyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0UGVyaW9kQmVmb3JlTmV4dEV2ZW50KCkge1xyXG4gICAgY29uc3QgcmF0ZSA9IHRoaXMucmF0ZVByb3BlcnR5LmdldCgpICogMjtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIHJhdGUgPj0gMCwgJ1dlIG5lZWQgdG8gaGF2ZSBhIG5vbi1uZWdhdGl2ZSByYXRlIGluIG9yZGVyIHRvIHByZXZlbnQgaW5maW5pdGUgbG9vcHMuJyApO1xyXG5cclxuICAgIC8vIG1ha2Ugc3VyZSB0aGF0IGEgMCByYXRlIGRvZXNuJ3QgZmlyZSBhbiBldmVudFxyXG4gICAgaWYgKCByYXRlID09PSAwICkge1xyXG4gICAgICByZXR1cm4gTnVtYmVyLlBPU0lUSVZFX0lORklOSVRZO1xyXG4gICAgfVxyXG4gICAgZWxzZSB7XHJcbiAgICAgIHJldHVybiAxIC8gcmF0ZTtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbmNvbG9yVmlzaW9uLnJlZ2lzdGVyKCAnUkdCUGhvdG9uRXZlbnRNb2RlbCcsIFJHQlBob3RvbkV2ZW50TW9kZWwgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IFJHQlBob3RvbkV2ZW50TW9kZWw7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLFFBQVEsTUFBTSxpQ0FBaUM7QUFDdEQsT0FBT0MsV0FBVyxNQUFNLHNCQUFzQjtBQUU5QyxNQUFNQyxtQkFBbUIsQ0FBQztFQUV4QjtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxZQUFZLEVBQUc7SUFDMUJDLE1BQU0sSUFBSUEsTUFBTSxDQUFFRCxZQUFZLFlBQVlKLFFBQVEsRUFBRSx1Q0FBd0MsQ0FBQztJQUU3RixJQUFJLENBQUNJLFlBQVksR0FBR0EsWUFBWSxDQUFDLENBQUM7RUFDcEM7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUUsd0JBQXdCQSxDQUFBLEVBQUc7SUFDekIsTUFBTUMsSUFBSSxHQUFHLElBQUksQ0FBQ0gsWUFBWSxDQUFDSSxHQUFHLENBQUMsQ0FBQyxHQUFHLENBQUM7SUFDeENILE1BQU0sSUFBSUEsTUFBTSxDQUFFRSxJQUFJLElBQUksQ0FBQyxFQUFFLHlFQUEwRSxDQUFDOztJQUV4RztJQUNBLElBQUtBLElBQUksS0FBSyxDQUFDLEVBQUc7TUFDaEIsT0FBT0UsTUFBTSxDQUFDQyxpQkFBaUI7SUFDakMsQ0FBQyxNQUNJO01BQ0gsT0FBTyxDQUFDLEdBQUdILElBQUk7SUFDakI7RUFDRjtBQUNGO0FBRUFOLFdBQVcsQ0FBQ1UsUUFBUSxDQUFFLHFCQUFxQixFQUFFVCxtQkFBb0IsQ0FBQztBQUVsRSxlQUFlQSxtQkFBbUIifQ==

@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Jeu",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Jeu"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Dix",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Dix"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Vingt",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Vingt"
+      }
+    ]
+  },
+  "ones": {
+    "value": "ceux",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "ceux"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Bloc de dix",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Bloc de dix"
+      }
+    ]
+  },
+  "word": {
+    "value": "Mot",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Mot"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "mot ({{language}})",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "mot ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Choisis ton jeu!",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Choisis ton jeu!"
+      }
+    ]
+  },
+  "games": {
+    "value": "Jeux",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Jeux"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Jeu de nombres",
+    "history": [
+      {
+        "userId": 147846,
+        "timestamp": 1653030718481,
+        "oldValue": "",
+        "newValue": "Jeu de nombres"
+      }
+    ]
+  }
+}

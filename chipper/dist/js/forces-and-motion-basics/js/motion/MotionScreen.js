@@ -1,0 +1,45 @@
+// Copyright 2015-2020, University of Colorado Boulder
+
+/**
+ * TODO
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import Screen from '../../../joist/js/Screen.js';
+import forcesAndMotionBasics from '../forcesAndMotionBasics.js';
+import MotionModel from './model/MotionModel.js';
+import MotionScreenView from './view/MotionScreenView.js';
+class MotionScreen extends Screen {
+  /**
+   * @param style
+   * @param {Tandem} tandem
+   * @param {Object} [options]
+   */
+  constructor(style, tandem, options) {
+    options = options || {};
+    assert && assert(!options.tandem, 'tandem is a constructor param, not an option');
+    options.tandem = tandem;
+    super(() => new MotionModel(style, tandem.createTandem('model')), model => new MotionScreenView(model, tandem.createTandem('view')), options);
+  }
+
+  /**
+   * TODO
+   * @returns TODO
+   * @public
+   */
+  getState() {
+    return {
+      model: this.model.getState(),
+      view: {}
+    };
+  }
+
+  /**
+   * TODO
+   * @public
+   */
+  setState() {}
+}
+forcesAndMotionBasics.register('MotionScreen', MotionScreen);
+export default MotionScreen;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTY3JlZW4iLCJmb3JjZXNBbmRNb3Rpb25CYXNpY3MiLCJNb3Rpb25Nb2RlbCIsIk1vdGlvblNjcmVlblZpZXciLCJNb3Rpb25TY3JlZW4iLCJjb25zdHJ1Y3RvciIsInN0eWxlIiwidGFuZGVtIiwib3B0aW9ucyIsImFzc2VydCIsImNyZWF0ZVRhbmRlbSIsIm1vZGVsIiwiZ2V0U3RhdGUiLCJ2aWV3Iiwic2V0U3RhdGUiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIk1vdGlvblNjcmVlbi5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNS0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBUT0RPXHJcbiAqIEBhdXRob3IgU2FtIFJlaWQgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IFNjcmVlbiBmcm9tICcuLi8uLi8uLi9qb2lzdC9qcy9TY3JlZW4uanMnO1xyXG5pbXBvcnQgZm9yY2VzQW5kTW90aW9uQmFzaWNzIGZyb20gJy4uL2ZvcmNlc0FuZE1vdGlvbkJhc2ljcy5qcyc7XHJcbmltcG9ydCBNb3Rpb25Nb2RlbCBmcm9tICcuL21vZGVsL01vdGlvbk1vZGVsLmpzJztcclxuaW1wb3J0IE1vdGlvblNjcmVlblZpZXcgZnJvbSAnLi92aWV3L01vdGlvblNjcmVlblZpZXcuanMnO1xyXG5cclxuY2xhc3MgTW90aW9uU2NyZWVuIGV4dGVuZHMgU2NyZWVuIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHN0eWxlXHJcbiAgICogQHBhcmFtIHtUYW5kZW19IHRhbmRlbVxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3Rvciggc3R5bGUsIHRhbmRlbSwgb3B0aW9ucyApIHtcclxuXHJcbiAgICBvcHRpb25zID0gb3B0aW9ucyB8fCB7fTtcclxuXHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCAhb3B0aW9ucy50YW5kZW0sICd0YW5kZW0gaXMgYSBjb25zdHJ1Y3RvciBwYXJhbSwgbm90IGFuIG9wdGlvbicgKTtcclxuICAgIG9wdGlvbnMudGFuZGVtID0gdGFuZGVtO1xyXG5cclxuICAgIHN1cGVyKFxyXG4gICAgICAoKSA9PiBuZXcgTW90aW9uTW9kZWwoIHN0eWxlLCB0YW5kZW0uY3JlYXRlVGFuZGVtKCAnbW9kZWwnICkgKSxcclxuICAgICAgbW9kZWwgPT4gbmV3IE1vdGlvblNjcmVlblZpZXcoIG1vZGVsLCB0YW5kZW0uY3JlYXRlVGFuZGVtKCAndmlldycgKSApLFxyXG4gICAgICBvcHRpb25zICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBUT0RPXHJcbiAgICogQHJldHVybnMgVE9ET1xyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBnZXRTdGF0ZSgpIHtcclxuICAgIHJldHVybiB7IG1vZGVsOiB0aGlzLm1vZGVsLmdldFN0YXRlKCksIHZpZXc6IHt9IH07XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBUT0RPXHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIHNldFN0YXRlKCkge1xyXG4gIH1cclxufVxyXG5cclxuZm9yY2VzQW5kTW90aW9uQmFzaWNzLnJlZ2lzdGVyKCAnTW90aW9uU2NyZWVuJywgTW90aW9uU2NyZWVuICk7XHJcbmV4cG9ydCBkZWZhdWx0IE1vdGlvblNjcmVlbjsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE1BQU0sTUFBTSw2QkFBNkI7QUFDaEQsT0FBT0MscUJBQXFCLE1BQU0sNkJBQTZCO0FBQy9ELE9BQU9DLFdBQVcsTUFBTSx3QkFBd0I7QUFDaEQsT0FBT0MsZ0JBQWdCLE1BQU0sNEJBQTRCO0FBRXpELE1BQU1DLFlBQVksU0FBU0osTUFBTSxDQUFDO0VBRWhDO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUssV0FBV0EsQ0FBRUMsS0FBSyxFQUFFQyxNQUFNLEVBQUVDLE9BQU8sRUFBRztJQUVwQ0EsT0FBTyxHQUFHQSxPQUFPLElBQUksQ0FBQyxDQUFDO0lBRXZCQyxNQUFNLElBQUlBLE1BQU0sQ0FBRSxDQUFDRCxPQUFPLENBQUNELE1BQU0sRUFBRSw4Q0FBK0MsQ0FBQztJQUNuRkMsT0FBTyxDQUFDRCxNQUFNLEdBQUdBLE1BQU07SUFFdkIsS0FBSyxDQUNILE1BQU0sSUFBSUwsV0FBVyxDQUFFSSxLQUFLLEVBQUVDLE1BQU0sQ0FBQ0csWUFBWSxDQUFFLE9BQVEsQ0FBRSxDQUFDLEVBQzlEQyxLQUFLLElBQUksSUFBSVIsZ0JBQWdCLENBQUVRLEtBQUssRUFBRUosTUFBTSxDQUFDRyxZQUFZLENBQUUsTUFBTyxDQUFFLENBQUMsRUFDckVGLE9BQVEsQ0FBQztFQUNiOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUksUUFBUUEsQ0FBQSxFQUFHO0lBQ1QsT0FBTztNQUFFRCxLQUFLLEVBQUUsSUFBSSxDQUFDQSxLQUFLLENBQUNDLFFBQVEsQ0FBQyxDQUFDO01BQUVDLElBQUksRUFBRSxDQUFDO0lBQUUsQ0FBQztFQUNuRDs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxRQUFRQSxDQUFBLEVBQUcsQ0FDWDtBQUNGO0FBRUFiLHFCQUFxQixDQUFDYyxRQUFRLENBQUUsY0FBYyxFQUFFWCxZQUFhLENBQUM7QUFDOUQsZUFBZUEsWUFBWSJ9

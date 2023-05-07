@@ -1,0 +1,26 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * If given an Array, removes all of its elements and returns it. Otherwise, if given a falsy value
+ * (null/undefined/etc.), it will create and return a fresh Array.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import phetCore from './phetCore.js';
+function cleanArray(arr) {
+  assert && assert(!arr || Array.isArray(arr), 'cleanArray either takes an Array');
+  if (arr) {
+    // fastest way to clear an array (http://stackoverflow.com/questions/1232040/how-to-empty-an-array-in-javascript, http://jsperf.com/array-destroy/32)
+    // also, better than length=0, since it doesn't create significant garbage collection (like length=0), tested on Chrome 34.
+    while (arr.length) {
+      arr.pop();
+    }
+    return arr;
+  } else {
+    return [];
+  }
+}
+phetCore.register('cleanArray', cleanArray);
+export default cleanArray;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwaGV0Q29yZSIsImNsZWFuQXJyYXkiLCJhcnIiLCJhc3NlcnQiLCJBcnJheSIsImlzQXJyYXkiLCJsZW5ndGgiLCJwb3AiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbImNsZWFuQXJyYXkuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogSWYgZ2l2ZW4gYW4gQXJyYXksIHJlbW92ZXMgYWxsIG9mIGl0cyBlbGVtZW50cyBhbmQgcmV0dXJucyBpdC4gT3RoZXJ3aXNlLCBpZiBnaXZlbiBhIGZhbHN5IHZhbHVlXHJcbiAqIChudWxsL3VuZGVmaW5lZC9ldGMuKSwgaXQgd2lsbCBjcmVhdGUgYW5kIHJldHVybiBhIGZyZXNoIEFycmF5LlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IHBoZXRDb3JlIGZyb20gJy4vcGhldENvcmUuanMnO1xyXG5cclxuZnVuY3Rpb24gY2xlYW5BcnJheSggYXJyICkge1xyXG4gIGFzc2VydCAmJiBhc3NlcnQoICFhcnIgfHwgKCBBcnJheS5pc0FycmF5KCBhcnIgKSApLCAnY2xlYW5BcnJheSBlaXRoZXIgdGFrZXMgYW4gQXJyYXknICk7XHJcblxyXG4gIGlmICggYXJyICkge1xyXG4gICAgLy8gZmFzdGVzdCB3YXkgdG8gY2xlYXIgYW4gYXJyYXkgKGh0dHA6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTIzMjA0MC9ob3ctdG8tZW1wdHktYW4tYXJyYXktaW4tamF2YXNjcmlwdCwgaHR0cDovL2pzcGVyZi5jb20vYXJyYXktZGVzdHJveS8zMilcclxuICAgIC8vIGFsc28sIGJldHRlciB0aGFuIGxlbmd0aD0wLCBzaW5jZSBpdCBkb2Vzbid0IGNyZWF0ZSBzaWduaWZpY2FudCBnYXJiYWdlIGNvbGxlY3Rpb24gKGxpa2UgbGVuZ3RoPTApLCB0ZXN0ZWQgb24gQ2hyb21lIDM0LlxyXG4gICAgd2hpbGUgKCBhcnIubGVuZ3RoICkge1xyXG4gICAgICBhcnIucG9wKCk7XHJcbiAgICB9XHJcbiAgICByZXR1cm4gYXJyO1xyXG4gIH1cclxuICBlbHNlIHtcclxuICAgIHJldHVybiBbXTtcclxuICB9XHJcbn1cclxuXHJcbnBoZXRDb3JlLnJlZ2lzdGVyKCAnY2xlYW5BcnJheScsIGNsZWFuQXJyYXkgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsZWFuQXJyYXk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsUUFBUSxNQUFNLGVBQWU7QUFFcEMsU0FBU0MsVUFBVUEsQ0FBRUMsR0FBRyxFQUFHO0VBQ3pCQyxNQUFNLElBQUlBLE1BQU0sQ0FBRSxDQUFDRCxHQUFHLElBQU1FLEtBQUssQ0FBQ0MsT0FBTyxDQUFFSCxHQUFJLENBQUcsRUFBRSxrQ0FBbUMsQ0FBQztFQUV4RixJQUFLQSxHQUFHLEVBQUc7SUFDVDtJQUNBO0lBQ0EsT0FBUUEsR0FBRyxDQUFDSSxNQUFNLEVBQUc7TUFDbkJKLEdBQUcsQ0FBQ0ssR0FBRyxDQUFDLENBQUM7SUFDWDtJQUNBLE9BQU9MLEdBQUc7RUFDWixDQUFDLE1BQ0k7SUFDSCxPQUFPLEVBQUU7RUFDWDtBQUNGO0FBRUFGLFFBQVEsQ0FBQ1EsUUFBUSxDQUFFLFlBQVksRUFBRVAsVUFBVyxDQUFDO0FBRTdDLGVBQWVBLFVBQVUifQ==

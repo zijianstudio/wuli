@@ -1,0 +1,42 @@
+// Copyright 2013-2021, University of Colorado Boulder
+
+/**
+ * BarMagnet is the model of a simple bar magnet. The magnet has fixed size, and mutable position and orientation.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Steele Dalton (PhET Interactive Simulations)
+ */
+
+import Property from '../../../../axon/js/Property.js';
+import exampleSim from '../../exampleSim.js';
+class BarMagnet {
+  /**
+   * @param {Dimension2} size - the size of the bar magnet in model coordinates
+   * @param {Vector2} position - the position of the bar magnet in model coordinates
+   * @param {number} orientation - in radians
+   */
+  constructor(size, position, orientation) {
+    // @public (read-only) {Dimension2} the size of the bar magnet in model coordinates
+    this.size = size;
+
+    // @public {Vector2} the position of the bar magnet in model coordinates
+    this.positionProperty = new Property(position);
+
+    // @public {number} in radians
+    this.orientationProperty = new Property(orientation);
+  }
+
+  /**
+   * Restores the initial state of the BarMagnet. This method is called when the simulation's "Reset All" button is
+   * pressed. Note that BarMagnet.size is constant and does not need to be reset.
+   * @public
+   */
+  reset() {
+    this.positionProperty.reset();
+    this.orientationProperty.reset();
+  }
+}
+exampleSim.register('BarMagnet', BarMagnet);
+export default BarMagnet;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQcm9wZXJ0eSIsImV4YW1wbGVTaW0iLCJCYXJNYWduZXQiLCJjb25zdHJ1Y3RvciIsInNpemUiLCJwb3NpdGlvbiIsIm9yaWVudGF0aW9uIiwicG9zaXRpb25Qcm9wZXJ0eSIsIm9yaWVudGF0aW9uUHJvcGVydHkiLCJyZXNldCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiQmFyTWFnbmV0LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDEzLTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEJhck1hZ25ldCBpcyB0aGUgbW9kZWwgb2YgYSBzaW1wbGUgYmFyIG1hZ25ldC4gVGhlIG1hZ25ldCBoYXMgZml4ZWQgc2l6ZSwgYW5kIG11dGFibGUgcG9zaXRpb24gYW5kIG9yaWVudGF0aW9uLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKiBAYXV0aG9yIFN0ZWVsZSBEYWx0b24gKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IFByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgZXhhbXBsZVNpbSBmcm9tICcuLi8uLi9leGFtcGxlU2ltLmpzJztcclxuXHJcbmNsYXNzIEJhck1hZ25ldCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7RGltZW5zaW9uMn0gc2l6ZSAtIHRoZSBzaXplIG9mIHRoZSBiYXIgbWFnbmV0IGluIG1vZGVsIGNvb3JkaW5hdGVzXHJcbiAgICogQHBhcmFtIHtWZWN0b3IyfSBwb3NpdGlvbiAtIHRoZSBwb3NpdGlvbiBvZiB0aGUgYmFyIG1hZ25ldCBpbiBtb2RlbCBjb29yZGluYXRlc1xyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBvcmllbnRhdGlvbiAtIGluIHJhZGlhbnNcclxuICAgKi9cclxuICBjb25zdHJ1Y3Rvciggc2l6ZSwgcG9zaXRpb24sIG9yaWVudGF0aW9uICkge1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSkge0RpbWVuc2lvbjJ9IHRoZSBzaXplIG9mIHRoZSBiYXIgbWFnbmV0IGluIG1vZGVsIGNvb3JkaW5hdGVzXHJcbiAgICB0aGlzLnNpemUgPSBzaXplO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge1ZlY3RvcjJ9IHRoZSBwb3NpdGlvbiBvZiB0aGUgYmFyIG1hZ25ldCBpbiBtb2RlbCBjb29yZGluYXRlc1xyXG4gICAgdGhpcy5wb3NpdGlvblByb3BlcnR5ID0gbmV3IFByb3BlcnR5KCBwb3NpdGlvbiApO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge251bWJlcn0gaW4gcmFkaWFuc1xyXG4gICAgdGhpcy5vcmllbnRhdGlvblByb3BlcnR5ID0gbmV3IFByb3BlcnR5KCBvcmllbnRhdGlvbiApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVzdG9yZXMgdGhlIGluaXRpYWwgc3RhdGUgb2YgdGhlIEJhck1hZ25ldC4gVGhpcyBtZXRob2QgaXMgY2FsbGVkIHdoZW4gdGhlIHNpbXVsYXRpb24ncyBcIlJlc2V0IEFsbFwiIGJ1dHRvbiBpc1xyXG4gICAqIHByZXNzZWQuIE5vdGUgdGhhdCBCYXJNYWduZXQuc2l6ZSBpcyBjb25zdGFudCBhbmQgZG9lcyBub3QgbmVlZCB0byBiZSByZXNldC5cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgcmVzZXQoKSB7XHJcbiAgICB0aGlzLnBvc2l0aW9uUHJvcGVydHkucmVzZXQoKTtcclxuICAgIHRoaXMub3JpZW50YXRpb25Qcm9wZXJ0eS5yZXNldCgpO1xyXG4gIH1cclxufVxyXG5cclxuZXhhbXBsZVNpbS5yZWdpc3RlciggJ0Jhck1hZ25ldCcsIEJhck1hZ25ldCApO1xyXG5leHBvcnQgZGVmYXVsdCBCYXJNYWduZXQ7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0saUNBQWlDO0FBQ3RELE9BQU9DLFVBQVUsTUFBTSxxQkFBcUI7QUFFNUMsTUFBTUMsU0FBUyxDQUFDO0VBRWQ7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxJQUFJLEVBQUVDLFFBQVEsRUFBRUMsV0FBVyxFQUFHO0lBRXpDO0lBQ0EsSUFBSSxDQUFDRixJQUFJLEdBQUdBLElBQUk7O0lBRWhCO0lBQ0EsSUFBSSxDQUFDRyxnQkFBZ0IsR0FBRyxJQUFJUCxRQUFRLENBQUVLLFFBQVMsQ0FBQzs7SUFFaEQ7SUFDQSxJQUFJLENBQUNHLG1CQUFtQixHQUFHLElBQUlSLFFBQVEsQ0FBRU0sV0FBWSxDQUFDO0VBQ3hEOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUcsS0FBS0EsQ0FBQSxFQUFHO0lBQ04sSUFBSSxDQUFDRixnQkFBZ0IsQ0FBQ0UsS0FBSyxDQUFDLENBQUM7SUFDN0IsSUFBSSxDQUFDRCxtQkFBbUIsQ0FBQ0MsS0FBSyxDQUFDLENBQUM7RUFDbEM7QUFDRjtBQUVBUixVQUFVLENBQUNTLFFBQVEsQ0FBRSxXQUFXLEVBQUVSLFNBQVUsQ0FBQztBQUM3QyxlQUFlQSxTQUFTIn0=

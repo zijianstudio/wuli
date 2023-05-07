@@ -1,0 +1,43 @@
+// Copyright 2015-2023, University of Colorado Boulder
+
+/**
+ * The identity function, creates an output that is identical to the input.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import { Rectangle } from '../../../../../scenery/js/imports.js';
+import ImageFunction from '../../../common/model/functions/ImageFunction.js';
+import functionBuilder from '../../../functionBuilder.js';
+import FBCanvasUtils from '../FBCanvasUtils.js';
+export default class Identity extends ImageFunction {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = options || {};
+    options.name = 'Identity';
+    options.fill = 'rgb( 255, 246, 146 )';
+
+    // The identify function has no visible icon. See https://github.com/phetsims/function-builder/issues/91
+    // This decision was made late in development, and it was easier to use an invisible Rectangle than to
+    // make the icon optional in the myriad places where it is currently required.
+    const iconNode = new Rectangle(0, 0, 1, 1);
+    super(iconNode, options);
+  }
+
+  /**
+   * Applies this function.
+   *
+   * @param {HTMLCanvasElement} inputCanvas
+   * @returns {HTMLCanvasElement}
+   * @public
+   * @override
+   */
+  applyFunction(inputCanvas) {
+    // copy the input canvas to the output canvas
+    return FBCanvasUtils.createCanvasWithImage(inputCanvas);
+  }
+}
+functionBuilder.register('Identity', Identity);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJSZWN0YW5nbGUiLCJJbWFnZUZ1bmN0aW9uIiwiZnVuY3Rpb25CdWlsZGVyIiwiRkJDYW52YXNVdGlscyIsIklkZW50aXR5IiwiY29uc3RydWN0b3IiLCJvcHRpb25zIiwibmFtZSIsImZpbGwiLCJpY29uTm9kZSIsImFwcGx5RnVuY3Rpb24iLCJpbnB1dENhbnZhcyIsImNyZWF0ZUNhbnZhc1dpdGhJbWFnZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiSWRlbnRpdHkuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVGhlIGlkZW50aXR5IGZ1bmN0aW9uLCBjcmVhdGVzIGFuIG91dHB1dCB0aGF0IGlzIGlkZW50aWNhbCB0byB0aGUgaW5wdXQuXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IHsgUmVjdGFuZ2xlIH0gZnJvbSAnLi4vLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IEltYWdlRnVuY3Rpb24gZnJvbSAnLi4vLi4vLi4vY29tbW9uL21vZGVsL2Z1bmN0aW9ucy9JbWFnZUZ1bmN0aW9uLmpzJztcclxuaW1wb3J0IGZ1bmN0aW9uQnVpbGRlciBmcm9tICcuLi8uLi8uLi9mdW5jdGlvbkJ1aWxkZXIuanMnO1xyXG5pbXBvcnQgRkJDYW52YXNVdGlscyBmcm9tICcuLi9GQkNhbnZhc1V0aWxzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIElkZW50aXR5IGV4dGVuZHMgSW1hZ2VGdW5jdGlvbiB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3Rvciggb3B0aW9ucyApIHtcclxuXHJcbiAgICBvcHRpb25zID0gb3B0aW9ucyB8fCB7fTtcclxuICAgIG9wdGlvbnMubmFtZSA9ICdJZGVudGl0eSc7XHJcbiAgICBvcHRpb25zLmZpbGwgPSAncmdiKCAyNTUsIDI0NiwgMTQ2ICknO1xyXG5cclxuICAgIC8vIFRoZSBpZGVudGlmeSBmdW5jdGlvbiBoYXMgbm8gdmlzaWJsZSBpY29uLiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2Z1bmN0aW9uLWJ1aWxkZXIvaXNzdWVzLzkxXHJcbiAgICAvLyBUaGlzIGRlY2lzaW9uIHdhcyBtYWRlIGxhdGUgaW4gZGV2ZWxvcG1lbnQsIGFuZCBpdCB3YXMgZWFzaWVyIHRvIHVzZSBhbiBpbnZpc2libGUgUmVjdGFuZ2xlIHRoYW4gdG9cclxuICAgIC8vIG1ha2UgdGhlIGljb24gb3B0aW9uYWwgaW4gdGhlIG15cmlhZCBwbGFjZXMgd2hlcmUgaXQgaXMgY3VycmVudGx5IHJlcXVpcmVkLlxyXG4gICAgY29uc3QgaWNvbk5vZGUgPSBuZXcgUmVjdGFuZ2xlKCAwLCAwLCAxLCAxICk7XHJcblxyXG4gICAgc3VwZXIoIGljb25Ob2RlLCBvcHRpb25zICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBBcHBsaWVzIHRoaXMgZnVuY3Rpb24uXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge0hUTUxDYW52YXNFbGVtZW50fSBpbnB1dENhbnZhc1xyXG4gICAqIEByZXR1cm5zIHtIVE1MQ2FudmFzRWxlbWVudH1cclxuICAgKiBAcHVibGljXHJcbiAgICogQG92ZXJyaWRlXHJcbiAgICovXHJcbiAgYXBwbHlGdW5jdGlvbiggaW5wdXRDYW52YXMgKSB7XHJcblxyXG4gICAgLy8gY29weSB0aGUgaW5wdXQgY2FudmFzIHRvIHRoZSBvdXRwdXQgY2FudmFzXHJcbiAgICByZXR1cm4gRkJDYW52YXNVdGlscy5jcmVhdGVDYW52YXNXaXRoSW1hZ2UoIGlucHV0Q2FudmFzICk7XHJcbiAgfVxyXG59XHJcblxyXG5mdW5jdGlvbkJ1aWxkZXIucmVnaXN0ZXIoICdJZGVudGl0eScsIElkZW50aXR5ICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLFNBQVMsUUFBUSxzQ0FBc0M7QUFDaEUsT0FBT0MsYUFBYSxNQUFNLGtEQUFrRDtBQUM1RSxPQUFPQyxlQUFlLE1BQU0sNkJBQTZCO0FBQ3pELE9BQU9DLGFBQWEsTUFBTSxxQkFBcUI7QUFFL0MsZUFBZSxNQUFNQyxRQUFRLFNBQVNILGFBQWEsQ0FBQztFQUVsRDtBQUNGO0FBQ0E7RUFDRUksV0FBV0EsQ0FBRUMsT0FBTyxFQUFHO0lBRXJCQSxPQUFPLEdBQUdBLE9BQU8sSUFBSSxDQUFDLENBQUM7SUFDdkJBLE9BQU8sQ0FBQ0MsSUFBSSxHQUFHLFVBQVU7SUFDekJELE9BQU8sQ0FBQ0UsSUFBSSxHQUFHLHNCQUFzQjs7SUFFckM7SUFDQTtJQUNBO0lBQ0EsTUFBTUMsUUFBUSxHQUFHLElBQUlULFNBQVMsQ0FBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFFLENBQUM7SUFFNUMsS0FBSyxDQUFFUyxRQUFRLEVBQUVILE9BQVEsQ0FBQztFQUM1Qjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VJLGFBQWFBLENBQUVDLFdBQVcsRUFBRztJQUUzQjtJQUNBLE9BQU9SLGFBQWEsQ0FBQ1MscUJBQXFCLENBQUVELFdBQVksQ0FBQztFQUMzRDtBQUNGO0FBRUFULGVBQWUsQ0FBQ1csUUFBUSxDQUFFLFVBQVUsRUFBRVQsUUFBUyxDQUFDIn0=

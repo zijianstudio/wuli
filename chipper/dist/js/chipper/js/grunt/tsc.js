@@ -1,0 +1,34 @@
+// Copyright 2021-2022, University of Colorado Boulder
+
+/**
+ * Runs `tsc`. If you run into a memory error, consider setting the environment variable like so:
+ * export NODE_OPTIONS=--max_old_space_size=4096
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+// modules
+const execute = require('../../../perennial-alias/js/common/execute');
+
+/**
+ * @param {string} path - path to tsconfig file or directory containing tsconfig file
+ * @param {Array.<string>} commandLineArgs
+ * @returns {Promise<{execResult: {stdout:string,stderr:string,code:number}, time: number}>} - the results from exec, and the elapsed time
+ */
+const tsc = async function (path, commandLineArgs = []) {
+  const args = ['../chipper/node_modules/typescript/bin/tsc', ...commandLineArgs];
+  return execute('node', args, path, {
+    errors: 'resolve'
+  });
+};
+
+// so that hook-pre-commit.js knows if it loaded a compatible version
+tsc.apiVersion = '1.0';
+/**
+ * @public
+ *
+ * @param {string} repo
+ * @param {string[]} commandLineArgs
+ */
+module.exports = tsc;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleGVjdXRlIiwicmVxdWlyZSIsInRzYyIsInBhdGgiLCJjb21tYW5kTGluZUFyZ3MiLCJhcmdzIiwiZXJyb3JzIiwiYXBpVmVyc2lvbiIsIm1vZHVsZSIsImV4cG9ydHMiXSwic291cmNlcyI6WyJ0c2MuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjEtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogUnVucyBgdHNjYC4gSWYgeW91IHJ1biBpbnRvIGEgbWVtb3J5IGVycm9yLCBjb25zaWRlciBzZXR0aW5nIHRoZSBlbnZpcm9ubWVudCB2YXJpYWJsZSBsaWtlIHNvOlxyXG4gKiBleHBvcnQgTk9ERV9PUFRJT05TPS0tbWF4X29sZF9zcGFjZV9zaXplPTQwOTZcclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG4vLyBtb2R1bGVzXHJcbmNvbnN0IGV4ZWN1dGUgPSByZXF1aXJlKCAnLi4vLi4vLi4vcGVyZW5uaWFsLWFsaWFzL2pzL2NvbW1vbi9leGVjdXRlJyApO1xyXG5cclxuLyoqXHJcbiAqIEBwYXJhbSB7c3RyaW5nfSBwYXRoIC0gcGF0aCB0byB0c2NvbmZpZyBmaWxlIG9yIGRpcmVjdG9yeSBjb250YWluaW5nIHRzY29uZmlnIGZpbGVcclxuICogQHBhcmFtIHtBcnJheS48c3RyaW5nPn0gY29tbWFuZExpbmVBcmdzXHJcbiAqIEByZXR1cm5zIHtQcm9taXNlPHtleGVjUmVzdWx0OiB7c3Rkb3V0OnN0cmluZyxzdGRlcnI6c3RyaW5nLGNvZGU6bnVtYmVyfSwgdGltZTogbnVtYmVyfT59IC0gdGhlIHJlc3VsdHMgZnJvbSBleGVjLCBhbmQgdGhlIGVsYXBzZWQgdGltZVxyXG4gKi9cclxuY29uc3QgdHNjID0gYXN5bmMgZnVuY3Rpb24oIHBhdGgsIGNvbW1hbmRMaW5lQXJncyA9IFtdICkge1xyXG5cclxuICBjb25zdCBhcmdzID0gWyAnLi4vY2hpcHBlci9ub2RlX21vZHVsZXMvdHlwZXNjcmlwdC9iaW4vdHNjJywgLi4uY29tbWFuZExpbmVBcmdzIF07XHJcbiAgcmV0dXJuIGV4ZWN1dGUoICdub2RlJywgYXJncywgcGF0aCwge1xyXG4gICAgZXJyb3JzOiAncmVzb2x2ZSdcclxuICB9ICk7XHJcbn07XHJcblxyXG4vLyBzbyB0aGF0IGhvb2stcHJlLWNvbW1pdC5qcyBrbm93cyBpZiBpdCBsb2FkZWQgYSBjb21wYXRpYmxlIHZlcnNpb25cclxudHNjLmFwaVZlcnNpb24gPSAnMS4wJztcclxuLyoqXHJcbiAqIEBwdWJsaWNcclxuICpcclxuICogQHBhcmFtIHtzdHJpbmd9IHJlcG9cclxuICogQHBhcmFtIHtzdHJpbmdbXX0gY29tbWFuZExpbmVBcmdzXHJcbiAqL1xyXG5tb2R1bGUuZXhwb3J0cyA9IHRzYzsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLE1BQU1BLE9BQU8sR0FBR0MsT0FBTyxDQUFFLDRDQUE2QyxDQUFDOztBQUV2RTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsTUFBTUMsR0FBRyxHQUFHLGVBQUFBLENBQWdCQyxJQUFJLEVBQUVDLGVBQWUsR0FBRyxFQUFFLEVBQUc7RUFFdkQsTUFBTUMsSUFBSSxHQUFHLENBQUUsNENBQTRDLEVBQUUsR0FBR0QsZUFBZSxDQUFFO0VBQ2pGLE9BQU9KLE9BQU8sQ0FBRSxNQUFNLEVBQUVLLElBQUksRUFBRUYsSUFBSSxFQUFFO0lBQ2xDRyxNQUFNLEVBQUU7RUFDVixDQUFFLENBQUM7QUFDTCxDQUFDOztBQUVEO0FBQ0FKLEdBQUcsQ0FBQ0ssVUFBVSxHQUFHLEtBQUs7QUFDdEI7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0FDLE1BQU0sQ0FBQ0MsT0FBTyxHQUFHUCxHQUFHIn0=

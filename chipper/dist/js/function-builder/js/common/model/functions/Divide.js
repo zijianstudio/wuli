@@ -1,0 +1,28 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * Divide function.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../../phet-core/js/merge.js';
+import functionBuilder from '../../../functionBuilder.js';
+import FBSymbols from '../../FBSymbols.js';
+import MathFunction from './MathFunction.js';
+export default class Divide extends MathFunction {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = merge({
+      fill: 'rgb( 183, 200, 249 )',
+      pickerColor: 'rgb( 14, 89, 218 )'
+    }, options);
+    options.zeroOperandValid = false; // zero is not a valid operand, since division by zero is undefined
+
+    super(FBSymbols.DIVIDE, (input, operand) => input.divide(operand), options);
+  }
+}
+functionBuilder.register('Divide', Divide);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsImZ1bmN0aW9uQnVpbGRlciIsIkZCU3ltYm9scyIsIk1hdGhGdW5jdGlvbiIsIkRpdmlkZSIsImNvbnN0cnVjdG9yIiwib3B0aW9ucyIsImZpbGwiLCJwaWNrZXJDb2xvciIsInplcm9PcGVyYW5kVmFsaWQiLCJESVZJREUiLCJpbnB1dCIsIm9wZXJhbmQiLCJkaXZpZGUiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkRpdmlkZS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNi0yMDIzLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBEaXZpZGUgZnVuY3Rpb24uXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCBmdW5jdGlvbkJ1aWxkZXIgZnJvbSAnLi4vLi4vLi4vZnVuY3Rpb25CdWlsZGVyLmpzJztcclxuaW1wb3J0IEZCU3ltYm9scyBmcm9tICcuLi8uLi9GQlN5bWJvbHMuanMnO1xyXG5pbXBvcnQgTWF0aEZ1bmN0aW9uIGZyb20gJy4vTWF0aEZ1bmN0aW9uLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIERpdmlkZSBleHRlbmRzIE1hdGhGdW5jdGlvbiB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3Rvciggb3B0aW9ucyApIHtcclxuXHJcbiAgICBvcHRpb25zID0gbWVyZ2UoIHtcclxuICAgICAgZmlsbDogJ3JnYiggMTgzLCAyMDAsIDI0OSApJyxcclxuICAgICAgcGlja2VyQ29sb3I6ICdyZ2IoIDE0LCA4OSwgMjE4ICknXHJcbiAgICB9LCBvcHRpb25zICk7XHJcbiAgICBvcHRpb25zLnplcm9PcGVyYW5kVmFsaWQgPSBmYWxzZTsgLy8gemVybyBpcyBub3QgYSB2YWxpZCBvcGVyYW5kLCBzaW5jZSBkaXZpc2lvbiBieSB6ZXJvIGlzIHVuZGVmaW5lZFxyXG5cclxuICAgIHN1cGVyKCBGQlN5bWJvbHMuRElWSURFLFxyXG4gICAgICAoIGlucHV0LCBvcGVyYW5kICkgPT4gaW5wdXQuZGl2aWRlKCBvcGVyYW5kICksXHJcbiAgICAgIG9wdGlvbnMgKTtcclxuICB9XHJcbn1cclxuXHJcbmZ1bmN0aW9uQnVpbGRlci5yZWdpc3RlciggJ0RpdmlkZScsIERpdmlkZSApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxLQUFLLE1BQU0sc0NBQXNDO0FBQ3hELE9BQU9DLGVBQWUsTUFBTSw2QkFBNkI7QUFDekQsT0FBT0MsU0FBUyxNQUFNLG9CQUFvQjtBQUMxQyxPQUFPQyxZQUFZLE1BQU0sbUJBQW1CO0FBRTVDLGVBQWUsTUFBTUMsTUFBTSxTQUFTRCxZQUFZLENBQUM7RUFFL0M7QUFDRjtBQUNBO0VBQ0VFLFdBQVdBLENBQUVDLE9BQU8sRUFBRztJQUVyQkEsT0FBTyxHQUFHTixLQUFLLENBQUU7TUFDZk8sSUFBSSxFQUFFLHNCQUFzQjtNQUM1QkMsV0FBVyxFQUFFO0lBQ2YsQ0FBQyxFQUFFRixPQUFRLENBQUM7SUFDWkEsT0FBTyxDQUFDRyxnQkFBZ0IsR0FBRyxLQUFLLENBQUMsQ0FBQzs7SUFFbEMsS0FBSyxDQUFFUCxTQUFTLENBQUNRLE1BQU0sRUFDckIsQ0FBRUMsS0FBSyxFQUFFQyxPQUFPLEtBQU1ELEtBQUssQ0FBQ0UsTUFBTSxDQUFFRCxPQUFRLENBQUMsRUFDN0NOLE9BQVEsQ0FBQztFQUNiO0FBQ0Y7QUFFQUwsZUFBZSxDQUFDYSxRQUFRLENBQUUsUUFBUSxFQUFFVixNQUFPLENBQUMifQ==

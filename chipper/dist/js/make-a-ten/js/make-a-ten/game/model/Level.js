@@ -1,0 +1,60 @@
+// Copyright 2016-2021, University of Colorado Boulder
+
+/**
+ * Represents a game level. Contains information and the ability to generate challenges for the particular level.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import NumberProperty from '../../../../../axon/js/NumberProperty.js';
+import { Image } from '../../../../../scenery/js/imports.js';
+import makeATen from '../../../makeATen.js';
+class Level {
+  /**
+   * @param {number} number - The number of the level, from 1 to 10
+   * @param {string} color - The color for the level
+   * @param {HTMLImageElement} icon - Image to be shown as the icon for the level
+   * @param {string} description - Translated description to be shown in info and the status bar
+   * @param {NumberChallengeFactory} numberChallengeFactory - For generating challenges
+   */
+  constructor(number, color, icon, description, numberChallengeFactory) {
+    // @public {number} - The level number, from 1 to 10
+    this.number = number;
+
+    // @public {number} - The color of the level, used for backgrounds mostly
+    this.color = color;
+
+    // @public {Node} - A properly sized node for use as an icon representing the level
+    this.iconNode = new Image(icon);
+
+    // @public {string} - Translated description to be shown in info and the status bar
+    this.description = description;
+
+    // @public {Property.<number>} - The total score for this level
+    this.scoreProperty = new NumberProperty(0);
+
+    // @private {NumberChallengeFactory}
+    this.numberChallengeFactory = numberChallengeFactory;
+  }
+
+  /**
+   * Resets all of our mutable state to the initial values.
+   * @public
+   */
+  reset() {
+    this.scoreProperty.reset();
+  }
+
+  /**
+   * Creates a NumberChallenge that should be used as the next challenge for this level.
+   * @public
+   *
+   * @returns {NumberChallenge}
+   */
+  generateChallenge() {
+    return this.numberChallengeFactory.generateChallenge(this.number - 1);
+  }
+}
+makeATen.register('Level', Level);
+export default Level;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOdW1iZXJQcm9wZXJ0eSIsIkltYWdlIiwibWFrZUFUZW4iLCJMZXZlbCIsImNvbnN0cnVjdG9yIiwibnVtYmVyIiwiY29sb3IiLCJpY29uIiwiZGVzY3JpcHRpb24iLCJudW1iZXJDaGFsbGVuZ2VGYWN0b3J5IiwiaWNvbk5vZGUiLCJzY29yZVByb3BlcnR5IiwicmVzZXQiLCJnZW5lcmF0ZUNoYWxsZW5nZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiTGV2ZWwuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTYtMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogUmVwcmVzZW50cyBhIGdhbWUgbGV2ZWwuIENvbnRhaW5zIGluZm9ybWF0aW9uIGFuZCB0aGUgYWJpbGl0eSB0byBnZW5lcmF0ZSBjaGFsbGVuZ2VzIGZvciB0aGUgcGFydGljdWxhciBsZXZlbC5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBOdW1iZXJQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi8uLi9heG9uL2pzL051bWJlclByb3BlcnR5LmpzJztcclxuaW1wb3J0IHsgSW1hZ2UgfSBmcm9tICcuLi8uLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgbWFrZUFUZW4gZnJvbSAnLi4vLi4vLi4vbWFrZUFUZW4uanMnO1xyXG5cclxuY2xhc3MgTGV2ZWwge1xyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBudW1iZXIgLSBUaGUgbnVtYmVyIG9mIHRoZSBsZXZlbCwgZnJvbSAxIHRvIDEwXHJcbiAgICogQHBhcmFtIHtzdHJpbmd9IGNvbG9yIC0gVGhlIGNvbG9yIGZvciB0aGUgbGV2ZWxcclxuICAgKiBAcGFyYW0ge0hUTUxJbWFnZUVsZW1lbnR9IGljb24gLSBJbWFnZSB0byBiZSBzaG93biBhcyB0aGUgaWNvbiBmb3IgdGhlIGxldmVsXHJcbiAgICogQHBhcmFtIHtzdHJpbmd9IGRlc2NyaXB0aW9uIC0gVHJhbnNsYXRlZCBkZXNjcmlwdGlvbiB0byBiZSBzaG93biBpbiBpbmZvIGFuZCB0aGUgc3RhdHVzIGJhclxyXG4gICAqIEBwYXJhbSB7TnVtYmVyQ2hhbGxlbmdlRmFjdG9yeX0gbnVtYmVyQ2hhbGxlbmdlRmFjdG9yeSAtIEZvciBnZW5lcmF0aW5nIGNoYWxsZW5nZXNcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggbnVtYmVyLCBjb2xvciwgaWNvbiwgZGVzY3JpcHRpb24sIG51bWJlckNoYWxsZW5nZUZhY3RvcnkgKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7bnVtYmVyfSAtIFRoZSBsZXZlbCBudW1iZXIsIGZyb20gMSB0byAxMFxyXG4gICAgdGhpcy5udW1iZXIgPSBudW1iZXI7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7bnVtYmVyfSAtIFRoZSBjb2xvciBvZiB0aGUgbGV2ZWwsIHVzZWQgZm9yIGJhY2tncm91bmRzIG1vc3RseVxyXG4gICAgdGhpcy5jb2xvciA9IGNvbG9yO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge05vZGV9IC0gQSBwcm9wZXJseSBzaXplZCBub2RlIGZvciB1c2UgYXMgYW4gaWNvbiByZXByZXNlbnRpbmcgdGhlIGxldmVsXHJcbiAgICB0aGlzLmljb25Ob2RlID0gbmV3IEltYWdlKCBpY29uICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7c3RyaW5nfSAtIFRyYW5zbGF0ZWQgZGVzY3JpcHRpb24gdG8gYmUgc2hvd24gaW4gaW5mbyBhbmQgdGhlIHN0YXR1cyBiYXJcclxuICAgIHRoaXMuZGVzY3JpcHRpb24gPSBkZXNjcmlwdGlvbjtcclxuXHJcbiAgICAvLyBAcHVibGljIHtQcm9wZXJ0eS48bnVtYmVyPn0gLSBUaGUgdG90YWwgc2NvcmUgZm9yIHRoaXMgbGV2ZWxcclxuICAgIHRoaXMuc2NvcmVQcm9wZXJ0eSA9IG5ldyBOdW1iZXJQcm9wZXJ0eSggMCApO1xyXG5cclxuICAgIC8vIEBwcml2YXRlIHtOdW1iZXJDaGFsbGVuZ2VGYWN0b3J5fVxyXG4gICAgdGhpcy5udW1iZXJDaGFsbGVuZ2VGYWN0b3J5ID0gbnVtYmVyQ2hhbGxlbmdlRmFjdG9yeTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFJlc2V0cyBhbGwgb2Ygb3VyIG11dGFibGUgc3RhdGUgdG8gdGhlIGluaXRpYWwgdmFsdWVzLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICByZXNldCgpIHtcclxuICAgIHRoaXMuc2NvcmVQcm9wZXJ0eS5yZXNldCgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ3JlYXRlcyBhIE51bWJlckNoYWxsZW5nZSB0aGF0IHNob3VsZCBiZSB1c2VkIGFzIHRoZSBuZXh0IGNoYWxsZW5nZSBmb3IgdGhpcyBsZXZlbC5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcmV0dXJucyB7TnVtYmVyQ2hhbGxlbmdlfVxyXG4gICAqL1xyXG4gIGdlbmVyYXRlQ2hhbGxlbmdlKCkge1xyXG4gICAgcmV0dXJuIHRoaXMubnVtYmVyQ2hhbGxlbmdlRmFjdG9yeS5nZW5lcmF0ZUNoYWxsZW5nZSggdGhpcy5udW1iZXIgLSAxICk7XHJcbiAgfVxyXG59XHJcblxyXG5tYWtlQVRlbi5yZWdpc3RlciggJ0xldmVsJywgTGV2ZWwgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IExldmVsOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxjQUFjLE1BQU0sMENBQTBDO0FBQ3JFLFNBQVNDLEtBQUssUUFBUSxzQ0FBc0M7QUFDNUQsT0FBT0MsUUFBUSxNQUFNLHNCQUFzQjtBQUUzQyxNQUFNQyxLQUFLLENBQUM7RUFDVjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxNQUFNLEVBQUVDLEtBQUssRUFBRUMsSUFBSSxFQUFFQyxXQUFXLEVBQUVDLHNCQUFzQixFQUFHO0lBRXRFO0lBQ0EsSUFBSSxDQUFDSixNQUFNLEdBQUdBLE1BQU07O0lBRXBCO0lBQ0EsSUFBSSxDQUFDQyxLQUFLLEdBQUdBLEtBQUs7O0lBRWxCO0lBQ0EsSUFBSSxDQUFDSSxRQUFRLEdBQUcsSUFBSVQsS0FBSyxDQUFFTSxJQUFLLENBQUM7O0lBRWpDO0lBQ0EsSUFBSSxDQUFDQyxXQUFXLEdBQUdBLFdBQVc7O0lBRTlCO0lBQ0EsSUFBSSxDQUFDRyxhQUFhLEdBQUcsSUFBSVgsY0FBYyxDQUFFLENBQUUsQ0FBQzs7SUFFNUM7SUFDQSxJQUFJLENBQUNTLHNCQUFzQixHQUFHQSxzQkFBc0I7RUFDdEQ7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUcsS0FBS0EsQ0FBQSxFQUFHO0lBQ04sSUFBSSxDQUFDRCxhQUFhLENBQUNDLEtBQUssQ0FBQyxDQUFDO0VBQzVCOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxpQkFBaUJBLENBQUEsRUFBRztJQUNsQixPQUFPLElBQUksQ0FBQ0osc0JBQXNCLENBQUNJLGlCQUFpQixDQUFFLElBQUksQ0FBQ1IsTUFBTSxHQUFHLENBQUUsQ0FBQztFQUN6RTtBQUNGO0FBRUFILFFBQVEsQ0FBQ1ksUUFBUSxDQUFFLE9BQU8sRUFBRVgsS0FBTSxDQUFDO0FBRW5DLGVBQWVBLEtBQUsifQ==

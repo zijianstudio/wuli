@@ -1,0 +1,37 @@
+{
+  "name": "gravity-and-orbits",
+  "version": "1.7.0-dev.3",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/gravity-and-orbits.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "GRAVITY_AND_ORBITS",
+    "runnable": true,
+    "supportedBrands": [
+      "adapted-from-phet",
+      "phet",
+      "phet-io"
+    ],
+    "simulation": true,
+    "phet-io": {
+      "compareDesignedAPIChanges": true
+    },
+    "simFeatures": {
+      "colorProfiles": [
+        "default",
+        "projector"
+      ]
+    },
+    "supportsOutputJS": true,
+    "generatedUnitTests": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

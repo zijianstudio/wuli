@@ -1,0 +1,46 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * Radio button group for selecting a category of items in the 'Shopping' screen.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import { Image } from '../../../../scenery/js/imports.js';
+import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
+import URColors from '../../common/URColors.js';
+import unitRates from '../../unitRates.js';
+export default class ShoppingCategoryRadioButtonGroup extends RectangularRadioButtonGroup {
+  /**
+   * @param {ShoppingCategory[]} categories
+   * @param {Property.<ShoppingCategory>} categoryProperty
+   * @param {Object} [options]
+   */
+  constructor(categories, categoryProperty, options) {
+    options = merge({
+      // RectangularRadioButtonGroup options
+      orientation: 'horizontal',
+      spacing: 12,
+      radioButtonOptions: {
+        baseColor: URColors.categoryButton,
+        xMargin: 5,
+        yMargin: 5
+      }
+    }, options);
+
+    // describe a radio button for each category
+    const contentArray = [];
+    categories.forEach(category => {
+      contentArray.push({
+        value: category,
+        createNode: () => new Image(category.image, {
+          scale: 0.5
+        })
+      });
+    });
+    super(categoryProperty, contentArray, options);
+  }
+}
+unitRates.register('ShoppingCategoryRadioButtonGroup', ShoppingCategoryRadioButtonGroup);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIkltYWdlIiwiUmVjdGFuZ3VsYXJSYWRpb0J1dHRvbkdyb3VwIiwiVVJDb2xvcnMiLCJ1bml0UmF0ZXMiLCJTaG9wcGluZ0NhdGVnb3J5UmFkaW9CdXR0b25Hcm91cCIsImNvbnN0cnVjdG9yIiwiY2F0ZWdvcmllcyIsImNhdGVnb3J5UHJvcGVydHkiLCJvcHRpb25zIiwib3JpZW50YXRpb24iLCJzcGFjaW5nIiwicmFkaW9CdXR0b25PcHRpb25zIiwiYmFzZUNvbG9yIiwiY2F0ZWdvcnlCdXR0b24iLCJ4TWFyZ2luIiwieU1hcmdpbiIsImNvbnRlbnRBcnJheSIsImZvckVhY2giLCJjYXRlZ29yeSIsInB1c2giLCJ2YWx1ZSIsImNyZWF0ZU5vZGUiLCJpbWFnZSIsInNjYWxlIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTaG9wcGluZ0NhdGVnb3J5UmFkaW9CdXR0b25Hcm91cC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNi0yMDIzLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBSYWRpbyBidXR0b24gZ3JvdXAgZm9yIHNlbGVjdGluZyBhIGNhdGVnb3J5IG9mIGl0ZW1zIGluIHRoZSAnU2hvcHBpbmcnIHNjcmVlbi5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5pbXBvcnQgbWVyZ2UgZnJvbSAnLi4vLi4vLi4vLi4vcGhldC1jb3JlL2pzL21lcmdlLmpzJztcclxuaW1wb3J0IHsgSW1hZ2UgfSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgUmVjdGFuZ3VsYXJSYWRpb0J1dHRvbkdyb3VwIGZyb20gJy4uLy4uLy4uLy4uL3N1bi9qcy9idXR0b25zL1JlY3Rhbmd1bGFyUmFkaW9CdXR0b25Hcm91cC5qcyc7XHJcbmltcG9ydCBVUkNvbG9ycyBmcm9tICcuLi8uLi9jb21tb24vVVJDb2xvcnMuanMnO1xyXG5pbXBvcnQgdW5pdFJhdGVzIGZyb20gJy4uLy4uL3VuaXRSYXRlcy5qcyc7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBTaG9wcGluZ0NhdGVnb3J5UmFkaW9CdXR0b25Hcm91cCBleHRlbmRzIFJlY3Rhbmd1bGFyUmFkaW9CdXR0b25Hcm91cCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7U2hvcHBpbmdDYXRlZ29yeVtdfSBjYXRlZ29yaWVzXHJcbiAgICogQHBhcmFtIHtQcm9wZXJ0eS48U2hvcHBpbmdDYXRlZ29yeT59IGNhdGVnb3J5UHJvcGVydHlcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGNhdGVnb3JpZXMsIGNhdGVnb3J5UHJvcGVydHksIG9wdGlvbnMgKSB7XHJcblxyXG4gICAgb3B0aW9ucyA9IG1lcmdlKCB7XHJcblxyXG4gICAgICAvLyBSZWN0YW5ndWxhclJhZGlvQnV0dG9uR3JvdXAgb3B0aW9uc1xyXG4gICAgICBvcmllbnRhdGlvbjogJ2hvcml6b250YWwnLFxyXG4gICAgICBzcGFjaW5nOiAxMixcclxuICAgICAgcmFkaW9CdXR0b25PcHRpb25zOiB7XHJcbiAgICAgICAgYmFzZUNvbG9yOiBVUkNvbG9ycy5jYXRlZ29yeUJ1dHRvbixcclxuICAgICAgICB4TWFyZ2luOiA1LFxyXG4gICAgICAgIHlNYXJnaW46IDVcclxuICAgICAgfVxyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIC8vIGRlc2NyaWJlIGEgcmFkaW8gYnV0dG9uIGZvciBlYWNoIGNhdGVnb3J5XHJcbiAgICBjb25zdCBjb250ZW50QXJyYXkgPSBbXTtcclxuICAgIGNhdGVnb3JpZXMuZm9yRWFjaCggY2F0ZWdvcnkgPT4ge1xyXG4gICAgICBjb250ZW50QXJyYXkucHVzaCgge1xyXG4gICAgICAgIHZhbHVlOiBjYXRlZ29yeSxcclxuICAgICAgICBjcmVhdGVOb2RlOiAoKSA9PiBuZXcgSW1hZ2UoIGNhdGVnb3J5LmltYWdlLCB7IHNjYWxlOiAwLjUgfSApXHJcbiAgICAgIH0gKTtcclxuICAgIH0gKTtcclxuXHJcbiAgICBzdXBlciggY2F0ZWdvcnlQcm9wZXJ0eSwgY29udGVudEFycmF5LCBvcHRpb25zICk7XHJcbiAgfVxyXG59XHJcblxyXG51bml0UmF0ZXMucmVnaXN0ZXIoICdTaG9wcGluZ0NhdGVnb3J5UmFkaW9CdXR0b25Hcm91cCcsIFNob3BwaW5nQ2F0ZWdvcnlSYWRpb0J1dHRvbkdyb3VwICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsU0FBU0MsS0FBSyxRQUFRLG1DQUFtQztBQUN6RCxPQUFPQywyQkFBMkIsTUFBTSwyREFBMkQ7QUFDbkcsT0FBT0MsUUFBUSxNQUFNLDBCQUEwQjtBQUMvQyxPQUFPQyxTQUFTLE1BQU0sb0JBQW9CO0FBRTFDLGVBQWUsTUFBTUMsZ0NBQWdDLFNBQVNILDJCQUEyQixDQUFDO0VBRXhGO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUksV0FBV0EsQ0FBRUMsVUFBVSxFQUFFQyxnQkFBZ0IsRUFBRUMsT0FBTyxFQUFHO0lBRW5EQSxPQUFPLEdBQUdULEtBQUssQ0FBRTtNQUVmO01BQ0FVLFdBQVcsRUFBRSxZQUFZO01BQ3pCQyxPQUFPLEVBQUUsRUFBRTtNQUNYQyxrQkFBa0IsRUFBRTtRQUNsQkMsU0FBUyxFQUFFVixRQUFRLENBQUNXLGNBQWM7UUFDbENDLE9BQU8sRUFBRSxDQUFDO1FBQ1ZDLE9BQU8sRUFBRTtNQUNYO0lBQ0YsQ0FBQyxFQUFFUCxPQUFRLENBQUM7O0lBRVo7SUFDQSxNQUFNUSxZQUFZLEdBQUcsRUFBRTtJQUN2QlYsVUFBVSxDQUFDVyxPQUFPLENBQUVDLFFBQVEsSUFBSTtNQUM5QkYsWUFBWSxDQUFDRyxJQUFJLENBQUU7UUFDakJDLEtBQUssRUFBRUYsUUFBUTtRQUNmRyxVQUFVLEVBQUVBLENBQUEsS0FBTSxJQUFJckIsS0FBSyxDQUFFa0IsUUFBUSxDQUFDSSxLQUFLLEVBQUU7VUFBRUMsS0FBSyxFQUFFO1FBQUksQ0FBRTtNQUM5RCxDQUFFLENBQUM7SUFDTCxDQUFFLENBQUM7SUFFSCxLQUFLLENBQUVoQixnQkFBZ0IsRUFBRVMsWUFBWSxFQUFFUixPQUFRLENBQUM7RUFDbEQ7QUFDRjtBQUVBTCxTQUFTLENBQUNxQixRQUFRLENBQUUsa0NBQWtDLEVBQUVwQixnQ0FBaUMsQ0FBQyJ9

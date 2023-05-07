@@ -1,0 +1,39 @@
+{
+  "name": "number-play",
+  "version": "1.2.0-dev.2",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/number-play.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "NUMBER_PLAY",
+    "phetLibs": [
+      "counting-common",
+      "number-suite-common",
+      "twixt",
+      "vegas"
+    ],
+    "simFeatures": {
+      "supportsSound": true,
+      "supportsDynamicLocale": true
+    },
+    "simulation": true,
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "no-view-imported-from-model": "off"
+    }
+  }
+}

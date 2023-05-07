@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Gioco",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Gioco"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Dieci",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Dieci"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Venti",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Venti"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Singoli",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Singoli"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "tabella da dieci",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "tabella da dieci"
+      }
+    ]
+  },
+  "word": {
+    "value": "Parola",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Parola"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Parola ({{language}})",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Parola ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Scegli il tuo gioco!",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Scegli il tuo gioco!"
+      }
+    ]
+  },
+  "games": {
+    "value": "Giochi",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Giochi"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Il gioco dei numeri",
+    "history": [
+      {
+        "userId": 157247,
+        "timestamp": 1651600016209,
+        "oldValue": "",
+        "newValue": "Il gioco dei numeri"
+      }
+    ]
+  }
+}

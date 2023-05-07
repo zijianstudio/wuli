@@ -1,0 +1,61 @@
+{
+  "name": "quake",
+  "displayName": "haptics-playground",
+  "version": "1.1.2",
+  "description": "An application that allows experimentation with haptic vibration.",
+  "main": "haptics-playground-main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "PhET Interactive Simulations",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "cordova-android": "~11.0.0",
+    "cordova-browser": "~6.0.0",
+    "cordova-plugin-app-version": "~0.1.13",
+    "cordova-plugin-file": "~7.0.0",
+    "cordova-plugin-filepath": "~1.6.0",
+    "cordova-plugin-native-vibration": "file:cordova-plugin-native-vibration",
+    "cordova-plugin-vibration": "~3.1.1",
+    "grunt": "~1.5.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-app-version": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-filepath": {},
+      "cordova-plugin-native-vibration": {}
+    },
+    "platforms": [
+      "browser",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/quake.git"
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/node_eslintrc.js",
+    "ignorePatterns": [
+      "platforms/",
+      "plugins/"
+    ],
+    "rules": {
+      "todo-should-have-issue": "off"
+    },
+    "globals": {
+      "alert": "readonly",
+      "chooser": "readonly",
+      "cordova": "readonly",
+      "navigator": "readonly",
+      "nativeVibration": "readonly",
+      "Response": "readonly",
+      "XMLHttpRequest": "readonly"
+    }
+  }
+}

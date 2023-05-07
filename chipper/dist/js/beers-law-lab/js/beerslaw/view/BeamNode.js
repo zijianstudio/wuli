@@ -1,0 +1,34 @@
+// Copyright 2013-2022, University of Colorado Boulder
+
+/**
+ * Representation of light as a beam.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import { Path } from '../../../../scenery/js/imports.js';
+import beersLawLab from '../../beersLawLab.js';
+export default class BeamNode extends Path {
+  constructor(beam) {
+    super(null, {
+      visibleProperty: beam.visibleProperty,
+      stroke: 'rgba( 192, 192, 192, 0.8 )',
+      lineWidth: 0.5,
+      pickable: false
+    });
+
+    // shape
+    beam.shapeProperty.link(shape => this.setShape(shape));
+
+    // fill
+    beam.fillProperty.link(fill => {
+      this.fill = fill;
+    });
+  }
+  dispose() {
+    assert && assert(false, 'dispose is not supported, exists for the lifetime of the sim');
+    super.dispose();
+  }
+}
+beersLawLab.register('BeamNode', BeamNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQYXRoIiwiYmVlcnNMYXdMYWIiLCJCZWFtTm9kZSIsImNvbnN0cnVjdG9yIiwiYmVhbSIsInZpc2libGVQcm9wZXJ0eSIsInN0cm9rZSIsImxpbmVXaWR0aCIsInBpY2thYmxlIiwic2hhcGVQcm9wZXJ0eSIsImxpbmsiLCJzaGFwZSIsInNldFNoYXBlIiwiZmlsbFByb3BlcnR5IiwiZmlsbCIsImRpc3Bvc2UiLCJhc3NlcnQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkJlYW1Ob2RlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDEzLTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFJlcHJlc2VudGF0aW9uIG9mIGxpZ2h0IGFzIGEgYmVhbS5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5pbXBvcnQgeyBQYXRoIH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IGJlZXJzTGF3TGFiIGZyb20gJy4uLy4uL2JlZXJzTGF3TGFiLmpzJztcclxuaW1wb3J0IEJlYW0gZnJvbSAnLi4vbW9kZWwvQmVhbS5qcyc7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBCZWFtTm9kZSBleHRlbmRzIFBhdGgge1xyXG5cclxuICBwdWJsaWMgY29uc3RydWN0b3IoIGJlYW06IEJlYW0gKSB7XHJcblxyXG4gICAgc3VwZXIoIG51bGwsIHtcclxuICAgICAgdmlzaWJsZVByb3BlcnR5OiBiZWFtLnZpc2libGVQcm9wZXJ0eSxcclxuICAgICAgc3Ryb2tlOiAncmdiYSggMTkyLCAxOTIsIDE5MiwgMC44ICknLFxyXG4gICAgICBsaW5lV2lkdGg6IDAuNSxcclxuICAgICAgcGlja2FibGU6IGZhbHNlXHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gc2hhcGVcclxuICAgIGJlYW0uc2hhcGVQcm9wZXJ0eS5saW5rKCBzaGFwZSA9PiB0aGlzLnNldFNoYXBlKCBzaGFwZSApICk7XHJcblxyXG4gICAgLy8gZmlsbFxyXG4gICAgYmVhbS5maWxsUHJvcGVydHkubGluayggZmlsbCA9PiB7XHJcbiAgICAgIHRoaXMuZmlsbCA9IGZpbGw7XHJcbiAgICB9ICk7XHJcbiAgfVxyXG5cclxuICBwdWJsaWMgb3ZlcnJpZGUgZGlzcG9zZSgpOiB2b2lkIHtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGZhbHNlLCAnZGlzcG9zZSBpcyBub3Qgc3VwcG9ydGVkLCBleGlzdHMgZm9yIHRoZSBsaWZldGltZSBvZiB0aGUgc2ltJyApO1xyXG4gICAgc3VwZXIuZGlzcG9zZSgpO1xyXG4gIH1cclxufVxyXG5cclxuYmVlcnNMYXdMYWIucmVnaXN0ZXIoICdCZWFtTm9kZScsIEJlYW1Ob2RlICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLElBQUksUUFBUSxtQ0FBbUM7QUFDeEQsT0FBT0MsV0FBVyxNQUFNLHNCQUFzQjtBQUc5QyxlQUFlLE1BQU1DLFFBQVEsU0FBU0YsSUFBSSxDQUFDO0VBRWxDRyxXQUFXQSxDQUFFQyxJQUFVLEVBQUc7SUFFL0IsS0FBSyxDQUFFLElBQUksRUFBRTtNQUNYQyxlQUFlLEVBQUVELElBQUksQ0FBQ0MsZUFBZTtNQUNyQ0MsTUFBTSxFQUFFLDRCQUE0QjtNQUNwQ0MsU0FBUyxFQUFFLEdBQUc7TUFDZEMsUUFBUSxFQUFFO0lBQ1osQ0FBRSxDQUFDOztJQUVIO0lBQ0FKLElBQUksQ0FBQ0ssYUFBYSxDQUFDQyxJQUFJLENBQUVDLEtBQUssSUFBSSxJQUFJLENBQUNDLFFBQVEsQ0FBRUQsS0FBTSxDQUFFLENBQUM7O0lBRTFEO0lBQ0FQLElBQUksQ0FBQ1MsWUFBWSxDQUFDSCxJQUFJLENBQUVJLElBQUksSUFBSTtNQUM5QixJQUFJLENBQUNBLElBQUksR0FBR0EsSUFBSTtJQUNsQixDQUFFLENBQUM7RUFDTDtFQUVnQkMsT0FBT0EsQ0FBQSxFQUFTO0lBQzlCQyxNQUFNLElBQUlBLE1BQU0sQ0FBRSxLQUFLLEVBQUUsOERBQStELENBQUM7SUFDekYsS0FBSyxDQUFDRCxPQUFPLENBQUMsQ0FBQztFQUNqQjtBQUNGO0FBRUFkLFdBQVcsQ0FBQ2dCLFFBQVEsQ0FBRSxVQUFVLEVBQUVmLFFBQVMsQ0FBQyJ9

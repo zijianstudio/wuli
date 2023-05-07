@@ -1,0 +1,41 @@
+{
+  "name": "binder",
+  "version": "1.0.0-yamldocs.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/binder.git"
+  },
+  "scripts": {
+    "build": "node js/generate.js",
+    "build-html": "node js/createHTMLString.js json ./binderjson.json > ./docs/index.html",
+    "test-local-server": "node js/serverTest.js"
+  },
+  "devDependencies": {
+    "fs-extra": "~6.0.1",
+    "gray-matter": "~4.0.1",
+    "grunt": "~1.5.3",
+    "handlebars": "~4.0.11",
+    "marked": "~0.3.19",
+    "puppeteer": "~19.2.2"
+  },
+  "phet": {},
+  "eslintConfig": {
+    "extends": "plugin:react/recommended",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2015,
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "node": true
+    },
+    "settings": {
+      "react": {
+        "version": "~16.8.6"
+      }
+    }
+  }
+}

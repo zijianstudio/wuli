@@ -1,0 +1,65 @@
+// Copyright 2013-2022, University of Colorado Boulder
+
+/**
+ * MagnetsControlPanel is a panel that contains controls for magnets.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Steele Dalton (PhET Interactive Simulations)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import { Text, VBox } from '../../../../scenery/js/imports.js';
+import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
+import Panel from '../../../../sun/js/Panel.js';
+import exampleSim from '../../exampleSim.js';
+import ExampleSimStrings from '../../ExampleSimStrings.js';
+class MagnetsControlPanel extends Panel {
+  /**
+   * @param {MagnetsModel} model - the model for the entire screen
+   * @param {Object} [options] - options for the control panel, see Panel.js for options
+   */
+  constructor(model, options) {
+    // Demonstrate a common pattern for specifying options and providing default values
+    options = merge({
+      // Panel options
+      xMargin: 10,
+      yMargin: 10,
+      stroke: 'orange',
+      lineWidth: 3
+    }, options);
+
+    // 'Magnet Controls' title
+    const magnetControlsTitleNode = new Text(ExampleSimStrings.magnetControlsStringProperty, {
+      font: new PhetFont({
+        size: 18,
+        weight: 'bold'
+      })
+    });
+
+    // 'Flip Polarity' button
+    const flipPolarityButton = new RectangularPushButton({
+      content: new Text(ExampleSimStrings.flipPolarityStringProperty, {
+        font: new PhetFont(16)
+      }),
+      baseColor: 'yellow',
+      xMargin: 10,
+      listener: () => {
+        const orientation = model.barMagnet.orientationProperty.get() + Math.PI;
+        model.barMagnet.orientationProperty.set(orientation);
+      }
+    });
+
+    // The contents of the control panel
+    const content = new VBox({
+      align: 'center',
+      spacing: 10,
+      children: [magnetControlsTitleNode, flipPolarityButton]
+    });
+    super(content, options);
+  }
+}
+exampleSim.register('MagnetsControlPanel', MagnetsControlPanel);
+export default MagnetsControlPanel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIlBoZXRGb250IiwiVGV4dCIsIlZCb3giLCJSZWN0YW5ndWxhclB1c2hCdXR0b24iLCJQYW5lbCIsImV4YW1wbGVTaW0iLCJFeGFtcGxlU2ltU3RyaW5ncyIsIk1hZ25ldHNDb250cm9sUGFuZWwiLCJjb25zdHJ1Y3RvciIsIm1vZGVsIiwib3B0aW9ucyIsInhNYXJnaW4iLCJ5TWFyZ2luIiwic3Ryb2tlIiwibGluZVdpZHRoIiwibWFnbmV0Q29udHJvbHNUaXRsZU5vZGUiLCJtYWduZXRDb250cm9sc1N0cmluZ1Byb3BlcnR5IiwiZm9udCIsInNpemUiLCJ3ZWlnaHQiLCJmbGlwUG9sYXJpdHlCdXR0b24iLCJjb250ZW50IiwiZmxpcFBvbGFyaXR5U3RyaW5nUHJvcGVydHkiLCJiYXNlQ29sb3IiLCJsaXN0ZW5lciIsIm9yaWVudGF0aW9uIiwiYmFyTWFnbmV0Iiwib3JpZW50YXRpb25Qcm9wZXJ0eSIsImdldCIsIk1hdGgiLCJQSSIsInNldCIsImFsaWduIiwic3BhY2luZyIsImNoaWxkcmVuIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJNYWduZXRzQ29udHJvbFBhbmVsLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDEzLTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE1hZ25ldHNDb250cm9sUGFuZWwgaXMgYSBwYW5lbCB0aGF0IGNvbnRhaW5zIGNvbnRyb2xzIGZvciBtYWduZXRzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKiBAYXV0aG9yIFN0ZWVsZSBEYWx0b24gKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCBQaGV0Rm9udCBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvUGhldEZvbnQuanMnO1xyXG5pbXBvcnQgeyBUZXh0LCBWQm94IH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IFJlY3Rhbmd1bGFyUHVzaEJ1dHRvbiBmcm9tICcuLi8uLi8uLi8uLi9zdW4vanMvYnV0dG9ucy9SZWN0YW5ndWxhclB1c2hCdXR0b24uanMnO1xyXG5pbXBvcnQgUGFuZWwgZnJvbSAnLi4vLi4vLi4vLi4vc3VuL2pzL1BhbmVsLmpzJztcclxuaW1wb3J0IGV4YW1wbGVTaW0gZnJvbSAnLi4vLi4vZXhhbXBsZVNpbS5qcyc7XHJcbmltcG9ydCBFeGFtcGxlU2ltU3RyaW5ncyBmcm9tICcuLi8uLi9FeGFtcGxlU2ltU3RyaW5ncy5qcyc7XHJcblxyXG5jbGFzcyBNYWduZXRzQ29udHJvbFBhbmVsIGV4dGVuZHMgUGFuZWwge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge01hZ25ldHNNb2RlbH0gbW9kZWwgLSB0aGUgbW9kZWwgZm9yIHRoZSBlbnRpcmUgc2NyZWVuXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXSAtIG9wdGlvbnMgZm9yIHRoZSBjb250cm9sIHBhbmVsLCBzZWUgUGFuZWwuanMgZm9yIG9wdGlvbnNcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggbW9kZWwsIG9wdGlvbnMgKSB7XHJcblxyXG4gICAgLy8gRGVtb25zdHJhdGUgYSBjb21tb24gcGF0dGVybiBmb3Igc3BlY2lmeWluZyBvcHRpb25zIGFuZCBwcm92aWRpbmcgZGVmYXVsdCB2YWx1ZXNcclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG5cclxuICAgICAgLy8gUGFuZWwgb3B0aW9uc1xyXG4gICAgICB4TWFyZ2luOiAxMCxcclxuICAgICAgeU1hcmdpbjogMTAsXHJcbiAgICAgIHN0cm9rZTogJ29yYW5nZScsXHJcbiAgICAgIGxpbmVXaWR0aDogM1xyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIC8vICdNYWduZXQgQ29udHJvbHMnIHRpdGxlXHJcbiAgICBjb25zdCBtYWduZXRDb250cm9sc1RpdGxlTm9kZSA9IG5ldyBUZXh0KCBFeGFtcGxlU2ltU3RyaW5ncy5tYWduZXRDb250cm9sc1N0cmluZ1Byb3BlcnR5LCB7XHJcbiAgICAgIGZvbnQ6IG5ldyBQaGV0Rm9udCgge1xyXG4gICAgICAgIHNpemU6IDE4LFxyXG4gICAgICAgIHdlaWdodDogJ2JvbGQnXHJcbiAgICAgIH0gKVxyXG4gICAgfSApO1xyXG5cclxuICAgIC8vICdGbGlwIFBvbGFyaXR5JyBidXR0b25cclxuICAgIGNvbnN0IGZsaXBQb2xhcml0eUJ1dHRvbiA9IG5ldyBSZWN0YW5ndWxhclB1c2hCdXR0b24oIHtcclxuICAgICAgY29udGVudDogbmV3IFRleHQoIEV4YW1wbGVTaW1TdHJpbmdzLmZsaXBQb2xhcml0eVN0cmluZ1Byb3BlcnR5LCB7XHJcbiAgICAgICAgZm9udDogbmV3IFBoZXRGb250KCAxNiApXHJcbiAgICAgIH0gKSxcclxuICAgICAgYmFzZUNvbG9yOiAneWVsbG93JyxcclxuICAgICAgeE1hcmdpbjogMTAsXHJcbiAgICAgIGxpc3RlbmVyOiAoKSA9PiB7XHJcbiAgICAgICAgY29uc3Qgb3JpZW50YXRpb24gPSBtb2RlbC5iYXJNYWduZXQub3JpZW50YXRpb25Qcm9wZXJ0eS5nZXQoKSArIE1hdGguUEk7XHJcbiAgICAgICAgbW9kZWwuYmFyTWFnbmV0Lm9yaWVudGF0aW9uUHJvcGVydHkuc2V0KCBvcmllbnRhdGlvbiApO1xyXG4gICAgICB9XHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gVGhlIGNvbnRlbnRzIG9mIHRoZSBjb250cm9sIHBhbmVsXHJcbiAgICBjb25zdCBjb250ZW50ID0gbmV3IFZCb3goIHtcclxuICAgICAgYWxpZ246ICdjZW50ZXInLFxyXG4gICAgICBzcGFjaW5nOiAxMCxcclxuICAgICAgY2hpbGRyZW46IFtcclxuICAgICAgICBtYWduZXRDb250cm9sc1RpdGxlTm9kZSxcclxuICAgICAgICBmbGlwUG9sYXJpdHlCdXR0b25cclxuICAgICAgXVxyXG4gICAgfSApO1xyXG5cclxuICAgIHN1cGVyKCBjb250ZW50LCBvcHRpb25zICk7XHJcbiAgfVxyXG59XHJcblxyXG5leGFtcGxlU2ltLnJlZ2lzdGVyKCAnTWFnbmV0c0NvbnRyb2xQYW5lbCcsIE1hZ25ldHNDb250cm9sUGFuZWwgKTtcclxuZXhwb3J0IGRlZmF1bHQgTWFnbmV0c0NvbnRyb2xQYW5lbDsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsT0FBT0MsUUFBUSxNQUFNLHlDQUF5QztBQUM5RCxTQUFTQyxJQUFJLEVBQUVDLElBQUksUUFBUSxtQ0FBbUM7QUFDOUQsT0FBT0MscUJBQXFCLE1BQU0scURBQXFEO0FBQ3ZGLE9BQU9DLEtBQUssTUFBTSw2QkFBNkI7QUFDL0MsT0FBT0MsVUFBVSxNQUFNLHFCQUFxQjtBQUM1QyxPQUFPQyxpQkFBaUIsTUFBTSw0QkFBNEI7QUFFMUQsTUFBTUMsbUJBQW1CLFNBQVNILEtBQUssQ0FBQztFQUV0QztBQUNGO0FBQ0E7QUFDQTtFQUNFSSxXQUFXQSxDQUFFQyxLQUFLLEVBQUVDLE9BQU8sRUFBRztJQUU1QjtJQUNBQSxPQUFPLEdBQUdYLEtBQUssQ0FBRTtNQUVmO01BQ0FZLE9BQU8sRUFBRSxFQUFFO01BQ1hDLE9BQU8sRUFBRSxFQUFFO01BQ1hDLE1BQU0sRUFBRSxRQUFRO01BQ2hCQyxTQUFTLEVBQUU7SUFDYixDQUFDLEVBQUVKLE9BQVEsQ0FBQzs7SUFFWjtJQUNBLE1BQU1LLHVCQUF1QixHQUFHLElBQUlkLElBQUksQ0FBRUssaUJBQWlCLENBQUNVLDRCQUE0QixFQUFFO01BQ3hGQyxJQUFJLEVBQUUsSUFBSWpCLFFBQVEsQ0FBRTtRQUNsQmtCLElBQUksRUFBRSxFQUFFO1FBQ1JDLE1BQU0sRUFBRTtNQUNWLENBQUU7SUFDSixDQUFFLENBQUM7O0lBRUg7SUFDQSxNQUFNQyxrQkFBa0IsR0FBRyxJQUFJakIscUJBQXFCLENBQUU7TUFDcERrQixPQUFPLEVBQUUsSUFBSXBCLElBQUksQ0FBRUssaUJBQWlCLENBQUNnQiwwQkFBMEIsRUFBRTtRQUMvREwsSUFBSSxFQUFFLElBQUlqQixRQUFRLENBQUUsRUFBRztNQUN6QixDQUFFLENBQUM7TUFDSHVCLFNBQVMsRUFBRSxRQUFRO01BQ25CWixPQUFPLEVBQUUsRUFBRTtNQUNYYSxRQUFRLEVBQUVBLENBQUEsS0FBTTtRQUNkLE1BQU1DLFdBQVcsR0FBR2hCLEtBQUssQ0FBQ2lCLFNBQVMsQ0FBQ0MsbUJBQW1CLENBQUNDLEdBQUcsQ0FBQyxDQUFDLEdBQUdDLElBQUksQ0FBQ0MsRUFBRTtRQUN2RXJCLEtBQUssQ0FBQ2lCLFNBQVMsQ0FBQ0MsbUJBQW1CLENBQUNJLEdBQUcsQ0FBRU4sV0FBWSxDQUFDO01BQ3hEO0lBQ0YsQ0FBRSxDQUFDOztJQUVIO0lBQ0EsTUFBTUosT0FBTyxHQUFHLElBQUluQixJQUFJLENBQUU7TUFDeEI4QixLQUFLLEVBQUUsUUFBUTtNQUNmQyxPQUFPLEVBQUUsRUFBRTtNQUNYQyxRQUFRLEVBQUUsQ0FDUm5CLHVCQUF1QixFQUN2Qkssa0JBQWtCO0lBRXRCLENBQUUsQ0FBQztJQUVILEtBQUssQ0FBRUMsT0FBTyxFQUFFWCxPQUFRLENBQUM7RUFDM0I7QUFDRjtBQUVBTCxVQUFVLENBQUM4QixRQUFRLENBQUUscUJBQXFCLEVBQUU1QixtQkFBb0IsQ0FBQztBQUNqRSxlQUFlQSxtQkFBbUIifQ==

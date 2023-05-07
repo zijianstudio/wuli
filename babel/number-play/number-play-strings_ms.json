@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Permainan",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Permainan"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Sepuluh",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Sepuluh"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Dua Puluh",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Dua Puluh"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Orang",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Orang"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Sepuluh Kotak",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Sepuluh Kotak"
+      }
+    ]
+  },
+  "word": {
+    "value": "Perkataan",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Perkataan"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Perkataan ({{language}})",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Perkataan ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Pilih Permainan Anda!",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Pilih Permainan Anda!"
+      }
+    ]
+  },
+  "games": {
+    "value": "Permainan",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Permainan"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Permainan Nombor",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Permainan Nombor"
+      }
+    ]
+  }
+}

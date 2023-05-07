@@ -1,0 +1,11 @@
+// Copyright 2016-2021, University of Colorado Boulder
+
+/**
+ * Namespace object for Molecule Shapes
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('chargesAndFields');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJjaGFyZ2VzQW5kRmllbGRzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE2LTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE5hbWVzcGFjZSBvYmplY3QgZm9yIE1vbGVjdWxlIFNoYXBlc1xyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IE5hbWVzcGFjZSBmcm9tICcuLi8uLi9waGV0LWNvcmUvanMvTmFtZXNwYWNlLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IG5ldyBOYW1lc3BhY2UoICdjaGFyZ2VzQW5kRmllbGRzJyApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxTQUFTLE1BQU0saUNBQWlDO0FBRXZELGVBQWUsSUFBSUEsU0FBUyxDQUFFLGtCQUFtQixDQUFDIn0=

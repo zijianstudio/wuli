@@ -1,0 +1,227 @@
+{
+  "screen.lab": {
+    "value": "Lab",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Lab"
+      }
+    ]
+  },
+  "noVoiceFoundDescription": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "There is no voice found on this device for the selected language."
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "There is no voice found on this device for the selected language.",
+        "newValue": ""
+      }
+    ]
+  },
+  "yourDeviceMaySupportDescription": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Your device may support downloading an additional voice for your language."
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "Your device may support downloading an additional voice for your language.",
+        "newValue": ""
+      }
+    ]
+  },
+  "languageTitle": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Ngôn ngữ"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "Ngôn ngữ",
+        "newValue": ""
+      }
+    ]
+  },
+  "voice": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Tiếng"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "Tiếng",
+        "newValue": ""
+      }
+    ]
+  },
+  "oneTwoThree": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "1 2 3"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "1 2 3",
+        "newValue": ""
+      }
+    ]
+  },
+  "zero": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "zero"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "zero",
+        "newValue": ""
+      }
+    ]
+  },
+  "one": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "one"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "one",
+        "newValue": ""
+      }
+    ]
+  },
+  "secondLanguage": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Ngôn ngữ thứ 2"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "Ngôn ngữ thứ 2",
+        "newValue": ""
+      }
+    ]
+  },
+  "secondLanguageDescription": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Select a second language to support multilingual learning."
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "Select a second language to support multilingual learning.",
+        "newValue": ""
+      }
+    ]
+  },
+  "toDisplayASecondLanguageDescription": {
+    "value": "",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "To display a second language, run the multilingual version of this simulation at:"
+      },
+      {
+        "userId": 137535,
+        "timestamp": 1682176379370,
+        "oldValue": "To display a second language, run the multilingual version of this simulation at:",
+        "newValue": ""
+      }
+    ]
+  },
+  "showOnes": {
+    "value": "Show Ones",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Show Ones"
+      }
+    ]
+  },
+  "showOnesDescription": {
+    "value": "Include the paper numbers on the Lab screen.",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Include the paper numbers on the Lab screen."
+      }
+    ]
+  },
+  "total": {
+    "value": "Tổng",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Tổng"
+      }
+    ]
+  },
+  "objects": {
+    "value": "Vật",
+    "history": [
+      {
+        "userId": 137535,
+        "timestamp": 1682175910754,
+        "oldValue": "",
+        "newValue": "Vật"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * Represents the goal "target" fraction along with its associated collection area values.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import createObservableArray from '../../../../axon/js/createObservableArray.js';
+import Property from '../../../../axon/js/Property.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
+import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import fractionsCommon from '../../fractionsCommon.js';
+class Target {
+  /**
+   * @param {Fraction} fraction
+   */
+  constructor(fraction) {
+    // @public {Fraction}
+    this.fraction = fraction;
+
+    // @public {Property.<Group|null>}
+    this.groupProperty = new Property(null);
+
+    // @public - Position of our target in model units (updated from the view)
+    this.positionProperty = new Vector2Property(Vector2.ZERO);
+
+    // @public {ObservableArrayDef.<Group>}
+    this.hoveringGroups = createObservableArray();
+  }
+}
+fractionsCommon.register('Target', Target);
+export default Target;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjcmVhdGVPYnNlcnZhYmxlQXJyYXkiLCJQcm9wZXJ0eSIsIlZlY3RvcjIiLCJWZWN0b3IyUHJvcGVydHkiLCJmcmFjdGlvbnNDb21tb24iLCJUYXJnZXQiLCJjb25zdHJ1Y3RvciIsImZyYWN0aW9uIiwiZ3JvdXBQcm9wZXJ0eSIsInBvc2l0aW9uUHJvcGVydHkiLCJaRVJPIiwiaG92ZXJpbmdHcm91cHMiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlRhcmdldC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOC0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBSZXByZXNlbnRzIHRoZSBnb2FsIFwidGFyZ2V0XCIgZnJhY3Rpb24gYWxvbmcgd2l0aCBpdHMgYXNzb2NpYXRlZCBjb2xsZWN0aW9uIGFyZWEgdmFsdWVzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IGNyZWF0ZU9ic2VydmFibGVBcnJheSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL2NyZWF0ZU9ic2VydmFibGVBcnJheS5qcyc7XHJcbmltcG9ydCBQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL1Byb3BlcnR5LmpzJztcclxuaW1wb3J0IFZlY3RvcjIgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjIuanMnO1xyXG5pbXBvcnQgVmVjdG9yMlByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9WZWN0b3IyUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgZnJhY3Rpb25zQ29tbW9uIGZyb20gJy4uLy4uL2ZyYWN0aW9uc0NvbW1vbi5qcyc7XHJcblxyXG5jbGFzcyBUYXJnZXQge1xyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7RnJhY3Rpb259IGZyYWN0aW9uXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGZyYWN0aW9uICkge1xyXG5cclxuICAgIC8vIEBwdWJsaWMge0ZyYWN0aW9ufVxyXG4gICAgdGhpcy5mcmFjdGlvbiA9IGZyYWN0aW9uO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge1Byb3BlcnR5LjxHcm91cHxudWxsPn1cclxuICAgIHRoaXMuZ3JvdXBQcm9wZXJ0eSA9IG5ldyBQcm9wZXJ0eSggbnVsbCApO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgLSBQb3NpdGlvbiBvZiBvdXIgdGFyZ2V0IGluIG1vZGVsIHVuaXRzICh1cGRhdGVkIGZyb20gdGhlIHZpZXcpXHJcbiAgICB0aGlzLnBvc2l0aW9uUHJvcGVydHkgPSBuZXcgVmVjdG9yMlByb3BlcnR5KCBWZWN0b3IyLlpFUk8gKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtPYnNlcnZhYmxlQXJyYXlEZWYuPEdyb3VwPn1cclxuICAgIHRoaXMuaG92ZXJpbmdHcm91cHMgPSBjcmVhdGVPYnNlcnZhYmxlQXJyYXkoKTtcclxuICB9XHJcbn1cclxuXHJcbmZyYWN0aW9uc0NvbW1vbi5yZWdpc3RlciggJ1RhcmdldCcsIFRhcmdldCApO1xyXG5leHBvcnQgZGVmYXVsdCBUYXJnZXQ7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLHFCQUFxQixNQUFNLDhDQUE4QztBQUNoRixPQUFPQyxRQUFRLE1BQU0saUNBQWlDO0FBQ3RELE9BQU9DLE9BQU8sTUFBTSwrQkFBK0I7QUFDbkQsT0FBT0MsZUFBZSxNQUFNLHVDQUF1QztBQUNuRSxPQUFPQyxlQUFlLE1BQU0sMEJBQTBCO0FBRXRELE1BQU1DLE1BQU0sQ0FBQztFQUNYO0FBQ0Y7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxRQUFRLEVBQUc7SUFFdEI7SUFDQSxJQUFJLENBQUNBLFFBQVEsR0FBR0EsUUFBUTs7SUFFeEI7SUFDQSxJQUFJLENBQUNDLGFBQWEsR0FBRyxJQUFJUCxRQUFRLENBQUUsSUFBSyxDQUFDOztJQUV6QztJQUNBLElBQUksQ0FBQ1EsZ0JBQWdCLEdBQUcsSUFBSU4sZUFBZSxDQUFFRCxPQUFPLENBQUNRLElBQUssQ0FBQzs7SUFFM0Q7SUFDQSxJQUFJLENBQUNDLGNBQWMsR0FBR1gscUJBQXFCLENBQUMsQ0FBQztFQUMvQztBQUNGO0FBRUFJLGVBQWUsQ0FBQ1EsUUFBUSxDQUFFLFFBQVEsRUFBRVAsTUFBTyxDQUFDO0FBQzVDLGVBQWVBLE1BQU0ifQ==

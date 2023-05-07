@@ -1,0 +1,10 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this simulation.
+ */
+
+// modules
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('moleculeShapesBasics');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJtb2xlY3VsZVNoYXBlc0Jhc2ljcy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ3JlYXRlcyB0aGUgbmFtZXNwYWNlIGZvciB0aGlzIHNpbXVsYXRpb24uXHJcbiAqL1xyXG5cclxuLy8gbW9kdWxlc1xyXG5pbXBvcnQgTmFtZXNwYWNlIGZyb20gJy4uLy4uL3BoZXQtY29yZS9qcy9OYW1lc3BhY2UuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgbmV3IE5hbWVzcGFjZSggJ21vbGVjdWxlU2hhcGVzQmFzaWNzJyApO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLE9BQU9BLFNBQVMsTUFBTSxpQ0FBaUM7QUFFdkQsZUFBZSxJQUFJQSxTQUFTLENBQUUsc0JBQXVCLENBQUMifQ==

@@ -1,0 +1,19 @@
+<article class= "container-fluid simulations parent-component" id="sims">
+    <h2>Simulations</h2>
+    {{#each sims}}
+    <div class="row">
+      <h4>{{this.name}}</h4>
+      <div class="col-sm-2 col-md-6 sim-example">
+        <button class="btn btn-outline-secondary btn-block" data-toggle="collapse"
+                data-target="#{{this.name}}-components">toggle open/close
+        </button>
+        <ul id="{{this.name}}-components" class="collapse list-group list-group-flush">
+          {{#each this.components}}
+          <li class="list-group-item"><p>{{this}}</p></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    {{/each}}
+</article>
+<hr>

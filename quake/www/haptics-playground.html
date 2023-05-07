@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- Top-level HTML file for the Haptics Playground app -->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  TODO: The template from which this file was taken had a note about customizing the security policy to fit the needs of
+        our app.  More information is available at
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+          * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+          * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+          * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="css/haptics-playground.css">
+  <title>Haptics Playground</title>
+</head>
+<body>
+
+<!--header-->
+<div id="header">
+  <div id="image-container">
+    <img src="img/playgroundHeaderV6b2.png"><img>
+  </div>
+</div>
+
+<!--screens containing the controls-->
+<div class="app">
+
+  <!--clicks screen-->
+  <div id="clicks-screen" class="app-screen">
+
+    <h1>Clicks</h1>
+
+    <div class="vertical-button-set">
+      <button id="singleClickButton" class="app-button">Single</button>
+      <button id="doubleClickButton" class="app-button">Double</button>
+      <div class="button-and-number">
+        <button id="multi-clicks-button" class="app-button">Multi</button>
+        <input type="number" id="number-of-clicks"/>
+      </div>
+    </div>
+
+    <div class="vertical-slider-set">
+      <div class="labeled-slider">
+        <label for="click-duration-slider" id="click-duration-slider-label"></label>
+        <input type="range" min="0" max="99" value="0" class="slider" id="click-duration-slider">
+      </div>
+      <div class="labeled-slider">
+        <label for="click-intensity-slider" id="click-intensity-slider-label">Intensity</label>
+        <input type="range" min="0" max="99" value="0" class="slider" id="click-intensity-slider">
+      </div>
+      <div class="labeled-slider">
+        <label for="inter-click-time-slider" id="inter-click-time-slider-label">Inter-Click Time</label>
+        <input type="range" min="1" max="100" value="0" class="slider" id="inter-click-time-slider">
+      </div>
+    </div>
+
+    <p id="debugArea">Debug Area</p>
+
+  </div>
+
+  <!--buzzes screen-->
+  <div id="buzzes-screen" class="app-screen">
+
+    <h1>Buzzes</h1>
+
+    <div class="vertical-button-set">
+      <button id="buzzButton" class="app-button">Buzz</button>
+    </div>
+
+    <div class="vertical-slider-set">
+      <div class="labeled-slider">
+        <label for="buzz-intensity-slider" id="buzz-intensity-slider-label">Intensity</label>
+        <input type="range" min="0" max="99" value="0" class="slider" id="buzz-intensity-slider">
+      </div>
+      <div class="labeled-slider">
+        <label for="buzz-duration-slider" id="buzz-duration-slider-label"></label>
+        <input type="range" min="0" max="99" value="0" class="slider" id="buzz-duration-slider">
+      </div>
+    </div>
+
+  </div>
+
+  <!--patterns screen-->
+  <div id="patterns-screen" class="app-screen">
+    <h1>Patterns</h1>
+
+    <div class="pattern-element-adder" id="add-vibration-control">
+      <button id="add-vibration-to-pattern-button" class="app-button">Add Vibration</button>
+      <div class="vertical-slider-set">
+        <div class="labeled-slider">
+          <label for="vibration-intensity-slider" id="vibration-intensity-slider-label">Intensity</label>
+          <input type="range" min="0" max="99" value="0" class="slider" id="vibration-intensity-slider">
+        </div>
+        <div class="labeled-slider">
+          <label for="vibration-duration-slider" id="vibration-duration-slider-label"></label>
+          <input type="range" min="0" max="99" value="0" class="slider" id="vibration-duration-slider">
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-element-adder" id="add-space-control">
+      <button id="add-space-to-pattern-button" class="app-button">Add Space</button>
+      <div class="vertical-slider-set">
+        <div class="labeled-slider">
+          <label for="space-duration-slider" id="space-duration-slider-label"></label>
+          <input type="range" min="0" max="99" value="0" class="slider" id="space-duration-slider">
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-display">
+      <label for="pattern-canvas" id="pattern-canvas-label">Pattern:</label>
+      <canvas id="pattern-canvas" width="400" height="100"></canvas>
+    </div>
+
+    <label class="checkbox-container">Repeat
+      <input type="checkbox" id="repeat-checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <div id="pattern-controls">
+      <div class="horizontal-button-set">
+        <button id="play-pattern-button" class="app-button">Play</button>
+        <button id="stop-pattern-button" class="stop-button">Stop</button>
+        <button id="clear-pattern-button" class="app-button">Clear</button>
+        <button id="export-pattern-button" class="app-button">Export</button>
+      </div>
+
+      <textarea name="textarea" id="export-text-area" rows="10" cols="50">Write something here</textarea>
+
+      <div id="save-and-load-controls">
+        <button id="save-pattern-button" class="app-button">Save As</button>
+        <input type="text" id="save-file-name" class="save-load-input">
+        <button id="load-pattern-button" class="app-button">Load</button>
+        <select id="loadable-files-selector" class="save-load-input"></select>
+        <button id="clear-saved-patterns-button" class="app-button">Clear Saved Patterns</button>
+      </div>
+    </div>
+  </div>
+
+  <!--settings screen-->
+  <div id="settings-screen" class="app-screen">
+
+    <h1>Settings</h1>
+    <label class="checkbox-container">Enable Sound
+      <input type="checkbox" id="sound-enabled-checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <br><br><br>
+
+    <h1>About:</h1>
+    <p id="version-info">(Version information goes here.)</p>
+
+  </div>
+
+</div>
+
+<!--navigation bar-->
+<div id="navbar">
+  <button id="clicks" class="nav-bar-button">Clicks<br><img src="img/clicksIcon.png"/></button>
+  <button id="buzzes" class="nav-bar-button">Buzzes<br><img src="img/buzzesIcon.png"/></button>
+  <button id="patterns" class="nav-bar-button">Patterns<br><img src="img/patternsIcon.png"/></button>
+  <button id="settings" class="nav-bar-button">Settings<br><img src="img/twoWhiteGears.svg"/></button>
+</div>
+
+<script src="cordova.js"></script>
+<script type="module" src="js/haptics-playground-main.js"></script>
+</body>
+</html>

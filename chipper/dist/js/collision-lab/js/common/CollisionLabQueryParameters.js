@@ -1,0 +1,60 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * Query parameters supported by this simulation.
+ *
+ * @author Brandon Li
+ */
+
+import collisionLab from '../collisionLab.js';
+const CollisionLabQueryParameters = QueryStringMachine.getAll({
+  /**
+   * The max life-time of recorded PathDataPoints along the trailing 'Path' of the Center of Mass and the Balls when the
+   * 'Path' Checkbox is checked.
+   *
+   * See https://github.com/phetsims/collision-lab/issues/61.
+   * For internal use only.
+   */
+  pathPointLifetime: {
+    type: 'number',
+    isValidValue: value => value > 0,
+    defaultValue: 3
+  },
+  /**
+   * The max time period that the 'Change in Momentum' Vectors are FULLY opaque in the 'Intro' screen.
+   *
+   * See https://github.com/phetsims/collision-lab/issues/85.
+   * For internal use only.
+   */
+  changeInMomentumVisiblePeriod: {
+    type: 'number',
+    isValidValue: value => value >= 0,
+    defaultValue: 0.5
+  },
+  /**
+   * The max time period that the 'Change In Momentum' Vectors linearly fade in opacity in the 'Intro' screen, after the
+   * CollisionLabQueryParameters.changeInMomentumVisiblePeriod is over.
+   *
+   * See https://github.com/phetsims/collision-lab/issues/85.
+   * For internal use only.
+   */
+  changeInMomentumFadePeriod: {
+    type: 'number',
+    isValidValue: value => value >= 0,
+    defaultValue: 0.5
+  },
+  /**
+   * The seconds of real time per each press of the Step button. Used for simulating low frame rate devices in
+   * https://github.com/phetsims/collision-lab/issues/117.
+   *
+   * For internal use only.
+   */
+  timeStepDuration: {
+    type: 'number',
+    defaultValue: 0.01,
+    isValidValue: value => value > 0
+  }
+});
+collisionLab.register('CollisionLabQueryParameters', CollisionLabQueryParameters);
+export default CollisionLabQueryParameters;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb2xsaXNpb25MYWIiLCJDb2xsaXNpb25MYWJRdWVyeVBhcmFtZXRlcnMiLCJRdWVyeVN0cmluZ01hY2hpbmUiLCJnZXRBbGwiLCJwYXRoUG9pbnRMaWZldGltZSIsInR5cGUiLCJpc1ZhbGlkVmFsdWUiLCJ2YWx1ZSIsImRlZmF1bHRWYWx1ZSIsImNoYW5nZUluTW9tZW50dW1WaXNpYmxlUGVyaW9kIiwiY2hhbmdlSW5Nb21lbnR1bUZhZGVQZXJpb2QiLCJ0aW1lU3RlcER1cmF0aW9uIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJDb2xsaXNpb25MYWJRdWVyeVBhcmFtZXRlcnMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFF1ZXJ5IHBhcmFtZXRlcnMgc3VwcG9ydGVkIGJ5IHRoaXMgc2ltdWxhdGlvbi5cclxuICpcclxuICogQGF1dGhvciBCcmFuZG9uIExpXHJcbiAqL1xyXG5cclxuaW1wb3J0IGNvbGxpc2lvbkxhYiBmcm9tICcuLi9jb2xsaXNpb25MYWIuanMnO1xyXG5cclxuY29uc3QgQ29sbGlzaW9uTGFiUXVlcnlQYXJhbWV0ZXJzID0gUXVlcnlTdHJpbmdNYWNoaW5lLmdldEFsbCgge1xyXG5cclxuICAvKipcclxuICAgKiBUaGUgbWF4IGxpZmUtdGltZSBvZiByZWNvcmRlZCBQYXRoRGF0YVBvaW50cyBhbG9uZyB0aGUgdHJhaWxpbmcgJ1BhdGgnIG9mIHRoZSBDZW50ZXIgb2YgTWFzcyBhbmQgdGhlIEJhbGxzIHdoZW4gdGhlXHJcbiAgICogJ1BhdGgnIENoZWNrYm94IGlzIGNoZWNrZWQuXHJcbiAgICpcclxuICAgKiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2NvbGxpc2lvbi1sYWIvaXNzdWVzLzYxLlxyXG4gICAqIEZvciBpbnRlcm5hbCB1c2Ugb25seS5cclxuICAgKi9cclxuICBwYXRoUG9pbnRMaWZldGltZToge1xyXG4gICAgdHlwZTogJ251bWJlcicsXHJcbiAgICBpc1ZhbGlkVmFsdWU6IHZhbHVlID0+ICggdmFsdWUgPiAwICksXHJcbiAgICBkZWZhdWx0VmFsdWU6IDNcclxuICB9LFxyXG5cclxuICAvKipcclxuICAgKiBUaGUgbWF4IHRpbWUgcGVyaW9kIHRoYXQgdGhlICdDaGFuZ2UgaW4gTW9tZW50dW0nIFZlY3RvcnMgYXJlIEZVTExZIG9wYXF1ZSBpbiB0aGUgJ0ludHJvJyBzY3JlZW4uXHJcbiAgICpcclxuICAgKiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2NvbGxpc2lvbi1sYWIvaXNzdWVzLzg1LlxyXG4gICAqIEZvciBpbnRlcm5hbCB1c2Ugb25seS5cclxuICAgKi9cclxuICBjaGFuZ2VJbk1vbWVudHVtVmlzaWJsZVBlcmlvZDoge1xyXG4gICAgdHlwZTogJ251bWJlcicsXHJcbiAgICBpc1ZhbGlkVmFsdWU6IHZhbHVlID0+ICggdmFsdWUgPj0gMCApLFxyXG4gICAgZGVmYXVsdFZhbHVlOiAwLjVcclxuICB9LFxyXG5cclxuICAvKipcclxuICAgKiBUaGUgbWF4IHRpbWUgcGVyaW9kIHRoYXQgdGhlICdDaGFuZ2UgSW4gTW9tZW50dW0nIFZlY3RvcnMgbGluZWFybHkgZmFkZSBpbiBvcGFjaXR5IGluIHRoZSAnSW50cm8nIHNjcmVlbiwgYWZ0ZXIgdGhlXHJcbiAgICogQ29sbGlzaW9uTGFiUXVlcnlQYXJhbWV0ZXJzLmNoYW5nZUluTW9tZW50dW1WaXNpYmxlUGVyaW9kIGlzIG92ZXIuXHJcbiAgICpcclxuICAgKiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2NvbGxpc2lvbi1sYWIvaXNzdWVzLzg1LlxyXG4gICAqIEZvciBpbnRlcm5hbCB1c2Ugb25seS5cclxuICAgKi9cclxuICBjaGFuZ2VJbk1vbWVudHVtRmFkZVBlcmlvZDoge1xyXG4gICAgdHlwZTogJ251bWJlcicsXHJcbiAgICBpc1ZhbGlkVmFsdWU6IHZhbHVlID0+ICggdmFsdWUgPj0gMCApLFxyXG4gICAgZGVmYXVsdFZhbHVlOiAwLjVcclxuICB9LFxyXG5cclxuICAvKipcclxuICAgKiBUaGUgc2Vjb25kcyBvZiByZWFsIHRpbWUgcGVyIGVhY2ggcHJlc3Mgb2YgdGhlIFN0ZXAgYnV0dG9uLiBVc2VkIGZvciBzaW11bGF0aW5nIGxvdyBmcmFtZSByYXRlIGRldmljZXMgaW5cclxuICAgKiBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvY29sbGlzaW9uLWxhYi9pc3N1ZXMvMTE3LlxyXG4gICAqXHJcbiAgICogRm9yIGludGVybmFsIHVzZSBvbmx5LlxyXG4gICAqL1xyXG4gIHRpbWVTdGVwRHVyYXRpb246IHtcclxuICAgIHR5cGU6ICdudW1iZXInLFxyXG4gICAgZGVmYXVsdFZhbHVlOiAwLjAxLFxyXG4gICAgaXNWYWxpZFZhbHVlOiB2YWx1ZSA9PiAoIHZhbHVlID4gMCApXHJcbiAgfVxyXG59ICk7XHJcblxyXG5jb2xsaXNpb25MYWIucmVnaXN0ZXIoICdDb2xsaXNpb25MYWJRdWVyeVBhcmFtZXRlcnMnLCBDb2xsaXNpb25MYWJRdWVyeVBhcmFtZXRlcnMgKTtcclxuZXhwb3J0IGRlZmF1bHQgQ29sbGlzaW9uTGFiUXVlcnlQYXJhbWV0ZXJzOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxZQUFZLE1BQU0sb0JBQW9CO0FBRTdDLE1BQU1DLDJCQUEyQixHQUFHQyxrQkFBa0IsQ0FBQ0MsTUFBTSxDQUFFO0VBRTdEO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLGlCQUFpQixFQUFFO0lBQ2pCQyxJQUFJLEVBQUUsUUFBUTtJQUNkQyxZQUFZLEVBQUVDLEtBQUssSUFBTUEsS0FBSyxHQUFHLENBQUc7SUFDcENDLFlBQVksRUFBRTtFQUNoQixDQUFDO0VBRUQ7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLDZCQUE2QixFQUFFO0lBQzdCSixJQUFJLEVBQUUsUUFBUTtJQUNkQyxZQUFZLEVBQUVDLEtBQUssSUFBTUEsS0FBSyxJQUFJLENBQUc7SUFDckNDLFlBQVksRUFBRTtFQUNoQixDQUFDO0VBRUQ7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUUsMEJBQTBCLEVBQUU7SUFDMUJMLElBQUksRUFBRSxRQUFRO0lBQ2RDLFlBQVksRUFBRUMsS0FBSyxJQUFNQSxLQUFLLElBQUksQ0FBRztJQUNyQ0MsWUFBWSxFQUFFO0VBQ2hCLENBQUM7RUFFRDtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUcsZ0JBQWdCLEVBQUU7SUFDaEJOLElBQUksRUFBRSxRQUFRO0lBQ2RHLFlBQVksRUFBRSxJQUFJO0lBQ2xCRixZQUFZLEVBQUVDLEtBQUssSUFBTUEsS0FBSyxHQUFHO0VBQ25DO0FBQ0YsQ0FBRSxDQUFDO0FBRUhQLFlBQVksQ0FBQ1ksUUFBUSxDQUFFLDZCQUE2QixFQUFFWCwyQkFBNEIsQ0FBQztBQUNuRixlQUFlQSwyQkFBMkIifQ==

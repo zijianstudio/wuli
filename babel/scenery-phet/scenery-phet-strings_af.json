@@ -1,0 +1,172 @@
+{
+  "symbol.ohms": {
+    "value": "Ω",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Ω"
+      }
+    ]
+  },
+  "symbol.resistivity": {
+    "value": "ρ",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "ρ"
+      }
+    ]
+  },
+  "key.enter": {
+    "value": "Enter",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Enter"
+      }
+    ]
+  },
+  "key.pageDown": {
+    "value": "Pg Dn",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Enter"
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678726046489,
+        "oldValue": "Enter",
+        "newValue": "Pg Dn",
+        "explanation": null
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678731240944,
+        "oldValue": "Pg Dn",
+        "newValue": "Enter",
+        "explanation": null
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678732637604,
+        "oldValue": "Enter",
+        "newValue": "Pg Dn",
+        "explanation": null
+      }
+    ]
+  },
+  "key.pageUp": {
+    "value": "Pg Up",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Pg Up"
+      }
+    ]
+  },
+  "key.shift": {
+    "value": "Shift",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Shift"
+      }
+    ]
+  },
+  "key.space": {
+    "value": "Space",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Space"
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseHeadingPattern": {
+    "value": "Gryp of Laatlos {{thing}}",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Gryp of Laatlos {{thing}}"
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678726046489,
+        "oldValue": "Gryp of Laatlos {{thing}}",
+        "newValue": "Gryp of Los {{thing}}",
+        "explanation": null
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678731240944,
+        "oldValue": "Gryp of Los {{thing}}",
+        "newValue": "Gryp of Laatlos {{thing}}",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseLabelPattern": {
+    "value": "Gryp of Laatlos {{thing}}",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Gryp of Laatlos {{thing}}"
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678726046489,
+        "oldValue": "Gryp of Laatlos {{thing}}",
+        "newValue": "Gryp of Los {{thing}}",
+        "explanation": null
+      },
+      {
+        "userId": 813497,
+        "timestamp": 1678731240944,
+        "oldValue": "Gryp of Los {{thing}}",
+        "newValue": "Gryp of Laatlos {{thing}}",
+        "explanation": null
+      }
+    ]
+  },
+  "keyboardHelpDialog.or": {
+    "value": "of",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "of"
+      }
+    ]
+  },
+  "key.tab": {
+    "value": "Tab",
+    "history": [
+      {
+        "userId": 813497,
+        "timestamp": 1678724438311,
+        "oldValue": "",
+        "newValue": "Tab"
+      }
+    ]
+  }
+}

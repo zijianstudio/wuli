@@ -1,0 +1,31 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * A Node meant to just take up certain bounds. It is never displayed, and cannot have children.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Bounds2 from '../../../dot/js/Bounds2.js';
+import { Leaf, Node, scenery } from '../imports.js';
+export default class Spacer extends Leaf(Node) {
+  /**
+   * Creates a spacer taking up a rectangular area from x: [0,width] and y: [0,height]. Use x/y in options to control
+   * its position.
+   *
+   * @param width - The width of the spacer
+   * @param height - The height of the spacer
+   * @param [options] - Passed to Node
+   */
+  constructor(width, height, options) {
+    assert && assert(isFinite(width), 'width should be a finite number');
+    assert && assert(isFinite(height), 'height should be a finite number');
+    super();
+
+    // override the local bounds to our area
+    this.localBounds = new Bounds2(0, 0, width, height);
+    this.mutate(options);
+  }
+}
+scenery.register('Spacer', Spacer);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCb3VuZHMyIiwiTGVhZiIsIk5vZGUiLCJzY2VuZXJ5IiwiU3BhY2VyIiwiY29uc3RydWN0b3IiLCJ3aWR0aCIsImhlaWdodCIsIm9wdGlvbnMiLCJhc3NlcnQiLCJpc0Zpbml0ZSIsImxvY2FsQm91bmRzIiwibXV0YXRlIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTcGFjZXIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSBOb2RlIG1lYW50IHRvIGp1c3QgdGFrZSB1cCBjZXJ0YWluIGJvdW5kcy4gSXQgaXMgbmV2ZXIgZGlzcGxheWVkLCBhbmQgY2Fubm90IGhhdmUgY2hpbGRyZW4uXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgQm91bmRzMiBmcm9tICcuLi8uLi8uLi9kb3QvanMvQm91bmRzMi5qcyc7XHJcbmltcG9ydCB7IExlYWYsIE5vZGUsIE5vZGVPcHRpb25zLCBzY2VuZXJ5IH0gZnJvbSAnLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5leHBvcnQgdHlwZSBTcGFjZXJPcHRpb25zID0gTm9kZU9wdGlvbnM7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBTcGFjZXIgZXh0ZW5kcyBMZWFmKCBOb2RlICkge1xyXG4gIC8qKlxyXG4gICAqIENyZWF0ZXMgYSBzcGFjZXIgdGFraW5nIHVwIGEgcmVjdGFuZ3VsYXIgYXJlYSBmcm9tIHg6IFswLHdpZHRoXSBhbmQgeTogWzAsaGVpZ2h0XS4gVXNlIHgveSBpbiBvcHRpb25zIHRvIGNvbnRyb2xcclxuICAgKiBpdHMgcG9zaXRpb24uXHJcbiAgICpcclxuICAgKiBAcGFyYW0gd2lkdGggLSBUaGUgd2lkdGggb2YgdGhlIHNwYWNlclxyXG4gICAqIEBwYXJhbSBoZWlnaHQgLSBUaGUgaGVpZ2h0IG9mIHRoZSBzcGFjZXJcclxuICAgKiBAcGFyYW0gW29wdGlvbnNdIC0gUGFzc2VkIHRvIE5vZGVcclxuICAgKi9cclxuICBwdWJsaWMgY29uc3RydWN0b3IoIHdpZHRoOiBudW1iZXIsIGhlaWdodDogbnVtYmVyLCBvcHRpb25zPzogU3BhY2VyT3B0aW9ucyApIHtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGlzRmluaXRlKCB3aWR0aCApLCAnd2lkdGggc2hvdWxkIGJlIGEgZmluaXRlIG51bWJlcicgKTtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIGlzRmluaXRlKCBoZWlnaHQgKSwgJ2hlaWdodCBzaG91bGQgYmUgYSBmaW5pdGUgbnVtYmVyJyApO1xyXG5cclxuICAgIHN1cGVyKCk7XHJcblxyXG4gICAgLy8gb3ZlcnJpZGUgdGhlIGxvY2FsIGJvdW5kcyB0byBvdXIgYXJlYVxyXG4gICAgdGhpcy5sb2NhbEJvdW5kcyA9IG5ldyBCb3VuZHMyKCAwLCAwLCB3aWR0aCwgaGVpZ2h0ICk7XHJcblxyXG4gICAgdGhpcy5tdXRhdGUoIG9wdGlvbnMgKTtcclxuICB9XHJcbn1cclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdTcGFjZXInLCBTcGFjZXIgKTtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE9BQU8sTUFBTSw0QkFBNEI7QUFDaEQsU0FBU0MsSUFBSSxFQUFFQyxJQUFJLEVBQWVDLE9BQU8sUUFBUSxlQUFlO0FBSWhFLGVBQWUsTUFBTUMsTUFBTSxTQUFTSCxJQUFJLENBQUVDLElBQUssQ0FBQyxDQUFDO0VBQy9DO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDU0csV0FBV0EsQ0FBRUMsS0FBYSxFQUFFQyxNQUFjLEVBQUVDLE9BQXVCLEVBQUc7SUFDM0VDLE1BQU0sSUFBSUEsTUFBTSxDQUFFQyxRQUFRLENBQUVKLEtBQU0sQ0FBQyxFQUFFLGlDQUFrQyxDQUFDO0lBQ3hFRyxNQUFNLElBQUlBLE1BQU0sQ0FBRUMsUUFBUSxDQUFFSCxNQUFPLENBQUMsRUFBRSxrQ0FBbUMsQ0FBQztJQUUxRSxLQUFLLENBQUMsQ0FBQzs7SUFFUDtJQUNBLElBQUksQ0FBQ0ksV0FBVyxHQUFHLElBQUlYLE9BQU8sQ0FBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFTSxLQUFLLEVBQUVDLE1BQU8sQ0FBQztJQUVyRCxJQUFJLENBQUNLLE1BQU0sQ0FBRUosT0FBUSxDQUFDO0VBQ3hCO0FBQ0Y7QUFFQUwsT0FBTyxDQUFDVSxRQUFRLENBQUUsUUFBUSxFQUFFVCxNQUFPLENBQUMifQ==

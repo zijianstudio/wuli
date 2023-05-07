@@ -1,0 +1,49 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * Hot module replacement (HMR) enables reloading and replacing a single module within a running, stateful application.
+ * The general pattern is to listen for a module replacement and re-run downstream code that uses the module.
+ * For example:
+ *
+ *  // In a constructor
+ *  const initializeWavesNode = () => {
+ *   this.wavesNode && this.removeChild( this.wavesNode );
+ *   this.wavesNode = new WavesNode( model, this.layoutBounds );
+ *   this.addChild( this.wavesNode );
+ *  };
+ *
+ *  initializeWavesNode();
+ *
+ * // Enable hot module replacement for fast iteration
+ * isHMR && module.hot.accept( './WavesNode.js', initializeWavesNode );
+ *
+ * This can be used in concert with `grunt webpack-dev-server` from a simulation directory to launch a server that
+ * supports hot module replacement.
+ *
+ * Note that when using HMR with a model module, you must pass re-instantiated model elements to corresponding view
+ * elements, which can be prohibitively difficult. On the other hand, using HMR on a view can be simpler because often a
+ * view element only needs to be swapped out in one place (say, replacing a node). Likewise, using HMR for static or
+ * utility functions/modules works very well, since no instances need to be swapped out.
+ *
+ * When running with webpack-dev-server, a global "module" exists, but window.module does not.  In unbuilt mode,
+ * neither "module" nor window.module exist.  This code factors out the check for the global "module".
+ *
+ * Since this code relies on a try/catch block, you probably should blackbox it in chrome dev tools, see
+ * https://developer.chrome.com/devtools/docs/blackboxing#how-to-blackbox
+ *
+ * TODO: Make sure this gets stripped out on builds, see https://github.com/phetsims/chipper/issues/953
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+let isHMR;
+try {
+  isHMR = module && module.hot;
+} catch (e) {
+  isHMR = false;
+}
+
+// Not namespaced because Namespace relies on this file
+
+export default isHMR;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJpc0hNUiIsIm1vZHVsZSIsImhvdCIsImUiXSwic291cmNlcyI6WyJpc0hNUi5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogSG90IG1vZHVsZSByZXBsYWNlbWVudCAoSE1SKSBlbmFibGVzIHJlbG9hZGluZyBhbmQgcmVwbGFjaW5nIGEgc2luZ2xlIG1vZHVsZSB3aXRoaW4gYSBydW5uaW5nLCBzdGF0ZWZ1bCBhcHBsaWNhdGlvbi5cclxuICogVGhlIGdlbmVyYWwgcGF0dGVybiBpcyB0byBsaXN0ZW4gZm9yIGEgbW9kdWxlIHJlcGxhY2VtZW50IGFuZCByZS1ydW4gZG93bnN0cmVhbSBjb2RlIHRoYXQgdXNlcyB0aGUgbW9kdWxlLlxyXG4gKiBGb3IgZXhhbXBsZTpcclxuICpcclxuICogIC8vIEluIGEgY29uc3RydWN0b3JcclxuICogIGNvbnN0IGluaXRpYWxpemVXYXZlc05vZGUgPSAoKSA9PiB7XHJcbiAqICAgdGhpcy53YXZlc05vZGUgJiYgdGhpcy5yZW1vdmVDaGlsZCggdGhpcy53YXZlc05vZGUgKTtcclxuICogICB0aGlzLndhdmVzTm9kZSA9IG5ldyBXYXZlc05vZGUoIG1vZGVsLCB0aGlzLmxheW91dEJvdW5kcyApO1xyXG4gKiAgIHRoaXMuYWRkQ2hpbGQoIHRoaXMud2F2ZXNOb2RlICk7XHJcbiAqICB9O1xyXG4gKlxyXG4gKiAgaW5pdGlhbGl6ZVdhdmVzTm9kZSgpO1xyXG4gKlxyXG4gKiAvLyBFbmFibGUgaG90IG1vZHVsZSByZXBsYWNlbWVudCBmb3IgZmFzdCBpdGVyYXRpb25cclxuICogaXNITVIgJiYgbW9kdWxlLmhvdC5hY2NlcHQoICcuL1dhdmVzTm9kZS5qcycsIGluaXRpYWxpemVXYXZlc05vZGUgKTtcclxuICpcclxuICogVGhpcyBjYW4gYmUgdXNlZCBpbiBjb25jZXJ0IHdpdGggYGdydW50IHdlYnBhY2stZGV2LXNlcnZlcmAgZnJvbSBhIHNpbXVsYXRpb24gZGlyZWN0b3J5IHRvIGxhdW5jaCBhIHNlcnZlciB0aGF0XHJcbiAqIHN1cHBvcnRzIGhvdCBtb2R1bGUgcmVwbGFjZW1lbnQuXHJcbiAqXHJcbiAqIE5vdGUgdGhhdCB3aGVuIHVzaW5nIEhNUiB3aXRoIGEgbW9kZWwgbW9kdWxlLCB5b3UgbXVzdCBwYXNzIHJlLWluc3RhbnRpYXRlZCBtb2RlbCBlbGVtZW50cyB0byBjb3JyZXNwb25kaW5nIHZpZXdcclxuICogZWxlbWVudHMsIHdoaWNoIGNhbiBiZSBwcm9oaWJpdGl2ZWx5IGRpZmZpY3VsdC4gT24gdGhlIG90aGVyIGhhbmQsIHVzaW5nIEhNUiBvbiBhIHZpZXcgY2FuIGJlIHNpbXBsZXIgYmVjYXVzZSBvZnRlbiBhXHJcbiAqIHZpZXcgZWxlbWVudCBvbmx5IG5lZWRzIHRvIGJlIHN3YXBwZWQgb3V0IGluIG9uZSBwbGFjZSAoc2F5LCByZXBsYWNpbmcgYSBub2RlKS4gTGlrZXdpc2UsIHVzaW5nIEhNUiBmb3Igc3RhdGljIG9yXHJcbiAqIHV0aWxpdHkgZnVuY3Rpb25zL21vZHVsZXMgd29ya3MgdmVyeSB3ZWxsLCBzaW5jZSBubyBpbnN0YW5jZXMgbmVlZCB0byBiZSBzd2FwcGVkIG91dC5cclxuICpcclxuICogV2hlbiBydW5uaW5nIHdpdGggd2VicGFjay1kZXYtc2VydmVyLCBhIGdsb2JhbCBcIm1vZHVsZVwiIGV4aXN0cywgYnV0IHdpbmRvdy5tb2R1bGUgZG9lcyBub3QuICBJbiB1bmJ1aWx0IG1vZGUsXHJcbiAqIG5laXRoZXIgXCJtb2R1bGVcIiBub3Igd2luZG93Lm1vZHVsZSBleGlzdC4gIFRoaXMgY29kZSBmYWN0b3JzIG91dCB0aGUgY2hlY2sgZm9yIHRoZSBnbG9iYWwgXCJtb2R1bGVcIi5cclxuICpcclxuICogU2luY2UgdGhpcyBjb2RlIHJlbGllcyBvbiBhIHRyeS9jYXRjaCBibG9jaywgeW91IHByb2JhYmx5IHNob3VsZCBibGFja2JveCBpdCBpbiBjaHJvbWUgZGV2IHRvb2xzLCBzZWVcclxuICogaHR0cHM6Ly9kZXZlbG9wZXIuY2hyb21lLmNvbS9kZXZ0b29scy9kb2NzL2JsYWNrYm94aW5nI2hvdy10by1ibGFja2JveFxyXG4gKlxyXG4gKiBUT0RPOiBNYWtlIHN1cmUgdGhpcyBnZXRzIHN0cmlwcGVkIG91dCBvbiBidWlsZHMsIHNlZSBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvY2hpcHBlci9pc3N1ZXMvOTUzXHJcbiAqXHJcbiAqIEBhdXRob3IgU2FtIFJlaWQgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxubGV0IGlzSE1SO1xyXG5cclxudHJ5IHtcclxuICBpc0hNUiA9IG1vZHVsZSAmJiBtb2R1bGUuaG90O1xyXG59XHJcbmNhdGNoKCBlICkge1xyXG4gIGlzSE1SID0gZmFsc2U7XHJcbn1cclxuXHJcbi8vIE5vdCBuYW1lc3BhY2VkIGJlY2F1c2UgTmFtZXNwYWNlIHJlbGllcyBvbiB0aGlzIGZpbGVcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGlzSE1SOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxJQUFJQSxLQUFLO0FBRVQsSUFBSTtFQUNGQSxLQUFLLEdBQUdDLE1BQU0sSUFBSUEsTUFBTSxDQUFDQyxHQUFHO0FBQzlCLENBQUMsQ0FDRCxPQUFPQyxDQUFDLEVBQUc7RUFDVEgsS0FBSyxHQUFHLEtBQUs7QUFDZjs7QUFFQTs7QUFFQSxlQUFlQSxLQUFLIn0=

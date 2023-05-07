@@ -1,0 +1,35 @@
+{
+  "name": "build-a-nucleus",
+  "version": "1.0.0-dev.17",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/build-a-nucleus.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "BUILD_A_NUCLEUS",
+    "phetLibs": [
+      "bamboo",
+      "build-an-atom",
+      "shred",
+      "twixt"
+    ],
+    "simulation": true,
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "supportsOutputJS": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "todo-should-have-issue": "off",
+      "no-view-imported-from-model": "off"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+// Copyright 2018-2023, University of Colorado Boulder
+
+/**
+ * Static equation in vertex form: y = a(x - h)^2 + k
+ *
+ * @author Andrea Lin
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
+import MathSymbols from '../../../../scenery-phet/js/MathSymbols.js';
+import { Node, RichText } from '../../../../scenery/js/imports.js';
+import GQConstants from '../../common/GQConstants.js';
+import GQSymbols from '../../common/GQSymbols.js';
+import graphingQuadratics from '../../graphingQuadratics.js';
+export default class VertexFormEquationNode extends Node {
+  constructor(tandem) {
+    const options = {
+      maxWidth: 225,
+      // determined empirically
+      tandem: tandem,
+      phetioDocumentation: 'the equation shown at the top of this accordion box',
+      visiblePropertyOptions: {
+        phetioReadOnly: true
+      }
+    };
+
+    // y = a(x - h)^2 + k
+    const text = StringUtils.fillIn('{{y}} {{equals}} {{a}}({{x}} {{minus}} {{h}})<sup>2</sup> {{plus}} {{k}}', {
+      x: GQSymbols.x,
+      y: GQSymbols.y,
+      a: GQSymbols.a,
+      h: GQSymbols.h,
+      k: GQSymbols.k,
+      equals: MathSymbols.EQUAL_TO,
+      minus: MathSymbols.MINUS,
+      plus: MathSymbols.PLUS
+    });
+    const textNode = new RichText(text, {
+      font: GQConstants.INTERACTIVE_EQUATION_FONT,
+      fill: 'black'
+    });
+
+    // Wrap the RichText so that its API is not accessible to clients or PhET-iO.
+    options.children = [textNode];
+    super(options);
+  }
+}
+graphingQuadratics.register('VertexFormEquationNode', VertexFormEquationNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTdHJpbmdVdGlscyIsIk1hdGhTeW1ib2xzIiwiTm9kZSIsIlJpY2hUZXh0IiwiR1FDb25zdGFudHMiLCJHUVN5bWJvbHMiLCJncmFwaGluZ1F1YWRyYXRpY3MiLCJWZXJ0ZXhGb3JtRXF1YXRpb25Ob2RlIiwiY29uc3RydWN0b3IiLCJ0YW5kZW0iLCJvcHRpb25zIiwibWF4V2lkdGgiLCJwaGV0aW9Eb2N1bWVudGF0aW9uIiwidmlzaWJsZVByb3BlcnR5T3B0aW9ucyIsInBoZXRpb1JlYWRPbmx5IiwidGV4dCIsImZpbGxJbiIsIngiLCJ5IiwiYSIsImgiLCJrIiwiZXF1YWxzIiwiRVFVQUxfVE8iLCJtaW51cyIsIk1JTlVTIiwicGx1cyIsIlBMVVMiLCJ0ZXh0Tm9kZSIsImZvbnQiLCJJTlRFUkFDVElWRV9FUVVBVElPTl9GT05UIiwiZmlsbCIsImNoaWxkcmVuIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJWZXJ0ZXhGb3JtRXF1YXRpb25Ob2RlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE4LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFN0YXRpYyBlcXVhdGlvbiBpbiB2ZXJ0ZXggZm9ybTogeSA9IGEoeCAtIGgpXjIgKyBrXHJcbiAqXHJcbiAqIEBhdXRob3IgQW5kcmVhIExpblxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBTdHJpbmdVdGlscyBmcm9tICcuLi8uLi8uLi8uLi9waGV0Y29tbW9uL2pzL3V0aWwvU3RyaW5nVXRpbHMuanMnO1xyXG5pbXBvcnQgTWF0aFN5bWJvbHMgZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS1waGV0L2pzL01hdGhTeW1ib2xzLmpzJztcclxuaW1wb3J0IHsgTm9kZSwgTm9kZU9wdGlvbnMsIFJpY2hUZXh0IH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IFRhbmRlbSBmcm9tICcuLi8uLi8uLi8uLi90YW5kZW0vanMvVGFuZGVtLmpzJztcclxuaW1wb3J0IEdRQ29uc3RhbnRzIGZyb20gJy4uLy4uL2NvbW1vbi9HUUNvbnN0YW50cy5qcyc7XHJcbmltcG9ydCBHUVN5bWJvbHMgZnJvbSAnLi4vLi4vY29tbW9uL0dRU3ltYm9scy5qcyc7XHJcbmltcG9ydCBncmFwaGluZ1F1YWRyYXRpY3MgZnJvbSAnLi4vLi4vZ3JhcGhpbmdRdWFkcmF0aWNzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFZlcnRleEZvcm1FcXVhdGlvbk5vZGUgZXh0ZW5kcyBOb2RlIHtcclxuXHJcbiAgcHVibGljIGNvbnN0cnVjdG9yKCB0YW5kZW06IFRhbmRlbSApIHtcclxuXHJcbiAgICBjb25zdCBvcHRpb25zOiBOb2RlT3B0aW9ucyA9IHtcclxuICAgICAgbWF4V2lkdGg6IDIyNSwgLy8gZGV0ZXJtaW5lZCBlbXBpcmljYWxseVxyXG4gICAgICB0YW5kZW06IHRhbmRlbSxcclxuICAgICAgcGhldGlvRG9jdW1lbnRhdGlvbjogJ3RoZSBlcXVhdGlvbiBzaG93biBhdCB0aGUgdG9wIG9mIHRoaXMgYWNjb3JkaW9uIGJveCcsXHJcbiAgICAgIHZpc2libGVQcm9wZXJ0eU9wdGlvbnM6IHsgcGhldGlvUmVhZE9ubHk6IHRydWUgfVxyXG4gICAgfTtcclxuXHJcbiAgICAvLyB5ID0gYSh4IC0gaCleMiArIGtcclxuICAgIGNvbnN0IHRleHQgPSBTdHJpbmdVdGlscy5maWxsSW4oICd7e3l9fSB7e2VxdWFsc319IHt7YX19KHt7eH19IHt7bWludXN9fSB7e2h9fSk8c3VwPjI8L3N1cD4ge3twbHVzfX0ge3trfX0nLCB7XHJcbiAgICAgIHg6IEdRU3ltYm9scy54LFxyXG4gICAgICB5OiBHUVN5bWJvbHMueSxcclxuICAgICAgYTogR1FTeW1ib2xzLmEsXHJcbiAgICAgIGg6IEdRU3ltYm9scy5oLFxyXG4gICAgICBrOiBHUVN5bWJvbHMuayxcclxuICAgICAgZXF1YWxzOiBNYXRoU3ltYm9scy5FUVVBTF9UTyxcclxuICAgICAgbWludXM6IE1hdGhTeW1ib2xzLk1JTlVTLFxyXG4gICAgICBwbHVzOiBNYXRoU3ltYm9scy5QTFVTXHJcbiAgICB9ICk7XHJcblxyXG4gICAgY29uc3QgdGV4dE5vZGUgPSBuZXcgUmljaFRleHQoIHRleHQsIHtcclxuICAgICAgZm9udDogR1FDb25zdGFudHMuSU5URVJBQ1RJVkVfRVFVQVRJT05fRk9OVCxcclxuICAgICAgZmlsbDogJ2JsYWNrJ1xyXG4gICAgfSApO1xyXG5cclxuICAgIC8vIFdyYXAgdGhlIFJpY2hUZXh0IHNvIHRoYXQgaXRzIEFQSSBpcyBub3QgYWNjZXNzaWJsZSB0byBjbGllbnRzIG9yIFBoRVQtaU8uXHJcbiAgICBvcHRpb25zLmNoaWxkcmVuID0gWyB0ZXh0Tm9kZSBdO1xyXG5cclxuICAgIHN1cGVyKCBvcHRpb25zICk7XHJcbiAgfVxyXG59XHJcblxyXG5ncmFwaGluZ1F1YWRyYXRpY3MucmVnaXN0ZXIoICdWZXJ0ZXhGb3JtRXF1YXRpb25Ob2RlJywgVmVydGV4Rm9ybUVxdWF0aW9uTm9kZSApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLFdBQVcsTUFBTSwrQ0FBK0M7QUFDdkUsT0FBT0MsV0FBVyxNQUFNLDRDQUE0QztBQUNwRSxTQUFTQyxJQUFJLEVBQWVDLFFBQVEsUUFBUSxtQ0FBbUM7QUFFL0UsT0FBT0MsV0FBVyxNQUFNLDZCQUE2QjtBQUNyRCxPQUFPQyxTQUFTLE1BQU0sMkJBQTJCO0FBQ2pELE9BQU9DLGtCQUFrQixNQUFNLDZCQUE2QjtBQUU1RCxlQUFlLE1BQU1DLHNCQUFzQixTQUFTTCxJQUFJLENBQUM7RUFFaERNLFdBQVdBLENBQUVDLE1BQWMsRUFBRztJQUVuQyxNQUFNQyxPQUFvQixHQUFHO01BQzNCQyxRQUFRLEVBQUUsR0FBRztNQUFFO01BQ2ZGLE1BQU0sRUFBRUEsTUFBTTtNQUNkRyxtQkFBbUIsRUFBRSxxREFBcUQ7TUFDMUVDLHNCQUFzQixFQUFFO1FBQUVDLGNBQWMsRUFBRTtNQUFLO0lBQ2pELENBQUM7O0lBRUQ7SUFDQSxNQUFNQyxJQUFJLEdBQUdmLFdBQVcsQ0FBQ2dCLE1BQU0sQ0FBRSwwRUFBMEUsRUFBRTtNQUMzR0MsQ0FBQyxFQUFFWixTQUFTLENBQUNZLENBQUM7TUFDZEMsQ0FBQyxFQUFFYixTQUFTLENBQUNhLENBQUM7TUFDZEMsQ0FBQyxFQUFFZCxTQUFTLENBQUNjLENBQUM7TUFDZEMsQ0FBQyxFQUFFZixTQUFTLENBQUNlLENBQUM7TUFDZEMsQ0FBQyxFQUFFaEIsU0FBUyxDQUFDZ0IsQ0FBQztNQUNkQyxNQUFNLEVBQUVyQixXQUFXLENBQUNzQixRQUFRO01BQzVCQyxLQUFLLEVBQUV2QixXQUFXLENBQUN3QixLQUFLO01BQ3hCQyxJQUFJLEVBQUV6QixXQUFXLENBQUMwQjtJQUNwQixDQUFFLENBQUM7SUFFSCxNQUFNQyxRQUFRLEdBQUcsSUFBSXpCLFFBQVEsQ0FBRVksSUFBSSxFQUFFO01BQ25DYyxJQUFJLEVBQUV6QixXQUFXLENBQUMwQix5QkFBeUI7TUFDM0NDLElBQUksRUFBRTtJQUNSLENBQUUsQ0FBQzs7SUFFSDtJQUNBckIsT0FBTyxDQUFDc0IsUUFBUSxHQUFHLENBQUVKLFFBQVEsQ0FBRTtJQUUvQixLQUFLLENBQUVsQixPQUFRLENBQUM7RUFDbEI7QUFDRjtBQUVBSixrQkFBa0IsQ0FBQzJCLFFBQVEsQ0FBRSx3QkFBd0IsRUFBRTFCLHNCQUF1QixDQUFDIn0=

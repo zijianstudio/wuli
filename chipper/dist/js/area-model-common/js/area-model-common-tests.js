@@ -1,0 +1,16 @@
+// Copyright 2018-2022, University of Colorado Boulder
+
+/**
+ * Unit tests for area-model-common. Please run once in phet brand and once in brand=phet-io to cover all functionality.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+import './common/model/PolynomialTests.js';
+import './common/model/TermListTests.js';
+import './common/model/TermTests.js';
+
+// Since our tests are loaded asynchronously, we must direct QUnit to begin the tests
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsiYXJlYS1tb2RlbC1jb21tb24tdGVzdHMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTgtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVW5pdCB0ZXN0cyBmb3IgYXJlYS1tb2RlbC1jb21tb24uIFBsZWFzZSBydW4gb25jZSBpbiBwaGV0IGJyYW5kIGFuZCBvbmNlIGluIGJyYW5kPXBoZXQtaW8gdG8gY292ZXIgYWxsIGZ1bmN0aW9uYWxpdHkuXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgcXVuaXRTdGFydCBmcm9tICcuLi8uLi9jaGlwcGVyL2pzL3NpbS10ZXN0cy9xdW5pdFN0YXJ0LmpzJztcclxuaW1wb3J0ICcuL2NvbW1vbi9tb2RlbC9Qb2x5bm9taWFsVGVzdHMuanMnO1xyXG5pbXBvcnQgJy4vY29tbW9uL21vZGVsL1Rlcm1MaXN0VGVzdHMuanMnO1xyXG5pbXBvcnQgJy4vY29tbW9uL21vZGVsL1Rlcm1UZXN0cy5qcyc7XHJcblxyXG4vLyBTaW5jZSBvdXIgdGVzdHMgYXJlIGxvYWRlZCBhc3luY2hyb25vdXNseSwgd2UgbXVzdCBkaXJlY3QgUVVuaXQgdG8gYmVnaW4gdGhlIHRlc3RzXHJcbnF1bml0U3RhcnQoKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsVUFBVSxNQUFNLDBDQUEwQztBQUNqRSxPQUFPLG1DQUFtQztBQUMxQyxPQUFPLGlDQUFpQztBQUN4QyxPQUFPLDZCQUE2Qjs7QUFFcEM7QUFDQUEsVUFBVSxDQUFDLENBQUMifQ==

@@ -1,0 +1,140 @@
+{
+  "center-and-variability.title": {
+    "value": "Center and Variability"
+  },
+  "screen.median": {
+    "value": "Median"
+  },
+  "screen.meanAndMedian": {
+    "value": "Mean & Median"
+  },
+  "screen.variability": {
+    "value": "Variability"
+  },
+  "screen.lab": {
+    "value": "Lab"
+  },
+  "medianQuestion": {
+    "value": "What is the typical kick distance?"
+  },
+  "meanAndMedianQuestion": {
+    "value": "How does each kick influence the mean and median?"
+  },
+  "variabilityQuestion": {
+    "value": "How spread out are the kick distances?"
+  },
+  "kickValuePattern": {
+    "value": "Kick {{value}}"
+  },
+  "distanceInMeters": {
+    "value": "Distance (in meters)"
+  },
+  "sortData": {
+    "value": "Sort Data"
+  },
+  "meanEqualsValuePattern": {
+    "value": "Mean = {{value}}"
+  },
+  "medianEqualsValuePattern": {
+    "value": "Median = {{value}}"
+  },
+  "iqrEqualsValuePattern": {
+    "value": "IQR = {{value}}"
+  },
+  "rangeEqualsValuePattern": {
+    "value": "Range = {{value}}"
+  },
+  "plotType": {
+    "value": "Plot Type"
+  },
+  "dotPlot": {
+    "value": "Dot Plot"
+  },
+  "linePlot": {
+    "value": "Line Plot"
+  },
+  "median": {
+    "value": "Median"
+  },
+  "mean": {
+    "value": "Mean"
+  },
+  "range": {
+    "value": "Range"
+  },
+  "interquartileRangeIQR": {
+    "value": "Interquartile Range (IQR)"
+  },
+  "iqr": {
+    "value": "IQR"
+  },
+  "min": {
+    "value": "min"
+  },
+  "max": {
+    "value": "max"
+  },
+  "q1": {
+    "value": "Q1"
+  },
+  "q3": {
+    "value": "Q3"
+  },
+  "meanAbsoluteDeviationMAD": {
+    "value": "Mean Absolute Deviation (MAD)"
+  },
+  "mad": {
+    "value": "MAD"
+  },
+  "variability": {
+    "value": "Variability"
+  },
+  "predictMean": {
+    "value": "Predict Mean"
+  },
+  "predictMedian": {
+    "value": "Predict Median"
+  },
+  "valueUnknown": {
+    "value": "?"
+  },
+  "youSortedTheData": {
+    "value": "You sorted the data!"
+  },
+  "rangeDescription": {
+    "value": "Range is the distance between the maximum and minimum data points."
+  },
+  "iqrDescription": {
+    "value": "IQR is the middle 50% of the data."
+  },
+  "iqrDataValues": {
+    "value": "Data Values:"
+  },
+  "iqrCalculationPattern1": {
+    "value": "IQR = {{q3}} - {{q1}}"
+  },
+  "iqrCalculationPattern2": {
+    "value": "IQR = {{iqr}} meters"
+  },
+  "madDescription": {
+    "value": "MAD is the average distance each data point is from the mean."
+  },
+  "madEquals": {
+    "value": "MAD ="
+  },
+  "madCalculationResultPattern": {
+    "value": "MAD = {{mad}} meters"
+  },
+  "rangeCalculationPattern": {
+    "value": "Range = maximum value - minimum value = {{max}} - {{min}}"
+  },
+  "rangeCalculationResultPattern": {
+    "value": "Range = {{range}} meters"
+  },
+  "needAtLeastOneKick": {
+    "value": "Need at least one kick"
+  },
+  "needAtLeastFiveKicks": {
+    "value": "Need at least five kicks"
+  }
+}

@@ -1,0 +1,21 @@
+// Copyright 2017-2020, University of Colorado Boulder
+
+/**
+ * Simple model for the position of a round bead
+ *
+ * @author Jonathan Olson
+ */
+
+import proportionPlayground from '../../../proportionPlayground.js';
+class RoundBead {
+  /**
+   * @param {Vector2} center - The center (in model coordinates) of the bead
+   */
+  constructor(center) {
+    // @public {Vector2}
+    this.center = center;
+  }
+}
+proportionPlayground.register('RoundBead', RoundBead);
+export default RoundBead;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwcm9wb3J0aW9uUGxheWdyb3VuZCIsIlJvdW5kQmVhZCIsImNvbnN0cnVjdG9yIiwiY2VudGVyIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSb3VuZEJlYWQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogU2ltcGxlIG1vZGVsIGZvciB0aGUgcG9zaXRpb24gb2YgYSByb3VuZCBiZWFkXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb25cclxuICovXHJcblxyXG5pbXBvcnQgcHJvcG9ydGlvblBsYXlncm91bmQgZnJvbSAnLi4vLi4vLi4vcHJvcG9ydGlvblBsYXlncm91bmQuanMnO1xyXG5cclxuY2xhc3MgUm91bmRCZWFkIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge1ZlY3RvcjJ9IGNlbnRlciAtIFRoZSBjZW50ZXIgKGluIG1vZGVsIGNvb3JkaW5hdGVzKSBvZiB0aGUgYmVhZFxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBjZW50ZXIgKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7VmVjdG9yMn1cclxuICAgIHRoaXMuY2VudGVyID0gY2VudGVyO1xyXG4gIH1cclxufVxyXG5cclxucHJvcG9ydGlvblBsYXlncm91bmQucmVnaXN0ZXIoICdSb3VuZEJlYWQnLCBSb3VuZEJlYWQgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IFJvdW5kQmVhZDtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLG9CQUFvQixNQUFNLGtDQUFrQztBQUVuRSxNQUFNQyxTQUFTLENBQUM7RUFDZDtBQUNGO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsTUFBTSxFQUFHO0lBRXBCO0lBQ0EsSUFBSSxDQUFDQSxNQUFNLEdBQUdBLE1BQU07RUFDdEI7QUFDRjtBQUVBSCxvQkFBb0IsQ0FBQ0ksUUFBUSxDQUFFLFdBQVcsRUFBRUgsU0FBVSxDQUFDO0FBRXZELGVBQWVBLFNBQVMifQ==

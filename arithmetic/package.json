@@ -1,0 +1,37 @@
+{
+  "name": "arithmetic",
+  "version": "1.1.0-dev.3",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/arithmetic.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "ARITHMETIC",
+    "phetLibs": [
+      "twixt",
+      "vegas"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet",
+      "phet-io"
+    ],
+    "simFeatures": {
+      "supportsSound": true
+    },
+    "simulation": true,
+    "phet-io": {
+      "validation": false
+    },
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

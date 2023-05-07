@@ -1,0 +1,11 @@
+// Copyright 2020-2023, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this simulation.
+ *
+ * @author Chris Malley (PixelZoom, Inc.
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('fourierMakingWaves');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJmb3VyaWVyTWFraW5nV2F2ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ3JlYXRlcyB0aGUgbmFtZXNwYWNlIGZvciB0aGlzIHNpbXVsYXRpb24uXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy5cclxuICovXHJcblxyXG5pbXBvcnQgTmFtZXNwYWNlIGZyb20gJy4uLy4uL3BoZXQtY29yZS9qcy9OYW1lc3BhY2UuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgbmV3IE5hbWVzcGFjZSggJ2ZvdXJpZXJNYWtpbmdXYXZlcycgKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsU0FBUyxNQUFNLGlDQUFpQztBQUV2RCxlQUFlLElBQUlBLFNBQVMsQ0FBRSxvQkFBcUIsQ0FBQyJ9

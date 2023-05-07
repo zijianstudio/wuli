@@ -1,0 +1,23 @@
+{
+  "number-compare.title": {
+    "value": "Number Compare"
+  },
+  "screen.compare": {
+    "value": "Compare"
+  },
+  "isLessThan": {
+    "value": "{{smallerNumber}} is less than {{greaterNumber}}"
+  },
+  "isGreaterThan": {
+    "value": "{{greaterNumber}} is greater than {{smallerNumber}}"
+  },
+  "isEqualTo": {
+    "value": "{{equalNumberLeft}} is equal to {{equalNumberRight}}"
+  },
+  "automaticallyHearNumberSentence": {
+    "value": "Automatically Hear Number Sentence"
+  },
+  "automaticallyHearNumberSentenceDescription": {
+    "value": "Hear the number sentence update automatically as you interact."
+  }
+}

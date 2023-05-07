@@ -1,0 +1,14 @@
+// Copyright 2020-2021, University of Colorado Boulder
+
+/**
+ * Unit tests for bamboo
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import './ChartModelTests.js';
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+
+// Since our tests are loaded asynchronously, we must direct QUnit to begin the tests
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsiYmFtYm9vLXRlc3RzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIwLTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFVuaXQgdGVzdHMgZm9yIGJhbWJvb1xyXG4gKlxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCAnLi9DaGFydE1vZGVsVGVzdHMuanMnO1xyXG5pbXBvcnQgcXVuaXRTdGFydCBmcm9tICcuLi8uLi9jaGlwcGVyL2pzL3NpbS10ZXN0cy9xdW5pdFN0YXJ0LmpzJztcclxuXHJcbi8vIFNpbmNlIG91ciB0ZXN0cyBhcmUgbG9hZGVkIGFzeW5jaHJvbm91c2x5LCB3ZSBtdXN0IGRpcmVjdCBRVW5pdCB0byBiZWdpbiB0aGUgdGVzdHNcclxucXVuaXRTdGFydCgpOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPLHNCQUFzQjtBQUM3QixPQUFPQSxVQUFVLE1BQU0sMENBQTBDOztBQUVqRTtBQUNBQSxVQUFVLENBQUMsQ0FBQyJ9

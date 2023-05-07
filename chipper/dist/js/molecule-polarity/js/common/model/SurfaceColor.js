@@ -1,0 +1,10 @@
+// Copyright 2020-2022, University of Colorado Boulder
+
+/**
+ * Enumeration for dipole direction.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+export const SurfaceColorValues = ['RWB', 'ROYGB'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTdXJmYWNlQ29sb3JWYWx1ZXMiXSwic291cmNlcyI6WyJTdXJmYWNlQ29sb3IudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogRW51bWVyYXRpb24gZm9yIGRpcG9sZSBkaXJlY3Rpb24uXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuZXhwb3J0IGNvbnN0IFN1cmZhY2VDb2xvclZhbHVlcyA9IFsgJ1JXQicsICdST1lHQicgXSBhcyBjb25zdDtcclxuZXhwb3J0IHR5cGUgU3VyZmFjZUNvbG9yID0gKCB0eXBlb2YgU3VyZmFjZUNvbG9yVmFsdWVzIClbbnVtYmVyXTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBTyxNQUFNQSxrQkFBa0IsR0FBRyxDQUFFLEtBQUssRUFBRSxPQUFPLENBQVcifQ==

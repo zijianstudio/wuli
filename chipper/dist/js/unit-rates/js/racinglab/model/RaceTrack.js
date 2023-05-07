@@ -1,0 +1,44 @@
+// Copyright 2017-2023, University of Colorado Boulder
+
+/**
+ * Model of a race track in the 'Racing Lab' screen.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import merge from '../../../../phet-core/js/merge.js';
+import unitRates from '../../unitRates.js';
+export default class RaceTrack {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = merge({
+      length: 200,
+      // {number} initial distance between start and finish line, in miles
+      maxLength: 200,
+      // {number} maximum distance between start and finish line, in miles
+      markerSpacing: 50 // {number} track markers are spaced at this interval, in miles
+    }, options);
+
+    // @public (read-only)
+    this.maxLength = options.maxLength;
+    this.markerSpacing = options.markerSpacing;
+
+    // @public
+    this.lengthProperty = new NumberProperty(options.length);
+
+    // validate length, unlink not needed
+    this.lengthProperty.link(length => {
+      assert && assert(length >= 0 && length <= options.maxLength, `invalid length: ${length}`);
+    });
+  }
+
+  // @public
+  reset() {
+    this.lengthProperty.reset();
+  }
+}
+unitRates.register('RaceTrack', RaceTrack);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOdW1iZXJQcm9wZXJ0eSIsIm1lcmdlIiwidW5pdFJhdGVzIiwiUmFjZVRyYWNrIiwiY29uc3RydWN0b3IiLCJvcHRpb25zIiwibGVuZ3RoIiwibWF4TGVuZ3RoIiwibWFya2VyU3BhY2luZyIsImxlbmd0aFByb3BlcnR5IiwibGluayIsImFzc2VydCIsInJlc2V0IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSYWNlVHJhY2suanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTW9kZWwgb2YgYSByYWNlIHRyYWNrIGluIHRoZSAnUmFjaW5nIExhYicgc2NyZWVuLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBOdW1iZXJQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL051bWJlclByb3BlcnR5LmpzJztcclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCB1bml0UmF0ZXMgZnJvbSAnLi4vLi4vdW5pdFJhdGVzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFJhY2VUcmFjayB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3Rvciggb3B0aW9ucyApIHtcclxuXHJcbiAgICBvcHRpb25zID0gbWVyZ2UoIHtcclxuICAgICAgbGVuZ3RoOiAyMDAsIC8vIHtudW1iZXJ9IGluaXRpYWwgZGlzdGFuY2UgYmV0d2VlbiBzdGFydCBhbmQgZmluaXNoIGxpbmUsIGluIG1pbGVzXHJcbiAgICAgIG1heExlbmd0aDogMjAwLCAvLyB7bnVtYmVyfSBtYXhpbXVtIGRpc3RhbmNlIGJldHdlZW4gc3RhcnQgYW5kIGZpbmlzaCBsaW5lLCBpbiBtaWxlc1xyXG4gICAgICBtYXJrZXJTcGFjaW5nOiA1MCAgLy8ge251bWJlcn0gdHJhY2sgbWFya2VycyBhcmUgc3BhY2VkIGF0IHRoaXMgaW50ZXJ2YWwsIGluIG1pbGVzXHJcbiAgICB9LCBvcHRpb25zICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KVxyXG4gICAgdGhpcy5tYXhMZW5ndGggPSBvcHRpb25zLm1heExlbmd0aDtcclxuICAgIHRoaXMubWFya2VyU3BhY2luZyA9IG9wdGlvbnMubWFya2VyU3BhY2luZztcclxuXHJcbiAgICAvLyBAcHVibGljXHJcbiAgICB0aGlzLmxlbmd0aFByb3BlcnR5ID0gbmV3IE51bWJlclByb3BlcnR5KCBvcHRpb25zLmxlbmd0aCApO1xyXG5cclxuICAgIC8vIHZhbGlkYXRlIGxlbmd0aCwgdW5saW5rIG5vdCBuZWVkZWRcclxuICAgIHRoaXMubGVuZ3RoUHJvcGVydHkubGluayggbGVuZ3RoID0+IHtcclxuICAgICAgYXNzZXJ0ICYmIGFzc2VydCggbGVuZ3RoID49IDAgJiYgbGVuZ3RoIDw9IG9wdGlvbnMubWF4TGVuZ3RoLCBgaW52YWxpZCBsZW5ndGg6ICR7bGVuZ3RofWAgKTtcclxuICAgIH0gKTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICByZXNldCgpIHtcclxuICAgIHRoaXMubGVuZ3RoUHJvcGVydHkucmVzZXQoKTtcclxuICB9XHJcbn1cclxuXHJcbnVuaXRSYXRlcy5yZWdpc3RlciggJ1JhY2VUcmFjaycsIFJhY2VUcmFjayApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxjQUFjLE1BQU0sdUNBQXVDO0FBQ2xFLE9BQU9DLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsT0FBT0MsU0FBUyxNQUFNLG9CQUFvQjtBQUUxQyxlQUFlLE1BQU1DLFNBQVMsQ0FBQztFQUU3QjtBQUNGO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsT0FBTyxFQUFHO0lBRXJCQSxPQUFPLEdBQUdKLEtBQUssQ0FBRTtNQUNmSyxNQUFNLEVBQUUsR0FBRztNQUFFO01BQ2JDLFNBQVMsRUFBRSxHQUFHO01BQUU7TUFDaEJDLGFBQWEsRUFBRSxFQUFFLENBQUU7SUFDckIsQ0FBQyxFQUFFSCxPQUFRLENBQUM7O0lBRVo7SUFDQSxJQUFJLENBQUNFLFNBQVMsR0FBR0YsT0FBTyxDQUFDRSxTQUFTO0lBQ2xDLElBQUksQ0FBQ0MsYUFBYSxHQUFHSCxPQUFPLENBQUNHLGFBQWE7O0lBRTFDO0lBQ0EsSUFBSSxDQUFDQyxjQUFjLEdBQUcsSUFBSVQsY0FBYyxDQUFFSyxPQUFPLENBQUNDLE1BQU8sQ0FBQzs7SUFFMUQ7SUFDQSxJQUFJLENBQUNHLGNBQWMsQ0FBQ0MsSUFBSSxDQUFFSixNQUFNLElBQUk7TUFDbENLLE1BQU0sSUFBSUEsTUFBTSxDQUFFTCxNQUFNLElBQUksQ0FBQyxJQUFJQSxNQUFNLElBQUlELE9BQU8sQ0FBQ0UsU0FBUyxFQUFHLG1CQUFrQkQsTUFBTyxFQUFFLENBQUM7SUFDN0YsQ0FBRSxDQUFDO0VBQ0w7O0VBRUE7RUFDQU0sS0FBS0EsQ0FBQSxFQUFHO0lBQ04sSUFBSSxDQUFDSCxjQUFjLENBQUNHLEtBQUssQ0FBQyxDQUFDO0VBQzdCO0FBQ0Y7QUFFQVYsU0FBUyxDQUFDVyxRQUFRLENBQUUsV0FBVyxFQUFFVixTQUFVLENBQUMifQ==

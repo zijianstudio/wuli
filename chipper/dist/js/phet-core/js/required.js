@@ -1,0 +1,23 @@
+// Copyright 2019-2020, University of Colorado Boulder
+
+/**
+ * Validates that the passed in entry exists and returns that value if validation is successful.
+ *
+ * @author Denzell Barnett (PhET Interactive Simulations)
+ */
+
+import phetCore from './phetCore.js';
+
+/**
+ * Checks if the value passed is defined
+ *
+ * @param {*} entry - value to be checked
+ * @returns {*} Returns the passed in value
+ */
+function required(entry) {
+  assert && assert(entry !== undefined, 'Required field is undefined.');
+  return entry;
+}
+phetCore.register('required', required);
+export default required;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwaGV0Q29yZSIsInJlcXVpcmVkIiwiZW50cnkiLCJhc3NlcnQiLCJ1bmRlZmluZWQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbInJlcXVpcmVkLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE5LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFZhbGlkYXRlcyB0aGF0IHRoZSBwYXNzZWQgaW4gZW50cnkgZXhpc3RzIGFuZCByZXR1cm5zIHRoYXQgdmFsdWUgaWYgdmFsaWRhdGlvbiBpcyBzdWNjZXNzZnVsLlxyXG4gKlxyXG4gKiBAYXV0aG9yIERlbnplbGwgQmFybmV0dCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgcGhldENvcmUgZnJvbSAnLi9waGV0Q29yZS5qcyc7XHJcblxyXG4vKipcclxuICogQ2hlY2tzIGlmIHRoZSB2YWx1ZSBwYXNzZWQgaXMgZGVmaW5lZFxyXG4gKlxyXG4gKiBAcGFyYW0geyp9IGVudHJ5IC0gdmFsdWUgdG8gYmUgY2hlY2tlZFxyXG4gKiBAcmV0dXJucyB7Kn0gUmV0dXJucyB0aGUgcGFzc2VkIGluIHZhbHVlXHJcbiAqL1xyXG5mdW5jdGlvbiByZXF1aXJlZCggZW50cnkgKSB7XHJcbiAgYXNzZXJ0ICYmIGFzc2VydCggZW50cnkgIT09IHVuZGVmaW5lZCwgJ1JlcXVpcmVkIGZpZWxkIGlzIHVuZGVmaW5lZC4nICk7XHJcbiAgcmV0dXJuIGVudHJ5O1xyXG59XHJcblxyXG5waGV0Q29yZS5yZWdpc3RlciggJ3JlcXVpcmVkJywgcmVxdWlyZWQgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IHJlcXVpcmVkOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0sZUFBZTs7QUFFcEM7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsU0FBU0MsUUFBUUEsQ0FBRUMsS0FBSyxFQUFHO0VBQ3pCQyxNQUFNLElBQUlBLE1BQU0sQ0FBRUQsS0FBSyxLQUFLRSxTQUFTLEVBQUUsOEJBQStCLENBQUM7RUFDdkUsT0FBT0YsS0FBSztBQUNkO0FBRUFGLFFBQVEsQ0FBQ0ssUUFBUSxDQUFFLFVBQVUsRUFBRUosUUFBUyxDQUFDO0FBRXpDLGVBQWVBLFFBQVEifQ==

@@ -1,0 +1,46 @@
+{
+  "screen.compare": {
+    "value": "Vergleichen",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268902,
+        "oldValue": "",
+        "newValue": "Vergleichen"
+      }
+    ]
+  },
+  "isLessThan": {
+    "value": "{{smallerNumber}} ist kleiner als {{greaterNumber}}",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "{{smallerNumber}} ist kleiner als {{greaterNumber}}"
+      }
+    ]
+  },
+  "isGreaterThan": {
+    "value": "{{greaterNumber}} ist größer als {{smallerNumber}}",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "{{greaterNumber}} ist größer als {{smallerNumber}}"
+      }
+    ]
+  },
+  "isEqualTo": {
+    "value": "{{equalNumberLeft}} ist gleich {{equalNumberRight}}",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "{{equalNumberLeft}} ist gleich {{equalNumberRight}}"
+      }
+    ]
+  }
+}

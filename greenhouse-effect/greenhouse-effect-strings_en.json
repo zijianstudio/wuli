@@ -1,0 +1,1029 @@
+{
+  "greenhouse-effect.title": {
+    "value": "Greenhouse Effect"
+  },
+  "screen.waves": {
+    "value": "Waves"
+  },
+  "screen.photons": {
+    "value": "Photons"
+  },
+  "screen.layerModel": {
+    "value": "Layer Model"
+  },
+  "screen.micro": {
+    "value": "Micro"
+  },
+  "surfaceThermometer": {
+    "value": "Surface Thermometer"
+  },
+  "showSurfaceTemperature": {
+    "value": "Show Surface Temperature"
+  },
+  "morePhotons": {
+    "value": "More Photons"
+  },
+  "solarIntensity": {
+    "value": "Solar Intensity"
+  },
+  "ourSun": {
+    "value": "Our Sun"
+  },
+  "surfaceAlbedo": {
+    "value": "Surface Albedo"
+  },
+  "cloud": {
+    "value": "Cloud"
+  },
+  "startSunlight": {
+    "value": "Start Sunlight"
+  },
+  "energyLegend.title": {
+    "value": "Energy"
+  },
+  "sunlight": {
+    "value": "Sunlight"
+  },
+  "infrared": {
+    "value": "Infrared"
+  },
+  "infraredAbsorbance": {
+    "value": "Infrared Absorbance"
+  },
+  "valuePercentPattern": {
+    "value": "{{value}}%"
+  },
+  "sliderAndFluxMeterControls": {
+    "value": "Slider and Flux Meter Controls"
+  },
+  "concentrationPanel.greenhouseGasConcentration": {
+    "value": "Greenhouse Gas Concentration"
+  },
+  "fluxMeter.title": {
+    "value": "Flux Meter"
+  },
+  "fluxMeter.energyFlux": {
+    "value": "Energy Flux"
+  },
+  "fluxMeter.sunlight": {
+    "value": "Sunlight"
+  },
+  "fluxMeter.infrared": {
+    "value": "Infrared"
+  },
+  "concentrationPanel.lots": {
+    "value": "Lots"
+  },
+  "concentrationPanel.none": {
+    "value": "None"
+  },
+  "concentrationPanel.iceAge": {
+    "value": "Ice Age"
+  },
+  "energyBalancePanel.title": {
+    "value": "Energy Balance"
+  },
+  "energyBalancePanel.subTitle": {
+    "value": "Top of Atmosphere"
+  },
+  "energyBalancePanel.in": {
+    "value": "In"
+  },
+  "energyBalancePanel.out": {
+    "value": "Out"
+  },
+  "energyBalancePanel.net": {
+    "value": "Net"
+  },
+  "temperature.units.kelvin": {
+    "value": "K"
+  },
+  "temperature.units.celsius": {
+    "value": "℃"
+  },
+  "temperature.units.fahrenheit": {
+    "value": "℉"
+  },
+  "temperature.units.valueUnitsPattern": {
+    "value": "{{value}} {{units}}"
+  },
+  "concentrationPanel.carbonDioxideConcentrationPattern": {
+    "value": "CO<sub>2</sub>: {{value}} ppm"
+  },
+  "concentrationPanel.methaneConcentrationPattern": {
+    "value": "CH<sub>4</sub>: {{value}} ppb"
+  },
+  "concentrationPanel.nitrousOxideConcentrationPattern": {
+    "value": "N<sub>2</sub>O: {{value}} ppb"
+  },
+  "QuadWavelengthSelector.Microwave": {
+    "value": "Microwave"
+  },
+  "QuadWavelengthSelector.Infrared": {
+    "value": "Infrared"
+  },
+  "QuadWavelengthSelector.Visible": {
+    "value": "Visible"
+  },
+  "QuadWavelengthSelector.Ultraviolet": {
+    "value": "Ultraviolet"
+  },
+  "QuadWavelengthSelector.HigherEnergy": {
+    "value": "Higher Energy"
+  },
+  "molecularNamePattern": {
+    "value": "{0} ({1})"
+  },
+  "ControlPanel.CarbonMonoxide": {
+    "value": "Carbon Monoxide"
+  },
+  "ControlPanel.Nitrogen": {
+    "value": "Nitrogen"
+  },
+  "ControlPanel.Oxygen": {
+    "value": "Oxygen"
+  },
+  "ControlPanel.CarbonDioxide": {
+    "value": "Carbon Dioxide"
+  },
+  "ControlPanel.Methane": {
+    "value": "Methane"
+  },
+  "ControlPanel.NitrogenDioxide": {
+    "value": "Nitrogen Dioxide"
+  },
+  "ControlPanel.Ozone": {
+    "value": "Ozone"
+  },
+  "ControlPanel.Water": {
+    "value": "Water"
+  },
+  "ButtonNode.ReturnMolecule": {
+    "value": "Reset Molecule"
+  },
+  "SpectrumWindow.buttonCaption": {
+    "value": "Light Spectrum Diagram"
+  },
+  "SpectrumWindow.title": {
+    "value": "Light Spectrum"
+  },
+  "SpectrumWindow.frequencyArrowLabel": {
+    "value": "Increasing frequency and energy"
+  },
+  "SpectrumWindow.wavelengthArrowLabel": {
+    "value": "Increasing wavelength"
+  },
+  "SpectrumWindow.radioBandLabel": {
+    "value": "Radio"
+  },
+  "SpectrumWindow.microwaveBandLabel": {
+    "value": "Microwave"
+  },
+  "SpectrumWindow.infraredBandLabel": {
+    "value": "Infrared"
+  },
+  "SpectrumWindow.ultravioletBandLabel": {
+    "value": "Ultra-\nviolet"
+  },
+  "SpectrumWindow.xrayBandLabel": {
+    "value": "X-ray"
+  },
+  "SpectrumWindow.gammaRayBandLabel": {
+    "value": "Gamma\nray"
+  },
+  "SpectrumWindow.visibleBandLabel": {
+    "value": "Visible"
+  },
+  "SpectrumWindow.cyclesPerSecondUnits": {
+    "value": "Hz"
+  },
+  "SpectrumWindow.metersUnits": {
+    "value": "m"
+  },
+  "openSciEd.energySource": {
+    "value": "Energy from Earth’s Surface"
+  },
+  "energyBalance": {
+    "value": "Energy Balance"
+  },
+  "absorbingLayers": {
+    "value": "Absorbing Layers"
+  },
+  "temperatureUnits": {
+    "value": "Temperature Units"
+  },
+  "a11y": {
+    "observationWindowLabel": {
+      "value": "Observation Window"
+    },
+    "energyBalance": {
+      "helpText": {
+        "value": "Measure incoming and outgoing energy at top of atmosphere."
+      }
+    },
+    "surfaceThermometer": {
+      "helpText": {
+        "value": "Measure Earth’s surface temperature."
+      }
+    },
+    "showSurfaceTemperature": {
+      "helpText": {
+        "value": "Describe temperature on a scale."
+      }
+    },
+    "historicalRelativeDescriptions": {
+      "high": {
+        "value": "historically high"
+      },
+      "moderate": {
+        "value": "historically moderate"
+      },
+      "low": {
+        "value": "historically low"
+      }
+    },
+    "historicalLevelsOfGreenhouseGassesPattern": {
+      "value": "{{historical}} levels of greenhouse gases in atmosphere."
+    },
+    "temperatureUnitsLabel": {
+      "value": "Temperature units"
+    },
+    "temperatureUnitsHelpText": {
+      "value": "Select temperature units."
+    },
+    "temperatureUnits": {
+      "kelvin": {
+        "value": "Kelvin"
+      },
+      "celsius": {
+        "value": "degrees Celsius"
+      },
+      "fahrenheit": {
+        "value": "degrees Fahrenheit"
+      }
+    },
+    "qualitativeAmountDescriptions": {
+      "no": {
+        "value": "no"
+      },
+      "extremelyLow": {
+        "value": "extremely low"
+      },
+      "veryLow": {
+        "value": "very low"
+      },
+      "low": {
+        "value": "low"
+      },
+      "moderate": {
+        "value": "moderate"
+      },
+      "high": {
+        "value": "high"
+      },
+      "veryHigh": {
+        "value": "very high"
+      },
+      "extremelyHigh": {
+        "value": "extremely high"
+      },
+      "max": {
+        "value": "max"
+      }
+    },
+    "amountOfPattern": {
+      "value": "{{qualitativeDescription}} amount of"
+    },
+    "levelsOfPattern": {
+      "value": "{{qualitativeDescription}} levels of"
+    },
+    "timePeriodDescriptions": {
+      "iceAge": {
+        "value": "ice age"
+      },
+      "seventeenFifty": {
+        "value": "year seventeen fifty"
+      },
+      "nineteenFifty": {
+        "value": "year nineteen fifty"
+      },
+      "twentyTwenty": {
+        "value": "year twenty twenty"
+      }
+    },
+    "sky": {
+      "skyDescriptionPattern": {
+        "value": "The sky is {{cloudDescription}}."
+      },
+      "cloudy": {
+        "value": "cloudy"
+      },
+      "clear": {
+        "value": "clear"
+      },
+      "cloudAddedAlert": {
+        "value": "Cloud added to sky."
+      },
+      "someSunlightReflectedAlert": {
+        "value": "Some sunlight reflecting back to space."
+      },
+      "cloudRemovedAlert": {
+        "value": "Cloud removed from sky."
+      },
+      "allSunlightReachesSurfaceAlert": {
+        "value": "All sunlight reaching surface."
+      },
+      "cloudAlertPattern": {
+        "value": "{{addedOrRemoved}} {{receivedOrReflected}}"
+      }
+    },
+    "energyLegend": {
+      "title": {
+        "value": "Energy Legend"
+      },
+      "inObservationWindow": {
+        "value": "In observation window:"
+      },
+      "sunlightRadiation": {
+        "value": "Sunlight radiation: yellow waves, wavelength shorter than infrared"
+      },
+      "infraredRadiation": {
+        "value": "Infrared radiation: red waves, wavelength longer than sunlight"
+      }
+    },
+    "infraredRadiationRedirectingPattern": {
+      "value": "{{moreOrLess}} infrared radiation redirecting back to surface."
+    },
+    "infraredRadiationRedirectingWithTemperaturePattern": {
+      "value": "{{moreOrLess}} infrared radiation redirecting back to surface, now {{quantitativeTemperature}}."
+    },
+    "infraredRadiationEmittedFromSurfacePattern": {
+      "value": "{{moreOrLess}} infrared radiation emitting from surface."
+    },
+    "infraredRadiationEmittedFromSurfaceWithTemperaturePattern": {
+      "value": "{{moreOrLess}} infrared radiation emitting from surface, now {{quantitativeTemperature}}."
+    },
+    "more": {
+      "value": "More"
+    },
+    "less": {
+      "value": "Less"
+    },
+    "no": {
+      "value": "No"
+    },
+    "increases": {
+      "value": "increases"
+    },
+    "decreases": {
+      "value": "decreases"
+    },
+    "inflowToEarth": {
+      "value": "inflow to Earth"
+    },
+    "outflowToSpace": {
+      "value": "outflow to space"
+    },
+    "outgoingEnergyPattern": {
+      "value": "Outgoing energy {{increasesOrDecreases}}; net energy {{inflowOrOutflow}}."
+    },
+    "outgoingEnergyAtAtmospherePattern": {
+      "value": "Outgoing energy is {{greaterThanOrLessThan}} incoming energy at top of atmosphere, net energy {{inflowOrOutflow}}."
+    },
+    "outgoingEnergyAtAtmosphereEqual": {
+      "value": "Outgoing energy is equal to incoming energy at top of atmosphere."
+    },
+    "noFlowOfEnergyHintDescription": {
+      "value": "No flow of energy. Start sunlight to explore energy balance."
+    },
+    "lessThan": {
+      "value": "less than"
+    },
+    "greaterThan": {
+      "value": "greater than"
+    },
+    "waves": {
+      "homeScreenDescription": {
+        "value": "Explore greenhouse effect with wave representation."
+      },
+      "screenSummary": {
+        "playAreaDescription": {
+          "value": "The Play Area is an observation window showing a scene extending from the surface of the Earth to outer space. Experiment with the greenhouse gas concentration or explore and compare historical time periods. It also has controls to add a cloud and measure the energy balance."
+        },
+        "controlAreaDescription": {
+          "value": "The Control Area has options for displaying the surface temperature of Earth. You can pause the action that happens in the observation window."
+        },
+        "currently": {
+          "value": "Currently,"
+        },
+        "currentlySimIsPaused": {
+          "value": "Currently, sim is paused."
+        },
+        "currentlyNoSunlight": {
+          "value": "Currently, no sunlight in observation window."
+        },
+        "currentlySimIsPausedNoSunlight": {
+          "value": "Currently, sim is paused. No sunlight in observation window."
+        },
+        "greenhouseGasesInAtmospherePattern": {
+          "value": "{{valueDescription}} greenhouse gases in atmosphere."
+        },
+        "greenhouseGasesValuePattern": {
+          "value": "{{valueDescription}} greenhouse gases."
+        },
+        "timePeriodPattern": {
+          "value": "the time period is the {{timePeriodDescription}}."
+        },
+        "summaryWithTemperaturePattern": {
+          "value": "{{currentlyDescription}} {{concentrationDescription}} {{temperatureDescription}}. {{skyDescription}}"
+        },
+        "summaryWithoutTemperaturePattern": {
+          "value": "{{currentlyDescription}} {{concentrationDescription}} {{skyDescription}}"
+        },
+        "surfaceTemperaturePattern": {
+          "value": "Earth's surface temperature is {{temperatureDescription}}"
+        },
+        "qualitativeAndQuantitativeTemperatureDescriptionPattern": {
+          "value": "{{qualitativeDescription}}, {{quantitativeDescription}}"
+        }
+      }
+    },
+    "timePeriodDescriptionPattern": {
+      "value": "{{timePeriod}} and {{description}}"
+    },
+    "thereAreManyHomesAndFactories": {
+      "value": "there are many homes and factories"
+    },
+    "thereAreAFewHomesAndFactories": {
+      "value": "there are a few homes and factories"
+    },
+    "thereIsAFarm": {
+      "value": "there is a farm"
+    },
+    "thereIsALargeGlacier": {
+      "value": "there is a large glacier"
+    },
+    "manyHomesAndFactories": {
+      "value": "many homes and factories"
+    },
+    "aFewHomesAndFactories": {
+      "value": "a few homes and factories"
+    },
+    "aFarm": {
+      "value": "a farm"
+    },
+    "aLargeGlacier": {
+      "value": "a large glacier"
+    },
+    "timePeriodChangeDescriptionPattern": {
+      "value": "Time period is the {{timePeriodDescription}}."
+    },
+    "nowLevelsOfConcentrationPattern": {
+      "value": "Now {{value}} greenhouse gases."
+    },
+    "nowRelativeLevelOfConcentrationPattern": {
+      "value": "Now {{value}} levels of greenhouse gases."
+    },
+    "qualitativeConcentrationChangeDescriptionPattern": {
+      "value": "Greenhouse gas levels {{comparativeDescription}} than {{year}}."
+    },
+    "higher": {
+      "value": "higher"
+    },
+    "muchHigher": {
+      "value": "much higher"
+    },
+    "significantlyHigher": {
+      "value": "significantly higher"
+    },
+    "lower": {
+      "value": "lower"
+    },
+    "muchLower": {
+      "value": "much lower"
+    },
+    "significantlyLower": {
+      "value": "significantly lower"
+    },
+    "unchanged": {
+      "value": "unchanged"
+    },
+    "energyBalanceCheckedAlert": {
+      "value": "Energy Balance added to Observation Window."
+    },
+    "energyBalanceCheckedPattern": {
+      "value": "{{checkedResponse}} {{outgoingEnergyDescription}}"
+    },
+    "energyBalanceUncheckedAlert": {
+      "value": "Energy Balance hidden."
+    },
+    "thermometerShownAlertPattern": {
+      "value": "Thermometer measuring surface temperature, {{value}}."
+    },
+    "thermometerRemovedAlert": {
+      "value": "Thermometer removed."
+    },
+    "qualitativeSurfaceTemperaturePattern": {
+      "value": "Surface temperature is {{description}}."
+    },
+    "observationWindowTimePeriodPattern": {
+      "value": "Now {{timePeriodDescription}}."
+    },
+    "photons": {
+      "homeScreenDescription": {
+        "value": "Explore greenhouse effect with photon representation."
+      }
+    },
+    "sunlightWavesTravelFromSpace": {
+      "value": "Sunlight waves travel from space to surface."
+    },
+    "sunlightAndReflectionPattern": {
+      "value": "{{sunlightDescription}} {{reflectionDescription}}"
+    },
+    "cloudRefection": {
+      "value": "Cloud reflects some sunlight back into space."
+    },
+    "cloudAndGlacierRefection": {
+      "value": "Cloud and glacier reflect some sunlight back into space."
+    },
+    "surfaceTemperatureIsQuantitativePattern": {
+      "value": "The surface temperature is {{value}}."
+    },
+    "surfaceTemperatureIsQualitativePattern": {
+      "value": "The surface temperature is {{description}}."
+    },
+    "surfaceTemperatureIsQuantitativeAndQualitativePattern": {
+      "value": "The surface temperature is {{description}}, {{value}}."
+    },
+    "infraredEmissionIntensityPattern": {
+      "value": "Infrared waves emit with {{value}} intensity from surface and travel to space."
+    },
+    "infraredEmissionIntensityWithRedirectionPattern": {
+      "value": "{{surfaceEmission}} {{value}} infrared energy is redirecting back to surface."
+    },
+    "startSunlightHint": {
+      "value": "Start sunlight to play."
+    },
+    "startSunlightButtonHelpText": {
+      "value": "Start sunlight to begin observations."
+    },
+    "sunlightStarted": {
+      "value": "Sunlight started."
+    },
+    "sunlightStartedSimPaused": {
+      "value": "Sunlight started, sim paused."
+    },
+    "cloudCheckboxHelpText": {
+      "value": "Experiment with cloudy sky."
+    },
+    "surfaceTemperatureChangeWithValuePattern": {
+      "value": "Surface temperature {{qualitativeDescription}}, now {{temperature}}."
+    },
+    "surfaceTemperatureChangeWithoutValuePattern": {
+      "value": "Surface temperature {{qualitativeDescription}}."
+    },
+    "temperatureChangeWithValuePattern": {
+      "value": "{{qualitativeDescription}}, now {{temperature}}."
+    },
+    "temperatureChangeWithoutValuePattern": {
+      "value": "{{qualitativeDescription}}."
+    },
+    "surfaceTemperatureStable": {
+      "value": "Surface temperature stable."
+    },
+    "surfaceTemperatureStableWithDescription": {
+      "value": "Surface temperature stable and {{qualitativeDescription}}."
+    },
+    "surfaceTemperatureStableWithValue": {
+      "value": "Surface temperature stable at {{quantitativeDescription}}."
+    },
+    "surfaceTemperatureStableWithDescriptionAndValue": {
+      "value": "Surface temperature stable and {{qualitativeDescription}} at {{quantitativeDescription}}."
+    },
+    "warming": {
+      "value": "warming"
+    },
+    "cooling": {
+      "value": "cooling"
+    },
+    "stabilizing": {
+      "value": "stabilizing"
+    },
+    "warmingStatement": {
+      "value": "Warming."
+    },
+    "coolingStatement": {
+      "value": "Cooling."
+    },
+    "concentrationPanel": {
+      "title": {
+        "value": "Greenhouse Gas Exploration Controls"
+      },
+      "experimentMode": {
+        "value": "Experiment Mode"
+      },
+      "experimentModeHelpText": {
+        "value": "Explore a wide range of concentrations from none to lots or zoom in to compare historical time periods."
+      },
+      "byConcentration": {
+        "value": "By concentration"
+      },
+      "byTimePeriod": {
+        "value": "By time period"
+      },
+      "timePeriod": {
+        "label": {
+          "value": "Time Period"
+        },
+        "helpText": {
+          "value": "Compare greenhouse gas levels at different historical time periods."
+        },
+        "yearTwentyTwenty": {
+          "value": "Year Twenty Twenty"
+        },
+        "yearNineteenFifty": {
+          "value": "Year Nineteen Fifty"
+        },
+        "yearSeventeenFifty": {
+          "value": "Year Seventeen Fifty"
+        },
+        "iceAge": {
+          "value": "Ice Age"
+        }
+      },
+      "concentration": {
+        "label": {
+          "value": "Concentration"
+        },
+        "greenhouseGasConcentration": {
+          "value": "Greenhouse Gas Concentration"
+        },
+        "concentrationSliderHelpText": {
+          "value": "Adjust amount of greenhouse gases in the atmosphere."
+        }
+      }
+    },
+    "playAreaSummary": {
+      "value": "The Play Area is an observation window set up with a light source and a molecule. It has options for light source and molecule."
+    },
+    "controlAreaSummary": {
+      "value": "The Control Area has options for how fast the action happens in the observation window including buttons to pause and step forward. You can also access details about the light spectrum and reset the sim."
+    },
+    "dynamicPlayingScreenSummaryPattern": {
+      "value": "Currently, {{lightSource}} light source {{emissionDescription}} directly at {{target}}."
+    },
+    "dynamicPausedScreenSummaryPattern": {
+      "value": "Currently, {{playingState}}. {{lightSource}} light source {{emissionDescription}} directly at {{target}}."
+    },
+    "simIsPaused": {
+      "value": "sim is paused"
+    },
+    "simIsPausedOnSlowSpeed": {
+      "value": "sim is paused on slow speed"
+    },
+    "screenSummaryWithHintPattern": {
+      "value": "{{summary}} Reset or change molecule."
+    },
+    "interactionHint": {
+      "value": "Turn light source on to explore."
+    },
+    "lightSource": {
+      "buttonLabelPattern": {
+        "value": "{{lightSource}} Light Source"
+      },
+      "buttonPressedHelpText": {
+        "value": "Turn light source off to stop photons."
+      },
+      "buttonUnpressedHelpText": {
+        "value": "Turn light source on to start photons."
+      }
+    },
+    "lightSources": {
+      "value": "Light Sources"
+    },
+    "isOffAndPoints": {
+      "value": "is off and points"
+    },
+    "emitsPhotons": {
+      "value": "emits photons"
+    },
+    "emitsPhotonsOnSlowSpeed": {
+      "value": "emits photons on slow speed"
+    },
+    "photonEmitterOffDescriptionPattern": {
+      "value": "{{lightSource}} light source is off and points directly at {{target}}."
+    },
+    "inactiveAndPassesPhaseDescriptionPattern": {
+      "value": "{{lightSource}} photon passes through {{target}}."
+    },
+    "targetMoleculePattern": {
+      "value": "{{photonTarget}} molecule"
+    },
+    "absorptionPhaseBondsDescriptionPattern": {
+      "value": "{{lightSource}} photon absorbed, bonds of {{photonTarget}} molecule {{excitedRepresentation}}."
+    },
+    "absorptionPhaseMoleculeDescriptionPattern": {
+      "value": "{{lightSource}} photon absorbed, {{photonTarget}} molecule {{excitedRepresentation}}."
+    },
+    "breakApartPhaseDescriptionPattern": {
+      "value": "{{lightSource}} photon absorbed, {{photonTarget}} molecule breaks into {{firstMolecule}} and {{secondMolecule}}."
+    },
+    "emissionPhaseDescriptionPattern": {
+      "value": "Absorbed  {{lightSource}} photon emitted from {{photonTarget}} molecule {{direction}}."
+    },
+    "bendUpAndDown": {
+      "value": "bend up and down"
+    },
+    "stretchBackAndForth": {
+      "value": "stretch back and forth"
+    },
+    "rotatesClockwise": {
+      "value": "rotates clockwise"
+    },
+    "rotatesCounterClockwise": {
+      "value": "rotates counter-clockwise"
+    },
+    "glowsString": {
+      "value": "glows"
+    },
+    "breaksApart": {
+      "value": "breaks apart"
+    },
+    "emptySpace": {
+      "value": "empty space"
+    },
+    "lightSourceRadioButtonHelpText": {
+      "value": "Choose light source for observation window ordered low to high energy."
+    },
+    "molecules": {
+      "value": "Molecules"
+    },
+    "moleculesRadioButtonHelpText": {
+      "value": "Choose molecule for observation window."
+    },
+    "moleculeButtonLabelPattern": {
+      "value": "{{molecularName}}, {{molecularFormula}}, {{geometryTitle}}"
+    },
+    "spectrumButtonLabel": {
+      "value": "Light Spectrum Diagram"
+    },
+    "spectrumButtonDescription": {
+      "value": "Examine details of full light spectrum."
+    },
+    "spectrumWindowDescription": {
+      "value": "The Light Spectrum shows the relative energy of the different classifications of light waves as defined by their characteristic wavelengths (measured in meters) and frequencies (measured in Hertz or inverse seconds)."
+    },
+    "spectrumWindowEnergyDescription": {
+      "value": "The order from lowest energy (lowest frequency and largest wavelength) to highest energy (highest frequency and smallest wavelength) is Radio, Microwave, Infrared, Visible, Ultraviolet, X-ray, and Gamma ray."
+    },
+    "spectrumWindowSinWaveDescription": {
+      "value": "A sine wave decreasing in wavelength (as measured by the distance from peak to peak) and increasing frequency (as measured by the number of waves per time interval) from Radio to Gamma Ray."
+    },
+    "spectrumWindowLabelledSpectrumLabel": {
+      "value": "Frequency and Wavelength Ranges"
+    },
+    "spectrumWindowLabelledSpectrumDescription": {
+      "value": "In detail, the frequency and wavelength ranges for each spectrum, listed from lowest to highest energy"
+    },
+    "spectrumWindowLabelledSpectrumRadioLabel": {
+      "value": "Radio, large range:"
+    },
+    "spectrumWindowLabelledSpectrumMicrowaveLabel": {
+      "value": "Microwave, medium range:"
+    },
+    "spectrumWindowLabelledSpectrumInfraredLabel": {
+      "value": "Infrared, medium range:"
+    },
+    "spectrumWindowLabelledSpectrumVisibleLabel": {
+      "value": "Visible, tiny range:"
+    },
+    "spectrumWindowLabelledSpectrumUltravioletLabel": {
+      "value": "Ultraviolet, small range:"
+    },
+    "spectrumWindowLabelledSpectrumXRayLabel": {
+      "value": "X-ray, medium range:"
+    },
+    "spectrumWindowLabelledSpectrumGammaRayLabel": {
+      "value": "Gamma ray, medium range:"
+    },
+    "spectrumWindowLabelledSpectrumRadioFrequencyDescription": {
+      "value": "Frequencies less than 10 to the 4 Hertz to 10 to the 9 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumRadioWavelengthDescription": {
+      "value": "Wavelengths greater than 10 to the 4 meters to 5 times 10 to the negative 1 meters."
+    },
+    "spectrumWindowLabelledSpectrumMicrowaveFrequencyDescription": {
+      "value": "Frequencies 10 to the 9 to 5 times 10 to the 11 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumMicrowaveWavelengthDescription": {
+      "value": "Wavelengths 10 to the negative 1 to 10 to the negative 3 meters."
+    },
+    "spectrumWindowLabelledSpectrumInfraredFrequencyDescription": {
+      "value": "Frequencies 5 times 10 to the 11 to 4 times 10 to the 14 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumInfraredWavelengthDescription": {
+      "value": "Wavelengths 10 to the negative 3 to 7 times 10 to the negative 7 meters."
+    },
+    "spectrumWindowLabelledSpectrumVisibleFrequencyDescription": {
+      "value": "Frequencies 4 times 10 to the 14 to 7 times 10 to the 14 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumVisibleWavelengthDescription": {
+      "value": "Wavelengths 7 times 10 to the negative 7 to 4 times 10 to the negative 7 meters."
+    },
+    "spectrumWindowLabelledSpectrumVisibleGraphicalDescription": {
+      "value": "Shown as a rainbow starting with red and ending with violet (red, yellow, green, blue, indigo, violet)."
+    },
+    "spectrumWindowLabelledSpectrumUltravioletFrequencyDescription": {
+      "value": "Frequencies 10 to the 15 to 10 to the 16 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumUltravioletWavelengthDescription": {
+      "value": "Wavelengths 4 times 10 to the negative 7 to 10 to the negative 8 meters."
+    },
+    "spectrumWindowLabelledSpectrumXRayFrequencyDescription": {
+      "value": "Frequencies 10 to the 16 to 10 to the 19 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumXRayWavelengthDescription": {
+      "value": "Wavelengths 10 to the negative 8 to 5 times 10 to the negative 11 meters."
+    },
+    "spectrumWindowLabelledSpectrumGammaRayFrequencyDescription": {
+      "value": "Frequencies 10 to the 19 Hertz to greater than 10 to the 20 Hertz."
+    },
+    "spectrumWindowLabelledSpectrumGammaRayWavelengthDescription": {
+      "value": "Wavelengths 5 times 10 to the negative 11 meters to less than 10 to the negative 12 meters."
+    },
+    "carbonMonoxide": {
+      "value": "Carbon Monoxide"
+    },
+    "nitrogen": {
+      "value": "Nitrogen"
+    },
+    "oxygen": {
+      "value": "Oxygen"
+    },
+    "diatomicOxygen": {
+      "value": "Diatomic Oxygen"
+    },
+    "carbonDioxide": {
+      "value": "Carbon Dioxide"
+    },
+    "nitrogenDioxide": {
+      "value": "Nitrogen Dioxide"
+    },
+    "water": {
+      "value": "Water"
+    },
+    "ozone": {
+      "value": "Ozone"
+    },
+    "methane": {
+      "value": "Methane"
+    },
+    "linear": {
+      "value": "linear"
+    },
+    "bent": {
+      "value": "bent"
+    },
+    "tetrahedral": {
+      "value": "tetrahedral"
+    },
+    "diatomic": {
+      "value": "diatomic"
+    },
+    "geometryLabelPattern": {
+      "value": "This molecule has {{geometry}} geometry."
+    },
+    "linearGeometryDescription": {
+      "value": "Linear, a molecule with two or three atoms bonded to form a straight line. Bond angle is 180 degrees."
+    },
+    "bentGeometryDescription": {
+      "value": "Bent, molecule with a central atom bonded to two other atoms that form an angle. Bond angle varies below 120 degrees."
+    },
+    "tetrahedralGeometryDescription": {
+      "value": "Tetrahedral, molecule with a central atom bonded to four other atoms forming a tetrahedron with 109.5° angles between them, like four-sided dice."
+    },
+    "shortStretchingAlert": {
+      "value": "Stretching."
+    },
+    "longStretchingAlert": {
+      "value": "Bonds of molecule stretch back and forth."
+    },
+    "shortBendingAlert": {
+      "value": "Bending."
+    },
+    "longBendingAlert": {
+      "value": "Bonds of molecule bend up and down."
+    },
+    "shortRotatingAlert": {
+      "value": "Rotating."
+    },
+    "longRotatingAlert": {
+      "value": "Molecule rotates."
+    },
+    "shortGlowingAlert": {
+      "value": "Glowing."
+    },
+    "longGlowingAlert": {
+      "value": "Molecule glows."
+    },
+    "breaksApartAlertPattern": {
+      "value": "Molecule breaks apart into {{firstMolecule}} and {{secondMolecule}}."
+    },
+    "pausedEmittingPattern": {
+      "value": "Absorbed photon emitted from molecule {{direction}}."
+    },
+    "pausedPassingPattern": {
+      "value": "{{lightSource}} photon passes through {{molecularName}} molecule."
+    },
+    "slowMotionPassingPattern": {
+      "value": "{{lightSource}} photons passing through {{molecularName}} molecule."
+    },
+    "photonPasses": {
+      "value": "Photon passes."
+    },
+    "photonsPassing": {
+      "value": "Photons passing."
+    },
+    "slowMotionVibratingPattern": {
+      "value": "Photon absorbed. Bonds of molecule {{excitedRepresentation}}."
+    },
+    "slowMotionAbsorbedMoleculeExcitedPattern": {
+      "value": "Photon absorbed. Molecule {{excitedRepresentation}}."
+    },
+    "slowMotionAbsorbedShortPattern": {
+      "value": "Photon absorbed. {{excitedRepresentation}}"
+    },
+    "slowMotionBreakApartPattern": {
+      "value": "Photon absorbed. Molecule breaks apart. {{firstMolecule}} and {{secondMolecule}} float away."
+    },
+    "moleculesFloatingAwayPattern": {
+      "value": "{{firstMolecule}} and {{secondMolecule}} floating away."
+    },
+    "breakApartDescriptionWithFloatPattern": {
+      "value": "{{description}} {{floatDescription}}"
+    },
+    "moleculePiecesGone": {
+      "value": "Molecule pieces gone. Reset or change molecule."
+    },
+    "slowMotionEmittedPattern": {
+      "value": "Photon emitted {{direction}}."
+    },
+    "resetOrChangeMolecule": {
+      "value": "Reset or change molecule."
+    },
+    "photonEmitter": {
+      "alerts": {
+        "photonsOff": {
+          "value": "Photons off."
+        },
+        "photonsOn": {
+          "value": "Photons on."
+        },
+        "photonsOnSlowSpeed": {
+          "value": "Photons on slow speed."
+        },
+        "photonsOnSimPaused": {
+          "value": "Photons on. Sim paused."
+        },
+        "photonsOnSlowSpeedSimPaused": {
+          "value": "Photons on slow speed. Sim paused."
+        },
+        "pausedPhotonEmittedPattern": {
+          "value": "{{lightSource}} photon leaves light source."
+        }
+      }
+    },
+    "timeControls": {
+      "simPausedEmitterOnAlert": {
+        "value": "Sim paused. Play to continue exploration."
+      },
+      "simPausedEmitterOffAlert": {
+        "value": "Sim paused. Light source off."
+      },
+      "simPlayingHintAlert": {
+        "value": "Turn light source on to play sim."
+      },
+      "playPauseButtonPlayingWithSpeedDescription": {
+        "value": "Pause sim to step forward little by little, or keep playing sim at chosen sim speed."
+      },
+      "playPauseButtonPausedWithSpeedDescription": {
+        "value": "Step forward little by little, or play sim at chosen sim speed."
+      },
+      "stepHintAlert": {
+        "value": "Turn light source on to use Step Forward."
+      },
+      "simPausedSunlightOffAlert": {
+        "value": "Sim paused. Sunlight not started."
+      },
+      "simPlayingSunlightOffAlert": {
+        "value": "Turn sunlight on to play sim."
+      },
+      "playPauseButtonPlayingDescription": {
+        "value": "Pause action in observation window."
+      },
+      "playPauseButtonPausedDescription": {
+        "value": "Resume action in observation window."
+      }
+    }
+  }
+}

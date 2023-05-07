@@ -1,0 +1,3 @@
+/* eslint-disable */
+export default "attribute vec3 aPosition; // vertex attribute\nvarying vec2 vPosition;\nvoid main() {\n  vPosition = aPosition.xy;\n  gl_Position = vec4( aPosition, 1 );\n}";
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiUGF0aHNQYWludGVyX3ZlcnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLyogZXNsaW50LWRpc2FibGUgKi9cclxuZXhwb3J0IGRlZmF1bHQgXCJhdHRyaWJ1dGUgdmVjMyBhUG9zaXRpb247IC8vIHZlcnRleCBhdHRyaWJ1dGVcXG52YXJ5aW5nIHZlYzIgdlBvc2l0aW9uO1xcbnZvaWQgbWFpbigpIHtcXG4gIHZQb3NpdGlvbiA9IGFQb3NpdGlvbi54eTtcXG4gIGdsX1Bvc2l0aW9uID0gdmVjNCggYVBvc2l0aW9uLCAxICk7XFxufVwiIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBLGVBQWUsOEpBQThKIn0=

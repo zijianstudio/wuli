@@ -1,0 +1,43 @@
+{
+  "name": "buoyancy",
+  "version": "1.0.0-dev.3",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/buoyancy.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "BUOYANCY",
+    "phetLibs": [
+      "density-buoyancy-common",
+      "mobius"
+    ],
+    "preload": [
+      "../sherpa/lib/poly-decomp-0.3.0.js",
+      "../sherpa/lib/p2-0.7.1.js",
+      "../sherpa/lib/three-r104.js"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "phet-io": {
+      "validation": false
+    },
+    "supportsOutputJS": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "globals": {
+      "p2": "readonly",
+      "THREE": "readonly",
+      "decomp": "readonly"
+    }
+  }
+}

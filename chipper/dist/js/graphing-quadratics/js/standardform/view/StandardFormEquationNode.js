@@ -1,0 +1,51 @@
+// Copyright 2018-2023, University of Colorado Boulder
+
+/**
+ * Static equation in standard form: y = ax^2 + bx + c
+ * This is sometimes referred to as general form, typically in the context of conics.
+ *
+ * @author Andrea Lin
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
+import MathSymbols from '../../../../scenery-phet/js/MathSymbols.js';
+import { Node, RichText } from '../../../../scenery/js/imports.js';
+import GQConstants from '../../common/GQConstants.js';
+import GQSymbols from '../../common/GQSymbols.js';
+import graphingQuadratics from '../../graphingQuadratics.js';
+export default class StandardFormEquationNode extends Node {
+  constructor(tandem) {
+    const options = {
+      maxWidth: 225,
+      // determined empirically
+      tandem: tandem,
+      phetioDocumentation: 'the equation shown at the top of this accordion box',
+      visiblePropertyOptions: {
+        phetioReadOnly: true
+      }
+    };
+
+    // y = ax^2 + bx + c
+    const text = StringUtils.fillIn('{{y}} {{equals}} {{a}}{{xSquared}} {{plus}} {{b}}{{x}} {{plus}} {{c}}', {
+      x: GQSymbols.x,
+      xSquared: GQSymbols.xSquared,
+      y: GQSymbols.y,
+      a: GQSymbols.a,
+      b: GQSymbols.b,
+      c: GQSymbols.c,
+      equals: MathSymbols.EQUAL_TO,
+      plus: MathSymbols.PLUS
+    });
+    const textNode = new RichText(text, {
+      font: GQConstants.INTERACTIVE_EQUATION_FONT,
+      fill: 'black'
+    });
+
+    // Wrap the RichText so that its API is not accessible to clients or PhET-iO.
+    options.children = [textNode];
+    super(options);
+  }
+}
+graphingQuadratics.register('StandardFormEquationNode', StandardFormEquationNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTdHJpbmdVdGlscyIsIk1hdGhTeW1ib2xzIiwiTm9kZSIsIlJpY2hUZXh0IiwiR1FDb25zdGFudHMiLCJHUVN5bWJvbHMiLCJncmFwaGluZ1F1YWRyYXRpY3MiLCJTdGFuZGFyZEZvcm1FcXVhdGlvbk5vZGUiLCJjb25zdHJ1Y3RvciIsInRhbmRlbSIsIm9wdGlvbnMiLCJtYXhXaWR0aCIsInBoZXRpb0RvY3VtZW50YXRpb24iLCJ2aXNpYmxlUHJvcGVydHlPcHRpb25zIiwicGhldGlvUmVhZE9ubHkiLCJ0ZXh0IiwiZmlsbEluIiwieCIsInhTcXVhcmVkIiwieSIsImEiLCJiIiwiYyIsImVxdWFscyIsIkVRVUFMX1RPIiwicGx1cyIsIlBMVVMiLCJ0ZXh0Tm9kZSIsImZvbnQiLCJJTlRFUkFDVElWRV9FUVVBVElPTl9GT05UIiwiZmlsbCIsImNoaWxkcmVuIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTdGFuZGFyZEZvcm1FcXVhdGlvbk5vZGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTgtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogU3RhdGljIGVxdWF0aW9uIGluIHN0YW5kYXJkIGZvcm06IHkgPSBheF4yICsgYnggKyBjXHJcbiAqIFRoaXMgaXMgc29tZXRpbWVzIHJlZmVycmVkIHRvIGFzIGdlbmVyYWwgZm9ybSwgdHlwaWNhbGx5IGluIHRoZSBjb250ZXh0IG9mIGNvbmljcy5cclxuICpcclxuICogQGF1dGhvciBBbmRyZWEgTGluXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IFN0cmluZ1V0aWxzIGZyb20gJy4uLy4uLy4uLy4uL3BoZXRjb21tb24vanMvdXRpbC9TdHJpbmdVdGlscy5qcyc7XHJcbmltcG9ydCBNYXRoU3ltYm9scyBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvTWF0aFN5bWJvbHMuanMnO1xyXG5pbXBvcnQgeyBOb2RlLCBOb2RlT3B0aW9ucywgUmljaFRleHQgfSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgVGFuZGVtIGZyb20gJy4uLy4uLy4uLy4uL3RhbmRlbS9qcy9UYW5kZW0uanMnO1xyXG5pbXBvcnQgR1FDb25zdGFudHMgZnJvbSAnLi4vLi4vY29tbW9uL0dRQ29uc3RhbnRzLmpzJztcclxuaW1wb3J0IEdRU3ltYm9scyBmcm9tICcuLi8uLi9jb21tb24vR1FTeW1ib2xzLmpzJztcclxuaW1wb3J0IGdyYXBoaW5nUXVhZHJhdGljcyBmcm9tICcuLi8uLi9ncmFwaGluZ1F1YWRyYXRpY3MuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgU3RhbmRhcmRGb3JtRXF1YXRpb25Ob2RlIGV4dGVuZHMgTm9kZSB7XHJcblxyXG4gIHB1YmxpYyBjb25zdHJ1Y3RvciggdGFuZGVtOiBUYW5kZW0gKSB7XHJcblxyXG4gICAgY29uc3Qgb3B0aW9uczogTm9kZU9wdGlvbnMgPSB7XHJcbiAgICAgIG1heFdpZHRoOiAyMjUsIC8vIGRldGVybWluZWQgZW1waXJpY2FsbHlcclxuICAgICAgdGFuZGVtOiB0YW5kZW0sXHJcbiAgICAgIHBoZXRpb0RvY3VtZW50YXRpb246ICd0aGUgZXF1YXRpb24gc2hvd24gYXQgdGhlIHRvcCBvZiB0aGlzIGFjY29yZGlvbiBib3gnLFxyXG4gICAgICB2aXNpYmxlUHJvcGVydHlPcHRpb25zOiB7IHBoZXRpb1JlYWRPbmx5OiB0cnVlIH1cclxuICAgIH07XHJcblxyXG4gICAgLy8geSA9IGF4XjIgKyBieCArIGNcclxuICAgIGNvbnN0IHRleHQgPSBTdHJpbmdVdGlscy5maWxsSW4oICd7e3l9fSB7e2VxdWFsc319IHt7YX19e3t4U3F1YXJlZH19IHt7cGx1c319IHt7Yn19e3t4fX0ge3twbHVzfX0ge3tjfX0nLCB7XHJcbiAgICAgIHg6IEdRU3ltYm9scy54LFxyXG4gICAgICB4U3F1YXJlZDogR1FTeW1ib2xzLnhTcXVhcmVkLFxyXG4gICAgICB5OiBHUVN5bWJvbHMueSxcclxuICAgICAgYTogR1FTeW1ib2xzLmEsXHJcbiAgICAgIGI6IEdRU3ltYm9scy5iLFxyXG4gICAgICBjOiBHUVN5bWJvbHMuYyxcclxuICAgICAgZXF1YWxzOiBNYXRoU3ltYm9scy5FUVVBTF9UTyxcclxuICAgICAgcGx1czogTWF0aFN5bWJvbHMuUExVU1xyXG4gICAgfSApO1xyXG5cclxuICAgIGNvbnN0IHRleHROb2RlID0gbmV3IFJpY2hUZXh0KCB0ZXh0LCB7XHJcbiAgICAgIGZvbnQ6IEdRQ29uc3RhbnRzLklOVEVSQUNUSVZFX0VRVUFUSU9OX0ZPTlQsXHJcbiAgICAgIGZpbGw6ICdibGFjaydcclxuICAgIH0gKTtcclxuXHJcbiAgICAvLyBXcmFwIHRoZSBSaWNoVGV4dCBzbyB0aGF0IGl0cyBBUEkgaXMgbm90IGFjY2Vzc2libGUgdG8gY2xpZW50cyBvciBQaEVULWlPLlxyXG4gICAgb3B0aW9ucy5jaGlsZHJlbiA9IFsgdGV4dE5vZGUgXTtcclxuXHJcbiAgICBzdXBlciggb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuZ3JhcGhpbmdRdWFkcmF0aWNzLnJlZ2lzdGVyKCAnU3RhbmRhcmRGb3JtRXF1YXRpb25Ob2RlJywgU3RhbmRhcmRGb3JtRXF1YXRpb25Ob2RlICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxXQUFXLE1BQU0sK0NBQStDO0FBQ3ZFLE9BQU9DLFdBQVcsTUFBTSw0Q0FBNEM7QUFDcEUsU0FBU0MsSUFBSSxFQUFlQyxRQUFRLFFBQVEsbUNBQW1DO0FBRS9FLE9BQU9DLFdBQVcsTUFBTSw2QkFBNkI7QUFDckQsT0FBT0MsU0FBUyxNQUFNLDJCQUEyQjtBQUNqRCxPQUFPQyxrQkFBa0IsTUFBTSw2QkFBNkI7QUFFNUQsZUFBZSxNQUFNQyx3QkFBd0IsU0FBU0wsSUFBSSxDQUFDO0VBRWxETSxXQUFXQSxDQUFFQyxNQUFjLEVBQUc7SUFFbkMsTUFBTUMsT0FBb0IsR0FBRztNQUMzQkMsUUFBUSxFQUFFLEdBQUc7TUFBRTtNQUNmRixNQUFNLEVBQUVBLE1BQU07TUFDZEcsbUJBQW1CLEVBQUUscURBQXFEO01BQzFFQyxzQkFBc0IsRUFBRTtRQUFFQyxjQUFjLEVBQUU7TUFBSztJQUNqRCxDQUFDOztJQUVEO0lBQ0EsTUFBTUMsSUFBSSxHQUFHZixXQUFXLENBQUNnQixNQUFNLENBQUUsdUVBQXVFLEVBQUU7TUFDeEdDLENBQUMsRUFBRVosU0FBUyxDQUFDWSxDQUFDO01BQ2RDLFFBQVEsRUFBRWIsU0FBUyxDQUFDYSxRQUFRO01BQzVCQyxDQUFDLEVBQUVkLFNBQVMsQ0FBQ2MsQ0FBQztNQUNkQyxDQUFDLEVBQUVmLFNBQVMsQ0FBQ2UsQ0FBQztNQUNkQyxDQUFDLEVBQUVoQixTQUFTLENBQUNnQixDQUFDO01BQ2RDLENBQUMsRUFBRWpCLFNBQVMsQ0FBQ2lCLENBQUM7TUFDZEMsTUFBTSxFQUFFdEIsV0FBVyxDQUFDdUIsUUFBUTtNQUM1QkMsSUFBSSxFQUFFeEIsV0FBVyxDQUFDeUI7SUFDcEIsQ0FBRSxDQUFDO0lBRUgsTUFBTUMsUUFBUSxHQUFHLElBQUl4QixRQUFRLENBQUVZLElBQUksRUFBRTtNQUNuQ2EsSUFBSSxFQUFFeEIsV0FBVyxDQUFDeUIseUJBQXlCO01BQzNDQyxJQUFJLEVBQUU7SUFDUixDQUFFLENBQUM7O0lBRUg7SUFDQXBCLE9BQU8sQ0FBQ3FCLFFBQVEsR0FBRyxDQUFFSixRQUFRLENBQUU7SUFFL0IsS0FBSyxDQUFFakIsT0FBUSxDQUFDO0VBQ2xCO0FBQ0Y7QUFFQUosa0JBQWtCLENBQUMwQixRQUFRLENBQUUsMEJBQTBCLEVBQUV6Qix3QkFBeUIsQ0FBQyJ9

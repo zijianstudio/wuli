@@ -1,0 +1,53 @@
+// Copyright 2013-2021, University of Colorado Boulder
+
+/**
+ * Particle that moves back and forth horizontally.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import blast from '../../blast.js';
+class Particle {
+  /**
+   * @param {Tandem} tandem
+   */
+  constructor(tandem) {
+    // @public
+    this.xProperty = new NumberProperty(50, {
+      tandem: tandem.createTandem('xProperty')
+    });
+    this.velocityProperty = new NumberProperty(5, {
+      tandem: tandem.createTandem('velocityProperty')
+    });
+
+    // @public (read-only) y is constant
+    this.y = 50;
+  }
+
+  /**
+   * Reset the Particlet to its original position and velocity.
+   * @public
+   */
+  reset() {
+    this.xProperty.reset();
+    this.velocityProperty.reset();
+  }
+
+  /**
+   * Animate particle, changing direction at min/max x
+   * @param {number} dt
+   * @public
+   */
+  step(dt) {
+    this.xProperty.value = this.xProperty.value + this.velocityProperty.value;
+    if (this.xProperty.value > 1024) {
+      this.velocityProperty.value = -Math.abs(this.velocityProperty.value);
+    } else if (this.xProperty.value < 0) {
+      this.velocityProperty.value = +Math.abs(this.velocityProperty.value);
+    }
+  }
+}
+blast.register('Particle', Particle);
+export default Particle;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOdW1iZXJQcm9wZXJ0eSIsImJsYXN0IiwiUGFydGljbGUiLCJjb25zdHJ1Y3RvciIsInRhbmRlbSIsInhQcm9wZXJ0eSIsImNyZWF0ZVRhbmRlbSIsInZlbG9jaXR5UHJvcGVydHkiLCJ5IiwicmVzZXQiLCJzdGVwIiwiZHQiLCJ2YWx1ZSIsIk1hdGgiLCJhYnMiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlBhcnRpY2xlLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDEzLTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFBhcnRpY2xlIHRoYXQgbW92ZXMgYmFjayBhbmQgZm9ydGggaG9yaXpvbnRhbGx5LlxyXG4gKlxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCBOdW1iZXJQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL051bWJlclByb3BlcnR5LmpzJztcclxuaW1wb3J0IGJsYXN0IGZyb20gJy4uLy4uL2JsYXN0LmpzJztcclxuXHJcbmNsYXNzIFBhcnRpY2xlIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtUYW5kZW19IHRhbmRlbVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCB0YW5kZW0gKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpY1xyXG4gICAgdGhpcy54UHJvcGVydHkgPSBuZXcgTnVtYmVyUHJvcGVydHkoIDUwLCB7XHJcbiAgICAgIHRhbmRlbTogdGFuZGVtLmNyZWF0ZVRhbmRlbSggJ3hQcm9wZXJ0eScgKVxyXG4gICAgfSApO1xyXG4gICAgdGhpcy52ZWxvY2l0eVByb3BlcnR5ID0gbmV3IE51bWJlclByb3BlcnR5KCA1LCB7XHJcbiAgICAgIHRhbmRlbTogdGFuZGVtLmNyZWF0ZVRhbmRlbSggJ3ZlbG9jaXR5UHJvcGVydHknIClcclxuICAgIH0gKTtcclxuXHJcbiAgICAvLyBAcHVibGljIChyZWFkLW9ubHkpIHkgaXMgY29uc3RhbnRcclxuICAgIHRoaXMueSA9IDUwO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVzZXQgdGhlIFBhcnRpY2xldCB0byBpdHMgb3JpZ2luYWwgcG9zaXRpb24gYW5kIHZlbG9jaXR5LlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICByZXNldCgpIHtcclxuICAgIHRoaXMueFByb3BlcnR5LnJlc2V0KCk7XHJcbiAgICB0aGlzLnZlbG9jaXR5UHJvcGVydHkucmVzZXQoKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEFuaW1hdGUgcGFydGljbGUsIGNoYW5naW5nIGRpcmVjdGlvbiBhdCBtaW4vbWF4IHhcclxuICAgKiBAcGFyYW0ge251bWJlcn0gZHRcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgc3RlcCggZHQgKSB7XHJcbiAgICB0aGlzLnhQcm9wZXJ0eS52YWx1ZSA9IHRoaXMueFByb3BlcnR5LnZhbHVlICsgdGhpcy52ZWxvY2l0eVByb3BlcnR5LnZhbHVlO1xyXG4gICAgaWYgKCB0aGlzLnhQcm9wZXJ0eS52YWx1ZSA+IDEwMjQgKSB7XHJcbiAgICAgIHRoaXMudmVsb2NpdHlQcm9wZXJ0eS52YWx1ZSA9IC1NYXRoLmFicyggdGhpcy52ZWxvY2l0eVByb3BlcnR5LnZhbHVlICk7XHJcbiAgICB9XHJcbiAgICBlbHNlIGlmICggdGhpcy54UHJvcGVydHkudmFsdWUgPCAwICkge1xyXG4gICAgICB0aGlzLnZlbG9jaXR5UHJvcGVydHkudmFsdWUgPSArTWF0aC5hYnMoIHRoaXMudmVsb2NpdHlQcm9wZXJ0eS52YWx1ZSApO1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuYmxhc3QucmVnaXN0ZXIoICdQYXJ0aWNsZScsIFBhcnRpY2xlICk7XHJcbmV4cG9ydCBkZWZhdWx0IFBhcnRpY2xlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxjQUFjLE1BQU0sdUNBQXVDO0FBQ2xFLE9BQU9DLEtBQUssTUFBTSxnQkFBZ0I7QUFFbEMsTUFBTUMsUUFBUSxDQUFDO0VBRWI7QUFDRjtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLE1BQU0sRUFBRztJQUVwQjtJQUNBLElBQUksQ0FBQ0MsU0FBUyxHQUFHLElBQUlMLGNBQWMsQ0FBRSxFQUFFLEVBQUU7TUFDdkNJLE1BQU0sRUFBRUEsTUFBTSxDQUFDRSxZQUFZLENBQUUsV0FBWTtJQUMzQyxDQUFFLENBQUM7SUFDSCxJQUFJLENBQUNDLGdCQUFnQixHQUFHLElBQUlQLGNBQWMsQ0FBRSxDQUFDLEVBQUU7TUFDN0NJLE1BQU0sRUFBRUEsTUFBTSxDQUFDRSxZQUFZLENBQUUsa0JBQW1CO0lBQ2xELENBQUUsQ0FBQzs7SUFFSDtJQUNBLElBQUksQ0FBQ0UsQ0FBQyxHQUFHLEVBQUU7RUFDYjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxLQUFLQSxDQUFBLEVBQUc7SUFDTixJQUFJLENBQUNKLFNBQVMsQ0FBQ0ksS0FBSyxDQUFDLENBQUM7SUFDdEIsSUFBSSxDQUFDRixnQkFBZ0IsQ0FBQ0UsS0FBSyxDQUFDLENBQUM7RUFDL0I7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxJQUFJQSxDQUFFQyxFQUFFLEVBQUc7SUFDVCxJQUFJLENBQUNOLFNBQVMsQ0FBQ08sS0FBSyxHQUFHLElBQUksQ0FBQ1AsU0FBUyxDQUFDTyxLQUFLLEdBQUcsSUFBSSxDQUFDTCxnQkFBZ0IsQ0FBQ0ssS0FBSztJQUN6RSxJQUFLLElBQUksQ0FBQ1AsU0FBUyxDQUFDTyxLQUFLLEdBQUcsSUFBSSxFQUFHO01BQ2pDLElBQUksQ0FBQ0wsZ0JBQWdCLENBQUNLLEtBQUssR0FBRyxDQUFDQyxJQUFJLENBQUNDLEdBQUcsQ0FBRSxJQUFJLENBQUNQLGdCQUFnQixDQUFDSyxLQUFNLENBQUM7SUFDeEUsQ0FBQyxNQUNJLElBQUssSUFBSSxDQUFDUCxTQUFTLENBQUNPLEtBQUssR0FBRyxDQUFDLEVBQUc7TUFDbkMsSUFBSSxDQUFDTCxnQkFBZ0IsQ0FBQ0ssS0FBSyxHQUFHLENBQUNDLElBQUksQ0FBQ0MsR0FBRyxDQUFFLElBQUksQ0FBQ1AsZ0JBQWdCLENBQUNLLEtBQU0sQ0FBQztJQUN4RTtFQUNGO0FBQ0Y7QUFFQVgsS0FBSyxDQUFDYyxRQUFRLENBQUUsVUFBVSxFQUFFYixRQUFTLENBQUM7QUFDdEMsZUFBZUEsUUFBUSJ9

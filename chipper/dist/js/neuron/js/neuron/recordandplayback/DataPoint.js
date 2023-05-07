@@ -1,0 +1,38 @@
+// Copyright 2014-2021, University of Colorado Boulder
+/**
+ * The DataPoint is the basic data structure in recording, it keeps track of a state (which should be immutable)
+ * and pairs it with a time at which the state occurred.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Sharfudeen Ashraf (for Ghent University)
+ */
+
+import neuron from '../../neuron.js';
+class DataPoint {
+  /**
+   * @param {number} time
+   * @param {Object} state
+   */
+  constructor(time, state) {
+    this.time = time; // @private
+    this.state = state; // @private
+  }
+
+  // @public
+  getTime() {
+    return this.time;
+  }
+
+  // @public
+  getState() {
+    return this.state;
+  }
+
+  // @public
+  toString() {
+    return `time = ${this.time}, state = ${this.state}`;
+  }
+}
+neuron.register('DataPoint', DataPoint);
+export default DataPoint;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJuZXVyb24iLCJEYXRhUG9pbnQiLCJjb25zdHJ1Y3RvciIsInRpbWUiLCJzdGF0ZSIsImdldFRpbWUiLCJnZXRTdGF0ZSIsInRvU3RyaW5nIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJEYXRhUG9pbnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcbi8qKlxyXG4gKiBUaGUgRGF0YVBvaW50IGlzIHRoZSBiYXNpYyBkYXRhIHN0cnVjdHVyZSBpbiByZWNvcmRpbmcsIGl0IGtlZXBzIHRyYWNrIG9mIGEgc3RhdGUgKHdoaWNoIHNob3VsZCBiZSBpbW11dGFibGUpXHJcbiAqIGFuZCBwYWlycyBpdCB3aXRoIGEgdGltZSBhdCB3aGljaCB0aGUgc3RhdGUgb2NjdXJyZWQuXHJcbiAqXHJcbiAqIEBhdXRob3IgU2FtIFJlaWQgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqIEBhdXRob3IgU2hhcmZ1ZGVlbiBBc2hyYWYgKGZvciBHaGVudCBVbml2ZXJzaXR5KVxyXG4gKi9cclxuXHJcbmltcG9ydCBuZXVyb24gZnJvbSAnLi4vLi4vbmV1cm9uLmpzJztcclxuXHJcbmNsYXNzIERhdGFQb2ludCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB0aW1lXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IHN0YXRlXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHRpbWUsIHN0YXRlICkge1xyXG4gICAgdGhpcy50aW1lID0gdGltZTsgLy8gQHByaXZhdGVcclxuICAgIHRoaXMuc3RhdGUgPSBzdGF0ZTsgLy8gQHByaXZhdGVcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICBnZXRUaW1lKCkge1xyXG4gICAgcmV0dXJuIHRoaXMudGltZTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICBnZXRTdGF0ZSgpIHtcclxuICAgIHJldHVybiB0aGlzLnN0YXRlO1xyXG4gIH1cclxuXHJcbiAgLy8gQHB1YmxpY1xyXG4gIHRvU3RyaW5nKCkge1xyXG4gICAgcmV0dXJuIGB0aW1lID0gJHt0aGlzLnRpbWV9LCBzdGF0ZSA9ICR7dGhpcy5zdGF0ZX1gO1xyXG4gIH1cclxufVxyXG5cclxubmV1cm9uLnJlZ2lzdGVyKCAnRGF0YVBvaW50JywgRGF0YVBvaW50ICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBEYXRhUG9pbnQ7Il0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE1BQU0sTUFBTSxpQkFBaUI7QUFFcEMsTUFBTUMsU0FBUyxDQUFDO0VBRWQ7QUFDRjtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsSUFBSSxFQUFFQyxLQUFLLEVBQUc7SUFDekIsSUFBSSxDQUFDRCxJQUFJLEdBQUdBLElBQUksQ0FBQyxDQUFDO0lBQ2xCLElBQUksQ0FBQ0MsS0FBSyxHQUFHQSxLQUFLLENBQUMsQ0FBQztFQUN0Qjs7RUFFQTtFQUNBQyxPQUFPQSxDQUFBLEVBQUc7SUFDUixPQUFPLElBQUksQ0FBQ0YsSUFBSTtFQUNsQjs7RUFFQTtFQUNBRyxRQUFRQSxDQUFBLEVBQUc7SUFDVCxPQUFPLElBQUksQ0FBQ0YsS0FBSztFQUNuQjs7RUFFQTtFQUNBRyxRQUFRQSxDQUFBLEVBQUc7SUFDVCxPQUFRLFVBQVMsSUFBSSxDQUFDSixJQUFLLGFBQVksSUFBSSxDQUFDQyxLQUFNLEVBQUM7RUFDckQ7QUFDRjtBQUVBSixNQUFNLENBQUNRLFFBQVEsQ0FBRSxXQUFXLEVBQUVQLFNBQVUsQ0FBQztBQUV6QyxlQUFlQSxTQUFTIn0=

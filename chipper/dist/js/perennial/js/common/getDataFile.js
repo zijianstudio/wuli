@@ -1,0 +1,19 @@
+// Copyright 2018, University of Colorado Boulder
+
+/**
+ * Load a data file from perennial/data/
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+const fs = require('fs');
+
+/**
+ * @public
+ *
+ * @param {string} listName - name of the perennial data file
+ * @returns {string[]} - list of the items in the perennial list
+ */
+module.exports = listName => {
+  return fs.readFileSync(`../perennial/data/${listName}`, 'utf-8').trim().split(/\r?\n/).map(sim => sim.trim());
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmcyIsInJlcXVpcmUiLCJtb2R1bGUiLCJleHBvcnRzIiwibGlzdE5hbWUiLCJyZWFkRmlsZVN5bmMiLCJ0cmltIiwic3BsaXQiLCJtYXAiLCJzaW0iXSwic291cmNlcyI6WyJnZXREYXRhRmlsZS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTG9hZCBhIGRhdGEgZmlsZSBmcm9tIHBlcmVubmlhbC9kYXRhL1xyXG4gKiBAYXV0aG9yIE1pY2hhZWwgS2F1em1hbm4gKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuY29uc3QgZnMgPSByZXF1aXJlKCAnZnMnICk7XHJcblxyXG4vKipcclxuICogQHB1YmxpY1xyXG4gKlxyXG4gKiBAcGFyYW0ge3N0cmluZ30gbGlzdE5hbWUgLSBuYW1lIG9mIHRoZSBwZXJlbm5pYWwgZGF0YSBmaWxlXHJcbiAqIEByZXR1cm5zIHtzdHJpbmdbXX0gLSBsaXN0IG9mIHRoZSBpdGVtcyBpbiB0aGUgcGVyZW5uaWFsIGxpc3RcclxuICovXHJcbm1vZHVsZS5leHBvcnRzID0gbGlzdE5hbWUgPT4ge1xyXG5cclxuICByZXR1cm4gZnMucmVhZEZpbGVTeW5jKCBgLi4vcGVyZW5uaWFsL2RhdGEvJHtsaXN0TmFtZX1gLCAndXRmLTgnICkudHJpbSgpLnNwbGl0KCAvXFxyP1xcbi8gKS5tYXAoIHNpbSA9PiBzaW0udHJpbSgpICk7XHJcbn07Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxNQUFNQSxFQUFFLEdBQUdDLE9BQU8sQ0FBRSxJQUFLLENBQUM7O0FBRTFCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBQyxNQUFNLENBQUNDLE9BQU8sR0FBR0MsUUFBUSxJQUFJO0VBRTNCLE9BQU9KLEVBQUUsQ0FBQ0ssWUFBWSxDQUFHLHFCQUFvQkQsUUFBUyxFQUFDLEVBQUUsT0FBUSxDQUFDLENBQUNFLElBQUksQ0FBQyxDQUFDLENBQUNDLEtBQUssQ0FBRSxPQUFRLENBQUMsQ0FBQ0MsR0FBRyxDQUFFQyxHQUFHLElBQUlBLEdBQUcsQ0FBQ0gsSUFBSSxDQUFDLENBQUUsQ0FBQztBQUNySCxDQUFDIn0=

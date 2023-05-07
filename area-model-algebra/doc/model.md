@@ -1,0 +1,1 @@
+See model.md from area-model-common

@@ -1,0 +1,108 @@
+{
+  "screen.intro": {
+    "value": "Intro",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Intro"
+      }
+    ]
+  },
+  "introQuestion": {
+    "value": "Hvad er den gennemsnitlige mængde vand pr. glas?",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Hvad er den gennemsnitlige mængde af vand pr. glas?"
+      },
+      {
+        "userId": 130982,
+        "timestamp": 1668774385326,
+        "oldValue": "Hvad er den gennemsnitlige mængde af vand pr. glas?",
+        "newValue": "Hvad er den gennemsnitlige mængde vand pr. glas?"
+      }
+    ]
+  },
+  "predictMean": {
+    "value": "Forudsig gennemsnit",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Forudsig gennemsnit"
+      }
+    ]
+  },
+  "mean": {
+    "value": "Gennemsnit",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Gennemsnit"
+      }
+    ]
+  },
+  "tickMarks": {
+    "value": "Måleglas",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Måleglas"
+      }
+    ]
+  },
+  "cupWaterLevel": {
+    "value": "Vandstand ved start",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Vandstand ved start"
+      }
+    ]
+  },
+  "numberOfCups": {
+    "value": "Antal glas",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Antal kopper"
+      },
+      {
+        "userId": 130982,
+        "timestamp": 1668766979631,
+        "oldValue": "Antal kopper",
+        "newValue": "Antal glas"
+      }
+    ]
+  },
+  "mean-share-and-balance.title": {
+    "value": "Gennemsnit: Andel og ligevægt",
+    "history": [
+      {
+        "userId": 130982,
+        "timestamp": 1668766879923,
+        "oldValue": "",
+        "newValue": "Gennemsnit: Del og ligevægt"
+      },
+      {
+        "userId": 130982,
+        "timestamp": 1668774385326,
+        "oldValue": "Gennemsnit: Del og ligevægt",
+        "newValue": "Gennemsnit: Andel og ligevægt"
+      }
+    ]
+  }
+}

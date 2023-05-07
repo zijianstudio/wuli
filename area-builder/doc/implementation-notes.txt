@@ -1,0 +1,36 @@
+The model is designed using screen coordinates as the size so that no model-
+view transform is needed.
+
+In this sim, 'self' is being tried out as the way to make 'this' persistent
+and thus usable in closures, rather than 'thisModel', 'thisScreen' and so
+forth.
+
+There is a pervasive concept in the code that is called "shape placement
+boards". These are conceptually like real world poster boards or bulletin
+boards, where items can be stuck on them and removed from them.
+
+When working with - and within - the shape placement boards, the code
+is sometimes written to work in terms of cells and at other times in terms of
+model coordinates, whichever is most reasonable for the problem at hand.
+
+A shape that has been placed on a shape placement board by the user is
+referred to in the code as a 'resident shape'.  The overall shape that is
+collectively created by these resident shapes is referred to as a 'composite
+shape'.  In any mode where the perimeter is being tracked, there is only one
+composite shape allowed on the board at a time.  If the user tries to create
+separate shapes, the individual shapes are moved to places where they are
+adjacent to previously placed shapes.
+
+Another central concept is that of a perimeter shape, which is a shape that is
+defined by an ordered set of points, with straight lines being drawn between
+the points when depicting it in the view.
+
+In the game, there is a concept called the "build spec" that specifies what
+the user is supposed to build.  This is used in many places throughout the
+game.
+
+STYLE NOTES:
+For this simulation, the comments wrap at 120 characters.  This was generally done the same way, except in
+a few circumstances where it made the code less readable (in the author's opinion).
+
+//REVIEW common/model/ code also refers to 'composite shape' and 'resident shape', describe here?

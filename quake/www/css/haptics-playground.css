@@ -1,0 +1,416 @@
+/*
+Copyright 2022, University of Colorado Boulder
+
+Main CSS file for the Haptics Playground app.  This was leveraged highly from the example Apache Cordova app.
+*/
+
+:root {
+  --common-control-margin: 10px 15px;
+}
+
+body {
+  background-color: #c2b280;
+  background-image: url("../img/playgroundNearJbsHouse.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: soft-light;
+  font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 12px;
+  color: black;
+  height: 100vh;
+  margin: 0;
+  width: 100%;
+}
+
+h1 {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  font-size: medium;
+}
+
+#header {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+#image-container {
+  position: relative;
+  display: inline-block;
+}
+
+#header img {
+  display: block;
+  width: auto;
+  max-width: 100vw;
+  max-height: 18vh;
+}
+
+#image-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  box-shadow: inset -1px 1px 10px 7px #c2b280;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.app-screen {
+  flex-direction: column;
+  gap: 20px;
+  margin: auto;
+  max-width: 60vw;
+  padding-bottom: 150px; /* Add space to the bottom that matches the the nav bar height so that scroll bars will work. */
+  display: none; /* invisible until made visible by the JS code */
+}
+
+/* for smaller screens, primarily phones */
+@media screen and (max-width: 550px) {
+
+  .app-screen {
+    max-width: 90vw; /* Use more of the viewport on smaller screens */
+  }
+}
+
+#settings-screen {
+  display: flex;
+}
+
+.vertical-button-set {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-button-set {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.horizontal-button-set .app-button {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.vertical-slider-set {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 5px 10px;
+  margin: var(--common-control-margin);
+}
+
+.button-and-number {
+  display: block;
+}
+
+.app-button {
+  padding: 5px 10px;
+  margin: var(--common-control-margin);
+  font-size: large;
+  border: 1px black solid;
+  background-color: #48A954;
+  color: ghostwhite;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.app-button:active {
+  background-color: #4BFF0A
+}
+
+.stop-button {
+  padding: 5px 10px;
+  margin: var(--common-control-margin);
+  font-size: large;
+  border: 1px black solid;
+  background-color: #aa0000;
+  color: ghostwhite;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.stop-button:active {
+  background-color: #ff0000
+}
+
+button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#multi-clicks-button {
+  min-width: 200px;
+}
+
+.labeled-slider {
+  font-size: large;
+  display: grid;
+}
+
+.pattern-element-adder {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  background: rgba(240, 248, 255, 0.3);
+  border-style: solid;
+  border-color: steelblue;
+  border-width: 1px;
+  border-radius: 8px;
+}
+
+#add-vibration-control {
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+
+#add-space-control {
+  grid-column: 1 / 2;
+  grid-row: 2;
+}
+
+#save-and-load-controls {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.save-load-input {
+  margin: var(--common-control-margin);
+}
+
+/* ------------------- checkbox ------------------- */
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-left: 12px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: large;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* When the checkbox is checked, add a background color */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #48A954;
+  border: black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* ------------------- end checkbox ------------------- */
+
+#number-of-clicks {
+  width: 50px;
+}
+
+#pattern-canvas {
+  background-color: #E9D6B4;
+  border: 1px black solid;
+  border-radius: 8px;
+}
+
+.pattern-display {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+}
+
+#debugArea {
+  font-family: "Arial Black", Gadget, sans-serif;
+  text-align: left;
+  color: #B22222;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1.0;
+  }
+}
+
+/* ------------------- nav bar ------------------- */
+
+#navbar {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #0576FF;
+  color: white;
+}
+
+.nav-bar-button {
+  padding: 5px 10px;
+  margin: 8px;
+  font-size: large;
+  border: 1px white solid;
+  background-color: #0576FF;
+  color: white;
+}
+
+/* smaller buttons on smaller screens so they fit - mostly for phone support */
+@media screen and (max-width: 550px) {
+
+  .nav-bar-button {
+    max-width: 20vw;
+    margin: 5px;
+    padding: 5px;
+    font-size: medium;
+  }
+}
+
+.nav-bar-button:active {
+  background-color: #81C3F8;
+}
+
+.nav-bar-button.selected {
+  background-color: #51ABF6;
+}
+
+.nav-bar-button img {
+  max-width: 50px;
+}
+
+/* ------------------- end nav bar ------------------- */
+
+/* ------------------- range input ------------------- */
+
+/*
+* Range input (aka slider) styling.  This was mostly taken from web examples, and seems WAY more complicated than it
+* should be.
+*/
+
+input[type=range] {
+  width: 100%;
+  margin: 10px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background: #55452E;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -11px;
+  width: 30px;
+  height: 30px;
+  background: #48A954;
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #55452E;
+}
+
+input[type=range]::-moz-range-track {
+  background: #55452E;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  background: #555bc8;
+  border: 2px solid ghostwhite;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ------------------- end range input ------------------- */

@@ -1,0 +1,25 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * A card with the right-hand side of an equation on it, e.g. 'x' or '2x'.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import functionBuilder from '../../../functionBuilder.js';
+import Card from './Card.js';
+export default class EquationCard extends Card {
+  /**
+   * @param {string} xSymbol - the input symbol, typically 'x'
+   * @param {Object} [options]
+   */
+  constructor(xSymbol, options) {
+    assert && assert(typeof xSymbol === 'string');
+    super(options);
+
+    // {string} @public (read-only)
+    this.xSymbol = xSymbol;
+  }
+}
+functionBuilder.register('EquationCard', EquationCard);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmdW5jdGlvbkJ1aWxkZXIiLCJDYXJkIiwiRXF1YXRpb25DYXJkIiwiY29uc3RydWN0b3IiLCJ4U3ltYm9sIiwib3B0aW9ucyIsImFzc2VydCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRXF1YXRpb25DYXJkLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE2LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEEgY2FyZCB3aXRoIHRoZSByaWdodC1oYW5kIHNpZGUgb2YgYW4gZXF1YXRpb24gb24gaXQsIGUuZy4gJ3gnIG9yICcyeCcuXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IGZ1bmN0aW9uQnVpbGRlciBmcm9tICcuLi8uLi8uLi9mdW5jdGlvbkJ1aWxkZXIuanMnO1xyXG5pbXBvcnQgQ2FyZCBmcm9tICcuL0NhcmQuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgRXF1YXRpb25DYXJkIGV4dGVuZHMgQ2FyZCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7c3RyaW5nfSB4U3ltYm9sIC0gdGhlIGlucHV0IHN5bWJvbCwgdHlwaWNhbGx5ICd4J1xyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggeFN5bWJvbCwgb3B0aW9ucyApIHtcclxuXHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0eXBlb2YgeFN5bWJvbCA9PT0gJ3N0cmluZycgKTtcclxuXHJcbiAgICBzdXBlciggb3B0aW9ucyApO1xyXG5cclxuICAgIC8vIHtzdHJpbmd9IEBwdWJsaWMgKHJlYWQtb25seSlcclxuICAgIHRoaXMueFN5bWJvbCA9IHhTeW1ib2w7XHJcbiAgfVxyXG59XHJcblxyXG5mdW5jdGlvbkJ1aWxkZXIucmVnaXN0ZXIoICdFcXVhdGlvbkNhcmQnLCBFcXVhdGlvbkNhcmQgKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsZUFBZSxNQUFNLDZCQUE2QjtBQUN6RCxPQUFPQyxJQUFJLE1BQU0sV0FBVztBQUU1QixlQUFlLE1BQU1DLFlBQVksU0FBU0QsSUFBSSxDQUFDO0VBRTdDO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VFLFdBQVdBLENBQUVDLE9BQU8sRUFBRUMsT0FBTyxFQUFHO0lBRTlCQyxNQUFNLElBQUlBLE1BQU0sQ0FBRSxPQUFPRixPQUFPLEtBQUssUUFBUyxDQUFDO0lBRS9DLEtBQUssQ0FBRUMsT0FBUSxDQUFDOztJQUVoQjtJQUNBLElBQUksQ0FBQ0QsT0FBTyxHQUFHQSxPQUFPO0VBQ3hCO0FBQ0Y7QUFFQUosZUFBZSxDQUFDTyxRQUFRLENBQUUsY0FBYyxFQUFFTCxZQUFhLENBQUMifQ==

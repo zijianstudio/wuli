@@ -1,0 +1,48 @@
+// Copyright 2013-2021, University of Colorado Boulder
+
+/*
+ * An HTMLImageElement that is backed by a scene. Call update() on this SceneImage to update the image from the scene.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { scenery } from '../imports.js';
+class SceneImage {
+  /**
+   * NOTE: ideally the scene shouldn't use SVG, since rendering that to a canvas takes a callback (and usually requires canvg)
+   *
+   * @param {Node} scene
+   */
+  constructor(scene) {
+    this.scene = scene;
+
+    // we write the scene to a canvas, get its data URL, and pass that to the image.
+    this.canvas = document.createElement('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.img = document.createElement('img');
+    this.update();
+  }
+
+  /**
+   * NOTE: calling this before the previous update() completes may cause the previous onComplete to not be executed
+   * @public
+   *
+   * @param {function} onComplete
+   */
+  update(onComplete) {
+    this.scene.updateScene();
+    this.canvas.width = this.scene.getSceneWidth();
+    this.canvas.height = this.scene.getSceneHeight();
+    this.scene.renderToCanvas(this.canvas, this.context, () => {
+      const url = this.toDataURL();
+      this.img.onload = () => {
+        onComplete();
+        delete this.img.onload;
+      };
+      this.img.src = url;
+    });
+  }
+}
+scenery.register('SceneImage', SceneImage);
+export default SceneImage;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5IiwiU2NlbmVJbWFnZSIsImNvbnN0cnVjdG9yIiwic2NlbmUiLCJjYW52YXMiLCJkb2N1bWVudCIsImNyZWF0ZUVsZW1lbnQiLCJjb250ZXh0IiwiZ2V0Q29udGV4dCIsImltZyIsInVwZGF0ZSIsIm9uQ29tcGxldGUiLCJ1cGRhdGVTY2VuZSIsIndpZHRoIiwiZ2V0U2NlbmVXaWR0aCIsImhlaWdodCIsImdldFNjZW5lSGVpZ2h0IiwicmVuZGVyVG9DYW52YXMiLCJ1cmwiLCJ0b0RhdGFVUkwiLCJvbmxvYWQiLCJzcmMiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlNjZW5lSW1hZ2UuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTMtMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKlxyXG4gKiBBbiBIVE1MSW1hZ2VFbGVtZW50IHRoYXQgaXMgYmFja2VkIGJ5IGEgc2NlbmUuIENhbGwgdXBkYXRlKCkgb24gdGhpcyBTY2VuZUltYWdlIHRvIHVwZGF0ZSB0aGUgaW1hZ2UgZnJvbSB0aGUgc2NlbmUuXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgeyBzY2VuZXJ5IH0gZnJvbSAnLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5jbGFzcyBTY2VuZUltYWdlIHtcclxuICAvKipcclxuICAgKiBOT1RFOiBpZGVhbGx5IHRoZSBzY2VuZSBzaG91bGRuJ3QgdXNlIFNWRywgc2luY2UgcmVuZGVyaW5nIHRoYXQgdG8gYSBjYW52YXMgdGFrZXMgYSBjYWxsYmFjayAoYW5kIHVzdWFsbHkgcmVxdWlyZXMgY2FudmcpXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge05vZGV9IHNjZW5lXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHNjZW5lICkge1xyXG4gICAgdGhpcy5zY2VuZSA9IHNjZW5lO1xyXG5cclxuICAgIC8vIHdlIHdyaXRlIHRoZSBzY2VuZSB0byBhIGNhbnZhcywgZ2V0IGl0cyBkYXRhIFVSTCwgYW5kIHBhc3MgdGhhdCB0byB0aGUgaW1hZ2UuXHJcbiAgICB0aGlzLmNhbnZhcyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoICdjYW52YXMnICk7XHJcbiAgICB0aGlzLmNvbnRleHQgPSB0aGlzLmNhbnZhcy5nZXRDb250ZXh0KCAnMmQnICk7XHJcblxyXG4gICAgdGhpcy5pbWcgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCAnaW1nJyApO1xyXG4gICAgdGhpcy51cGRhdGUoKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIE5PVEU6IGNhbGxpbmcgdGhpcyBiZWZvcmUgdGhlIHByZXZpb3VzIHVwZGF0ZSgpIGNvbXBsZXRlcyBtYXkgY2F1c2UgdGhlIHByZXZpb3VzIG9uQ29tcGxldGUgdG8gbm90IGJlIGV4ZWN1dGVkXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtmdW5jdGlvbn0gb25Db21wbGV0ZVxyXG4gICAqL1xyXG4gIHVwZGF0ZSggb25Db21wbGV0ZSApIHtcclxuICAgIHRoaXMuc2NlbmUudXBkYXRlU2NlbmUoKTtcclxuXHJcbiAgICB0aGlzLmNhbnZhcy53aWR0aCA9IHRoaXMuc2NlbmUuZ2V0U2NlbmVXaWR0aCgpO1xyXG4gICAgdGhpcy5jYW52YXMuaGVpZ2h0ID0gdGhpcy5zY2VuZS5nZXRTY2VuZUhlaWdodCgpO1xyXG5cclxuICAgIHRoaXMuc2NlbmUucmVuZGVyVG9DYW52YXMoIHRoaXMuY2FudmFzLCB0aGlzLmNvbnRleHQsICgpID0+IHtcclxuICAgICAgY29uc3QgdXJsID0gdGhpcy50b0RhdGFVUkwoKTtcclxuXHJcbiAgICAgIHRoaXMuaW1nLm9ubG9hZCA9ICgpID0+IHtcclxuICAgICAgICBvbkNvbXBsZXRlKCk7XHJcbiAgICAgICAgZGVsZXRlIHRoaXMuaW1nLm9ubG9hZDtcclxuICAgICAgfTtcclxuICAgICAgdGhpcy5pbWcuc3JjID0gdXJsO1xyXG4gICAgfSApO1xyXG4gIH1cclxufVxyXG5cclxuc2NlbmVyeS5yZWdpc3RlciggJ1NjZW5lSW1hZ2UnLCBTY2VuZUltYWdlICk7XHJcbmV4cG9ydCBkZWZhdWx0IFNjZW5lSW1hZ2U7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLE9BQU8sUUFBUSxlQUFlO0FBRXZDLE1BQU1DLFVBQVUsQ0FBQztFQUNmO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsS0FBSyxFQUFHO0lBQ25CLElBQUksQ0FBQ0EsS0FBSyxHQUFHQSxLQUFLOztJQUVsQjtJQUNBLElBQUksQ0FBQ0MsTUFBTSxHQUFHQyxRQUFRLENBQUNDLGFBQWEsQ0FBRSxRQUFTLENBQUM7SUFDaEQsSUFBSSxDQUFDQyxPQUFPLEdBQUcsSUFBSSxDQUFDSCxNQUFNLENBQUNJLFVBQVUsQ0FBRSxJQUFLLENBQUM7SUFFN0MsSUFBSSxDQUFDQyxHQUFHLEdBQUdKLFFBQVEsQ0FBQ0MsYUFBYSxDQUFFLEtBQU0sQ0FBQztJQUMxQyxJQUFJLENBQUNJLE1BQU0sQ0FBQyxDQUFDO0VBQ2Y7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VBLE1BQU1BLENBQUVDLFVBQVUsRUFBRztJQUNuQixJQUFJLENBQUNSLEtBQUssQ0FBQ1MsV0FBVyxDQUFDLENBQUM7SUFFeEIsSUFBSSxDQUFDUixNQUFNLENBQUNTLEtBQUssR0FBRyxJQUFJLENBQUNWLEtBQUssQ0FBQ1csYUFBYSxDQUFDLENBQUM7SUFDOUMsSUFBSSxDQUFDVixNQUFNLENBQUNXLE1BQU0sR0FBRyxJQUFJLENBQUNaLEtBQUssQ0FBQ2EsY0FBYyxDQUFDLENBQUM7SUFFaEQsSUFBSSxDQUFDYixLQUFLLENBQUNjLGNBQWMsQ0FBRSxJQUFJLENBQUNiLE1BQU0sRUFBRSxJQUFJLENBQUNHLE9BQU8sRUFBRSxNQUFNO01BQzFELE1BQU1XLEdBQUcsR0FBRyxJQUFJLENBQUNDLFNBQVMsQ0FBQyxDQUFDO01BRTVCLElBQUksQ0FBQ1YsR0FBRyxDQUFDVyxNQUFNLEdBQUcsTUFBTTtRQUN0QlQsVUFBVSxDQUFDLENBQUM7UUFDWixPQUFPLElBQUksQ0FBQ0YsR0FBRyxDQUFDVyxNQUFNO01BQ3hCLENBQUM7TUFDRCxJQUFJLENBQUNYLEdBQUcsQ0FBQ1ksR0FBRyxHQUFHSCxHQUFHO0lBQ3BCLENBQUUsQ0FBQztFQUNMO0FBQ0Y7QUFFQWxCLE9BQU8sQ0FBQ3NCLFFBQVEsQ0FBRSxZQUFZLEVBQUVyQixVQUFXLENBQUM7QUFDNUMsZUFBZUEsVUFBVSJ9

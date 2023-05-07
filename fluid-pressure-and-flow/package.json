@@ -1,0 +1,34 @@
+{
+  "name": "fluid-pressure-and-flow",
+  "version": "1.0.0-dev.21",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/fluid-pressure-and-flow.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "FLUID_PRESSURE_AND_FLOW",
+    "preload": [
+      "../sherpa/lib/numeric-1.2.6.js"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "supportsOutputJS": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "globals": {
+      "numeric": "readonly"
+    },
+    "rules": {
+      "todo-should-have-issue": "off"
+    }
+  }
+}

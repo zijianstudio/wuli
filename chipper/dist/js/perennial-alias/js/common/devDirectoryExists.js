@@ -1,0 +1,34 @@
+// Copyright 2017, University of Colorado Boulder
+
+/**
+ * Checks to see whether a directory on the dev server exists.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const devSsh = require('./devSsh');
+
+/**
+ * Checks to see whether a directory on the dev server exists.
+ * @public
+ *
+ * @param {string} directory
+ * @returns {Promise.<boolean>} - Whether the directory exists
+ */
+module.exports = function (directory) {
+  return devSsh(`[[ -d "${directory}" ]] && echo exists || echo not`).then(stdout => {
+    if (stdout.trim() === 'exists') {
+      return true;
+    } else if (stdout.trim() === 'not') {
+      return false;
+    } else {
+      throw new Error(`Problem determining whether a dev directory exists: ${directory}`);
+    }
+  }).catch(reason => {
+    if (reason.stderr.includes('Connection timed out')) {
+      throw new Error('Cannot reach the dev server.  Check that you have an internet connection and that you are either on campus or on the VPN.');
+    }
+    throw new Error(reason);
+  });
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJkZXZTc2giLCJyZXF1aXJlIiwibW9kdWxlIiwiZXhwb3J0cyIsImRpcmVjdG9yeSIsInRoZW4iLCJzdGRvdXQiLCJ0cmltIiwiRXJyb3IiLCJjYXRjaCIsInJlYXNvbiIsInN0ZGVyciIsImluY2x1ZGVzIl0sInNvdXJjZXMiOlsiZGV2RGlyZWN0b3J5RXhpc3RzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBDaGVja3MgdG8gc2VlIHdoZXRoZXIgYSBkaXJlY3Rvcnkgb24gdGhlIGRldiBzZXJ2ZXIgZXhpc3RzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuXHJcbmNvbnN0IGRldlNzaCA9IHJlcXVpcmUoICcuL2RldlNzaCcgKTtcclxuXHJcbi8qKlxyXG4gKiBDaGVja3MgdG8gc2VlIHdoZXRoZXIgYSBkaXJlY3Rvcnkgb24gdGhlIGRldiBzZXJ2ZXIgZXhpc3RzLlxyXG4gKiBAcHVibGljXHJcbiAqXHJcbiAqIEBwYXJhbSB7c3RyaW5nfSBkaXJlY3RvcnlcclxuICogQHJldHVybnMge1Byb21pc2UuPGJvb2xlYW4+fSAtIFdoZXRoZXIgdGhlIGRpcmVjdG9yeSBleGlzdHNcclxuICovXHJcbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24oIGRpcmVjdG9yeSApIHtcclxuICByZXR1cm4gZGV2U3NoKCBgW1sgLWQgXCIke2RpcmVjdG9yeX1cIiBdXSAmJiBlY2hvIGV4aXN0cyB8fCBlY2hvIG5vdGAgKS50aGVuKCBzdGRvdXQgPT4ge1xyXG4gICAgaWYgKCBzdGRvdXQudHJpbSgpID09PSAnZXhpc3RzJyApIHtcclxuICAgICAgcmV0dXJuIHRydWU7XHJcbiAgICB9XHJcbiAgICBlbHNlIGlmICggc3Rkb3V0LnRyaW0oKSA9PT0gJ25vdCcgKSB7XHJcbiAgICAgIHJldHVybiBmYWxzZTtcclxuICAgIH1cclxuICAgIGVsc2Uge1xyXG4gICAgICB0aHJvdyBuZXcgRXJyb3IoIGBQcm9ibGVtIGRldGVybWluaW5nIHdoZXRoZXIgYSBkZXYgZGlyZWN0b3J5IGV4aXN0czogJHtkaXJlY3Rvcnl9YCApO1xyXG4gICAgfVxyXG4gIH0gKS5jYXRjaCggcmVhc29uID0+IHtcclxuICAgIGlmICggcmVhc29uLnN0ZGVyci5pbmNsdWRlcyggJ0Nvbm5lY3Rpb24gdGltZWQgb3V0JyApICkge1xyXG4gICAgICB0aHJvdyBuZXcgRXJyb3IoICdDYW5ub3QgcmVhY2ggdGhlIGRldiBzZXJ2ZXIuICBDaGVjayB0aGF0IHlvdSBoYXZlIGFuIGludGVybmV0IGNvbm5lY3Rpb24gYW5kIHRoYXQgeW91IGFyZSBlaXRoZXIgb24gY2FtcHVzIG9yIG9uIHRoZSBWUE4uJyApO1xyXG4gICAgfVxyXG4gICAgdGhyb3cgbmV3IEVycm9yKCByZWFzb24gKTtcclxuICB9ICk7XHJcbn07XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFHQSxNQUFNQSxNQUFNLEdBQUdDLE9BQU8sQ0FBRSxVQUFXLENBQUM7O0FBRXBDO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0FDLE1BQU0sQ0FBQ0MsT0FBTyxHQUFHLFVBQVVDLFNBQVMsRUFBRztFQUNyQyxPQUFPSixNQUFNLENBQUcsVUFBU0ksU0FBVSxpQ0FBaUMsQ0FBQyxDQUFDQyxJQUFJLENBQUVDLE1BQU0sSUFBSTtJQUNwRixJQUFLQSxNQUFNLENBQUNDLElBQUksQ0FBQyxDQUFDLEtBQUssUUFBUSxFQUFHO01BQ2hDLE9BQU8sSUFBSTtJQUNiLENBQUMsTUFDSSxJQUFLRCxNQUFNLENBQUNDLElBQUksQ0FBQyxDQUFDLEtBQUssS0FBSyxFQUFHO01BQ2xDLE9BQU8sS0FBSztJQUNkLENBQUMsTUFDSTtNQUNILE1BQU0sSUFBSUMsS0FBSyxDQUFHLHVEQUFzREosU0FBVSxFQUFFLENBQUM7SUFDdkY7RUFDRixDQUFFLENBQUMsQ0FBQ0ssS0FBSyxDQUFFQyxNQUFNLElBQUk7SUFDbkIsSUFBS0EsTUFBTSxDQUFDQyxNQUFNLENBQUNDLFFBQVEsQ0FBRSxzQkFBdUIsQ0FBQyxFQUFHO01BQ3RELE1BQU0sSUFBSUosS0FBSyxDQUFFLDJIQUE0SCxDQUFDO0lBQ2hKO0lBQ0EsTUFBTSxJQUFJQSxLQUFLLENBQUVFLE1BQU8sQ0FBQztFQUMzQixDQUFFLENBQUM7QUFDTCxDQUFDIn0=

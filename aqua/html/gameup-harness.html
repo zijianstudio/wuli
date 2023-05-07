@@ -1,0 +1,70 @@
+<!--
+Test harness for the game up camera functionality.
+
+Launch locally like:
+http://localhost/main/aqua/html/gameup-harness.html?sim=http://localhost/main/ph-scale-basics/ph-scale-basics_en.html?brand=phet&ea&test=1&test=2&gameUpLogging&gameUp&gameUpTestHarness
+
+Test a local sim from phet-dev like:
+https://phet-dev.colorado.edu/html/gameup/gameup-harness.html?sim=http://localhost/main/ph-scale-basics/ph-scale-basics_en.html?brand=phet&ea&gameUpLogging&gameUp&gameUpTestHarness
+
+@author Sam Reid (PhET Interactive Simulations)
+-->
+<html lang="en">
+<head>
+  <style>
+    iframe {
+      display: block;
+    }
+
+    img {
+      display: block;
+    }
+  </style>
+  <iframe id="sim" width="1024" height="768"></iframe>
+  <button id="captureButton">Capture</button>
+  <img id="image"><title>SnapThought harness</title>
+</head>
+<body>
+<script>
+  const SIM_QUERY_KEY = 'sim=';
+  const simFrame = document.getElementById( 'sim' );
+  simFrame.src = window.location.search.substring( window.location.search.indexOf( SIM_QUERY_KEY ) + SIM_QUERY_KEY.length );
+
+  // When the button is pressed, request a capture from the simulation.
+  document.getElementById( 'captureButton' ).addEventListener( 'click', () => {
+    simFrame.contentWindow.postMessage( "captureImage", '*' );
+  } );
+  window.addEventListener( "message", event => {
+
+    const isReportColorMessage = data => {
+      let parsed = null;
+      try {
+        parsed = JSON.parse( data );
+      }
+      catch( e ) {
+        return false;
+      }
+      if ( parsed && parsed.type === 'reportColor' ) {
+        return true;
+      }
+      return false;
+    };
+
+    // When the simulation indicates it is ready, we tell it to stop broadcasting the ready messages
+    if ( event.data === 'captureReady' ) {
+      simFrame.contentWindow.postMessage( "GameUpCaptureReady", '*' );
+    }
+    else if ( isReportColorMessage( event.data ) ) {
+
+      // Ignore messages from ProfileColorProperty
+    }
+
+    else {
+
+      // Received an image from the simulation, show it on the screen
+      document.getElementById( 'image' ).src = `data:image/jpeg;base64,${event.data}`;
+    }
+  }, false );
+</script>
+</body>
+</html>

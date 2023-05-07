@@ -1,0 +1,42 @@
+{
+  "name": "ratio-and-proportion",
+  "version": "1.3.0-dev.1",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/ratio-and-proportion.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "RATIO_AND_PROPORTION",
+    "phetLibs": [
+      "griddle",
+      "tangible"
+    ],
+    "preload": [
+      "../sherpa/lib/mediaPipe/hands@0.4.1646424915/hands.js"
+    ],
+    "simulation": true,
+    "runnable": true,
+    "generatedUnitTests": true,
+    "simFeatures": {
+      "supportsSound": true,
+      "supportsExtraSound": true,
+      "supportsInteractiveDescription": true,
+      "supportsVoicing": true,
+      "supportsDynamicLocale": true
+    },
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

@@ -1,0 +1,26 @@
+// Copyright 2017, University of Colorado Boulder
+
+/**
+ * Gives a yes-or-no prompt that the user should respond to.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const prompt = require('./prompt');
+
+/**
+ * Gives a yes-or-no prompt that the user should respond to.
+ * @public
+ *
+ * @param {string} question - The string to be shown to the user
+ * @param {boolean} noninteractive - If true, skips the prompt
+ * @returns {Promise.<boolean>}
+ */
+module.exports = async function (question, noninteractive) {
+  if (noninteractive) {
+    return true;
+  }
+  const answer = await prompt(`${question} [y/N]?`);
+  return !/[Nn]/.test(answer) && /[Yy]/.test(answer);
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwcm9tcHQiLCJyZXF1aXJlIiwibW9kdWxlIiwiZXhwb3J0cyIsInF1ZXN0aW9uIiwibm9uaW50ZXJhY3RpdmUiLCJhbnN3ZXIiLCJ0ZXN0Il0sInNvdXJjZXMiOlsiYm9vbGVhblByb21wdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogR2l2ZXMgYSB5ZXMtb3Itbm8gcHJvbXB0IHRoYXQgdGhlIHVzZXIgc2hvdWxkIHJlc3BvbmQgdG8uXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5jb25zdCBwcm9tcHQgPSByZXF1aXJlKCAnLi9wcm9tcHQnICk7XHJcblxyXG4vKipcclxuICogR2l2ZXMgYSB5ZXMtb3Itbm8gcHJvbXB0IHRoYXQgdGhlIHVzZXIgc2hvdWxkIHJlc3BvbmQgdG8uXHJcbiAqIEBwdWJsaWNcclxuICpcclxuICogQHBhcmFtIHtzdHJpbmd9IHF1ZXN0aW9uIC0gVGhlIHN0cmluZyB0byBiZSBzaG93biB0byB0aGUgdXNlclxyXG4gKiBAcGFyYW0ge2Jvb2xlYW59IG5vbmludGVyYWN0aXZlIC0gSWYgdHJ1ZSwgc2tpcHMgdGhlIHByb21wdFxyXG4gKiBAcmV0dXJucyB7UHJvbWlzZS48Ym9vbGVhbj59XHJcbiAqL1xyXG5tb2R1bGUuZXhwb3J0cyA9IGFzeW5jIGZ1bmN0aW9uKCBxdWVzdGlvbiwgbm9uaW50ZXJhY3RpdmUgKSB7XHJcbiAgaWYgKCBub25pbnRlcmFjdGl2ZSApIHtcclxuICAgIHJldHVybiB0cnVlO1xyXG4gIH1cclxuXHJcbiAgY29uc3QgYW5zd2VyID0gYXdhaXQgcHJvbXB0KCBgJHtxdWVzdGlvbn0gW3kvTl0/YCApO1xyXG5cclxuICByZXR1cm4gISggL1tObl0vLnRlc3QoIGFuc3dlciApICkgJiYgL1tZeV0vLnRlc3QoIGFuc3dlciApO1xyXG59O1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsTUFBTUEsTUFBTSxHQUFHQyxPQUFPLENBQUUsVUFBVyxDQUFDOztBQUVwQztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0FDLE1BQU0sQ0FBQ0MsT0FBTyxHQUFHLGdCQUFnQkMsUUFBUSxFQUFFQyxjQUFjLEVBQUc7RUFDMUQsSUFBS0EsY0FBYyxFQUFHO0lBQ3BCLE9BQU8sSUFBSTtFQUNiO0VBRUEsTUFBTUMsTUFBTSxHQUFHLE1BQU1OLE1BQU0sQ0FBRyxHQUFFSSxRQUFTLFNBQVMsQ0FBQztFQUVuRCxPQUFPLENBQUcsTUFBTSxDQUFDRyxJQUFJLENBQUVELE1BQU8sQ0FBRyxJQUFJLE1BQU0sQ0FBQ0MsSUFBSSxDQUFFRCxNQUFPLENBQUM7QUFDNUQsQ0FBQyJ9

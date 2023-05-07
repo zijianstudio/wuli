@@ -1,0 +1,26 @@
+// Copyright 2013-2020, University of Colorado Boulder
+
+/**
+ * A 2D rectangle-shaped bounded area, with a convenience name and constructor. Totally functionally
+ * equivalent to Bounds2, but with a different constructor.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Bounds2 from './Bounds2.js';
+import dot from './dot.js';
+class Rectangle extends Bounds2 {
+  /**
+   * @param {number} x
+   * @param {number} y
+   * @param {number} width
+   * @param {number} height
+   */
+  constructor(x, y, width, height) {
+    assert && assert(height !== undefined, 'Rectangle requires 4 parameters');
+    super(x, y, x + width, y + height);
+  }
+}
+dot.register('Rectangle', Rectangle);
+export default Rectangle;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCb3VuZHMyIiwiZG90IiwiUmVjdGFuZ2xlIiwiY29uc3RydWN0b3IiLCJ4IiwieSIsIndpZHRoIiwiaGVpZ2h0IiwiYXNzZXJ0IiwidW5kZWZpbmVkIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSZWN0YW5nbGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTMtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSAyRCByZWN0YW5nbGUtc2hhcGVkIGJvdW5kZWQgYXJlYSwgd2l0aCBhIGNvbnZlbmllbmNlIG5hbWUgYW5kIGNvbnN0cnVjdG9yLiBUb3RhbGx5IGZ1bmN0aW9uYWxseVxyXG4gKiBlcXVpdmFsZW50IHRvIEJvdW5kczIsIGJ1dCB3aXRoIGEgZGlmZmVyZW50IGNvbnN0cnVjdG9yLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IEJvdW5kczIgZnJvbSAnLi9Cb3VuZHMyLmpzJztcclxuaW1wb3J0IGRvdCBmcm9tICcuL2RvdC5qcyc7XHJcblxyXG5jbGFzcyBSZWN0YW5nbGUgZXh0ZW5kcyBCb3VuZHMyIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcn0geFxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB5XHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHdpZHRoXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGhlaWdodFxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCB4LCB5LCB3aWR0aCwgaGVpZ2h0ICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggaGVpZ2h0ICE9PSB1bmRlZmluZWQsICdSZWN0YW5nbGUgcmVxdWlyZXMgNCBwYXJhbWV0ZXJzJyApO1xyXG4gICAgc3VwZXIoIHgsIHksIHggKyB3aWR0aCwgeSArIGhlaWdodCApO1xyXG4gIH1cclxufVxyXG5cclxuZG90LnJlZ2lzdGVyKCAnUmVjdGFuZ2xlJywgUmVjdGFuZ2xlICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBSZWN0YW5nbGU7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLGNBQWM7QUFDbEMsT0FBT0MsR0FBRyxNQUFNLFVBQVU7QUFFMUIsTUFBTUMsU0FBUyxTQUFTRixPQUFPLENBQUM7RUFDOUI7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VHLFdBQVdBLENBQUVDLENBQUMsRUFBRUMsQ0FBQyxFQUFFQyxLQUFLLEVBQUVDLE1BQU0sRUFBRztJQUNqQ0MsTUFBTSxJQUFJQSxNQUFNLENBQUVELE1BQU0sS0FBS0UsU0FBUyxFQUFFLGlDQUFrQyxDQUFDO0lBQzNFLEtBQUssQ0FBRUwsQ0FBQyxFQUFFQyxDQUFDLEVBQUVELENBQUMsR0FBR0UsS0FBSyxFQUFFRCxDQUFDLEdBQUdFLE1BQU8sQ0FBQztFQUN0QztBQUNGO0FBRUFOLEdBQUcsQ0FBQ1MsUUFBUSxDQUFFLFdBQVcsRUFBRVIsU0FBVSxDQUFDO0FBRXRDLGVBQWVBLFNBQVMifQ==

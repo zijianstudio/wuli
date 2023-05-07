@@ -1,0 +1,60 @@
+{
+  "faradays-law.title": {
+    "value": "Hukum Faraday",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473839077295,
+        "oldValue": "",
+        "newValue": "Hukum Faraday",
+        "explanation": null
+      }
+    ]
+  },
+  "faradays-law.showFieldLines": {
+    "value": "Garisan Medan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473839077295,
+        "oldValue": "",
+        "newValue": "Garisan Medan",
+        "explanation": null
+      }
+    ]
+  },
+  "faradays-law.n": {
+    "value": "U",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1624170225002,
+        "oldValue": "",
+        "newValue": "U"
+      }
+    ]
+  },
+  "faradays-law.s": {
+    "value": "S",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1624170225002,
+        "oldValue": "",
+        "newValue": "S"
+      }
+    ]
+  },
+  "faradays-law.voltage": {
+    "value": "Voltan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473839077295,
+        "oldValue": "",
+        "newValue": "Voltan",
+        "explanation": null
+      }
+    ]
+  }
+}

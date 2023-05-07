@@ -1,0 +1,32 @@
+{
+  "name": "collision-lab",
+  "version": "1.2.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/collision-lab.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "COLLISION_LAB",
+    "simulation": true,
+    "runnable": true,
+    "phetLibs": [
+      "griddle"
+    ],
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "globals": {
+      "sceneryLog": "readonly"
+    }
+  }
+}

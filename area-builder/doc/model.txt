@@ -1,0 +1,8 @@
+
+Description of the model used in Area Builder
+
+For the most part, the model is very straightforward.  The calculated area for
+a given shape is equal to the number of unit squares that it would cover.  For
+perimeter, the total perimeter includes both interior and exterior perimeters,
+so a shape that has missing pieces inside of it will have a longer perimeter
+than one that is the same overall size but has no missing interior pieces.

@@ -1,0 +1,43 @@
+// Copyright 2015-2021, University of Colorado Boulder
+
+/**
+ * Utilities for converting between different units.  These are the common conversions required when going between model
+ * and view.
+ *
+ * NOTE: The design of this sim chose to specify the model in units that aren't really appropriate for the scale of this
+ * topic.  But we thought it best to keep those units when implementing the model, so that the implementation matches
+ * the specification.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ * @author Jesse Greenberg (PhET Interactive Simulations)
+ */
+
+import capacitorLabBasics from '../../../capacitorLabBasics.js';
+
+// constants
+const MILLIMETERS_PER_METER = 1000;
+const UnitsUtils = {
+  /**
+   * Utility function to convert from meters to millimeters.
+   * @public
+   *
+   * @param {number} d
+   * @returns {number}
+   */
+  metersToMillimeters(d) {
+    return d * MILLIMETERS_PER_METER;
+  },
+  /**
+   * Utility function to convert meters squared to millimeters squared.
+   * @public
+   *
+   * @param {number} d
+   * @returns {number}
+   */
+  metersSquaredToMillimetersSquared(d) {
+    return d * (MILLIMETERS_PER_METER * MILLIMETERS_PER_METER);
+  }
+};
+capacitorLabBasics.register('UnitsUtils', UnitsUtils);
+export default UnitsUtils;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjYXBhY2l0b3JMYWJCYXNpY3MiLCJNSUxMSU1FVEVSU19QRVJfTUVURVIiLCJVbml0c1V0aWxzIiwibWV0ZXJzVG9NaWxsaW1ldGVycyIsImQiLCJtZXRlcnNTcXVhcmVkVG9NaWxsaW1ldGVyc1NxdWFyZWQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlVuaXRzVXRpbHMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVXRpbGl0aWVzIGZvciBjb252ZXJ0aW5nIGJldHdlZW4gZGlmZmVyZW50IHVuaXRzLiAgVGhlc2UgYXJlIHRoZSBjb21tb24gY29udmVyc2lvbnMgcmVxdWlyZWQgd2hlbiBnb2luZyBiZXR3ZWVuIG1vZGVsXHJcbiAqIGFuZCB2aWV3LlxyXG4gKlxyXG4gKiBOT1RFOiBUaGUgZGVzaWduIG9mIHRoaXMgc2ltIGNob3NlIHRvIHNwZWNpZnkgdGhlIG1vZGVsIGluIHVuaXRzIHRoYXQgYXJlbid0IHJlYWxseSBhcHByb3ByaWF0ZSBmb3IgdGhlIHNjYWxlIG9mIHRoaXNcclxuICogdG9waWMuICBCdXQgd2UgdGhvdWdodCBpdCBiZXN0IHRvIGtlZXAgdGhvc2UgdW5pdHMgd2hlbiBpbXBsZW1lbnRpbmcgdGhlIG1vZGVsLCBzbyB0aGF0IHRoZSBpbXBsZW1lbnRhdGlvbiBtYXRjaGVzXHJcbiAqIHRoZSBzcGVjaWZpY2F0aW9uLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKiBAYXV0aG9yIEplc3NlIEdyZWVuYmVyZyAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgY2FwYWNpdG9yTGFiQmFzaWNzIGZyb20gJy4uLy4uLy4uL2NhcGFjaXRvckxhYkJhc2ljcy5qcyc7XHJcblxyXG4vLyBjb25zdGFudHNcclxuY29uc3QgTUlMTElNRVRFUlNfUEVSX01FVEVSID0gMTAwMDtcclxuXHJcbmNvbnN0IFVuaXRzVXRpbHMgPSB7XHJcbiAgLyoqXHJcbiAgICogVXRpbGl0eSBmdW5jdGlvbiB0byBjb252ZXJ0IGZyb20gbWV0ZXJzIHRvIG1pbGxpbWV0ZXJzLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBkXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKi9cclxuICBtZXRlcnNUb01pbGxpbWV0ZXJzKCBkICkge1xyXG4gICAgcmV0dXJuIGQgKiBNSUxMSU1FVEVSU19QRVJfTUVURVI7XHJcbiAgfSxcclxuXHJcbiAgLyoqXHJcbiAgICogVXRpbGl0eSBmdW5jdGlvbiB0byBjb252ZXJ0IG1ldGVycyBzcXVhcmVkIHRvIG1pbGxpbWV0ZXJzIHNxdWFyZWQuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGRcclxuICAgKiBAcmV0dXJucyB7bnVtYmVyfVxyXG4gICAqL1xyXG4gIG1ldGVyc1NxdWFyZWRUb01pbGxpbWV0ZXJzU3F1YXJlZCggZCApIHtcclxuICAgIHJldHVybiBkICogKCBNSUxMSU1FVEVSU19QRVJfTUVURVIgKiBNSUxMSU1FVEVSU19QRVJfTUVURVIgKTtcclxuICB9XHJcbn07XHJcblxyXG5jYXBhY2l0b3JMYWJCYXNpY3MucmVnaXN0ZXIoICdVbml0c1V0aWxzJywgVW5pdHNVdGlscyApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgVW5pdHNVdGlsczsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0Esa0JBQWtCLE1BQU0sZ0NBQWdDOztBQUUvRDtBQUNBLE1BQU1DLHFCQUFxQixHQUFHLElBQUk7QUFFbEMsTUFBTUMsVUFBVSxHQUFHO0VBQ2pCO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLG1CQUFtQkEsQ0FBRUMsQ0FBQyxFQUFHO0lBQ3ZCLE9BQU9BLENBQUMsR0FBR0gscUJBQXFCO0VBQ2xDLENBQUM7RUFFRDtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFSSxpQ0FBaUNBLENBQUVELENBQUMsRUFBRztJQUNyQyxPQUFPQSxDQUFDLElBQUtILHFCQUFxQixHQUFHQSxxQkFBcUIsQ0FBRTtFQUM5RDtBQUNGLENBQUM7QUFFREQsa0JBQWtCLENBQUNNLFFBQVEsQ0FBRSxZQUFZLEVBQUVKLFVBQVcsQ0FBQztBQUV2RCxlQUFlQSxVQUFVIn0=

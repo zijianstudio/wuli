@@ -1,0 +1,103 @@
+{
+  "comment": "# graphing-slope-intercept 1.2.0-dev.1 Mon Feb 11 2019 18:43:52 GMT-0700 (MST)",
+  "assert": {
+    "sha": "d8a2e8992420327ff72a6fc4bb93ec76549ded0e",
+    "branch": "master"
+  },
+  "axon": {
+    "sha": "c56844d276e9037d5cc3ff8efa5a1aa4be82b703",
+    "branch": "master"
+  },
+  "brand": {
+    "sha": "6fc5d647ac0d628da9ef172da4860aa226cd5432",
+    "branch": "master"
+  },
+  "chipper": {
+    "sha": "7ddfa95448a282d6ccd560d384b2b04a2665561a",
+    "branch": "master"
+  },
+  "dot": {
+    "sha": "02872f4997e850edf33d596dbc0551adde42166f",
+    "branch": "master"
+  },
+  "graphing-lines": {
+    "sha": "557b358ff8220d9420d7a75806fe4287c9ad5d58",
+    "branch": "master"
+  },
+  "graphing-slope-intercept": {
+    "sha": "a5e217e7563c91c03b4ef774ada47a87de7f2cfd",
+    "branch": "master"
+  },
+  "joist": {
+    "sha": "90bcebe0c436e34b640ff370fb49fe026b0ca66c",
+    "branch": "master"
+  },
+  "kite": {
+    "sha": "290efa76cbeb3a7fc405d4a459dd1a6c57ee0182",
+    "branch": "master"
+  },
+  "phet-core": {
+    "sha": "d2cd9a63a541608e3b18f1e11e3c5e54e48c7781",
+    "branch": "master"
+  },
+  "phet-io": {
+    "sha": "022c05d749a4479cf4c08f496d6486db3ac15652",
+    "branch": "master"
+  },
+  "phet-io-wrapper-classroom-activity": {
+    "sha": "64aff78db6605aa5317724d50fdb28bd9cf495e2",
+    "branch": "master"
+  },
+  "phet-io-wrapper-hookes-law-energy": {
+    "sha": "edb231a365b0b81c976f6e502874a234a0284915",
+    "branch": "master"
+  },
+  "phet-io-wrapper-lab-book": {
+    "sha": "fb5c98c155259e2bdd37eb64e30081017a6e1d09",
+    "branch": "master"
+  },
+  "phet-io-wrappers": {
+    "sha": "7b31403dfa79f73348db46cd79bfb38087117d57",
+    "branch": "master"
+  },
+  "phetcommon": {
+    "sha": "792a8178b95101dfe0e4091a0c69996aa5af69e7",
+    "branch": "master"
+  },
+  "query-string-machine": {
+    "sha": "579c0fef790a47f96fcdc48db39e59dfb84656b4",
+    "branch": "master"
+  },
+  "scenery": {
+    "sha": "4f0bb509cad9a5d5a2557ef3b271abfa8d3b36b2",
+    "branch": "master"
+  },
+  "scenery-phet": {
+    "sha": "f47e9bb6223081f5507b48f585cc4a82afd80375",
+    "branch": "master"
+  },
+  "sherpa": {
+    "sha": "36f2b0d158244bc2c9ee0063b25a74fbc408f756",
+    "branch": "master"
+  },
+  "sun": {
+    "sha": "e77a9a706c3f4f68e79312c284d328ba055a1a13",
+    "branch": "master"
+  },
+  "tambo": {
+    "sha": "fd2784a3b4b91bafb501d1e7c8495b87b16d3aaa",
+    "branch": "master"
+  },
+  "tandem": {
+    "sha": "a3982b6e77ab7a8eac48462de38617643e0de18d",
+    "branch": "master"
+  },
+  "vegas": {
+    "sha": "e803106eff6ff94c0eb0f7b126972d408fe531f0",
+    "branch": "master"
+  },
+  "vibe": {
+    "sha": "aef9d9d593609585a9c9cb627610408c55d12559",
+    "branch": "master"
+  }
+}

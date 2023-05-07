@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "لعبة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "لعبة"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "عشرة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "عشرة"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "عشرين",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "عشرين"
+      }
+    ]
+  },
+  "ones": {
+    "value": "الآحاد",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "الآحاد"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "إطارعشرة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "إطارعشرة"
+      }
+    ]
+  },
+  "word": {
+    "value": "كلمة",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "كلمة"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "كلمة({{language}})",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "كلمة({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "اختر لعبتك!",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "اختر لعبتك!"
+      }
+    ]
+  },
+  "games": {
+    "value": "ألعاب",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "ألعاب"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "لعبة العدد",
+    "history": [
+      {
+        "userId": 538215,
+        "timestamp": 1665066096935,
+        "oldValue": "",
+        "newValue": "لعبة العدد"
+      }
+    ]
+  }
+}

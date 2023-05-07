@@ -1,0 +1,11 @@
+// Copyright 2022, University of Colorado Boulder
+
+/**
+ * Creates the namespace for this simulation.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('geometricOpticsBasics');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJnZW9tZXRyaWNPcHRpY3NCYXNpY3MudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIENyZWF0ZXMgdGhlIG5hbWVzcGFjZSBmb3IgdGhpcyBzaW11bGF0aW9uLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBOYW1lc3BhY2UgZnJvbSAnLi4vLi4vcGhldC1jb3JlL2pzL05hbWVzcGFjZS5qcyc7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBuZXcgTmFtZXNwYWNlKCAnZ2VvbWV0cmljT3B0aWNzQmFzaWNzJyApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxTQUFTLE1BQU0saUNBQWlDO0FBRXZELGVBQWUsSUFBSUEsU0FBUyxDQUFFLHVCQUF3QixDQUFDIn0=

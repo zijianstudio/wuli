@@ -1,0 +1,46 @@
+{
+  "screen.compare": {
+    "value": "তুলনা   ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "তুলনা   "
+      }
+    ]
+  },
+  "isLessThan": {
+    "value": "{{smallerNumber}}  হয়  {{greaterNumber}} থেকে কম ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382835,
+        "oldValue": "",
+        "newValue": "{{smallerNumber}}  হয়  {{greaterNumber}} থেকে কম "
+      }
+    ]
+  },
+  "isGreaterThan": {
+    "value": "{{greaterNumber}} হয়  {{smallerNumber}} থেকে বড় ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382835,
+        "oldValue": "",
+        "newValue": "{{greaterNumber}} হয়  {{smallerNumber}} থেকে বড় "
+      }
+    ]
+  },
+  "isEqualTo": {
+    "value": "{{equalNumberLeft}} হয়  {{equalNumberRight}} এর সমান ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382835,
+        "oldValue": "",
+        "newValue": "{{equalNumberLeft}} হয়  {{equalNumberRight}} এর সমান "
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+// Copyright 2017-2021, University of Colorado Boulder
+
+/**
+ * A type of listener that absorbs all 'down' events, not letting it bubble further to ancestor node listeners.
+ *
+ * NOTE: This does not call abort(), so listeners that are added to the same Node as this listener will still fire
+ *       normally.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { scenery } from '../imports.js';
+class HandleDownlistener {
+  /**
+   * Scenery input callback to absorb down events.
+   * @public
+   *
+   * @param {SceneryEvent} event
+   */
+  down(event) {
+    event.handle();
+  }
+}
+scenery.register('HandleDownlistener', HandleDownlistener);
+export default HandleDownlistener;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5IiwiSGFuZGxlRG93bmxpc3RlbmVyIiwiZG93biIsImV2ZW50IiwiaGFuZGxlIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJIYW5kbGVEb3duTGlzdGVuZXIuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSB0eXBlIG9mIGxpc3RlbmVyIHRoYXQgYWJzb3JicyBhbGwgJ2Rvd24nIGV2ZW50cywgbm90IGxldHRpbmcgaXQgYnViYmxlIGZ1cnRoZXIgdG8gYW5jZXN0b3Igbm9kZSBsaXN0ZW5lcnMuXHJcbiAqXHJcbiAqIE5PVEU6IFRoaXMgZG9lcyBub3QgY2FsbCBhYm9ydCgpLCBzbyBsaXN0ZW5lcnMgdGhhdCBhcmUgYWRkZWQgdG8gdGhlIHNhbWUgTm9kZSBhcyB0aGlzIGxpc3RlbmVyIHdpbGwgc3RpbGwgZmlyZVxyXG4gKiAgICAgICBub3JtYWxseS5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCB7IHNjZW5lcnkgfSBmcm9tICcuLi9pbXBvcnRzLmpzJztcclxuXHJcbmNsYXNzIEhhbmRsZURvd25saXN0ZW5lciB7XHJcbiAgLyoqXHJcbiAgICogU2NlbmVyeSBpbnB1dCBjYWxsYmFjayB0byBhYnNvcmIgZG93biBldmVudHMuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtTY2VuZXJ5RXZlbnR9IGV2ZW50XHJcbiAgICovXHJcbiAgZG93biggZXZlbnQgKSB7XHJcbiAgICBldmVudC5oYW5kbGUoKTtcclxuICB9XHJcbn1cclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdIYW5kbGVEb3dubGlzdGVuZXInLCBIYW5kbGVEb3dubGlzdGVuZXIgKTtcclxuZXhwb3J0IGRlZmF1bHQgSGFuZGxlRG93bmxpc3RlbmVyOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUFTQSxPQUFPLFFBQVEsZUFBZTtBQUV2QyxNQUFNQyxrQkFBa0IsQ0FBQztFQUN2QjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsSUFBSUEsQ0FBRUMsS0FBSyxFQUFHO0lBQ1pBLEtBQUssQ0FBQ0MsTUFBTSxDQUFDLENBQUM7RUFDaEI7QUFDRjtBQUVBSixPQUFPLENBQUNLLFFBQVEsQ0FBRSxvQkFBb0IsRUFBRUosa0JBQW1CLENBQUM7QUFDNUQsZUFBZUEsa0JBQWtCIn0=

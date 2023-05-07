@@ -1,0 +1,45 @@
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * MicroPhoton absorption strategy that does nothing, meaning that it will never cause a photon to be absorbed.
+ *
+ * @author Jesse Greenberg
+ */
+
+import greenhouseEffect from '../../greenhouseEffect.js';
+import PhotonAbsorptionStrategy from './PhotonAbsorptionStrategy.js';
+class NullPhotonAbsorptionStrategy extends PhotonAbsorptionStrategy {
+  /**
+   * Constructor for the null absorption strategy.  This strategy does nothing.
+   *
+   * @param {Molecule} molecule - The molecule which will use this strategy.
+   */
+  constructor(molecule) {
+    // Supertype constructor
+    super(molecule);
+  }
+
+  /**
+   * Step method for the null absorption strategy.  This does nothing.
+   * @public
+   *
+   * @param {number} dt - The incremental time step.
+   */
+  step(dt) {
+    // Does nothing.
+  }
+
+  /**
+   * This strategy never absorbs.
+   * @public
+   *
+   * @param {MicroPhoton} photon - The photon being queried for absorption.
+   * @returns {boolean}
+   */
+  queryAndAbsorbPhoton(photon) {
+    return false;
+  }
+}
+greenhouseEffect.register('NullPhotonAbsorptionStrategy', NullPhotonAbsorptionStrategy);
+export default NullPhotonAbsorptionStrategy;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJncmVlbmhvdXNlRWZmZWN0IiwiUGhvdG9uQWJzb3JwdGlvblN0cmF0ZWd5IiwiTnVsbFBob3RvbkFic29ycHRpb25TdHJhdGVneSIsImNvbnN0cnVjdG9yIiwibW9sZWN1bGUiLCJzdGVwIiwiZHQiLCJxdWVyeUFuZEFic29yYlBob3RvbiIsInBob3RvbiIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiTnVsbFBob3RvbkFic29ycHRpb25TdHJhdGVneS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTWljcm9QaG90b24gYWJzb3JwdGlvbiBzdHJhdGVneSB0aGF0IGRvZXMgbm90aGluZywgbWVhbmluZyB0aGF0IGl0IHdpbGwgbmV2ZXIgY2F1c2UgYSBwaG90b24gdG8gYmUgYWJzb3JiZWQuXHJcbiAqXHJcbiAqIEBhdXRob3IgSmVzc2UgR3JlZW5iZXJnXHJcbiAqL1xyXG5cclxuaW1wb3J0IGdyZWVuaG91c2VFZmZlY3QgZnJvbSAnLi4vLi4vZ3JlZW5ob3VzZUVmZmVjdC5qcyc7XHJcbmltcG9ydCBQaG90b25BYnNvcnB0aW9uU3RyYXRlZ3kgZnJvbSAnLi9QaG90b25BYnNvcnB0aW9uU3RyYXRlZ3kuanMnO1xyXG5cclxuY2xhc3MgTnVsbFBob3RvbkFic29ycHRpb25TdHJhdGVneSBleHRlbmRzIFBob3RvbkFic29ycHRpb25TdHJhdGVneSB7XHJcblxyXG4gIC8qKlxyXG4gICAqIENvbnN0cnVjdG9yIGZvciB0aGUgbnVsbCBhYnNvcnB0aW9uIHN0cmF0ZWd5LiAgVGhpcyBzdHJhdGVneSBkb2VzIG5vdGhpbmcuXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge01vbGVjdWxlfSBtb2xlY3VsZSAtIFRoZSBtb2xlY3VsZSB3aGljaCB3aWxsIHVzZSB0aGlzIHN0cmF0ZWd5LlxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBtb2xlY3VsZSApIHtcclxuXHJcbiAgICAvLyBTdXBlcnR5cGUgY29uc3RydWN0b3JcclxuICAgIHN1cGVyKCBtb2xlY3VsZSApO1xyXG5cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFN0ZXAgbWV0aG9kIGZvciB0aGUgbnVsbCBhYnNvcnB0aW9uIHN0cmF0ZWd5LiAgVGhpcyBkb2VzIG5vdGhpbmcuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGR0IC0gVGhlIGluY3JlbWVudGFsIHRpbWUgc3RlcC5cclxuICAgKi9cclxuICBzdGVwKCBkdCApIHtcclxuICAgIC8vIERvZXMgbm90aGluZy5cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFRoaXMgc3RyYXRlZ3kgbmV2ZXIgYWJzb3Jicy5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge01pY3JvUGhvdG9ufSBwaG90b24gLSBUaGUgcGhvdG9uIGJlaW5nIHF1ZXJpZWQgZm9yIGFic29ycHRpb24uXHJcbiAgICogQHJldHVybnMge2Jvb2xlYW59XHJcbiAgICovXHJcbiAgcXVlcnlBbmRBYnNvcmJQaG90b24oIHBob3RvbiApIHtcclxuICAgIHJldHVybiBmYWxzZTtcclxuICB9XHJcbn1cclxuXHJcbmdyZWVuaG91c2VFZmZlY3QucmVnaXN0ZXIoICdOdWxsUGhvdG9uQWJzb3JwdGlvblN0cmF0ZWd5JywgTnVsbFBob3RvbkFic29ycHRpb25TdHJhdGVneSApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgTnVsbFBob3RvbkFic29ycHRpb25TdHJhdGVneTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsZ0JBQWdCLE1BQU0sMkJBQTJCO0FBQ3hELE9BQU9DLHdCQUF3QixNQUFNLCtCQUErQjtBQUVwRSxNQUFNQyw0QkFBNEIsU0FBU0Qsd0JBQXdCLENBQUM7RUFFbEU7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFRSxXQUFXQSxDQUFFQyxRQUFRLEVBQUc7SUFFdEI7SUFDQSxLQUFLLENBQUVBLFFBQVMsQ0FBQztFQUVuQjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsSUFBSUEsQ0FBRUMsRUFBRSxFQUFHO0lBQ1Q7RUFBQTs7RUFHRjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxvQkFBb0JBLENBQUVDLE1BQU0sRUFBRztJQUM3QixPQUFPLEtBQUs7RUFDZDtBQUNGO0FBRUFSLGdCQUFnQixDQUFDUyxRQUFRLENBQUUsOEJBQThCLEVBQUVQLDRCQUE2QixDQUFDO0FBRXpGLGVBQWVBLDRCQUE0QiJ9

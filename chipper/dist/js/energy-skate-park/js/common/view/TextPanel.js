@@ -1,0 +1,43 @@
+// Copyright 2018-2022, University of Colorado Boulder
+
+/**
+ * Much of the text in this sim is surrounded by a transparent white panel to assist with visibility. This type
+ * handles that for you.
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import { Text } from '../../../../scenery/js/imports.js';
+import Panel from '../../../../sun/js/Panel.js';
+import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+class TextPanel extends Panel {
+  /**
+   * @param {LinkableProperty<string>} stringProperty - text to fill the panel
+   * @param {Object} [options]
+   */
+  constructor(stringProperty, options) {
+    options = merge({
+      // Text options
+      font: new PhetFont(15),
+      textMaxWidth: 180,
+      // panel options
+      fill: EnergySkateParkColorScheme.transparentPanelFill,
+      cornerRadius: 0,
+      lineWidth: 0,
+      xMargin: 2,
+      yMargin: 0,
+      resize: false // assumes the text content is static
+    }, options);
+    const text = new Text(stringProperty, {
+      font: options.font,
+      maxWidth: options.textMaxWidth
+    });
+    super(text, options);
+  }
+}
+energySkatePark.register('TextPanel', TextPanel);
+export default TextPanel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIlBoZXRGb250IiwiVGV4dCIsIlBhbmVsIiwiZW5lcmd5U2thdGVQYXJrIiwiRW5lcmd5U2thdGVQYXJrQ29sb3JTY2hlbWUiLCJUZXh0UGFuZWwiLCJjb25zdHJ1Y3RvciIsInN0cmluZ1Byb3BlcnR5Iiwib3B0aW9ucyIsImZvbnQiLCJ0ZXh0TWF4V2lkdGgiLCJmaWxsIiwidHJhbnNwYXJlbnRQYW5lbEZpbGwiLCJjb3JuZXJSYWRpdXMiLCJsaW5lV2lkdGgiLCJ4TWFyZ2luIiwieU1hcmdpbiIsInJlc2l6ZSIsInRleHQiLCJtYXhXaWR0aCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiVGV4dFBhbmVsLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE4LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE11Y2ggb2YgdGhlIHRleHQgaW4gdGhpcyBzaW0gaXMgc3Vycm91bmRlZCBieSBhIHRyYW5zcGFyZW50IHdoaXRlIHBhbmVsIHRvIGFzc2lzdCB3aXRoIHZpc2liaWxpdHkuIFRoaXMgdHlwZVxyXG4gKiBoYW5kbGVzIHRoYXQgZm9yIHlvdS5cclxuICpcclxuICogQGF1dGhvciBKZXNzZSBHcmVlbmJlcmcgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCBQaGV0Rm9udCBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvUGhldEZvbnQuanMnO1xyXG5pbXBvcnQgeyBUZXh0IH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IFBhbmVsIGZyb20gJy4uLy4uLy4uLy4uL3N1bi9qcy9QYW5lbC5qcyc7XHJcbmltcG9ydCBlbmVyZ3lTa2F0ZVBhcmsgZnJvbSAnLi4vLi4vZW5lcmd5U2thdGVQYXJrLmpzJztcclxuaW1wb3J0IEVuZXJneVNrYXRlUGFya0NvbG9yU2NoZW1lIGZyb20gJy4vRW5lcmd5U2thdGVQYXJrQ29sb3JTY2hlbWUuanMnO1xyXG5cclxuY2xhc3MgVGV4dFBhbmVsIGV4dGVuZHMgUGFuZWwge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge0xpbmthYmxlUHJvcGVydHk8c3RyaW5nPn0gc3RyaW5nUHJvcGVydHkgLSB0ZXh0IHRvIGZpbGwgdGhlIHBhbmVsXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBzdHJpbmdQcm9wZXJ0eSwgb3B0aW9ucyApIHtcclxuXHJcbiAgICBvcHRpb25zID0gbWVyZ2UoIHtcclxuXHJcbiAgICAgIC8vIFRleHQgb3B0aW9uc1xyXG4gICAgICBmb250OiBuZXcgUGhldEZvbnQoIDE1ICksXHJcbiAgICAgIHRleHRNYXhXaWR0aDogMTgwLFxyXG5cclxuICAgICAgLy8gcGFuZWwgb3B0aW9uc1xyXG4gICAgICBmaWxsOiBFbmVyZ3lTa2F0ZVBhcmtDb2xvclNjaGVtZS50cmFuc3BhcmVudFBhbmVsRmlsbCxcclxuICAgICAgY29ybmVyUmFkaXVzOiAwLFxyXG4gICAgICBsaW5lV2lkdGg6IDAsXHJcbiAgICAgIHhNYXJnaW46IDIsXHJcbiAgICAgIHlNYXJnaW46IDAsXHJcbiAgICAgIHJlc2l6ZTogZmFsc2UgLy8gYXNzdW1lcyB0aGUgdGV4dCBjb250ZW50IGlzIHN0YXRpY1xyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIGNvbnN0IHRleHQgPSBuZXcgVGV4dCggc3RyaW5nUHJvcGVydHksIHtcclxuICAgICAgZm9udDogb3B0aW9ucy5mb250LFxyXG4gICAgICBtYXhXaWR0aDogb3B0aW9ucy50ZXh0TWF4V2lkdGhcclxuICAgIH0gKTtcclxuXHJcbiAgICBzdXBlciggdGV4dCwgb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuZW5lcmd5U2thdGVQYXJrLnJlZ2lzdGVyKCAnVGV4dFBhbmVsJywgVGV4dFBhbmVsICk7XHJcbmV4cG9ydCBkZWZhdWx0IFRleHRQYW5lbDsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxLQUFLLE1BQU0sbUNBQW1DO0FBQ3JELE9BQU9DLFFBQVEsTUFBTSx5Q0FBeUM7QUFDOUQsU0FBU0MsSUFBSSxRQUFRLG1DQUFtQztBQUN4RCxPQUFPQyxLQUFLLE1BQU0sNkJBQTZCO0FBQy9DLE9BQU9DLGVBQWUsTUFBTSwwQkFBMEI7QUFDdEQsT0FBT0MsMEJBQTBCLE1BQU0saUNBQWlDO0FBRXhFLE1BQU1DLFNBQVMsU0FBU0gsS0FBSyxDQUFDO0VBRTVCO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VJLFdBQVdBLENBQUVDLGNBQWMsRUFBRUMsT0FBTyxFQUFHO0lBRXJDQSxPQUFPLEdBQUdULEtBQUssQ0FBRTtNQUVmO01BQ0FVLElBQUksRUFBRSxJQUFJVCxRQUFRLENBQUUsRUFBRyxDQUFDO01BQ3hCVSxZQUFZLEVBQUUsR0FBRztNQUVqQjtNQUNBQyxJQUFJLEVBQUVQLDBCQUEwQixDQUFDUSxvQkFBb0I7TUFDckRDLFlBQVksRUFBRSxDQUFDO01BQ2ZDLFNBQVMsRUFBRSxDQUFDO01BQ1pDLE9BQU8sRUFBRSxDQUFDO01BQ1ZDLE9BQU8sRUFBRSxDQUFDO01BQ1ZDLE1BQU0sRUFBRSxLQUFLLENBQUM7SUFDaEIsQ0FBQyxFQUFFVCxPQUFRLENBQUM7SUFFWixNQUFNVSxJQUFJLEdBQUcsSUFBSWpCLElBQUksQ0FBRU0sY0FBYyxFQUFFO01BQ3JDRSxJQUFJLEVBQUVELE9BQU8sQ0FBQ0MsSUFBSTtNQUNsQlUsUUFBUSxFQUFFWCxPQUFPLENBQUNFO0lBQ3BCLENBQUUsQ0FBQztJQUVILEtBQUssQ0FBRVEsSUFBSSxFQUFFVixPQUFRLENBQUM7RUFDeEI7QUFDRjtBQUVBTCxlQUFlLENBQUNpQixRQUFRLENBQUUsV0FBVyxFQUFFZixTQUFVLENBQUM7QUFDbEQsZUFBZUEsU0FBUyJ9

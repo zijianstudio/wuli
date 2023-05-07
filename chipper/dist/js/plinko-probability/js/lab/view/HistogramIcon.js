@@ -1,0 +1,44 @@
+// Copyright 2014-2022, University of Colorado Boulder
+
+/**
+ * A Scenery node that depicts a histogram icon.
+ *
+ * @author Martin Veillette (Berea College)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import { Node, Rectangle } from '../../../../scenery/js/imports.js';
+import plinkoProbability from '../../plinkoProbability.js';
+class HistogramIcon extends Node {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    super();
+    options = merge({
+      binNumber: 5,
+      binWidth: 6,
+      binHeightMax: 10,
+      binStroke: 'blue',
+      binLineWidth: 1,
+      binFill: null
+    }, options);
+
+    // Add the bins
+    for (let i = 0; i < options.binNumber; i++) {
+      const height = 4 * options.binHeightMax * (i + 1) / options.binNumber * (1 - i / options.binNumber);
+      const rectangle = new Rectangle(i * options.binWidth, -height, options.binWidth, height, {
+        fill: options.binFill,
+        lineWidth: options.binLineWidth,
+        stroke: options.binStroke
+      });
+      this.addChild(rectangle);
+    }
+
+    // Pass options through to the parent class.
+    this.mutate(options);
+  }
+}
+plinkoProbability.register('HistogramIcon', HistogramIcon);
+export default HistogramIcon;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIk5vZGUiLCJSZWN0YW5nbGUiLCJwbGlua29Qcm9iYWJpbGl0eSIsIkhpc3RvZ3JhbUljb24iLCJjb25zdHJ1Y3RvciIsIm9wdGlvbnMiLCJiaW5OdW1iZXIiLCJiaW5XaWR0aCIsImJpbkhlaWdodE1heCIsImJpblN0cm9rZSIsImJpbkxpbmVXaWR0aCIsImJpbkZpbGwiLCJpIiwiaGVpZ2h0IiwicmVjdGFuZ2xlIiwiZmlsbCIsImxpbmVXaWR0aCIsInN0cm9rZSIsImFkZENoaWxkIiwibXV0YXRlIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJIaXN0b2dyYW1JY29uLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEEgU2NlbmVyeSBub2RlIHRoYXQgZGVwaWN0cyBhIGhpc3RvZ3JhbSBpY29uLlxyXG4gKlxyXG4gKiBAYXV0aG9yIE1hcnRpbiBWZWlsbGV0dGUgKEJlcmVhIENvbGxlZ2UpXHJcbiAqL1xyXG5cclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCB7IE5vZGUsIFJlY3RhbmdsZSB9IGZyb20gJy4uLy4uLy4uLy4uL3NjZW5lcnkvanMvaW1wb3J0cy5qcyc7XHJcbmltcG9ydCBwbGlua29Qcm9iYWJpbGl0eSBmcm9tICcuLi8uLi9wbGlua29Qcm9iYWJpbGl0eS5qcyc7XHJcblxyXG5jbGFzcyBIaXN0b2dyYW1JY29uIGV4dGVuZHMgTm9kZSB7XHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBvcHRpb25zICkge1xyXG5cclxuICAgIHN1cGVyKCk7XHJcblxyXG4gICAgb3B0aW9ucyA9IG1lcmdlKCB7XHJcbiAgICAgIGJpbk51bWJlcjogNSxcclxuICAgICAgYmluV2lkdGg6IDYsXHJcbiAgICAgIGJpbkhlaWdodE1heDogMTAsXHJcbiAgICAgIGJpblN0cm9rZTogJ2JsdWUnLFxyXG4gICAgICBiaW5MaW5lV2lkdGg6IDEsXHJcbiAgICAgIGJpbkZpbGw6IG51bGxcclxuICAgIH0sIG9wdGlvbnMgKTtcclxuXHJcbiAgICAvLyBBZGQgdGhlIGJpbnNcclxuICAgIGZvciAoIGxldCBpID0gMDsgaSA8IG9wdGlvbnMuYmluTnVtYmVyOyBpKysgKSB7XHJcblxyXG4gICAgICBjb25zdCBoZWlnaHQgPSA0ICogb3B0aW9ucy5iaW5IZWlnaHRNYXggKiAoIGkgKyAxICkgLyBvcHRpb25zLmJpbk51bWJlciAqICggMSAtICggaSApIC8gb3B0aW9ucy5iaW5OdW1iZXIgKTtcclxuICAgICAgY29uc3QgcmVjdGFuZ2xlID0gbmV3IFJlY3RhbmdsZSggaSAqIG9wdGlvbnMuYmluV2lkdGgsIC1oZWlnaHQsIG9wdGlvbnMuYmluV2lkdGgsIGhlaWdodCwge1xyXG4gICAgICAgIGZpbGw6IG9wdGlvbnMuYmluRmlsbCxcclxuICAgICAgICBsaW5lV2lkdGg6IG9wdGlvbnMuYmluTGluZVdpZHRoLFxyXG4gICAgICAgIHN0cm9rZTogb3B0aW9ucy5iaW5TdHJva2VcclxuICAgICAgfSApO1xyXG4gICAgICB0aGlzLmFkZENoaWxkKCByZWN0YW5nbGUgKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBQYXNzIG9wdGlvbnMgdGhyb3VnaCB0byB0aGUgcGFyZW50IGNsYXNzLlxyXG4gICAgdGhpcy5tdXRhdGUoIG9wdGlvbnMgKTtcclxuICB9XHJcbn1cclxuXHJcbnBsaW5rb1Byb2JhYmlsaXR5LnJlZ2lzdGVyKCAnSGlzdG9ncmFtSWNvbicsIEhpc3RvZ3JhbUljb24gKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEhpc3RvZ3JhbUljb247Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsU0FBU0MsSUFBSSxFQUFFQyxTQUFTLFFBQVEsbUNBQW1DO0FBQ25FLE9BQU9DLGlCQUFpQixNQUFNLDRCQUE0QjtBQUUxRCxNQUFNQyxhQUFhLFNBQVNILElBQUksQ0FBQztFQUMvQjtBQUNGO0FBQ0E7RUFDRUksV0FBV0EsQ0FBRUMsT0FBTyxFQUFHO0lBRXJCLEtBQUssQ0FBQyxDQUFDO0lBRVBBLE9BQU8sR0FBR04sS0FBSyxDQUFFO01BQ2ZPLFNBQVMsRUFBRSxDQUFDO01BQ1pDLFFBQVEsRUFBRSxDQUFDO01BQ1hDLFlBQVksRUFBRSxFQUFFO01BQ2hCQyxTQUFTLEVBQUUsTUFBTTtNQUNqQkMsWUFBWSxFQUFFLENBQUM7TUFDZkMsT0FBTyxFQUFFO0lBQ1gsQ0FBQyxFQUFFTixPQUFRLENBQUM7O0lBRVo7SUFDQSxLQUFNLElBQUlPLENBQUMsR0FBRyxDQUFDLEVBQUVBLENBQUMsR0FBR1AsT0FBTyxDQUFDQyxTQUFTLEVBQUVNLENBQUMsRUFBRSxFQUFHO01BRTVDLE1BQU1DLE1BQU0sR0FBRyxDQUFDLEdBQUdSLE9BQU8sQ0FBQ0csWUFBWSxJQUFLSSxDQUFDLEdBQUcsQ0FBQyxDQUFFLEdBQUdQLE9BQU8sQ0FBQ0MsU0FBUyxJQUFLLENBQUMsR0FBS00sQ0FBQyxHQUFLUCxPQUFPLENBQUNDLFNBQVMsQ0FBRTtNQUMzRyxNQUFNUSxTQUFTLEdBQUcsSUFBSWIsU0FBUyxDQUFFVyxDQUFDLEdBQUdQLE9BQU8sQ0FBQ0UsUUFBUSxFQUFFLENBQUNNLE1BQU0sRUFBRVIsT0FBTyxDQUFDRSxRQUFRLEVBQUVNLE1BQU0sRUFBRTtRQUN4RkUsSUFBSSxFQUFFVixPQUFPLENBQUNNLE9BQU87UUFDckJLLFNBQVMsRUFBRVgsT0FBTyxDQUFDSyxZQUFZO1FBQy9CTyxNQUFNLEVBQUVaLE9BQU8sQ0FBQ0k7TUFDbEIsQ0FBRSxDQUFDO01BQ0gsSUFBSSxDQUFDUyxRQUFRLENBQUVKLFNBQVUsQ0FBQztJQUM1Qjs7SUFFQTtJQUNBLElBQUksQ0FBQ0ssTUFBTSxDQUFFZCxPQUFRLENBQUM7RUFDeEI7QUFDRjtBQUVBSCxpQkFBaUIsQ0FBQ2tCLFFBQVEsQ0FBRSxlQUFlLEVBQUVqQixhQUFjLENBQUM7QUFFNUQsZUFBZUEsYUFBYSJ9

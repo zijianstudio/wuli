@@ -1,0 +1,38 @@
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * Represents a place in a mixed fraction where a natural number can be potentially placed.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import Property from '../../../../axon/js/Property.js';
+import fractionsCommon from '../../fractionsCommon.js';
+class NumberSpot {
+  /**
+   * @param {NumberGroup} numberGroup
+   * @param {NumberSpotType} type
+   * @param {Bounds2} bounds
+   */
+  constructor(numberGroup, type, bounds) {
+    // @public {NumberGroup}
+    this.numberGroup = numberGroup;
+
+    // @public {NumberSpotType}
+    this.type = type;
+
+    // @public {Bounds2} - Model-coordinate area for its zone.
+    this.bounds = bounds;
+
+    // @public {Property.<NumberPiece|null>} - The piece our spot is "filled" with (if any)
+    this.pieceProperty = new Property(null);
+
+    // @public {Property.<boolean>} - Whether it should appear like it cannot be filled with a number piece currently
+    // being dragged.
+    this.showNotAllowedProperty = new BooleanProperty(false);
+  }
+}
+fractionsCommon.register('NumberSpot', NumberSpot);
+export default NumberSpot;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCb29sZWFuUHJvcGVydHkiLCJQcm9wZXJ0eSIsImZyYWN0aW9uc0NvbW1vbiIsIk51bWJlclNwb3QiLCJjb25zdHJ1Y3RvciIsIm51bWJlckdyb3VwIiwidHlwZSIsImJvdW5kcyIsInBpZWNlUHJvcGVydHkiLCJzaG93Tm90QWxsb3dlZFByb3BlcnR5IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJOdW1iZXJTcG90LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE4LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFJlcHJlc2VudHMgYSBwbGFjZSBpbiBhIG1peGVkIGZyYWN0aW9uIHdoZXJlIGEgbmF0dXJhbCBudW1iZXIgY2FuIGJlIHBvdGVudGlhbGx5IHBsYWNlZC5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBCb29sZWFuUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9Cb29sZWFuUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9Qcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBmcmFjdGlvbnNDb21tb24gZnJvbSAnLi4vLi4vZnJhY3Rpb25zQ29tbW9uLmpzJztcclxuXHJcbmNsYXNzIE51bWJlclNwb3Qge1xyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7TnVtYmVyR3JvdXB9IG51bWJlckdyb3VwXHJcbiAgICogQHBhcmFtIHtOdW1iZXJTcG90VHlwZX0gdHlwZVxyXG4gICAqIEBwYXJhbSB7Qm91bmRzMn0gYm91bmRzXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIG51bWJlckdyb3VwLCB0eXBlLCBib3VuZHMgKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7TnVtYmVyR3JvdXB9XHJcbiAgICB0aGlzLm51bWJlckdyb3VwID0gbnVtYmVyR3JvdXA7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7TnVtYmVyU3BvdFR5cGV9XHJcbiAgICB0aGlzLnR5cGUgPSB0eXBlO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge0JvdW5kczJ9IC0gTW9kZWwtY29vcmRpbmF0ZSBhcmVhIGZvciBpdHMgem9uZS5cclxuICAgIHRoaXMuYm91bmRzID0gYm91bmRzO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge1Byb3BlcnR5LjxOdW1iZXJQaWVjZXxudWxsPn0gLSBUaGUgcGllY2Ugb3VyIHNwb3QgaXMgXCJmaWxsZWRcIiB3aXRoIChpZiBhbnkpXHJcbiAgICB0aGlzLnBpZWNlUHJvcGVydHkgPSBuZXcgUHJvcGVydHkoIG51bGwgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtQcm9wZXJ0eS48Ym9vbGVhbj59IC0gV2hldGhlciBpdCBzaG91bGQgYXBwZWFyIGxpa2UgaXQgY2Fubm90IGJlIGZpbGxlZCB3aXRoIGEgbnVtYmVyIHBpZWNlIGN1cnJlbnRseVxyXG4gICAgLy8gYmVpbmcgZHJhZ2dlZC5cclxuICAgIHRoaXMuc2hvd05vdEFsbG93ZWRQcm9wZXJ0eSA9IG5ldyBCb29sZWFuUHJvcGVydHkoIGZhbHNlICk7XHJcbiAgfVxyXG59XHJcblxyXG5mcmFjdGlvbnNDb21tb24ucmVnaXN0ZXIoICdOdW1iZXJTcG90JywgTnVtYmVyU3BvdCApO1xyXG5leHBvcnQgZGVmYXVsdCBOdW1iZXJTcG90OyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxlQUFlLE1BQU0sd0NBQXdDO0FBQ3BFLE9BQU9DLFFBQVEsTUFBTSxpQ0FBaUM7QUFDdEQsT0FBT0MsZUFBZSxNQUFNLDBCQUEwQjtBQUV0RCxNQUFNQyxVQUFVLENBQUM7RUFDZjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFdBQVcsRUFBRUMsSUFBSSxFQUFFQyxNQUFNLEVBQUc7SUFFdkM7SUFDQSxJQUFJLENBQUNGLFdBQVcsR0FBR0EsV0FBVzs7SUFFOUI7SUFDQSxJQUFJLENBQUNDLElBQUksR0FBR0EsSUFBSTs7SUFFaEI7SUFDQSxJQUFJLENBQUNDLE1BQU0sR0FBR0EsTUFBTTs7SUFFcEI7SUFDQSxJQUFJLENBQUNDLGFBQWEsR0FBRyxJQUFJUCxRQUFRLENBQUUsSUFBSyxDQUFDOztJQUV6QztJQUNBO0lBQ0EsSUFBSSxDQUFDUSxzQkFBc0IsR0FBRyxJQUFJVCxlQUFlLENBQUUsS0FBTSxDQUFDO0VBQzVEO0FBQ0Y7QUFFQUUsZUFBZSxDQUFDUSxRQUFRLENBQUUsWUFBWSxFQUFFUCxVQUFXLENBQUM7QUFDcEQsZUFBZUEsVUFBVSJ9

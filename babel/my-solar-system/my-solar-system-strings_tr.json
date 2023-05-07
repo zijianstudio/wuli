@@ -1,0 +1,272 @@
+{
+  "screen.intro": {
+    "value": "Giriş",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Giriş"
+      }
+    ]
+  },
+  "screen.lab": {
+    "value": "Laboratuvar",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Laboratuvar"
+      }
+    ]
+  },
+  "followCenterOfMass": {
+    "value": "Kütle merkezini takip et",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Kütle merkezini takip et"
+      }
+    ]
+  },
+  "dataPanel.bodies": {
+    "value": "Gök Cismi Sayısı",
+    "history": [
+      {
+        "userId": 765552,
+        "timestamp": 1671309267842,
+        "oldValue": "",
+        "newValue": "Gök Cismi Sayısı"
+      }
+    ]
+  },
+  "dataPanel.moreData": {
+    "value": "Daha fazla bilgi",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Daha fazla bilgi"
+      }
+    ]
+  },
+  "mode.sunAndPlanet": {
+    "value": "Güneş ve Gezegen",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Güneş ve Gezegen"
+      }
+    ]
+  },
+  "mode.sunPlanetAndMoon": {
+    "value": "Güneş, Gezegen ve Ay",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Güneş, Gezegen ve Ay"
+      }
+    ]
+  },
+  "mode.sunPlanetAndComet": {
+    "value": "Güneş, Gezegen ve Kuyrukluyıldız",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Güneş, Gezegen ve Kuyrukluyıldız"
+      }
+    ]
+  },
+  "mode.ellipses": {
+    "value": "Elipsler",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Elipsler"
+      }
+    ]
+  },
+  "mode.binaryStarPlanet": {
+    "value": "İkili Yıldız, Gezegen",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "İkili Yıldız, Gezegen"
+      }
+    ]
+  },
+  "units.years": {
+    "value": "Yıl",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Yıl"
+      }
+    ]
+  },
+  "clear": {
+    "value": "Temiz",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Temiz"
+      }
+    ]
+  },
+  "mass": {
+    "value": "Kütle",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Kütle"
+      }
+    ]
+  },
+  "dataPanel.Mass": {
+    "value": "Kütle",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Kütle"
+      }
+    ]
+  },
+  "dataPanel.Position": {
+    "value": "Konum",
+    "history": [
+      {
+        "userId": 765552,
+        "timestamp": 1671309400889,
+        "oldValue": "",
+        "newValue": "Konum"
+      }
+    ]
+  },
+  "dataPanel.Velocity": {
+    "value": "Hız",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Hız"
+      }
+    ]
+  },
+  "grid": {
+    "value": "Izgara",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Izgara"
+      }
+    ]
+  },
+  "measuringTape": {
+    "value": "Ölçüm bandı",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "",
+        "newValue": "Ölçüm bandı"
+      }
+    ]
+  },
+  "values": {
+    "value": "Değerler",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Değerler"
+      }
+    ]
+  },
+  "gravityForce": {
+    "value": "Yerçekimi kuvveti",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Yerçekimi kuvveti"
+      }
+    ]
+  },
+  "velocity": {
+    "value": "Hız",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Hız"
+      }
+    ]
+  },
+  "path": {
+    "value": "Yörünge",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Yol"
+      },
+      {
+        "userId": 613972,
+        "timestamp": 1670700356155,
+        "oldValue": "Yol",
+        "newValue": "Yörünge"
+      }
+    ]
+  },
+  "centerOfMass": {
+    "value": "Kütle Merkezi",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Kütle Merkezi"
+      }
+    ]
+  },
+  "my-solar-system.title": {
+    "value": "Güneş Sistemim",
+    "history": [
+      {
+        "userId": 613972,
+        "timestamp": 1670698404918,
+        "oldValue": "",
+        "newValue": "Güneş Sistemim"
+      }
+    ]
+  }
+}

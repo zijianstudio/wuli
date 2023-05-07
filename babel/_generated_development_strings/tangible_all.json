@@ -1,0 +1,480 @@
+{
+  "az": {
+    "cameraInputFlipYHeading": {
+      "value": "Əlləriniz yanlış simulyasiya əllərinə uyğunlaşdırılıb?"
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Əlləriniz simulyasiya əllərini yanlış istiqamətdə hərəkət etdirir?"
+    },
+    "cameraInputRequiresInternet": {
+      "value": "Kamera girişi internet bağlantısı tələb edir."
+    },
+    "cameraInputHands": {
+      "value": "Kamera girişi: Əllər"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Kamera daxiletməsini yükləmə xətası: Əllər"
+    },
+    "cameraInputFlipX": {
+      "value": "Kameranı X oxuna çevirin."
+    },
+    "cameraInputFlipY": {
+      "value": "Kameranı Y oxuna çevirin."
+    },
+    "troubleshootingParagraph": {
+      "value": "\"Lazım gələrsə"
+    },
+    "inputDevice": {
+      "value": "Daxiletmə cihazı:"
+    },
+    "noMediaDevice": {
+      "value": "Əlçatan media cihazı yoxdur. Başqa proqram tərəfindən istifadə olunur?"
+    },
+    "noMediaDevices": {
+      "value": "Media cihazları mövcud deyil"
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Kamera girişi ilə bağlı problemlərin aradan qaldırılması: Əllər"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Sim-i idarə etmək üçün xüsusi əl hərəkətlərindən istifadə edin."
+    }
+  },
+  "da": {
+    "cameraInputRequiresInternet": {
+      "value": "Kamera-input kræver en internetforbindelse"
+    },
+    "noMediaDevices": {
+      "value": "Ingen tilgængelige medieenheder"
+    },
+    "noMediaDevice": {
+      "value": "Ingen tilgængelig medieenhed. Bliver det brugt af et andet program?"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Fejl ved indlæsning af kamerainput: Hænder"
+    },
+    "inputDevice": {
+      "value": "Inputenhed"
+    },
+    "cameraInputHands": {
+      "value": "Kamerainput: Hænder"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Brug tilpassede håndbevægelser til at styre simuleringen."
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Fejlfinding kameraindgang: Hænder"
+    },
+    "troubleshootingParagraph": {
+      "value": "Hvis det er nødvendigt, kan du bruge mulighederne nedenfor til at ændre simuleringshændernes adfærd, så de passer til dine håndbevægelser."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "Er dine hænder kortlagt til de forkerte simuleringshænder?"
+    },
+    "cameraInputFlipY": {
+      "value": "Flip kamera Y-akse."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Bevæger dine hænder simuleringshænderne i den forkerte retning?"
+    },
+    "cameraInputFlipX": {
+      "value": "Flip kamera X-akse."
+    }
+  },
+  "el": {
+    "cameraInputRequiresInternet": {
+      "value": "Η εισαγωγή κάμερας απαιτεί σύνδεση στο Διαδίκτυο."
+    },
+    "noMediaDevices": {
+      "value": "Δεν υπάρχουν διαθέσιμες συσκευές πολυμέσων."
+    },
+    "noMediaDevice": {
+      "value": "Δεν υπάρχει διαθέσιμη συσκευή πολυμέσων. Χρησιμοποιείται από άλλη εφαρμογή;"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Σφάλμα φόρτωσης εισαγωγής κάμερας: Χέρια"
+    },
+    "inputDevice": {
+      "value": "Συσκευή εισαγωγής:"
+    },
+    "cameraInputHands": {
+      "value": "Εισαγωγή κάμερας: Χέρια"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Χρησιμοποιήστε προσαρμοσμένες κινήσεις των χεριών για να ελέγξετε την προσομοίωση."
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Αντιμετώπιση προβλημάτων εισαγωγής κάμερας: Χέρια"
+    },
+    "troubleshootingParagraph": {
+      "value": "Εάν χρειάζεται, χρησιμοποιήστε τις παρακάτω επιλογές για να αλλάξετε τη συμπεριφορά των χεριών προσομοίωσης ώστε να ταιριάζει με τις κινήσεις των χεριών σας."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "Τα χέρια σας είναι αντιστοιχισμένα σε λάθος χέρια προσομοίωσης;"
+    },
+    "cameraInputFlipY": {
+      "value": "Γύρισμα κάμερας στον άξονα Y."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Τα χέρια σας κινούν τα χέρια της προσομοίωσης σε λάθος κατεύθυνση;"
+    },
+    "cameraInputFlipX": {
+      "value": "Γύρισμα κάμερας στον άξονα X."
+    }
+  },
+  "es": {
+    "cameraInputRequiresInternet": {
+      "value": "La entrada de la cámara requiere una conexión a Internet."
+    },
+    "noMediaDevices": {
+      "value": "No hay dispositivos multimedia disponibles"
+    },
+    "noMediaDevice": {
+      "value": "No hay ningún dispositivo multimedia disponible. ¿Está siendo utilizado por otro programa?"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Error al cargar la entrada de la cámara: Manos"
+    },
+    "inputDevice": {
+      "value": "Dispositivo de entrada:"
+    },
+    "cameraInputHands": {
+      "value": "Entrada de cámara: Manos"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Usa movimientos de manos personalizados para controlar la simulación."
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Solucionando problemas de entrada de cámara: Manos"
+    },
+    "troubleshootingParagraph": {
+      "value": "Si es necesario, usa las opciones a continuación para cambiar el comportamiento de las manos de la simulación para que coincida con los movimientos de tu mano."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "¿Tus manos están asignadas a las manos de la simulación incorrectas?"
+    },
+    "cameraInputFlipY": {
+      "value": "Gira el eje Y de la cámara."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "¿Están sus manos moviendo las manos de la simulación en la dirección incorrecta?"
+    },
+    "cameraInputFlipX": {
+      "value": "Gira el eje X de la cámara."
+    }
+  },
+  "eu": {
+    "cameraInputRequiresInternet": {
+      "value": "Kameraren sarrerak Interneteko konexioa behar du."
+    },
+    "noMediaDevices": {
+      "value": "Ez dago multimedia-gailurik erabilgarri"
+    },
+    "noMediaDevice": {
+      "value": "Ez dago multimedia-gailurik erabilgarri. Beste programa batek erabiltzen al du?"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Errorea kameraren sarrera kargatzean: eskuak"
+    },
+    "inputDevice": {
+      "value": "Sarrera gailua:"
+    },
+    "cameraInputHands": {
+      "value": "Kameraren sarrera: eskuak"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Erabili eskuen mugimendu pertsonalizatuak sim kontrolatzeko."
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Kameraren sarrera-arazoak konpontzea: Eskuak"
+    },
+    "troubleshootingParagraph": {
+      "value": "Beharrezkoa izanez gero, erabili beheko aukerak simulazio-eskuen portaera aldatzeko zure esku-mugimenduekin bat etortzeko."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "Zure eskuak simulazio-esku okerretan mapatuta al daude?"
+    },
+    "cameraInputFlipY": {
+      "value": "Biratu kamera Y ardatza."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Zure eskuak simulazio-eskuak norabide okerrean mugitzen al dira?"
+    },
+    "cameraInputFlipX": {
+      "value": "Biratu kamera X ardatza."
+    }
+  },
+  "it": {
+    "noMediaDevices": {
+      "value": "Nessun dispositivo multimediale disponibile"
+    },
+    "noMediaDevice": {
+      "value": "Nessun dispositivo multimediale disponibile. E' utilizzato da un altro programma?"
+    },
+    "inputDevice": {
+      "value": "Dispositivo di input"
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Risoluzione dei problemi relativi all'input della videocamera: mani"
+    },
+    "troubleshootingParagraph": {
+      "value": "Se necessario, utilizza le seguenti opzioni per modificare il comportamento della simulazione delle mani in modo che corrispondano ai movimenti della tua mano."
+    },
+    "cameraInputFlipY": {
+      "value": "Inverti l'asse Y della videocamera."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Le tue mani muovono le mani virtuali nella direzione sbagliata?"
+    },
+    "cameraInputFlipX": {
+      "value": "Inverti l'asse X della videocamera."
+    }
+  },
+  "ko": {
+    "cameraInputFlipYHeading": {
+      "value": "당신의 손이 시물레이션의 손과 다릅니까?"
+    },
+    "cameraInputFlipXHeading": {
+      "value": "당신의 손이 시물레이션의 손과 다른 방향으로 이동합니까?"
+    },
+    "cameraInputRequiresInternet": {
+      "value": "카메라 입력을 하려면 인터넷 연결이 필요합니다."
+    },
+    "cameraInputHands": {
+      "value": "카메라 입력; 손"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "카메라 로딩 실패: 손"
+    },
+    "cameraInputFlipX": {
+      "value": "카메라의 X-축을 뒤집으세요."
+    },
+    "cameraInputFlipY": {
+      "value": "카메라의 Y-축을 뒤집으세요."
+    },
+    "troubleshootingParagraph": {
+      "value": "필요하다면 아래의 옵션을 사용하여 시뮬레이션의 손과 당신의 손의 이동이 같도록 조정하십시오."
+    },
+    "inputDevice": {
+      "value": "투입 장비"
+    },
+    "noMediaDevice": {
+      "value": "미디어 장비가 없음. 다른 프로그램에서 사용되고 있나요?"
+    },
+    "noMediaDevices": {
+      "value": "미디아 장비가 없음"
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "카메라 입력 문제해결:손"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "시뮬레이션을 조정하기 위해 사용자 손의 이동을 사용하시오."
+    }
+  },
+  "lg": {
+    "cameraInputFlipYHeading": {
+      "value": "Emikono gyo giteekeddwa ku maapu ku emikono emiffu ejasimulesoni?"
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Emikono gyo gigitanbuza emikono ejasimulesoni ku mukono omuffu?"
+    },
+    "cameraInputRequiresInternet": {
+      "value": "Camera Input yeetaaga omukutu gwa yintaneeti."
+    },
+    "cameraInputHands": {
+      "value": "Okuyingiza Kkamera: Emikono"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Ensobi Mu Kutikka Okuyingiza Kamera: Emikono"
+    },
+    "cameraInputFlipX": {
+      "value": "Flip kamera X-ekisiki"
+    },
+    "cameraInputFlipY": {
+      "value": "Flip kamera Y-ekisiki."
+    },
+    "troubleshootingParagraph": {
+      "value": "Bwe kiba kyetaagisa, kozesa eby’okulonda wansi okukyusa enneeyisa y’emikono egyasimulesoni okukwatagana n’entambula z’emikono gyo."
+    },
+    "noMediaDevice": {
+      "value": "Tewali kyuma kya mawulire ekiriwo. pulogulaamu ekikozesa?"
+    },
+    "noMediaDevices": {
+      "value": "Tewali kyuma kya mawulire"
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Okugonjoola ebizibu Camera Input: Emikono"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Kozesa entambula z’emikono ejiweredwa okufuga simulesoni."
+    }
+  },
+  "pl": {
+    "cameraInputRequiresInternet": {
+      "value": "Wejście z kamery wymaga połączenia z Internetem."
+    },
+    "noMediaDevices": {
+      "value": "Brak dostępnych urządzeń multimedialnych"
+    },
+    "noMediaDevice": {
+      "value": "Brak dostępnego urządzenia. Czy jest używane przez inny program?"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Błąd ładowania wejścia z kamery: dłonie"
+    },
+    "inputDevice": {
+      "value": "Urządzenie wejściowe:"
+    },
+    "cameraInputHands": {
+      "value": "Wejście z kamery: dłonie"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Używaj niestandardowych ruchów dłoni, aby sterować symulacją."
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Rozwiązywanie problemów z wejściem z kamery: dłonie"
+    },
+    "troubleshootingParagraph": {
+      "value": "W razie potrzeby użyj poniższych opcji, aby zmienić zachowanie dłoni z symulacji, aby dopasować je do ruchów Twojej dłoni."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "Czy twoje dłonie są przypisane do niewłaściwych dłoni symulacji?"
+    },
+    "cameraInputFlipY": {
+      "value": "Odwróć oś Y kamery."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Czy Twoje dłonie przesuwają dłonie symulacji w złym kierunku?"
+    },
+    "cameraInputFlipX": {
+      "value": "Odwróć oś X kamery."
+    }
+  },
+  "ro": {
+    "cameraInputRequiresInternet": {
+      "value": "Conectarea camerei necesită conexiune la internet."
+    },
+    "noMediaDevices": {
+      "value": "Nu există dispozitive media disponibile"
+    },
+    "noMediaDevice": {
+      "value": "Nu există niciun dispozitiv media disponibil. Este folosit de un alt program?"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Eroare la conectarea intrării camerei: Mâini"
+    },
+    "inputDevice": {
+      "value": "Dispozitiv de intrare:"
+    },
+    "cameraInputHands": {
+      "value": "Conectare cameră: Mâini"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Folosiți mișcări personalizate ale mâinilor pentru a controla simularea."
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Depanarea conexiunii camerei: Mâini"
+    },
+    "troubleshootingParagraph": {
+      "value": "Dacă este necesar, utilizați opțiunile de mai jos pentru a modifica comportamentul mâinilor de simulare conform mișcărilor mâinilor dumneavoastră."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "Mâinile tale sunt asociate greșit cu mâinile din simulare?"
+    },
+    "cameraInputFlipY": {
+      "value": "Inversează axa Y a camerei"
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Mâinile tale mișcă mâinile din simulare în direcția greșită?"
+    },
+    "cameraInputFlipX": {
+      "value": "Inversează axa X a camerei"
+    }
+  },
+  "zh_TW": {
+    "cameraInputRequiresInternet": {
+      "value": "攝影機輸入需要網際網路連線。"
+    },
+    "noMediaDevices": {
+      "value": "沒有任何媒體裝置"
+    },
+    "noMediaDevice": {
+      "value": "沒有可用的媒體裝置。是否被其它程式佔用了？"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "載入攝影機輸入時發生錯誤：手勢"
+    },
+    "inputDevice": {
+      "value": "輸入裝置："
+    },
+    "cameraInputHands": {
+      "value": "攝影機輸入：手勢"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "使用自訂手勢移動來控制模擬教材。"
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "找出攝影機輸入的問題：手勢"
+    },
+    "troubleshootingParagraph": {
+      "value": "如果需要，使用下方的選項來變更模擬教材的手勢以符合您的需求。"
+    },
+    "cameraInputFlipYHeading": {
+      "value": "您的手勢是否對映到錯誤的模擬教材的手勢？"
+    },
+    "cameraInputFlipY": {
+      "value": "翻轉攝影機的 Y 軸。"
+    },
+    "cameraInputFlipXHeading": {
+      "value": "您的手勢移動是否移錯方向了？"
+    },
+    "cameraInputFlipX": {
+      "value": "翻轉攝影機的 X 軸。"
+    }
+  },
+  "en": {
+    "tangible.title": {
+      "value": "tangible demo"
+    },
+    "cameraInputHands": {
+      "value": "Camera Input: Hands"
+    },
+    "inputDevice": {
+      "value": "Input Device:"
+    },
+    "cameraInputRequiresInternet": {
+      "value": "Camera Input requires an internet connection."
+    },
+    "noMediaDevices": {
+      "value": "No media devices available"
+    },
+    "noMediaDevice": {
+      "value": "No available media device. Is it being used by another program?"
+    },
+    "errorLoadingCameraInputHands": {
+      "value": "Error Loading Camera Input: Hands"
+    },
+    "cameraInputHandsHelpText": {
+      "value": "Use custom hand movements to control the sim."
+    },
+    "cameraInputFlipX": {
+      "value": "Flip camera X-axis."
+    },
+    "cameraInputFlipXHeading": {
+      "value": "Are your hands moving the simulation hands in the wrong direction?"
+    },
+    "cameraInputFlipY": {
+      "value": "Flip camera Y-axis."
+    },
+    "cameraInputFlipYHeading": {
+      "value": "Are your hands mapped to the wrong simulation hands?"
+    },
+    "troubleshootingCameraInputHands": {
+      "value": "Troubleshooting Camera Input: Hands"
+    },
+    "troubleshootingParagraph": {
+      "value": "If needed, use the options below to change the behavior of the simulation hands to match your hand movements."
+    },
+    "a11y": {}
+  }
+}

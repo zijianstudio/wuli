@@ -1,0 +1,55 @@
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * Base class for different types of object stacks (usually for pieces and groups) that are placed in panels usually.
+ *
+ * "mutable" stacks have elements dynamically added/removed, whereas "immutable" ones are not affected by the user.
+ *
+ * Usually the items in a stack are shown (offset by a certain amount).
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import createObservableArray from '../../../../axon/js/createObservableArray.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
+import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import fractionsCommon from '../../fractionsCommon.js';
+class Stack {
+  /**
+   * @param {BuildingType} type
+   * @param {number} layoutQuantity
+   * @param {boolean} [isMutable]
+   */
+  constructor(type, layoutQuantity, isMutable = true) {
+    assert && assert(typeof layoutQuantity === 'number' && layoutQuantity >= 1 && layoutQuantity % 1 === 0);
+    assert && assert(typeof isMutable === 'boolean');
+
+    // @public {BuildingType}
+    this.type = type;
+
+    // @public {number}
+    this.layoutQuantity = layoutQuantity;
+
+    // @public {boolean}
+    this.isMutable = isMutable;
+
+    // @public - Position of our stack in model units (updated from the view)
+    this.positionProperty = new Vector2Property(Vector2.ZERO);
+
+    // @public {ObservableArrayDef.<*>}
+    this.array = createObservableArray();
+  }
+
+  /**
+   * Returns whether it is empty.
+   * @public
+   *
+   * @returns {boolean}
+   */
+  isEmpty() {
+    return this.array.length === 0;
+  }
+}
+fractionsCommon.register('Stack', Stack);
+export default Stack;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjcmVhdGVPYnNlcnZhYmxlQXJyYXkiLCJWZWN0b3IyIiwiVmVjdG9yMlByb3BlcnR5IiwiZnJhY3Rpb25zQ29tbW9uIiwiU3RhY2siLCJjb25zdHJ1Y3RvciIsInR5cGUiLCJsYXlvdXRRdWFudGl0eSIsImlzTXV0YWJsZSIsImFzc2VydCIsInBvc2l0aW9uUHJvcGVydHkiLCJaRVJPIiwiYXJyYXkiLCJpc0VtcHR5IiwibGVuZ3RoIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTdGFjay5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOC0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBCYXNlIGNsYXNzIGZvciBkaWZmZXJlbnQgdHlwZXMgb2Ygb2JqZWN0IHN0YWNrcyAodXN1YWxseSBmb3IgcGllY2VzIGFuZCBncm91cHMpIHRoYXQgYXJlIHBsYWNlZCBpbiBwYW5lbHMgdXN1YWxseS5cclxuICpcclxuICogXCJtdXRhYmxlXCIgc3RhY2tzIGhhdmUgZWxlbWVudHMgZHluYW1pY2FsbHkgYWRkZWQvcmVtb3ZlZCwgd2hlcmVhcyBcImltbXV0YWJsZVwiIG9uZXMgYXJlIG5vdCBhZmZlY3RlZCBieSB0aGUgdXNlci5cclxuICpcclxuICogVXN1YWxseSB0aGUgaXRlbXMgaW4gYSBzdGFjayBhcmUgc2hvd24gKG9mZnNldCBieSBhIGNlcnRhaW4gYW1vdW50KS5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBjcmVhdGVPYnNlcnZhYmxlQXJyYXkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9jcmVhdGVPYnNlcnZhYmxlQXJyYXkuanMnO1xyXG5pbXBvcnQgVmVjdG9yMiBmcm9tICcuLi8uLi8uLi8uLi9kb3QvanMvVmVjdG9yMi5qcyc7XHJcbmltcG9ydCBWZWN0b3IyUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjJQcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBmcmFjdGlvbnNDb21tb24gZnJvbSAnLi4vLi4vZnJhY3Rpb25zQ29tbW9uLmpzJztcclxuXHJcbmNsYXNzIFN0YWNrIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge0J1aWxkaW5nVHlwZX0gdHlwZVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBsYXlvdXRRdWFudGl0eVxyXG4gICAqIEBwYXJhbSB7Ym9vbGVhbn0gW2lzTXV0YWJsZV1cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggdHlwZSwgbGF5b3V0UXVhbnRpdHksIGlzTXV0YWJsZSA9IHRydWUgKSB7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0eXBlb2YgbGF5b3V0UXVhbnRpdHkgPT09ICdudW1iZXInICYmIGxheW91dFF1YW50aXR5ID49IDEgJiYgbGF5b3V0UXVhbnRpdHkgJSAxID09PSAwICk7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0eXBlb2YgaXNNdXRhYmxlID09PSAnYm9vbGVhbicgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtCdWlsZGluZ1R5cGV9XHJcbiAgICB0aGlzLnR5cGUgPSB0eXBlO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge251bWJlcn1cclxuICAgIHRoaXMubGF5b3V0UXVhbnRpdHkgPSBsYXlvdXRRdWFudGl0eTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtib29sZWFufVxyXG4gICAgdGhpcy5pc011dGFibGUgPSBpc011dGFibGU7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAtIFBvc2l0aW9uIG9mIG91ciBzdGFjayBpbiBtb2RlbCB1bml0cyAodXBkYXRlZCBmcm9tIHRoZSB2aWV3KVxyXG4gICAgdGhpcy5wb3NpdGlvblByb3BlcnR5ID0gbmV3IFZlY3RvcjJQcm9wZXJ0eSggVmVjdG9yMi5aRVJPICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7T2JzZXJ2YWJsZUFycmF5RGVmLjwqPn1cclxuICAgIHRoaXMuYXJyYXkgPSBjcmVhdGVPYnNlcnZhYmxlQXJyYXkoKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFJldHVybnMgd2hldGhlciBpdCBpcyBlbXB0eS5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cclxuICAgKi9cclxuICBpc0VtcHR5KCkge1xyXG4gICAgcmV0dXJuIHRoaXMuYXJyYXkubGVuZ3RoID09PSAwO1xyXG4gIH1cclxufVxyXG5cclxuZnJhY3Rpb25zQ29tbW9uLnJlZ2lzdGVyKCAnU3RhY2snLCBTdGFjayApO1xyXG5leHBvcnQgZGVmYXVsdCBTdGFjazsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxxQkFBcUIsTUFBTSw4Q0FBOEM7QUFDaEYsT0FBT0MsT0FBTyxNQUFNLCtCQUErQjtBQUNuRCxPQUFPQyxlQUFlLE1BQU0sdUNBQXVDO0FBQ25FLE9BQU9DLGVBQWUsTUFBTSwwQkFBMEI7QUFFdEQsTUFBTUMsS0FBSyxDQUFDO0VBQ1Y7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxJQUFJLEVBQUVDLGNBQWMsRUFBRUMsU0FBUyxHQUFHLElBQUksRUFBRztJQUNwREMsTUFBTSxJQUFJQSxNQUFNLENBQUUsT0FBT0YsY0FBYyxLQUFLLFFBQVEsSUFBSUEsY0FBYyxJQUFJLENBQUMsSUFBSUEsY0FBYyxHQUFHLENBQUMsS0FBSyxDQUFFLENBQUM7SUFDekdFLE1BQU0sSUFBSUEsTUFBTSxDQUFFLE9BQU9ELFNBQVMsS0FBSyxTQUFVLENBQUM7O0lBRWxEO0lBQ0EsSUFBSSxDQUFDRixJQUFJLEdBQUdBLElBQUk7O0lBRWhCO0lBQ0EsSUFBSSxDQUFDQyxjQUFjLEdBQUdBLGNBQWM7O0lBRXBDO0lBQ0EsSUFBSSxDQUFDQyxTQUFTLEdBQUdBLFNBQVM7O0lBRTFCO0lBQ0EsSUFBSSxDQUFDRSxnQkFBZ0IsR0FBRyxJQUFJUixlQUFlLENBQUVELE9BQU8sQ0FBQ1UsSUFBSyxDQUFDOztJQUUzRDtJQUNBLElBQUksQ0FBQ0MsS0FBSyxHQUFHWixxQkFBcUIsQ0FBQyxDQUFDO0VBQ3RDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFYSxPQUFPQSxDQUFBLEVBQUc7SUFDUixPQUFPLElBQUksQ0FBQ0QsS0FBSyxDQUFDRSxNQUFNLEtBQUssQ0FBQztFQUNoQztBQUNGO0FBRUFYLGVBQWUsQ0FBQ1ksUUFBUSxDQUFFLE9BQU8sRUFBRVgsS0FBTSxDQUFDO0FBQzFDLGVBQWVBLEtBQUsifQ==

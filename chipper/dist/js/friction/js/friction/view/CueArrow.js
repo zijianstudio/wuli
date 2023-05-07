@@ -1,0 +1,35 @@
+// Copyright 2018-2021, University of Colorado Boulder
+
+/**
+ *
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
+import { FocusHighlightPath } from '../../../../scenery/js/imports.js';
+import friction from '../../friction.js';
+
+/**
+ *
+ * @param {Object} [options]
+ * @constructor
+ */
+class CueArrow extends ArrowNode {
+  constructor(options) {
+    // these values were empirically determined based on visual appearance
+    options = merge({
+      headHeight: 32,
+      headWidth: 30,
+      tailWidth: 15,
+      stroke: 'black',
+      fill: FocusHighlightPath.INNER_FOCUS_COLOR,
+      lineWidth: 2,
+      arrowLength: 70
+    }, options);
+    super(0, 0, options.arrowLength, 0, options);
+  }
+}
+friction.register('CueArrow', CueArrow);
+export default CueArrow;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIkFycm93Tm9kZSIsIkZvY3VzSGlnaGxpZ2h0UGF0aCIsImZyaWN0aW9uIiwiQ3VlQXJyb3ciLCJjb25zdHJ1Y3RvciIsIm9wdGlvbnMiLCJoZWFkSGVpZ2h0IiwiaGVhZFdpZHRoIiwidGFpbFdpZHRoIiwic3Ryb2tlIiwiZmlsbCIsIklOTkVSX0ZPQ1VTX0NPTE9SIiwibGluZVdpZHRoIiwiYXJyb3dMZW5ndGgiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkN1ZUFycm93LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE4LTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqXHJcbiAqIEBhdXRob3IgTWljaGFlbCBLYXV6bWFubiAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgbWVyZ2UgZnJvbSAnLi4vLi4vLi4vLi4vcGhldC1jb3JlL2pzL21lcmdlLmpzJztcclxuaW1wb3J0IEFycm93Tm9kZSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvQXJyb3dOb2RlLmpzJztcclxuaW1wb3J0IHsgRm9jdXNIaWdobGlnaHRQYXRoIH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IGZyaWN0aW9uIGZyb20gJy4uLy4uL2ZyaWN0aW9uLmpzJztcclxuXHJcbi8qKlxyXG4gKlxyXG4gKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAqIEBjb25zdHJ1Y3RvclxyXG4gKi9cclxuY2xhc3MgQ3VlQXJyb3cgZXh0ZW5kcyBBcnJvd05vZGUge1xyXG4gIGNvbnN0cnVjdG9yKCBvcHRpb25zICkge1xyXG5cclxuICAgIC8vIHRoZXNlIHZhbHVlcyB3ZXJlIGVtcGlyaWNhbGx5IGRldGVybWluZWQgYmFzZWQgb24gdmlzdWFsIGFwcGVhcmFuY2VcclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICBoZWFkSGVpZ2h0OiAzMixcclxuICAgICAgaGVhZFdpZHRoOiAzMCxcclxuICAgICAgdGFpbFdpZHRoOiAxNSxcclxuICAgICAgc3Ryb2tlOiAnYmxhY2snLFxyXG4gICAgICBmaWxsOiBGb2N1c0hpZ2hsaWdodFBhdGguSU5ORVJfRk9DVVNfQ09MT1IsXHJcbiAgICAgIGxpbmVXaWR0aDogMixcclxuICAgICAgYXJyb3dMZW5ndGg6IDcwXHJcbiAgICB9LCBvcHRpb25zICk7XHJcblxyXG4gICAgc3VwZXIoIDAsIDAsIG9wdGlvbnMuYXJyb3dMZW5ndGgsIDAsIG9wdGlvbnMgKTtcclxuICB9XHJcbn1cclxuXHJcbmZyaWN0aW9uLnJlZ2lzdGVyKCAnQ3VlQXJyb3cnLCBDdWVBcnJvdyApO1xyXG5leHBvcnQgZGVmYXVsdCBDdWVBcnJvdzsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsT0FBT0MsU0FBUyxNQUFNLDBDQUEwQztBQUNoRSxTQUFTQyxrQkFBa0IsUUFBUSxtQ0FBbUM7QUFDdEUsT0FBT0MsUUFBUSxNQUFNLG1CQUFtQjs7QUFFeEM7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLE1BQU1DLFFBQVEsU0FBU0gsU0FBUyxDQUFDO0VBQy9CSSxXQUFXQSxDQUFFQyxPQUFPLEVBQUc7SUFFckI7SUFDQUEsT0FBTyxHQUFHTixLQUFLLENBQUU7TUFDZk8sVUFBVSxFQUFFLEVBQUU7TUFDZEMsU0FBUyxFQUFFLEVBQUU7TUFDYkMsU0FBUyxFQUFFLEVBQUU7TUFDYkMsTUFBTSxFQUFFLE9BQU87TUFDZkMsSUFBSSxFQUFFVCxrQkFBa0IsQ0FBQ1UsaUJBQWlCO01BQzFDQyxTQUFTLEVBQUUsQ0FBQztNQUNaQyxXQUFXLEVBQUU7SUFDZixDQUFDLEVBQUVSLE9BQVEsQ0FBQztJQUVaLEtBQUssQ0FBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFQSxPQUFPLENBQUNRLFdBQVcsRUFBRSxDQUFDLEVBQUVSLE9BQVEsQ0FBQztFQUNoRDtBQUNGO0FBRUFILFFBQVEsQ0FBQ1ksUUFBUSxDQUFFLFVBQVUsRUFBRVgsUUFBUyxDQUFDO0FBQ3pDLGVBQWVBLFFBQVEifQ==

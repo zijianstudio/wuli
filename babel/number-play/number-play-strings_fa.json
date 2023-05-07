@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "بازی",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "بازی"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "ده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "ده"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "بیست",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "بیست"
+      }
+    ]
+  },
+  "ones": {
+    "value": "یکها",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "یکها"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "شانۀ ده خانه",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "شانۀ ده خانه"
+      }
+    ]
+  },
+  "word": {
+    "value": "کلمه",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "کلمه"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "کلمه ({{language}})",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "کلمه ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "بازیت رو انتخاب کن!",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "بازیت رو انتخاب کن!"
+      }
+    ]
+  },
+  "games": {
+    "value": "بازی ها",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "بازی ها"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "بازی با اعداد",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "بازی با اعداد"
+      }
+    ]
+  }
+}

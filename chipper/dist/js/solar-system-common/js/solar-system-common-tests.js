@@ -1,0 +1,12 @@
+// Copyright 2023, University of Colorado Boulder
+
+/**
+ * Unit tests for axon. Please run once in phet brand and once in brand=phet-io to cover all functionality.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+import './model/UnitsTests.js';
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsic29sYXItc3lzdGVtLWNvbW1vbi10ZXN0cy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVW5pdCB0ZXN0cyBmb3IgYXhvbi4gUGxlYXNlIHJ1biBvbmNlIGluIHBoZXQgYnJhbmQgYW5kIG9uY2UgaW4gYnJhbmQ9cGhldC1pbyB0byBjb3ZlciBhbGwgZnVuY3Rpb25hbGl0eS5cclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgcXVuaXRTdGFydCBmcm9tICcuLi8uLi9jaGlwcGVyL2pzL3NpbS10ZXN0cy9xdW5pdFN0YXJ0LmpzJztcclxuaW1wb3J0ICcuL21vZGVsL1VuaXRzVGVzdHMuanMnO1xyXG5cclxucXVuaXRTdGFydCgpOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxVQUFVLE1BQU0sMENBQTBDO0FBQ2pFLE9BQU8sdUJBQXVCO0FBRTlCQSxVQUFVLENBQUMsQ0FBQyJ9

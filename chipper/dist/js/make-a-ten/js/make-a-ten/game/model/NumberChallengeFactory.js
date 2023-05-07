@@ -1,0 +1,185 @@
+// Copyright 2015-2021, University of Colorado Boulder
+
+/**
+ * Generates a pair of numbers that will need to be added together as a challenge.
+ *
+ * @author Sharfudeen Ashraf
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import dotRandom from '../../../../../dot/js/dotRandom.js';
+import makeATen from '../../../makeATen.js';
+import NumberChallenge from './NumberChallenge.js';
+class NumberChallengeFactory {
+  constructor() {
+    // @private {Random} - Stored here because we can't grab a reference until after the sim has launched (and after we
+    //                     have defined the NumberChallengeFactory type).
+    this.random = dotRandom;
+
+    // Level 1. Single digits that add up to <= 10.
+    // @private {Array.<NumberChallenge>} - Enumeration of all possibilities, randomly selected.
+    this.tenAndUnderChallenges = this.sumsUpTo(1, 10);
+
+    // Level 2. Single digits that add up to >= 11, where one of them is 9
+    // @private {Array.<NumberChallenge>} - Enumeration of all possibilities when the count is even, randomly selected.
+    this.withNineLeftChallenges = this.sumsOverTenChallenges(9, true, false);
+    // @private {Array.<NumberChallenge>} - Enumeration of all possibilities when the count is odd, randomly selected.
+    this.withNineRightChallenges = this.sumsOverTenChallenges(9, false, true);
+    // @private {number} - Used for alternation between the 'left' and 'right' varieties.
+    this.withNineCount = 0;
+
+    // Level 3. Single digits such that 10 < sum < 20.
+    // @private {Array.<NumberChallenge>} - All possible challenges for the "Under Twenty" challenge, and also used for
+    //                                      generating many of the other terms lists.
+    this.underTwentyChallenges = [].concat(this.sumsOverTenChallenges(9, true, true), this.sumsOverTenChallenges(8, true, true), this.sumsOverTenChallenges(7, true, true), this.sumsOverTenChallenges(6, true, true));
+
+    // Level 4. Like level 3 with each number multiplied by 10.
+    // @private {Array.<NumberChallenge>} - All possible challenges for the "Add with Tens" challenge.
+    this.addWithTensChallenges = this.underTwentyChallenges.map(challenge => new NumberChallenge(challenge.leftTerm * 10, challenge.rightTerm * 10));
+
+    // Level 5. Like level 3, but one number has a random "decade" added to it.
+    // @private {Array.<NumberChallenge>} - All possible challenges for the "Add with Singles" challenge.
+    this.addWithSinglesChallenges = [];
+    this.underTwentyChallenges.forEach(challenge => {
+      for (let decade = 10; decade <= 80; decade += 10) {
+        // Only add to the left, since underTwentyChallenges includes both [a,b] and [b,a].
+        this.addWithSinglesChallenges.push(new NumberChallenge(challenge.leftTerm + decade, challenge.rightTerm));
+        this.addWithSinglesChallenges.push(new NumberChallenge(challenge.rightTerm, challenge.leftTerm + decade));
+      }
+    });
+
+    // Level 6. Double digit numbers with sum < 100.
+    // @private {Array.<NumberChallenge>} - All possible challenges for the "Under Hundreds" challenge.
+    this.underHundredsChallenges = this.sumsUpTo(11, 99);
+
+    // Level 7. Double digit numbers with sum >= 100
+    // @private {Array.<NumberChallenge>} - All possible challenges for the "Over Hundreds" challenge.
+    this.overHundredsChallenges = this.sumsDownTo(11, 99, 100);
+
+    // Level 8. Single digit numbers added to multiples of 100.
+    // @private {Array.<NumberChallenge>} - Enumeration of all possibilities when the count is even, randomly selected.
+    this.singlesToHundredsLeftChallenges = this.addWithSinglesThreeDigitChallenges(true);
+    // @private {Array.<NumberChallenge>} - Enumeration of all possibilities when the count is odd, randomly selected.
+    this.singlesToHundredsRightChallenges = this.addWithSinglesThreeDigitChallenges(false);
+    // @private {number} - Used for alternation between the 'left' and 'right' varieties.
+    this.singlesToHundredsCount = 0;
+  }
+
+  /**
+   * Creates a random challenge for a specific level.
+   * @public
+   *
+   * @returns {NumberChallenge}
+   */
+  generateChallenge(level) {
+    switch (level) {
+      case 0:
+        return this.random.sample(this.tenAndUnderChallenges);
+      case 1:
+        // Alternates between the 'left' and 'right' varieties
+        return this.random.sample(this.withNineCount++ % 2 === 0 ? this.withNineLeftChallenges : this.withNineRightChallenges);
+      case 2:
+        return this.random.sample(this.underTwentyChallenges);
+      case 3:
+        return this.random.sample(this.addWithTensChallenges);
+      case 4:
+        return this.random.sample(this.addWithSinglesChallenges);
+      case 5:
+        return this.random.sample(this.underHundredsChallenges);
+      case 6:
+        return this.random.sample(this.overHundredsChallenges);
+      case 7:
+        // Alternates between the 'left' and 'right' varieties
+        return this.random.sample(this.singlesToHundredsCount++ % 2 === 0 ? this.singlesToHundredsLeftChallenges : this.singlesToHundredsRightChallenges);
+      case 8:
+        return new NumberChallenge(this.random.nextIntBetween(10, 99) * 10, this.random.nextIntBetween(10, 99) * 10);
+      case 9:
+        return new NumberChallenge(this.random.nextIntBetween(101, 999), this.random.nextIntBetween(101, 999));
+      default:
+        throw new Error(`Invalid level: ${level}`);
+    }
+  }
+
+  /**
+   * Generates an array of challenges whose sum >= 11, where one of the numbers is the bigNumber, and the other is
+   * less than or equal to bigNumber.
+   * @private
+   *
+   * For example, if the bigNumber is 8, the result will include:
+   * - (8,8) always
+   * - (8,7), (8,6), (8,5), (8,4), (8,3) if includeLeftBiggest is true
+   * - (7,8), (6,8), (5,8), (4,8), (3,8) if includeRightBiggest is true
+   *
+   * @param {number} bigNumber - The largest number to be included in the challenges. Guaranteed to be at least one
+   *                             term for every challenge.
+   * @returns {Array.<NumberChallenge>}
+   */
+  sumsOverTenChallenges(bigNumber, includeLeftBiggest, includeRightBiggest) {
+    const challenges = [];
+    for (let i = 11 - bigNumber; i < bigNumber; i++) {
+      if (includeLeftBiggest) {
+        challenges.push(new NumberChallenge(bigNumber, i));
+      }
+      if (includeRightBiggest) {
+        challenges.push(new NumberChallenge(i, bigNumber));
+      }
+    }
+
+    // Only include one where both are the big number, so we only have unique challenges
+    challenges.push(new NumberChallenge(bigNumber, bigNumber));
+    return challenges;
+  }
+
+  /**
+   * Generates an array of challenges where terms are at least minimumNumber, with a combined maximum sum.
+   * @private
+   *
+   * @returns {Array.<NumberChallenge>}
+   */
+  sumsUpTo(minimumNumber, maximumSum) {
+    const challenges = [];
+    for (let left = minimumNumber; left < maximumSum; left++) {
+      for (let right = minimumNumber; left + right <= maximumSum; right++) {
+        challenges.push(new NumberChallenge(left, right));
+      }
+    }
+    return challenges;
+  }
+
+  /**
+   * Generates an array of challenges where terms satisfy minimumNumber <= term <= maximumNumber, and the sum is
+   * sum >= minimumSum.
+   * @private
+   *
+   * @returns {Array.<NumberChallenge>}
+   */
+  sumsDownTo(minimumNumber, maximumNumber, minimumSum) {
+    const challenges = [];
+    for (let left = minimumNumber; left <= maximumNumber; left++) {
+      // Start with minimumNumber, OR if that would result in an invalid sum, the number that would add up to the sum
+      for (let right = Math.max(minimumNumber, minimumSum - left); right <= maximumNumber; right++) {
+        challenges.push(new NumberChallenge(left, right));
+      }
+    }
+    return challenges;
+  }
+
+  /**
+   * For level 8, adding single digit numbers to multiples of 100.
+   * @private
+   *
+   * @returns {Array.<NumberChallenge>}
+   */
+  addWithSinglesThreeDigitChallenges(isLeftBiggest) {
+    const challenges = [];
+    for (let left = 100; left <= 900; left += 100) {
+      for (let right = 1; right <= 9; right++) {
+        challenges.push(isLeftBiggest ? new NumberChallenge(left, right) : new NumberChallenge(right, left));
+      }
+    }
+    return challenges;
+  }
+}
+makeATen.register('NumberChallengeFactory', NumberChallengeFactory);
+export default NumberChallengeFactory;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJkb3RSYW5kb20iLCJtYWtlQVRlbiIsIk51bWJlckNoYWxsZW5nZSIsIk51bWJlckNoYWxsZW5nZUZhY3RvcnkiLCJjb25zdHJ1Y3RvciIsInJhbmRvbSIsInRlbkFuZFVuZGVyQ2hhbGxlbmdlcyIsInN1bXNVcFRvIiwid2l0aE5pbmVMZWZ0Q2hhbGxlbmdlcyIsInN1bXNPdmVyVGVuQ2hhbGxlbmdlcyIsIndpdGhOaW5lUmlnaHRDaGFsbGVuZ2VzIiwid2l0aE5pbmVDb3VudCIsInVuZGVyVHdlbnR5Q2hhbGxlbmdlcyIsImNvbmNhdCIsImFkZFdpdGhUZW5zQ2hhbGxlbmdlcyIsIm1hcCIsImNoYWxsZW5nZSIsImxlZnRUZXJtIiwicmlnaHRUZXJtIiwiYWRkV2l0aFNpbmdsZXNDaGFsbGVuZ2VzIiwiZm9yRWFjaCIsImRlY2FkZSIsInB1c2giLCJ1bmRlckh1bmRyZWRzQ2hhbGxlbmdlcyIsIm92ZXJIdW5kcmVkc0NoYWxsZW5nZXMiLCJzdW1zRG93blRvIiwic2luZ2xlc1RvSHVuZHJlZHNMZWZ0Q2hhbGxlbmdlcyIsImFkZFdpdGhTaW5nbGVzVGhyZWVEaWdpdENoYWxsZW5nZXMiLCJzaW5nbGVzVG9IdW5kcmVkc1JpZ2h0Q2hhbGxlbmdlcyIsInNpbmdsZXNUb0h1bmRyZWRzQ291bnQiLCJnZW5lcmF0ZUNoYWxsZW5nZSIsImxldmVsIiwic2FtcGxlIiwibmV4dEludEJldHdlZW4iLCJFcnJvciIsImJpZ051bWJlciIsImluY2x1ZGVMZWZ0QmlnZ2VzdCIsImluY2x1ZGVSaWdodEJpZ2dlc3QiLCJjaGFsbGVuZ2VzIiwiaSIsIm1pbmltdW1OdW1iZXIiLCJtYXhpbXVtU3VtIiwibGVmdCIsInJpZ2h0IiwibWF4aW11bU51bWJlciIsIm1pbmltdW1TdW0iLCJNYXRoIiwibWF4IiwiaXNMZWZ0QmlnZ2VzdCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiTnVtYmVyQ2hhbGxlbmdlRmFjdG9yeS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNS0yMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBHZW5lcmF0ZXMgYSBwYWlyIG9mIG51bWJlcnMgdGhhdCB3aWxsIG5lZWQgdG8gYmUgYWRkZWQgdG9nZXRoZXIgYXMgYSBjaGFsbGVuZ2UuXHJcbiAqXHJcbiAqIEBhdXRob3IgU2hhcmZ1ZGVlbiBBc2hyYWZcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBkb3RSYW5kb20gZnJvbSAnLi4vLi4vLi4vLi4vLi4vZG90L2pzL2RvdFJhbmRvbS5qcyc7XHJcbmltcG9ydCBtYWtlQVRlbiBmcm9tICcuLi8uLi8uLi9tYWtlQVRlbi5qcyc7XHJcbmltcG9ydCBOdW1iZXJDaGFsbGVuZ2UgZnJvbSAnLi9OdW1iZXJDaGFsbGVuZ2UuanMnO1xyXG5cclxuY2xhc3MgTnVtYmVyQ2hhbGxlbmdlRmFjdG9yeSB7XHJcbiAgY29uc3RydWN0b3IoKSB7XHJcblxyXG4gICAgLy8gQHByaXZhdGUge1JhbmRvbX0gLSBTdG9yZWQgaGVyZSBiZWNhdXNlIHdlIGNhbid0IGdyYWIgYSByZWZlcmVuY2UgdW50aWwgYWZ0ZXIgdGhlIHNpbSBoYXMgbGF1bmNoZWQgKGFuZCBhZnRlciB3ZVxyXG4gICAgLy8gICAgICAgICAgICAgICAgICAgICBoYXZlIGRlZmluZWQgdGhlIE51bWJlckNoYWxsZW5nZUZhY3RvcnkgdHlwZSkuXHJcbiAgICB0aGlzLnJhbmRvbSA9IGRvdFJhbmRvbTtcclxuXHJcbiAgICAvLyBMZXZlbCAxLiBTaW5nbGUgZGlnaXRzIHRoYXQgYWRkIHVwIHRvIDw9IDEwLlxyXG4gICAgLy8gQHByaXZhdGUge0FycmF5LjxOdW1iZXJDaGFsbGVuZ2U+fSAtIEVudW1lcmF0aW9uIG9mIGFsbCBwb3NzaWJpbGl0aWVzLCByYW5kb21seSBzZWxlY3RlZC5cclxuICAgIHRoaXMudGVuQW5kVW5kZXJDaGFsbGVuZ2VzID0gdGhpcy5zdW1zVXBUbyggMSwgMTAgKTtcclxuXHJcbiAgICAvLyBMZXZlbCAyLiBTaW5nbGUgZGlnaXRzIHRoYXQgYWRkIHVwIHRvID49IDExLCB3aGVyZSBvbmUgb2YgdGhlbSBpcyA5XHJcbiAgICAvLyBAcHJpdmF0ZSB7QXJyYXkuPE51bWJlckNoYWxsZW5nZT59IC0gRW51bWVyYXRpb24gb2YgYWxsIHBvc3NpYmlsaXRpZXMgd2hlbiB0aGUgY291bnQgaXMgZXZlbiwgcmFuZG9tbHkgc2VsZWN0ZWQuXHJcbiAgICB0aGlzLndpdGhOaW5lTGVmdENoYWxsZW5nZXMgPSB0aGlzLnN1bXNPdmVyVGVuQ2hhbGxlbmdlcyggOSwgdHJ1ZSwgZmFsc2UgKTtcclxuICAgIC8vIEBwcml2YXRlIHtBcnJheS48TnVtYmVyQ2hhbGxlbmdlPn0gLSBFbnVtZXJhdGlvbiBvZiBhbGwgcG9zc2liaWxpdGllcyB3aGVuIHRoZSBjb3VudCBpcyBvZGQsIHJhbmRvbWx5IHNlbGVjdGVkLlxyXG4gICAgdGhpcy53aXRoTmluZVJpZ2h0Q2hhbGxlbmdlcyA9IHRoaXMuc3Vtc092ZXJUZW5DaGFsbGVuZ2VzKCA5LCBmYWxzZSwgdHJ1ZSApO1xyXG4gICAgLy8gQHByaXZhdGUge251bWJlcn0gLSBVc2VkIGZvciBhbHRlcm5hdGlvbiBiZXR3ZWVuIHRoZSAnbGVmdCcgYW5kICdyaWdodCcgdmFyaWV0aWVzLlxyXG4gICAgdGhpcy53aXRoTmluZUNvdW50ID0gMDtcclxuXHJcbiAgICAvLyBMZXZlbCAzLiBTaW5nbGUgZGlnaXRzIHN1Y2ggdGhhdCAxMCA8IHN1bSA8IDIwLlxyXG4gICAgLy8gQHByaXZhdGUge0FycmF5LjxOdW1iZXJDaGFsbGVuZ2U+fSAtIEFsbCBwb3NzaWJsZSBjaGFsbGVuZ2VzIGZvciB0aGUgXCJVbmRlciBUd2VudHlcIiBjaGFsbGVuZ2UsIGFuZCBhbHNvIHVzZWQgZm9yXHJcbiAgICAvLyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZ2VuZXJhdGluZyBtYW55IG9mIHRoZSBvdGhlciB0ZXJtcyBsaXN0cy5cclxuICAgIHRoaXMudW5kZXJUd2VudHlDaGFsbGVuZ2VzID0gW10uY29uY2F0KFxyXG4gICAgICB0aGlzLnN1bXNPdmVyVGVuQ2hhbGxlbmdlcyggOSwgdHJ1ZSwgdHJ1ZSApLFxyXG4gICAgICB0aGlzLnN1bXNPdmVyVGVuQ2hhbGxlbmdlcyggOCwgdHJ1ZSwgdHJ1ZSApLFxyXG4gICAgICB0aGlzLnN1bXNPdmVyVGVuQ2hhbGxlbmdlcyggNywgdHJ1ZSwgdHJ1ZSApLFxyXG4gICAgICB0aGlzLnN1bXNPdmVyVGVuQ2hhbGxlbmdlcyggNiwgdHJ1ZSwgdHJ1ZSApXHJcbiAgICApO1xyXG5cclxuICAgIC8vIExldmVsIDQuIExpa2UgbGV2ZWwgMyB3aXRoIGVhY2ggbnVtYmVyIG11bHRpcGxpZWQgYnkgMTAuXHJcbiAgICAvLyBAcHJpdmF0ZSB7QXJyYXkuPE51bWJlckNoYWxsZW5nZT59IC0gQWxsIHBvc3NpYmxlIGNoYWxsZW5nZXMgZm9yIHRoZSBcIkFkZCB3aXRoIFRlbnNcIiBjaGFsbGVuZ2UuXHJcbiAgICB0aGlzLmFkZFdpdGhUZW5zQ2hhbGxlbmdlcyA9IHRoaXMudW5kZXJUd2VudHlDaGFsbGVuZ2VzLm1hcCggY2hhbGxlbmdlID0+IG5ldyBOdW1iZXJDaGFsbGVuZ2UoIGNoYWxsZW5nZS5sZWZ0VGVybSAqIDEwLCBjaGFsbGVuZ2UucmlnaHRUZXJtICogMTAgKSApO1xyXG5cclxuICAgIC8vIExldmVsIDUuIExpa2UgbGV2ZWwgMywgYnV0IG9uZSBudW1iZXIgaGFzIGEgcmFuZG9tIFwiZGVjYWRlXCIgYWRkZWQgdG8gaXQuXHJcbiAgICAvLyBAcHJpdmF0ZSB7QXJyYXkuPE51bWJlckNoYWxsZW5nZT59IC0gQWxsIHBvc3NpYmxlIGNoYWxsZW5nZXMgZm9yIHRoZSBcIkFkZCB3aXRoIFNpbmdsZXNcIiBjaGFsbGVuZ2UuXHJcbiAgICB0aGlzLmFkZFdpdGhTaW5nbGVzQ2hhbGxlbmdlcyA9IFtdO1xyXG4gICAgdGhpcy51bmRlclR3ZW50eUNoYWxsZW5nZXMuZm9yRWFjaCggY2hhbGxlbmdlID0+IHtcclxuICAgICAgZm9yICggbGV0IGRlY2FkZSA9IDEwOyBkZWNhZGUgPD0gODA7IGRlY2FkZSArPSAxMCApIHtcclxuICAgICAgICAvLyBPbmx5IGFkZCB0byB0aGUgbGVmdCwgc2luY2UgdW5kZXJUd2VudHlDaGFsbGVuZ2VzIGluY2x1ZGVzIGJvdGggW2EsYl0gYW5kIFtiLGFdLlxyXG4gICAgICAgIHRoaXMuYWRkV2l0aFNpbmdsZXNDaGFsbGVuZ2VzLnB1c2goIG5ldyBOdW1iZXJDaGFsbGVuZ2UoIGNoYWxsZW5nZS5sZWZ0VGVybSArIGRlY2FkZSwgY2hhbGxlbmdlLnJpZ2h0VGVybSApICk7XHJcbiAgICAgICAgdGhpcy5hZGRXaXRoU2luZ2xlc0NoYWxsZW5nZXMucHVzaCggbmV3IE51bWJlckNoYWxsZW5nZSggY2hhbGxlbmdlLnJpZ2h0VGVybSwgY2hhbGxlbmdlLmxlZnRUZXJtICsgZGVjYWRlICkgKTtcclxuICAgICAgfVxyXG4gICAgfSApO1xyXG5cclxuICAgIC8vIExldmVsIDYuIERvdWJsZSBkaWdpdCBudW1iZXJzIHdpdGggc3VtIDwgMTAwLlxyXG4gICAgLy8gQHByaXZhdGUge0FycmF5LjxOdW1iZXJDaGFsbGVuZ2U+fSAtIEFsbCBwb3NzaWJsZSBjaGFsbGVuZ2VzIGZvciB0aGUgXCJVbmRlciBIdW5kcmVkc1wiIGNoYWxsZW5nZS5cclxuICAgIHRoaXMudW5kZXJIdW5kcmVkc0NoYWxsZW5nZXMgPSB0aGlzLnN1bXNVcFRvKCAxMSwgOTkgKTtcclxuXHJcbiAgICAvLyBMZXZlbCA3LiBEb3VibGUgZGlnaXQgbnVtYmVycyB3aXRoIHN1bSA+PSAxMDBcclxuICAgIC8vIEBwcml2YXRlIHtBcnJheS48TnVtYmVyQ2hhbGxlbmdlPn0gLSBBbGwgcG9zc2libGUgY2hhbGxlbmdlcyBmb3IgdGhlIFwiT3ZlciBIdW5kcmVkc1wiIGNoYWxsZW5nZS5cclxuICAgIHRoaXMub3Zlckh1bmRyZWRzQ2hhbGxlbmdlcyA9IHRoaXMuc3Vtc0Rvd25UbyggMTEsIDk5LCAxMDAgKTtcclxuXHJcbiAgICAvLyBMZXZlbCA4LiBTaW5nbGUgZGlnaXQgbnVtYmVycyBhZGRlZCB0byBtdWx0aXBsZXMgb2YgMTAwLlxyXG4gICAgLy8gQHByaXZhdGUge0FycmF5LjxOdW1iZXJDaGFsbGVuZ2U+fSAtIEVudW1lcmF0aW9uIG9mIGFsbCBwb3NzaWJpbGl0aWVzIHdoZW4gdGhlIGNvdW50IGlzIGV2ZW4sIHJhbmRvbWx5IHNlbGVjdGVkLlxyXG4gICAgdGhpcy5zaW5nbGVzVG9IdW5kcmVkc0xlZnRDaGFsbGVuZ2VzID0gdGhpcy5hZGRXaXRoU2luZ2xlc1RocmVlRGlnaXRDaGFsbGVuZ2VzKCB0cnVlICk7XHJcbiAgICAvLyBAcHJpdmF0ZSB7QXJyYXkuPE51bWJlckNoYWxsZW5nZT59IC0gRW51bWVyYXRpb24gb2YgYWxsIHBvc3NpYmlsaXRpZXMgd2hlbiB0aGUgY291bnQgaXMgb2RkLCByYW5kb21seSBzZWxlY3RlZC5cclxuICAgIHRoaXMuc2luZ2xlc1RvSHVuZHJlZHNSaWdodENoYWxsZW5nZXMgPSB0aGlzLmFkZFdpdGhTaW5nbGVzVGhyZWVEaWdpdENoYWxsZW5nZXMoIGZhbHNlICk7XHJcbiAgICAvLyBAcHJpdmF0ZSB7bnVtYmVyfSAtIFVzZWQgZm9yIGFsdGVybmF0aW9uIGJldHdlZW4gdGhlICdsZWZ0JyBhbmQgJ3JpZ2h0JyB2YXJpZXRpZXMuXHJcbiAgICB0aGlzLnNpbmdsZXNUb0h1bmRyZWRzQ291bnQgPSAwO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ3JlYXRlcyBhIHJhbmRvbSBjaGFsbGVuZ2UgZm9yIGEgc3BlY2lmaWMgbGV2ZWwuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHJldHVybnMge051bWJlckNoYWxsZW5nZX1cclxuICAgKi9cclxuICBnZW5lcmF0ZUNoYWxsZW5nZSggbGV2ZWwgKSB7XHJcbiAgICBzd2l0Y2goIGxldmVsICkge1xyXG4gICAgICBjYXNlIDA6XHJcbiAgICAgICAgcmV0dXJuIHRoaXMucmFuZG9tLnNhbXBsZSggdGhpcy50ZW5BbmRVbmRlckNoYWxsZW5nZXMgKTtcclxuICAgICAgY2FzZSAxOlxyXG4gICAgICAgIC8vIEFsdGVybmF0ZXMgYmV0d2VlbiB0aGUgJ2xlZnQnIGFuZCAncmlnaHQnIHZhcmlldGllc1xyXG4gICAgICAgIHJldHVybiB0aGlzLnJhbmRvbS5zYW1wbGUoICggdGhpcy53aXRoTmluZUNvdW50KysgJSAyID09PSAwICkgPyB0aGlzLndpdGhOaW5lTGVmdENoYWxsZW5nZXMgOiB0aGlzLndpdGhOaW5lUmlnaHRDaGFsbGVuZ2VzICk7XHJcbiAgICAgIGNhc2UgMjpcclxuICAgICAgICByZXR1cm4gdGhpcy5yYW5kb20uc2FtcGxlKCB0aGlzLnVuZGVyVHdlbnR5Q2hhbGxlbmdlcyApO1xyXG4gICAgICBjYXNlIDM6XHJcbiAgICAgICAgcmV0dXJuIHRoaXMucmFuZG9tLnNhbXBsZSggdGhpcy5hZGRXaXRoVGVuc0NoYWxsZW5nZXMgKTtcclxuICAgICAgY2FzZSA0OlxyXG4gICAgICAgIHJldHVybiB0aGlzLnJhbmRvbS5zYW1wbGUoIHRoaXMuYWRkV2l0aFNpbmdsZXNDaGFsbGVuZ2VzICk7XHJcbiAgICAgIGNhc2UgNTpcclxuICAgICAgICByZXR1cm4gdGhpcy5yYW5kb20uc2FtcGxlKCB0aGlzLnVuZGVySHVuZHJlZHNDaGFsbGVuZ2VzICk7XHJcbiAgICAgIGNhc2UgNjpcclxuICAgICAgICByZXR1cm4gdGhpcy5yYW5kb20uc2FtcGxlKCB0aGlzLm92ZXJIdW5kcmVkc0NoYWxsZW5nZXMgKTtcclxuICAgICAgY2FzZSA3OlxyXG4gICAgICAgIC8vIEFsdGVybmF0ZXMgYmV0d2VlbiB0aGUgJ2xlZnQnIGFuZCAncmlnaHQnIHZhcmlldGllc1xyXG4gICAgICAgIHJldHVybiB0aGlzLnJhbmRvbS5zYW1wbGUoICggdGhpcy5zaW5nbGVzVG9IdW5kcmVkc0NvdW50KysgJSAyID09PSAwICkgPyB0aGlzLnNpbmdsZXNUb0h1bmRyZWRzTGVmdENoYWxsZW5nZXMgOiB0aGlzLnNpbmdsZXNUb0h1bmRyZWRzUmlnaHRDaGFsbGVuZ2VzICk7XHJcbiAgICAgIGNhc2UgODpcclxuICAgICAgICByZXR1cm4gbmV3IE51bWJlckNoYWxsZW5nZSggdGhpcy5yYW5kb20ubmV4dEludEJldHdlZW4oIDEwLCA5OSApICogMTAsIHRoaXMucmFuZG9tLm5leHRJbnRCZXR3ZWVuKCAxMCwgOTkgKSAqIDEwICk7XHJcbiAgICAgIGNhc2UgOTpcclxuICAgICAgICByZXR1cm4gbmV3IE51bWJlckNoYWxsZW5nZSggdGhpcy5yYW5kb20ubmV4dEludEJldHdlZW4oIDEwMSwgOTk5ICksIHRoaXMucmFuZG9tLm5leHRJbnRCZXR3ZWVuKCAxMDEsIDk5OSApICk7XHJcbiAgICAgIGRlZmF1bHQ6XHJcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKCBgSW52YWxpZCBsZXZlbDogJHtsZXZlbH1gICk7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBHZW5lcmF0ZXMgYW4gYXJyYXkgb2YgY2hhbGxlbmdlcyB3aG9zZSBzdW0gPj0gMTEsIHdoZXJlIG9uZSBvZiB0aGUgbnVtYmVycyBpcyB0aGUgYmlnTnVtYmVyLCBhbmQgdGhlIG90aGVyIGlzXHJcbiAgICogbGVzcyB0aGFuIG9yIGVxdWFsIHRvIGJpZ051bWJlci5cclxuICAgKiBAcHJpdmF0ZVxyXG4gICAqXHJcbiAgICogRm9yIGV4YW1wbGUsIGlmIHRoZSBiaWdOdW1iZXIgaXMgOCwgdGhlIHJlc3VsdCB3aWxsIGluY2x1ZGU6XHJcbiAgICogLSAoOCw4KSBhbHdheXNcclxuICAgKiAtICg4LDcpLCAoOCw2KSwgKDgsNSksICg4LDQpLCAoOCwzKSBpZiBpbmNsdWRlTGVmdEJpZ2dlc3QgaXMgdHJ1ZVxyXG4gICAqIC0gKDcsOCksICg2LDgpLCAoNSw4KSwgKDQsOCksICgzLDgpIGlmIGluY2x1ZGVSaWdodEJpZ2dlc3QgaXMgdHJ1ZVxyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGJpZ051bWJlciAtIFRoZSBsYXJnZXN0IG51bWJlciB0byBiZSBpbmNsdWRlZCBpbiB0aGUgY2hhbGxlbmdlcy4gR3VhcmFudGVlZCB0byBiZSBhdCBsZWFzdCBvbmVcclxuICAgKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGVybSBmb3IgZXZlcnkgY2hhbGxlbmdlLlxyXG4gICAqIEByZXR1cm5zIHtBcnJheS48TnVtYmVyQ2hhbGxlbmdlPn1cclxuICAgKi9cclxuICBzdW1zT3ZlclRlbkNoYWxsZW5nZXMoIGJpZ051bWJlciwgaW5jbHVkZUxlZnRCaWdnZXN0LCBpbmNsdWRlUmlnaHRCaWdnZXN0ICkge1xyXG4gICAgY29uc3QgY2hhbGxlbmdlcyA9IFtdO1xyXG5cclxuICAgIGZvciAoIGxldCBpID0gMTEgLSBiaWdOdW1iZXI7IGkgPCBiaWdOdW1iZXI7IGkrKyApIHtcclxuICAgICAgaWYgKCBpbmNsdWRlTGVmdEJpZ2dlc3QgKSB7XHJcbiAgICAgICAgY2hhbGxlbmdlcy5wdXNoKCBuZXcgTnVtYmVyQ2hhbGxlbmdlKCBiaWdOdW1iZXIsIGkgKSApO1xyXG4gICAgICB9XHJcbiAgICAgIGlmICggaW5jbHVkZVJpZ2h0QmlnZ2VzdCApIHtcclxuICAgICAgICBjaGFsbGVuZ2VzLnB1c2goIG5ldyBOdW1iZXJDaGFsbGVuZ2UoIGksIGJpZ051bWJlciApICk7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAvLyBPbmx5IGluY2x1ZGUgb25lIHdoZXJlIGJvdGggYXJlIHRoZSBiaWcgbnVtYmVyLCBzbyB3ZSBvbmx5IGhhdmUgdW5pcXVlIGNoYWxsZW5nZXNcclxuICAgIGNoYWxsZW5nZXMucHVzaCggbmV3IE51bWJlckNoYWxsZW5nZSggYmlnTnVtYmVyLCBiaWdOdW1iZXIgKSApO1xyXG5cclxuICAgIHJldHVybiBjaGFsbGVuZ2VzO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2VuZXJhdGVzIGFuIGFycmF5IG9mIGNoYWxsZW5nZXMgd2hlcmUgdGVybXMgYXJlIGF0IGxlYXN0IG1pbmltdW1OdW1iZXIsIHdpdGggYSBjb21iaW5lZCBtYXhpbXVtIHN1bS5cclxuICAgKiBAcHJpdmF0ZVxyXG4gICAqXHJcbiAgICogQHJldHVybnMge0FycmF5LjxOdW1iZXJDaGFsbGVuZ2U+fVxyXG4gICAqL1xyXG4gIHN1bXNVcFRvKCBtaW5pbXVtTnVtYmVyLCBtYXhpbXVtU3VtICkge1xyXG4gICAgY29uc3QgY2hhbGxlbmdlcyA9IFtdO1xyXG5cclxuICAgIGZvciAoIGxldCBsZWZ0ID0gbWluaW11bU51bWJlcjsgbGVmdCA8IG1heGltdW1TdW07IGxlZnQrKyApIHtcclxuICAgICAgZm9yICggbGV0IHJpZ2h0ID0gbWluaW11bU51bWJlcjsgbGVmdCArIHJpZ2h0IDw9IG1heGltdW1TdW07IHJpZ2h0KysgKSB7XHJcbiAgICAgICAgY2hhbGxlbmdlcy5wdXNoKCBuZXcgTnVtYmVyQ2hhbGxlbmdlKCBsZWZ0LCByaWdodCApICk7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gY2hhbGxlbmdlcztcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEdlbmVyYXRlcyBhbiBhcnJheSBvZiBjaGFsbGVuZ2VzIHdoZXJlIHRlcm1zIHNhdGlzZnkgbWluaW11bU51bWJlciA8PSB0ZXJtIDw9IG1heGltdW1OdW1iZXIsIGFuZCB0aGUgc3VtIGlzXHJcbiAgICogc3VtID49IG1pbmltdW1TdW0uXHJcbiAgICogQHByaXZhdGVcclxuICAgKlxyXG4gICAqIEByZXR1cm5zIHtBcnJheS48TnVtYmVyQ2hhbGxlbmdlPn1cclxuICAgKi9cclxuICBzdW1zRG93blRvKCBtaW5pbXVtTnVtYmVyLCBtYXhpbXVtTnVtYmVyLCBtaW5pbXVtU3VtICkge1xyXG4gICAgY29uc3QgY2hhbGxlbmdlcyA9IFtdO1xyXG5cclxuICAgIGZvciAoIGxldCBsZWZ0ID0gbWluaW11bU51bWJlcjsgbGVmdCA8PSBtYXhpbXVtTnVtYmVyOyBsZWZ0KysgKSB7XHJcbiAgICAgIC8vIFN0YXJ0IHdpdGggbWluaW11bU51bWJlciwgT1IgaWYgdGhhdCB3b3VsZCByZXN1bHQgaW4gYW4gaW52YWxpZCBzdW0sIHRoZSBudW1iZXIgdGhhdCB3b3VsZCBhZGQgdXAgdG8gdGhlIHN1bVxyXG4gICAgICBmb3IgKCBsZXQgcmlnaHQgPSBNYXRoLm1heCggbWluaW11bU51bWJlciwgbWluaW11bVN1bSAtIGxlZnQgKTsgcmlnaHQgPD0gbWF4aW11bU51bWJlcjsgcmlnaHQrKyApIHtcclxuICAgICAgICBjaGFsbGVuZ2VzLnB1c2goIG5ldyBOdW1iZXJDaGFsbGVuZ2UoIGxlZnQsIHJpZ2h0ICkgKTtcclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiBjaGFsbGVuZ2VzO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRm9yIGxldmVsIDgsIGFkZGluZyBzaW5nbGUgZGlnaXQgbnVtYmVycyB0byBtdWx0aXBsZXMgb2YgMTAwLlxyXG4gICAqIEBwcml2YXRlXHJcbiAgICpcclxuICAgKiBAcmV0dXJucyB7QXJyYXkuPE51bWJlckNoYWxsZW5nZT59XHJcbiAgICovXHJcbiAgYWRkV2l0aFNpbmdsZXNUaHJlZURpZ2l0Q2hhbGxlbmdlcyggaXNMZWZ0QmlnZ2VzdCApIHtcclxuICAgIGNvbnN0IGNoYWxsZW5nZXMgPSBbXTtcclxuXHJcbiAgICBmb3IgKCBsZXQgbGVmdCA9IDEwMDsgbGVmdCA8PSA5MDA7IGxlZnQgKz0gMTAwICkge1xyXG4gICAgICBmb3IgKCBsZXQgcmlnaHQgPSAxOyByaWdodCA8PSA5OyByaWdodCsrICkge1xyXG4gICAgICAgIGNoYWxsZW5nZXMucHVzaCggaXNMZWZ0QmlnZ2VzdCA/IG5ldyBOdW1iZXJDaGFsbGVuZ2UoIGxlZnQsIHJpZ2h0ICkgOiBuZXcgTnVtYmVyQ2hhbGxlbmdlKCByaWdodCwgbGVmdCApICk7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gY2hhbGxlbmdlcztcclxuICB9XHJcbn1cclxuXHJcbm1ha2VBVGVuLnJlZ2lzdGVyKCAnTnVtYmVyQ2hhbGxlbmdlRmFjdG9yeScsIE51bWJlckNoYWxsZW5nZUZhY3RvcnkgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IE51bWJlckNoYWxsZW5nZUZhY3Rvcnk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsU0FBUyxNQUFNLG9DQUFvQztBQUMxRCxPQUFPQyxRQUFRLE1BQU0sc0JBQXNCO0FBQzNDLE9BQU9DLGVBQWUsTUFBTSxzQkFBc0I7QUFFbEQsTUFBTUMsc0JBQXNCLENBQUM7RUFDM0JDLFdBQVdBLENBQUEsRUFBRztJQUVaO0lBQ0E7SUFDQSxJQUFJLENBQUNDLE1BQU0sR0FBR0wsU0FBUzs7SUFFdkI7SUFDQTtJQUNBLElBQUksQ0FBQ00scUJBQXFCLEdBQUcsSUFBSSxDQUFDQyxRQUFRLENBQUUsQ0FBQyxFQUFFLEVBQUcsQ0FBQzs7SUFFbkQ7SUFDQTtJQUNBLElBQUksQ0FBQ0Msc0JBQXNCLEdBQUcsSUFBSSxDQUFDQyxxQkFBcUIsQ0FBRSxDQUFDLEVBQUUsSUFBSSxFQUFFLEtBQU0sQ0FBQztJQUMxRTtJQUNBLElBQUksQ0FBQ0MsdUJBQXVCLEdBQUcsSUFBSSxDQUFDRCxxQkFBcUIsQ0FBRSxDQUFDLEVBQUUsS0FBSyxFQUFFLElBQUssQ0FBQztJQUMzRTtJQUNBLElBQUksQ0FBQ0UsYUFBYSxHQUFHLENBQUM7O0lBRXRCO0lBQ0E7SUFDQTtJQUNBLElBQUksQ0FBQ0MscUJBQXFCLEdBQUcsRUFBRSxDQUFDQyxNQUFNLENBQ3BDLElBQUksQ0FBQ0oscUJBQXFCLENBQUUsQ0FBQyxFQUFFLElBQUksRUFBRSxJQUFLLENBQUMsRUFDM0MsSUFBSSxDQUFDQSxxQkFBcUIsQ0FBRSxDQUFDLEVBQUUsSUFBSSxFQUFFLElBQUssQ0FBQyxFQUMzQyxJQUFJLENBQUNBLHFCQUFxQixDQUFFLENBQUMsRUFBRSxJQUFJLEVBQUUsSUFBSyxDQUFDLEVBQzNDLElBQUksQ0FBQ0EscUJBQXFCLENBQUUsQ0FB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

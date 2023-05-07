@@ -1,0 +1,26 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * Immutable data point class used in the wave sensor node charts.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Chandrashekar Bemagoni (Actual Concepts)
+ */
+
+import bendingLight from '../../bendingLight.js';
+class DataPoint {
+  /**
+   * @param time - time of simulation
+   * @param value - amplitude at particular time
+   */
+  constructor(time, value) {
+    // (read-only)
+    this.time = time;
+
+    // (read-only)
+    this.value = value;
+  }
+}
+bendingLight.register('DataPoint', DataPoint);
+export default DataPoint;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJiZW5kaW5nTGlnaHQiLCJEYXRhUG9pbnQiLCJjb25zdHJ1Y3RvciIsInRpbWUiLCJ2YWx1ZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRGF0YVBvaW50LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE1LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEltbXV0YWJsZSBkYXRhIHBvaW50IGNsYXNzIHVzZWQgaW4gdGhlIHdhdmUgc2Vuc29yIG5vZGUgY2hhcnRzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKiBAYXV0aG9yIENoYW5kcmFzaGVrYXIgQmVtYWdvbmkgKEFjdHVhbCBDb25jZXB0cylcclxuICovXHJcblxyXG5pbXBvcnQgYmVuZGluZ0xpZ2h0IGZyb20gJy4uLy4uL2JlbmRpbmdMaWdodC5qcyc7XHJcblxyXG5jbGFzcyBEYXRhUG9pbnQge1xyXG4gIHB1YmxpYyByZWFkb25seSB0aW1lOiBudW1iZXI7XHJcbiAgcHVibGljIHJlYWRvbmx5IHZhbHVlOiBudW1iZXI7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB0aW1lIC0gdGltZSBvZiBzaW11bGF0aW9uXHJcbiAgICogQHBhcmFtIHZhbHVlIC0gYW1wbGl0dWRlIGF0IHBhcnRpY3VsYXIgdGltZVxyXG4gICAqL1xyXG4gIHB1YmxpYyBjb25zdHJ1Y3RvciggdGltZTogbnVtYmVyLCB2YWx1ZTogbnVtYmVyICkge1xyXG5cclxuICAgIC8vIChyZWFkLW9ubHkpXHJcbiAgICB0aGlzLnRpbWUgPSB0aW1lO1xyXG5cclxuICAgIC8vIChyZWFkLW9ubHkpXHJcbiAgICB0aGlzLnZhbHVlID0gdmFsdWU7XHJcbiAgfVxyXG59XHJcblxyXG5iZW5kaW5nTGlnaHQucmVnaXN0ZXIoICdEYXRhUG9pbnQnLCBEYXRhUG9pbnQgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IERhdGFQb2ludDsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxZQUFZLE1BQU0sdUJBQXVCO0FBRWhELE1BQU1DLFNBQVMsQ0FBQztFQUlkO0FBQ0Y7QUFDQTtBQUNBO0VBQ1NDLFdBQVdBLENBQUVDLElBQVksRUFBRUMsS0FBYSxFQUFHO0lBRWhEO0lBQ0EsSUFBSSxDQUFDRCxJQUFJLEdBQUdBLElBQUk7O0lBRWhCO0lBQ0EsSUFBSSxDQUFDQyxLQUFLLEdBQUdBLEtBQUs7RUFDcEI7QUFDRjtBQUVBSixZQUFZLENBQUNLLFFBQVEsQ0FBRSxXQUFXLEVBQUVKLFNBQVUsQ0FBQztBQUUvQyxlQUFlQSxTQUFTIn0=

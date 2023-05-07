@@ -1,0 +1,41 @@
+{
+  "name": "forces-and-motion-basics",
+  "version": "2.4.0-dev.5",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/forces-and-motion-basics.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "FORCES_AND_MOTION_BASICS",
+    "phetLibs": [
+      "vibe"
+    ],
+    "preload": [
+      "../sherpa/lib/Tween-r12.js"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "phet-io": {
+      "wrappers": [
+        "phet-io-wrapper-classroom-activity"
+      ]
+    },
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "todo-should-have-issue": "off"
+    }
+  }
+}

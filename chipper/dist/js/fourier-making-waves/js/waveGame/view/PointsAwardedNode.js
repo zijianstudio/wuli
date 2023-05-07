@@ -1,0 +1,54 @@
+// Copyright 2021-2023, University of Colorado Boulder
+
+/**
+ * PointsAwardedNode shows the number of points awarded when the user solves a challenge.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import AssertUtils from '../../../../phetcommon/js/AssertUtils.js';
+import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import StarNode from '../../../../scenery-phet/js/StarNode.js';
+import { HBox, Text } from '../../../../scenery/js/imports.js';
+import fourierMakingWaves from '../../fourierMakingWaves.js';
+export default class PointsAwardedNode extends HBox {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = merge({
+      // PointsAwardedNode options
+      points: 1,
+      // HBox options
+      spacing: 25
+    }, options);
+    assert && AssertUtils.assertPositiveInteger(options.points);
+    const pointsNode = new Text(`+${options.points}`, {
+      font: new PhetFont(200),
+      fill: 'black'
+    });
+    const starNode = new StarNode({
+      value: 1,
+      scale: 6
+    });
+    assert && assert(!options.children, 'PointsAwardedNode sets children');
+    options.children = [pointsNode, starNode];
+    super(options);
+
+    // @private
+    this.pointsNode = pointsNode; // {Text}
+  }
+
+  /**
+   * Sets the number of points displayed.
+   * @param {number} points
+   * @public
+   */
+  setPoints(points) {
+    assert && AssertUtils.assertPositiveInteger(points);
+    this.pointsNode.string = `+${points}`;
+  }
+}
+fourierMakingWaves.register('PointsAwardedNode', PointsAwardedNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIkFzc2VydFV0aWxzIiwiUGhldEZvbnQiLCJTdGFyTm9kZSIsIkhCb3giLCJUZXh0IiwiZm91cmllck1ha2luZ1dhdmVzIiwiUG9pbnRzQXdhcmRlZE5vZGUiLCJjb25zdHJ1Y3RvciIsIm9wdGlvbnMiLCJwb2ludHMiLCJzcGFjaW5nIiwiYXNzZXJ0IiwiYXNzZXJ0UG9zaXRpdmVJbnRlZ2VyIiwicG9pbnRzTm9kZSIsImZvbnQiLCJmaWxsIiwic3Rhck5vZGUiLCJ2YWx1ZSIsInNjYWxlIiwiY2hpbGRyZW4iLCJzZXRQb2ludHMiLCJzdHJpbmciLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlBvaW50c0F3YXJkZWROb2RlLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFBvaW50c0F3YXJkZWROb2RlIHNob3dzIHRoZSBudW1iZXIgb2YgcG9pbnRzIGF3YXJkZWQgd2hlbiB0aGUgdXNlciBzb2x2ZXMgYSBjaGFsbGVuZ2UuXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCBBc3NlcnRVdGlscyBmcm9tICcuLi8uLi8uLi8uLi9waGV0Y29tbW9uL2pzL0Fzc2VydFV0aWxzLmpzJztcclxuaW1wb3J0IFBoZXRGb250IGZyb20gJy4uLy4uLy4uLy4uL3NjZW5lcnktcGhldC9qcy9QaGV0Rm9udC5qcyc7XHJcbmltcG9ydCBTdGFyTm9kZSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvU3Rhck5vZGUuanMnO1xyXG5pbXBvcnQgeyBIQm94LCBUZXh0IH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IGZvdXJpZXJNYWtpbmdXYXZlcyBmcm9tICcuLi8uLi9mb3VyaWVyTWFraW5nV2F2ZXMuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgUG9pbnRzQXdhcmRlZE5vZGUgZXh0ZW5kcyBIQm94IHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBvcHRpb25zICkge1xyXG5cclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG5cclxuICAgICAgLy8gUG9pbnRzQXdhcmRlZE5vZGUgb3B0aW9uc1xyXG4gICAgICBwb2ludHM6IDEsXHJcblxyXG4gICAgICAvLyBIQm94IG9wdGlvbnNcclxuICAgICAgc3BhY2luZzogMjVcclxuICAgIH0sIG9wdGlvbnMgKTtcclxuICAgIGFzc2VydCAmJiBBc3NlcnRVdGlscy5hc3NlcnRQb3NpdGl2ZUludGVnZXIoIG9wdGlvbnMucG9pbnRzICk7XHJcblxyXG4gICAgY29uc3QgcG9pbnRzTm9kZSA9IG5ldyBUZXh0KCBgKyR7b3B0aW9ucy5wb2ludHN9YCwge1xyXG4gICAgICBmb250OiBuZXcgUGhldEZvbnQoIDIwMCApLFxyXG4gICAgICBmaWxsOiAnYmxhY2snXHJcbiAgICB9ICk7XHJcblxyXG4gICAgY29uc3Qgc3Rhck5vZGUgPSBuZXcgU3Rhck5vZGUoIHtcclxuICAgICAgdmFsdWU6IDEsXHJcbiAgICAgIHNjYWxlOiA2XHJcbiAgICB9ICk7XHJcblxyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggIW9wdGlvbnMuY2hpbGRyZW4sICdQb2ludHNBd2FyZGVkTm9kZSBzZXRzIGNoaWxkcmVuJyApO1xyXG4gICAgb3B0aW9ucy5jaGlsZHJlbiA9IFsgcG9pbnRzTm9kZSwgc3Rhck5vZGUgXTtcclxuXHJcbiAgICBzdXBlciggb3B0aW9ucyApO1xyXG5cclxuICAgIC8vIEBwcml2YXRlXHJcbiAgICB0aGlzLnBvaW50c05vZGUgPSBwb2ludHNOb2RlOyAvLyB7VGV4dH1cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFNldHMgdGhlIG51bWJlciBvZiBwb2ludHMgZGlzcGxheWVkLlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBwb2ludHNcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgc2V0UG9pbnRzKCBwb2ludHMgKSB7XHJcbiAgICBhc3NlcnQgJiYgQXNzZXJ0VXRpbHMuYXNzZXJ0UG9zaXRpdmVJbnRlZ2VyKCBwb2ludHMgKTtcclxuICAgIHRoaXMucG9pbnRzTm9kZS5zdHJpbmcgPSBgKyR7cG9pbnRzfWA7XHJcbiAgfVxyXG59XHJcblxyXG5mb3VyaWVyTWFraW5nV2F2ZXMucmVnaXN0ZXIoICdQb2ludHNBd2FyZGVkTm9kZScsIFBvaW50c0F3YXJkZWROb2RlICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsT0FBT0MsV0FBVyxNQUFNLDBDQUEwQztBQUNsRSxPQUFPQyxRQUFRLE1BQU0seUNBQXlDO0FBQzlELE9BQU9DLFFBQVEsTUFBTSx5Q0FBeUM7QUFDOUQsU0FBU0MsSUFBSSxFQUFFQyxJQUFJLFFBQVEsbUNBQW1DO0FBQzlELE9BQU9DLGtCQUFrQixNQUFNLDZCQUE2QjtBQUU1RCxlQUFlLE1BQU1DLGlCQUFpQixTQUFTSCxJQUFJLENBQUM7RUFFbEQ7QUFDRjtBQUNBO0VBQ0VJLFdBQVdBLENBQUVDLE9BQU8sRUFBRztJQUVyQkEsT0FBTyxHQUFHVCxLQUFLLENBQUU7TUFFZjtNQUNBVSxNQUFNLEVBQUUsQ0FBQztNQUVUO01BQ0FDLE9BQU8sRUFBRTtJQUNYLENBQUMsRUFBRUYsT0FBUSxDQUFDO0lBQ1pHLE1BQU0sSUFBSVgsV0FBVyxDQUFDWSxxQkFBcUIsQ0FBRUosT0FBTyxDQUFDQyxNQUFPLENBQUM7SUFFN0QsTUFBTUksVUFBVSxHQUFHLElBQUlULElBQUksQ0FBRyxJQUFHSSxPQUFPLENBQUNDLE1BQU8sRUFBQyxFQUFFO01BQ2pESyxJQUFJLEVBQUUsSUFBSWIsUUFBUSxDQUFFLEdBQUksQ0FBQztNQUN6QmMsSUFBSSxFQUFFO0lBQ1IsQ0FBRSxDQUFDO0lBRUgsTUFBTUMsUUFBUSxHQUFHLElBQUlkLFFBQVEsQ0FBRTtNQUM3QmUsS0FBSyxFQUFFLENBQUM7TUFDUkMsS0FBSyxFQUFFO0lBQ1QsQ0FBRSxDQUFDO0lBRUhQLE1BQU0sSUFBSUEsTUFBTSxDQUFFLENBQUNILE9BQU8sQ0FBQ1csUUFBUSxFQUFFLGlDQUFrQyxDQUFDO0lBQ3hFWCxPQUFPLENBQUNXLFFBQVEsR0FBRyxDQUFFTixVQUFVLEVBQUVHLFFBQVEsQ0FBRTtJQUUzQyxLQUFLLENBQUVSLE9BQVEsQ0FBQzs7SUFFaEI7SUFDQSxJQUFJLENBQUNLLFVBQVUsR0FBR0EsVUFBVSxDQUFDLENBQUM7RUFDaEM7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFTyxTQUFTQSxDQUFFWCxNQUFNLEVBQUc7SUFDbEJFLE1BQU0sSUFBSVgsV0FBVyxDQUFDWSxxQkFBcUIsQ0FBRUgsTUFBTyxDQUFDO0lBQ3JELElBQUksQ0FBQ0ksVUFBVSxDQUFDUSxNQUFNLEdBQUksSUFBR1osTUFBTyxFQUFDO0VBQ3ZDO0FBQ0Y7QUFFQUosa0JBQWtCLENBQUNpQixRQUFRLENBQUUsbUJBQW1CLEVBQUVoQixpQkFBa0IsQ0FBQyJ9

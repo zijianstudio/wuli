@@ -1,0 +1,19 @@
+The developers of the Least-Squares Regression sim have made a good faith effort to obtain permission from the publishers for the use of previously published data. Permissions to use the data are listed below, as available. 
+
+Manatee Mortality vs. Time
+Received an email from Florida Fish and Wildlife Conservation Commission Legal confirming that the data is public record 
+
+Internet Users vs. Time
+http://data.worldbank.org/summary-terms-of-use 
+
+Us Gasoline Prices vs. Time
+http://www.bls.gov/bls/linksite.htm 
+
+Orbital Speed vs. Distance from Sun
+https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License 
+
+Temperature vs. Latitude
+Temperature vs. Longitude
+Spending vs. Salaries
+Life Expectancy vs. TVs
+http://lib.stat.cmu.edu/DASL/Reference/copyright.html 

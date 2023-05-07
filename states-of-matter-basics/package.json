@@ -1,0 +1,37 @@
+{
+  "name": "states-of-matter-basics",
+  "version": "1.3.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/states-of-matter-basics.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "STATES_OF_MATTER_BASICS",
+    "phetLibs": [
+      "states-of-matter",
+      "nitroglycerin"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet",
+      "phet-io"
+    ],
+    "simulation": true,
+    "supportsOutputJS": true,
+    "simFeatures": {
+      "colorProfiles": [
+        "default",
+        "projector"
+      ]
+    },
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

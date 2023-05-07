@@ -1,0 +1,255 @@
+{
+  "zero": {
+    "value": "শূন্য ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "শূন্য "
+      }
+    ]
+  },
+  "one": {
+    "value": "এক ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "এক "
+      }
+    ]
+  },
+  "two": {
+    "value": "দুই ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "দুই "
+      }
+    ]
+  },
+  "three": {
+    "value": "তিন ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "তিন "
+      }
+    ]
+  },
+  "four": {
+    "value": "চার ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "চার "
+      }
+    ]
+  },
+  "five": {
+    "value": "পাঁচ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "পাঁচ "
+      }
+    ]
+  },
+  "six": {
+    "value": "ছয় ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "ছয় "
+      }
+    ]
+  },
+  "seven": {
+    "value": "সাত ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "সাত "
+      }
+    ]
+  },
+  "eight": {
+    "value": "আট ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "আট "
+      }
+    ]
+  },
+  "nine": {
+    "value": "নয় ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "নয় "
+      }
+    ]
+  },
+  "ten": {
+    "value": "দশ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "দশ "
+      }
+    ]
+  },
+  "eleven": {
+    "value": "এগারো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "এগারো "
+      }
+    ]
+  },
+  "twelve": {
+    "value": "বারো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "বারো "
+      }
+    ]
+  },
+  "thirteen": {
+    "value": "তেরো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "তেরো "
+      }
+    ]
+  },
+  "fourteen": {
+    "value": "চৌদ্দ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "চৌদ্দ "
+      }
+    ]
+  },
+  "fifteen": {
+    "value": "পনেরো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "পনেরো "
+      }
+    ]
+  },
+  "sixteen": {
+    "value": "ষোল ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "ষোল "
+      }
+    ]
+  },
+  "seventeen": {
+    "value": "সতেরো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "সতেরো "
+      }
+    ]
+  },
+  "eighteen": {
+    "value": "আঠারো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "আঠারো "
+      }
+    ]
+  },
+  "nineteen": {
+    "value": "উনিশ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "উনিশ "
+      }
+    ]
+  },
+  "twenty": {
+    "value": "বিশ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "বিশ "
+      }
+    ]
+  },
+  "objects": {
+    "value": "বস্তু ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "বস্তু "
+      }
+    ]
+  },
+  "total": {
+    "value": "মোট ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "মোট "
+      }
+    ]
+  }
+}

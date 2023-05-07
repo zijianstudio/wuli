@@ -1,0 +1,33 @@
+<section class="component" id="{{repo}}-{{component}}">
+  <section class="component-data container-fluid">
+    <h2>{{component}}</h2>
+    <ul class="meta">
+      <li>{{componentLink repo component}}</li>
+      <li>Number of sims that use this component: {{simCount}}</li>
+    </ul>
+
+    {{markdown}}
+  </section>
+
+  <section class="sims container-fluid">
+    <h2>Sim Examples</h2>
+    <div class="row">
+      {{#if sims}}
+      {{#each sims}}
+      <div class="col-sm-2 col-md-6 sim-example">
+        <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#{{this.name}}-{{../component}}">{{this.name}}</button>
+        <ul id="{{this.name}}-{{../component}}" class="collapse list-group list-group-flush">
+          <li class="list-group-item">{{simPageLink this.name}}</li>
+          {{#if this.images}}
+          {{#each this.images}}
+          <li class="list-group-item"><img src="{{this}}"></li>
+          {{/each}}
+          {{/if}}
+        </ul>
+      </div>
+      {{/each}}
+      {{/if}}
+    </div>
+  </section>
+</section>
+<hr>

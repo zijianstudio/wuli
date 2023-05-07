@@ -1,0 +1,57 @@
+// Copyright 2018-2022, University of Colorado Boulder
+
+/**
+ * Model for a single water drop, which conveys a new value for amplitude and frequency to the model.
+ * For water, the controls set desiredAmplitude, desiredFrequency.  Those values are transmitted by a water drop.
+ * When reaching the water, they set the wave amplitude and frequency accordingly.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import waveInterference from '../../waveInterference.js';
+
+// constants
+// Manually tuned so that the speed of the water drops visually approximates the speed of the wave in water side view
+const WATER_DROP_SPEED = 140;
+const INITIAL_DISTANCE_ABOVE_LATTICE = 100; // in view coordinates
+
+class WaterDrop {
+  y = INITIAL_DISTANCE_ABOVE_LATTICE;
+
+  // In side view, if the drop has gone beneath the water, it gets absorbed.  In this case, it means it
+  // should no longer be visible.  But the modeled time that it affects the lattice is the same.
+  absorbed = false;
+
+  /**
+   * @param amplitude - strength of the wave
+   * @param startsOscillation - false if this is a fake water drop to shut off the oscillation at one cycle
+   * @param sourceSeparation - the vertical coordinate of the cell that the water drop is falling to.
+   *                 - the distance between the sources when this drop was released, used to show the correct position
+   *                 - of the water drop
+   * @param sign - -1 for top faucet, +1 for bottom faucet
+   * @param onAbsorption - called when the water drop is absorbed by the lattice
+   */
+  constructor(amplitude, startsOscillation, sourceSeparation, sign, onAbsorption) {
+    this.amplitude = amplitude;
+    this.startsOscillation = startsOscillation;
+    this.sourceSeparation = sourceSeparation;
+    this.sign = sign;
+    this.onAbsorption = onAbsorption;
+  }
+
+  /**
+   * Animate the water drop at a constant velocity toward the point at which it hits the water surface.
+   * @param dt - time in seconds
+   */
+  step(dt) {
+    this.y -= dt * WATER_DROP_SPEED;
+
+    // Remove drop that have hit the water, and set its values to the oscillator
+    if (this.y < 0) {
+      this.onAbsorption();
+    }
+  }
+}
+waveInterference.register('WaterDrop', WaterDrop);
+export default WaterDrop;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ3YXZlSW50ZXJmZXJlbmNlIiwiV0FURVJfRFJPUF9TUEVFRCIsIklOSVRJQUxfRElTVEFOQ0VfQUJPVkVfTEFUVElDRSIsIldhdGVyRHJvcCIsInkiLCJhYnNvcmJlZCIsImNvbnN0cnVjdG9yIiwiYW1wbGl0dWRlIiwic3RhcnRzT3NjaWxsYXRpb24iLCJzb3VyY2VTZXBhcmF0aW9uIiwic2lnbiIsIm9uQWJzb3JwdGlvbiIsInN0ZXAiLCJkdCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiV2F0ZXJEcm9wLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE4LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE1vZGVsIGZvciBhIHNpbmdsZSB3YXRlciBkcm9wLCB3aGljaCBjb252ZXlzIGEgbmV3IHZhbHVlIGZvciBhbXBsaXR1ZGUgYW5kIGZyZXF1ZW5jeSB0byB0aGUgbW9kZWwuXHJcbiAqIEZvciB3YXRlciwgdGhlIGNvbnRyb2xzIHNldCBkZXNpcmVkQW1wbGl0dWRlLCBkZXNpcmVkRnJlcXVlbmN5LiAgVGhvc2UgdmFsdWVzIGFyZSB0cmFuc21pdHRlZCBieSBhIHdhdGVyIGRyb3AuXHJcbiAqIFdoZW4gcmVhY2hpbmcgdGhlIHdhdGVyLCB0aGV5IHNldCB0aGUgd2F2ZSBhbXBsaXR1ZGUgYW5kIGZyZXF1ZW5jeSBhY2NvcmRpbmdseS5cclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgd2F2ZUludGVyZmVyZW5jZSBmcm9tICcuLi8uLi93YXZlSW50ZXJmZXJlbmNlLmpzJztcclxuXHJcbi8vIGNvbnN0YW50c1xyXG4vLyBNYW51YWxseSB0dW5lZCBzbyB0aGF0IHRoZSBzcGVlZCBvZiB0aGUgd2F0ZXIgZHJvcHMgdmlzdWFsbHkgYXBwcm94aW1hdGVzIHRoZSBzcGVlZCBvZiB0aGUgd2F2ZSBpbiB3YXRlciBzaWRlIHZpZXdcclxuY29uc3QgV0FURVJfRFJPUF9TUEVFRCA9IDE0MDtcclxuY29uc3QgSU5JVElBTF9ESVNUQU5DRV9BQk9WRV9MQVRUSUNFID0gMTAwOyAvLyBpbiB2aWV3IGNvb3JkaW5hdGVzXHJcblxyXG5jbGFzcyBXYXRlckRyb3Age1xyXG5cclxuICBwdWJsaWMgeSA9IElOSVRJQUxfRElTVEFOQ0VfQUJPVkVfTEFUVElDRTtcclxuXHJcbiAgLy8gSW4gc2lkZSB2aWV3LCBpZiB0aGUgZHJvcCBoYXMgZ29uZSBiZW5lYXRoIHRoZSB3YXRlciwgaXQgZ2V0cyBhYnNvcmJlZC4gIEluIHRoaXMgY2FzZSwgaXQgbWVhbnMgaXRcclxuICAvLyBzaG91bGQgbm8gbG9uZ2VyIGJlIHZpc2libGUuICBCdXQgdGhlIG1vZGVsZWQgdGltZSB0aGF0IGl0IGFmZmVjdHMgdGhlIGxhdHRpY2UgaXMgdGhlIHNhbWUuXHJcbiAgcHVibGljIGFic29yYmVkID0gZmFsc2U7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSBhbXBsaXR1ZGUgLSBzdHJlbmd0aCBvZiB0aGUgd2F2ZVxyXG4gICAqIEBwYXJhbSBzdGFydHNPc2NpbGxhdGlvbiAtIGZhbHNlIGlmIHRoaXMgaXMgYSBmYWtlIHdhdGVyIGRyb3AgdG8gc2h1dCBvZmYgdGhlIG9zY2lsbGF0aW9uIGF0IG9uZSBjeWNsZVxyXG4gICAqIEBwYXJhbSBzb3VyY2VTZXBhcmF0aW9uIC0gdGhlIHZlcnRpY2FsIGNvb3JkaW5hdGUgb2YgdGhlIGNlbGwgdGhhdCB0aGUgd2F0ZXIgZHJvcCBpcyBmYWxsaW5nIHRvLlxyXG4gICAqICAgICAgICAgICAgICAgICAtIHRoZSBkaXN0YW5jZSBiZXR3ZWVuIHRoZSBzb3VyY2VzIHdoZW4gdGhpcyBkcm9wIHdhcyByZWxlYXNlZCwgdXNlZCB0byBzaG93IHRoZSBjb3JyZWN0IHBvc2l0aW9uXHJcbiAgICogICAgICAgICAgICAgICAgIC0gb2YgdGhlIHdhdGVyIGRyb3BcclxuICAgKiBAcGFyYW0gc2lnbiAtIC0xIGZvciB0b3AgZmF1Y2V0LCArMSBmb3IgYm90dG9tIGZhdWNldFxyXG4gICAqIEBwYXJhbSBvbkFic29ycHRpb24gLSBjYWxsZWQgd2hlbiB0aGUgd2F0ZXIgZHJvcCBpcyBhYnNvcmJlZCBieSB0aGUgbGF0dGljZVxyXG4gICAqL1xyXG4gIHB1YmxpYyBjb25zdHJ1Y3RvciggcHVibGljIHJlYWRvbmx5IGFtcGxpdHVkZTogbnVtYmVyLFxyXG4gICAgICAgICAgICAgICAgICAgICAgcHVibGljIHJlYWRvbmx5IHN0YXJ0c09zY2lsbGF0aW9uOiBib29sZWFuLFxyXG4gICAgICAgICAgICAgICAgICAgICAgcHVibGljIHJlYWRvbmx5IHNvdXJjZVNlcGFyYXRpb246IG51bWJlcixcclxuICAgICAgICAgICAgICAgICAgICAgIHB1YmxpYyByZWFkb25seSBzaWduOiBudW1iZXIsXHJcbiAgICAgICAgICAgICAgICAgICAgICBwdWJsaWMgcmVhZG9ubHkgb25BYnNvcnB0aW9uOiAoKSA9PiB2b2lkICkge31cclxuXHJcbiAgLyoqXHJcbiAgICogQW5pbWF0ZSB0aGUgd2F0ZXIgZHJvcCBhdCBhIGNvbnN0YW50IHZlbG9jaXR5IHRvd2FyZCB0aGUgcG9pbnQgYXQgd2hpY2ggaXQgaGl0cyB0aGUgd2F0ZXIgc3VyZmFjZS5cclxuICAgKiBAcGFyYW0gZHQgLSB0aW1lIGluIHNlY29uZHNcclxuICAgKi9cclxuICBwdWJsaWMgc3RlcCggZHQ6IG51bWJlciApOiB2b2lkIHtcclxuXHJcbiAgICB0aGlzLnkgLT0gZHQgKiBXQVRFUl9EUk9QX1NQRUVEO1xyXG5cclxuICAgIC8vIFJlbW92ZSBkcm9wIHRoYXQgaGF2ZSBoaXQgdGhlIHdhdGVyLCBhbmQgc2V0IGl0cyB2YWx1ZXMgdG8gdGhlIG9zY2lsbGF0b3JcclxuICAgIGlmICggdGhpcy55IDwgMCApIHtcclxuICAgICAgdGhpcy5vbkFic29ycHRpb24oKTtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbndhdmVJbnRlcmZlcmVuY2UucmVnaXN0ZXIoICdXYXRlckRyb3AnLCBXYXRlckRyb3AgKTtcclxuZXhwb3J0IGRlZmF1bHQgV2F0ZXJEcm9wO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLGdCQUFnQixNQUFNLDJCQUEyQjs7QUFFeEQ7QUFDQTtBQUNBLE1BQU1DLGdCQUFnQixHQUFHLEdBQUc7QUFDNUIsTUFBTUMsOEJBQThCLEdBQUcsR0FBRyxDQUFDLENBQUM7O0FBRTVDLE1BQU1DLFNBQVMsQ0FBQztFQUVQQyxDQUFDLEdBQUdGLDhCQUE4Qjs7RUFFekM7RUFDQTtFQUNPRyxRQUFRLEdBQUcsS0FBSzs7RUFFdkI7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ1NDLFdBQVdBLENBQWtCQyxTQUFpQixFQUNqQkMsaUJBQTBCLEVBQzFCQyxnQkFBd0IsRUFDeEJDLElBQVksRUFDWkMsWUFBd0IsRUFBRztJQUFBLEtBSjNCSixTQUFpQixHQUFqQkEsU0FBaUI7SUFBQSxLQUNqQkMsaUJBQTBCLEdBQTFCQSxpQkFBMEI7SUFBQSxLQUMxQkMsZ0JBQXdCLEdBQXhCQSxnQkFBd0I7SUFBQSxLQUN4QkMsSUFBWSxHQUFaQSxJQUFZO0lBQUEsS0FDWkMsWUFBd0IsR0FBeEJBLFlBQXdCO0VBQUk7O0VBRWhFO0FBQ0Y7QUFDQTtBQUNBO0VBQ1NDLElBQUlBLENBQUVDLEVBQVUsRUFBUztJQUU5QixJQUFJLENBQUNULENBQUMsSUFBSVMsRUFBRSxHQUFHWixnQkFBZ0I7O0lBRS9CO0lBQ0EsSUFBSyxJQUFJLENBQUNHLENBQUMsR0FBRyxDQUFDLEVBQUc7TUFDaEIsSUFBSSxDQUFDTyxZQUFZLENBQUMsQ0FBQztJQUNyQjtFQUNGO0FBQ0Y7QUFFQVgsZ0JBQWdCLENBQUNjLFFBQVEsQ0FBRSxXQUFXLEVBQUVYLFNBQVUsQ0FBQztBQUNuRCxlQUFlQSxTQUFTIn0=

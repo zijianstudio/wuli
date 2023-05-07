@@ -1,0 +1,15 @@
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * Unit tests for balloons-and-static-electricity.
+ *
+ * @author Michael Barlow (PhET Interactive Simulations)
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+import '../../scenery/js/util/Trail.js'; // Why is Trail not added to scenery namespace for these tests??
+import './faradays-law/view/MagnetRegionsTests.js';
+
+// Since our tests are loaded asynchronously, we must direct QUnit to begin the tests
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsiZmFyYWRheXMtbGF3LXRlc3RzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE4LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFVuaXQgdGVzdHMgZm9yIGJhbGxvb25zLWFuZC1zdGF0aWMtZWxlY3RyaWNpdHkuXHJcbiAqXHJcbiAqIEBhdXRob3IgTWljaGFlbCBCYXJsb3cgKFBoRVQgSW50ZXJhY3RpdmUgU2ltdWxhdGlvbnMpXHJcbiAqL1xyXG5cclxuaW1wb3J0IHF1bml0U3RhcnQgZnJvbSAnLi4vLi4vY2hpcHBlci9qcy9zaW0tdGVzdHMvcXVuaXRTdGFydC5qcyc7XHJcbmltcG9ydCAnLi4vLi4vc2NlbmVyeS9qcy91dGlsL1RyYWlsLmpzJzsgLy8gV2h5IGlzIFRyYWlsIG5vdCBhZGRlZCB0byBzY2VuZXJ5IG5hbWVzcGFjZSBmb3IgdGhlc2UgdGVzdHM/P1xyXG5pbXBvcnQgJy4vZmFyYWRheXMtbGF3L3ZpZXcvTWFnbmV0UmVnaW9uc1Rlc3RzLmpzJztcclxuXHJcbi8vIFNpbmNlIG91ciB0ZXN0cyBhcmUgbG9hZGVkIGFzeW5jaHJvbm91c2x5LCB3ZSBtdXN0IGRpcmVjdCBRVW5pdCB0byBiZWdpbiB0aGUgdGVzdHNcclxucXVuaXRTdGFydCgpOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxVQUFVLE1BQU0sMENBQTBDO0FBQ2pFLE9BQU8sZ0NBQWdDLENBQUMsQ0FBQztBQUN6QyxPQUFPLDJDQUEyQzs7QUFFbEQ7QUFDQUEsVUFBVSxDQUFDLENBQUMifQ==

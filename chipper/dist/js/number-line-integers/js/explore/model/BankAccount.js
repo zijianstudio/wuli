@@ -1,0 +1,49 @@
+// Copyright 2019-2021, University of Colorado Boulder
+
+/**
+ * model of a bank account
+ *
+ * @author John Blanco (PhET Interactive Simulations)
+ */
+
+import Emitter from '../../../../axon/js/Emitter.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import NumberIO from '../../../../tandem/js/types/NumberIO.js';
+import numberLineIntegers from '../../numberLineIntegers.js';
+class BankAccount {
+  /**
+   * @param {number} [initialBalance]
+   * @public
+   */
+  constructor(initialBalance = 0) {
+    // @public
+    this.balanceProperty = new NumberProperty(initialBalance);
+
+    // @public - An emitter that should be triggered to signal that the balance was changed due to interaction with
+    // the add/remove buttons rather than by dragging, reset, or other means.  The value should be +1 for an increase
+    // and -1 for a decrease.
+    this.balanceChangedByButtonEmitter = new Emitter({
+      parameters: [{
+        phetioType: NumberIO,
+        name: 'balanceChange'
+      }]
+    });
+
+    // @public (read-only) {Number|null} - previous balance, null if there is none
+    this.previousBalance = null;
+    this.balanceProperty.lazyLink((newBalance, oldBalance) => {
+      this.previousBalance = oldBalance;
+    });
+  }
+
+  /**
+   * Restore initial state.
+   * @public
+   */
+  reset() {
+    this.balanceProperty.reset();
+  }
+}
+numberLineIntegers.register('BankAccount', BankAccount);
+export default BankAccount;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFbWl0dGVyIiwiTnVtYmVyUHJvcGVydHkiLCJOdW1iZXJJTyIsIm51bWJlckxpbmVJbnRlZ2VycyIsIkJhbmtBY2NvdW50IiwiY29uc3RydWN0b3IiLCJpbml0aWFsQmFsYW5jZSIsImJhbGFuY2VQcm9wZXJ0eSIsImJhbGFuY2VDaGFuZ2VkQnlCdXR0b25FbWl0dGVyIiwicGFyYW1ldGVycyIsInBoZXRpb1R5cGUiLCJuYW1lIiwicHJldmlvdXNCYWxhbmNlIiwibGF6eUxpbmsiLCJuZXdCYWxhbmNlIiwib2xkQmFsYW5jZSIsInJlc2V0IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJCYW5rQWNjb3VudC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOS0yMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBtb2RlbCBvZiBhIGJhbmsgYWNjb3VudFxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvaG4gQmxhbmNvIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCBFbWl0dGVyIGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvRW1pdHRlci5qcyc7XHJcbmltcG9ydCBOdW1iZXJQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL051bWJlclByb3BlcnR5LmpzJztcclxuaW1wb3J0IE51bWJlcklPIGZyb20gJy4uLy4uLy4uLy4uL3RhbmRlbS9qcy90eXBlcy9OdW1iZXJJTy5qcyc7XHJcbmltcG9ydCBudW1iZXJMaW5lSW50ZWdlcnMgZnJvbSAnLi4vLi4vbnVtYmVyTGluZUludGVnZXJzLmpzJztcclxuXHJcbmNsYXNzIEJhbmtBY2NvdW50IHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IFtpbml0aWFsQmFsYW5jZV1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGluaXRpYWxCYWxhbmNlID0gMCApIHtcclxuXHJcbiAgICAvLyBAcHVibGljXHJcbiAgICB0aGlzLmJhbGFuY2VQcm9wZXJ0eSA9IG5ldyBOdW1iZXJQcm9wZXJ0eSggaW5pdGlhbEJhbGFuY2UgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIC0gQW4gZW1pdHRlciB0aGF0IHNob3VsZCBiZSB0cmlnZ2VyZWQgdG8gc2lnbmFsIHRoYXQgdGhlIGJhbGFuY2Ugd2FzIGNoYW5nZWQgZHVlIHRvIGludGVyYWN0aW9uIHdpdGhcclxuICAgIC8vIHRoZSBhZGQvcmVtb3ZlIGJ1dHRvbnMgcmF0aGVyIHRoYW4gYnkgZHJhZ2dpbmcsIHJlc2V0LCBvciBvdGhlciBtZWFucy4gIFRoZSB2YWx1ZSBzaG91bGQgYmUgKzEgZm9yIGFuIGluY3JlYXNlXHJcbiAgICAvLyBhbmQgLTEgZm9yIGEgZGVjcmVhc2UuXHJcbiAgICB0aGlzLmJhbGFuY2VDaGFuZ2VkQnlCdXR0b25FbWl0dGVyID0gbmV3IEVtaXR0ZXIoIHtcclxuICAgICAgcGFyYW1ldGVyczogWyB7IHBoZXRpb1R5cGU6IE51bWJlcklPLCBuYW1lOiAnYmFsYW5jZUNoYW5nZScgfSBdXHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7TnVtYmVyfG51bGx9IC0gcHJldmlvdXMgYmFsYW5jZSwgbnVsbCBpZiB0aGVyZSBpcyBub25lXHJcbiAgICB0aGlzLnByZXZpb3VzQmFsYW5jZSA9IG51bGw7XHJcblxyXG4gICAgdGhpcy5iYWxhbmNlUHJvcGVydHkubGF6eUxpbmsoICggbmV3QmFsYW5jZSwgb2xkQmFsYW5jZSApID0+IHtcclxuICAgICAgdGhpcy5wcmV2aW91c0JhbGFuY2UgPSBvbGRCYWxhbmNlO1xyXG4gICAgfSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVzdG9yZSBpbml0aWFsIHN0YXRlLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICByZXNldCgpIHtcclxuICAgIHRoaXMuYmFsYW5jZVByb3BlcnR5LnJlc2V0KCk7XHJcbiAgfVxyXG59XHJcblxyXG5udW1iZXJMaW5lSW50ZWdlcnMucmVnaXN0ZXIoICdCYW5rQWNjb3VudCcsIEJhbmtBY2NvdW50ICk7XHJcbmV4cG9ydCBkZWZhdWx0IEJhbmtBY2NvdW50OyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxPQUFPLE1BQU0sZ0NBQWdDO0FBQ3BELE9BQU9DLGNBQWMsTUFBTSx1Q0FBdUM7QUFDbEUsT0FBT0MsUUFBUSxNQUFNLHlDQUF5QztBQUM5RCxPQUFPQyxrQkFBa0IsTUFBTSw2QkFBNkI7QUFFNUQsTUFBTUMsV0FBVyxDQUFDO0VBRWhCO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLGNBQWMsR0FBRyxDQUFDLEVBQUc7SUFFaEM7SUFDQSxJQUFJLENBQUNDLGVBQWUsR0FBRyxJQUFJTixjQUFjLENBQUVLLGNBQWUsQ0FBQzs7SUFFM0Q7SUFDQTtJQUNBO0lBQ0EsSUFBSSxDQUFDRSw2QkFBNkIsR0FBRyxJQUFJUixPQUFPLENBQUU7TUFDaERTLFVBQVUsRUFBRSxDQUFFO1FBQUVDLFVBQVUsRUFBRVIsUUFBUTtRQUFFUyxJQUFJLEVBQUU7TUFBZ0IsQ0FBQztJQUMvRCxDQUFFLENBQUM7O0lBRUg7SUFDQSxJQUFJLENBQUNDLGVBQWUsR0FBRyxJQUFJO0lBRTNCLElBQUksQ0FBQ0wsZUFBZSxDQUFDTSxRQUFRLENBQUUsQ0FBRUMsVUFBVSxFQUFFQyxVQUFVLEtBQU07TUFDM0QsSUFBSSxDQUFDSCxlQUFlLEdBQUdHLFVBQVU7SUFDbkMsQ0FBRSxDQUFDO0VBQ0w7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUMsS0FBS0EsQ0FBQSxFQUFHO0lBQ04sSUFBSSxDQUFDVCxlQUFlLENBQUNTLEtBQUssQ0FBQyxDQUFDO0VBQzlCO0FBQ0Y7QUFFQWIsa0JBQWtCLENBQUNjLFFBQVEsQ0FBRSxhQUFhLEVBQUViLFdBQVksQ0FBQztBQUN6RCxlQUFlQSxXQUFXIn0=

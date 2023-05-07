@@ -1,0 +1,147 @@
+{
+  "my-solar-system.title": {
+    "value": "My Solar System"
+  },
+  "screen.intro": {
+    "value": "Intro"
+  },
+  "screen.lab": {
+    "value": "Lab"
+  },
+  "centerOfMass": {
+    "value": "Center of Mass"
+  },
+  "followCenterOfMass": {
+    "value": "Follow Center of Mass"
+  },
+  "returnBodies": {
+    "value": "Return Bodies"
+  },
+  "path": {
+    "value": "Path"
+  },
+  "dataPanel.X": {
+    "value": "x"
+  },
+  "dataPanel.Y": {
+    "value": "y"
+  },
+  "dataPanel.Vx": {
+    "value": "V<sub>x</sub>"
+  },
+  "dataPanel.Vy": {
+    "value": "V<sub>y</sub>"
+  },
+  "mass": {
+    "value": "Mass"
+  },
+  "dataPanel.mass": {
+    "value": "Mass"
+  },
+  "dataPanel.velocity": {
+    "value": "Velocity"
+  },
+  "dataPanel.position": {
+    "value": "Position"
+  },
+  "dataPanel.bodies": {
+    "value": "Bodies"
+  },
+  "dataPanel.moreData": {
+    "value": "More Data"
+  },
+  "mode.sunAndPlanet": {
+    "value": "Sun, Planet"
+  },
+  "mode.sunPlanetAndMoon": {
+    "value": "Sun, Planet, Moon"
+  },
+  "mode.sunPlanetAndComet": {
+    "value": "Sun, Planet, Comet"
+  },
+  "mode.trojanAsteroids": {
+    "value": "Trojan Asteroids"
+  },
+  "mode.ellipses": {
+    "value": "Ellipses"
+  },
+  "mode.hyperbolic": {
+    "value": "Hyperbolic"
+  },
+  "mode.slingshot": {
+    "value": "Slingshot"
+  },
+  "mode.doubleSlingshot": {
+    "value": "Double Slingshot"
+  },
+  "mode.binaryStarPlanet": {
+    "value": "Binary Star, Planet"
+  },
+  "mode.fourStarBallet": {
+    "value": "Four Star Ballet"
+  },
+  "mode.doubleDouble": {
+    "value": "Double Double"
+  },
+  "mode.custom": {
+    "value": "Custom"
+  },
+  "units.kg": {
+    "value": "10<sup>28</sup> kg"
+  },
+  "unitsInfo.title": {
+    "value": "Units Information"
+  },
+  "unitsInfo.content": {
+    "value": "<b>Note 1:</b> An Astronomical Unit (AU) is about 150 million kilometers. This is the average distance between the Sun and the Earth."
+  },
+  "unitsInfo.content2": {
+    "value": "<b>Note 2:</b> The mass values in this simulation range from 1 Jupiter mass to 1.5 Solar masses. All astronomical objects show a similar behavior under a strong gravitational field, including smaller planets, comets, and asteroids."
+  },
+  "unitsInfo.content3": {
+    "value": "<b>Note 3:</b> Due to the large range of values in the simulation, the gravity force vectors may sometimes be too small or too large to display. The gravity force vectors can be rescaled with the zoom control."
+  },
+  "pattern.labelParenthesesUnits": {
+    "value": "{{label}} ({{units}})"
+  },
+  "pattern.range": {
+    "value": "{{min}} to {{max}}"
+  },
+  "a11y": {
+    "moreData": {
+      "value": "More Data"
+    },
+    "info": {
+      "value": "Info"
+    },
+    "numberOfBodies": {
+      "value": "Number of Bodies"
+    },
+    "simDescription": {
+      "value": "{{My Solar System}} is an interactive sim. It changes as you play with it. It has a Play Area and a Control Area."
+    },
+    "introScreen": {
+      "screenSummary": {
+        "playAreaDescription": {
+          "value": "The Play Area is an observation window showing a scene with two planetary bodies. Experiment with the mass, velocity, location and direction of the two planetary bodies."
+        },
+        "controlAreaDescription": {
+          "value": "In the Control Area, there are options to add a grid and a measuring tape. You can also toggle on or off the path and values of your planetary bodies and also check their center of mass. The Control Area has options for how fast the action happens in the observation window including buttons to pause and step forward."
+        }
+      }
+    },
+    "labScreen": {
+      "screenSummary": {
+        "playAreaDescription": {
+          "value": "The Play Area is an observation window showing a scene with many options to set up your own experiments. Recreate our own Sun and Earth or make up your own solar system."
+        },
+        "controlAreaDescription": {
+          "value": "In the Control Area, there are options to view and change the area of the orbit and options to adjust and view orbital information. You can choose premade planetary alignments or choose your own, along with a Zoom in and out option. The Control Area has options for how fast the action happens in the observation window including buttons to pause and step forward."
+        }
+      },
+      "modeSelector": {
+        "value": "Mode Selector"
+      }
+    }
+  }
+}

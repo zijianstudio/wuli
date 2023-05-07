@@ -1,0 +1,32 @@
+{
+  "name": "pendulum-lab",
+  "version": "1.1.0-dev.5",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/pendulum-lab.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "PENDULUM_LAB",
+    "phetLibs": [
+      "griddle"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "simFeatures": {
+      "supportsSound": true
+    },
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

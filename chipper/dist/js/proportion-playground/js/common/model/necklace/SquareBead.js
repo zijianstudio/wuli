@@ -1,0 +1,25 @@
+// Copyright 2017-2020, University of Colorado Boulder
+
+/**
+ * Simple model for the position of a square bead
+ *
+ * @author Jonathan Olson
+ */
+
+import proportionPlayground from '../../../proportionPlayground.js';
+class SquareBead {
+  /**
+   * @param {Vector2} center - The center (in model coordinates) of the bead.
+   * @param {number} angle - Rotation applied to the bead, so it is aligned along the necklace's string.
+   */
+  constructor(center, angle) {
+    // @public {Vector2}
+    this.center = center;
+
+    // @public {number}
+    this.angle = angle;
+  }
+}
+proportionPlayground.register('SquareBead', SquareBead);
+export default SquareBead;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwcm9wb3J0aW9uUGxheWdyb3VuZCIsIlNxdWFyZUJlYWQiLCJjb25zdHJ1Y3RvciIsImNlbnRlciIsImFuZ2xlIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTcXVhcmVCZWFkLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFNpbXBsZSBtb2RlbCBmb3IgdGhlIHBvc2l0aW9uIG9mIGEgc3F1YXJlIGJlYWRcclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvblxyXG4gKi9cclxuXHJcbmltcG9ydCBwcm9wb3J0aW9uUGxheWdyb3VuZCBmcm9tICcuLi8uLi8uLi9wcm9wb3J0aW9uUGxheWdyb3VuZC5qcyc7XHJcblxyXG5jbGFzcyBTcXVhcmVCZWFkIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge1ZlY3RvcjJ9IGNlbnRlciAtIFRoZSBjZW50ZXIgKGluIG1vZGVsIGNvb3JkaW5hdGVzKSBvZiB0aGUgYmVhZC5cclxuICAgKiBAcGFyYW0ge251bWJlcn0gYW5nbGUgLSBSb3RhdGlvbiBhcHBsaWVkIHRvIHRoZSBiZWFkLCBzbyBpdCBpcyBhbGlnbmVkIGFsb25nIHRoZSBuZWNrbGFjZSdzIHN0cmluZy5cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggY2VudGVyLCBhbmdsZSApIHtcclxuXHJcbiAgICAvLyBAcHVibGljIHtWZWN0b3IyfVxyXG4gICAgdGhpcy5jZW50ZXIgPSBjZW50ZXI7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7bnVtYmVyfVxyXG4gICAgdGhpcy5hbmdsZSA9IGFuZ2xlO1xyXG4gIH1cclxufVxyXG5cclxucHJvcG9ydGlvblBsYXlncm91bmQucmVnaXN0ZXIoICdTcXVhcmVCZWFkJywgU3F1YXJlQmVhZCApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgU3F1YXJlQmVhZDtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLG9CQUFvQixNQUFNLGtDQUFrQztBQUVuRSxNQUFNQyxVQUFVLENBQUM7RUFDZjtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxNQUFNLEVBQUVDLEtBQUssRUFBRztJQUUzQjtJQUNBLElBQUksQ0FBQ0QsTUFBTSxHQUFHQSxNQUFNOztJQUVwQjtJQUNBLElBQUksQ0FBQ0MsS0FBSyxHQUFHQSxLQUFLO0VBQ3BCO0FBQ0Y7QUFFQUosb0JBQW9CLENBQUNLLFFBQVEsQ0FBRSxZQUFZLEVBQUVKLFVBQVcsQ0FBQztBQUV6RCxlQUFlQSxVQUFVIn0=

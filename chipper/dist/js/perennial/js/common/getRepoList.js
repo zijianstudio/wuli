@@ -1,0 +1,24 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * Returns a list of repositories based on data in perennial/data.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const fs = require('fs');
+
+/**
+ * Returns a list of repositories based on data in perennial/data.
+ * @public
+ *
+ * @param {string} name - The name of the list
+ * @returns {Array.<string>}
+ */
+module.exports = function (name) {
+  const contents = fs.readFileSync(`../perennial/data/${name}`, 'utf8').trim();
+
+  // Trim will remove any spaces and carriage returns if they are present.
+  return contents.split('\n').map(sim => sim.trim());
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmcyIsInJlcXVpcmUiLCJtb2R1bGUiLCJleHBvcnRzIiwibmFtZSIsImNvbnRlbnRzIiwicmVhZEZpbGVTeW5jIiwidHJpbSIsInNwbGl0IiwibWFwIiwic2ltIl0sInNvdXJjZXMiOlsiZ2V0UmVwb0xpc3QuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFJldHVybnMgYSBsaXN0IG9mIHJlcG9zaXRvcmllcyBiYXNlZCBvbiBkYXRhIGluIHBlcmVubmlhbC9kYXRhLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuY29uc3QgZnMgPSByZXF1aXJlKCAnZnMnICk7XHJcblxyXG4vKipcclxuICogUmV0dXJucyBhIGxpc3Qgb2YgcmVwb3NpdG9yaWVzIGJhc2VkIG9uIGRhdGEgaW4gcGVyZW5uaWFsL2RhdGEuXHJcbiAqIEBwdWJsaWNcclxuICpcclxuICogQHBhcmFtIHtzdHJpbmd9IG5hbWUgLSBUaGUgbmFtZSBvZiB0aGUgbGlzdFxyXG4gKiBAcmV0dXJucyB7QXJyYXkuPHN0cmluZz59XHJcbiAqL1xyXG5tb2R1bGUuZXhwb3J0cyA9IGZ1bmN0aW9uKCBuYW1lICkge1xyXG4gIGNvbnN0IGNvbnRlbnRzID0gZnMucmVhZEZpbGVTeW5jKCBgLi4vcGVyZW5uaWFsL2RhdGEvJHtuYW1lfWAsICd1dGY4JyApLnRyaW0oKTtcclxuXHJcbiAgLy8gVHJpbSB3aWxsIHJlbW92ZSBhbnkgc3BhY2VzIGFuZCBjYXJyaWFnZSByZXR1cm5zIGlmIHRoZXkgYXJlIHByZXNlbnQuXHJcbiAgcmV0dXJuIGNvbnRlbnRzLnNwbGl0KCAnXFxuJyApLm1hcCggc2ltID0+IHNpbS50cmltKCkgKTtcclxufTtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE1BQU1BLEVBQUUsR0FBR0MsT0FBTyxDQUFFLElBQUssQ0FBQzs7QUFFMUI7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQUMsTUFBTSxDQUFDQyxPQUFPLEdBQUcsVUFBVUMsSUFBSSxFQUFHO0VBQ2hDLE1BQU1DLFFBQVEsR0FBR0wsRUFBRSxDQUFDTSxZQUFZLENBQUcscUJBQW9CRixJQUFLLEVBQUMsRUFBRSxNQUFPLENBQUMsQ0FBQ0csSUFBSSxDQUFDLENBQUM7O0VBRTlFO0VBQ0EsT0FBT0YsUUFBUSxDQUFDRyxLQUFLLENBQUUsSUFBSyxDQUFDLENBQUNDLEdBQUcsQ0FBRUMsR0FBRyxJQUFJQSxHQUFHLENBQUNILElBQUksQ0FBQyxDQUFFLENBQUM7QUFDeEQsQ0FBQyJ9

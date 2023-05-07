@@ -1,0 +1,33 @@
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * Provides the SHA of the first SHA from a target that diverges from the second target
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const execute = require('./execute');
+const assert = require('assert');
+
+/**
+ * Provides the SHA of the first SHA from a target that diverges from the second target
+ * @public
+ *
+ * e.g. to get the first commit of acid-base-solutions' 1.2 branch that does not exist in master:
+ *
+ *   gitFirstDivergingCommit( 'acid-base-solutions', '1.2', 'master' )
+ *
+ * @param {string} repo - The repository name
+ * @param {string} primaryTarget - Branch/SHA
+ * @param {string} secondaryTarget - Branch/SHA
+ * @returns {Promise.<string>} - Resolves to the SHA
+ */
+module.exports = function (repo, primaryTarget, secondaryTarget) {
+  assert(typeof repo === 'string');
+  assert(typeof primaryTarget === 'string');
+  assert(typeof secondaryTarget === 'string');
+  return execute('git', ['log', `${secondaryTarget}...${primaryTarget}`, '--reverse', '--pretty=oneline'], `../${repo}`).then(stdout => {
+    return Promise.resolve(stdout.trim().split('\n')[0].trim().split(' ')[0]);
+  });
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleGVjdXRlIiwicmVxdWlyZSIsImFzc2VydCIsIm1vZHVsZSIsImV4cG9ydHMiLCJyZXBvIiwicHJpbWFyeVRhcmdldCIsInNlY29uZGFyeVRhcmdldCIsInRoZW4iLCJzdGRvdXQiLCJQcm9taXNlIiwicmVzb2x2ZSIsInRyaW0iLCJzcGxpdCJdLCJzb3VyY2VzIjpbImdpdEZpcnN0RGl2ZXJnaW5nQ29tbWl0LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBQcm92aWRlcyB0aGUgU0hBIG9mIHRoZSBmaXJzdCBTSEEgZnJvbSBhIHRhcmdldCB0aGF0IGRpdmVyZ2VzIGZyb20gdGhlIHNlY29uZCB0YXJnZXRcclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmNvbnN0IGV4ZWN1dGUgPSByZXF1aXJlKCAnLi9leGVjdXRlJyApO1xyXG5jb25zdCBhc3NlcnQgPSByZXF1aXJlKCAnYXNzZXJ0JyApO1xyXG5cclxuLyoqXHJcbiAqIFByb3ZpZGVzIHRoZSBTSEEgb2YgdGhlIGZpcnN0IFNIQSBmcm9tIGEgdGFyZ2V0IHRoYXQgZGl2ZXJnZXMgZnJvbSB0aGUgc2Vjb25kIHRhcmdldFxyXG4gKiBAcHVibGljXHJcbiAqXHJcbiAqIGUuZy4gdG8gZ2V0IHRoZSBmaXJzdCBjb21taXQgb2YgYWNpZC1iYXNlLXNvbHV0aW9ucycgMS4yIGJyYW5jaCB0aGF0IGRvZXMgbm90IGV4aXN0IGluIG1hc3RlcjpcclxuICpcclxuICogICBnaXRGaXJzdERpdmVyZ2luZ0NvbW1pdCggJ2FjaWQtYmFzZS1zb2x1dGlvbnMnLCAnMS4yJywgJ21hc3RlcicgKVxyXG4gKlxyXG4gKiBAcGFyYW0ge3N0cmluZ30gcmVwbyAtIFRoZSByZXBvc2l0b3J5IG5hbWVcclxuICogQHBhcmFtIHtzdHJpbmd9IHByaW1hcnlUYXJnZXQgLSBCcmFuY2gvU0hBXHJcbiAqIEBwYXJhbSB7c3RyaW5nfSBzZWNvbmRhcnlUYXJnZXQgLSBCcmFuY2gvU0hBXHJcbiAqIEByZXR1cm5zIHtQcm9taXNlLjxzdHJpbmc+fSAtIFJlc29sdmVzIHRvIHRoZSBTSEFcclxuICovXHJcbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24oIHJlcG8sIHByaW1hcnlUYXJnZXQsIHNlY29uZGFyeVRhcmdldCApIHtcclxuICBhc3NlcnQoIHR5cGVvZiByZXBvID09PSAnc3RyaW5nJyApO1xyXG4gIGFzc2VydCggdHlwZW9mIHByaW1hcnlUYXJnZXQgPT09ICdzdHJpbmcnICk7XHJcbiAgYXNzZXJ0KCB0eXBlb2Ygc2Vjb25kYXJ5VGFyZ2V0ID09PSAnc3RyaW5nJyApO1xyXG5cclxuICByZXR1cm4gZXhlY3V0ZSggJ2dpdCcsIFsgJ2xvZycsIGAke3NlY29uZGFyeVRhcmdldH0uLi4ke3ByaW1hcnlUYXJnZXR9YCwgJy0tcmV2ZXJzZScsICctLXByZXR0eT1vbmVsaW5lJyBdLCBgLi4vJHtyZXBvfWAgKS50aGVuKCBzdGRvdXQgPT4ge1xyXG4gICAgcmV0dXJuIFByb21pc2UucmVzb2x2ZSggc3Rkb3V0LnRyaW0oKS5zcGxpdCggJ1xcbicgKVsgMCBdLnRyaW0oKS5zcGxpdCggJyAnIClbIDAgXSApO1xyXG4gIH0gKTtcclxufTtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE1BQU1BLE9BQU8sR0FBR0MsT0FBTyxDQUFFLFdBQVksQ0FBQztBQUN0QyxNQUFNQyxNQUFNLEdBQUdELE9BQU8sQ0FBRSxRQUFTLENBQUM7O0FBRWxDO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0FFLE1BQU0sQ0FBQ0MsT0FBTyxHQUFHLFVBQVVDLElBQUksRUFBRUMsYUFBYSxFQUFFQyxlQUFlLEVBQUc7RUFDaEVMLE1BQU0sQ0FBRSxPQUFPRyxJQUFJLEtBQUssUUFBUyxDQUFDO0VBQ2xDSCxNQUFNLENBQUUsT0FBT0ksYUFBYSxLQUFLLFFBQVMsQ0FBQztFQUMzQ0osTUFBTSxDQUFFLE9BQU9LLGVBQWUsS0FBSyxRQUFTLENBQUM7RUFFN0MsT0FBT1AsT0FBTyxDQUFFLEtBQUssRUFBRSxDQUFFLEtBQUssRUFBRyxHQUFFTyxlQUFnQixNQUFLRCxhQUFjLEVBQUMsRUFBRSxXQUFXLEVBQUUsa0JBQWtCLENBQUUsRUFBRyxNQUFLRCxJQUFLLEVBQUUsQ0FBQyxDQUFDRyxJQUFJLENBQUVDLE1BQU0sSUFBSTtJQUN6SSxPQUFPQyxPQUFPLENBQUNDLE9BQU8sQ0FBRUYsTUFBTSxDQUFDRyxJQUFJLENBQUMsQ0FBQyxDQUFDQyxLQUFLLENBQUUsSUFBSyxDQUFDLENBQUUsQ0FBQyxDQUFFLENBQUNELElBQUksQ0FBQyxDQUFDLENBQUNDLEtBQUssQ0FBRSxHQUFJLENBQUMsQ0FBRSxDQUFDLENBQUcsQ0FBQztFQUNyRixDQUFFLENBQUM7QUFDTCxDQUFDIn0=

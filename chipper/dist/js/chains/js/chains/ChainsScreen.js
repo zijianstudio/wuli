@@ -1,0 +1,23 @@
+// Copyright 2015-2021, University of Colorado Boulder
+
+/**
+ * The 'Chains' screen.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import Screen from '../../../joist/js/Screen.js';
+import chains from '../chains.js';
+import ChainsView from './view/ChainsView.js';
+class ChainsScreen extends Screen {
+  constructor(tandem) {
+    super(() => {
+      return {};
+    }, model => new ChainsView(model, tandem.createTandem('view')), {
+      tandem: tandem
+    });
+  }
+}
+chains.register('ChainsScreen', ChainsScreen);
+export default ChainsScreen;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTY3JlZW4iLCJjaGFpbnMiLCJDaGFpbnNWaWV3IiwiQ2hhaW5zU2NyZWVuIiwiY29uc3RydWN0b3IiLCJ0YW5kZW0iLCJtb2RlbCIsImNyZWF0ZVRhbmRlbSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiQ2hhaW5zU2NyZWVuLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE1LTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFRoZSAnQ2hhaW5zJyBzY3JlZW4uXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IFNjcmVlbiBmcm9tICcuLi8uLi8uLi9qb2lzdC9qcy9TY3JlZW4uanMnO1xyXG5pbXBvcnQgY2hhaW5zIGZyb20gJy4uL2NoYWlucy5qcyc7XHJcbmltcG9ydCBDaGFpbnNWaWV3IGZyb20gJy4vdmlldy9DaGFpbnNWaWV3LmpzJztcclxuXHJcbmNsYXNzIENoYWluc1NjcmVlbiBleHRlbmRzIFNjcmVlbiB7XHJcbiAgY29uc3RydWN0b3IoIHRhbmRlbSApIHtcclxuICAgIHN1cGVyKFxyXG4gICAgICAoKSA9PiB7cmV0dXJuIHt9O30sXHJcbiAgICAgIG1vZGVsID0+IG5ldyBDaGFpbnNWaWV3KCBtb2RlbCwgdGFuZGVtLmNyZWF0ZVRhbmRlbSggJ3ZpZXcnICkgKSwge1xyXG4gICAgICAgIHRhbmRlbTogdGFuZGVtXHJcbiAgICAgIH1cclxuICAgICk7XHJcbiAgfVxyXG59XHJcblxyXG5jaGFpbnMucmVnaXN0ZXIoICdDaGFpbnNTY3JlZW4nLCBDaGFpbnNTY3JlZW4gKTtcclxuZXhwb3J0IGRlZmF1bHQgQ2hhaW5zU2NyZWVuOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxNQUFNLE1BQU0sNkJBQTZCO0FBQ2hELE9BQU9DLE1BQU0sTUFBTSxjQUFjO0FBQ2pDLE9BQU9DLFVBQVUsTUFBTSxzQkFBc0I7QUFFN0MsTUFBTUMsWUFBWSxTQUFTSCxNQUFNLENBQUM7RUFDaENJLFdBQVdBLENBQUVDLE1BQU0sRUFBRztJQUNwQixLQUFLLENBQ0gsTUFBTTtNQUFDLE9BQU8sQ0FBQyxDQUFDO0lBQUMsQ0FBQyxFQUNsQkMsS0FBSyxJQUFJLElBQUlKLFVBQVUsQ0FBRUksS0FBSyxFQUFFRCxNQUFNLENBQUNFLFlBQVksQ0FBRSxNQUFPLENBQUUsQ0FBQyxFQUFFO01BQy9ERixNQUFNLEVBQUVBO0lBQ1YsQ0FDRixDQUFDO0VBQ0g7QUFDRjtBQUVBSixNQUFNLENBQUNPLFFBQVEsQ0FBRSxjQUFjLEVBQUVMLFlBQWEsQ0FBQztBQUMvQyxlQUFlQSxZQUFZIn0=

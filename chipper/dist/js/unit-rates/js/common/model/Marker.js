@@ -1,0 +1,96 @@
+// Copyright 2017-2023, University of Colorado Boulder
+
+/**
+ * Model of a marker, used to indicate a rate on the double number line.
+ * Markers can be major or minor (with semantics similar to major and minor tick marks on a slider).
+ * Markers have an associated creator, which determines their precedence; markers created by higher precedence creators
+ * will replace markers created by lower precedence creators.  For example, a marker created by answering a question
+ * will replace a marker that was created with the marker editor.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import Property from '../../../../axon/js/Property.js';
+import merge from '../../../../phet-core/js/merge.js';
+import unitRates from '../../unitRates.js';
+
+// constants
+// how the marker was created, ordered by ascending precedence
+const CREATOR_VALUES = ['editor', 'scale', 'question', 'race'];
+export default class Marker {
+  /**
+   * @param {number} numerator
+   * @param {number} denominator
+   * @param {string} creator - indicates how the marker was created, see CREATOR_VALUES
+   * @param {Object} [options]
+   */
+  constructor(numerator, denominator, creator, options) {
+    options = merge({
+      isMajor: true,
+      // {boolean} true: major marker, false: minor marker
+      color: 'black',
+      // {Color|string} color used to render the marker
+      erasable: true // {boolean} is this marker erased when the Eraser button is pressed?
+    }, options);
+    assert && assert(_.includes(CREATOR_VALUES, creator), `invalid creator: ${creator}`);
+
+    // @public
+    this.numeratorProperty = new NumberProperty(numerator);
+    this.denominatorProperty = new NumberProperty(denominator);
+    this.colorProperty = new Property(options.color);
+    this.erasable = options.erasable;
+
+    // @public (read-only)
+    this.creator = creator;
+    this.isMajor = options.isMajor;
+  }
+
+  /**
+   * String representation. For debugging and logging only. Do not rely on the format of this!
+   * @returns {string}
+   * @public
+   */
+  toString() {
+    return `${'Marker[' + ' rate='}${this.numeratorProperty.value}/${this.denominatorProperty.value} creator=${this.creator} isMajor=${this.isMajor} erasable=${this.erasable} ]`;
+  }
+
+  /**
+   * Does the specified marker conflict with this one?
+   * Two markers conflict if they have the same numerator or denominator.
+   * This is possible due to rounding errors.
+   * See https://github.com/phetsims/unit-rates/issues/148.
+   * @param {Marker} marker
+   * @returns {boolean}
+   * @public
+   */
+  conflictsWith(marker) {
+    assert && assert(marker instanceof Marker);
+    return marker.numeratorProperty.value === this.numeratorProperty.value || marker.denominatorProperty.value === this.denominatorProperty.value;
+  }
+
+  /**
+   * Gets the precedence of the specified marker, relative to this marker.
+   * @param {Marker} marker
+   * @returns {number}
+   *    1 : marker has higher precedence
+   *   -1 : marker has lower precedence
+   *    0 : marker has same precedence
+   * @public
+   */
+  precedenceOf(marker) {
+    const thisIndex = CREATOR_VALUES.indexOf(this.creator);
+    assert && assert(thisIndex !== -1, `invalid creator: ${this.creator}`);
+    const thatIndex = CREATOR_VALUES.indexOf(marker.creator);
+    assert && assert(thatIndex !== -1, `invalid creator: ${marker.creator}`);
+    if (thatIndex > thisIndex) {
+      return 1;
+    } else if (thatIndex < thisIndex) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+}
+unitRates.register('Marker', Marker);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOdW1iZXJQcm9wZXJ0eSIsIlByb3BlcnR5IiwibWVyZ2UiLCJ1bml0UmF0ZXMiLCJDUkVBVE9SX1ZBTFVFUyIsIk1hcmtlciIsImNvbnN0cnVjdG9yIiwibnVtZXJhdG9yIiwiZGVub21pbmF0b3IiLCJjcmVhdG9yIiwib3B0aW9ucyIsImlzTWFqb3IiLCJjb2xvciIsImVyYXNhYmxlIiwiYXNzZXJ0IiwiXyIsImluY2x1ZGVzIiwibnVtZXJhdG9yUHJvcGVydHkiLCJkZW5vbWluYXRvclByb3BlcnR5IiwiY29sb3JQcm9wZXJ0eSIsInRvU3RyaW5nIiwidmFsdWUiLCJjb25mbGljdHNXaXRoIiwibWFya2VyIiwicHJlY2VkZW5jZU9mIiwidGhpc0luZGV4IiwiaW5kZXhPZiIsInRoYXRJbmRleCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiTWFya2VyLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE1vZGVsIG9mIGEgbWFya2VyLCB1c2VkIHRvIGluZGljYXRlIGEgcmF0ZSBvbiB0aGUgZG91YmxlIG51bWJlciBsaW5lLlxyXG4gKiBNYXJrZXJzIGNhbiBiZSBtYWpvciBvciBtaW5vciAod2l0aCBzZW1hbnRpY3Mgc2ltaWxhciB0byBtYWpvciBhbmQgbWlub3IgdGljayBtYXJrcyBvbiBhIHNsaWRlcikuXHJcbiAqIE1hcmtlcnMgaGF2ZSBhbiBhc3NvY2lhdGVkIGNyZWF0b3IsIHdoaWNoIGRldGVybWluZXMgdGhlaXIgcHJlY2VkZW5jZTsgbWFya2VycyBjcmVhdGVkIGJ5IGhpZ2hlciBwcmVjZWRlbmNlIGNyZWF0b3JzXHJcbiAqIHdpbGwgcmVwbGFjZSBtYXJrZXJzIGNyZWF0ZWQgYnkgbG93ZXIgcHJlY2VkZW5jZSBjcmVhdG9ycy4gIEZvciBleGFtcGxlLCBhIG1hcmtlciBjcmVhdGVkIGJ5IGFuc3dlcmluZyBhIHF1ZXN0aW9uXHJcbiAqIHdpbGwgcmVwbGFjZSBhIG1hcmtlciB0aGF0IHdhcyBjcmVhdGVkIHdpdGggdGhlIG1hcmtlciBlZGl0b3IuXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IE51bWJlclByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvTnVtYmVyUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9Qcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBtZXJnZSBmcm9tICcuLi8uLi8uLi8uLi9waGV0LWNvcmUvanMvbWVyZ2UuanMnO1xyXG5pbXBvcnQgdW5pdFJhdGVzIGZyb20gJy4uLy4uL3VuaXRSYXRlcy5qcyc7XHJcblxyXG4vLyBjb25zdGFudHNcclxuLy8gaG93IHRoZSBtYXJrZXIgd2FzIGNyZWF0ZWQsIG9yZGVyZWQgYnkgYXNjZW5kaW5nIHByZWNlZGVuY2VcclxuY29uc3QgQ1JFQVRPUl9WQUxVRVMgPSBbICdlZGl0b3InLCAnc2NhbGUnLCAncXVlc3Rpb24nLCAncmFjZScgXTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIE1hcmtlciB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBudW1lcmF0b3JcclxuICAgKiBAcGFyYW0ge251bWJlcn0gZGVub21pbmF0b3JcclxuICAgKiBAcGFyYW0ge3N0cmluZ30gY3JlYXRvciAtIGluZGljYXRlcyBob3cgdGhlIG1hcmtlciB3YXMgY3JlYXRlZCwgc2VlIENSRUFUT1JfVkFMVUVTXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBudW1lcmF0b3IsIGRlbm9taW5hdG9yLCBjcmVhdG9yLCBvcHRpb25zICkge1xyXG5cclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICBpc01ham9yOiB0cnVlLCAvLyB7Ym9vbGVhbn0gdHJ1ZTogbWFqb3IgbWFya2VyLCBmYWxzZTogbWlub3IgbWFya2VyXHJcbiAgICAgIGNvbG9yOiAnYmxhY2snLCAvLyB7Q29sb3J8c3RyaW5nfSBjb2xvciB1c2VkIHRvIHJlbmRlciB0aGUgbWFya2VyXHJcbiAgICAgIGVyYXNhYmxlOiB0cnVlIC8vIHtib29sZWFufSBpcyB0aGlzIG1hcmtlciBlcmFzZWQgd2hlbiB0aGUgRXJhc2VyIGJ1dHRvbiBpcyBwcmVzc2VkP1xyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIF8uaW5jbHVkZXMoIENSRUFUT1JfVkFMVUVTLCBjcmVhdG9yICksIGBpbnZhbGlkIGNyZWF0b3I6ICR7Y3JlYXRvcn1gICk7XHJcblxyXG4gICAgLy8gQHB1YmxpY1xyXG4gICAgdGhpcy5udW1lcmF0b3JQcm9wZXJ0eSA9IG5ldyBOdW1iZXJQcm9wZXJ0eSggbnVtZXJhdG9yICk7XHJcbiAgICB0aGlzLmRlbm9taW5hdG9yUHJvcGVydHkgPSBuZXcgTnVtYmVyUHJvcGVydHkoIGRlbm9taW5hdG9yICk7XHJcbiAgICB0aGlzLmNvbG9yUHJvcGVydHkgPSBuZXcgUHJvcGVydHkoIG9wdGlvbnMuY29sb3IgKTtcclxuICAgIHRoaXMuZXJhc2FibGUgPSBvcHRpb25zLmVyYXNhYmxlO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSlcclxuICAgIHRoaXMuY3JlYXRvciA9IGNyZWF0b3I7XHJcbiAgICB0aGlzLmlzTWFqb3IgPSBvcHRpb25zLmlzTWFqb3I7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBTdHJpbmcgcmVwcmVzZW50YXRpb24uIEZvciBkZWJ1Z2dpbmcgYW5kIGxvZ2dpbmcgb25seS4gRG8gbm90IHJlbHkgb24gdGhlIGZvcm1hdCBvZiB0aGlzIVxyXG4gICAqIEByZXR1cm5zIHtzdHJpbmd9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIHRvU3RyaW5nKCkge1xyXG4gICAgcmV0dXJuIGAkeydNYXJrZXJbJyArXHJcbiAgICAgICAgICAgICAgJyByYXRlPSd9JHt0aGlzLm51bWVyYXRvclByb3BlcnR5LnZhbHVlfS8ke3RoaXMuZGVub21pbmF0b3JQcm9wZXJ0eS52YWx1ZVxyXG4gICAgfSBjcmVhdG9yPSR7dGhpcy5jcmVhdG9yXHJcbiAgICB9IGlzTWFqb3I9JHt0aGlzLmlzTWFqb3JcclxuICAgIH0gZXJhc2FibGU9JHt0aGlzLmVyYXNhYmxlXHJcbiAgICB9IF1gO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogRG9lcyB0aGUgc3BlY2lmaWVkIG1hcmtlciBjb25mbGljdCB3aXRoIHRoaXMgb25lP1xyXG4gICAqIFR3byBtYXJrZXJzIGNvbmZsaWN0IGlmIHRoZXkgaGF2ZSB0aGUgc2FtZSBudW1lcmF0b3Igb3IgZGVub21pbmF0b3IuXHJcbiAgICogVGhpcyBpcyBwb3NzaWJsZSBkdWUgdG8gcm91bmRpbmcgZXJyb3JzLlxyXG4gICAqIFNlZSBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvdW5pdC1yYXRlcy9pc3N1ZXMvMTQ4LlxyXG4gICAqIEBwYXJhbSB7TWFya2VyfSBtYXJrZXJcclxuICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgY29uZmxpY3RzV2l0aCggbWFya2VyICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggbWFya2VyIGluc3RhbmNlb2YgTWFya2VyICk7XHJcbiAgICByZXR1cm4gKCBtYXJrZXIubnVtZXJhdG9yUHJvcGVydHkudmFsdWUgPT09IHRoaXMubnVtZXJhdG9yUHJvcGVydHkudmFsdWUgKSB8fFxyXG4gICAgICAgICAgICggbWFya2VyLmRlbm9taW5hdG9yUHJvcGVydHkudmFsdWUgPT09IHRoaXMuZGVub21pbmF0b3JQcm9wZXJ0eS52YWx1ZSApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0cyB0aGUgcHJlY2VkZW5jZSBvZiB0aGUgc3BlY2lmaWVkIG1hcmtlciwgcmVsYXRpdmUgdG8gdGhpcyBtYXJrZXIuXHJcbiAgICogQHBhcmFtIHtNYXJrZXJ9IG1hcmtlclxyXG4gICAqIEByZXR1cm5zIHtudW1iZXJ9XHJcbiAgICogICAgMSA6IG1hcmtlciBoYXMgaGlnaGVyIHByZWNlZGVuY2VcclxuICAgKiAgIC0xIDogbWFya2VyIGhhcyBsb3dlciBwcmVjZWRlbmNlXHJcbiAgICogICAgMCA6IG1hcmtlciBoYXMgc2FtZSBwcmVjZWRlbmNlXHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIHByZWNlZGVuY2VPZiggbWFya2VyICkge1xyXG5cclxuICAgIGNvbnN0IHRoaXNJbmRleCA9IENSRUFUT1JfVkFMVUVTLmluZGV4T2YoIHRoaXMuY3JlYXRvciApO1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggdGhpc0luZGV4ICE9PSAtMSwgYGludmFsaWQgY3JlYXRvcjogJHt0aGlzLmNyZWF0b3J9YCApO1xyXG5cclxuICAgIGNvbnN0IHRoYXRJbmRleCA9IENSRUFUT1JfVkFMVUVTLmluZGV4T2YoIG1hcmtlci5jcmVhdG9yICk7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCB0aGF0SW5kZXggIT09IC0xLCBgaW52YWxpZCBjcmVhdG9yOiAke21hcmtlci5jcmVhdG9yfWAgKTtcclxuXHJcbiAgICBpZiAoIHRoYXRJbmRleCA+IHRoaXNJbmRleCApIHtcclxuICAgICAgcmV0dXJuIDE7XHJcbiAgICB9XHJcbiAgICBlbHNlIGlmICggdGhhdEluZGV4IDwgdGhpc0luZGV4ICkge1xyXG4gICAgICByZXR1cm4gLTE7XHJcbiAgICB9XHJcbiAgICBlbHNlIHtcclxuICAgICAgcmV0dXJuIDA7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG51bml0UmF0ZXMucmVnaXN0ZXIoICdNYXJrZXInLCBNYXJrZXIgKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxjQUFjLE1BQU0sdUNB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

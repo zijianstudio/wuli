@@ -1,0 +1,29 @@
+// Copyright 2017-2023, University of Colorado Boulder
+
+/**
+ * Button that resets a race in the 'Racing Lab' screen.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import { Image } from '../../../../scenery/js/imports.js';
+import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
+import resetRaceButton_png from '../../../images/resetRaceButton_png.js';
+import unitRates from '../../unitRates.js';
+export default class ResetRaceButton extends RectangularPushButton {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    super(merge({
+      content: new Image(resetRaceButton_png, {
+        scale: 0.5
+      }),
+      xMargin: 12,
+      yMargin: 8
+    }, options));
+  }
+}
+unitRates.register('ResetRaceButton', ResetRaceButton);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIkltYWdlIiwiUmVjdGFuZ3VsYXJQdXNoQnV0dG9uIiwicmVzZXRSYWNlQnV0dG9uX3BuZyIsInVuaXRSYXRlcyIsIlJlc2V0UmFjZUJ1dHRvbiIsImNvbnN0cnVjdG9yIiwib3B0aW9ucyIsImNvbnRlbnQiLCJzY2FsZSIsInhNYXJnaW4iLCJ5TWFyZ2luIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSZXNldFJhY2VCdXR0b24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQnV0dG9uIHRoYXQgcmVzZXRzIGEgcmFjZSBpbiB0aGUgJ1JhY2luZyBMYWInIHNjcmVlbi5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5pbXBvcnQgbWVyZ2UgZnJvbSAnLi4vLi4vLi4vLi4vcGhldC1jb3JlL2pzL21lcmdlLmpzJztcclxuaW1wb3J0IHsgSW1hZ2UgfSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgUmVjdGFuZ3VsYXJQdXNoQnV0dG9uIGZyb20gJy4uLy4uLy4uLy4uL3N1bi9qcy9idXR0b25zL1JlY3Rhbmd1bGFyUHVzaEJ1dHRvbi5qcyc7XHJcbmltcG9ydCByZXNldFJhY2VCdXR0b25fcG5nIGZyb20gJy4uLy4uLy4uL2ltYWdlcy9yZXNldFJhY2VCdXR0b25fcG5nLmpzJztcclxuaW1wb3J0IHVuaXRSYXRlcyBmcm9tICcuLi8uLi91bml0UmF0ZXMuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgUmVzZXRSYWNlQnV0dG9uIGV4dGVuZHMgUmVjdGFuZ3VsYXJQdXNoQnV0dG9uIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBvcHRpb25zICkge1xyXG4gICAgc3VwZXIoIG1lcmdlKCB7XHJcbiAgICAgIGNvbnRlbnQ6IG5ldyBJbWFnZSggcmVzZXRSYWNlQnV0dG9uX3BuZywgeyBzY2FsZTogMC41IH0gKSxcclxuICAgICAgeE1hcmdpbjogMTIsXHJcbiAgICAgIHlNYXJnaW46IDhcclxuICAgIH0sIG9wdGlvbnMgKSApO1xyXG4gIH1cclxufVxyXG5cclxudW5pdFJhdGVzLnJlZ2lzdGVyKCAnUmVzZXRSYWNlQnV0dG9uJywgUmVzZXRSYWNlQnV0dG9uICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsU0FBU0MsS0FBSyxRQUFRLG1DQUFtQztBQUN6RCxPQUFPQyxxQkFBcUIsTUFBTSxxREFBcUQ7QUFDdkYsT0FBT0MsbUJBQW1CLE1BQU0sd0NBQXdDO0FBQ3hFLE9BQU9DLFNBQVMsTUFBTSxvQkFBb0I7QUFFMUMsZUFBZSxNQUFNQyxlQUFlLFNBQVNILHFCQUFxQixDQUFDO0VBRWpFO0FBQ0Y7QUFDQTtFQUNFSSxXQUFXQSxDQUFFQyxPQUFPLEVBQUc7SUFDckIsS0FBSyxDQUFFUCxLQUFLLENBQUU7TUFDWlEsT0FBTyxFQUFFLElBQUlQLEtBQUssQ0FBRUUsbUJBQW1CLEVBQUU7UUFBRU0sS0FBSyxFQUFFO01BQUksQ0FBRSxDQUFDO01BQ3pEQyxPQUFPLEVBQUUsRUFBRTtNQUNYQyxPQUFPLEVBQUU7SUFDWCxDQUFDLEVBQUVKLE9BQVEsQ0FBRSxDQUFDO0VBQ2hCO0FBQ0Y7QUFFQUgsU0FBUyxDQUFDUSxRQUFRLENBQUUsaUJBQWlCLEVBQUVQLGVBQWdCLENBQUMifQ==

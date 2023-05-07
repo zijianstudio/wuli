@@ -1,0 +1,29 @@
+// Copyright 2020-2022, University of Colorado Boulder
+
+/**
+ * Caches the results of previous single-argument function applications to the same object.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import phetCore from './phetCore.js';
+
+/**
+ * @param func - Should take one argument
+ * @returns - Returns a function that is equivalent, but caches values from previous keys
+ */
+function memoize(func) {
+  const map = new Map();
+  return key => {
+    if (map.has(key)) {
+      return map.get(key);
+    } else {
+      const value = func(key);
+      map.set(key, value);
+      return value;
+    }
+  };
+}
+phetCore.register('memoize', memoize);
+export default memoize;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwaGV0Q29yZSIsIm1lbW9pemUiLCJmdW5jIiwibWFwIiwiTWFwIiwia2V5IiwiaGFzIiwiZ2V0IiwidmFsdWUiLCJzZXQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIm1lbW9pemUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ2FjaGVzIHRoZSByZXN1bHRzIG9mIHByZXZpb3VzIHNpbmdsZS1hcmd1bWVudCBmdW5jdGlvbiBhcHBsaWNhdGlvbnMgdG8gdGhlIHNhbWUgb2JqZWN0LlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IHBoZXRDb3JlIGZyb20gJy4vcGhldENvcmUuanMnO1xyXG5cclxuLyoqXHJcbiAqIEBwYXJhbSBmdW5jIC0gU2hvdWxkIHRha2Ugb25lIGFyZ3VtZW50XHJcbiAqIEByZXR1cm5zIC0gUmV0dXJucyBhIGZ1bmN0aW9uIHRoYXQgaXMgZXF1aXZhbGVudCwgYnV0IGNhY2hlcyB2YWx1ZXMgZnJvbSBwcmV2aW91cyBrZXlzXHJcbiAqL1xyXG5mdW5jdGlvbiBtZW1vaXplPEtleSwgVmFsdWU+KCBmdW5jOiAoIGs6IEtleSApID0+IFZhbHVlICk6ICggazogS2V5ICkgPT4gVmFsdWUge1xyXG4gIGNvbnN0IG1hcCA9IG5ldyBNYXA8S2V5LCBWYWx1ZT4oKTtcclxuXHJcbiAgcmV0dXJuICgga2V5OiBLZXkgKTogVmFsdWUgPT4ge1xyXG4gICAgaWYgKCBtYXAuaGFzKCBrZXkgKSApIHtcclxuICAgICAgcmV0dXJuIG1hcC5nZXQoIGtleSApITtcclxuICAgIH1cclxuICAgIGVsc2Uge1xyXG4gICAgICBjb25zdCB2YWx1ZSA9IGZ1bmMoIGtleSApO1xyXG4gICAgICBtYXAuc2V0KCBrZXksIHZhbHVlICk7XHJcbiAgICAgIHJldHVybiB2YWx1ZTtcclxuICAgIH1cclxuICB9O1xyXG59XHJcblxyXG5waGV0Q29yZS5yZWdpc3RlciggJ21lbW9pemUnLCBtZW1vaXplICk7XHJcbmV4cG9ydCBkZWZhdWx0IG1lbW9pemU7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLFFBQVEsTUFBTSxlQUFlOztBQUVwQztBQUNBO0FBQ0E7QUFDQTtBQUNBLFNBQVNDLE9BQU9BLENBQWNDLElBQXlCLEVBQXdCO0VBQzdFLE1BQU1DLEdBQUcsR0FBRyxJQUFJQyxHQUFHLENBQWEsQ0FBQztFQUVqQyxPQUFTQyxHQUFRLElBQWE7SUFDNUIsSUFBS0YsR0FBRyxDQUFDRyxHQUFHLENBQUVELEdBQUksQ0FBQyxFQUFHO01BQ3BCLE9BQU9GLEdBQUcsQ0FBQ0ksR0FBRyxDQUFFRixHQUFJLENBQUM7SUFDdkIsQ0FBQyxNQUNJO01BQ0gsTUFBTUcsS0FBSyxHQUFHTixJQUFJLENBQUVHLEdBQUksQ0FBQztNQUN6QkYsR0FBRyxDQUFDTSxHQUFHLENBQUVKLEdBQUcsRUFBRUcsS0FBTSxDQUFDO01BQ3JCLE9BQU9BLEtBQUs7SUFDZDtFQUNGLENBQUM7QUFDSDtBQUVBUixRQUFRLENBQUNVLFFBQVEsQ0FBRSxTQUFTLEVBQUVULE9BQVEsQ0FBQztBQUN2QyxlQUFlQSxPQUFPIn0=

@@ -1,0 +1,46 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Model for a vertical cross section of pipe including the horizontal position, the bottom and top position.
+ * All units are in meters.
+ *
+ * @author Siddhartha Chinthapally (Actual Concepts)
+ */
+
+import fluidPressureAndFlow from '../../fluidPressureAndFlow.js';
+class PipeCrossSection {
+  /**
+   * @param {number} x - represents the x value of the cross section
+   * @param {number} yBottom - represents the bottom most point of the cross section
+   * @param {number} yTop - represents the top most point of the cross section
+   */
+  constructor(x, yBottom, yTop) {
+    this.x = x;
+    this.yBottom = yBottom;
+    this.yTop = yTop;
+  }
+
+  /**
+   * @public
+   */
+  getX() {
+    return this.x;
+  }
+
+  /**
+   * @public
+   */
+  getHeight() {
+    return this.yTop - this.yBottom;
+  }
+
+  /**
+   * @public
+   */
+  getCenterY() {
+    return (this.yTop + this.yBottom) / 2;
+  }
+}
+fluidPressureAndFlow.register('PipeCrossSection', PipeCrossSection);
+export default PipeCrossSection;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmbHVpZFByZXNzdXJlQW5kRmxvdyIsIlBpcGVDcm9zc1NlY3Rpb24iLCJjb25zdHJ1Y3RvciIsIngiLCJ5Qm90dG9tIiwieVRvcCIsImdldFgiLCJnZXRIZWlnaHQiLCJnZXRDZW50ZXJZIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJQaXBlQ3Jvc3NTZWN0aW9uLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE1vZGVsIGZvciBhIHZlcnRpY2FsIGNyb3NzIHNlY3Rpb24gb2YgcGlwZSBpbmNsdWRpbmcgdGhlIGhvcml6b250YWwgcG9zaXRpb24sIHRoZSBib3R0b20gYW5kIHRvcCBwb3NpdGlvbi5cclxuICogQWxsIHVuaXRzIGFyZSBpbiBtZXRlcnMuXHJcbiAqXHJcbiAqIEBhdXRob3IgU2lkZGhhcnRoYSBDaGludGhhcGFsbHkgKEFjdHVhbCBDb25jZXB0cylcclxuICovXHJcblxyXG5pbXBvcnQgZmx1aWRQcmVzc3VyZUFuZEZsb3cgZnJvbSAnLi4vLi4vZmx1aWRQcmVzc3VyZUFuZEZsb3cuanMnO1xyXG5cclxuY2xhc3MgUGlwZUNyb3NzU2VjdGlvbiB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB4IC0gcmVwcmVzZW50cyB0aGUgeCB2YWx1ZSBvZiB0aGUgY3Jvc3Mgc2VjdGlvblxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB5Qm90dG9tIC0gcmVwcmVzZW50cyB0aGUgYm90dG9tIG1vc3QgcG9pbnQgb2YgdGhlIGNyb3NzIHNlY3Rpb25cclxuICAgKiBAcGFyYW0ge251bWJlcn0geVRvcCAtIHJlcHJlc2VudHMgdGhlIHRvcCBtb3N0IHBvaW50IG9mIHRoZSBjcm9zcyBzZWN0aW9uXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHgsIHlCb3R0b20sIHlUb3AgKSB7XHJcbiAgICB0aGlzLnggPSB4O1xyXG4gICAgdGhpcy55Qm90dG9tID0geUJvdHRvbTtcclxuICAgIHRoaXMueVRvcCA9IHlUb3A7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0WCgpIHtcclxuICAgIHJldHVybiB0aGlzLng7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0SGVpZ2h0KCkge1xyXG4gICAgcmV0dXJuIHRoaXMueVRvcCAtIHRoaXMueUJvdHRvbTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBnZXRDZW50ZXJZKCkge1xyXG4gICAgcmV0dXJuICggdGhpcy55VG9wICsgdGhpcy55Qm90dG9tICkgLyAyO1xyXG4gIH1cclxufVxyXG5cclxuZmx1aWRQcmVzc3VyZUFuZEZsb3cucmVnaXN0ZXIoICdQaXBlQ3Jvc3NTZWN0aW9uJywgUGlwZUNyb3NzU2VjdGlvbiApO1xyXG5leHBvcnQgZGVmYXVsdCBQaXBlQ3Jvc3NTZWN0aW9uOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLG9CQUFvQixNQUFNLCtCQUErQjtBQUVoRSxNQUFNQyxnQkFBZ0IsQ0FBQztFQUVyQjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLENBQUMsRUFBRUMsT0FBTyxFQUFFQyxJQUFJLEVBQUc7SUFDOUIsSUFBSSxDQUFDRixDQUFDLEdBQUdBLENBQUM7SUFDVixJQUFJLENBQUNDLE9BQU8sR0FBR0EsT0FBTztJQUN0QixJQUFJLENBQUNDLElBQUksR0FBR0EsSUFBSTtFQUNsQjs7RUFFQTtBQUNGO0FBQ0E7RUFDRUMsSUFBSUEsQ0FBQSxFQUFHO0lBQ0wsT0FBTyxJQUFJLENBQUNILENBQUM7RUFDZjs7RUFFQTtBQUNGO0FBQ0E7RUFDRUksU0FBU0EsQ0FBQSxFQUFHO0lBQ1YsT0FBTyxJQUFJLENBQUNGLElBQUksR0FBRyxJQUFJLENBQUNELE9BQU87RUFDakM7O0VBRUE7QUFDRjtBQUNBO0VBQ0VJLFVBQVVBLENBQUEsRUFBRztJQUNYLE9BQU8sQ0FBRSxJQUFJLENBQUNILElBQUksR0FBRyxJQUFJLENBQUNELE9BQU8sSUFBSyxDQUFDO0VBQ3pDO0FBQ0Y7QUFFQUosb0JBQW9CLENBQUNTLFFBQVEsQ0FBRSxrQkFBa0IsRUFBRVIsZ0JBQWlCLENBQUM7QUFDckUsZUFBZUEsZ0JBQWdCIn0=

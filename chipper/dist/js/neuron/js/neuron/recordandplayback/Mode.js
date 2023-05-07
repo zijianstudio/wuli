@@ -1,0 +1,26 @@
+// Copyright 2014-2021, University of Colorado Boulder
+
+/**
+ * Base type representing a Mode in Record and PlayBack Model. The mode can be either playback, record or live.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Sharfudeen Ashraf (for Ghent University)
+ */
+
+import neuron from '../../neuron.js';
+class Mode {
+  constructor() {}
+
+  // @public
+  step(simulationTimeChange) {
+    throw new Error('step should be implemented in descendant classes.');
+  }
+
+  // @public
+  toString() {
+    throw new Error('toString should be implemented in descendant classes.');
+  }
+}
+neuron.register('Mode', Mode);
+export default Mode;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJuZXVyb24iLCJNb2RlIiwiY29uc3RydWN0b3IiLCJzdGVwIiwic2ltdWxhdGlvblRpbWVDaGFuZ2UiLCJFcnJvciIsInRvU3RyaW5nIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJNb2RlLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEJhc2UgdHlwZSByZXByZXNlbnRpbmcgYSBNb2RlIGluIFJlY29yZCBhbmQgUGxheUJhY2sgTW9kZWwuIFRoZSBtb2RlIGNhbiBiZSBlaXRoZXIgcGxheWJhY2ssIHJlY29yZCBvciBsaXZlLlxyXG4gKlxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKiBAYXV0aG9yIFNoYXJmdWRlZW4gQXNocmFmIChmb3IgR2hlbnQgVW5pdmVyc2l0eSlcclxuICovXHJcblxyXG5pbXBvcnQgbmV1cm9uIGZyb20gJy4uLy4uL25ldXJvbi5qcyc7XHJcblxyXG5jbGFzcyBNb2RlIHtcclxuXHJcbiAgY29uc3RydWN0b3IoKSB7fVxyXG5cclxuICAvLyBAcHVibGljXHJcbiAgc3RlcCggc2ltdWxhdGlvblRpbWVDaGFuZ2UgKSB7XHJcbiAgICB0aHJvdyBuZXcgRXJyb3IoICdzdGVwIHNob3VsZCBiZSBpbXBsZW1lbnRlZCBpbiBkZXNjZW5kYW50IGNsYXNzZXMuJyApO1xyXG4gIH1cclxuXHJcbiAgLy8gQHB1YmxpY1xyXG4gIHRvU3RyaW5nKCkge1xyXG4gICAgdGhyb3cgbmV3IEVycm9yKCAndG9TdHJpbmcgc2hvdWxkIGJlIGltcGxlbWVudGVkIGluIGRlc2NlbmRhbnQgY2xhc3Nlcy4nICk7XHJcbiAgfVxyXG59XHJcblxyXG5uZXVyb24ucmVnaXN0ZXIoICdNb2RlJywgTW9kZSApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgTW9kZTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxNQUFNLE1BQU0saUJBQWlCO0FBRXBDLE1BQU1DLElBQUksQ0FBQztFQUVUQyxXQUFXQSxDQUFBLEVBQUcsQ0FBQzs7RUFFZjtFQUNBQyxJQUFJQSxDQUFFQyxvQkFBb0IsRUFBRztJQUMzQixNQUFNLElBQUlDLEtBQUssQ0FBRSxtREFBb0QsQ0FBQztFQUN4RTs7RUFFQTtFQUNBQyxRQUFRQSxDQUFBLEVBQUc7SUFDVCxNQUFNLElBQUlELEtBQUssQ0FBRSx1REFBd0QsQ0FBQztFQUM1RTtBQUNGO0FBRUFMLE1BQU0sQ0FBQ08sUUFBUSxDQUFFLE1BQU0sRUFBRU4sSUFBSyxDQUFDO0FBRS9CLGVBQWVBLElBQUkifQ==

@@ -1,0 +1,78 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * ScaledAtom is a simple model of an atom with the attributes needed by the particle interaction simulation portion of
+ * the States of Matter simulation.  It is "scaled" in the sense that it has position and radius values that are set to
+ * somewhat realistic values for atoms, whereas other parts of the simulation use normalized values for computational
+ * efficiency.
+ *
+ * @author Aaron Davis
+ * @author John Blanco
+ */
+
+import Vector2 from '../../../../../dot/js/Vector2.js';
+import statesOfMatter from '../../../statesOfMatter.js';
+import SOMConstants from '../../SOMConstants.js';
+class ScaledAtom {
+  /**
+   * @param {AtomType} atomType - initial type, aka element, for this atom
+   * @param {number} initialXPosition - x position in the model, in picometers
+   * @param {number} initialYPosition - y position in the model, in picometers
+   */
+  constructor(atomType, initialXPosition, initialYPosition) {
+    // @public {AtomType} - the type of atom being modeled, e.g. Argon, Neon, etc.
+    this.atomType = atomType;
+
+    // @private, accessed through getter and setter methods below, see those methods for details
+    this.position = new Vector2(initialXPosition, initialYPosition);
+
+    // @public {read-only} - attributes of the atom, changed as the atom type changes
+    this.radius = 0;
+    this.mass = 0;
+    this.color = null;
+    this.epsilon = 0;
+
+    // set the attributes based on the atom type
+    const atomAttributes = SOMConstants.MAP_ATOM_TYPE_TO_ATTRIBUTES.get(atomType);
+    this.radius = atomAttributes.radius;
+    this.mass = atomAttributes.mass;
+    this.color = atomAttributes.color;
+  }
+
+  /**
+   * @param {number} x - atom x position in picometers
+   * @param {number} y - atom y position in picometers
+   * @public
+   */
+  setPosition(x, y) {
+    // use pools for better performance, this is why the methods need to be used instead of direct value setting
+    this.position.setXY(x, y);
+  }
+
+  /**
+   * @returns {number}
+   * @public
+   */
+  getX() {
+    return this.position.x;
+  }
+
+  /**
+   * @returns {number}
+   * @public
+   */
+  getY() {
+    return this.position.y;
+  }
+
+  /**
+   * @returns {AtomType}
+   * @public
+   */
+  getType() {
+    return this.atomType;
+  }
+}
+statesOfMatter.register('ScaledAtom', ScaledAtom);
+export default ScaledAtom;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwic3RhdGVzT2ZNYXR0ZXIiLCJTT01Db25zdGFudHMiLCJTY2FsZWRBdG9tIiwiY29uc3RydWN0b3IiLCJhdG9tVHlwZSIsImluaXRpYWxYUG9zaXRpb24iLCJpbml0aWFsWVBvc2l0aW9uIiwicG9zaXRpb24iLCJyYWRpdXMiLCJtYXNzIiwiY29sb3IiLCJlcHNpbG9uIiwiYXRvbUF0dHJpYnV0ZXMiLCJNQVBfQVRPTV9UWVBFX1RPX0FUVFJJQlVURVMiLCJnZXQiLCJzZXRQb3NpdGlvbiIsIngiLCJ5Iiwic2V0WFkiLCJnZXRYIiwiZ2V0WSIsImdldFR5cGUiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlNjYWxlZEF0b20uanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFNjYWxlZEF0b20gaXMgYSBzaW1wbGUgbW9kZWwgb2YgYW4gYXRvbSB3aXRoIHRoZSBhdHRyaWJ1dGVzIG5lZWRlZCBieSB0aGUgcGFydGljbGUgaW50ZXJhY3Rpb24gc2ltdWxhdGlvbiBwb3J0aW9uIG9mXHJcbiAqIHRoZSBTdGF0ZXMgb2YgTWF0dGVyIHNpbXVsYXRpb24uICBJdCBpcyBcInNjYWxlZFwiIGluIHRoZSBzZW5zZSB0aGF0IGl0IGhhcyBwb3NpdGlvbiBhbmQgcmFkaXVzIHZhbHVlcyB0aGF0IGFyZSBzZXQgdG9cclxuICogc29tZXdoYXQgcmVhbGlzdGljIHZhbHVlcyBmb3IgYXRvbXMsIHdoZXJlYXMgb3RoZXIgcGFydHMgb2YgdGhlIHNpbXVsYXRpb24gdXNlIG5vcm1hbGl6ZWQgdmFsdWVzIGZvciBjb21wdXRhdGlvbmFsXHJcbiAqIGVmZmljaWVuY3kuXHJcbiAqXHJcbiAqIEBhdXRob3IgQWFyb24gRGF2aXNcclxuICogQGF1dGhvciBKb2huIEJsYW5jb1xyXG4gKi9cclxuXHJcbmltcG9ydCBWZWN0b3IyIGZyb20gJy4uLy4uLy4uLy4uLy4uL2RvdC9qcy9WZWN0b3IyLmpzJztcclxuaW1wb3J0IHN0YXRlc09mTWF0dGVyIGZyb20gJy4uLy4uLy4uL3N0YXRlc09mTWF0dGVyLmpzJztcclxuaW1wb3J0IFNPTUNvbnN0YW50cyBmcm9tICcuLi8uLi9TT01Db25zdGFudHMuanMnO1xyXG5cclxuY2xhc3MgU2NhbGVkQXRvbSB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7QXRvbVR5cGV9IGF0b21UeXBlIC0gaW5pdGlhbCB0eXBlLCBha2EgZWxlbWVudCwgZm9yIHRoaXMgYXRvbVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBpbml0aWFsWFBvc2l0aW9uIC0geCBwb3NpdGlvbiBpbiB0aGUgbW9kZWwsIGluIHBpY29tZXRlcnNcclxuICAgKiBAcGFyYW0ge251bWJlcn0gaW5pdGlhbFlQb3NpdGlvbiAtIHkgcG9zaXRpb24gaW4gdGhlIG1vZGVsLCBpbiBwaWNvbWV0ZXJzXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGF0b21UeXBlLCBpbml0aWFsWFBvc2l0aW9uLCBpbml0aWFsWVBvc2l0aW9uICkge1xyXG5cclxuICAgIC8vIEBwdWJsaWMge0F0b21UeXBlfSAtIHRoZSB0eXBlIG9mIGF0b20gYmVpbmcgbW9kZWxlZCwgZS5nLiBBcmdvbiwgTmVvbiwgZXRjLlxyXG4gICAgdGhpcy5hdG9tVHlwZSA9IGF0b21UeXBlO1xyXG5cclxuICAgIC8vIEBwcml2YXRlLCBhY2Nlc3NlZCB0aHJvdWdoIGdldHRlciBhbmQgc2V0dGVyIG1ldGhvZHMgYmVsb3csIHNlZSB0aG9zZSBtZXRob2RzIGZvciBkZXRhaWxzXHJcbiAgICB0aGlzLnBvc2l0aW9uID0gbmV3IFZlY3RvcjIoIGluaXRpYWxYUG9zaXRpb24sIGluaXRpYWxZUG9zaXRpb24gKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtyZWFkLW9ubHl9IC0gYXR0cmlidXRlcyBvZiB0aGUgYXRvbSwgY2hhbmdlZCBhcyB0aGUgYXRvbSB0eXBlIGNoYW5nZXNcclxuICAgIHRoaXMucmFkaXVzID0gMDtcclxuICAgIHRoaXMubWFzcyA9IDA7XHJcbiAgICB0aGlzLmNvbG9yID0gbnVsbDtcclxuICAgIHRoaXMuZXBzaWxvbiA9IDA7XHJcblxyXG4gICAgLy8gc2V0IHRoZSBhdHRyaWJ1dGVzIGJhc2VkIG9uIHRoZSBhdG9tIHR5cGVcclxuICAgIGNvbnN0IGF0b21BdHRyaWJ1dGVzID0gU09NQ29uc3RhbnRzLk1BUF9BVE9NX1RZUEVfVE9fQVRUUklCVVRFUy5nZXQoIGF0b21UeXBlICk7XHJcbiAgICB0aGlzLnJhZGl1cyA9IGF0b21BdHRyaWJ1dGVzLnJhZGl1cztcclxuICAgIHRoaXMubWFzcyA9IGF0b21BdHRyaWJ1dGVzLm1hc3M7XHJcbiAgICB0aGlzLmNvbG9yID0gYXRvbUF0dHJpYnV0ZXMuY29sb3I7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcn0geCAtIGF0b20geCBwb3NpdGlvbiBpbiBwaWNvbWV0ZXJzXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHkgLSBhdG9tIHkgcG9zaXRpb24gaW4gcGljb21ldGVyc1xyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBzZXRQb3NpdGlvbiggeCwgeSApIHtcclxuXHJcbiAgICAvLyB1c2UgcG9vbHMgZm9yIGJldHRlciBwZXJmb3JtYW5jZSwgdGhpcyBpcyB3aHkgdGhlIG1ldGhvZHMgbmVlZCB0byBiZSB1c2VkIGluc3RlYWQgb2YgZGlyZWN0IHZhbHVlIHNldHRpbmdcclxuICAgIHRoaXMucG9zaXRpb24uc2V0WFkoIHgsIHkgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEByZXR1cm5zIHtudW1iZXJ9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGdldFgoKSB7XHJcbiAgICByZXR1cm4gdGhpcy5wb3NpdGlvbi54O1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQHJldHVybnMge251bWJlcn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0WSgpIHtcclxuICAgIHJldHVybiB0aGlzLnBvc2l0aW9uLnk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcmV0dXJucyB7QXRvbVR5cGV9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGdldFR5cGUoKSB7XHJcbiAgICByZXR1cm4gdGhpcy5hdG9tVHlwZTtcclxuICB9XHJcbn1cclxuXHJcbnN0YXRlc09mTWF0dGVyLnJlZ2lzdGVyKCAnU2NhbGVkQXRvbScsIFNjYWxlZEF0b20gKTtcclxuZXhwb3J0IGRlZmF1bHQgU2NhbGVkQXRvbTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxPQUFPLE1BQU0sa0NBQWtDO0FBQ3RELE9BQU9DLGNBQWMsTUFBTSw0QkFBNEI7QUFDdkQsT0FBT0MsWUFBWSxNQUFNLHVCQUF1QjtBQUVoRCxNQUFNQyxVQUFVLENBQUM7RUFFZjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFFBQVEsRUFBRUMsZ0JBQWdCLEVBQUVDLGdCQUFnQixFQUFHO0lBRTFEO0lBQ0EsSUFBSSxDQUFDRixRQUFRLEdBQUdBLFFBQVE7O0lBRXhCO0lBQ0EsSUFBSSxDQUFDRyxRQUFRLEdBQUcsSUFBSVIsT0FBTyxDQUFFTSxnQkFBZ0IsRUFBRUMsZ0JBQWlCLENBQUM7O0lBRWpFO0lBQ0EsSUFBSSxDQUFDRSxNQUFNLEdBQUcsQ0FBQztJQUNmLElBQUksQ0FBQ0MsSUFBSSxHQUFHLENBQUM7SUFDYixJQUFJLENBQUNDLEtBQUssR0FBRyxJQUFJO0lBQ2pCLElBQUksQ0FBQ0MsT0FBTyxHQUFHLENBQUM7O0lBRWhCO0lBQ0EsTUFBTUMsY0FBYyxHQUFHWCxZQUFZLENBQUNZLDJCQUEyQixDQUFDQyxHQUFHLENBQUVWLFFBQVMsQ0FBQztJQUMvRSxJQUFJLENBQUNJLE1BQU0sR0FBR0ksY0FBYyxDQUFDSixNQUFNO0lBQ25DLElBQUksQ0FBQ0MsSUFBSSxHQUFHRyxjQUFjLENBQUNILElBQUk7SUFDL0IsSUFBSSxDQUFDQyxLQUFLLEdBQUdFLGNBQWMsQ0FBQ0YsS0FBSztFQUNuQzs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VLLFdBQVdBLENBQUVDLENBQUMsRUFBRUMsQ0FBQyxFQUFHO0lBRWxCO0lBQ0EsSUFBSSxDQUFDVixRQUFRLENBQUNXLEtBQUssQ0FBRUYsQ0FBQyxFQUFFQyxDQUFFLENBQUM7RUFDN0I7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUUsSUFBSUEsQ0FBQSxFQUFHO0lBQ0wsT0FBTyxJQUFJLENBQUNaLFFBQVEsQ0FBQ1MsQ0FBQztFQUN4Qjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFSSxJQUFJQSxDQUFBLEVBQUc7SUFDTCxPQUFPLElBQUksQ0FBQ2IsUUFBUSxDQUFDVSxDQUFDO0VBQ3hCOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VJLE9BQU9BLENBQUEsRUFBRztJQUNSLE9BQU8sSUFBSSxDQUFDakIsUUFBUTtFQUN0QjtBQUNGO0FBRUFKLGNBQWMsQ0FBQ3NCLFFBQVEsQ0FBRSxZQUFZLEVBQUVwQixVQUFXLENBQUM7QUFDbkQsZUFBZUEsVUFBVSJ9

@@ -1,0 +1,36 @@
+// Copyright 2018-2021, University of Colorado Boulder
+
+/**
+ * Represents a path up to an PDOMInstance.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { scenery } from '../../imports.js';
+class PartialPDOMTrail {
+  /**
+   * @param {PDOMInstance} pdomInstance
+   * @param {Trail} trail
+   * @param {boolean} isRoot
+   */
+  constructor(pdomInstance, trail, isRoot) {
+    // @public
+    this.pdomInstance = pdomInstance;
+    this.trail = trail;
+
+    // TODO: remove this, since it can be computed from the pdomInstance
+    this.isRoot = isRoot;
+
+    // @public {Trail} - a full Trail (rooted at our display) to our trail's final node.
+    this.fullTrail = this.pdomInstance.trail.copy();
+    // NOTE: Only if the parent instance is the root instance do we want to include our partial trail's root.
+    // For other instances, this node in the trail will already be included
+    // TODO: add Trail.concat()
+    for (let j = this.isRoot ? 0 : 1; j < this.trail.length; j++) {
+      this.fullTrail.addDescendant(this.trail.nodes[j]);
+    }
+  }
+}
+scenery.register('PartialPDOMTrail', PartialPDOMTrail);
+export default PartialPDOMTrail;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5IiwiUGFydGlhbFBET01UcmFpbCIsImNvbnN0cnVjdG9yIiwicGRvbUluc3RhbmNlIiwidHJhaWwiLCJpc1Jvb3QiLCJmdWxsVHJhaWwiLCJjb3B5IiwiaiIsImxlbmd0aCIsImFkZERlc2NlbmRhbnQiLCJub2RlcyIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiUGFydGlhbFBET01UcmFpbC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOC0yMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBSZXByZXNlbnRzIGEgcGF0aCB1cCB0byBhbiBQRE9NSW5zdGFuY2UuXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgeyBzY2VuZXJ5IH0gZnJvbSAnLi4vLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5jbGFzcyBQYXJ0aWFsUERPTVRyYWlsIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge1BET01JbnN0YW5jZX0gcGRvbUluc3RhbmNlXHJcbiAgICogQHBhcmFtIHtUcmFpbH0gdHJhaWxcclxuICAgKiBAcGFyYW0ge2Jvb2xlYW59IGlzUm9vdFxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBwZG9tSW5zdGFuY2UsIHRyYWlsLCBpc1Jvb3QgKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpY1xyXG4gICAgdGhpcy5wZG9tSW5zdGFuY2UgPSBwZG9tSW5zdGFuY2U7XHJcbiAgICB0aGlzLnRyYWlsID0gdHJhaWw7XHJcblxyXG4gICAgLy8gVE9ETzogcmVtb3ZlIHRoaXMsIHNpbmNlIGl0IGNhbiBiZSBjb21wdXRlZCBmcm9tIHRoZSBwZG9tSW5zdGFuY2VcclxuICAgIHRoaXMuaXNSb290ID0gaXNSb290O1xyXG5cclxuICAgIC8vIEBwdWJsaWMge1RyYWlsfSAtIGEgZnVsbCBUcmFpbCAocm9vdGVkIGF0IG91ciBkaXNwbGF5KSB0byBvdXIgdHJhaWwncyBmaW5hbCBub2RlLlxyXG4gICAgdGhpcy5mdWxsVHJhaWwgPSB0aGlzLnBkb21JbnN0YW5jZS50cmFpbC5jb3B5KCk7XHJcbiAgICAvLyBOT1RFOiBPbmx5IGlmIHRoZSBwYXJlbnQgaW5zdGFuY2UgaXMgdGhlIHJvb3QgaW5zdGFuY2UgZG8gd2Ugd2FudCB0byBpbmNsdWRlIG91ciBwYXJ0aWFsIHRyYWlsJ3Mgcm9vdC5cclxuICAgIC8vIEZvciBvdGhlciBpbnN0YW5jZXMsIHRoaXMgbm9kZSBpbiB0aGUgdHJhaWwgd2lsbCBhbHJlYWR5IGJlIGluY2x1ZGVkXHJcbiAgICAvLyBUT0RPOiBhZGQgVHJhaWwuY29uY2F0KClcclxuICAgIGZvciAoIGxldCBqID0gKCB0aGlzLmlzUm9vdCA/IDAgOiAxICk7IGogPCB0aGlzLnRyYWlsLmxlbmd0aDsgaisrICkge1xyXG4gICAgICB0aGlzLmZ1bGxUcmFpbC5hZGREZXNjZW5kYW50KCB0aGlzLnRyYWlsLm5vZGVzWyBqIF0gKTtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdQYXJ0aWFsUERPTVRyYWlsJywgUGFydGlhbFBET01UcmFpbCApO1xyXG5leHBvcnQgZGVmYXVsdCBQYXJ0aWFsUERPTVRyYWlsOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUFTQSxPQUFPLFFBQVEsa0JBQWtCO0FBRTFDLE1BQU1DLGdCQUFnQixDQUFDO0VBQ3JCO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsWUFBWSxFQUFFQyxLQUFLLEVBQUVDLE1BQU0sRUFBRztJQUV6QztJQUNBLElBQUksQ0FBQ0YsWUFBWSxHQUFHQSxZQUFZO0lBQ2hDLElBQUksQ0FBQ0MsS0FBSyxHQUFHQSxLQUFLOztJQUVsQjtJQUNBLElBQUksQ0FBQ0MsTUFBTSxHQUFHQSxNQUFNOztJQUVwQjtJQUNBLElBQUksQ0FBQ0MsU0FBUyxHQUFHLElBQUksQ0FBQ0gsWUFBWSxDQUFDQyxLQUFLLENBQUNHLElBQUksQ0FBQyxDQUFDO0lBQy9DO0lBQ0E7SUFDQTtJQUNBLEtBQU0sSUFBSUMsQ0FBQyxHQUFLLElBQUksQ0FBQ0gsTUFBTSxHQUFHLENBQUMsR0FBRyxDQUFHLEVBQUVHLENBQUMsR0FBRyxJQUFJLENBQUNKLEtBQUssQ0FBQ0ssTUFBTSxFQUFFRCxDQUFDLEVBQUUsRUFBRztNQUNsRSxJQUFJLENBQUNGLFNBQVMsQ0FBQ0ksYUFBYSxDQUFFLElBQUksQ0FBQ04sS0FBSyxDQUFDTyxLQUFLLENBQUVILENBQUMsQ0FBRyxDQUFDO0lBQ3ZEO0VBQ0Y7QUFDRjtBQUVBUixPQUFPLENBQUNZLFFBQVEsQ0FBRSxrQkFBa0IsRUFBRVgsZ0JBQWlCLENBQUM7QUFDeEQsZUFBZUEsZ0JBQWdCIn0=

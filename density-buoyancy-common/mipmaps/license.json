@@ -1,0 +1,18 @@
+{
+  "singleCuboidIcon.png": {
+    "text": [
+      "Copyright 2021 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "created by the simulation code, see SecondMassVisibleControl.getSingleCuboidIcon() with ?generateIconImages"
+  },
+  "doubleCuboidIcon.png": {
+    "text": [
+      "Copyright 2021 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "created by the simulation code, see SecondMassVisibleControl.getDoubleCuboidIcon() with ?generateIconImages"
+  }
+}

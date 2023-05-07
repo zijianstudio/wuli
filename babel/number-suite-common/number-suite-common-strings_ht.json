@@ -1,0 +1,279 @@
+{
+  "zero": {
+    "value": "Zewo",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "zero"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "zero",
+        "newValue": "Zewo"
+      }
+    ]
+  },
+  "one": {
+    "value": "Yonn",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Yonn"
+      }
+    ]
+  },
+  "two": {
+    "value": "De",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "De"
+      }
+    ]
+  },
+  "three": {
+    "value": "Twa",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Twa"
+      }
+    ]
+  },
+  "four": {
+    "value": "Kat",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Kat"
+      }
+    ]
+  },
+  "five": {
+    "value": "Senk",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Senk"
+      }
+    ]
+  },
+  "six": {
+    "value": "Sis",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Sis"
+      }
+    ]
+  },
+  "seven": {
+    "value": "Sèt",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Sèt"
+      }
+    ]
+  },
+  "eight": {
+    "value": "Ywit",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Ywit"
+      }
+    ]
+  },
+  "nine": {
+    "value": "nèf",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "nèf"
+      }
+    ]
+  },
+  "ten": {
+    "value": "Dis",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Dis"
+      }
+    ]
+  },
+  "eleven": {
+    "value": "Onz",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Onz"
+      }
+    ]
+  },
+  "twelve": {
+    "value": "Douz",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Douz"
+      }
+    ]
+  },
+  "thirteen": {
+    "value": "Trèz",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "trèz"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "trèz",
+        "newValue": "Trèz"
+      }
+    ]
+  },
+  "fourteen": {
+    "value": "Katòz ",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Katòz "
+      }
+    ]
+  },
+  "fifteen": {
+    "value": "Kenz",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Kenz"
+      }
+    ]
+  },
+  "sixteen": {
+    "value": "Sèz",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "sèz"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "sèz",
+        "newValue": "Sèz"
+      }
+    ]
+  },
+  "seventeen": {
+    "value": "disèt",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "disèt"
+      }
+    ]
+  },
+  "eighteen": {
+    "value": "Dizywit",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "dizwit"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "dizwit",
+        "newValue": "Dizywit"
+      }
+    ]
+  },
+  "nineteen": {
+    "value": "diznèf",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "diznèf"
+      }
+    ]
+  },
+  "twenty": {
+    "value": "ven",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "ven"
+      }
+    ]
+  },
+  "objects": {
+    "value": "Objè ",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Objè "
+      }
+    ]
+  },
+  "total": {
+    "value": "total",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "total"
+      }
+    ]
+  }
+}

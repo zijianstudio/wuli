@@ -1,0 +1,64 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Model for the flux meter tool in the flow tab of FPAF sim. Measures the flux at a given cross section
+ * using the cross section area and flow rate. All units are in metric.
+ *
+ * @author Siddhartha Chinthapally (Actual Concepts)
+ */
+
+import Emitter from '../../../../axon/js/Emitter.js';
+import Property from '../../../../axon/js/Property.js';
+import fluidPressureAndFlow from '../../fluidPressureAndFlow.js';
+class FluxMeter {
+  /**
+   * @param {Pipe} pipe for which the flux needs to be measured at a particular cross section.
+   */
+  constructor(pipe) {
+    // pipe that the flux meter attaches to and measures
+    this.pipe = pipe;
+
+    // @public {Property.<number>} in meters. The flux meter can be dragged horizontally across the pipe
+    this.xPositionProperty = new Property(-6.5);
+
+    // @public
+    this.updateEmitter = new Emitter();
+  }
+
+  /**
+   * @public
+   */
+  reset() {
+    this.xPositionProperty.reset();
+  }
+
+  /**
+   * Compute the area as the pi * r * r of the pipe at the cross section where the flux meter is currently positioned
+   * Returns the area in meters squared
+   * @public
+   */
+  getArea() {
+    return this.pipe.getCrossSectionalArea(this.xPositionProperty.value);
+  }
+
+  /**
+   * Returns the flow rate in liters per sec (L/s)
+   * @public
+   */
+  getFlowRate() {
+    return this.pipe.flowRateProperty.value;
+  }
+
+  /**
+   * Assume incompressible fluid (like water), so the flow rate must remain constant throughout the pipe
+   * flux = rate / area
+   * @returns {number}
+   * @public
+   */
+  getFlux() {
+    return this.getFlowRate() / this.getArea();
+  }
+}
+fluidPressureAndFlow.register('FluxMeter', FluxMeter);
+export default FluxMeter;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFbWl0dGVyIiwiUHJvcGVydHkiLCJmbHVpZFByZXNzdXJlQW5kRmxvdyIsIkZsdXhNZXRlciIsImNvbnN0cnVjdG9yIiwicGlwZSIsInhQb3NpdGlvblByb3BlcnR5IiwidXBkYXRlRW1pdHRlciIsInJlc2V0IiwiZ2V0QXJlYSIsImdldENyb3NzU2VjdGlvbmFsQXJlYSIsInZhbHVlIiwiZ2V0Rmxvd1JhdGUiLCJmbG93UmF0ZVByb3BlcnR5IiwiZ2V0Rmx1eCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRmx1eE1ldGVyLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE1vZGVsIGZvciB0aGUgZmx1eCBtZXRlciB0b29sIGluIHRoZSBmbG93IHRhYiBvZiBGUEFGIHNpbS4gTWVhc3VyZXMgdGhlIGZsdXggYXQgYSBnaXZlbiBjcm9zcyBzZWN0aW9uXHJcbiAqIHVzaW5nIHRoZSBjcm9zcyBzZWN0aW9uIGFyZWEgYW5kIGZsb3cgcmF0ZS4gQWxsIHVuaXRzIGFyZSBpbiBtZXRyaWMuXHJcbiAqXHJcbiAqIEBhdXRob3IgU2lkZGhhcnRoYSBDaGludGhhcGFsbHkgKEFjdHVhbCBDb25jZXB0cylcclxuICovXHJcblxyXG5pbXBvcnQgRW1pdHRlciBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL0VtaXR0ZXIuanMnO1xyXG5pbXBvcnQgUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9Qcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBmbHVpZFByZXNzdXJlQW5kRmxvdyBmcm9tICcuLi8uLi9mbHVpZFByZXNzdXJlQW5kRmxvdy5qcyc7XHJcblxyXG5jbGFzcyBGbHV4TWV0ZXIge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge1BpcGV9IHBpcGUgZm9yIHdoaWNoIHRoZSBmbHV4IG5lZWRzIHRvIGJlIG1lYXN1cmVkIGF0IGEgcGFydGljdWxhciBjcm9zcyBzZWN0aW9uLlxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBwaXBlICkge1xyXG5cclxuICAgIC8vIHBpcGUgdGhhdCB0aGUgZmx1eCBtZXRlciBhdHRhY2hlcyB0byBhbmQgbWVhc3VyZXNcclxuICAgIHRoaXMucGlwZSA9IHBpcGU7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7UHJvcGVydHkuPG51bWJlcj59IGluIG1ldGVycy4gVGhlIGZsdXggbWV0ZXIgY2FuIGJlIGRyYWdnZWQgaG9yaXpvbnRhbGx5IGFjcm9zcyB0aGUgcGlwZVxyXG4gICAgdGhpcy54UG9zaXRpb25Qcm9wZXJ0eSA9IG5ldyBQcm9wZXJ0eSggLTYuNSApO1xyXG5cclxuICAgIC8vIEBwdWJsaWNcclxuICAgIHRoaXMudXBkYXRlRW1pdHRlciA9IG5ldyBFbWl0dGVyKCk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgcmVzZXQoKSB7XHJcbiAgICB0aGlzLnhQb3NpdGlvblByb3BlcnR5LnJlc2V0KCk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDb21wdXRlIHRoZSBhcmVhIGFzIHRoZSBwaSAqIHIgKiByIG9mIHRoZSBwaXBlIGF0IHRoZSBjcm9zcyBzZWN0aW9uIHdoZXJlIHRoZSBmbHV4IG1ldGVyIGlzIGN1cnJlbnRseSBwb3NpdGlvbmVkXHJcbiAgICogUmV0dXJucyB0aGUgYXJlYSBpbiBtZXRlcnMgc3F1YXJlZFxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBnZXRBcmVhKCkge1xyXG4gICAgcmV0dXJuIHRoaXMucGlwZS5nZXRDcm9zc1NlY3Rpb25hbEFyZWEoIHRoaXMueFBvc2l0aW9uUHJvcGVydHkudmFsdWUgKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFJldHVybnMgdGhlIGZsb3cgcmF0ZSBpbiBsaXRlcnMgcGVyIHNlYyAoTC9zKVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBnZXRGbG93UmF0ZSgpIHtcclxuICAgIHJldHVybiB0aGlzLnBpcGUuZmxvd1JhdGVQcm9wZXJ0eS52YWx1ZTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEFzc3VtZSBpbmNvbXByZXNzaWJsZSBmbHVpZCAobGlrZSB3YXRlciksIHNvIHRoZSBmbG93IHJhdGUgbXVzdCByZW1haW4gY29uc3RhbnQgdGhyb3VnaG91dCB0aGUgcGlwZVxyXG4gICAqIGZsdXggPSByYXRlIC8gYXJlYVxyXG4gICAqIEByZXR1cm5zIHtudW1iZXJ9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIGdldEZsdXgoKSB7XHJcbiAgICByZXR1cm4gdGhpcy5nZXRGbG93UmF0ZSgpIC8gdGhpcy5nZXRBcmVhKCk7XHJcbiAgfVxyXG59XHJcblxyXG5mbHVpZFByZXNzdXJlQW5kRmxvdy5yZWdpc3RlciggJ0ZsdXhNZXRlcicsIEZsdXhNZXRlciApO1xyXG5leHBvcnQgZGVmYXVsdCBGbHV4TWV0ZXI7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLGdDQUFnQztBQUNwRCxPQUFPQyxRQUFRLE1BQU0saUNBQWlDO0FBQ3RELE9BQU9DLG9CQUFvQixNQUFNLCtCQUErQjtBQUVoRSxNQUFNQyxTQUFTLENBQUM7RUFFZDtBQUNGO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsSUFBSSxFQUFHO0lBRWxCO0lBQ0EsSUFBSSxDQUFDQSxJQUFJLEdBQUdBLElBQUk7O0lBRWhCO0lBQ0EsSUFBSSxDQUFDQyxpQkFBaUIsR0FBRyxJQUFJTCxRQUFRLENBQUUsQ0FBQyxHQUFJLENBQUM7O0lBRTdDO0lBQ0EsSUFBSSxDQUFDTSxhQUFhLEdBQUcsSUFBSVAsT0FBTyxDQUFDLENBQUM7RUFDcEM7O0VBRUE7QUFDRjtBQUNBO0VBQ0VRLEtBQUtBLENBQUEsRUFBRztJQUNOLElBQUksQ0FBQ0YsaUJBQWlCLENBQUNFLEtBQUssQ0FBQyxDQUFDO0VBQ2hDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsT0FBT0EsQ0FBQSxFQUFHO0lBQ1IsT0FBTyxJQUFJLENBQUNKLElBQUksQ0FBQ0sscUJBQXFCLENBQUUsSUFBSSxDQUFDSixpQkFBaUIsQ0FBQ0ssS0FBTSxDQUFDO0VBQ3hFOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUEsRUFBRztJQUNaLE9BQU8sSUFBSSxDQUFDUCxJQUFJLENBQUNRLGdCQUFnQixDQUFDRixLQUFLO0VBQ3pDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFRyxPQUFPQSxDQUFBLEVBQUc7SUFDUixPQUFPLElBQUksQ0FBQ0YsV0FBVyxDQUFDLENBQUMsR0FBRyxJQUFJLENBQUNILE9BQU8sQ0FBQyxDQUFDO0VBQzVDO0FBQ0Y7QUFFQVAsb0JBQW9CLENBQUNhLFFBQVEsQ0FBRSxXQUFXLEVBQUVaLFNBQVUsQ0FBQztBQUN2RCxlQUFlQSxTQUFTIn0=

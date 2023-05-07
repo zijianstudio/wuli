@@ -1,0 +1,917 @@
+{
+  "massLabel.1a": {
+    "value": "1A",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "1A"
+      }
+    ]
+  },
+  "massLabel.1b": {
+    "value": "1B",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "1B"
+      }
+    ]
+  },
+  "massLabel.1c": {
+    "value": "1C",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "1C"
+      }
+    ]
+  },
+  "massLabel.1d": {
+    "value": "1D",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "1D"
+      }
+    ]
+  },
+  "massLabel.1e": {
+    "value": "1E",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "1E"
+      }
+    ]
+  },
+  "massLabel.2a": {
+    "value": "2A",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "2A"
+      }
+    ]
+  },
+  "massLabel.2b": {
+    "value": "2B",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "2B"
+      }
+    ]
+  },
+  "massLabel.2c": {
+    "value": "2C",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "2C"
+      }
+    ]
+  },
+  "massLabel.2d": {
+    "value": "2D",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "2D"
+      }
+    ]
+  },
+  "massLabel.2e": {
+    "value": "2E",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "2E"
+      }
+    ]
+  },
+  "massLabel.3a": {
+    "value": "3A",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "3A"
+      }
+    ]
+  },
+  "massLabel.3b": {
+    "value": "3B",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "3B"
+      }
+    ]
+  },
+  "massLabel.3c": {
+    "value": "3C",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "3C"
+      }
+    ]
+  },
+  "massLabel.3d": {
+    "value": "3D",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "3D"
+      }
+    ]
+  },
+  "massLabel.3e": {
+    "value": "3E",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "3E"
+      }
+    ]
+  },
+  "massLabel.a": {
+    "value": "A",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "A"
+      }
+    ]
+  },
+  "massLabel.primary": {
+    "value": "A",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "A"
+      }
+    ]
+  },
+  "material.air": {
+    "value": "Aer",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Aer"
+      }
+    ]
+  },
+  "material.aluminum": {
+    "value": "Aluminiu",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Aluminiu"
+      }
+    ]
+  },
+  "material.apple": {
+    "value": "Măr",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Măr"
+      }
+    ]
+  },
+  "average": {
+    "value": "Medie",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Medie"
+      }
+    ]
+  },
+  "massLabel.b": {
+    "value": "B",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "B"
+      }
+    ]
+  },
+  "massLabel.secondary": {
+    "value": "B",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "B"
+      }
+    ]
+  },
+  "blocks": {
+    "value": "Blocuri",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Blocuri"
+      }
+    ]
+  },
+  "material.brick": {
+    "value": "Cărămidă",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Cărămidă"
+      }
+    ]
+  },
+  "massLabel.c": {
+    "value": "C",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766214,
+        "oldValue": "",
+        "newValue": "C"
+      }
+    ]
+  },
+  "material.cement": {
+    "value": "Ciment",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Ciment"
+      }
+    ]
+  },
+  "material.copper": {
+    "value": "Cupru",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Cupru"
+      }
+    ]
+  },
+  "material.custom": {
+    "value": "Caz particular",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Caz particular"
+      }
+    ]
+  },
+  "gravity.custom": {
+    "value": "Caz particular",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Caz particular"
+      }
+    ]
+  },
+  "massLabel.d": {
+    "value": "D",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "D"
+      }
+    ]
+  },
+  "density": {
+    "value": "Densitate",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Densitate"
+      }
+    ]
+  },
+  "densityReadout": {
+    "value": "Densitate  (kg/l)",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Densitate  (kg/L)"
+      },
+      {
+        "userId": 183155,
+        "timestamp": 1649701077724,
+        "oldValue": "Densitate  (kg/L)",
+        "newValue": "Densitate  (kg/l)"
+      }
+    ]
+  },
+  "densityKgL": {
+    "value": "Densitate  (kg/l)",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Densitate  (kg/L)"
+      },
+      {
+        "userId": 183155,
+        "timestamp": 1649701077724,
+        "oldValue": "Densitate  (kg/L)",
+        "newValue": "Densitate  (kg/l)"
+      }
+    ]
+  },
+  "material.densityP": {
+    "value": "Densitate P",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Densitate P"
+      }
+    ]
+  },
+  "material.densityQ": {
+    "value": "Densitate Q",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Densitate Q"
+      }
+    ]
+  },
+  "material.densityR": {
+    "value": "Densitate R",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Densitate R"
+      }
+    ]
+  },
+  "material.densityS": {
+    "value": "Densitate S",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Densitate S"
+      }
+    ]
+  },
+  "densityTable": {
+    "value": "Tabel densități",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Tabel densități"
+      }
+    ]
+  },
+  "material.densityX": {
+    "value": "Densitate X",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Densitate X"
+      }
+    ]
+  },
+  "material.densityY": {
+    "value": "Densitate Y",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Densitate Y"
+      }
+    ]
+  },
+  "material.diamond": {
+    "value": "Diamant",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Diamant"
+      }
+    ]
+  },
+  "massLabel.e": {
+    "value": "E",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "E"
+      }
+    ]
+  },
+  "gravity.earth": {
+    "value": "Pământ",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Pământ"
+      }
+    ]
+  },
+  "material.gasoline": {
+    "value": "Benzină",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Benzină"
+      }
+    ]
+  },
+  "material.glass": {
+    "value": "Sticlă",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Sticlă"
+      }
+    ]
+  },
+  "material.gold": {
+    "value": "Aur",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Aur"
+      }
+    ]
+  },
+  "material.honey": {
+    "value": "Miere",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Miere"
+      }
+    ]
+  },
+  "material.human": {
+    "value": "Om ",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Om "
+      }
+    ]
+  },
+  "material.ice": {
+    "value": "Gheață",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Gheață"
+      }
+    ]
+  },
+  "gravity.jupiter": {
+    "value": "Jupiter",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Jupiter"
+      }
+    ]
+  },
+  "material.lead": {
+    "value": "Plumb",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Plumb"
+      }
+    ]
+  },
+  "mass": {
+    "value": "Masă",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Masă"
+      }
+    ]
+  },
+  "material.name": {
+    "value": "Material",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Material"
+      }
+    ]
+  },
+  "material.mercury": {
+    "value": "Mercur",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Mercur"
+      }
+    ]
+  },
+  "gravity.moon": {
+    "value": "Lună",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Lună"
+      }
+    ]
+  },
+  "material.oil": {
+    "value": "Ulei",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Ulei"
+      }
+    ]
+  },
+  "gravity.planetX": {
+    "value": "Planeta X",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Planeta X"
+      }
+    ]
+  },
+  "material.platinum": {
+    "value": "Platină",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Platină"
+      }
+    ]
+  },
+  "material.pyrite": {
+    "value": "Pirită",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Pirită"
+      }
+    ]
+  },
+  "blockSet.random": {
+    "value": "Aleator",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912720,
+        "oldValue": "",
+        "newValue": "Aleator"
+      }
+    ]
+  },
+  "blockSet.sameDensity": {
+    "value": "Aceeași densitate",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Aceeași densitate"
+      }
+    ]
+  },
+  "blockSet.sameMass": {
+    "value": "Aceeași masă",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Aceeași masă"
+      }
+    ]
+  },
+  "blockSet.sameVolume": {
+    "value": "Același volum",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Același volum"
+      }
+    ]
+  },
+  "material.sand": {
+    "value": "Nisip",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Nisip"
+      }
+    ]
+  },
+  "material.seawater": {
+    "value": "Apă de mare",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Apă de mare"
+      }
+    ]
+  },
+  "blockSet.set1": {
+    "value": "Setul 1",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Setul 1"
+      }
+    ]
+  },
+  "blockSet.set2": {
+    "value": "Setul 2",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Setul 2"
+      }
+    ]
+  },
+  "blockSet.set3": {
+    "value": "Setul 3",
+    "history": [
+      {
+        "userId": 955557,
+        "timestamp": 1644157766215,
+        "oldValue": "",
+        "newValue": "Setul 3"
+      }
+    ]
+  },
+  "material.silver": {
+    "value": "Argint",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Argint"
+      }
+    ]
+  },
+  "material.steel": {
+    "value": "Oțel",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Oțel"
+      }
+    ]
+  },
+  "material.styrofoam": {
+    "value": "Polistiren",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Polistiren"
+      }
+    ]
+  },
+  "material.tantalum": {
+    "value": "Tantal",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Tantal"
+      }
+    ]
+  },
+  "material.titanium": {
+    "value": "Titan",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Titan"
+      }
+    ]
+  },
+  "volume": {
+    "value": "Volum",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Volum"
+      }
+    ]
+  },
+  "material.water": {
+    "value": "Apă",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Apă"
+      }
+    ]
+  },
+  "material.wood": {
+    "value": "Lemn",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "Lemn"
+      }
+    ]
+  },
+  "kilogramsPattern": {
+    "value": "{{kilograms}} kg",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "{{kilograms}} kg"
+      }
+    ]
+  },
+  "litersPattern": {
+    "value": "{{liters}} l",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "{{liters}} L"
+      },
+      {
+        "userId": 183155,
+        "timestamp": 1649701077724,
+        "oldValue": "{{liters}} L",
+        "newValue": "{{liters}} l"
+      }
+    ]
+  },
+  "newtonsPattern": {
+    "value": "{{newtons}} N",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "{{newtons}} N"
+      }
+    ]
+  },
+  "kilogramsPerLiterPattern": {
+    "value": "{{value}} kg/l",
+    "history": [
+      {
+        "userId": 183155,
+        "timestamp": 1642144912721,
+        "oldValue": "",
+        "newValue": "{{value}} kg/L"
+      },
+      {
+        "userId": 183155,
+        "timestamp": 1649701077724,
+        "oldValue": "{{value}} kg/L",
+        "newValue": "{{value}} kg/l"
+      }
+    ]
+  }
+}

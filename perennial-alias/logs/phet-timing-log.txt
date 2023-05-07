@@ -1,0 +1,45 @@
+<hook-pre-commit repo="vector-addition" date="5/7/2023, 12:01:54 AM">
+  <qunit time="1469ms"/>
+  <phet-io-api-compare time="1497ms"/>
+  <report-media time="1576ms"/>
+    <hook-pre-commit repo="vector-addition" time="20339ms"/>
+<hook-pre-commit repo="simula-rasa" date="5/7/2023, 12:02:18 AM">
+  <qunit time="1925ms"/>
+  <phet-io-api-compare time="2001ms"/>
+  <report-media time="2047ms"/>
+  <lint time="23537ms"/>
+  <hook-pre-commit repo="simula-rasa" time="78554ms"/>
+<hook-pre-commit repo="scenery" date="5/7/2023, 12:03:40 AM">
+  <qunit time="1832ms"/>
+  <report-media time="1943ms"/>
+      <hook-pre-commit repo="scenery" time="45116ms"/>
+<hook-pre-commit repo="vector-addition" date="5/7/2023, 12:05:46 AM">
+  <qunit time="1406ms"/>
+  <phet-io-api-compare time="1429ms"/>
+  <report-media time="1496ms"/>
+    <hook-pre-commit repo="vector-addition" time="2934ms"/>
+<hook-pre-commit repo="simula-rasa" date="5/7/2023, 12:05:49 AM">
+  <lint time="1474ms"/>
+  <qunit time="1467ms"/>
+  <phet-io-api-compare time="1541ms"/>
+  <report-media time="1584ms"/>
+  <hook-pre-commit repo="simula-rasa" time="12336ms"/>
+<hook-pre-commit repo="scenery" date="5/7/2023, 12:06:03 AM">
+  <qunit time="1779ms"/>
+  <report-media time="1931ms"/>
+      <hook-pre-commit repo="scenery" time="27246ms"/>
+<hook-pre-commit repo="vector-addition" date="5/7/2023, 12:07:34 AM">
+  <qunit time="1292ms"/>
+  <phet-io-api-compare time="1319ms"/>
+  <report-media time="1353ms"/>
+    <hook-pre-commit repo="vector-addition" time="2866ms"/>
+<hook-pre-commit repo="simula-rasa" date="5/7/2023, 12:07:38 AM">
+  <lint time="1543ms"/>
+  <qunit time="1538ms"/>
+  <phet-io-api-compare time="1583ms"/>
+  <report-media time="1629ms"/>
+  <hook-pre-commit repo="simula-rasa" time="12462ms"/>
+<hook-pre-commit repo="scenery" date="5/7/2023, 12:07:51 AM">
+  <qunit time="1692ms"/>
+  <report-media time="1758ms"/>
+      <hook-pre-commit repo="scenery" time="59072ms"/>

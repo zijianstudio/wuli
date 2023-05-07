@@ -1,0 +1,29 @@
+// Copyright 2015-2020, University of Colorado Boulder
+
+/**
+ * Represents a challenge, that is presented to the user during the MakeATen game.
+ * Each challenge has two terms. The values of which depends on the level of challenge
+ *
+ * @author Sharfudeen Ashraf
+ */
+
+import makeATen from '../../../makeATen.js';
+class NumberChallenge {
+  /**
+   * @param {number} leftTerm
+   * @param {number} rightTerm
+   */
+  constructor(leftTerm, rightTerm) {
+    // @public {number} - The left-hand term for addition
+    this.leftTerm = leftTerm;
+
+    // @public {number} - The right-hand term for addition
+    this.rightTerm = rightTerm;
+
+    // This object is immutable
+    Object.freeze(this);
+  }
+}
+makeATen.register('NumberChallenge', NumberChallenge);
+export default NumberChallenge;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtYWtlQVRlbiIsIk51bWJlckNoYWxsZW5nZSIsImNvbnN0cnVjdG9yIiwibGVmdFRlcm0iLCJyaWdodFRlcm0iLCJPYmplY3QiLCJmcmVlemUiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIk51bWJlckNoYWxsZW5nZS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNS0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBSZXByZXNlbnRzIGEgY2hhbGxlbmdlLCB0aGF0IGlzIHByZXNlbnRlZCB0byB0aGUgdXNlciBkdXJpbmcgdGhlIE1ha2VBVGVuIGdhbWUuXHJcbiAqIEVhY2ggY2hhbGxlbmdlIGhhcyB0d28gdGVybXMuIFRoZSB2YWx1ZXMgb2Ygd2hpY2ggZGVwZW5kcyBvbiB0aGUgbGV2ZWwgb2YgY2hhbGxlbmdlXHJcbiAqXHJcbiAqIEBhdXRob3IgU2hhcmZ1ZGVlbiBBc2hyYWZcclxuICovXHJcblxyXG5pbXBvcnQgbWFrZUFUZW4gZnJvbSAnLi4vLi4vLi4vbWFrZUFUZW4uanMnO1xyXG5cclxuY2xhc3MgTnVtYmVyQ2hhbGxlbmdlIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcn0gbGVmdFRlcm1cclxuICAgKiBAcGFyYW0ge251bWJlcn0gcmlnaHRUZXJtXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGxlZnRUZXJtLCByaWdodFRlcm0gKSB7XHJcbiAgICAvLyBAcHVibGljIHtudW1iZXJ9IC0gVGhlIGxlZnQtaGFuZCB0ZXJtIGZvciBhZGRpdGlvblxyXG4gICAgdGhpcy5sZWZ0VGVybSA9IGxlZnRUZXJtO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge251bWJlcn0gLSBUaGUgcmlnaHQtaGFuZCB0ZXJtIGZvciBhZGRpdGlvblxyXG4gICAgdGhpcy5yaWdodFRlcm0gPSByaWdodFRlcm07XHJcblxyXG4gICAgLy8gVGhpcyBvYmplY3QgaXMgaW1tdXRhYmxlXHJcbiAgICBPYmplY3QuZnJlZXplKCB0aGlzICk7XHJcbiAgfVxyXG59XHJcblxyXG5tYWtlQVRlbi5yZWdpc3RlciggJ051bWJlckNoYWxsZW5nZScsIE51bWJlckNoYWxsZW5nZSApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgTnVtYmVyQ2hhbGxlbmdlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLFFBQVEsTUFBTSxzQkFBc0I7QUFFM0MsTUFBTUMsZUFBZSxDQUFDO0VBQ3BCO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFFBQVEsRUFBRUMsU0FBUyxFQUFHO0lBQ2pDO0lBQ0EsSUFBSSxDQUFDRCxRQUFRLEdBQUdBLFFBQVE7O0lBRXhCO0lBQ0EsSUFBSSxDQUFDQyxTQUFTLEdBQUdBLFNBQVM7O0lBRTFCO0lBQ0FDLE1BQU0sQ0FBQ0MsTUFBTSxDQUFFLElBQUssQ0FBQztFQUN2QjtBQUNGO0FBRUFOLFFBQVEsQ0FBQ08sUUFBUSxDQUFFLGlCQUFpQixFQUFFTixlQUFnQixDQUFDO0FBRXZELGVBQWVBLGVBQWUifQ==

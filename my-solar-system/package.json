@@ -1,0 +1,43 @@
+{
+  "name": "my-solar-system",
+  "version": "1.3.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/my-solar-system.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "MY_SOLAR_SYSTEM",
+    "simulation": true,
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet",
+      "phet-io"
+    ],
+    "phetLibs": [
+      "solar-system-common"
+    ],
+    "supportsOutputJS": true,
+    "simFeatures": {
+      "supportsInteractiveDescription": true,
+      "supportsSound": true,
+      "colorProfiles": [
+        "default",
+        "projector"
+      ]
+    },
+    "phet-io": {
+      "validation": false
+    }
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "todo-should-have-issue": "off"
+    }
+  }
+}

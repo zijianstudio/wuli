@@ -1,0 +1,255 @@
+{
+  "zero": {
+    "value": "Cero",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Cero"
+      }
+    ]
+  },
+  "one": {
+    "value": "uno",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "uno"
+      }
+    ]
+  },
+  "two": {
+    "value": "dos",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "dos"
+      }
+    ]
+  },
+  "three": {
+    "value": "tres",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "tres"
+      }
+    ]
+  },
+  "four": {
+    "value": "cuatro",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "cuatro"
+      }
+    ]
+  },
+  "five": {
+    "value": "cinco",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "cinco"
+      }
+    ]
+  },
+  "six": {
+    "value": "seis",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "seis"
+      }
+    ]
+  },
+  "seven": {
+    "value": "siete",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "siete"
+      }
+    ]
+  },
+  "eight": {
+    "value": "ocho",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "ocho"
+      }
+    ]
+  },
+  "nine": {
+    "value": "nueve",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "nueve"
+      }
+    ]
+  },
+  "ten": {
+    "value": "10",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "10"
+      }
+    ]
+  },
+  "eleven": {
+    "value": "once",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "once"
+      }
+    ]
+  },
+  "twelve": {
+    "value": "doce",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "doce"
+      }
+    ]
+  },
+  "thirteen": {
+    "value": "trece",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "trece"
+      }
+    ]
+  },
+  "fourteen": {
+    "value": "catorce",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "catorce"
+      }
+    ]
+  },
+  "fifteen": {
+    "value": "quince",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "quince"
+      }
+    ]
+  },
+  "sixteen": {
+    "value": "dieciséis",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "dieciséis"
+      }
+    ]
+  },
+  "seventeen": {
+    "value": "diecisiete",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "diecisiete"
+      }
+    ]
+  },
+  "eighteen": {
+    "value": "dieciocho",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "dieciocho"
+      }
+    ]
+  },
+  "nineteen": {
+    "value": "diecinueve",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "diecinueve"
+      }
+    ]
+  },
+  "twenty": {
+    "value": "veinte",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "veinte"
+      }
+    ]
+  },
+  "objects": {
+    "value": "Objetos",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Objetos"
+      }
+    ]
+  },
+  "total": {
+    "value": "Total",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Total"
+      }
+    ]
+  }
+}

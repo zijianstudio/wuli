@@ -1,0 +1,31 @@
+// Copyright 2017, University of Colorado Boulder
+
+/**
+ * Whether there is a remote branch for a given repo.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const execute = require('./execute');
+const winston = require('winston');
+
+/**
+ * Whether there is a remote branch for a given repo.
+ * @public
+ *
+ * @param {string} repo - The repository name
+ * @param {string} branch - The potential branch
+ * @returns {Promise.<boolean>} - Whether there was the branch on the remote server
+ */
+module.exports = async function (repo, branch) {
+  winston.debug(`checking for remote branch ${branch} for ${repo}`);
+  const stdout = await execute('git', ['ls-remote', '--heads', `https://github.com/phetsims/${repo}.git`, branch], `../${repo}`);
+  if (stdout.trim().length === 0) {
+    return false;
+  } else if (stdout.indexOf(`refs/heads/${branch}`) >= 0) {
+    return true;
+  } else {
+    throw new Error(`Failure trying to check for a remote branch ${branch} for ${repo}`);
+  }
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleGVjdXRlIiwicmVxdWlyZSIsIndpbnN0b24iLCJtb2R1bGUiLCJleHBvcnRzIiwicmVwbyIsImJyYW5jaCIsImRlYnVnIiwic3Rkb3V0IiwidHJpbSIsImxlbmd0aCIsImluZGV4T2YiLCJFcnJvciJdLCJzb3VyY2VzIjpbImhhc1JlbW90ZUJyYW5jaC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogV2hldGhlciB0aGVyZSBpcyBhIHJlbW90ZSBicmFuY2ggZm9yIGEgZ2l2ZW4gcmVwby5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmNvbnN0IGV4ZWN1dGUgPSByZXF1aXJlKCAnLi9leGVjdXRlJyApO1xyXG5jb25zdCB3aW5zdG9uID0gcmVxdWlyZSggJ3dpbnN0b24nICk7XHJcblxyXG4vKipcclxuICogV2hldGhlciB0aGVyZSBpcyBhIHJlbW90ZSBicmFuY2ggZm9yIGEgZ2l2ZW4gcmVwby5cclxuICogQHB1YmxpY1xyXG4gKlxyXG4gKiBAcGFyYW0ge3N0cmluZ30gcmVwbyAtIFRoZSByZXBvc2l0b3J5IG5hbWVcclxuICogQHBhcmFtIHtzdHJpbmd9IGJyYW5jaCAtIFRoZSBwb3RlbnRpYWwgYnJhbmNoXHJcbiAqIEByZXR1cm5zIHtQcm9taXNlLjxib29sZWFuPn0gLSBXaGV0aGVyIHRoZXJlIHdhcyB0aGUgYnJhbmNoIG9uIHRoZSByZW1vdGUgc2VydmVyXHJcbiAqL1xyXG5tb2R1bGUuZXhwb3J0cyA9IGFzeW5jIGZ1bmN0aW9uKCByZXBvLCBicmFuY2ggKSB7XHJcbiAgd2luc3Rvbi5kZWJ1ZyggYGNoZWNraW5nIGZvciByZW1vdGUgYnJhbmNoICR7YnJhbmNofSBmb3IgJHtyZXBvfWAgKTtcclxuXHJcbiAgY29uc3Qgc3Rkb3V0ID0gYXdhaXQgZXhlY3V0ZSggJ2dpdCcsIFsgJ2xzLXJlbW90ZScsICctLWhlYWRzJywgYGh0dHBzOi8vZ2l0aHViLmNvbS9waGV0c2ltcy8ke3JlcG99LmdpdGAsIGJyYW5jaCBdLCBgLi4vJHtyZXBvfWAgKTtcclxuXHJcbiAgaWYgKCBzdGRvdXQudHJpbSgpLmxlbmd0aCA9PT0gMCApIHtcclxuICAgIHJldHVybiBmYWxzZTtcclxuICB9XHJcbiAgZWxzZSBpZiAoIHN0ZG91dC5pbmRleE9mKCBgcmVmcy9oZWFkcy8ke2JyYW5jaH1gICkgPj0gMCApIHtcclxuICAgIHJldHVybiB0cnVlO1xyXG4gIH1cclxuICBlbHNlIHtcclxuICAgIHRocm93IG5ldyBFcnJvciggYEZhaWx1cmUgdHJ5aW5nIHRvIGNoZWNrIGZvciBhIHJlbW90ZSBicmFuY2ggJHticmFuY2h9IGZvciAke3JlcG99YCApO1xyXG4gIH1cclxufTtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE1BQU1BLE9BQU8sR0FBR0MsT0FBTyxDQUFFLFdBQVksQ0FBQztBQUN0QyxNQUFNQyxPQUFPLEdBQUdELE9BQU8sQ0FBRSxTQUFVLENBQUM7O0FBRXBDO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQUUsTUFBTSxDQUFDQyxPQUFPLEdBQUcsZ0JBQWdCQyxJQUFJLEVBQUVDLE1BQU0sRUFBRztFQUM5Q0osT0FBTyxDQUFDSyxLQUFLLENBQUcsOEJBQTZCRCxNQUFPLFFBQU9ELElBQUssRUFBRSxDQUFDO0VBRW5FLE1BQU1HLE1BQU0sR0FBRyxNQUFNUixPQUFPLENBQUUsS0FBSyxFQUFFLENBQUUsV0FBVyxFQUFFLFNBQVMsRUFBRywrQkFBOEJLLElBQUssTUFBSyxFQUFFQyxNQUFNLENBQUUsRUFBRyxNQUFLRCxJQUFLLEVBQUUsQ0FBQztFQUVsSSxJQUFLRyxNQUFNLENBQUNDLElBQUksQ0FBQyxDQUFDLENBQUNDLE1BQU0sS0FBSyxDQUFDLEVBQUc7SUFDaEMsT0FBTyxLQUFLO0VBQ2QsQ0FBQyxNQUNJLElBQUtGLE1BQU0sQ0FBQ0csT0FBTyxDQUFHLGNBQWFMLE1BQU8sRUFBRSxDQUFDLElBQUksQ0FBQyxFQUFHO0lBQ3hELE9BQU8sSUFBSTtFQUNiLENBQUMsTUFDSTtJQUNILE1BQU0sSUFBSU0sS0FBSyxDQUFHLCtDQUE4Q04sTUFBTyxRQUFPRCxJQUFLLEVBQUUsQ0FBQztFQUN4RjtBQUNGLENBQUMifQ==

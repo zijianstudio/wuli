@@ -1,0 +1,30 @@
+// Copyright 2017, University of Colorado Boulder
+
+/**
+ * git cherry-pick (but if it fails, it will back out of the cherry-pick)
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const execute = require('./execute');
+const winston = require('winston');
+
+/**
+ * Executes git cherry-pick (but if it fails, it will back out of the cherry-pick)
+ * @public
+ *
+ * @param {string} repo - The repository name
+ * @param {string} target - The SHA/branch/whatnot to check out
+ * @returns {Promise.<boolean>} - Resolves to whether the cherry-pick worked or not. If aborting fails, will reject.
+ */
+module.exports = function (repo, target) {
+  winston.info(`git cherry-pick ${target} on ${repo}`);
+  return execute('git', ['cherry-pick', target], `../${repo}`).then(stdout => Promise.resolve(true), cherryPickError => {
+    winston.info(`git cherry-pick failed (aborting): ${target} on ${repo}`);
+    return execute('git', ['cherry-pick', '--abort'], `../${repo}`).then(stdout => Promise.resolve(false), abortError => {
+      winston.error(`git cherry-pick --abort failed: ${target} on ${repo}`);
+      return Promise.reject(abortError);
+    });
+  });
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleGVjdXRlIiwicmVxdWlyZSIsIndpbnN0b24iLCJtb2R1bGUiLCJleHBvcnRzIiwicmVwbyIsInRhcmdldCIsImluZm8iLCJ0aGVuIiwic3Rkb3V0IiwiUHJvbWlzZSIsInJlc29sdmUiLCJjaGVycnlQaWNrRXJyb3IiLCJhYm9ydEVycm9yIiwiZXJyb3IiLCJyZWplY3QiXSwic291cmNlcyI6WyJnaXRDaGVycnlQaWNrLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBnaXQgY2hlcnJ5LXBpY2sgKGJ1dCBpZiBpdCBmYWlscywgaXQgd2lsbCBiYWNrIG91dCBvZiB0aGUgY2hlcnJ5LXBpY2spXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5jb25zdCBleGVjdXRlID0gcmVxdWlyZSggJy4vZXhlY3V0ZScgKTtcclxuY29uc3Qgd2luc3RvbiA9IHJlcXVpcmUoICd3aW5zdG9uJyApO1xyXG5cclxuLyoqXHJcbiAqIEV4ZWN1dGVzIGdpdCBjaGVycnktcGljayAoYnV0IGlmIGl0IGZhaWxzLCBpdCB3aWxsIGJhY2sgb3V0IG9mIHRoZSBjaGVycnktcGljaylcclxuICogQHB1YmxpY1xyXG4gKlxyXG4gKiBAcGFyYW0ge3N0cmluZ30gcmVwbyAtIFRoZSByZXBvc2l0b3J5IG5hbWVcclxuICogQHBhcmFtIHtzdHJpbmd9IHRhcmdldCAtIFRoZSBTSEEvYnJhbmNoL3doYXRub3QgdG8gY2hlY2sgb3V0XHJcbiAqIEByZXR1cm5zIHtQcm9taXNlLjxib29sZWFuPn0gLSBSZXNvbHZlcyB0byB3aGV0aGVyIHRoZSBjaGVycnktcGljayB3b3JrZWQgb3Igbm90LiBJZiBhYm9ydGluZyBmYWlscywgd2lsbCByZWplY3QuXHJcbiAqL1xyXG5tb2R1bGUuZXhwb3J0cyA9IGZ1bmN0aW9uKCByZXBvLCB0YXJnZXQgKSB7XHJcbiAgd2luc3Rvbi5pbmZvKCBgZ2l0IGNoZXJyeS1waWNrICR7dGFyZ2V0fSBvbiAke3JlcG99YCApO1xyXG5cclxuICByZXR1cm4gZXhlY3V0ZSggJ2dpdCcsIFsgJ2NoZXJyeS1waWNrJywgdGFyZ2V0IF0sIGAuLi8ke3JlcG99YCApLnRoZW4oIHN0ZG91dCA9PiBQcm9taXNlLnJlc29sdmUoIHRydWUgKSwgY2hlcnJ5UGlja0Vycm9yID0+IHtcclxuICAgIHdpbnN0b24uaW5mbyggYGdpdCBjaGVycnktcGljayBmYWlsZWQgKGFib3J0aW5nKTogJHt0YXJnZXR9IG9uICR7cmVwb31gICk7XHJcblxyXG4gICAgcmV0dXJuIGV4ZWN1dGUoICdnaXQnLCBbICdjaGVycnktcGljaycsICctLWFib3J0JyBdLCBgLi4vJHtyZXBvfWAgKS50aGVuKCBzdGRvdXQgPT4gUHJvbWlzZS5yZXNvbHZlKCBmYWxzZSApLCBhYm9ydEVycm9yID0+IHtcclxuICAgICAgd2luc3Rvbi5lcnJvciggYGdpdCBjaGVycnktcGljayAtLWFib3J0IGZhaWxlZDogJHt0YXJnZXR9IG9uICR7cmVwb31gICk7XHJcbiAgICAgIHJldHVybiBQcm9taXNlLnJlamVjdCggYWJvcnRFcnJvciApO1xyXG4gICAgfSApO1xyXG4gIH0gKTtcclxufTtcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE1BQU1BLE9BQU8sR0FBR0MsT0FBTyxDQUFFLFdBQVksQ0FBQztBQUN0QyxNQUFNQyxPQUFPLEdBQUdELE9BQU8sQ0FBRSxTQUFVLENBQUM7O0FBRXBDO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQUUsTUFBTSxDQUFDQyxPQUFPLEdBQUcsVUFBVUMsSUFBSSxFQUFFQyxNQUFNLEVBQUc7RUFDeENKLE9BQU8sQ0FBQ0ssSUFBSSxDQUFHLG1CQUFrQkQsTUFBTyxPQUFNRCxJQUFLLEVBQUUsQ0FBQztFQUV0RCxPQUFPTCxPQUFPLENBQUUsS0FBSyxFQUFFLENBQUUsYUFBYSxFQUFFTSxNQUFNLENBQUUsRUFBRyxNQUFLRCxJQUFLLEVBQUUsQ0FBQyxDQUFDRyxJQUFJLENBQUVDLE1BQU0sSUFBSUMsT0FBTyxDQUFDQyxPQUFPLENBQUUsSUFBSyxDQUFDLEVBQUVDLGVBQWUsSUFBSTtJQUMzSFYsT0FBTyxDQUFDSyxJQUFJLENBQUcsc0NBQXFDRCxNQUFPLE9BQU1ELElBQUssRUFBRSxDQUFDO0lBRXpFLE9BQU9MLE9BQU8sQ0FBRSxLQUFLLEVBQUUsQ0FBRSxhQUFhLEVBQUUsU0FBUyxDQUFFLEVBQUcsTUFBS0ssSUFBSyxFQUFFLENBQUMsQ0FBQ0csSUFBSSxDQUFFQyxNQUFNLElBQUlDLE9BQU8sQ0FBQ0MsT0FBTyxDQUFFLEtBQU0sQ0FBQyxFQUFFRSxVQUFVLElBQUk7TUFDMUhYLE9BQU8sQ0FBQ1ksS0FBSyxDQUFHLG1DQUFrQ1IsTUFBTyxPQUFNRCxJQUFLLEVBQUUsQ0FBQztNQUN2RSxPQUFPSyxPQUFPLENBQUNLLE1BQU0sQ0FBRUYsVUFBVyxDQUFDO0lBQ3JDLENBQUUsQ0FBQztFQUNMLENBQUUsQ0FBQztBQUNMLENBQUMifQ==

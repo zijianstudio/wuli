@@ -1,0 +1,27 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * A 'slot' for a function in a builder.
+ * It has the same shape as a function, but a dashed outline and no fill.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../../phet-core/js/merge.js';
+import functionBuilder from '../../../functionBuilder.js';
+import FunctionBackgroundNode from '../functions/FunctionBackgroundNode.js';
+export default class FunctionSlotNode extends FunctionBackgroundNode {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = merge({
+      fill: null,
+      stroke: 'white',
+      lineDash: [4, 4]
+    }, options);
+    super(options);
+  }
+}
+functionBuilder.register('FunctionSlotNode', FunctionSlotNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsImZ1bmN0aW9uQnVpbGRlciIsIkZ1bmN0aW9uQmFja2dyb3VuZE5vZGUiLCJGdW5jdGlvblNsb3ROb2RlIiwiY29uc3RydWN0b3IiLCJvcHRpb25zIiwiZmlsbCIsInN0cm9rZSIsImxpbmVEYXNoIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJGdW5jdGlvblNsb3ROb2RlLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE2LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEEgJ3Nsb3QnIGZvciBhIGZ1bmN0aW9uIGluIGEgYnVpbGRlci5cclxuICogSXQgaGFzIHRoZSBzYW1lIHNoYXBlIGFzIGEgZnVuY3Rpb24sIGJ1dCBhIGRhc2hlZCBvdXRsaW5lIGFuZCBubyBmaWxsLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBtZXJnZSBmcm9tICcuLi8uLi8uLi8uLi8uLi9waGV0LWNvcmUvanMvbWVyZ2UuanMnO1xyXG5pbXBvcnQgZnVuY3Rpb25CdWlsZGVyIGZyb20gJy4uLy4uLy4uL2Z1bmN0aW9uQnVpbGRlci5qcyc7XHJcbmltcG9ydCBGdW5jdGlvbkJhY2tncm91bmROb2RlIGZyb20gJy4uL2Z1bmN0aW9ucy9GdW5jdGlvbkJhY2tncm91bmROb2RlLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEZ1bmN0aW9uU2xvdE5vZGUgZXh0ZW5kcyBGdW5jdGlvbkJhY2tncm91bmROb2RlIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtPYmplY3R9IFtvcHRpb25zXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBvcHRpb25zICkge1xyXG5cclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICBmaWxsOiBudWxsLFxyXG4gICAgICBzdHJva2U6ICd3aGl0ZScsXHJcbiAgICAgIGxpbmVEYXNoOiBbIDQsIDQgXVxyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIHN1cGVyKCBvcHRpb25zICk7XHJcbiAgfVxyXG59XHJcblxyXG5mdW5jdGlvbkJ1aWxkZXIucmVnaXN0ZXIoICdGdW5jdGlvblNsb3ROb2RlJywgRnVuY3Rpb25TbG90Tm9kZSApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxzQ0FBc0M7QUFDeEQsT0FBT0MsZUFBZSxNQUFNLDZCQUE2QjtBQUN6RCxPQUFPQyxzQkFBc0IsTUFBTSx3Q0FBd0M7QUFFM0UsZUFBZSxNQUFNQyxnQkFBZ0IsU0FBU0Qsc0JBQXNCLENBQUM7RUFFbkU7QUFDRjtBQUNBO0VBQ0VFLFdBQVdBLENBQUVDLE9BQU8sRUFBRztJQUVyQkEsT0FBTyxHQUFHTCxLQUFLLENBQUU7TUFDZk0sSUFBSSxFQUFFLElBQUk7TUFDVkMsTUFBTSxFQUFFLE9BQU87TUFDZkMsUUFBUSxFQUFFLENBQUUsQ0FBQyxFQUFFLENBQUM7SUFDbEIsQ0FBQyxFQUFFSCxPQUFRLENBQUM7SUFFWixLQUFLLENBQUVBLE9BQVEsQ0FBQztFQUNsQjtBQUNGO0FBRUFKLGVBQWUsQ0FBQ1EsUUFBUSxDQUFFLGtCQUFrQixFQUFFTixnQkFBaUIsQ0FBQyJ9

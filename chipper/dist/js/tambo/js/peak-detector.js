@@ -1,0 +1,55 @@
+// Copyright 2021-2022, University of Colorado Boulder
+
+/**
+ * This file defines an AudioWorklet processor for a peak detector.  This code is intended to run on the audio rendering
+ * thread in the AudioWorkletGlobalScope.  It must be loaded using audioWorklet.addModule in the main JavaScript thread.
+ *
+ * Since it is directly loaded onto a separate thread, this file should be in JavaScript and should not be converted to
+ * TypeScript.
+ *
+ * @author John Blanco (PhET Interactive Simulations)
+ */
+
+const UPDATE_PERIOD = 1000; // in ms
+
+class PeakDetectorProcessor extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.lastUpdateTime = 0;
+    this.peak = 0;
+  }
+
+  /**
+   * Process the audio information - see the Web Audio documentation for details about the parameters for this method.
+   * @param inputs
+   * @param outputs
+   * @param parameters
+   * @returns {boolean}
+   * @public
+   */
+  process(inputs, outputs, parameters) {
+    const now = Date.now();
+    const input = inputs[0];
+
+    // Scan through the input data and see if the peak value has been exceeded and, if so, set a new value.  This only
+    // looks at one channel of the first input, since that's all that has been needed so far.
+    const channelData = input[0];
+    for (let i = 0; i < channelData.length; i++) {
+      this.peak = Math.max(Math.abs(channelData[i]), this.peak);
+    }
+
+    // If the update period has been exceeded, send a message to the main thread with the current peak and reset it.
+    if (now - this.lastUpdateTime >= UPDATE_PERIOD) {
+      this.port.postMessage({
+        peak: this.peak
+      });
+
+      // Reset the timer and the peak.
+      this.lastUpdateTime = now;
+      this.peak = 0;
+    }
+    return true;
+  }
+}
+registerProcessor('peak-detector', PeakDetectorProcessor);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJVUERBVEVfUEVSSU9EIiwiUGVha0RldGVjdG9yUHJvY2Vzc29yIiwiQXVkaW9Xb3JrbGV0UHJvY2Vzc29yIiwiY29uc3RydWN0b3IiLCJsYXN0VXBkYXRlVGltZSIsInBlYWsiLCJwcm9jZXNzIiwiaW5wdXRzIiwib3V0cHV0cyIsInBhcmFtZXRlcnMiLCJub3ciLCJEYXRlIiwiaW5wdXQiLCJjaGFubmVsRGF0YSIsImkiLCJsZW5ndGgiLCJNYXRoIiwibWF4IiwiYWJzIiwicG9ydCIsInBvc3RNZXNzYWdlIiwicmVnaXN0ZXJQcm9jZXNzb3IiXSwic291cmNlcyI6WyJwZWFrLWRldGVjdG9yLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFRoaXMgZmlsZSBkZWZpbmVzIGFuIEF1ZGlvV29ya2xldCBwcm9jZXNzb3IgZm9yIGEgcGVhayBkZXRlY3Rvci4gIFRoaXMgY29kZSBpcyBpbnRlbmRlZCB0byBydW4gb24gdGhlIGF1ZGlvIHJlbmRlcmluZ1xyXG4gKiB0aHJlYWQgaW4gdGhlIEF1ZGlvV29ya2xldEdsb2JhbFNjb3BlLiAgSXQgbXVzdCBiZSBsb2FkZWQgdXNpbmcgYXVkaW9Xb3JrbGV0LmFkZE1vZHVsZSBpbiB0aGUgbWFpbiBKYXZhU2NyaXB0IHRocmVhZC5cclxuICpcclxuICogU2luY2UgaXQgaXMgZGlyZWN0bHkgbG9hZGVkIG9udG8gYSBzZXBhcmF0ZSB0aHJlYWQsIHRoaXMgZmlsZSBzaG91bGQgYmUgaW4gSmF2YVNjcmlwdCBhbmQgc2hvdWxkIG5vdCBiZSBjb252ZXJ0ZWQgdG9cclxuICogVHlwZVNjcmlwdC5cclxuICpcclxuICogQGF1dGhvciBKb2huIEJsYW5jbyAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5jb25zdCBVUERBVEVfUEVSSU9EID0gMTAwMDsgLy8gaW4gbXNcclxuXHJcbmNsYXNzIFBlYWtEZXRlY3RvclByb2Nlc3NvciBleHRlbmRzIEF1ZGlvV29ya2xldFByb2Nlc3NvciB7XHJcblxyXG4gIGNvbnN0cnVjdG9yKCkge1xyXG4gICAgc3VwZXIoKTtcclxuICAgIHRoaXMubGFzdFVwZGF0ZVRpbWUgPSAwO1xyXG4gICAgdGhpcy5wZWFrID0gMDtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFByb2Nlc3MgdGhlIGF1ZGlvIGluZm9ybWF0aW9uIC0gc2VlIHRoZSBXZWIgQXVkaW8gZG9jdW1lbnRhdGlvbiBmb3IgZGV0YWlscyBhYm91dCB0aGUgcGFyYW1ldGVycyBmb3IgdGhpcyBtZXRob2QuXHJcbiAgICogQHBhcmFtIGlucHV0c1xyXG4gICAqIEBwYXJhbSBvdXRwdXRzXHJcbiAgICogQHBhcmFtIHBhcmFtZXRlcnNcclxuICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgcHJvY2VzcyggaW5wdXRzLCBvdXRwdXRzLCBwYXJhbWV0ZXJzICkge1xyXG4gICAgY29uc3Qgbm93ID0gRGF0ZS5ub3coKTtcclxuICAgIGNvbnN0IGlucHV0ID0gaW5wdXRzWyAwIF07XHJcblxyXG4gICAgLy8gU2NhbiB0aHJvdWdoIHRoZSBpbnB1dCBkYXRhIGFuZCBzZWUgaWYgdGhlIHBlYWsgdmFsdWUgaGFzIGJlZW4gZXhjZWVkZWQgYW5kLCBpZiBzbywgc2V0IGEgbmV3IHZhbHVlLiAgVGhpcyBvbmx5XHJcbiAgICAvLyBsb29rcyBhdCBvbmUgY2hhbm5lbCBvZiB0aGUgZmlyc3QgaW5wdXQsIHNpbmNlIHRoYXQncyBhbGwgdGhhdCBoYXMgYmVlbiBuZWVkZWQgc28gZmFyLlxyXG4gICAgY29uc3QgY2hhbm5lbERhdGEgPSBpbnB1dFsgMCBdO1xyXG4gICAgZm9yICggbGV0IGkgPSAwOyBpIDwgY2hhbm5lbERhdGEubGVuZ3RoOyBpKysgKSB7XHJcbiAgICAgIHRoaXMucGVhayA9IE1hdGgubWF4KCBNYXRoLmFicyggY2hhbm5lbERhdGFbIGkgXSApLCB0aGlzLnBlYWsgKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBJZiB0aGUgdXBkYXRlIHBlcmlvZCBoYXMgYmVlbiBleGNlZWRlZCwgc2VuZCBhIG1lc3NhZ2UgdG8gdGhlIG1haW4gdGhyZWFkIHdpdGggdGhlIGN1cnJlbnQgcGVhayBhbmQgcmVzZXQgaXQuXHJcbiAgICBpZiAoIG5vdyAtIHRoaXMubGFzdFVwZGF0ZVRpbWUgPj0gVVBEQVRFX1BFUklPRCApIHtcclxuICAgICAgdGhpcy5wb3J0LnBvc3RNZXNzYWdlKCB7IHBlYWs6IHRoaXMucGVhayB9ICk7XHJcblxyXG4gICAgICAvLyBSZXNldCB0aGUgdGltZXIgYW5kIHRoZSBwZWFrLlxyXG4gICAgICB0aGlzLmxhc3RVcGRhdGVUaW1lID0gbm93O1xyXG4gICAgICB0aGlzLnBlYWsgPSAwO1xyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiB0cnVlO1xyXG4gIH1cclxufVxyXG5cclxucmVnaXN0ZXJQcm9jZXNzb3IoICdwZWFrLWRldGVjdG9yJywgUGVha0RldGVjdG9yUHJvY2Vzc29yICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsTUFBTUEsYUFBYSxHQUFHLElBQUksQ0FBQyxDQUFDOztBQUU1QixNQUFNQyxxQkFBcUIsU0FBU0MscUJBQXFCLENBQUM7RUFFeERDLFdBQVdBLENBQUEsRUFBRztJQUNaLEtBQUssQ0FBQyxDQUFDO0lBQ1AsSUFBSSxDQUFDQyxjQUFjLEdBQUcsQ0FBQztJQUN2QixJQUFJLENBQUNDLElBQUksR0FBRyxDQUFDO0VBQ2Y7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxPQUFPQSxDQUFFQyxNQUFNLEVBQUVDLE9BQU8sRUFBRUMsVUFBVSxFQUFHO0lBQ3JDLE1BQU1DLEdBQUcsR0FBR0MsSUFBSSxDQUFDRCxHQUFHLENBQUMsQ0FBQztJQUN0QixNQUFNRSxLQUFLLEdBQUdMLE1BQU0sQ0FBRSxDQUFDLENBQUU7O0lBRXpCO0lBQ0E7SUFDQSxNQUFNTSxXQUFXLEdBQUdELEtBQUssQ0FBRSxDQUFDLENBQUU7SUFDOUIsS0FBTSxJQUFJRSxDQUFDLEdBQUcsQ0FBQyxFQUFFQSxDQUFDLEdBQUdELFdBQVcsQ0FBQ0UsTUFBTSxFQUFFRCxDQUFDLEVBQUUsRUFBRztNQUM3QyxJQUFJLENBQUNULElBQUksR0FBR1csSUFBSSxDQUFDQyxHQUFHLENBQUVELElBQUksQ0FBQ0UsR0FBRyxDQUFFTCxXQUFXLENBQUVDLENBQUMsQ0FBRyxDQUFDLEVBQUUsSUFBSSxDQUFDVCxJQUFLLENBQUM7SUFDakU7O0lBRUE7SUFDQSxJQUFLSyxHQUFHLEdBQUcsSUFBSSxDQUFDTixjQUFjLElBQUlKLGFBQWEsRUFBRztNQUNoRCxJQUFJLENBQUNtQixJQUFJLENBQUNDLFdBQVcsQ0FBRTtRQUFFZixJQUFJLEVBQUUsSUFBSSxDQUFDQTtNQUFLLENBQUUsQ0FBQzs7TUFFNUM7TUFDQSxJQUFJLENBQUNELGNBQWMsR0FBR00sR0FBRztNQUN6QixJQUFJLENBQUNMLElBQUksR0FBRyxDQUFDO0lBQ2Y7SUFFQSxPQUFPLElBQUk7RUFDYjtBQUNGO0FBRUFnQixpQkFBaUIsQ0FBRSxlQUFlLEVBQUVwQixxQkFBc0IsQ0FBQyJ9

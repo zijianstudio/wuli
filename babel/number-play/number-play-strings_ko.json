@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "게임",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "게임"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "10",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "10"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "20",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "20"
+      }
+    ]
+  },
+  "ones": {
+    "value": "하나의",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "하나의"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "10개 틀",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "10개 틀"
+      }
+    ]
+  },
+  "word": {
+    "value": "단어",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "단어"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "단어 ({{language}})",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "단어 ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "게임을 선택하세요!",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "게임을 선택하세요!"
+      }
+    ]
+  },
+  "games": {
+    "value": "게임",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "게임"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "게임 횟수",
+    "history": [
+      {
+        "userId": 154927,
+        "timestamp": 1675333967475,
+        "oldValue": "",
+        "newValue": "게임 횟수"
+      }
+    ]
+  }
+}

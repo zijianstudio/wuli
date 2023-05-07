@@ -1,0 +1,39 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Model for a generic sensor with position and value.
+ *
+ * @author Siddhartha Chinthapally (Actual Concepts)
+ */
+
+import Emitter from '../../../../axon/js/Emitter.js';
+import Property from '../../../../axon/js/Property.js';
+import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import fluidPressureAndFlow from '../../fluidPressureAndFlow.js';
+class Sensor {
+  /**
+   * @param {Vector2} position of the sensor
+   * @param {Object} value as measured by the sensor
+   */
+  constructor(position, value) {
+    // @public
+    this.positionProperty = new Vector2Property(position);
+
+    // @public {Object}
+    this.valueProperty = new Property(value);
+
+    // @public
+    this.updateEmitter = new Emitter();
+  }
+
+  /**
+   * @public
+   */
+  reset() {
+    this.positionProperty.reset();
+    this.valueProperty.reset();
+  }
+}
+fluidPressureAndFlow.register('Sensor', Sensor);
+export default Sensor;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFbWl0dGVyIiwiUHJvcGVydHkiLCJWZWN0b3IyUHJvcGVydHkiLCJmbHVpZFByZXNzdXJlQW5kRmxvdyIsIlNlbnNvciIsImNvbnN0cnVjdG9yIiwicG9zaXRpb24iLCJ2YWx1ZSIsInBvc2l0aW9uUHJvcGVydHkiLCJ2YWx1ZVByb3BlcnR5IiwidXBkYXRlRW1pdHRlciIsInJlc2V0IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJTZW5zb3IuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTW9kZWwgZm9yIGEgZ2VuZXJpYyBzZW5zb3Igd2l0aCBwb3NpdGlvbiBhbmQgdmFsdWUuXHJcbiAqXHJcbiAqIEBhdXRob3IgU2lkZGhhcnRoYSBDaGludGhhcGFsbHkgKEFjdHVhbCBDb25jZXB0cylcclxuICovXHJcblxyXG5pbXBvcnQgRW1pdHRlciBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL0VtaXR0ZXIuanMnO1xyXG5pbXBvcnQgUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vYXhvbi9qcy9Qcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBWZWN0b3IyUHJvcGVydHkgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjJQcm9wZXJ0eS5qcyc7XHJcbmltcG9ydCBmbHVpZFByZXNzdXJlQW5kRmxvdyBmcm9tICcuLi8uLi9mbHVpZFByZXNzdXJlQW5kRmxvdy5qcyc7XHJcblxyXG5jbGFzcyBTZW5zb3Ige1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge1ZlY3RvcjJ9IHBvc2l0aW9uIG9mIHRoZSBzZW5zb3JcclxuICAgKiBAcGFyYW0ge09iamVjdH0gdmFsdWUgYXMgbWVhc3VyZWQgYnkgdGhlIHNlbnNvclxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBwb3NpdGlvbiwgdmFsdWUgKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpY1xyXG4gICAgdGhpcy5wb3NpdGlvblByb3BlcnR5ID0gbmV3IFZlY3RvcjJQcm9wZXJ0eSggcG9zaXRpb24gKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtPYmplY3R9XHJcbiAgICB0aGlzLnZhbHVlUHJvcGVydHkgPSBuZXcgUHJvcGVydHkoIHZhbHVlICk7XHJcblxyXG4gICAgLy8gQHB1YmxpY1xyXG4gICAgdGhpcy51cGRhdGVFbWl0dGVyID0gbmV3IEVtaXR0ZXIoKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICByZXNldCgpIHtcclxuICAgIHRoaXMucG9zaXRpb25Qcm9wZXJ0eS5yZXNldCgpO1xyXG4gICAgdGhpcy52YWx1ZVByb3BlcnR5LnJlc2V0KCk7XHJcbiAgfVxyXG59XHJcblxyXG5mbHVpZFByZXNzdXJlQW5kRmxvdy5yZWdpc3RlciggJ1NlbnNvcicsIFNlbnNvciApO1xyXG5leHBvcnQgZGVmYXVsdCBTZW5zb3I7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE9BQU8sTUFBTSxnQ0FBZ0M7QUFDcEQsT0FBT0MsUUFBUSxNQUFNLGlDQUFpQztBQUN0RCxPQUFPQyxlQUFlLE1BQU0sdUNBQXVDO0FBQ25FLE9BQU9DLG9CQUFvQixNQUFNLCtCQUErQjtBQUVoRSxNQUFNQyxNQUFNLENBQUM7RUFFWDtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxRQUFRLEVBQUVDLEtBQUssRUFBRztJQUU3QjtJQUNBLElBQUksQ0FBQ0MsZ0JBQWdCLEdBQUcsSUFBSU4sZUFBZSxDQUFFSSxRQUFTLENBQUM7O0lBRXZEO0lBQ0EsSUFBSSxDQUFDRyxhQUFhLEdBQUcsSUFBSVIsUUFBUSxDQUFFTSxLQUFNLENBQUM7O0lBRTFDO0lBQ0EsSUFBSSxDQUFDRyxhQUFhLEdBQUcsSUFBSVYsT0FBTyxDQUFDLENBQUM7RUFDcEM7O0VBRUE7QUFDRjtBQUNBO0VBQ0VXLEtBQUtBLENBQUEsRUFBRztJQUNOLElBQUksQ0FBQ0gsZ0JBQWdCLENBQUNHLEtBQUssQ0FBQyxDQUFDO0lBQzdCLElBQUksQ0FBQ0YsYUFBYSxDQUFDRSxLQUFLLENBQUMsQ0FBQztFQUM1QjtBQUNGO0FBRUFSLG9CQUFvQixDQUFDUyxRQUFRLENBQUUsUUFBUSxFQUFFUixNQUFPLENBQUM7QUFDakQsZUFBZUEsTUFBTSJ9

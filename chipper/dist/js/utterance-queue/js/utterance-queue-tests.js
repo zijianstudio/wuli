@@ -1,0 +1,16 @@
+// Copyright 2019-2022, University of Colorado Boulder
+
+/**
+ * Unit tests for utterance-queue.
+ *
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+import './ResponsePacketTests.js';
+import './UtteranceTests.js';
+import './UtteranceQueueTests.js';
+
+// Since our tests are loaded asynchronously, we must direct QUnit to begin the tests
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsidXR0ZXJhbmNlLXF1ZXVlLXRlc3RzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE5LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFVuaXQgdGVzdHMgZm9yIHV0dGVyYW5jZS1xdWV1ZS5cclxuICpcclxuICogQGF1dGhvciBNaWNoYWVsIEthdXptYW5uIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCBxdW5pdFN0YXJ0IGZyb20gJy4uLy4uL2NoaXBwZXIvanMvc2ltLXRlc3RzL3F1bml0U3RhcnQuanMnO1xyXG5pbXBvcnQgJy4vUmVzcG9uc2VQYWNrZXRUZXN0cy5qcyc7XHJcbmltcG9ydCAnLi9VdHRlcmFuY2VUZXN0cy5qcyc7XHJcbmltcG9ydCAnLi9VdHRlcmFuY2VRdWV1ZVRlc3RzLmpzJztcclxuXHJcbi8vIFNpbmNlIG91ciB0ZXN0cyBhcmUgbG9hZGVkIGFzeW5jaHJvbm91c2x5LCB3ZSBtdXN0IGRpcmVjdCBRVW5pdCB0byBiZWdpbiB0aGUgdGVzdHNcclxucXVuaXRTdGFydCgpOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxVQUFVLE1BQU0sMENBQTBDO0FBQ2pFLE9BQU8sMEJBQTBCO0FBQ2pDLE9BQU8scUJBQXFCO0FBQzVCLE9BQU8sMEJBQTBCOztBQUVqQztBQUNBQSxVQUFVLENBQUMsQ0FBQyJ9

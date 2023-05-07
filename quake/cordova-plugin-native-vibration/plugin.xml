@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-native-vibration"
+        version="0.0.1`">
+    <name>NativeVibration</name>
+    <description>Cordova Native Vibration Plugin</description>
+    <license>GPL</license>
+    <keywords>cordova,vibration</keywords>
+    <repo>https://github.com/phetsims/quake.git</repo>
+    <issue>https://github.com/phetsims/quake/issues</issue>
+
+    <js-module src="www/nativeVibration.js" name="nativeVibration">
+        <clobbers target="nativeVibration"/>
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="NativeVibration">
+                <param name="android-package" value="edu.colorado.phet.nativevibration.NativeVibration"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/NativeVibration.java" target-dir="src/edu/colorado/phet/cordova/nativevibration"/>
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NativeVibration">
+                <param name="ios-package" value="CDVNativeVibration"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVNativeVibration.h"/>
+        <source-file src="src/ios/CDVNativeVibration.m"/>
+    </platform>
+
+    <!-- windows -->
+    <platform name="windows">
+        <js-module src="src/windows/NativeVibrationProxy.js" name="NativeVibrationProxy">
+            <runs/>
+        </js-module>
+    </platform>
+
+    <!-- browser -->
+    <platform name="browser">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NativeVibration">
+                <param name="browser-package" value="NativeVibration"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/browser/NativeVibrationProxy.js" name="NativeVibrationProxy">
+            <runs/>
+        </js-module>
+    </platform>
+
+    <!-- osx -->
+    <platform name="osx">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NativeVibration">
+                <param name="ios-package" value="CDVNativeVibration"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/osx/CDVNativeVibration.h"/>
+        <source-file src="src/osx/CDVNativeVibration.m"/>
+    </platform>
+
+</plugin>

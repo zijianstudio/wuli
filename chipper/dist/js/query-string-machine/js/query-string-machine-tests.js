@@ -1,0 +1,14 @@
+// Copyright 2017-2022, University of Colorado Boulder
+
+/**
+ * Unit tests for dot. Please run once in phet brand and once in brand=phet-io to cover all functionality.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js'; // Use local path because there is no path for query string machine, because it is a preload
+import './QueryStringMachineTests.js'; // Use local path because there is no path for query string machine, because it is a preload
+
+// Since our tests are loaded asynchronously, we must direct QUnit to begin the tests
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsicXVlcnktc3RyaW5nLW1hY2hpbmUtdGVzdHMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVW5pdCB0ZXN0cyBmb3IgZG90LiBQbGVhc2UgcnVuIG9uY2UgaW4gcGhldCBicmFuZCBhbmQgb25jZSBpbiBicmFuZD1waGV0LWlvIHRvIGNvdmVyIGFsbCBmdW5jdGlvbmFsaXR5LlxyXG4gKlxyXG4gKiBAYXV0aG9yIFNhbSBSZWlkIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCBxdW5pdFN0YXJ0IGZyb20gJy4uLy4uL2NoaXBwZXIvanMvc2ltLXRlc3RzL3F1bml0U3RhcnQuanMnOyAvLyBVc2UgbG9jYWwgcGF0aCBiZWNhdXNlIHRoZXJlIGlzIG5vIHBhdGggZm9yIHF1ZXJ5IHN0cmluZyBtYWNoaW5lLCBiZWNhdXNlIGl0IGlzIGEgcHJlbG9hZFxyXG5pbXBvcnQgJy4vUXVlcnlTdHJpbmdNYWNoaW5lVGVzdHMuanMnOyAvLyBVc2UgbG9jYWwgcGF0aCBiZWNhdXNlIHRoZXJlIGlzIG5vIHBhdGggZm9yIHF1ZXJ5IHN0cmluZyBtYWNoaW5lLCBiZWNhdXNlIGl0IGlzIGEgcHJlbG9hZFxyXG5cclxuLy8gU2luY2Ugb3VyIHRlc3RzIGFyZSBsb2FkZWQgYXN5bmNocm9ub3VzbHksIHdlIG11c3QgZGlyZWN0IFFVbml0IHRvIGJlZ2luIHRoZSB0ZXN0c1xyXG5xdW5pdFN0YXJ0KCk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLFVBQVUsTUFBTSwwQ0FBMEMsQ0FBQyxDQUFDO0FBQ25FLE9BQU8sOEJBQThCLENBQUMsQ0FBQzs7QUFFdkM7QUFDQUEsVUFBVSxDQUFDLENBQUMifQ==

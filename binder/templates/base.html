@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PhET Interactive Simulations Style Guide</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/docs.min.css">
+    <style media="screen">
+      show {
+        display: block;
+      }
+
+      article.parent-component {
+        display: none;
+      }
+
+      .bd-sidenav li {
+        padding-left: 10px;
+      }
+
+      .list-group-item {
+        border: none;
+      }
+    </style>
+</head>
+<body>
+    <!-- Simulate look and feel of Bootstrap docs -->
+    <!-- Faded permanent menu at top left -->
+    <div id="header" class="d-flex flex-column flex-md-row align-itmes-center p-3 px-md-4 bg-dark border-bottom bd-navbar">
+      <h2 class="text-light">PhET Style Guide</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+                <!-- navigation -->
+                <nav class="collapse bd-links">
+                {{#each parents as |parent|}}
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="#{{parent.category}}">{{parent.title}}</a>
+                        {{#if parent.components}}
+                          {{#navList parent.components parent.repo}}
+                          {{/navList}}
+                        {{/if}}
+                    </div>
+                {{/each}}
+                    <div class="bd-toc-item">
+                    <a class="bd-toc-link" href="#sims">Components by sim</a>
+                    </div>
+                    <div class="bd-toc-item">
+                    <a class="bd-toc-link" href="#components">Sims by component</a>
+                    </div>
+                </nav>
+            </div>
+            <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div id="content-fill">
+              </div>
+                {{{ content }}}
+            </main>
+        </div>
+    </div>
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+      function fillContentSection ( elem ) {
+        let $parent = $(elem).parent();
+        $parent.siblings().removeClass( 'active' );
+        $parent.addClass( 'active' );
+        let sectionContent = document.querySelector( elem.hash ).innerHTML;
+        document.getElementById( 'content-fill' ).innerHTML = sectionContent;
+      }
+
+      function scrollToComponent( element ) {
+        let $offset = $(element.hash).offset().top;
+        $( 'html' ).scrollTop( $offset - $('#header').outerHeight() + 5 );
+      }
+
+      function updateUrl ( elem ) {
+        history.pushState( {}, 'Add Component Hash', elem.hash );
+      }
+
+      let links = document.querySelectorAll( 'a.bd-toc-link' );
+      links[0].parentElement.classList.add( 'active' );
+
+      links.forEach( link => {
+        link.addEventListener( 'click', function( event ) {
+          event.preventDefault();
+          fillContentSection( event.target );
+          scrollToComponent( event.target );
+          updateUrl( event.target );
+        } );
+      } );
+
+      // let sideLinks = document.querySelectorAll( '.bd-sidenav li a' );
+
+      $( '.bd-sidenav li a' ).on( 'click', function( e ) {
+        e.preventDefault();
+        const hash = this.hash;
+        $( 'html, body' ).animate( {
+          scrollTop: $(hash).offset().top
+        }, 300, function() {
+          window.location.hash = hash;
+        } );
+      });
+
+      // sideLinks.forEach( li => {
+      //   li.addEventListener( 'click', function( event ) {
+      //     event.preventDefault();
+      //     updateUrl( event.target );
+      //     scrollToComponent( event.target );
+      //     $(event.target).parent().siblings().removeClass( 'active bd-sidenav-active' );
+      //     $(event.target).parent().addClass( 'active bd-sidenav-active' );
+      //   } );
+      // } );
+
+      document.querySelectorAll( 'table' ).forEach( table => { table.classList.add( 'table' ); } );
+
+      // wrap code sections
+      let codeSnippets = document.querySelectorAll( '.component pre code' );
+
+      codeSnippets.forEach( code => {
+        let parent = code.parentElement;  //pre
+        let newElem = document.createElement( 'figure' );
+        newElem.classList.add( 'highlight' );
+        newElem.appendChild( parent.cloneNode( true ) );
+        parent.after( newElem );
+        parent.remove();
+      } );
+
+      document.getElementById( 'content-fill' ).innerHTML = document.querySelector( '.parent-component' ).innerHTML;
+    </script>
+</body>
+</html>

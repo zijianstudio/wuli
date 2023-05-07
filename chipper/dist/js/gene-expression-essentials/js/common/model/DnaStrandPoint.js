@@ -1,0 +1,64 @@
+// Copyright 2015-2020, University of Colorado Boulder
+
+/**
+ * Class with one x position and two y positions, used for defining the two strands that comprise the backbone of one
+ * DNA molecule.
+ *
+ * @author Sharfudeen Ashraf
+ * @author John Blanco
+ * @author Aadish Gupta
+ */
+
+import geneExpressionEssentials from '../../geneExpressionEssentials.js';
+class DnaStrandPoint {
+  /**
+   * @param {number} xPos
+   * @param {number} strand1YPos
+   * @param {number} strand2YPos
+   */
+  constructor(xPos, strand1YPos, strand2YPos) {
+    if (!_.isFinite(strand1YPos)) {
+      // use isFinite otherwise the condition fails at zero (Ashraf)
+      const strandPoint = xPos;
+      this.xPos = strandPoint.xPos; // @public
+      this.strand1YPos = strandPoint.strand1YPos; // @public
+      this.strand2YPos = strandPoint.strand2YPos; // @public
+    } else {
+      this.xPos = xPos; // @public
+      this.strand1YPos = strand1YPos; // @public
+      this.strand2YPos = strand2YPos; // @public
+    }
+  }
+
+  /**
+   * @param {DnaStrandPoint} dnaStrandPoint
+   * @public
+   */
+  set(dnaStrandPoint) {
+    this.xPos = dnaStrandPoint.xPos;
+    this.strand1YPos = dnaStrandPoint.strand1YPos;
+    this.strand2YPos = dnaStrandPoint.strand2YPos;
+  }
+
+  /**
+   * Compares to dna strand point
+   * @param {DnaStrandPoint} o
+   * @returns {boolean}
+   * @public
+   */
+  equals(o) {
+    if (this === o) {
+      return true;
+    }
+    if (o.strand1YPos !== this.strand1YPos) {
+      return false;
+    }
+    if (o.strand2YPos !== this.strand2YPos) {
+      return false;
+    }
+    return o.xPos === this.xPos;
+  }
+}
+geneExpressionEssentials.register('DnaStrandPoint', DnaStrandPoint);
+export default DnaStrandPoint;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJnZW5lRXhwcmVzc2lvbkVzc2VudGlhbHMiLCJEbmFTdHJhbmRQb2ludCIsImNvbnN0cnVjdG9yIiwieFBvcyIsInN0cmFuZDFZUG9zIiwic3RyYW5kMllQb3MiLCJfIiwiaXNGaW5pdGUiLCJzdHJhbmRQb2ludCIsInNldCIsImRuYVN0cmFuZFBvaW50IiwiZXF1YWxzIiwibyIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRG5hU3RyYW5kUG9pbnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ2xhc3Mgd2l0aCBvbmUgeCBwb3NpdGlvbiBhbmQgdHdvIHkgcG9zaXRpb25zLCB1c2VkIGZvciBkZWZpbmluZyB0aGUgdHdvIHN0cmFuZHMgdGhhdCBjb21wcmlzZSB0aGUgYmFja2JvbmUgb2Ygb25lXHJcbiAqIEROQSBtb2xlY3VsZS5cclxuICpcclxuICogQGF1dGhvciBTaGFyZnVkZWVuIEFzaHJhZlxyXG4gKiBAYXV0aG9yIEpvaG4gQmxhbmNvXHJcbiAqIEBhdXRob3IgQWFkaXNoIEd1cHRhXHJcbiAqL1xyXG5cclxuaW1wb3J0IGdlbmVFeHByZXNzaW9uRXNzZW50aWFscyBmcm9tICcuLi8uLi9nZW5lRXhwcmVzc2lvbkVzc2VudGlhbHMuanMnO1xyXG5cclxuY2xhc3MgRG5hU3RyYW5kUG9pbnQge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcn0geFBvc1xyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBzdHJhbmQxWVBvc1xyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBzdHJhbmQyWVBvc1xyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCB4UG9zLCBzdHJhbmQxWVBvcywgc3RyYW5kMllQb3MgKSB7XHJcbiAgICBpZiAoICFfLmlzRmluaXRlKCBzdHJhbmQxWVBvcyApICkgeyAvLyB1c2UgaXNGaW5pdGUgb3RoZXJ3aXNlIHRoZSBjb25kaXRpb24gZmFpbHMgYXQgemVybyAoQXNocmFmKVxyXG4gICAgICBjb25zdCBzdHJhbmRQb2ludCA9IHhQb3M7XHJcbiAgICAgIHRoaXMueFBvcyA9IHN0cmFuZFBvaW50LnhQb3M7IC8vIEBwdWJsaWNcclxuICAgICAgdGhpcy5zdHJhbmQxWVBvcyA9IHN0cmFuZFBvaW50LnN0cmFuZDFZUG9zOyAvLyBAcHVibGljXHJcbiAgICAgIHRoaXMuc3RyYW5kMllQb3MgPSBzdHJhbmRQb2ludC5zdHJhbmQyWVBvczsgLy8gQHB1YmxpY1xyXG4gICAgfVxyXG4gICAgZWxzZSB7XHJcbiAgICAgIHRoaXMueFBvcyA9IHhQb3M7IC8vIEBwdWJsaWNcclxuICAgICAgdGhpcy5zdHJhbmQxWVBvcyA9IHN0cmFuZDFZUG9zOyAvLyBAcHVibGljXHJcbiAgICAgIHRoaXMuc3RyYW5kMllQb3MgPSBzdHJhbmQyWVBvczsgLy8gQHB1YmxpY1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtEbmFTdHJhbmRQb2ludH0gZG5hU3RyYW5kUG9pbnRcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgc2V0KCBkbmFTdHJhbmRQb2ludCApIHtcclxuICAgIHRoaXMueFBvcyA9IGRuYVN0cmFuZFBvaW50LnhQb3M7XHJcbiAgICB0aGlzLnN0cmFuZDFZUG9zID0gZG5hU3RyYW5kUG9pbnQuc3RyYW5kMVlQb3M7XHJcbiAgICB0aGlzLnN0cmFuZDJZUG9zID0gZG5hU3RyYW5kUG9pbnQuc3RyYW5kMllQb3M7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDb21wYXJlcyB0byBkbmEgc3RyYW5kIHBvaW50XHJcbiAgICogQHBhcmFtIHtEbmFTdHJhbmRQb2ludH0gb1xyXG4gICAqIEByZXR1cm5zIHtib29sZWFufVxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBlcXVhbHMoIG8gKSB7XHJcbiAgICBpZiAoIHRoaXMgPT09IG8gKSB7IHJldHVybiB0cnVlOyB9XHJcbiAgICBpZiAoIG8uc3RyYW5kMVlQb3MgIT09IHRoaXMuc3RyYW5kMVlQb3MgKSB7XHJcbiAgICAgIHJldHVybiBmYWxzZTtcclxuICAgIH1cclxuICAgIGlmICggby5zdHJhbmQyWVBvcyAhPT0gdGhpcy5zdHJhbmQyWVBvcyApIHtcclxuICAgICAgcmV0dXJuIGZhbHNlO1xyXG4gICAgfVxyXG4gICAgcmV0dXJuIG8ueFBvcyA9PT0gdGhpcy54UG9zO1xyXG4gIH1cclxufVxyXG5cclxuZ2VuZUV4cHJlc3Npb25Fc3NlbnRpYWxzLnJlZ2lzdGVyKCAnRG5hU3RyYW5kUG9pbnQnLCBEbmFTdHJhbmRQb2ludCApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgRG5hU3RyYW5kUG9pbnQ7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLHdCQUF3QixNQUFNLG1DQUFtQztBQUV4RSxNQUFNQyxjQUFjLENBQUM7RUFFbkI7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxJQUFJLEVBQUVDLFdBQVcsRUFBRUMsV0FBVyxFQUFHO0lBQzVDLElBQUssQ0FBQ0MsQ0FBQyxDQUFDQyxRQUFRLENBQUVILFdBQVksQ0FBQyxFQUFHO01BQUU7TUFDbEMsTUFBTUksV0FBVyxHQUFHTCxJQUFJO01BQ3hCLElBQUksQ0FBQ0EsSUFBSSxHQUFHSyxXQUFXLENBQUNMLElBQUksQ0FBQyxDQUFDO01BQzlCLElBQUksQ0FBQ0MsV0FBVyxHQUFHSSxXQUFXLENBQUNKLFdBQVcsQ0FBQyxDQUFDO01BQzVDLElBQUksQ0FBQ0MsV0FBVyxHQUFHRyxXQUFXLENBQUNILFdBQVcsQ0FBQyxDQUFDO0lBQzlDLENBQUMsTUFDSTtNQUNILElBQUksQ0FBQ0YsSUFBSSxHQUFHQSxJQUFJLENBQUMsQ0FBQztNQUNsQixJQUFJLENBQUNDLFdBQVcsR0FBR0EsV0FBVyxDQUFDLENBQUM7TUFDaEMsSUFBSSxDQUFDQyxXQUFXLEdBQUdBLFdBQVcsQ0FBQyxDQUFDO0lBQ2xDO0VBQ0Y7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUksR0FBR0EsQ0FBRUMsY0FBYyxFQUFHO0lBQ3BCLElBQUksQ0FBQ1AsSUFBSSxHQUFHTyxjQUFjLENBQUNQLElBQUk7SUFDL0IsSUFBSSxDQUFDQyxXQUFXLEdBQUdNLGNBQWMsQ0FBQ04sV0FBVztJQUM3QyxJQUFJLENBQUNDLFdBQVcsR0FBR0ssY0FBYyxDQUFDTCxXQUFXO0VBQy9DOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFTSxNQUFNQSxDQUFFQyxDQUFDLEVBQUc7SUFDVixJQUFLLElBQUksS0FBS0EsQ0FBQyxFQUFHO01BQUUsT0FBTyxJQUFJO0lBQUU7SUFDakMsSUFBS0EsQ0FBQyxDQUFDUixXQUFXLEtBQUssSUFBSSxDQUFDQSxXQUFXLEVBQUc7TUFDeEMsT0FBTyxLQUFLO0lBQ2Q7SUFDQSxJQUFLUSxDQUFDLENBQUNQLFdBQVcsS0FBSyxJQUFJLENBQUNBLFdBQVcsRUFBRztNQUN4QyxPQUFPLEtBQUs7SUFDZDtJQUNBLE9BQU9PLENBQUMsQ0FBQ1QsSUFBSSxLQUFLLElBQUksQ0FBQ0EsSUFBSTtFQUM3QjtBQUNGO0FBRUFILHdCQUF3QixDQUFDYSxRQUFRLENBQUUsZ0JBQWdCLEVBQUVaLGNBQWUsQ0FBQztBQUVyRSxlQUFlQSxjQUFjIn0=

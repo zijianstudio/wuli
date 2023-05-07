@@ -1,0 +1,23 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * Executes async functions on each element in an array.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+/**
+ * Executes async functions on each element in an array.
+ *
+ * @param {Array.<*>} list
+ * @param {function({*})})} f
+ * @returns {Promise}
+ */
+const asyncForEach = async (list, f) => {
+  let index = 0;
+  for (const item of list) {
+    await f(item, index++);
+  }
+};
+module.exports = asyncForEach;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJhc3luY0ZvckVhY2giLCJsaXN0IiwiZiIsImluZGV4IiwiaXRlbSIsIm1vZHVsZSIsImV4cG9ydHMiXSwic291cmNlcyI6WyJhc3luY0ZvckVhY2guanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEV4ZWN1dGVzIGFzeW5jIGZ1bmN0aW9ucyBvbiBlYWNoIGVsZW1lbnQgaW4gYW4gYXJyYXkuXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG4vKipcclxuICogRXhlY3V0ZXMgYXN5bmMgZnVuY3Rpb25zIG9uIGVhY2ggZWxlbWVudCBpbiBhbiBhcnJheS5cclxuICpcclxuICogQHBhcmFtIHtBcnJheS48Kj59IGxpc3RcclxuICogQHBhcmFtIHtmdW5jdGlvbih7Kn0pfSl9IGZcclxuICogQHJldHVybnMge1Byb21pc2V9XHJcbiAqL1xyXG5jb25zdCBhc3luY0ZvckVhY2ggPSBhc3luYyAoIGxpc3QsIGYgKSA9PiB7XHJcbiAgbGV0IGluZGV4ID0gMDtcclxuICBmb3IgKCBjb25zdCBpdGVtIG9mIGxpc3QgKSB7XHJcbiAgICBhd2FpdCBmKCBpdGVtLCBpbmRleCsrICk7XHJcbiAgfVxyXG59O1xyXG5cclxubW9kdWxlLmV4cG9ydHMgPSBhc3luY0ZvckVhY2g7XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLE1BQU1BLFlBQVksR0FBRyxNQUFBQSxDQUFRQyxJQUFJLEVBQUVDLENBQUMsS0FBTTtFQUN4QyxJQUFJQyxLQUFLLEdBQUcsQ0FBQztFQUNiLEtBQU0sTUFBTUMsSUFBSSxJQUFJSCxJQUFJLEVBQUc7SUFDekIsTUFBTUMsQ0FBQyxDQUFFRSxJQUFJLEVBQUVELEtBQUssRUFBRyxDQUFDO0VBQzFCO0FBQ0YsQ0FBQztBQUVERSxNQUFNLENBQUNDLE9BQU8sR0FBR04sWUFBWSJ9

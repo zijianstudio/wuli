@@ -1,0 +1,658 @@
+{
+  "keyboardHelpDialog.hyphen": {
+    "value": "-",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623598278439,
+        "oldValue": "",
+        "newValue": "-"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "-",
+        "newValue": ""
+      },
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "",
+        "newValue": "-"
+      }
+    ]
+  },
+  "key.alt": {
+    "value": "Lòt",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623598278439,
+        "oldValue": "",
+        "newValue": "Alt"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Alt",
+        "newValue": "L"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "L",
+        "newValue": "Lòt"
+      }
+    ]
+  },
+  "keyboardHelpDialog.basicActions": {
+    "value": "Aksyon Debaz",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623551837938,
+        "oldValue": "",
+        "newValue": "Aksyon Debaz"
+      }
+    ]
+  },
+  "key.capsLock": {
+    "value": "Vewouyaj majiskil yo",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "",
+        "newValue": "Vewouyaj majiskil yo"
+      }
+    ]
+  },
+  "key.end": {
+    "value": "Fen",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623551837938,
+        "oldValue": "",
+        "newValue": "Fen"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Fen",
+        "newValue": "Marais"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "Marais",
+        "newValue": "Fen"
+      }
+    ]
+  },
+  "key.enter": {
+    "value": "Antré",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623423870541,
+        "oldValue": "",
+        "newValue": "Antre"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Antre",
+        "newValue": "Antré"
+      }
+    ]
+  },
+  "key.esc": {
+    "value": "Esc",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623598278440,
+        "oldValue": "",
+        "newValue": "Esc"
+      }
+    ]
+  },
+  "keyboardHelpDialog.exitADialog": {
+    "value": "Kite yon dyalòg",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Kite yon dyalòg"
+      }
+    ]
+  },
+  "key.fn": {
+    "value": "FN",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Fn"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Fn",
+        "newValue": "FN"
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseHeadingPattern": {
+    "value": "Pran oubyen Lage {{thing}}",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623423870541,
+        "oldValue": "",
+        "newValue": "Pran oubyen Lage {{thing}}"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Pran oubyen Lage {{thing}}",
+        "newValue": "Pran oubyen Lage {{chose}}"
+      },
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "Pran oubyen Lage {{chose}}",
+        "newValue": "Pran oubyen Lage {{thing}}"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "Pran oubyen Lage {{thing}}",
+        "newValue": "Pran oubyen Lage {{chose}}"
+      }
+    ]
+  },
+  "keyboardHelpDialog.grabOrReleaseLabelPattern": {
+    "value": "Pran oubyen lage {{thing}}",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623423870541,
+        "oldValue": "",
+        "newValue": "Pran oubyen lage {{thing}}"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Pran oubyen lage {{thing}}",
+        "newValue": "Pran oubyen lage {{chose}}"
+      },
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "Pran oubyen lage {{chose}}",
+        "newValue": "Pran oubyen lage {{thing}}"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "Pran oubyen lage {{thing}}",
+        "newValue": "Pran oubyen lage {{chose}}"
+      }
+    ]
+  },
+  "key.home": {
+    "value": "Kay",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Akèy"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Akèy",
+        "newValue": "Une clé"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "Une clé",
+        "newValue": "Kay"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveBetweenItemsInAGroup": {
+    "value": "Deplase ant eleman nan yon gwoup",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623460497807,
+        "oldValue": "",
+        "newValue": "Deplase ant eleman nan yon gwoup"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToNextItemOrGroup": {
+    "value": "Ale nan pwochen eleman oubyen gwoup",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623460497807,
+        "oldValue": "",
+        "newValue": "Ale nan pwochen eleman oubyen gwoup"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToPreviousItemOrGroup": {
+    "value": "Ale nan eleman anvan oubyen gwoup",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623460497807,
+        "oldValue": "",
+        "newValue": "Ale nan eleman anvan oubyen gwoup"
+      }
+    ]
+  },
+  "keyboardHelpDialog.or": {
+    "value": "Oswa",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623423870542,
+        "oldValue": "",
+        "newValue": "oswa"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "oswa",
+        "newValue": "Oswa"
+      }
+    ]
+  },
+  "key.pageDown": {
+    "value": "Pg Dn",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623441433659,
+        "oldValue": "",
+        "newValue": "Pg Dn"
+      }
+    ]
+  },
+  "key.pageUp": {
+    "value": "paj ki dirije anwo",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623441433659,
+        "oldValue": "",
+        "newValue": "Pg Up"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Pg Up",
+        "newValue": "page vers le haut"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "page vers le haut",
+        "newValue": "paj ki dirije anwo"
+      }
+    ]
+  },
+  "keyboardHelpDialog.pressButtons": {
+    "value": "Bouton Pézé",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Peze bouton"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Peze bouton",
+        "newValue": "Bouton Pézé"
+      }
+    ]
+  },
+  "key.shift": {
+    "value": "Chanjman",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623441433659,
+        "oldValue": "",
+        "newValue": "Shift"
+      },
+      {
+        "userId": 942402,
+        "timestamp": 1625430094671,
+        "oldValue": "Shift",
+        "newValue": "Chanjman"
+      }
+    ]
+  },
+  "key.space": {
+    "value": "Espas",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623441433659,
+        "oldValue": "",
+        "newValue": "Espas"
+      }
+    ]
+  },
+  "key.tab": {
+    "value": "Wwww",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625430094671,
+        "oldValue": "",
+        "newValue": "Tab"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "Tab",
+        "newValue": "Languette"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156562,
+        "oldValue": "Languette",
+        "newValue": "Wwww"
+      }
+    ]
+  },
+  "keyboardHelpDialog.toggleCheckboxes": {
+    "value": "Aktive kaz yo",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Aktive kaz yo"
+      }
+    ]
+  },
+  "measuringTapeReadoutPattern": {
+    "value": "{{distance}} {{units}}",
+    "history": [
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "",
+        "newValue": "{{distance}} {{units}}"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156562,
+        "oldValue": "{{distance}} {{units}}",
+        "newValue": "{{distance}} {{unités}}"
+      }
+    ]
+  },
+  "symbol.resistivity": {
+    "value": "ρ",
+    "history": [
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "",
+        "newValue": "ρ"
+      }
+    ]
+  },
+  "symbol.ohms": {
+    "value": "Ω",
+    "history": [
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "",
+        "newValue": "Ω"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156562,
+        "oldValue": "Ω",
+        "newValue": "Ω"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustInLargerSteps": {
+    "value": "Ajiste nan pi gwo etap",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625513602574,
+        "oldValue": "",
+        "newValue": "Ajiste nan pi gwo etap"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustInSmallerSteps": {
+    "value": "Ajiste nan pi piti etap",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625513602574,
+        "oldValue": "",
+        "newValue": "Ajiste nan pi piti etap"
+      }
+    ]
+  },
+  "keyboardHelpDialog.adjustSlider": {
+    "value": "Ajiste kisè",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625513602574,
+        "oldValue": "",
+        "newValue": "Ajiste kisè"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMaximum": {
+    "value": "Ale nan maksimòm",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625513602574,
+        "oldValue": "",
+        "newValue": "Ale nan maksimòm"
+      }
+    ]
+  },
+  "keyboardHelpDialog.jumpToMinimum": {
+    "value": "Ale nan minimòm",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625513602574,
+        "oldValue": "",
+        "newValue": "Ale nan minimòm"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToNextItem": {
+    "value": "Ale nan pwochen eleman",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623460497807,
+        "oldValue": "",
+        "newValue": "Ale nan pwochen eleman"
+      }
+    ]
+  },
+  "keyboardHelpDialog.moveToPreviousItem": {
+    "value": "Ale nan eleman anvan",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623460497807,
+        "oldValue": "",
+        "newValue": "Ale nan eleman anvan"
+      }
+    ]
+  },
+  "rulerCapitalized": {
+    "value": "Chef",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625430094671,
+        "oldValue": "",
+        "newValue": "Chef"
+      }
+    ]
+  },
+  "ruler": {
+    "value": "chef",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1625430094671,
+        "oldValue": "",
+        "newValue": "chef"
+      }
+    ]
+  },
+  "key.toGrabOrRelease": {
+    "value": "pou <b>Kenbe</b> oswa <b>Lache</b>",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623716646294,
+        "oldValue": "",
+        "newValue": "pou <b>Kenbe</b> oswa <b>Lache</b>"
+      }
+    ]
+  },
+  "cool": {
+    "value": "Frèt",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623611268792,
+        "oldValue": "",
+        "newValue": "Frèt"
+      }
+    ]
+  },
+  "speed.fast": {
+    "value": "Rapid",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Rapid"
+      }
+    ]
+  },
+  "heat": {
+    "value": "Chalè",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623611268792,
+        "oldValue": "",
+        "newValue": "Chalè"
+      }
+    ]
+  },
+  "key.k": {
+    "value": "K",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623506835907,
+        "oldValue": "",
+        "newValue": "K"
+      }
+    ]
+  },
+  "key.l": {
+    "value": "L",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623506835907,
+        "oldValue": "",
+        "newValue": "L"
+      }
+    ]
+  },
+  "speed.normal": {
+    "value": "Nòmal",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Nòmal"
+      }
+    ]
+  },
+  "speed.slow": {
+    "value": "Ralenti",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623532601877,
+        "oldValue": "",
+        "newValue": "Ralenti"
+      }
+    ]
+  },
+  "webglWarning.contextLossReload": {
+    "value": "Rechaje",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623506835907,
+        "oldValue": "",
+        "newValue": "Rechaje"
+      }
+    ]
+  },
+  "units_nm": {
+    "value": "nm",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623463684343,
+        "oldValue": "",
+        "newValue": "nm"
+      }
+    ]
+  },
+  "keyboardHelpDialog.generalNavigation": {
+    "value": "Navigasyon Jeneral",
+    "history": [
+      {
+        "userId": 942402,
+        "timestamp": 1623460497807,
+        "oldValue": "",
+        "newValue": "Navigasyon Jeneral"
+      }
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "משחק",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "משחק"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "עשר",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "עשר"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "עשרים",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "עשרים"
+      }
+    ]
+  },
+  "ones": {
+    "value": "אחדות",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "אחדות"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "מסגרת עשר",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "מסגרת עשר"
+      }
+    ]
+  },
+  "word": {
+    "value": "מילה",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "מילה"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "מילה ({{language}})",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "מילה ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "בחירת המשחק שלך!",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "בחירת המשחק שלך!"
+      }
+    ]
+  },
+  "games": {
+    "value": "משחקים",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "משחקים"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "משחק מספר",
+    "history": [
+      {
+        "userId": 282815,
+        "timestamp": 1651872099055,
+        "oldValue": "",
+        "newValue": "משחק מספר"
+      }
+    ]
+  }
+}

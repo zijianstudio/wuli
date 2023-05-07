@@ -1,0 +1,40 @@
+// Copyright 2013-2020, University of Colorado Boulder
+
+/**
+ * Model for the faucet, which is user controlled and allows fluid to flow in from the top left of the screen or down
+ * through the bottom of the pool.
+ *
+ * @author Vasily Shakhov (Mlearner)
+ */
+
+import Property from '../../../../axon/js/Property.js';
+import fluidPressureAndFlow from '../../fluidPressureAndFlow.js';
+class FaucetModel {
+  /**
+   * @param {Vector2} position center of output pipe
+   * @param {number} maxFlowRate L/sec
+   * @param {number} scale of Faucet (the top faucet is larger than the bottom faucet)
+   */
+  constructor(position, maxFlowRate, scale) {
+    this.position = position;
+    this.maxFlowRate = maxFlowRate;
+    this.scale = scale;
+    this.spoutWidth = 1.35 * scale; // empirically determined
+
+    // @public
+    this.flowRateProperty = new Property(0);
+
+    // @public
+    this.enabledProperty = new Property(true);
+
+    // when disabled, turn off the faucet.
+    this.enabledProperty.link(enabled => {
+      if (!enabled) {
+        this.flowRateProperty.value = 0;
+      }
+    });
+  }
+}
+fluidPressureAndFlow.register('FaucetModel', FaucetModel);
+export default FaucetModel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQcm9wZXJ0eSIsImZsdWlkUHJlc3N1cmVBbmRGbG93IiwiRmF1Y2V0TW9kZWwiLCJjb25zdHJ1Y3RvciIsInBvc2l0aW9uIiwibWF4Rmxvd1JhdGUiLCJzY2FsZSIsInNwb3V0V2lkdGgiLCJmbG93UmF0ZVByb3BlcnR5IiwiZW5hYmxlZFByb3BlcnR5IiwibGluayIsImVuYWJsZWQiLCJ2YWx1ZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRmF1Y2V0TW9kZWwuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTMtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTW9kZWwgZm9yIHRoZSBmYXVjZXQsIHdoaWNoIGlzIHVzZXIgY29udHJvbGxlZCBhbmQgYWxsb3dzIGZsdWlkIHRvIGZsb3cgaW4gZnJvbSB0aGUgdG9wIGxlZnQgb2YgdGhlIHNjcmVlbiBvciBkb3duXHJcbiAqIHRocm91Z2ggdGhlIGJvdHRvbSBvZiB0aGUgcG9vbC5cclxuICpcclxuICogQGF1dGhvciBWYXNpbHkgU2hha2hvdiAoTWxlYXJuZXIpXHJcbiAqL1xyXG5cclxuaW1wb3J0IFByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgZmx1aWRQcmVzc3VyZUFuZEZsb3cgZnJvbSAnLi4vLi4vZmx1aWRQcmVzc3VyZUFuZEZsb3cuanMnO1xyXG5cclxuY2xhc3MgRmF1Y2V0TW9kZWwge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge1ZlY3RvcjJ9IHBvc2l0aW9uIGNlbnRlciBvZiBvdXRwdXQgcGlwZVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBtYXhGbG93UmF0ZSBML3NlY1xyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBzY2FsZSBvZiBGYXVjZXQgKHRoZSB0b3AgZmF1Y2V0IGlzIGxhcmdlciB0aGFuIHRoZSBib3R0b20gZmF1Y2V0KVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBwb3NpdGlvbiwgbWF4Rmxvd1JhdGUsIHNjYWxlICkge1xyXG5cclxuICAgIHRoaXMucG9zaXRpb24gPSBwb3NpdGlvbjtcclxuICAgIHRoaXMubWF4Rmxvd1JhdGUgPSBtYXhGbG93UmF0ZTtcclxuICAgIHRoaXMuc2NhbGUgPSBzY2FsZTtcclxuICAgIHRoaXMuc3BvdXRXaWR0aCA9IDEuMzUgKiBzY2FsZTsgLy8gZW1waXJpY2FsbHkgZGV0ZXJtaW5lZFxyXG5cclxuICAgIC8vIEBwdWJsaWNcclxuICAgIHRoaXMuZmxvd1JhdGVQcm9wZXJ0eSA9IG5ldyBQcm9wZXJ0eSggMCApO1xyXG5cclxuICAgIC8vIEBwdWJsaWNcclxuICAgIHRoaXMuZW5hYmxlZFByb3BlcnR5ID0gbmV3IFByb3BlcnR5KCB0cnVlICk7XHJcblxyXG4gICAgLy8gd2hlbiBkaXNhYmxlZCwgdHVybiBvZmYgdGhlIGZhdWNldC5cclxuICAgIHRoaXMuZW5hYmxlZFByb3BlcnR5LmxpbmsoIGVuYWJsZWQgPT4ge1xyXG4gICAgICBpZiAoICFlbmFibGVkICkge1xyXG4gICAgICAgIHRoaXMuZmxvd1JhdGVQcm9wZXJ0eS52YWx1ZSA9IDA7XHJcbiAgICAgIH1cclxuICAgIH0gKTtcclxuICB9XHJcbn1cclxuXHJcbmZsdWlkUHJlc3N1cmVBbmRGbG93LnJlZ2lzdGVyKCAnRmF1Y2V0TW9kZWwnLCBGYXVjZXRNb2RlbCApO1xyXG5leHBvcnQgZGVmYXVsdCBGYXVjZXRNb2RlbDsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0saUNBQWlDO0FBQ3RELE9BQU9DLG9CQUFvQixNQUFNLCtCQUErQjtBQUVoRSxNQUFNQyxXQUFXLENBQUM7RUFFaEI7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxRQUFRLEVBQUVDLFdBQVcsRUFBRUMsS0FBSyxFQUFHO0lBRTFDLElBQUksQ0FBQ0YsUUFBUSxHQUFHQSxRQUFRO0lBQ3hCLElBQUksQ0FBQ0MsV0FBVyxHQUFHQSxXQUFXO0lBQzlCLElBQUksQ0FBQ0MsS0FBSyxHQUFHQSxLQUFLO0lBQ2xCLElBQUksQ0FBQ0MsVUFBVSxHQUFHLElBQUksR0FBR0QsS0FBSyxDQUFDLENBQUM7O0lBRWhDO0lBQ0EsSUFBSSxDQUFDRSxnQkFBZ0IsR0FBRyxJQUFJUixRQUFRLENBQUUsQ0FBRSxDQUFDOztJQUV6QztJQUNBLElBQUksQ0FBQ1MsZUFBZSxHQUFHLElBQUlULFFBQVEsQ0FBRSxJQUFLLENBQUM7O0lBRTNDO0lBQ0EsSUFBSSxDQUFDUyxlQUFlLENBQUNDLElBQUksQ0FBRUMsT0FBTyxJQUFJO01BQ3BDLElBQUssQ0FBQ0EsT0FBTyxFQUFHO1FBQ2QsSUFBSSxDQUFDSCxnQkFBZ0IsQ0FBQ0ksS0FBSyxHQUFHLENBQUM7TUFDakM7SUFDRixDQUFFLENBQUM7RUFDTDtBQUNGO0FBRUFYLG9CQUFvQixDQUFDWSxRQUFRLENBQUUsYUFBYSxFQUFFWCxXQUFZLENBQUM7QUFDM0QsZUFBZUEsV0FBVyJ9

@@ -1,0 +1,40 @@
+{
+  "name": "circuit-construction-kit-black-box-study",
+  "version": "1.2.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/circuit-construction-kit-black-box.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "CIRCUIT_CONSTRUCTION_KIT_BLACK_BOX_STUDY",
+    "phetLibs": [
+      "circuit-construction-kit-common",
+      "twixt",
+      "griddle",
+      "bamboo"
+    ],
+    "preload": [
+      "../sherpa/lib/lz-string-1.4.4.js",
+      "../sherpa/lib/Tween-r12.js"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "readmeCreatedManually": true,
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "rules": {
+      "todo-should-have-issue": "off"
+    }
+  }
+}

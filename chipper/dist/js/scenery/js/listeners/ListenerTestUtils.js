@@ -1,0 +1,100 @@
+// Copyright 2018-2023, University of Colorado Boulder
+
+/**
+ * Utilities for listener tests
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Vector2 from '../../../dot/js/Vector2.js';
+import Display from '../display/Display.js';
+import { EventContext } from '../imports.js';
+import Node from '../nodes/Node.js';
+import Rectangle from '../nodes/Rectangle.js';
+const ListenerTestUtils = {
+  /**
+   * Sends a synthesized mouseDown event at the given coordinates.
+   * @public
+   *
+   * @param {Display} display
+   * @param {number} x
+   * @param {number} y
+   */
+  mouseDown(display, x, y) {
+    const domEvent = document.createEvent('MouseEvent');
+
+    // technically deprecated, but DOM4 event constructors not out yet. people on #whatwg said to use it
+    domEvent.initMouseEvent('mousedown', true, true, window, 1,
+    // click count
+    x, y, x, y, false, false, false, false, 0,
+    // button
+    null);
+    display._input.validatePointers();
+    display._input.mouseDown(null, new Vector2(x, y), new EventContext(domEvent));
+  },
+  /**
+   * Sends a synthesized mouseUp event at the given coordinates.
+   * @public
+   *
+   * @param {Display} display
+   * @param {number} x
+   * @param {number} y
+   */
+  mouseUp(display, x, y) {
+    const domEvent = document.createEvent('MouseEvent');
+
+    // technically deprecated, but DOM4 event constructors not out yet. people on #whatwg said to use it
+    domEvent.initMouseEvent('mouseup', true, true, window, 1,
+    // click count
+    x, y, x, y, false, false, false, false, 0,
+    // button
+    null);
+    display._input.validatePointers();
+    display._input.mouseUp(new Vector2(x, y), new EventContext(domEvent));
+  },
+  /**
+   * Sends a synthesized mouseMove event at the given coordinates.
+   * @public
+   *
+   * @param {Display} display
+   * @param {number} x
+   * @param {number} y
+   */
+  mouseMove(display, x, y) {
+    const domEvent = document.createEvent('MouseEvent');
+
+    // technically deprecated, but DOM4 event constructors not out yet. people on #whatwg said to use it
+    domEvent.initMouseEvent('mousemove', true, true, window, 0,
+    // click count
+    x, y, x, y, false, false, false, false, 0,
+    // button
+    null);
+    display._input.validatePointers();
+    display._input.mouseMove(new Vector2(x, y), new EventContext(domEvent));
+  },
+  /**
+   * Runs a simple test with a 20x20 rectangle in a 640x480 display.
+   * @public
+   *
+   * @param {Function} callback - Called with callback( {Display}, {Node}, {Node} ) - First node is the draggable rect
+   */
+  simpleRectangleTest(callback) {
+    const node = new Node();
+    const display = new Display(node, {
+      width: 640,
+      height: 480
+    });
+    display.initializeEvents();
+    display.updateDisplay();
+    const rect = new Rectangle(0, 0, 20, 20, {
+      fill: 'red'
+    });
+    node.addChild(rect);
+    callback(display, rect, node);
+
+    // Cleanup, so we don't leak listeners/memory
+    display.dispose();
+  }
+};
+export default ListenerTestUtils;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwiRGlzcGxheSIsIkV2ZW50Q29udGV4dCIsIk5vZGUiLCJSZWN0YW5nbGUiLCJMaXN0ZW5lclRlc3RVdGlscyIsIm1vdXNlRG93biIsImRpc3BsYXkiLCJ4IiwieSIsImRvbUV2ZW50IiwiZG9jdW1lbnQiLCJjcmVhdGVFdmVudCIsImluaXRNb3VzZUV2ZW50Iiwid2luZG93IiwiX2lucHV0IiwidmFsaWRhdGVQb2ludGVycyIsIm1vdXNlVXAiLCJtb3VzZU1vdmUiLCJzaW1wbGVSZWN0YW5nbGVUZXN0IiwiY2FsbGJhY2siLCJub2RlIiwid2lkdGgiLCJoZWlnaHQiLCJpbml0aWFsaXplRXZlbnRzIiwidXBkYXRlRGlzcGxheSIsInJlY3QiLCJmaWxsIiwiYWRkQ2hpbGQiLCJkaXNwb3NlIl0sInNvdXJjZXMiOlsiTGlzdGVuZXJUZXN0VXRpbHMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTgtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVXRpbGl0aWVzIGZvciBsaXN0ZW5lciB0ZXN0c1xyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IFZlY3RvcjIgZnJvbSAnLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjIuanMnO1xyXG5pbXBvcnQgRGlzcGxheSBmcm9tICcuLi9kaXNwbGF5L0Rpc3BsYXkuanMnO1xyXG5pbXBvcnQgeyBFdmVudENvbnRleHQgfSBmcm9tICcuLi9pbXBvcnRzLmpzJztcclxuaW1wb3J0IE5vZGUgZnJvbSAnLi4vbm9kZXMvTm9kZS5qcyc7XHJcbmltcG9ydCBSZWN0YW5nbGUgZnJvbSAnLi4vbm9kZXMvUmVjdGFuZ2xlLmpzJztcclxuXHJcbmNvbnN0IExpc3RlbmVyVGVzdFV0aWxzID0ge1xyXG5cclxuICAvKipcclxuICAgKiBTZW5kcyBhIHN5bnRoZXNpemVkIG1vdXNlRG93biBldmVudCBhdCB0aGUgZ2l2ZW4gY29vcmRpbmF0ZXMuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtEaXNwbGF5fSBkaXNwbGF5XHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHhcclxuICAgKiBAcGFyYW0ge251bWJlcn0geVxyXG4gICAqL1xyXG4gIG1vdXNlRG93biggZGlzcGxheSwgeCwgeSApIHtcclxuICAgIGNvbnN0IGRvbUV2ZW50ID0gZG9jdW1lbnQuY3JlYXRlRXZlbnQoICdNb3VzZUV2ZW50JyApO1xyXG5cclxuICAgIC8vIHRlY2huaWNhbGx5IGRlcHJlY2F0ZWQsIGJ1dCBET000IGV2ZW50IGNvbnN0cnVjdG9ycyBub3Qgb3V0IHlldC4gcGVvcGxlIG9uICN3aGF0d2cgc2FpZCB0byB1c2UgaXRcclxuICAgIGRvbUV2ZW50LmluaXRNb3VzZUV2ZW50KCAnbW91c2Vkb3duJywgdHJ1ZSwgdHJ1ZSwgd2luZG93LCAxLCAvLyBjbGljayBjb3VudFxyXG4gICAgICB4LCB5LCB4LCB5LFxyXG4gICAgICBmYWxzZSwgZmFsc2UsIGZhbHNlLCBmYWxzZSxcclxuICAgICAgMCwgLy8gYnV0dG9uXHJcbiAgICAgIG51bGwgKTtcclxuXHJcbiAgICBkaXNwbGF5Ll9pbnB1dC52YWxpZGF0ZVBvaW50ZXJzKCk7XHJcbiAgICBkaXNwbGF5Ll9pbnB1dC5tb3VzZURvd24oIG51bGwsIG5ldyBWZWN0b3IyKCB4LCB5ICksIG5ldyBFdmVudENvbnRleHQoIGRvbUV2ZW50ICkgKTtcclxuICB9LFxyXG5cclxuICAvKipcclxuICAgKiBTZW5kcyBhIHN5bnRoZXNpemVkIG1vdXNlVXAgZXZlbnQgYXQgdGhlIGdpdmVuIGNvb3JkaW5hdGVzLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7RGlzcGxheX0gZGlzcGxheVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB4XHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHlcclxuICAgKi9cclxuICBtb3VzZVVwKCBkaXNwbGF5LCB4LCB5ICkge1xyXG4gICAgY29uc3QgZG9tRXZlbnQgPSBkb2N1bWVudC5jcmVhdGVFdmVudCggJ01vdXNlRXZlbnQnICk7XHJcblxyXG4gICAgLy8gdGVjaG5pY2FsbHkgZGVwcmVjYXRlZCwgYnV0IERPTTQgZXZlbnQgY29uc3RydWN0b3JzIG5vdCBvdXQgeWV0LiBwZW9wbGUgb24gI3doYXR3ZyBzYWlkIHRvIHVzZSBpdFxyXG4gICAgZG9tRXZlbnQuaW5pdE1vdXNlRXZlbnQoICdtb3VzZXVwJywgdHJ1ZSwgdHJ1ZSwgd2luZG93LCAxLCAvLyBjbGljayBjb3VudFxyXG4gICAgICB4LCB5LCB4LCB5LFxyXG4gICAgICBmYWxzZSwgZmFsc2UsIGZhbHNlLCBmYWxzZSxcclxuICAgICAgMCwgLy8gYnV0dG9uXHJcbiAgICAgIG51bGwgKTtcclxuXHJcbiAgICBkaXNwbGF5Ll9pbnB1dC52YWxpZGF0ZVBvaW50ZXJzKCk7XHJcbiAgICBkaXNwbGF5Ll9pbnB1dC5tb3VzZVVwKCBuZXcgVmVjdG9yMiggeCwgeSApLCBuZXcgRXZlbnRDb250ZXh0KCBkb21FdmVudCApICk7XHJcbiAgfSxcclxuXHJcbiAgLyoqXHJcbiAgICogU2VuZHMgYSBzeW50aGVzaXplZCBtb3VzZU1vdmUgZXZlbnQgYXQgdGhlIGdpdmVuIGNvb3JkaW5hdGVzLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7RGlzcGxheX0gZGlzcGxheVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB4XHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHlcclxuICAgKi9cclxuICBtb3VzZU1vdmUoIGRpc3BsYXksIHgsIHkgKSB7XHJcbiAgICBjb25zdCBkb21FdmVudCA9IGRvY3VtZW50LmNyZWF0ZUV2ZW50KCAnTW91c2VFdmVudCcgKTtcclxuXHJcbiAgICAvLyB0ZWNobmljYWxseSBkZXByZWNhdGVkLCBidXQgRE9NNCBldmVudCBjb25zdHJ1Y3RvcnMgbm90IG91dCB5ZXQuIHBlb3BsZSBvbiAjd2hhdHdnIHNhaWQgdG8gdXNlIGl0XHJcbiAgICBkb21FdmVudC5pbml0TW91c2VFdmVudCggJ21vdXNlbW92ZScsIHRydWUsIHRydWUsIHdpbmRvdywgMCwgLy8gY2xpY2sgY291bnRcclxuICAgICAgeCwgeSwgeCwgeSxcclxuICAgICAgZmFsc2UsIGZhbHNlLCBmYWxzZSwgZmFsc2UsXHJcbiAgICAgIDAsIC8vIGJ1dHRvblxyXG4gICAgICBudWxsICk7XHJcblxyXG5cclxuICAgIGRpc3BsYXkuX2lucHV0LnZhbGlkYXRlUG9pbnRlcnMoKTtcclxuICAgIGRpc3BsYXkuX2lucHV0Lm1vdXNlTW92ZSggbmV3IFZlY3RvcjIoIHgsIHkgKSwgbmV3IEV2ZW50Q29udGV4dCggZG9tRXZlbnQgKSApO1xyXG4gIH0sXHJcblxyXG4gIC8qKlxyXG4gICAqIFJ1bnMgYSBzaW1wbGUgdGVzdCB3aXRoIGEgMjB4MjAgcmVjdGFuZ2xlIGluIGEgNjQweDQ4MCBkaXNwbGF5LlxyXG4gICAqIEBwdWJsaWNcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7RnVuY3Rpb259IGNhbGxiYWNrIC0gQ2FsbGVkIHdpdGggY2FsbGJhY2soIHtEaXNwbGF5fSwge05vZGV9LCB7Tm9kZX0gKSAtIEZpcnN0IG5vZGUgaXMgdGhlIGRyYWdnYWJsZSByZWN0XHJcbiAgICovXHJcbiAgc2ltcGxlUmVjdGFuZ2xlVGVzdCggY2FsbGJhY2sgKSB7XHJcbiAgICBjb25zdCBub2RlID0gbmV3IE5vZGUoKTtcclxuICAgIGNvbnN0IGRpc3BsYXkgPSBuZXcgRGlzcGxheSggbm9kZSwgeyB3aWR0aDogNjQwLCBoZWlnaHQ6IDQ4MCB9ICk7XHJcbiAgICBkaXNwbGF5LmluaXRpYWxpemVFdmVudHMoKTtcclxuICAgIGRpc3BsYXkudXBkYXRlRGlzcGxheSgpO1xyXG5cclxuICAgIGNvbnN0IHJlY3QgPSBuZXcgUmVjdGFuZ2xlKCAwLCAwLCAyMCwgMjAsIHsgZmlsbDogJ3JlZCcgfSApO1xyXG4gICAgbm9kZS5hZGRDaGlsZCggcmVjdCApO1xyXG5cclxuICAgIGNhbGxiYWNrKCBkaXNwbGF5LCByZWN0LCBub2RlICk7XHJcblxyXG4gICAgLy8gQ2xlYW51cCwgc28gd2UgZG9uJ3QgbGVhayBsaXN0ZW5lcnMvbWVtb3J5XHJcbiAgICBkaXNwbGF5LmRpc3Bvc2UoKTtcclxuICB9XHJcbn07XHJcblxyXG5leHBvcnQgZGVmYXVsdCBMaXN0ZW5lclRlc3RVdGlsczsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLDRCQUE0QjtBQUNoRCxPQUFPQyxPQUFPLE1BQU0sdUJBQXVCO0FBQzNDLFNBQVNDLFlBQVksUUFBUSxlQUFlO0FBQzVDLE9BQU9DLElBQUksTUFBTSxrQkFBa0I7QUFDbkMsT0FBT0MsU0FBUyxNQUFNLHVCQUF1QjtBQUU3QyxNQUFNQyxpQkFBaUIsR0FBRztFQUV4QjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFNBQVNBLENBQUVDLE9BQU8sRUFBRUMsQ0FBQyxFQUFFQyxDQUFDLEVBQUc7SUFDekIsTUFBTUMsUUFBUSxHQUFHQyxRQUFRLENBQUNDLFdBQVcsQ0FBRSxZQUFhLENBQUM7O0lBRXJEO0lBQ0FGLFFBQVEsQ0FBQ0csY0FBYyxDQUFFLFdBQVcsRUFBRSxJQUFJLEVBQUUsSUFBSSxFQUFFQyxNQUFNLEVBQUUsQ0FBQztJQUFFO0lBQzNETixDQUFDLEVBQUVDLENBQUMsRUFBRUQsQ0FBQyxFQUFFQyxDQUFDLEVBQ1YsS0FBSyxFQUFFLEtBQUssRUFBRSxLQUFLLEVBQUUsS0FBSyxFQUMxQixDQUFDO0lBQUU7SUFDSCxJQUFLLENBQUM7SUFFUkYsT0FBTyxDQUFDUSxNQUFNLENBQUNDLGdCQUFnQixDQUFDLENBQUM7SUFDakNULE9BQU8sQ0FBQ1EsTUFBTSxDQUFDVCxTQUFTLENBQUUsSUFBSSxFQUFFLElBQUlOLE9BQU8sQ0FBRVEsQ0FBQyxFQUFFQyxDQUFFLENBQUMsRUFBRSxJQUFJUCxZQUFZ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

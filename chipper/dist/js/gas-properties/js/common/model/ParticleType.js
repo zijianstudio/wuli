@@ -1,0 +1,10 @@
+// Copyright 2018-2022, University of Colorado Boulder
+
+/**
+ * ParticleType is a string union for particle types in the 'Ideal', 'Explore', and 'Energy' screens.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+export const ParticleTypeValues = ['heavy', 'light'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQYXJ0aWNsZVR5cGVWYWx1ZXMiXSwic291cmNlcyI6WyJQYXJ0aWNsZVR5cGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTgtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogUGFydGljbGVUeXBlIGlzIGEgc3RyaW5nIHVuaW9uIGZvciBwYXJ0aWNsZSB0eXBlcyBpbiB0aGUgJ0lkZWFsJywgJ0V4cGxvcmUnLCBhbmQgJ0VuZXJneScgc2NyZWVucy5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5leHBvcnQgY29uc3QgUGFydGljbGVUeXBlVmFsdWVzID0gWyAnaGVhdnknLCAnbGlnaHQnIF0gYXMgY29uc3Q7XHJcbmV4cG9ydCB0eXBlIFBhcnRpY2xlVHlwZSA9ICggdHlwZW9mIFBhcnRpY2xlVHlwZVZhbHVlcyApW251bWJlcl07Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU8sTUFBTUEsa0JBQWtCLEdBQUcsQ0FBRSxPQUFPLEVBQUUsT0FBTyxDQUFXIn0=

@@ -1,0 +1,2655 @@
+{
+  "ar_MA": {
+    "screen.median": {
+      "value": "الواسط"
+    },
+    "screen.meanAndMedian": {
+      "value": "المعدل و الواسط"
+    },
+    "plotType": {
+      "value": "نوعية المنحنى"
+    },
+    "linePlot": {
+      "value": "رسم المنحنى"
+    },
+    "dotPlot": {
+      "value": "نقط المنحنى"
+    },
+    "medianQuestion": {
+      "value": "ما هي المسافة الاعتيادية عند رمي الكرة؟"
+    },
+    "meanAndMedianQuestion": {
+      "value": "كيف تؤثر كل رمية على المعدل و الواسط؟"
+    },
+    "distanceInMeters": {
+      "value": "المسافة (بالمتر)"
+    },
+    "youSortedTheData": {
+      "value": "تم ترتيب المعطيات!"
+    },
+    "medianEqualsValue": {
+      "value": "الواسط={{value}}"
+    },
+    "valueUnknown": {
+      "value": "؟"
+    },
+    "meanEqualsValue": {
+      "value": "المعدل={{value}}"
+    },
+    "kickValue": {
+      "value": "عدد مرات رمي الكرة  {{value}}"
+    },
+    "sortData": {
+      "value": "ترتيب القياسات"
+    },
+    "mean": {
+      "value": "المعدل"
+    },
+    "median": {
+      "value": "الواسط"
+    },
+    "predictMean": {
+      "value": "التنبأ بالمعدل"
+    },
+    "predictMedian": {
+      "value": "التنبأ بالواسط"
+    },
+    "center-and-variability.title": {
+      "value": "المركز و القيم المتغيرة"
+    }
+  },
+  "az": {
+    "screen.median": {
+      "value": "Median"
+    },
+    "screen.meanAndMedian": {
+      "value": "Ədədi orta&median"
+    },
+    "plotType": {
+      "value": "Süjet növü"
+    },
+    "linePlot": {
+      "value": "Xətt Süjeti"
+    },
+    "dotPlot": {
+      "value": "Nöqtə Süjeti"
+    },
+    "medianQuestion": {
+      "value": "Tipik zərbə məsafəsi nədir?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Hər zərbə ədədi orta və mediana necə təsir edir?"
+    },
+    "distanceInMeters": {
+      "value": "Məsafə (metrlə)"
+    },
+    "youSortedTheData": {
+      "value": "Verilənləri sıraladınız!"
+    },
+    "medianEqualsValue": {
+      "value": "Median = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Ədədi orta = {{value}}"
+    },
+    "kickValue": {
+      "value": "{{value}}ci zərbə"
+    },
+    "sortData": {
+      "value": "Verilənləri sırala"
+    },
+    "mean": {
+      "value": "Ədədi orta"
+    },
+    "median": {
+      "value": "Median"
+    },
+    "predictMean": {
+      "value": "Ədədi ortanı təxmin et"
+    },
+    "predictMedian": {
+      "value": "Medianı təxmin et"
+    },
+    "center-and-variability.title": {
+      "value": "Mərkəz və Dəyişkənlik"
+    }
+  },
+  "bn": {
+    "screen.median": {
+      "value": "মধ্যমা/Median"
+    },
+    "screen.meanAndMedian": {
+      "value": "গড় এবং মধ্যমা/Mean & Median"
+    },
+    "plotType": {
+      "value": "প্লট টাইপ "
+    },
+    "linePlot": {
+      "value": "লাইন প্লট "
+    },
+    "dotPlot": {
+      "value": "ডট  প্লট "
+    },
+    "medianQuestion": {
+      "value": "সাধারণ কিক দূরত্ব কি?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "প্রতিটি কিক কিভাবে গড় এবং মধ্যমাকে প্রভাবিত করে?"
+    },
+    "distanceInMeters": {
+      "value": "দূরত্ব (মিটারে)"
+    },
+    "youSortedTheData": {
+      "value": "আপনি তথ্য সাজান!"
+    },
+    "medianEqualsValue": {
+      "value": "মধ্যমা = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "গড় = {{value}}"
+    },
+    "kickValue": {
+      "value": "কিক {{value}}"
+    },
+    "sortData": {
+      "value": "ডেটা   সাজাও/সাজান"
+    },
+    "mean": {
+      "value": "গড় "
+    },
+    "median": {
+      "value": "মধ্যমা "
+    },
+    "predictMean": {
+      "value": "অনুমিত গড় "
+    },
+    "predictMedian": {
+      "value": "অনুমিত মধ্যমা "
+    },
+    "center-and-variability.title": {
+      "value": "কেন্দ্র এবং পরিবর্তনশীলতা/Center and Variability"
+    }
+  },
+  "bs": {
+    "screen.median": {
+      "value": "Medijana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Srednja vrijednost & Medijana"
+    },
+    "plotType": {
+      "value": "tip grafika "
+    },
+    "linePlot": {
+      "value": "linijski grafik"
+    },
+    "dotPlot": {
+      "value": "tačkasti grafik"
+    },
+    "medianQuestion": {
+      "value": "Kolika je uobičajena dužina šuta? "
+    },
+    "meanAndMedianQuestion": {
+      "value": "Kako pojedinačni šut utiče na srednju vrijednost  i medijanu?"
+    },
+    "distanceInMeters": {
+      "value": "Rastojanje (u metrima)"
+    },
+    "youSortedTheData": {
+      "value": "Sortirao si podatke!"
+    },
+    "medianEqualsValue": {
+      "value": "Medijana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Srednja vrijednost = {{value}}"
+    },
+    "kickValue": {
+      "value": "Šuteva {{value}}"
+    },
+    "sortData": {
+      "value": "Sortiraj podatke"
+    },
+    "mean": {
+      "value": "Srednja vrijednost"
+    },
+    "median": {
+      "value": "Medijana"
+    },
+    "predictMean": {
+      "value": "Pretpostavi srednju vrijednost"
+    },
+    "predictMedian": {
+      "value": "Pretpostavi medijanu"
+    },
+    "center-and-variability.title": {
+      "value": "Sredina i raspodjela"
+    }
+  },
+  "ca": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Mitjana i mediana"
+    },
+    "plotType": {
+      "value": "Tipus de gràfic"
+    },
+    "linePlot": {
+      "value": "Gràfic lineal"
+    },
+    "dotPlot": {
+      "value": "Gràfic de punts"
+    },
+    "medianQuestion": {
+      "value": "Quina és la distància normal d'un xut?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Com influeix cada xut en la mitjana i en la mediana?"
+    },
+    "distanceInMeters": {
+      "value": "Distància (en metres)"
+    },
+    "youSortedTheData": {
+      "value": "Has ordenat les dades!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Mitjana = {{value}}"
+    },
+    "kickValue": {
+      "value": "{{value}} Xut/s"
+    },
+    "sortData": {
+      "value": "Ordenar dades"
+    },
+    "mean": {
+      "value": "Mitjana"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Predir mitjana"
+    },
+    "predictMedian": {
+      "value": "Predir mediana"
+    },
+    "center-and-variability.title": {
+      "value": "Centre i variabilitat"
+    }
+  },
+  "da": {
+    "screen.median": {
+      "value": "Median"
+    },
+    "screen.meanAndMedian": {
+      "value": "Gennemsnit og median"
+    },
+    "plotType": {
+      "value": "Plottype"
+    },
+    "linePlot": {
+      "value": "Linjeplot"
+    },
+    "dotPlot": {
+      "value": "Prikplot"
+    },
+    "medianQuestion": {
+      "value": "Hvor langt er det typiske spark?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Hvordan påvirker hvert spark gennemsnit og median?"
+    },
+    "distanceInMeters": {
+      "value": "Afstand (i meter)"
+    },
+    "youSortedTheData": {
+      "value": "Du sorterede dataene!"
+    },
+    "medianEqualsValue": {
+      "value": "Median = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Gennemsnit = {{value}}"
+    },
+    "kickValue": {
+      "value": "Spark til {{value}}"
+    },
+    "sortData": {
+      "value": "Sorter data"
+    },
+    "mean": {
+      "value": "Gennemsnit"
+    },
+    "median": {
+      "value": "Median"
+    },
+    "predictMean": {
+      "value": "Forudsig gennemsnit"
+    },
+    "predictMedian": {
+      "value": "Forudsig median"
+    },
+    "center-and-variability.title": {
+      "value": "Gennemsnit og variation"
+    }
+  },
+  "de": {
+    "screen.median": {
+      "value": "Median"
+    },
+    "screen.meanAndMedian": {
+      "value": "Durchschnitt und Median"
+    },
+    "plotType": {
+      "value": "Art des Diagramms"
+    },
+    "linePlot": {
+      "value": "Linendiagramm"
+    },
+    "dotPlot": {
+      "value": "Punktdiagramm"
+    },
+    "medianQuestion": {
+      "value": "Wie groß ist die typische Stoßweite?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Wie beeinflußt jeder Tritt den Mittelwert und den Median?"
+    },
+    "distanceInMeters": {
+      "value": "Abstand (in Meter)"
+    },
+    "youSortedTheData": {
+      "value": "Du hast die Daten sortiert."
+    },
+    "medianEqualsValue": {
+      "value": "Median = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Durchschnitt = {{value}}"
+    },
+    "kickValue": {
+      "value": "Tritt {{value}}"
+    },
+    "sortData": {
+      "value": "Daten sortieren"
+    },
+    "mean": {
+      "value": "Durchschnitt"
+    },
+    "median": {
+      "value": "Median"
+    },
+    "predictMean": {
+      "value": "Durchschnitt vorhersagen"
+    },
+    "predictMedian": {
+      "value": "Median vorhersagen"
+    },
+    "center-and-variability.title": {
+      "value": "Mittelwert und Abweichung"
+    }
+  },
+  "el": {
+    "screen.median": {
+      "value": "Διάμεσος"
+    },
+    "screen.meanAndMedian": {
+      "value": "Μέσος όρος & Διάμεσος"
+    },
+    "plotType": {
+      "value": "Είδος γραφήματος"
+    },
+    "linePlot": {
+      "value": "Γράφημα γραμμής"
+    },
+    "dotPlot": {
+      "value": "Γράφημα σημείου"
+    },
+    "medianQuestion": {
+      "value": "Ποια είναι η τυπική απόσταση που διανύει η μπάλα μετά από κάθε κτύπημα;"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Πώς επηρεάζεται ο μέσος όρος και ο διάμεσος από κάθε κτύπημα της μπάλας"
+    },
+    "distanceInMeters": {
+      "value": "Απόσταση (σε μέτρα)"
+    },
+    "youSortedTheData": {
+      "value": "Ταξινόμησες τα δεδομένα!"
+    },
+    "medianEqualsValue": {
+      "value": "Διάμεσος = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Μέσος όρος = {{value}}"
+    },
+    "kickValue": {
+      "value": "Κτύπημα {{value}}"
+    },
+    "sortData": {
+      "value": "Ταξινόμηση δεδομένων"
+    },
+    "mean": {
+      "value": "Μέσος όρος"
+    },
+    "median": {
+      "value": "Διάμεσος"
+    },
+    "predictMean": {
+      "value": "Πρόβλεψη μέσου όρου"
+    },
+    "predictMedian": {
+      "value": "Πρόβλεψη διάμεσου"
+    },
+    "center-and-variability.title": {
+      "value": "Κέντρο και μεταβλητότητα"
+    }
+  },
+  "es": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Media y Mediana"
+    },
+    "plotType": {
+      "value": "Tipo de Gráfica"
+    },
+    "linePlot": {
+      "value": "Gráfica de Cruces"
+    },
+    "dotPlot": {
+      "value": "Gráfica de Puntos"
+    },
+    "medianQuestion": {
+      "value": "¿Cuál es la distancia típica del lanzamiento?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "¿Cómo influye cada lanzamiento en la media y la mediana?"
+    },
+    "distanceInMeters": {
+      "value": "Distancia (metros)"
+    },
+    "youSortedTheData": {
+      "value": "¡Ordenaste los datos!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Media = {{value}}"
+    },
+    "kickValue": {
+      "value": "{{value}} Lanzamiento "
+    },
+    "sortData": {
+      "value": "Ordentar Datos"
+    },
+    "mean": {
+      "value": "Media"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Predecir Media"
+    },
+    "predictMedian": {
+      "value": "Predecir Mediana"
+    },
+    "center-and-variability.title": {
+      "value": "Centro y Variabilidad"
+    }
+  },
+  "es_PE": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Media y Mediana"
+    },
+    "plotType": {
+      "value": "Tipo de gráfico"
+    },
+    "linePlot": {
+      "value": "Gráfico de línea"
+    },
+    "dotPlot": {
+      "value": "Gráfico de puntos"
+    },
+    "medianQuestion": {
+      "value": "¿Cuál es la distancia típica del puntapié?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "¿Cómo influye cada puntapié en la media y la mediana?"
+    },
+    "distanceInMeters": {
+      "value": "Distancia (en metros)"
+    },
+    "youSortedTheData": {
+      "value": "¡Ordenaste los datos!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Media = {{value}}"
+    },
+    "kickValue": {
+      "value": "Puntapié {{value}}"
+    },
+    "sortData": {
+      "value": "Ordenar datos"
+    },
+    "mean": {
+      "value": "Media"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Predecir la media"
+    },
+    "predictMedian": {
+      "value": "Predecir mediana"
+    },
+    "center-and-variability.title": {
+      "value": "Centro y Variabilidad"
+    }
+  },
+  "eu": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Batez bestekoa eta mediana"
+    },
+    "plotType": {
+      "value": "Lursail Mota"
+    },
+    "linePlot": {
+      "value": "Lerro-trama"
+    },
+    "dotPlot": {
+      "value": "Puntu-trama"
+    },
+    "medianQuestion": {
+      "value": "Zein da jaurtiketa distantzia tipikoa?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Nola eragiten du ostiko bakoitzak batez bestekoan eta medianan?"
+    },
+    "distanceInMeters": {
+      "value": "Distantzia (metrotan)"
+    },
+    "youSortedTheData": {
+      "value": "Ordenatu dituzu datuak!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Batez bestekoa = {{value}}"
+    },
+    "kickValue": {
+      "value": "Kick {{value}}"
+    },
+    "sortData": {
+      "value": "Ostikoa"
+    },
+    "mean": {
+      "value": "Batez bestekoa"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Iragar ezazu batez bestekoa"
+    },
+    "predictMedian": {
+      "value": "Aurreikusi mediana"
+    },
+    "center-and-variability.title": {
+      "value": "Zentroa eta aldakortasuna"
+    }
+  },
+  "fa": {
+    "screen.median": {
+      "value": "میانه"
+    },
+    "screen.meanAndMedian": {
+      "value": "میانگین و میانه"
+    },
+    "plotType": {
+      "value": "نوع نمودار"
+    },
+    "linePlot": {
+      "value": "نمودار خطی"
+    },
+    "dotPlot": {
+      "value": "نمودار نقطه ای"
+    },
+    "medianQuestion": {
+      "value": "فاصله طولی هر شوت نوعی چقدر است؟"
+    },
+    "meanAndMedianQuestion": {
+      "value": "هر شوت چطور میانه و میانگین را تحت تاثیر قرار میدهد؟"
+    },
+    "distanceInMeters": {
+      "value": "فاصله (متر)"
+    },
+    "youSortedTheData": {
+      "value": "شما داده ها مرتب کردید!"
+    },
+    "medianEqualsValue": {
+      "value": "میانه = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "؟"
+    },
+    "meanEqualsValue": {
+      "value": "میانگین = {{value}}"
+    },
+    "kickValue": {
+      "value": "{{value}} شوت"
+    },
+    "sortData": {
+      "value": "مرتبسازی داده ها"
+    },
+    "mean": {
+      "value": "میانگین"
+    },
+    "median": {
+      "value": "میانه"
+    },
+    "predictMean": {
+      "value": "پیش بینی میانگین"
+    },
+    "predictMedian": {
+      "value": "پیش بینی میانه"
+    },
+    "center-and-variability.title": {
+      "value": "مرکز و تغییرپذیری"
+    }
+  },
+  "fr": {
+    "screen.median": {
+      "value": "Médiane"
+    },
+    "screen.meanAndMedian": {
+      "value": "Moyenne et Médiane"
+    },
+    "plotType": {
+      "value": "Type de point"
+    },
+    "linePlot": {
+      "value": "Ligne de points"
+    },
+    "dotPlot": {
+      "value": "Tracé de points"
+    },
+    "medianQuestion": {
+      "value": "Quelle est la distance de frappe typique ?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Comment chaque coup de pied influence-t-il la moyenne et la médiane ?"
+    },
+    "distanceInMeters": {
+      "value": "Distance (en mètres)"
+    },
+    "youSortedTheData": {
+      "value": "Vous avez trié les données !"
+    },
+    "medianEqualsValue": {
+      "value": "Médiane = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Moyenne = {{value}}"
+    },
+    "kickValue": {
+      "value": "Frappe {{value}}"
+    },
+    "sortData": {
+      "value": "Trier les données"
+    },
+    "mean": {
+      "value": "Moyenne"
+    },
+    "median": {
+      "value": "Médiane"
+    },
+    "predictMean": {
+      "value": "Prédire la moyenne"
+    },
+    "predictMedian": {
+      "value": "Prédire la médiane"
+    },
+    "center-and-variability.title": {
+      "value": "Centre et variabilité"
+    }
+  },
+  "gu": {
+    "screen.median": {
+      "value": "મધ્યસ્થ"
+    },
+    "screen.meanAndMedian": {
+      "value": "મધ્યક અને મધ્યસ્થ"
+    },
+    "plotType": {
+      "value": "આલેખનો પ્રકાર"
+    },
+    "linePlot": {
+      "value": "રેખા આલેખ"
+    },
+    "dotPlot": {
+      "value": "બિંદુ આલેખ"
+    },
+    "medianQuestion": {
+      "value": "કિક મારતા મળતું અંતર"
+    },
+    "meanAndMedianQuestion": {
+      "value": "દરેક કિક મધ્યક અને મધ્યસ્થને કેવી રીતે પ્રભાવિત કરે છે?"
+    },
+    "distanceInMeters": {
+      "value": "અંતર (મીટરમાં)"
+    },
+    "youSortedTheData": {
+      "value": "તમે માહિતીને ક્રમમાં ગોઠવી છે."
+    },
+    "medianEqualsValue": {
+      "value": "મધ્યસ્થ = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "મધ્યક = {{value}}"
+    },
+    "kickValue": {
+      "value": "કિક {{value}}"
+    },
+    "sortData": {
+      "value": "માહિતી ક્રમમાં ગોઠવો"
+    },
+    "mean": {
+      "value": "મધ્યક"
+    },
+    "median": {
+      "value": "મધ્યસ્થ"
+    },
+    "predictMean": {
+      "value": "ધારેલો મધ્યક"
+    },
+    "predictMedian": {
+      "value": "ધારેલો મધ્યસ્થ"
+    },
+    "center-and-variability.title": {
+      "value": "મધ્યવર્તી સ્થીતિમાન - ખુંટ આર્ચી"
+    }
+  },
+  "ha": {
+    "screen.median": {
+      "value": "Sakamakon tsakiya"
+    },
+    "screen.meanAndMedian": {
+      "value": "Sakamakon tsakiya da matsakaici"
+    },
+    "plotType": {
+      "value": "Plot type"
+    },
+    "linePlot": {
+      "value": "Layin plot"
+    },
+    "dotPlot": {
+      "value": "Dot plot"
+    },
+    "medianQuestion": {
+      "value": "Menene fafutukar Nisan bugun"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Yaya ko wani bugu Yake tasiri a matsakaici da sakamakon tsakiya"
+    },
+    "distanceInMeters": {
+      "value": "Tazara"
+    },
+    "youSortedTheData": {
+      "value": "Ka jera Datan bisa sari!"
+    },
+    "medianEqualsValue": {
+      "value": "Sakamakon tsakiya ={{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Sakamakon tsakiya={{value}}"
+    },
+    "kickValue": {
+      "value": "Kick {{value}}"
+    },
+    "sortData": {
+      "value": "Sort data"
+    },
+    "mean": {
+      "value": "Sakamakon tsakiya "
+    },
+    "median": {
+      "value": "Matsakaici"
+    },
+    "predictMean": {
+      "value": "Predict mean"
+    },
+    "predictMedian": {
+      "value": "Predict median"
+    },
+    "center-and-variability.title": {
+      "value": "Tsakiya da Abubuwa Masu sauyi"
+    }
+  },
+  "hi": {
+    "screen.median": {
+      "value": "माध्यिका"
+    },
+    "screen.meanAndMedian": {
+      "value": "माध्य और माध्यिका"
+    },
+    "plotType": {
+      "value": "क्षेत्र का प्रकार"
+    },
+    "linePlot": {
+      "value": "रेखाक्षेत्र"
+    },
+    "dotPlot": {
+      "value": "बिंदूक्षेत्र"
+    },
+    "medianQuestion": {
+      "value": "विशिष्ट ठोकर दूरी क्या है?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "प्रत्येक ठोकर माध्य और माध्यिका को कैसे प्रभावित करती है?"
+    },
+    "distanceInMeters": {
+      "value": "दूरी (मीटर में)"
+    },
+    "youSortedTheData": {
+      "value": "आपने आँकड़े क्रमबद्ध कर लिए।"
+    },
+    "medianEqualsValue": {
+      "value": "माध्यिका = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "माध्य = {{value}}"
+    },
+    "kickValue": {
+      "value": "ठोकर {{value}}"
+    },
+    "sortData": {
+      "value": "आँकड़े क्रमबद्ध करें"
+    },
+    "mean": {
+      "value": "माध्य"
+    },
+    "median": {
+      "value": "माध्यिका"
+    },
+    "predictMean": {
+      "value": "माध्य का अनुमान लगाऐं"
+    },
+    "predictMedian": {
+      "value": "माध्यिका का अनुमान लगाऐं"
+    },
+    "center-and-variability.title": {
+      "value": "केंद्र और परिवर्तनशीलता"
+    }
+  },
+  "ig": {
+    "screen.median": {
+      "value": "Etiti"
+    },
+    "screen.meanAndMedian": {
+      "value": "Nkezi na Etiti"
+    },
+    "plotType": {
+      "value": "Ụdị akara n'ime eserese"
+    },
+    "linePlot": {
+      "value": "Ahịrị akara n'ime eserese"
+    },
+    "dotPlot": {
+      "value": "Ntụpọ akara n'ime eserese"
+    },
+    "medianQuestion": {
+      "value": "Gịnị bụ ahụkarị anya nke igba?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Kedu ka ịgba nke ọ bụla si emetụta nkezi na etiti?"
+    },
+    "distanceInMeters": {
+      "value": "anya (na mita)"
+    },
+    "youSortedTheData": {
+      "value": "Ị haziri data ahụ!"
+    },
+    "medianEqualsValue": {
+      "value": "Etiti = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Nkezi = {{value}}"
+    },
+    "kickValue": {
+      "value": "igba {{value}}"
+    },
+    "sortData": {
+      "value": "Hazie data"
+    },
+    "mean": {
+      "value": "Nkezi"
+    },
+    "median": {
+      "value": "Etiti"
+    },
+    "predictMean": {
+      "value": "kwuo ihe i chere bụ Nkezi"
+    },
+    "predictMedian": {
+      "value": "kwuo ihe i chere bụ Etiti"
+    },
+    "center-and-variability.title": {
+      "value": "Ebe etiti na mgbanwe"
+    }
+  },
+  "it": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Media e Mediana"
+    },
+    "plotType": {
+      "value": "tipo di traccia"
+    },
+    "linePlot": {
+      "value": "traccia una linea"
+    },
+    "dotPlot": {
+      "value": "traccia un punto"
+    },
+    "medianQuestion": {
+      "value": "Qual è la distanza tipica dei tiri?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "In che modo ogni tiro influenza la media e la mediana?"
+    },
+    "distanceInMeters": {
+      "value": "Distanza (in metri)"
+    },
+    "youSortedTheData": {
+      "value": "Hai ordinato i dati!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Media = {{value}}"
+    },
+    "kickValue": {
+      "value": "Tiro {{value}}"
+    },
+    "sortData": {
+      "value": "Ordina dati"
+    },
+    "mean": {
+      "value": "Media"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Prevedi la media"
+    },
+    "predictMedian": {
+      "value": "Prevedi la mediana"
+    },
+    "center-and-variability.title": {
+      "value": "Centro e variabilità"
+    }
+  },
+  "iw": {
+    "screen.median": {
+      "value": "חציון"
+    },
+    "screen.meanAndMedian": {
+      "value": "ממוצע וחציון"
+    },
+    "plotType": {
+      "value": "סוג התרשים"
+    },
+    "linePlot": {
+      "value": "תרשים קוי"
+    },
+    "dotPlot": {
+      "value": "תרשים נקודות"
+    },
+    "medianQuestion": {
+      "value": "מהו מרחק בעיטה טיפוסית ממוצעת?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "כיצד משפיע כל בעיטה על הממוצע והחציון?"
+    },
+    "distanceInMeters": {
+      "value": "מרחק (במטרים)"
+    },
+    "youSortedTheData": {
+      "value": "מיינת את הנתונים!"
+    },
+    "medianEqualsValue": {
+      "value": "חציון = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "ממוצע = {{value}}"
+    },
+    "kickValue": {
+      "value": "בעיטות {{value}}"
+    },
+    "sortData": {
+      "value": "מיון נתונים"
+    },
+    "mean": {
+      "value": "ממוצע"
+    },
+    "median": {
+      "value": "חציון"
+    },
+    "predictMean": {
+      "value": "חיזוי ממוצע"
+    },
+    "predictMedian": {
+      "value": "חיזוי חציון"
+    },
+    "center-and-variability.title": {
+      "value": "מרכז ושונות"
+    }
+  },
+  "ja": {
+    "screen.median": {
+      "value": "中央値"
+    },
+    "screen.meanAndMedian": {
+      "value": "平均値と中央値"
+    },
+    "linePlot": {
+      "value": "ドットプロット"
+    },
+    "medianQuestion": {
+      "value": "標準的なキックの距離はどのくらいでしょう？"
+    },
+    "meanAndMedianQuestion": {
+      "value": "それぞれのキックは平均値と中央値にどのように影響するでしょう？"
+    },
+    "distanceInMeters": {
+      "value": "距離 (メートル)"
+    },
+    "youSortedTheData": {
+      "value": "並びかえられました！"
+    },
+    "medianEqualsValue": {
+      "value": "中央値 = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "平均値 = {{value}}"
+    },
+    "kickValue": {
+      "value": "キック {{value}}"
+    },
+    "sortData": {
+      "value": "データを並びかえ"
+    },
+    "mean": {
+      "value": "平均値"
+    },
+    "median": {
+      "value": "中央値"
+    },
+    "predictMean": {
+      "value": "平均値を予想"
+    },
+    "predictMedian": {
+      "value": "中央値を予想"
+    },
+    "center-and-variability.title": {
+      "value": "代表値と散らばり"
+    }
+  },
+  "kn": {
+    "screen.median": {
+      "value": "ಮದ್ಯಮ"
+    },
+    "screen.meanAndMedian": {
+      "value": "ಸರಾಸರಿ ಮತ್ತು ಮದ್ಯಮ"
+    },
+    "plotType": {
+      "value": "ನಕ್ಷಾ ವಿಧ"
+    },
+    "linePlot": {
+      "value": "ರೇಖಾ ನಕ್ಷೆ"
+    },
+    "dotPlot": {
+      "value": "ಬಿಂದು ನಕ್ಷೆ"
+    },
+    "medianQuestion": {
+      "value": "ಸಾಮಾನ್ಯವಾಗಿ ಒದೆಯ ದೂರವೆಷ್ಟು?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "ಪ್ರತೀ ಒದೆಯು ಸರಾಸರಿ ಮತ್ತು ಮದ್ಯಮವನ್ನು ಹೇಗೆ ಪ್ರಭಾವಿಸುತ್ತದೆ?"
+    },
+    "distanceInMeters": {
+      "value": "ಅಂತರ (ಮೀಟರ್‌ಗಳಲ್ಲಿ)"
+    },
+    "youSortedTheData": {
+      "value": "ನೀನು ದತ್ತಾಂಶವನ್ನು ಓರಣಗೊಳಿಸಿದ್ದೀ"
+    },
+    "medianEqualsValue": {
+      "value": "ಮದ್ಯಮ = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "ಸರಾಸರಿ = {{value}}"
+    },
+    "kickValue": {
+      "value": "ಒದೆ {{value}}"
+    },
+    "sortData": {
+      "value": "ದತ್ತಾಂಶವನ್ನು ಓರಣಗೊಳಿಸು"
+    },
+    "mean": {
+      "value": "ಸರಾಸರಿ"
+    },
+    "median": {
+      "value": "ಮದ್ಯಮ"
+    },
+    "predictMean": {
+      "value": "ಸರಾಸರಿಯನ್ನು ಊಹಿಸು (ಮುಂಗಾಣು)"
+    },
+    "predictMedian": {
+      "value": "ಮದ್ಯಮವನ್ನು  ಊಹಿಸು (ಮುಂಗಾಣು)"
+    },
+    "center-and-variability.title": {
+      "value": "ಕೇಂದ್ರ ಮತ್ತು ವ್ಯತ್ಯಯಶೀಲತೆ"
+    }
+  },
+  "ko": {
+    "screen.median": {
+      "value": "중앙값"
+    },
+    "screen.meanAndMedian": {
+      "value": "평균과 중앙값"
+    },
+    "plotType": {
+      "value": "표시유형"
+    },
+    "linePlot": {
+      "value": "선 표시"
+    },
+    "dotPlot": {
+      "value": "점 표시"
+    },
+    "medianQuestion": {
+      "value": "전형적 차기 거리는?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "계속되는 차기가 평균과 중앙값에 미치는 영향은"
+    },
+    "distanceInMeters": {
+      "value": "거리(m)"
+    },
+    "youSortedTheData": {
+      "value": "데이터를 정렬했음"
+    },
+    "medianEqualsValue": {
+      "value": "중앙값 = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "평균 = {{value}}"
+    },
+    "kickValue": {
+      "value": "차기 = {{value}}"
+    },
+    "sortData": {
+      "value": "데이터를 정렬"
+    },
+    "mean": {
+      "value": "평균"
+    },
+    "median": {
+      "value": "중앙값"
+    },
+    "predictMean": {
+      "value": "평균을 예측"
+    },
+    "predictMedian": {
+      "value": "중앙값을 예측"
+    },
+    "center-and-variability.title": {
+      "value": "중심과 가변성"
+    }
+  },
+  "lg": {
+    "screen.median": {
+      "value": "Ekyawakati nga opipanze"
+    },
+    "screen.meanAndMedian": {
+      "value": "mean ne  median"
+    },
+    "plotType": {
+      "value": "Ekika kyo' Pulotinze"
+    },
+    "linePlot": {
+      "value": "Okupulotinga layini"
+    },
+    "dotPlot": {
+      "value": "Okupulotinga ne dotisi"
+    },
+    "medianQuestion": {
+      "value": "Ebanga ly’okusamba erya bulijjo lye liruwa?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Buli kukuba kukyusa kutya mean ne medium?"
+    },
+    "distanceInMeters": {
+      "value": "Ebanga (mu meters) ."
+    },
+    "youSortedTheData": {
+      "value": "Ggwe wasunsula data!"
+    },
+    "medianEqualsValue": {
+      "value": "Median = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Mean = {{value}}"
+    },
+    "kickValue": {
+      "value": "Kick {{value}}"
+    },
+    "sortData": {
+      "value": "Okusunsula Data"
+    },
+    "mean": {
+      "value": "mean"
+    },
+    "median": {
+      "value": "Ekyawakati nga opipanze (median)"
+    },
+    "predictMean": {
+      "value": "Lagula mean"
+    },
+    "predictMedian": {
+      "value": "Lagula median"
+    },
+    "center-and-variability.title": {
+      "value": "Wakati no’ kukyukakyuka"
+    }
+  },
+  "mn": {
+    "screen.median": {
+      "value": "Дундаж"
+    },
+    "screen.meanAndMedian": {
+      "value": "Дундаж ба Медиан"
+    },
+    "plotType": {
+      "value": "Тэмдгийн Төрөл"
+    },
+    "linePlot": {
+      "value": "Чагт тэмдэг"
+    },
+    "dotPlot": {
+      "value": "Цэг тэмдэг"
+    },
+    "medianQuestion": {
+      "value": "Хэр хол өшиглөх вэ?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Өшиглөлт бүр нь дундаж ба медианд хэрхэн нөлөөлөх вэ?"
+    },
+    "distanceInMeters": {
+      "value": "Зай (метрээр)"
+    },
+    "youSortedTheData": {
+      "value": "Өгөгдлийг эрэмбэл!"
+    },
+    "medianEqualsValue": {
+      "value": "Медиан = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "Дундаж = {{value}}"
+    },
+    "kickValue": {
+      "value": "Өшиглөлт {{value}}"
+    },
+    "sortData": {
+      "value": "Өгөгдлийн эрэмбэ"
+    },
+    "mean": {
+      "value": "Дундаж"
+    },
+    "median": {
+      "value": "Медиан"
+    },
+    "predictMean": {
+      "value": "Таамаглах Дундаж"
+    },
+    "predictMedian": {
+      "value": "Таамаглах Медиан"
+    },
+    "center-and-variability.title": {
+      "value": "Хувьсагчийн төв"
+    }
+  },
+  "nl": {
+    "screen.median": {
+      "value": "Mediaan"
+    },
+    "screen.meanAndMedian": {
+      "value": "Gemiddelde & Mediaan"
+    },
+    "plotType": {
+      "value": "Type diagram"
+    },
+    "linePlot": {
+      "value": "Lijn diagram"
+    },
+    "dotPlot": {
+      "value": "Punt diagram"
+    },
+    "medianQuestion": {
+      "value": "Wat is de typische schopafstand?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Hoe beïnvloedt elke schop het gemiddelde en de mediaan?"
+    },
+    "distanceInMeters": {
+      "value": "Afstand (in meters)"
+    },
+    "youSortedTheData": {
+      "value": "Je hebt de gegevens gesorteerd!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediaan = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "Gemiddelde = {{value}}"
+    },
+    "kickValue": {
+      "value": "Schop {{value}}"
+    },
+    "sortData": {
+      "value": "Sorteer gegevens"
+    },
+    "mean": {
+      "value": "Gemiddelde"
+    },
+    "median": {
+      "value": "Mediaan"
+    },
+    "predictMean": {
+      "value": "Voorspel gemiddelde"
+    },
+    "predictMedian": {
+      "value": "Voorspel mediaan"
+    },
+    "center-and-variability.title": {
+      "value": "Statistiek"
+    }
+  },
+  "ny": {
+    "screen.median": {
+      "value": "Pakatikati"
+    },
+    "screen.meanAndMedian": {
+      "value": "Pakati ndi Pakatikati"
+    },
+    "plotType": {
+      "value": "Mtundu wa Malo"
+    },
+    "linePlot": {
+      "value": "Jambula Mzere wa Malo"
+    },
+    "dotPlot": {
+      "value": "Jambula Dontho la Malo"
+    },
+    "medianQuestion": {
+      "value": "Kodi mtunda weniweni mwakankha ndi uti?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Kodi kukankha kulikonse kumakhudza bwanji pakati ndi pakatikati?"
+    },
+    "distanceInMeters": {
+      "value": "Mtunda (mu malipande)"
+    },
+    "youSortedTheData": {
+      "value": "Mwasanja data!"
+    },
+    "medianEqualsValue": {
+      "value": "Pakatikati = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Pakati = {{value}}"
+    },
+    "kickValue": {
+      "value": "Kankha {{value}}"
+    },
+    "sortData": {
+      "value": "Sanjani Data"
+    },
+    "mean": {
+      "value": "Pakati"
+    },
+    "median": {
+      "value": "Pakatikati"
+    },
+    "predictMean": {
+      "value": "Losera Pakati"
+    },
+    "predictMedian": {
+      "value": "Losera Pakatikati"
+    },
+    "center-and-variability.title": {
+      "value": "Pakati ndi Kusiyana"
+    }
+  },
+  "om": {
+    "screen.median": {
+      "value": "Midiyaanii"
+    },
+    "screen.meanAndMedian": {
+      "value": "Giddu galeessaa & Midiyaanii"
+    },
+    "plotType": {
+      "value": "Gosa Pilootii"
+    },
+    "linePlot": {
+      "value": "Pilootii Sararaa"
+    },
+    "dotPlot": {
+      "value": "Pilootii Tuqaa"
+    },
+    "medianQuestion": {
+      "value": "Fageenyi dhiittaa idilee maali?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Tokkoon tokkoon dhiittaa giddugaleessaa fi midiyaanii irratti dhiibbaa akkamii qaba?"
+    },
+    "distanceInMeters": {
+      "value": "Fageenya (meetiraan)"
+    },
+    "youSortedTheData": {
+      "value": "Daataa tartiibesitteeta!"
+    },
+    "medianEqualsValue": {
+      "value": "Midiyaanii = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Giddu galeessa = {{value}}"
+    },
+    "kickValue": {
+      "value": "Dhiiti {{value}}"
+    },
+    "sortData": {
+      "value": "Daataa tartiibessi"
+    },
+    "mean": {
+      "value": "Giddu galeessa"
+    },
+    "median": {
+      "value": "Midiyaanii"
+    },
+    "predictMean": {
+      "value": "Giddugaleessa Tilmaama"
+    },
+    "predictMedian": {
+      "value": "Midiyaanii Tilmaama"
+    },
+    "center-and-variability.title": {
+      "value": "Giddugaleessaa fi Jijjiirama"
+    }
+  },
+  "pl": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Średnia i mediana"
+    },
+    "plotType": {
+      "value": "Typ wykresu"
+    },
+    "linePlot": {
+      "value": "Wykres liniowy"
+    },
+    "dotPlot": {
+      "value": "Wykres punktowy"
+    },
+    "medianQuestion": {
+      "value": "Jaka jest typowa odległość przebyta przez piłkę?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Jak każde kopnięcie wpływa na średnią i medianę?"
+    },
+    "distanceInMeters": {
+      "value": "Odległość (w metrach)"
+    },
+    "youSortedTheData": {
+      "value": "Posortowano dane!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "Średnia = {{value}}"
+    },
+    "kickValue": {
+      "value": "Kopnięcie {{value}}"
+    },
+    "sortData": {
+      "value": "Sortuj dane"
+    },
+    "mean": {
+      "value": "Średnia"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Podaj średnią"
+    },
+    "predictMedian": {
+      "value": "Podaj medianę"
+    },
+    "center-and-variability.title": {
+      "value": "Średnia i zmienność"
+    },
+    "valueUnknown": {
+      "value": "?"
+    }
+  },
+  "pt_BR": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Média & Mediana"
+    },
+    "plotType": {
+      "value": "Tipo de Gráfico"
+    },
+    "linePlot": {
+      "value": "Linha"
+    },
+    "dotPlot": {
+      "value": "Pontos"
+    },
+    "medianQuestion": {
+      "value": "Qual é a distância típica do chute?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Como cada chute influencia a média e a mediana?"
+    },
+    "distanceInMeters": {
+      "value": "Distância (em metros)"
+    },
+    "youSortedTheData": {
+      "value": "Você classificou os dados!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "Média = {{value}}"
+    },
+    "kickValue": {
+      "value": "Chute {{value}}"
+    },
+    "sortData": {
+      "value": "Ordenar Dados"
+    },
+    "mean": {
+      "value": "Média"
+    },
+    "median": {
+      "value": "Mediana"
+    },
+    "predictMean": {
+      "value": "Predizer Média"
+    },
+    "predictMedian": {
+      "value": "Predizer Mediana"
+    },
+    "center-and-variability.title": {
+      "value": "Centro e Variabilidade"
+    },
+    "valueUnknown": {
+      "value": "?"
+    }
+  },
+  "ro": {
+    "screen.median": {
+      "value": "Mediana"
+    },
+    "screen.meanAndMedian": {
+      "value": "Media și mediana"
+    },
+    "plotType": {
+      "value": "Tip diagramă"
+    },
+    "linePlot": {
+      "value": "Diagramă cu  X"
+    },
+    "dotPlot": {
+      "value": "Diagramă cu  ●"
+    },
+    "medianQuestion": {
+      "value": "Care este lungimea tipică a loviturii?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Cum influențează fiecare lovitură media și mediana?"
+    },
+    "distanceInMeters": {
+      "value": "Distanța (în metri)"
+    },
+    "youSortedTheData": {
+      "value": "Ai grupat datele!"
+    },
+    "medianEqualsValue": {
+      "value": "Mediana = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Media= {{value}}"
+    },
+    "kickValue": {
+      "value": "lovitură X {{value}} "
+    },
+    "sortData": {
+      "value": "Grupează datele"
+    },
+    "mean": {
+      "value": "Medie"
+    },
+    "median": {
+      "value": "Mediană"
+    },
+    "predictMean": {
+      "value": "Estimează media"
+    },
+    "predictMedian": {
+      "value": "Estimează mediana "
+    },
+    "center-and-variability.title": {
+      "value": "Centru și variabilitate"
+    }
+  },
+  "rw": {
+    "screen.median": {
+      "value": "Mediyane"
+    },
+    "screen.meanAndMedian": {
+      "value": "Impuzandengo na mediyane"
+    },
+    "plotType": {
+      "value": "Ubwoko bw'igishushanyo"
+    },
+    "linePlot": {
+      "value": "Igishushanyo cy'umurongo"
+    },
+    "dotPlot": {
+      "value": "Igishushanyo cy'utudomo"
+    },
+    "medianQuestion": {
+      "value": "Ni iyihe ntera ya kiKE ?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Ni gute intera ya kick imeranye na mediyane n'impuzandengo?"
+    },
+    "distanceInMeters": {
+      "value": "Intera(muri metero)"
+    },
+    "youSortedTheData": {
+      "value": "Mwahisemo amakuru"
+    },
+    "medianEqualsValue": {
+      "value": "Mediyane= {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Impuzandengo= {{value}}"
+    },
+    "kickValue": {
+      "value": "Ishoti{{value}}"
+    },
+    "sortData": {
+      "value": "Hitamo amakuru"
+    },
+    "mean": {
+      "value": "Impuzandengo"
+    },
+    "median": {
+      "value": "Mediyane"
+    },
+    "predictMean": {
+      "value": "Vuga impuzandengo mbere"
+    },
+    "predictMedian": {
+      "value": "Vuga mediyane mbere"
+    },
+    "center-and-variability.title": {
+      "value": "Izingiro no guhindagurika"
+    }
+  },
+  "sq": {
+    "screen.median": {
+      "value": "Mesorja"
+    },
+    "screen.meanAndMedian": {
+      "value": "Mesatarja & Mesorja"
+    },
+    "plotType": {
+      "value": "Lloji i Grafikut"
+    },
+    "linePlot": {
+      "value": "Grafik Linear"
+    },
+    "dotPlot": {
+      "value": "Grafik me Pika"
+    },
+    "medianQuestion": {
+      "value": "Cila është distanca tipike e goditjes?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Si ndikon çdo goditje në mesataren dhe mesoren?"
+    },
+    "distanceInMeters": {
+      "value": "Distanca (në metra)"
+    },
+    "youSortedTheData": {
+      "value": "Ju i renditët të dhënat!"
+    },
+    "medianEqualsValue": {
+      "value": "Mesorja = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Mesatarja = {{value}}"
+    },
+    "kickValue": {
+      "value": "Goditja = {{value}}"
+    },
+    "sortData": {
+      "value": "Renditni të Dhënat"
+    },
+    "mean": {
+      "value": "Mesatarja"
+    },
+    "median": {
+      "value": "Mesorja"
+    },
+    "predictMean": {
+      "value": "Parashikoni Mesataren"
+    },
+    "predictMedian": {
+      "value": "Parashikoni Mesoren"
+    },
+    "center-and-variability.title": {
+      "value": "Qendra dhe Ndryshueshmëria"
+    }
+  },
+  "sr": {
+    "screen.median": {
+      "value": "Медијана"
+    },
+    "screen.meanAndMedian": {
+      "value": "Средња вредност & Медијана"
+    },
+    "plotType": {
+      "value": "тип графика"
+    },
+    "linePlot": {
+      "value": "линијски график"
+    },
+    "dotPlot": {
+      "value": "тачкасти график"
+    },
+    "medianQuestion": {
+      "value": "Колика је уобичајена дужина шута?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Како појединачни шут утиче на средњу вредност  и медијану?"
+    },
+    "distanceInMeters": {
+      "value": "Растојање ( у метрима)"
+    },
+    "youSortedTheData": {
+      "value": "Сортирао си податке!"
+    },
+    "medianEqualsValue": {
+      "value": "Медијана = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "средња вредност = {{value}}"
+    },
+    "kickValue": {
+      "value": "Шутева {{value}}"
+    },
+    "sortData": {
+      "value": "Сортирај податке"
+    },
+    "mean": {
+      "value": "Средња вредност"
+    },
+    "median": {
+      "value": "Медијана"
+    },
+    "predictMean": {
+      "value": "Претпостави средњу вредност"
+    },
+    "predictMedian": {
+      "value": "Претпостави медијану"
+    },
+    "center-and-variability.title": {
+      "value": "Средина и расподела"
+    }
+  },
+  "st": {
+    "screen.median": {
+      "value": "mahareng"
+    },
+    "screen.meanAndMedian": {
+      "value": "bolela le mahareng"
+    },
+    "plotType": {
+      "value": "mofuta oa letheba"
+    },
+    "linePlot": {
+      "value": "mola oa letheba"
+    },
+    "dotPlot": {
+      "value": "morero oa letheba"
+    },
+    "medianQuestion": {
+      "value": "bolelele bo tloaelehileng sa ho raha ke eng?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "ebe ho raha ho fetola ho bolela le mahareng jong?"
+    },
+    "distanceInMeters": {
+      "value": "bolelele( ka limithara)"
+    },
+    "youSortedTheData": {
+      "value": "u hlophile litaba/lipalo-palo"
+    },
+    "medianEqualsValue": {
+      "value": "mahareng = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "bolela = {{value}}"
+    },
+    "kickValue": {
+      "value": "raha{{value}}"
+    },
+    "sortData": {
+      "value": "hlopha litaba/lipalo-palo"
+    },
+    "mean": {
+      "value": "bolela"
+    },
+    "median": {
+      "value": "mahareng"
+    },
+    "predictMean": {
+      "value": "bolela e sale pele ho bolela"
+    },
+    "predictMedian": {
+      "value": "bolela e sale mahareng"
+    },
+    "center-and-variability.title": {
+      "value": "bohare le ho feto-fetoha"
+    }
+  },
+  "sv": {
+    "screen.median": {
+      "value": "Median"
+    },
+    "screen.meanAndMedian": {
+      "value": "Medelvärde & Median"
+    },
+    "plotType": {
+      "value": "Plot-typ"
+    },
+    "linePlot": {
+      "value": "Markeringar på Tallinje"
+    },
+    "dotPlot": {
+      "value": "Prickar på Tallinje"
+    },
+    "medianQuestion": {
+      "value": "Vad är den vanligaste spark-längden?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Hur påverkar varje spark medelvärde och median?"
+    },
+    "distanceInMeters": {
+      "value": "Avstånd (i meter)"
+    },
+    "youSortedTheData": {
+      "value": "Du sorterade värdena!"
+    },
+    "medianEqualsValue": {
+      "value": "Median = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Medelvärde = {{value}}"
+    },
+    "kickValue": {
+      "value": "Sparka {{value}}"
+    },
+    "sortData": {
+      "value": "Sortera värden"
+    },
+    "mean": {
+      "value": "Medelvärde"
+    },
+    "median": {
+      "value": "Median"
+    },
+    "predictMean": {
+      "value": "Förutsäg medelvärde"
+    },
+    "predictMedian": {
+      "value": "Förutsäg median"
+    },
+    "center-and-variability.title": {
+      "value": "Mittvärde och variabilitet"
+    }
+  },
+  "sw": {
+    "screen.median": {
+      "value": "Katikati"
+    },
+    "screen.meanAndMedian": {
+      "value": "Wastani na katikati"
+    },
+    "plotType": {
+      "value": "Aina ya Mchoro"
+    },
+    "linePlot": {
+      "value": "Mchoro wa mstari"
+    },
+    "dotPlot": {
+      "value": "Mchoro wa nukta"
+    },
+    "medianQuestion": {
+      "value": "Imesukumwa kwa kiasi gani?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Jinsi gani kila msukumo umeathiri wastani na kati"
+    },
+    "distanceInMeters": {
+      "value": "Umbali (katika meta)"
+    },
+    "youSortedTheData": {
+      "value": "Umechambua data"
+    },
+    "medianEqualsValue": {
+      "value": "Katikati = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Wastani = {{value}}"
+    },
+    "kickValue": {
+      "value": "Msukumo {{value}}"
+    },
+    "sortData": {
+      "value": "Chambua data"
+    },
+    "mean": {
+      "value": "Wastani"
+    },
+    "median": {
+      "value": "Katikati"
+    },
+    "predictMean": {
+      "value": "Bashiri Wastani"
+    },
+    "predictMedian": {
+      "value": "Bashiri Katikati"
+    },
+    "center-and-variability.title": {
+      "value": "Kitovu na Ugeukaji"
+    }
+  },
+  "te": {
+    "screen.median": {
+      "value": "మధ్యగతం"
+    },
+    "screen.meanAndMedian": {
+      "value": "అంకమధ్యమం & మధ్యగతం"
+    },
+    "plotType": {
+      "value": "చిత్రణ రకం"
+    },
+    "linePlot": {
+      "value": "రేఖా చిత్రణ"
+    },
+    "dotPlot": {
+      "value": "బిందు చిత్రణ"
+    },
+    "medianQuestion": {
+      "value": "ఒక ప్రత్యేక ప్రహార దూరం (తంతే పోయే దూరం)  ఎంత?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "ఒక ప్రత్యేకమైన తన్ను (Kick) అంకమధ్యమాన్ని, మధ్యగతాన్ని ఎలా ప్రభావితం చేస్తుంది?"
+    },
+    "distanceInMeters": {
+      "value": "దూరం ( మీటర్ల లో)"
+    },
+    "youSortedTheData": {
+      "value": "నీవు సమాచారాన్ని వర్గీకరించావు!"
+    },
+    "medianEqualsValue": {
+      "value": "మధ్యగతం= {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "అంకమధ్యమం {{value}}"
+    },
+    "kickValue": {
+      "value": "తన్ను {{value}}"
+    },
+    "sortData": {
+      "value": "సమాచారాన్ని వర్గీకరించు"
+    },
+    "mean": {
+      "value": "అంకమధ్యమం"
+    },
+    "median": {
+      "value": "మధ్యగతం"
+    },
+    "predictMean": {
+      "value": "అంకమధ్యమాన్ని అంచనావేయి"
+    },
+    "predictMedian": {
+      "value": "మధ్యగతాన్ని అంచనావేయి"
+    },
+    "center-and-variability.title": {
+      "value": "మధ్యమం మరియు చలత్వం ; ఉడిత్యాల రమణ"
+    }
+  },
+  "th": {
+    "screen.median": {
+      "value": "มัธยฐาน"
+    },
+    "screen.meanAndMedian": {
+      "value": "ค่าเฉลี่ย และ มัธยฐาน"
+    },
+    "plotType": {
+      "value": "ชนิดของการพล็ต"
+    },
+    "linePlot": {
+      "value": "พล็อตเส้น"
+    },
+    "dotPlot": {
+      "value": "พล็อตจุด"
+    },
+    "medianQuestion": {
+      "value": "เตะลูกบอลได้ไกลเท่าไหร่?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "การเตะแต่ละครั้งส่งผลต่อค่าเฉลี่ยและมัธยฐานอย่างไร?"
+    },
+    "distanceInMeters": {
+      "value": "ระยะทาง (เมตร)"
+    },
+    "youSortedTheData": {
+      "value": "ได้ทำการเรียงข้อมูลแล้ว"
+    },
+    "medianEqualsValue": {
+      "value": "มัธยฐาน = {{value}}"
+    },
+    "meanEqualsValue": {
+      "value": "ค่าเฉลี่ย = {{value}}"
+    },
+    "kickValue": {
+      "value": "เตะรอบละ {{value}} คน"
+    },
+    "sortData": {
+      "value": "เรียงข้อมูล"
+    },
+    "mean": {
+      "value": "ค่าเฉลี่ย"
+    },
+    "median": {
+      "value": "มัธยฐาน"
+    },
+    "predictMean": {
+      "value": "ค่าเฉลี่ยทำนาย"
+    },
+    "predictMedian": {
+      "value": "มัธยฐานทำนาย"
+    },
+    "center-and-variability.title": {
+      "value": "ศูนย์กลางและความเปลี่ยนแปร"
+    }
+  },
+  "tk": {
+    "screen.median": {
+      "value": "Orta baha"
+    },
+    "screen.meanAndMedian": {
+      "value": "Ortaça baha we orta baha"
+    },
+    "plotType": {
+      "value": "Çyzgynyň görnüşi"
+    },
+    "linePlot": {
+      "value": "Çyzykly çyzgy"
+    },
+    "dotPlot": {
+      "value": "Nokatly çyzgy"
+    },
+    "medianQuestion": {
+      "value": "Köp gabat gelýän urgy aralygy haýsy?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Her ugry orta we ortaça baha nähili täsir edýär?"
+    },
+    "distanceInMeters": {
+      "value": "Aralyk (metrde)"
+    },
+    "youSortedTheData": {
+      "value": "Maglumaty tertiplediňiz!"
+    },
+    "medianEqualsValue": {
+      "value": "Orta baha = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Ortaça baha = {{value}}"
+    },
+    "kickValue": {
+      "value": "Urgy {{value}}"
+    },
+    "sortData": {
+      "value": "Maglumaty tertiple"
+    },
+    "mean": {
+      "value": "Ortaça baha"
+    },
+    "median": {
+      "value": "Orta baha"
+    },
+    "predictMean": {
+      "value": "Ortaça bahany çakla"
+    },
+    "predictMedian": {
+      "value": "Orta bahany çakla"
+    },
+    "center-and-variability.title": {
+      "value": "Merkez we üýtgeýjilik"
+    }
+  },
+  "tr": {
+    "screen.median": {
+      "value": "Ortanca"
+    },
+    "screen.meanAndMedian": {
+      "value": "Ortalama & Ortanca"
+    },
+    "plotType": {
+      "value": "Grafik Türü"
+    },
+    "linePlot": {
+      "value": "Nokta Grafiği \"X\" gösterimi"
+    },
+    "dotPlot": {
+      "value": "Nokta Grafiği"
+    },
+    "medianQuestion": {
+      "value": "Tipik bir vuruşun mesafesi ne kadardır?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "Yapılan her vuruş ortalama ve ortancayı nasıl etkiler?"
+    },
+    "distanceInMeters": {
+      "value": "Mesafe (metre)"
+    },
+    "youSortedTheData": {
+      "value": "Veriyi sıraladın!"
+    },
+    "medianEqualsValue": {
+      "value": "Ortanca = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Ortalama = {{value}}"
+    },
+    "kickValue": {
+      "value": "Vuruş {{value}}"
+    },
+    "sortData": {
+      "value": "Veriyi Sırala"
+    },
+    "mean": {
+      "value": "Ortalama"
+    },
+    "median": {
+      "value": "Ortanca"
+    },
+    "predictMean": {
+      "value": "Ortalamayı Tahmin Et"
+    },
+    "predictMedian": {
+      "value": "Ortancayı Tahmin Et"
+    },
+    "center-and-variability.title": {
+      "value": "Merkezi Eğilim ve Yayılım Ölçüleri"
+    }
+  },
+  "tw": {
+    "screen.median": {
+      "value": "midiɛn"
+    },
+    "screen.meanAndMedian": {
+      "value": "miin ne mideɛn"
+    },
+    "plotType": {
+      "value": "Asaase su"
+    },
+    "linePlot": {
+      "value": "ahoma asaase"
+    },
+    "dotPlot": {
+      "value": "dɔt asaase"
+    },
+    "medianQuestion": {
+      "value": "ɛdeɛn ne tipikal kiik kwan"
+    },
+    "meanAndMedianQuestion": {
+      "value": "kwan bɛn so na kiik no nya miin ne midiɛn no so tumi"
+    },
+    "distanceInMeters": {
+      "value": "kwan(in meters)"
+    },
+    "youSortedTheData": {
+      "value": "deeta a wayiyi mu"
+    },
+    "medianEqualsValue": {
+      "value": "Mean = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "Miin = {{value}}"
+    },
+    "kickValue": {
+      "value": "bɔ{{value}}"
+    },
+    "sortData": {
+      "value": "deta su"
+    },
+    "mean": {
+      "value": "miin"
+    },
+    "median": {
+      "value": "midiɛn"
+    },
+    "predictMean": {
+      "value": "hyɛ miin ho nkɔm"
+    },
+    "predictMedian": {
+      "value": "midiɛn"
+    },
+    "center-and-variability.title": {
+      "value": "mfinfini ne deɛ ɛtumi sesa"
+    }
+  },
+  "yo": {
+    "screen.median": {
+      "value": "Arin nọmba ni a lẹsẹsẹ akojọ ti awọn nọmba"
+    },
+    "screen.meanAndMedian": {
+      "value": "Apapọ awọn nọmba ti a fun ati arin nọmba ni a lẹsẹsẹ akojọ ti awọn nọmba"
+    },
+    "plotType": {
+      "value": "Idite Iru"
+    },
+    "linePlot": {
+      "value": "Idite ila"
+    },
+    "dotPlot": {
+      "value": "Aami Idite"
+    },
+    "medianQuestion": {
+      "value": "Kini ijinna tapa aṣoju?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "?Bawo ni tapa kọọkan ṣe ni ipa iwọn ati agbedemeji"
+    },
+    "distanceInMeters": {
+      "value": "Apakan laini laarin awọn aaye meji lori laini inu (ninu awọn mita)"
+    },
+    "youSortedTheData": {
+      "value": "O ti to awọn data!"
+    },
+    "medianEqualsValue": {
+      "value": "Agbedemeji = {{value}} "
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "meanEqualsValue": {
+      "value": "apapọ awọn nọmba = {{value}}"
+    },
+    "kickValue": {
+      "value": "Ta {{value}}"
+    },
+    "sortData": {
+      "value": "to data lẹšẹšẹ "
+    },
+    "mean": {
+      "value": "apapọ awọn nọmba"
+    },
+    "median": {
+      "value": "Agbedemeji"
+    },
+    "predictMean": {
+      "value": "Sọtẹlẹ apapọ awọn nọmba"
+    },
+    "predictMedian": {
+      "value": " Sọtẹlẹ nọmba Agbedemeji"
+    },
+    "center-and-variability.title": {
+      "value": " Aarin ati nọmba iyipada"
+    }
+  },
+  "zh_TW": {
+    "screen.median": {
+      "value": "中位數"
+    },
+    "screen.meanAndMedian": {
+      "value": "平均與中位數"
+    },
+    "plotType": {
+      "value": "繪製型態"
+    },
+    "linePlot": {
+      "value": "線型"
+    },
+    "dotPlot": {
+      "value": "點型"
+    },
+    "medianQuestion": {
+      "value": "一般踢球能踢多遠？"
+    },
+    "meanAndMedianQuestion": {
+      "value": "每次踢球的距離對平均與中位數的變化有何影響？"
+    },
+    "distanceInMeters": {
+      "value": "距離（公尺）"
+    },
+    "youSortedTheData": {
+      "value": "您將資料排序了！"
+    },
+    "medianEqualsValue": {
+      "value": "中位數 = {{value}}"
+    },
+    "valueUnknown": {
+      "value": "？"
+    },
+    "meanEqualsValue": {
+      "value": "平均 = {{value}}"
+    },
+    "kickValue": {
+      "value": "一次踢 {{value}} 顆"
+    },
+    "sortData": {
+      "value": "排序資料"
+    },
+    "mean": {
+      "value": "平均"
+    },
+    "median": {
+      "value": "中位數"
+    },
+    "predictMean": {
+      "value": "預測平均"
+    },
+    "predictMedian": {
+      "value": "預測中位數"
+    },
+    "center-and-variability.title": {
+      "value": "Center and Variability_中位數與變異性"
+    }
+  },
+  "en": {
+    "center-and-variability.title": {
+      "value": "Center and Variability"
+    },
+    "screen.median": {
+      "value": "Median"
+    },
+    "screen.meanAndMedian": {
+      "value": "Mean & Median"
+    },
+    "screen.variability": {
+      "value": "Variability"
+    },
+    "screen.lab": {
+      "value": "Lab"
+    },
+    "medianQuestion": {
+      "value": "What is the typical kick distance?"
+    },
+    "meanAndMedianQuestion": {
+      "value": "How does each kick influence the mean and median?"
+    },
+    "variabilityQuestion": {
+      "value": "How spread out are the kick distances?"
+    },
+    "kickValuePattern": {
+      "value": "Kick {{value}}"
+    },
+    "distanceInMeters": {
+      "value": "Distance (in meters)"
+    },
+    "sortData": {
+      "value": "Sort Data"
+    },
+    "meanEqualsValuePattern": {
+      "value": "Mean = {{value}}"
+    },
+    "medianEqualsValuePattern": {
+      "value": "Median = {{value}}"
+    },
+    "iqrEqualsValuePattern": {
+      "value": "IQR = {{value}}"
+    },
+    "rangeEqualsValuePattern": {
+      "value": "Range = {{value}}"
+    },
+    "plotType": {
+      "value": "Plot Type"
+    },
+    "dotPlot": {
+      "value": "Dot Plot"
+    },
+    "linePlot": {
+      "value": "Line Plot"
+    },
+    "median": {
+      "value": "Median"
+    },
+    "mean": {
+      "value": "Mean"
+    },
+    "range": {
+      "value": "Range"
+    },
+    "interquartileRangeIQR": {
+      "value": "Interquartile Range (IQR)"
+    },
+    "iqr": {
+      "value": "IQR"
+    },
+    "min": {
+      "value": "min"
+    },
+    "max": {
+      "value": "max"
+    },
+    "q1": {
+      "value": "Q1"
+    },
+    "q3": {
+      "value": "Q3"
+    },
+    "meanAbsoluteDeviationMAD": {
+      "value": "Mean Absolute Deviation (MAD)"
+    },
+    "mad": {
+      "value": "MAD"
+    },
+    "variability": {
+      "value": "Variability"
+    },
+    "predictMean": {
+      "value": "Predict Mean"
+    },
+    "predictMedian": {
+      "value": "Predict Median"
+    },
+    "valueUnknown": {
+      "value": "?"
+    },
+    "youSortedTheData": {
+      "value": "You sorted the data!"
+    },
+    "rangeDescription": {
+      "value": "Range is the distance between the maximum and minimum data points."
+    },
+    "iqrDescription": {
+      "value": "IQR is the middle 50% of the data."
+    },
+    "iqrDataValues": {
+      "value": "Data Values:"
+    },
+    "iqrCalculationPattern1": {
+      "value": "IQR = {{q3}} - {{q1}}"
+    },
+    "iqrCalculationPattern2": {
+      "value": "IQR = {{iqr}} meters"
+    },
+    "madDescription": {
+      "value": "MAD is the average distance each data point is from the mean."
+    },
+    "madEquals": {
+      "value": "MAD ="
+    },
+    "madCalculationResultPattern": {
+      "value": "MAD = {{mad}} meters"
+    },
+    "rangeCalculationPattern": {
+      "value": "Range = maximum value - minimum value = {{max}} - {{min}}"
+    },
+    "rangeCalculationResultPattern": {
+      "value": "Range = {{range}} meters"
+    },
+    "needAtLeastOneKick": {
+      "value": "Need at least one kick"
+    },
+    "needAtLeastFiveKicks": {
+      "value": "Need at least five kicks"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+// Copyright 2019-2020, University of Colorado Boulder
+
+/**
+ * @author Jesse Greenberg
+ */
+
+import tappi from '../../../tappi.js';
+import VibrationPatterns from '../../../VibrationPatterns.js';
+import PatternsDemoScene from './PatternsDemoScene.js';
+class PulseScene extends PatternsDemoScene {
+  constructor(activePatternProperty, options) {
+    super(activePatternProperty);
+
+    // creates the buttons and adds them to the scene
+    this.createPatternButtons([{
+      pattern: VibrationPatterns.HZ_2_5,
+      label: '2.5 Hz'
+    }, {
+      pattern: VibrationPatterns.HZ_5,
+      label: '5 Hz'
+    }, {
+      pattern: VibrationPatterns.HZ_10,
+      label: '10 Hz'
+    }, {
+      pattern: VibrationPatterns.HZ_25,
+      label: '25 Hz'
+    }, {
+      pattern: VibrationPatterns.HZ_50,
+      label: '50 Hz'
+    }, {
+      pattern: VibrationPatterns.HZ_100,
+      label: '100 Hz'
+    }]);
+
+    // mutate after buttons have been added for proper bounds
+    this.mutate(options);
+  }
+}
+tappi.register('PulseScene', PulseScene);
+export default PulseScene;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ0YXBwaSIsIlZpYnJhdGlvblBhdHRlcm5zIiwiUGF0dGVybnNEZW1vU2NlbmUiLCJQdWxzZVNjZW5lIiwiY29uc3RydWN0b3IiLCJhY3RpdmVQYXR0ZXJuUHJvcGVydHkiLCJvcHRpb25zIiwiY3JlYXRlUGF0dGVybkJ1dHRvbnMiLCJwYXR0ZXJuIiwiSFpfMl81IiwibGFiZWwiLCJIWl81IiwiSFpfMTAiLCJIWl8yNSIsIkhaXzUwIiwiSFpfMTAwIiwibXV0YXRlIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJQdWxzZVNjZW5lLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE5LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEBhdXRob3IgSmVzc2UgR3JlZW5iZXJnXHJcbiAqL1xyXG5cclxuaW1wb3J0IHRhcHBpIGZyb20gJy4uLy4uLy4uL3RhcHBpLmpzJztcclxuaW1wb3J0IFZpYnJhdGlvblBhdHRlcm5zIGZyb20gJy4uLy4uLy4uL1ZpYnJhdGlvblBhdHRlcm5zLmpzJztcclxuaW1wb3J0IFBhdHRlcm5zRGVtb1NjZW5lIGZyb20gJy4vUGF0dGVybnNEZW1vU2NlbmUuanMnO1xyXG5cclxuY2xhc3MgUHVsc2VTY2VuZSBleHRlbmRzIFBhdHRlcm5zRGVtb1NjZW5lIHtcclxuICBjb25zdHJ1Y3RvciggYWN0aXZlUGF0dGVyblByb3BlcnR5LCBvcHRpb25zICkge1xyXG4gICAgc3VwZXIoIGFjdGl2ZVBhdHRlcm5Qcm9wZXJ0eSApO1xyXG5cclxuICAgIC8vIGNyZWF0ZXMgdGhlIGJ1dHRvbnMgYW5kIGFkZHMgdGhlbSB0byB0aGUgc2NlbmVcclxuICAgIHRoaXMuY3JlYXRlUGF0dGVybkJ1dHRvbnMoIFtcclxuICAgICAgeyBwYXR0ZXJuOiBWaWJyYXRpb25QYXR0ZXJucy5IWl8yXzUsIGxhYmVsOiAnMi41IEh6JyB9LFxyXG4gICAgICB7IHBhdHRlcm46IFZpYnJhdGlvblBhdHRlcm5zLkhaXzUsIGxhYmVsOiAnNSBIeicgfSxcclxuICAgICAgeyBwYXR0ZXJuOiBWaWJyYXRpb25QYXR0ZXJucy5IWl8xMCwgbGFiZWw6ICcxMCBIeicgfSxcclxuICAgICAgeyBwYXR0ZXJuOiBWaWJyYXRpb25QYXR0ZXJucy5IWl8yNSwgbGFiZWw6ICcyNSBIeicgfSxcclxuICAgICAgeyBwYXR0ZXJuOiBWaWJyYXRpb25QYXR0ZXJucy5IWl81MCwgbGFiZWw6ICc1MCBIeicgfSxcclxuICAgICAgeyBwYXR0ZXJuOiBWaWJyYXRpb25QYXR0ZXJucy5IWl8xMDAsIGxhYmVsOiAnMTAwIEh6JyB9XHJcbiAgICBdICk7XHJcblxyXG4gICAgLy8gbXV0YXRlIGFmdGVyIGJ1dHRvbnMgaGF2ZSBiZWVuIGFkZGVkIGZvciBwcm9wZXIgYm91bmRzXHJcbiAgICB0aGlzLm11dGF0ZSggb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxudGFwcGkucmVnaXN0ZXIoICdQdWxzZVNjZW5lJywgUHVsc2VTY2VuZSApO1xyXG5leHBvcnQgZGVmYXVsdCBQdWxzZVNjZW5lOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQkFBbUI7QUFDckMsT0FBT0MsaUJBQWlCLE1BQU0sK0JBQStCO0FBQzdELE9BQU9DLGlCQUFpQixNQUFNLHdCQUF3QjtBQUV0RCxNQUFNQyxVQUFVLFNBQVNELGlCQUFpQixDQUFDO0VBQ3pDRSxXQUFXQSxDQUFFQyxxQkFBcUIsRUFBRUMsT0FBTyxFQUFHO0lBQzVDLEtBQUssQ0FBRUQscUJBQXNCLENBQUM7O0lBRTlCO0lBQ0EsSUFBSSxDQUFDRSxvQkFBb0IsQ0FBRSxDQUN6QjtNQUFFQyxPQUFPLEVBQUVQLGlCQUFpQixDQUFDUSxNQUFNO01BQUVDLEtBQUssRUFBRTtJQUFTLENBQUMsRUFDdEQ7TUFBRUYsT0FBTyxFQUFFUCxpQkFBaUIsQ0FBQ1UsSUFBSTtNQUFFRCxLQUFLLEVBQUU7SUFBTyxDQUFDLEVBQ2xEO01BQUVGLE9BQU8sRUFBRVAsaUJBQWlCLENBQUNXLEtBQUs7TUFBRUYsS0FBSyxFQUFFO0lBQVEsQ0FBQyxFQUNwRDtNQUFFRixPQUFPLEVBQUVQLGlCQUFpQixDQUFDWSxLQUFLO01BQUVILEtBQUssRUFBRTtJQUFRLENBQUMsRUFDcEQ7TUFBRUYsT0FBTyxFQUFFUCxpQkFBaUIsQ0FBQ2EsS0FBSztNQUFFSixLQUFLLEVBQUU7SUFBUSxDQUFDLEVBQ3BEO01BQUVGLE9BQU8sRUFBRVAsaUJBQWlCLENBQUNjLE1BQU07TUFBRUwsS0FBSyxFQUFFO0lBQVMsQ0FBQyxDQUN0RCxDQUFDOztJQUVIO0lBQ0EsSUFBSSxDQUFDTSxNQUFNLENBQUVWLE9BQVEsQ0FBQztFQUN4QjtBQUNGO0FBRUFOLEtBQUssQ0FBQ2lCLFFBQVEsQ0FBRSxZQUFZLEVBQUVkLFVBQVcsQ0FBQztBQUMxQyxlQUFlQSxVQUFVIn0=

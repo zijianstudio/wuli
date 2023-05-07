@@ -1,0 +1,59 @@
+{
+  "number-play.title": {
+    "value": "Number Play"
+  },
+  "screen.ten": {
+    "value": "Ten"
+  },
+  "screen.twenty": {
+    "value": "Twenty"
+  },
+  "screen.game": {
+    "value": "Game"
+  },
+  "word": {
+    "value": "Word"
+  },
+  "wordLanguage": {
+    "value": "Word ({{language}})"
+  },
+  "tenFrame": {
+    "value": "Ten Frame"
+  },
+  "tenFrames": {
+    "value": "Ten Frames"
+  },
+  "ones": {
+    "value": "Ones"
+  },
+  "chooseYourGame": {
+    "value": "Choose Your Game!"
+  },
+  "countingLevel1Description": {
+    "value": "<b>Counting: Level 1</b>  Count from 1-10"
+  },
+  "countingLevel2Description": {
+    "value": "<b>Counting: Level 2</b>  Count from 11-20"
+  },
+  "subitizingLevel1Description": {
+    "value": "<b>Subitizing: Level 1</b>  Subitize from 1-5"
+  },
+  "subitizingLevel2Description": {
+    "value": "<b>Subitizing: Level 2</b>  Subitize from 6-10"
+  },
+  "games": {
+    "value": "Games"
+  },
+  "automaticallyHearTotal": {
+    "value": "Automatically Hear Total"
+  },
+  "automaticallyHearTotalDescription": {
+    "value": "Hear the total update automatically as you interact."
+  },
+  "subitizeTime": {
+    "value": "Subitize Time"
+  },
+  "subitizeTimeDescription": {
+    "value": "Set the time that objects are shown in the Subitize game levels."
+  }
+}

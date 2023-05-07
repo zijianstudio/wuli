@@ -1,0 +1,2751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>Scenery Layout</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/logo-v1.svg">
+  <link rel="stylesheet" href="../../sherpa/lib/bootstrap-2.2.2.css">
+  <link rel="stylesheet" href="../../sherpa/lib/bootstrap-responsive-2.2.2.css">
+  <link rel="stylesheet" href="../../sherpa/lib/syntaxhighlighter-3.0.83/shCore.css">
+  <link rel="stylesheet" href="../../sherpa/lib/syntaxhighlighter-3.0.83/shThemeDefault.css">
+  <link rel="stylesheet" href="../assets/scenery.css">
+
+  <!-- Before loading other things (that might error), create hooks to report errors/loads for continuous testing -->
+  <script src="../../chipper/js/sim-tests/pageload-connector.js"></script>
+
+  <!-- jQuery and LoDash are dependencies -->
+  <script src="../../sherpa/lib/jquery-2.1.0.min.js"></script>
+  <script src="../../sherpa/lib/lodash-4.17.4.min.js"></script>
+
+  <!-- For the styling -->
+  <script src="../../sherpa/lib/bootstrap-2.2.2.js"></script>
+
+  <link rel="stylesheet" href="../../sherpa/lib/highlightjs-11.5.1-a11y-light.min.css">
+  <script src="../../sherpa/lib/highlightjs-11.5.1.min.js"></script>
+  <script src="./doc.js"></script>
+  <link rel="stylesheet" href="./doc.css">
+
+  <link rel="stylesheet" href="../../sherpa/lib/codemirror-5.52.2.min.css">
+  <link rel="stylesheet" href="../../sherpa/lib/codemirror-5.52.2.monokai.min.css">
+
+  <script src="../../sherpa/lib/codemirror-5.52.2.min.js"></script>
+  <script src="../../sherpa/lib/codemirror-5.52.2.javascript.min.js"></script>
+
+  <script src="./extractFunctionJS.js"></script>
+  <script src="./scenery-sandbox.js"></script>
+  <link rel="stylesheet" href="./scenery-sandbox.css">
+
+  <style>
+
+  </style>
+
+  <!-- Our code, in either the concatenated 'with comments' version or the minified version -->
+  <script src="../dist/scenery.min.js"></script>
+
+  <script type="text/javascript">
+    phet.scenery.Utils.polyfillRequestAnimationFrame();
+
+    _.extend( window, phet.phetCore );
+    _.extend( window, phet.axon );
+    _.extend( window, phet.dot );
+    _.extend( window, phet.kite );
+    _.extend( window, phet.scenery );
+
+    function dynamicDemo( id, getBox, options ) {
+      options = merge( {
+        resize: 'both',
+        useMinWidth: true,
+        useMinHeight: false,
+        adjustDisplay: false,
+        initialWidth: null,
+        initialHeight: null,
+        step: null
+      }, options );
+
+      const container = document.getElementById( id );
+      const scene = new Node();
+      const box = getBox();
+      scene.addChild( box );
+      const display = new Display( scene, {
+        allowCSSHacks: false,
+
+        // so Display input does not interfere with documentation links
+        listenToOnlyElement: true
+      } );
+      display.domElement.classList.add( 'exampleScene' );
+      display.domElement.style.position = 'relative';
+      display.domElement.style.resize = options.resize;
+
+      // Initials
+      display.width = Math.ceil( options.initialWidth ? options.initialWidth : scene.right );
+      display.height = Math.ceil( options.initialHeight ? options.initialHeight : scene.bottom );
+      display.domElement.style.width = display.width + 'px';
+      display.domElement.style.height = display.height + 'px';
+      if ( options.useMinWidth ) {
+        display.domElement.style.minWidth = display.width + 'px';
+      }
+      if ( options.useMinHeight ) {
+        display.domElement.style.minHeight = display.height + 'px';
+      }
+
+      display.updateOnRequestAnimationFrame( dt => {
+        options.step && options.step( dt );
+
+        if ( options.adjustDisplay ) {
+          display.width = Math.ceil( scene.right );
+          display.height = Math.ceil( scene.bottom );
+          display.domElement.style.width = display.width + 'px';
+          display.domElement.style.height = display.height + 'px';
+        }
+        else {
+          if ( display.domElement.clientWidth ) {
+            display.width = display.domElement.clientWidth;
+            box.preferredWidth = display.domElement.clientWidth;
+          }
+          if ( display.domElement.clientHeight ) {
+            display.height = display.domElement.clientHeight;
+            box.preferredHeight = display.domElement.clientHeight;
+          }
+        }
+      } );
+
+      container.appendChild( display.domElement );
+      container.appendChild( getCodeSnippet( getBox ) );
+    }
+
+    const colors = [
+      new Color( 62, 171, 3 ),
+      new Color( 23, 180, 77 ),
+      new Color( 24, 183, 138 ),
+      new Color( 23, 178, 194 ),
+      new Color( 20, 163, 238 ),
+      new Color( 71, 136, 255 ),
+      new Color( 171, 101, 255 ),
+      new Color( 228, 72, 235 ),
+      new Color( 252, 66, 186 ),
+      new Color( 252, 82, 127 )
+    ];
+
+    const createLabeledBox = ( label, fill, width, height ) => {
+      return new Rectangle( 0, 0, width, height, {
+        stroke: 'black',
+        fill: fill,
+        children: [
+          new Text( label, { font: new Font( { size: 8 } ), left: 3, bottom: height - 3 } )
+        ]
+      } );
+    };
+
+    class ResizableNode extends Node {
+      constructor( display, content, providedOptions ) {
+        const options = merge( {
+          widthResizable: false,
+          heightResizable: false
+        }, providedOptions );
+
+        if ( options.widthResizable ) {
+          content.preferredWidth = content.minimumWidth;
+        }
+        if ( options.heightResizable ) {
+          content.preferredHeight = content.minimumHeight;
+        }
+
+        const resizeIconColor = new Color( 140, 140, 140 );
+        const resizeBackgroundColor = new Color( 210, 210, 210 );
+        const resizeStrokeColor = new Color( 140, 140, 140 );
+        const resizeStrokeLineWidth = 0.5;
+
+        const resizeHandleSize = 12;
+        const space = 3;
+        const radius = 1.2;
+        const singleResizeShape = new Shape()
+          .circle( 0, 0, radius ).close()
+          .circle( space, space, radius ).close()
+          .circle( 2 * space, 0, radius ).close()
+          .circle( 3 * space, space, radius ).close()
+          .circle( 4 * space, 0, radius ).close()
+          .circle( 5 * space, space, radius ).close()
+          .circle( 6 * space, 0, radius ).close()
+          .circle( 7 * space, space, radius ).close()
+          .circle( 8 * space, 0, radius ).close();
+        const singleResizeIcon = new Path( singleResizeShape, {
+          fill: resizeIconColor
+        } );
+
+        const fullResizePath = new Shape()
+          .moveTo( 1, resizeHandleSize - 1 ).lineTo( resizeHandleSize - 1, 1 )
+          .moveTo( 5, resizeHandleSize - 1 ).lineTo( resizeHandleSize - 1, 5 )
+          .moveTo( 9, resizeHandleSize - 1 ).lineTo( resizeHandleSize - 1, 9 );
+        const fullResizeIcon = new Path( fullResizePath, {
+          stroke: resizeIconColor
+        } );
+
+        const horizontalDragHandle = new Rectangle( 0, 0, resizeHandleSize, resizeHandleSize, {
+          fill: resizeBackgroundColor,
+          stroke: resizeStrokeColor,
+          lineWidth: resizeStrokeLineWidth,
+          cursor: 'pointer',
+          inputListeners: [
+            new DragListener( {
+              drag: ( event, listener ) => {
+                content.preferredWidth = Math.min( display.width - resizeHandleSize, Math.max( content.minimumWidth, 2 * listener.modelPoint.x ) );
+              }
+            } )
+          ],
+          children: [ new Node( { children: [ singleResizeIcon ], rotation: -Math.PI / 2 } ) ]
+        } );
+        const verticalDragHandle = new Rectangle( 0, 0, resizeHandleSize, resizeHandleSize, {
+          fill: resizeBackgroundColor,
+          stroke: resizeStrokeColor,
+          lineWidth: resizeStrokeLineWidth,
+          cursor: 'pointer',
+          inputListeners: [
+            new DragListener( {
+              drag: ( event, listener ) => {
+                content.preferredHeight = Math.max( content.minimumHeight, listener.modelPoint.y );
+              }
+            } )
+          ],
+          children: [ new Node( { children: [ singleResizeIcon ] } ) ]
+        } );
+        const fullDragHandle = new Rectangle( 0, 0, resizeHandleSize + resizeStrokeLineWidth, resizeHandleSize + resizeStrokeLineWidth, {
+          fill: resizeBackgroundColor,
+          cursor: 'pointer',
+          inputListeners: [
+            new DragListener( {
+              drag: ( event, listener ) => {
+                content.preferredWidth = Math.min( display.width - resizeHandleSize, Math.max( content.minimumWidth, 2 * listener.modelPoint.x ) );
+                content.preferredHeight = Math.max( content.minimumHeight, listener.modelPoint.y );
+              }
+            } )
+          ],
+          children: [
+            fullResizeIcon
+          ]
+        } );
+
+        options.children = [
+          content,
+          ...( options.widthResizable ? [ horizontalDragHandle ] : [] ),
+          ...( options.heightResizable ? [ verticalDragHandle ] : [] ),
+          ...( options.widthResizable && options.heightResizable ? [ fullDragHandle ] : [] )
+        ];
+
+        content.localBoundsProperty.link( () => {
+          content.top = 0;
+          content.centerX = 0;
+
+          horizontalDragHandle.rectHeight = content.height - resizeStrokeLineWidth;
+          verticalDragHandle.rectWidth = content.width - resizeStrokeLineWidth;
+
+          horizontalDragHandle.children[ 0 ].center = horizontalDragHandle.selfBounds.center;
+          verticalDragHandle.children[ 0 ].center = verticalDragHandle.selfBounds.center;
+
+          horizontalDragHandle.left = content.right;
+          horizontalDragHandle.centerY = content.centerY;
+
+          verticalDragHandle.top = content.bottom;
+          verticalDragHandle.centerX = content.centerX;
+
+          fullDragHandle.left = content.right;
+          fullDragHandle.top = content.bottom;
+        } );
+
+        super( options );
+      }
+    }
+  </script>
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-inner">
+    <a class="brand" href="/scenery">Scenery</a>
+    <ul class="nav">
+      <li><a href="../">Home</a></li>
+      <li class="active"><a href="../doc">Documentation</a></li>
+      <li><a href="../examples">Examples</a></li>
+      <li><a href="../tests">Tests</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    <div class="page-header" style="text-align: center;">
+      <h1>Scenery Layout</h1>
+    </div>
+  </div>
+  <div class="span2"></div>
+</div>
+
+<div class="row-fluid">
+  <div class="span2" id="apiList">
+    <!-- the apiList will be filled in by JS -->
+  </div>
+  <div class="span8">
+
+    <p id="localOnly">
+      If you have the main PhET libraries checked out (sun, etc.), there are a
+      <a href="../../scenery-phet/doc/layout-exemplars.html">number of examples</a> that show layout in action with
+      common components.
+    </p>
+
+    <script>
+      if ( window.location.hostname === 'phetsims.github.io' ) {
+        document.getElementById( 'localOnly' ).style.display = 'none';
+      }
+    </script>
+
+    <p>
+      If you're using a built version of Scenery, you'll need to add the relevant namespaces to objects. Almost
+      everything here will need a <code>scenery.</code> prefix, e.g. <code>new phet.scenery.Node()</code> instead of
+      <code>new Node()</code>. The built version of Scenery will include <code>scenery</code>, <code>kite</code>
+      (for Shape), <code>dot</code> (for Vector2), <code>axon</code> (for Properties) and <code>phetCore</code>.
+      The code examples here can use either the prefixed versions or non-prefixed.
+    </p>
+
+    <p>
+      All of the code examples here are editable. You can change the code and see the results immediately.
+    </p>
+
+    <p>
+      Many examples can be resized using drag handles. This adjusts the preferred size of the container.
+    </p>
+
+    <h2 id="FlowBox" class="index">FlowBox</h2>
+
+    <p>
+      A FlowBox is a layout container that lays out its children in a row or column (depending on the orientation).
+      It can optionally wrap content to the next row/column when there is no more room (e.g. like text).
+    </p>
+
+    <h3 id="FlowBox-orientation" class="index">orientation</h3>
+
+    <p class="index" data-index="HBox">
+      For horizontal line-based layout, use <code>HBox</code>:
+    </p>
+
+    <div id="HBox-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'HBox-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <p class="index" data-index="VBox">
+      For vertical line-based layout, use <code>VBox</code>:
+    </p>
+
+    <div id="VBox-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'VBox-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new VBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <p>
+      NOTE: For FlowBox, the orientation provided is typically called the <em>primary</em> axis. This is the
+      axis along which each Node in a line is positioned. The <em>secondary</em> axis is the opposite one,
+      along which each Node is aligned. e.g. for an HBox, its primary axis is horizontal, and its secondary
+      axis is vertical (so its elements will be positioned with increasing x values, and its <code>align</code> will
+      control the y values).
+    </p>
+
+    <p>For cases where the orientation needs to be determined programmatically, use FlowBox:</p>
+
+    <div id="orientation-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'orientation-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new FlowBox( {
+            orientation: 'horizontal',
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <h3 id="FlowBox-resizing">Resizing</h3>
+
+    <p>The box adjusts to changing cell sizes:</p>
+
+    <div id="dynamic-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'dynamic-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const circle = new Circle( 25, { fill: colors[ 6 ] } );
+          let time = 0;
+          stepEmitter.addListener( dt => {
+            time += dt;
+            circle.radius = 25 + 10 * Math.sin( 4 * time );
+          } );
+          const box = new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              circle,
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+          const alignBox = new AlignBox( box, {
+            alignBounds: new Bounds2( 0, 0, 230, 80 ),
+            xAlign: 'left',
+            yAlign: 'top',
+            margin: 5
+          } );
+          return alignBox;
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <p id="FlowBox-resize" class="index" data-index="resize">Resizing/layout can be disabled with <code>resize:
+      false</code>:</p>
+
+    <div id="locked-sizing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'locked-sizing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const circle = new Circle( 25, { fill: colors[ 6 ] } );
+          let time = 0;
+          stepEmitter.addListener( dt => {
+            time += dt;
+            circle.radius = 25 + 10 * Math.sin( 4 * time );
+          } );
+          const box = new HBox( {
+            resize: false,
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              circle,
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+          return box;
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <h3>Invisible children</h3>
+
+    <p>Invisible nodes are not included in layout/bounds by default:</p>
+
+    <div id="invis-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'invis-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ], visible: false } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <p id="FlowBox-excludeInvisibleChildrenFromBounds">Invisible nodes can be forced into the layout:</p>
+
+    <div id="force-vis-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'force-vis-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            excludeInvisibleChildrenFromBounds: false,
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ], visible: false } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <h3 id="FlowBox-grow" class="index">grow</h3>
+
+    <p>
+      Nodes with preferred sizes can be added, and the <code>grow</code> in <code>layoutOptions</code> will attempt to
+      put extra space into that cell. If all nodes have the same <code>grow</code>, then all nodes will receive the same
+      share of the extra space. Otherwise, extra space is distributed proportionally as defined by each node's <code>grow</code>
+      value.
+    </p>
+
+    <div id="resizable-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'resizable-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: { grow: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>Extra space can be allocated proportionally (a node with 4 times the <code>grow</code> value will grow 4 times as
+      fast):</p>
+
+    <div id="grow-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'grow-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: { grow: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: { grow: 4 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="FlowBox-stretch" class="index">stretch</h3>
+
+    <p><code>stretch</code> will have a resizable element take up the entire row/column size:</p>
+
+    <div id="stretch-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'stretch-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 100, {
+                fill: colors[ 2 ]
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 4 ],
+                layoutOptions: { align: 'top' }
+              } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: { stretch: true }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 6 ],
+                layoutOptions: { align: 'bottom' }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { align: 'center' }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3>Constraining dimensions</h3>
+
+    <p id="FlowBox-maxContent" class="index" data-index="maxContent">Maximums can be applied to constrain this growing
+      (it won't grow past the max content dimension):</p>
+
+    <div id="maxContentWidth-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'maxContentWidth-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: { grow: 1, maxContentWidth: 150 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p id="FlowBox-minContent" class="index" data-index="minContent">Minimums can also force a certain expansion:</p>
+
+    <div id="minContentWidth-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'minContentWidth-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: { grow: 1, minContentWidth: 100 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>Minimums and maximums also apply on the secondary axis:</p>
+
+    <div id="secondaryAxisContent-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'secondaryAxisContent-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 50,
+                localMinimumHeight: 50,
+                fill: 'gray',
+                layoutOptions: {
+                  grow: 1,
+                  minContentWidth: 50,
+                  minContentHeight: 50,
+                  maxContentHeight: 100,
+                  stretch: true
+                }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>
+      Content minimums and maximums can be applied to all layout cells in the FlowBox by using <code>layoutOptions: {
+      minContentWidth: {{NUMBER}}, minContentHeight: {{NUMBER}} }</code>. For example, setting
+      <code>minContentWidth</code> in a FlowBox's <code>layoutOption</code> constrains all of its layout cells to
+      a certain width ( with margin and spacing added to calculate the total width). This occurs even if the children
+      are smaller and do not occupy the full width. However, this method still allows the FlowBox to dynamically resize
+      if the children grow. A common mistake is to use <code>preferredWidth</code> / <code>preferredHeight</code>to size
+      any content that will end up inside a layout container. These options will get overwritten by a parent with <code>resizable:
+      true</code>, which is the default option value for all FlowBoxes.
+    </p>
+
+    <p>
+      A good thing to note is that the content width/height can multiply the width/height of the parent container when
+      wrapping occurs.
+    </p>
+
+    <div id="dimension-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'dimension-example', ( scene, stepEmitter, display ) => {
+
+        /*START*/
+
+        const resizingWidthRectangle = new Rectangle( 0, 0, 20, 20, { fill: colors[ 0 ] } );
+
+        const vBox = new VBox( {
+          layoutOptions: {
+            minContentWidth: 100
+          },
+          children: [
+            resizingWidthRectangle,
+            new Rectangle( 0, 0, 30, 30, { fill: colors[ 2 ] } )
+          ]
+        } );
+
+        const resizingHeightRectangle = new Rectangle( 0, 0, 20, 20, { fill: colors[ 4 ] } );
+
+        const hBox = new HBox( {
+          preferredHeight: 100,
+          heightSizable: false,
+          children: [
+            resizingHeightRectangle,
+            new Rectangle( 0, 0, 30, 30, { fill: colors[ 8 ] } )
+          ]
+        } );
+
+        /*END*/
+
+        let elapsedTime = 0;
+        stepEmitter.addListener( dt => {
+          elapsedTime += dt;
+          const minWidth = 20;
+          const maxWidth = 120;
+          resizingWidthRectangle.rectWidth = ( minWidth + maxWidth ) / 2 + Math.cos( elapsedTime ) * ( maxWidth - minWidth ) / 2;
+
+          const minHeight = 20;
+          const maxHeight = 120;
+          resizingHeightRectangle.rectHeight = ( minHeight + maxHeight ) / 2 + Math.cos( elapsedTime ) * ( maxHeight - minHeight ) / 2;
+        } );
+
+        const container = new HBox( { children: [ vBox, hBox ], preferredHeight: 120 } );
+
+        scene.addChild( container );
+      } );
+    </script>
+
+    <h3 id="FlowBox-justify" class="index">justify</h3>
+
+    <p><code>justify</code> controls how extra space is allocated around cells (after any possible growing has been
+      done):</p>
+
+    <div id="justification-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'justification-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          const createBoxes = label => [
+            new Rectangle( 0, 0, 170, 30, {
+              fill: colors[ 2 ], children: [
+                new Text( label, { fontSize: 16, centerY: 15 } )
+              ]
+            } ),
+            new Rectangle( 0, 0, 50, 30, { fill: colors[ 4 ] } ),
+            new Circle( 15, { fill: colors[ 6 ] } ),
+            new Rectangle( 0, 0, 50, 30, { fill: colors[ 8 ] } )
+          ];
+          /*START*/
+          const boxes = [
+            new HBox( {
+              justify: 'left',
+              children: createBoxes( 'justify:left' )
+            } ),
+            new HBox( {
+              justify: 'right',
+              children: createBoxes( 'justify:right' )
+            } ),
+            new HBox( {
+              justify: 'spaceBetween',
+              children: createBoxes( 'justify:spaceBetween' )
+            } ),
+            new HBox( {
+              justify: 'spaceAround',
+              children: createBoxes( 'justify:spaceAround' )
+            } ),
+            new HBox( {
+              justify: 'spaceEvenly',
+              children: createBoxes( 'justify:spaceEvenly' )
+            } ),
+            new HBox( {
+              justify: 'center',
+              children: createBoxes( 'justify:center' )
+            } )
+          ];
+          /*END*/
+          const container = new VBox( {
+            justify: 'top',
+            stretch: true,
+            children: boxes
+          } );
+          return container;
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+        box.preferredWidth = 400;
+      } );
+    </script>
+
+    <h3 id="FlowBox-wrap" class="index">wrap</h3>
+
+    <p><code>wrap</code> will shift content that doesn't fit the preferred size into new rows/columns (try resizing it
+      to be less wide):</p>
+
+    <div id="wrap-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'wrap-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            wrap: true,
+            justify: 'left',
+            justifyLines: 'top',
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+        box.preferredWidth = 200;
+      } );
+    </script>
+
+    <h3 id="FlowBox-align" class="index">align</h3>
+
+    <p><code>align</code> controls how cells are positioned along the secondary axis:</p>
+
+    <div id="align-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'align-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const boxes = [
+            'top',
+            'bottom',
+            'center',
+            'origin'
+          ].map( align => {
+            return new HBox( {
+              children: [
+                new Rectangle( 0, 0, 50, 15, { fill: colors[ 9 ] } ),
+                new Rectangle( 0, 0, 50, 20, { fill: colors[ 6 ] } ),
+                new Rectangle( 0, 0, 50, 5, { fill: colors[ 4 ] } ),
+                new Rectangle( 0, 0, 50, 15, { fill: colors[ 2 ] } ),
+                new Circle( 7, { fill: colors[ 0 ] } ),
+                new Text( `Alignment: ${align}` )
+              ],
+              justify: 'left',
+              align: align
+            } );
+          } );
+          /*END*/
+          return new VBox( {
+            children: boxes,
+            spacing: 10,
+            align: 'left'
+          } );
+        } )();
+        scene.addChild( box );
+      } );
+    </script>
+
+    <p>
+      For horizontal boxes, the values are: <code>'left', 'right', 'center', 'origin'</code>. For vertical boxes, the
+      values are:
+      <code>'top', 'bottom', 'center', 'origin'</code>. See
+      <a href="https://github.com/phetsims/scenery/blob/master/js/layout/LayoutAlign.ts">LayoutAlign</a> for more
+      details
+    </p>
+
+    <h3 id="FlowBox-justifyLines" class="index">justifyLines</h3>
+
+    <p><code>justifyLines</code> controls how lines are positioned along the secondary axis (null will default to a
+      stretch):</p>
+
+    <div id="justifyLines-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'justifyLines-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const boxes = [
+            'top',
+            'bottom',
+            'center',
+            'spaceBetween',
+            'spaceAround',
+            'spaceEvenly',
+            null
+          ].map( justifyLines => {
+            const createResizable = () => {
+              const node = new Rectangle( {
+                sizable: true,
+                localMinimumWidth: 20,
+                localMinimumHeight: 20,
+                fill: 'gray'
+              } );
+              return node;
+            };
+            return new HBox( {
+              preferredWidth: 40,
+              widthSizable: false,
+              wrap: true,
+              stretch: true,
+              children: [
+                new Rectangle( 0, 0, 20, 20, { fill: colors[ 2 ] } ),
+                createResizable(),
+                new Rectangle( 0, 0, 20, 20, { fill: colors[ 4 ] } ),
+                createResizable(),
+                new Rectangle( 0, 0, 20, 20, { fill: colors[ 6 ] } ),
+                createResizable(),
+                new Rectangle( 0, 0, 20, 20, { fill: colors[ 8 ] } ),
+                createResizable()
+              ],
+              justifyLines: justifyLines
+            } );
+          } );
+          /*END*/
+          const container = new HBox( {
+            justify: 'left',
+            stretch: true,
+            children: boxes
+          } );
+          return container;
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          heightResizable: true
+        } ) );
+        box.preferredHeight = 150;
+      } );
+    </script>
+
+    <h3 id="FlowBox-spacing" class="index">spacing</h3>
+
+    <p><code>spacing</code> controls extra space that can be added between cells:</p>
+
+    <div id="spacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'spacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            spacing: 10,
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="FlowBox-lineSpacing" class="index">lineSpacing</h3>
+
+    <p><code>lineSpacing</code> adds space between rows/columns, which applies when wrapped:</p>
+
+    <div id="lineSpacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'lineSpacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            lineSpacing: 10,
+            wrap: true,
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+        box.preferredWidth = 100;
+      } );
+    </script>
+
+    <h3 id="FlowBox-margins" class="index">Margins</h3>
+
+    <p>Margins can also be added to every cell (<code>margin</code> affects all 4 sides, <code>xMargin</code> affects
+      left/right, <code>yMargin</code> affects top/bottom):</p>
+
+    <div id="margin-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'margin-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            leftMargin: 10,
+            yMargin: 10, // controls topMargin and bottomMargin
+            children: [
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3>Per-cell layout options</h3>
+
+    <p>Margins can also be applied to individual cells:</p>
+
+    <div id="marginCell-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'marginCell-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            align: 'top',
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { topMargin: 10 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { leftMargin: 10 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>Similarly, alignment can also be customized by individual cells:</p>
+
+    <div id="alignCell-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'alignCell-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 100, {
+                fill: colors[ 2 ]
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 4 ],
+                layoutOptions: { align: 'top' }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 6 ],
+                layoutOptions: { align: 'bottom' }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { align: 'center' }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>These options use the default on the container, but can be overridden by cells:</p>
+
+    <div id="override-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'override-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            topMargin: 10,
+            align: 'top',
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { topMargin: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="separators" class="index">Separators</h3>
+
+    <p>
+      Separators are also available for easy of use (separators at the visible start/end, and duplicates will be marked
+      as <code>visible: false</code>, while all other separators will be marked as <code>visible: true</code>):
+    </p>
+
+    <div id="separators-example"></div>
+    <script type="text/javascript">
+
+      createSandbox( 'separators-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            margin: 5,
+            children: [
+              new VSeparator(),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+              new VSeparator(),
+              new VSeparator(),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+              new Circle( 25, { fill: colors[ 6 ] } ),
+              new VSeparator(),
+              new Rectangle( 0, 0, 50, 50, { fill: colors[ 8 ] } ),
+              new VSeparator()
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>
+      Additionally, arbitrary nodes can be made to act like separators by passing <code>isSeparator: true</code> in its
+      <code>layoutOptions</code>
+    </p>
+
+    <h2 id="GridBox" class="index">GridBox</h2>
+
+    <p>
+      A GridBox is a layout container that lays out its children in a grid. It has numbered rows and columns (both
+      starting at zero), which define cells where nodes can be placed. Most layout options are available in either the
+      horizontal or vertical direction, and can be specified for each cell.
+    </p>
+
+    <h3 id="GridBox-layoutOptions-location" class="index" data-index="Coordinates">Cell coordinates</h3>
+
+    <p>Can be constructed with absolute coordinates (which can include gaps):</p>
+
+    <div id="absolute-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'absolute-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            children: [
+              new Rectangle( 0, 0, 75, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 75, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 1, row: 0 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 2, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 0, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 1, row: 2 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <p>
+      The <strong>x</strong> value indicates the column (starting at index 0), and the <strong>y</strong> value
+      indicates the row (starting at index 0).
+    </p>
+
+    <p>
+      NOTE: Skipped rows/columns will be collapsed and won't apply (except for any spacing added):
+    </p>
+
+    <div id="skip-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'skip-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            children: [
+              new Rectangle( 0, 0, 75, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 75, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 50, row: 0 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 25, row: 102 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-rows" class="index">rows</h3>
+
+    <p>Grids can be constructed by specifying all the children in rows (<code>null</code> for gaps):</p>
+
+    <div id="rows-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'rows-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            rows: [
+              [
+                new Rectangle( 0, 0, 75, 50, {
+                  fill: colors[ 0 ]
+                } ),
+                new Rectangle( 0, 0, 50, 75, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ]
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                null,
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ]
+                } )
+              ]
+            ]
+          } );
+
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-columns" class="index">columns</h3>
+
+    <p>or with columns:</p>
+
+    <div id="columns-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'columns-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            columns: [
+              [
+                new Rectangle( 0, 0, 75, 50, {
+                  fill: colors[ 0 ]
+                } ),
+                new Rectangle( 0, 0, 50, 75, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ]
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                null,
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ]
+                } )
+              ]
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-autoLines" class="index" data-index="auto">autoRows/autoColumn</h3>
+
+    <p>
+      Additionally, if a certain number of rows/columns are desired, <code>autoRows</code> / <code>autoColumns</code>
+      can be used to wrap and position the children based on this (auto-filling all spaces)
+    </p>
+
+    <div id="autoColumns-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'autoColumns-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            autoColumns: 3,
+            children: colors.map( color => {
+              return new Rectangle( 0, 0, 50, 50, { fill: color } );
+            } )
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <div id="autoRows-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'autoRows-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            autoRows: 3,
+            children: colors.map( color => {
+              return new Rectangle( 0, 0, 50, 50, { fill: color } );
+            } )
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-addLine" class="index" data-index="adding">addRow/addColumn</h3>
+
+    <p>
+      Rows and columns can also be added dynamically in a similar way (rows will be below all current content, columns
+      will be to the right of all current content):
+    </p>
+
+    <div id="addLines-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'addLines-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const box = new GridBox();
+          box.addRow( [
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } )
+          ] );
+          box.addColumn( [
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } )
+          ] );
+          return box;
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-insertLine">insertRow/insertColumn</h3>
+
+    <p>
+      Rows and columns can also be directly inserted by index:
+    </p>
+
+    <div id="insertLines-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'insertLines-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const box = new GridBox( { grow: 1 } );
+          box.insertRow( 0, [
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 2 ] } )
+          ] );
+          box.insertColumn( 1, [
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 4 ] } )
+          ] );
+          box.insertRow( 2, [
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 6 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 6 ] } ),
+            new Rectangle( 0, 0, 50, 50, { fill: colors[ 6 ] } )
+          ] );
+          return box;
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-removeLine" class="index" data-index="removing">removeRow/removeColumn</h3>
+
+    <p>
+      Or removed by index:
+    </p>
+
+    <div id="deleteLines-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'deleteLines-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const box = new GridBox( {
+            rows: _.range( 0, 8 ).map( row => {
+              return _.range( 0, 8 ).map( column => {
+                return new Rectangle( 0, 0, 80, 20, {
+                  fill: new Color( row * 32, column * 32, 1 ),
+                  children: [
+                    new Text( `row ${row}, column ${column}`, { fill: 'white', centerX: 40, centerY: 10 } )
+                  ]
+                } );
+              } );
+            } )
+          } );
+          box.removeRow( 2 );
+          box.removeRow( 2 );
+          box.removeColumn( 5 );
+          box.removeColumn( 5 );
+
+          return box;
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-getters" class="index" data-index="getters">line/cell getters</h3>
+
+    <p>
+      Assorted operations can get the row/column of a child Node, or get all of the Nodes contained within a specific
+      row or column:
+    </p>
+
+    <div id="findCell-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'findCell-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const boxes = colors.map( color => new Rectangle( 0, 0, 50, 50, { fill: color } ) );
+          const box = new GridBox( {
+            children: boxes,
+            autoColumns: 3,
+            grow: 1
+          } );
+          box.autoColumns = null;
+
+          // Find a node and insert a row before it
+          box.insertRow( box.getRowOfNode( boxes[ 4 ] ), [
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } ),
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } ),
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } )
+          ] );
+
+          // Find a node and insert a column before it
+          box.insertColumn( box.getColumnOfNode( boxes[ 4 ] ), [
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } ),
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } ),
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } ),
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } ),
+            new Rectangle( 0, 0, 50, 50, { fill: 'black' } )
+          ] );
+
+          return box;
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <div id="getLines-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'getLines-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const box = new GridBox( {
+            rows: _.range( 0, 8 ).map( row => {
+              return _.range( 0, 8 ).map( column => {
+                return new Rectangle( 0, 0, 20, 20, {
+                  fill: new Color( row * 32, column * 32, 1 )
+                } );
+              } );
+            } )
+          } );
+          box.getNodesInRow( 3 ).forEach( node => { node.opacity = 0.5; } );
+          box.getNodesInColumn( 3 ).forEach( node => { node.opacity = 0.5; } );
+          return box;
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-grow" class="index">grow</h3>
+
+    <p>
+      Grids by default don't auto-expand all rows/columns in size to the preferred size, but they can with a similar
+      style to FlowBox, where <code>grow</code> applies to both the x and y dimensions:
+    </p>
+
+    <div id="grow-grid-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'grow-grid-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            grow: 1,
+            rows: [
+              [
+                new Rectangle( 0, 0, 75, 50, {
+                  fill: colors[ 0 ]
+                } ),
+                new Rectangle( 0, 0, 50, 75, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ]
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ]
+                } )
+              ]
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <p>
+      This space can be grown in specified rows/columns only (and independently) with <code>xGrow</code> or
+      <code>yGrow</code>:
+    </p>
+
+    <div id="grow-2-grid-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'grow-2-grid-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            rows: [
+              [
+                new Rectangle( 0, 0, 75, 50, {
+                  fill: colors[ 0 ],
+                  layoutOptions: { xGrow: 1 }
+                } ),
+                new Rectangle( 0, 0, 50, 75, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ]
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ],
+                  layoutOptions: { yGrow: 1 }
+                } )
+              ]
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-stretch" class="index">stretch</h3>
+
+    <p>
+      Use <code>stretch</code> (or <code>xStretch</code> / <code>yStretch</code>) to grow a cell dynamically with the
+      preferred dimensions to match the row/column. <code>stretch</code> must be paired with a <code>grow</code> value
+      to be activated.
+    </p>
+
+    <div id="preferred-grid-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'preferred-grid-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            rows: [
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 0 ]
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ]
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                new Rectangle( {
+                  sizable: true,
+                  localMinimumWidth: 50,
+                  localMinimumHeight: 50,
+                  fill: 'gray',
+                  layoutOptions: { grow: 1, stretch: true }
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ]
+                } )
+              ]
+            ]
+          } );
+
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-sizable" class="index">sizable</h3>
+
+    <p>
+      Additionally, <code>widthSizable</code> / <code>heightSizable</code> can be used to turn off resizing in a
+      component (particularly useful if you want to set a preferredWidth/preferredHeight on it that won't change):
+    </p>
+
+    <div id="gridResizable-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'gridResizable-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            rows: [
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 0 ]
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ]
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                new Rectangle( {
+                  sizable: true,
+                  localMinimumWidth: 50,
+                  localMinimumHeight: 50,
+                  fill: 'gray',
+                  layoutOptions: { grow: 1, stretch: true }
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ]
+                } )
+              ]
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-align" class="index">align</h3>
+
+    <p>
+      Cells can be aligned in a similar way to FlowBox, but in both dimensions:
+    </p>
+
+    <div id="align-grid-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'align-grid-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            grow: 1,
+            rows: [
+              [
+                new Rectangle( 0, 0, 75, 50, {
+                  fill: colors[ 0 ],
+                  layoutOptions: { xAlign: 'left', yAlign: 'top' }
+                } ),
+                new Rectangle( 0, 0, 50, 75, {
+                  fill: colors[ 2 ]
+                } ),
+                new Circle( 25, {
+                  fill: colors[ 4 ],
+                  layoutOptions: { yAlign: 'bottom' }
+                } )
+              ],
+              [
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 6 ]
+                } ),
+                new Rectangle( 0, 0, 50, 50, {
+                  fill: colors[ 8 ],
+                  layoutOptions: { yAlign: 'top' }
+                } )
+              ]
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-layoutOptions-size" class="index">horizontalSpan/verticalSpan</h3>
+
+    <p>
+      Cells can take up more than one row/column with the <code>horizontalSpan</code> / <code>verticalSpan</code>
+      layout options:
+    </p>
+
+    <div id="span-grid-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'span-grid-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 100, 50, {
+                fill: colors[ 2 ],
+                sizable: true,
+                localMinimumWidth: 100,
+                localMinimumHeight: 50,
+                layoutOptions: { column: 1, row: 0, horizontalSpan: 2, stretch: true, grow: 1 }
+              } ),
+              new Rectangle( 0, 0, 100, 100, {
+                fill: colors[ 4 ],
+                sizable: true,
+                localMinimumWidth: 100,
+                localMinimumHeight: 100,
+                layoutOptions: { column: 0, row: 1, horizontalSpan: 2, verticalSpan: 2, stretch: true }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 2, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 2, row: 2 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 3 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 1 ],
+                layoutOptions: { column: 1, row: 3 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 2, row: 3 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-spacing" class="index">spacing</h3>
+
+    <p>Grids can have consistent internal spacing:</p>
+
+    <div id="grid-spacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'grid-spacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            spacing: 10,
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 1, row: 0 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 2, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 0, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 1, row: 1 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <p>Grids can have different spacing on each dimension:</p>
+
+    <div id="grid-2-spacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'grid-2-spacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            xSpacing: 5,
+            ySpacing: 15,
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 1, row: 0 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 2, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 0, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 1, row: 1 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <p>Grids can have custom arrays adjusting the spacing between every single row/column:</p>
+
+    <div id="grid-3-spacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'grid-3-spacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            xSpacing: [ 10, 0 ],
+            ySpacing: [ 5 ],
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 1, row: 0 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 2, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 0, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 1, row: 1 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridBox-margins" class="index">Margins</h3>
+
+    <p>Similar to FlowBox, grids can have margins applied to all elements:</p>
+
+    <div id="margin-1-spacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'margin-1-spacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            margin: 5,
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 1, row: 0 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 2, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 0, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 1, row: 1 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <p>Or can have margins specified on individual elements:</p>
+
+    <div id="margin-2-spacing-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'margin-2-spacing-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            yAlign: 'top',
+            children: [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 0 ],
+                layoutOptions: { column: 0, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ],
+                layoutOptions: { column: 1, row: 0, topMargin: 10 }
+              } ),
+              new Circle( 25, {
+                fill: colors[ 4 ],
+                layoutOptions: { column: 2, row: 0 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 6 ],
+                layoutOptions: { column: 0, row: 1 }
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 8 ],
+                layoutOptions: { column: 1, row: 1 }
+              } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h2 id="Sizable" class="index">Sizables</h2>
+
+    <p>
+      Certain Node subtypes are <code>sizable:</code> they can be adjusted to different <em>preferred</em> sizes/bounds,
+      which are equal to or larger than their <em>minimum</em> sizes. When the preferred size is set, the Node should
+      adjust its own layout so that it takes up that size. This includes FlowBox (VBox/HBox), GridBox, Panel, and a
+      growing list of Nodes.
+    </p>
+
+    <p>
+      Sizable nodes will either mix in <code>WidthSizable</code>, <code>HeightSizable</code>, or <code>Sizable</code>
+      (indicating that both width and height can be adjusted). This provides preferred and minimum sizes in BOTH local
+      and parent coordinate frames (e.g. <code>preferredWidth</code> / <code>localPreferredWidth</code>).
+      These separate coordinate frame versions will be kept in sync (and are backed by Properties).
+    </p>
+
+    <p>
+      Typically Nodes will compute their own minimum width/height. The local version of this (e.g. <code>localMinimumWidth</code>)
+      is considered the "primary" one, since Nodes usually do layout in their local coordinate frame. This means that
+      when a Node's transform changes, its minimum sizes will be adjusted to match the equivalent
+      <code>localMinimum</code> sizes.
+    </p>
+
+    <p>
+      Typically layout containers (but also clients, manually) will set the preferred sizes on a Node, thus the
+      parent version will be primary (e.g. when a sizable Node is transformed, its <code>localPreferredWidth</code> will
+      be adjusted to match the <code>preferredWidth</code> after the transformation).
+    </p>
+
+    <p>
+      Some Nodes by default have this "sizability" turned off, and clients can do this manually with
+      <code>widthSizable/heightSizable/sizable:false</code>. Layout containers should not attempt to set preferred sizes
+      when the Node is not considered "sizable".
+    </p>
+
+    <p>
+      For instance, Rectangles mix in Sizable, but are marked as <code>sizable: false</code> by default, so it won't
+      take up space even when a container has a larger preferred size. They can be made resizable with <code>sizable:
+      true</code>:
+    </p>
+
+    <div id="rectUnsizable-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'rectUnsizable-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            // Resize everything up evenly
+            grow: 1,
+            stretch: true,
+
+            // Show the effect without having to drag to make it larger
+            minContentWidth: 100,
+            minContentHeight: 100,
+            rows: [ [
+              new Rectangle( 0, 0, 50, 50, {
+                fill: colors[ 2 ]
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                minimumWidth: 50,
+                fill: colors[ 4 ],
+                widthSizable: true
+              } )
+            ], [
+              new Rectangle( 0, 0, 50, 50, {
+                minimumHeight: 50,
+                fill: colors[ 6 ],
+                heightSizable: true
+              } ),
+              new Rectangle( 0, 0, 50, 50, {
+                minimumWidth: 50,
+                minimumHeight: 50,
+                fill: colors[ 8 ],
+                sizable: true
+              } )
+            ] ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h2 id="layoutOptions" class="index">layoutOptions</h2>
+
+    <p>
+      Layout options can be set on individual child Nodes of a layout container. These will override the container's
+      default for any options included. These can be mutated after (by setting the entire thing with <code>node.layoutOptions
+      =</code>or with <code>mutateLayoutOptions</code>). <code>mutateLayoutOptions</code> is recommended, since it will
+      keep some layout options that may be set by <code>rows/columns/autoRows/autoColumns</code> in GridBox.
+    </p>
+
+    <div id="layoutOptionsMutate-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'layoutOptionsMutate-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const box = new HBox( {
+            children: colors.map( color => new Rectangle( 0, 0, 50, 50, { fill: color } ) )
+          } );
+          box.children[ 0 ].rectHeight = 100;
+          box.children[ 3 ].mutateLayoutOptions( {
+            leftMargin: 10
+          } );
+          box.children[ 5 ].mutateLayoutOptions( {
+            align: 'top'
+          } );
+          return box;
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+    <h2 id="layoutOrigin" class="index">layoutOrigin</h2>
+
+    <p>
+      FlowBox/GridBox typically lay out content so that the origin (0,0) is at the upper-left. There are some exceptions
+      to this.
+    </p>
+
+    <p>The default behavior:</p>
+
+    <div id="defaultOrigin-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'defaultOrigin-example', ( scene, stepEmitter, display ) => {
+        const originSize = 50;
+        const originNode = new Path( new Shape().moveTo( -originSize, 0 ).lineTo( originSize, 0 ).moveTo( 0, originSize ).lineTo( 0, -originSize ), {
+          stroke: 'rgba(0,0,0,0.5)'
+        } );
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            opacity: 0.5,
+            children: colors.map( color => new Rectangle( 0, 0, 40, 40, { fill: color } ) ),
+            autoColumns: 3
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new AlignBox( new Node( {
+          children: [ originNode, box ]
+        } ) ) );
+      } );
+    </script>
+
+    <p>
+      When using <code>align: origin</code>, the origin of the entire FlowBox will be at the origin of the first line:
+    </p>
+
+    <div id="flowOrigin-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'flowOrigin-example', ( scene, stepEmitter, display ) => {
+        const originSize = 50;
+        const originNode = new Path( new Shape().moveTo( -originSize, 0 ).lineTo( originSize, 0 ).moveTo( 0, originSize ).lineTo( 0, -originSize ), {
+          stroke: 'rgba(0,0,0,0.5)'
+        } );
+        const normalText = ( str, options ) => new Text( str, merge( {
+          font: new Font( { size: 12 } )
+        }, options ) );
+        const bigText = ( str, options ) => new Text( str, merge( {
+          font: new Font( { size: 18, weight: 'bold' } )
+        }, options ) );
+        const box = ( () => {
+          /*START*/
+          return new HBox( {
+            align: 'origin',
+            spacing: 5,
+            lineSpacing: 5,
+            children: [
+              new Circle( 20, { fill: 'rgba(255,0,0,0.3)' } ),
+              bigText( 'Text' ),
+              normalText( 'Text' ),
+              new Circle( 20, { fill: 'rgba(255,0,0,0.3)' } ),
+              bigText( 'Text' ),
+              normalText( 'text' ),
+              new Circle( 20, { fill: 'rgba(255,0,0,0.3)' } ),
+              bigText( 'Text' ),
+              normalText( 'text' ),
+              new Circle( 20, { fill: 'rgba(255,0,0,0.3)' } ),
+              bigText( 'Text' ),
+              normalText( 'text' )
+            ],
+            wrap: true,
+            preferredWidth: 170,
+            widthSizable: false,
+            justify: 'left'
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new AlignBox( new Node( {
+          children: [ originNode, box ]
+        } ) ) );
+      } );
+    </script>
+
+    <p>
+      When using <code>align: origin</code>, the origin of the entire GridBox will be at the origin of the first cell:
+    </p>
+
+    <div id="gridOrigin-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'gridOrigin-example', ( scene, stepEmitter, display ) => {
+        const originSize = 50;
+        const originNode = new Path( new Shape().moveTo( -originSize, 0 ).lineTo( originSize, 0 ).moveTo( 0, originSize ).lineTo( 0, -originSize ), {
+          stroke: 'rgba(0,0,0,0.5)'
+        } );
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            xAlign: 'origin',
+            yAlign: 'origin',
+            children: [
+              new Circle( 20, { fill: 'rgba(255,0,0,0.3)', layoutOptions: { column: 0, row: 0 } } ),
+              new Circle( 10, { fill: 'rgba(255,0,0,0.3)', layoutOptions: { column: 1, row: 0 } } ),
+              new Circle( 15, { fill: 'rgba(255,0,0,0.3)', layoutOptions: { column: 0, row: 1 } } ),
+              new Circle( 25, { fill: 'rgba(255,0,0,0.3)', layoutOptions: { column: 1, row: 1 } } )
+            ]
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new AlignBox( new Node( {
+          children: [ originNode, box ]
+        } ) ) );
+      } );
+    </script>
+
+    <p>The position of this origin can be shifted by using <code>layoutOrigin</code></p>
+
+    <div id="layoutOrigin-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'layoutOrigin-example', ( scene, stepEmitter, display ) => {
+        const originSize = 50;
+        const originNode = new Path( new Shape().moveTo( -originSize, 0 ).lineTo( originSize, 0 ).moveTo( 0, originSize ).lineTo( 0, -originSize ), {
+          stroke: 'rgba(0,0,0,0.5)'
+        } );
+        const box = ( () => {
+          /*START*/
+          return new GridBox( {
+            layoutOrigin: new Vector2( 40, 20 ),
+            opacity: 0.5,
+            children: colors.map( color => new Rectangle( 0, 0, 40, 40, { fill: color } ) ),
+            autoColumns: 3
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new AlignBox( new Node( {
+          children: [ originNode, box ]
+        } ) ) );
+      } );
+    </script>
+
+    <h2 id="Constraint" class="index">Constraint</h2>
+
+    <p>
+      The next sections requires a basic understanding of what a constraint is in scenery layout, how it's used, and
+      how it can be leveraged.
+    </p>
+
+    <p>
+      Constraints are the foundational layer that handles layout logic for scenery elements. If you search through the
+      PhET codebase you can find constraints such as: <code>ButtonConstraint</code>,<code>CarouselConstraint</code>,
+      <code>SliderConstraint</code>, and many more. All of these constraints extend <code>LayoutConstraint</code>, and
+      importantly, override the method
+      <code>layout</code>. Its important to understand that the motor of the layout logic is housed in a constraint, not
+      only for debugging, but
+      also to empower developers to use existing constraints or create their own constraint as is desirable.
+    </p>
+
+    <h3 id="ManualConstraint" class="index">ManualConstraint</h3>
+
+    <p>
+      ManualConstraint is for hooking up imperative-style layout code (e.g. <code>someNode.left = otherNode.right</code>)
+      so that
+      it correctly auto-updates whenever one of those values may have changed. It also works across different Node
+      parents and coordinate frames. A good indication that ManualConstraint may be useful is when a developer is
+      linking to multiple
+      <code>BoundsProperty</code>, or connecting view positions for elements in different coordinate frames.
+    </p>
+
+    <p>
+      It will also robustly handle cases where the Nodes are not connected (and will not run the layout), so the
+      constraint can be created before all of the Node structure is finalized.
+    </p>
+
+    <p>
+      Children are dynamically added/removed in this demo, and <code>child1</code> is constantly translated.
+    </p>
+
+    <div id="manualConstraint-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'manualConstraint-example', ( scene, stepEmitter, display ) => {
+
+        const box = ( () => {
+          /*START*/
+          const background = new Rectangle( 0, 0, 400, 200, {
+            fill: '#ccc'
+          } );
+
+          const child1 = createLabeledBox( 'Child 1', colors[ 2 ], 50, 50 );
+          const child2 = createLabeledBox( 'Child 2', colors[ 4 ], 50, 50 );
+          const child3 = createLabeledBox( 'Child 3', colors[ 5 ], 50, 50 );
+
+          ManualConstraint.create( background, [ child1, child2 ], ( child1Proxy, child2Proxy ) => {
+            child2Proxy.leftCenter = child1Proxy.rightCenter;
+          } );
+          ManualConstraint.create( background, [ child2, child3 ], ( child2Proxy, child3Proxy ) => {
+            child3Proxy.left = child2Proxy.right;
+          } );
+          ManualConstraint.create( background, [ child1, child3 ], ( child1Proxy, child3Proxy ) => {
+            child3Proxy.centerY = child1Proxy.centerY;
+          } );
+
+          const nodes = [
+            new Node( { x: 50, y: 50, children: [ child1 ] } ),
+            new Node( { scale: 2, y: 20, children: [ child2 ] } ),
+            new Node( {
+              matrix: phet.dot.Matrix3.rowMajor(
+                0.5, 0, 0,
+                0, 1, 0,
+                0, 0, 1 ), children: [ child3 ]
+            } )
+          ];
+
+          let elapsedTime = 0;
+
+          stepEmitter.addListener( dt => {
+            elapsedTime += dt;
+            child1.translation = Vector2.createPolar( 10, 2 * elapsedTime );
+
+            background.children = [
+              ...( elapsedTime % 3 < 2 ? [ nodes[ 0 ] ] : [] ),
+              ...( elapsedTime % 5 < 4 ? [ nodes[ 1 ] ] : [] ),
+              ...( elapsedTime % 7 < 5 ? [ nodes[ 2 ] ] : [] )
+            ];
+          } );
+
+          /*END*/
+          return background;
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="FlowConstraint" class="index">FlowConstraint</h3>
+
+    <p>
+      FlowBox's constraint can also be used with disconnected Nodes that share some ancestor (with qualities
+      similar to ManualConstraint:
+    </p>
+
+    <div id="flowConstraint-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'flowConstraint-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const firstChild = createLabeledBox( 'First child', '#faa', 150, 30 );
+          const secondChild = createLabeledBox( 'Second child', '#afa', 150, 30 );
+          const thirdChild = createLabeledBox( 'Third child', '#aaf', 150, 30 );
+
+          const firstParent = new Node( {
+            children: [
+              firstChild,
+              createLabeledBox( 'First parent', null, 400, 200 )
+            ]
+          } );
+          const secondParent = new Node( {
+            children: [
+              secondChild,
+              createLabeledBox( 'Second parent', null, 400, 200 )
+            ],
+            scale: 0.75
+          } );
+          const thirdParent = new Node( {
+            children: [
+              thirdChild,
+              createLabeledBox( 'Third parent', null, 400, 200 )
+            ],
+            scale: 0.5
+          } );
+
+          const scene = new Node( {
+            children: [ firstParent, secondParent, thirdParent ]
+          } );
+
+          // Directly create the constraint, specifying a layoutOrigin to position the content
+          const constraint = new FlowConstraint( scene, {
+            layoutOriginProperty: new Property( new Vector2( 10, 10 ) ),
+            align: 'top',
+            spacing: 10
+          } );
+
+          // For Flow constraints, we need to know the order, so cells are inserted at specific indices. They can be
+          // removed later
+          constraint.insertCell( 0, new FlowCell( constraint, firstChild, null ) );
+          constraint.insertCell( 1, new FlowCell( constraint, secondChild, null ) );
+          constraint.insertCell( 2, new FlowCell( constraint, thirdChild, null ) );
+          constraint.updateLayout();
+          /*END*/
+          return scene;
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h3 id="GridConstraint" class="index">GridConstraint</h3>
+
+    <p>
+      GridBox's constraint can also be used with disconnected Nodes that share some ancestor (with qualities
+      similar to ManualConstraint:
+    </p>
+
+    <div id="gridConstraint-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'gridConstraint-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const firstChild = createLabeledBox( 'First child', '#faa', 150, 30 );
+          const secondChild = createLabeledBox( 'Second child', '#afa', 150, 30 );
+          const thirdChild = createLabeledBox( 'Third child', '#aaf', 150, 30 );
+          firstChild.layoutOptions = { x: 0, y: 0 };
+          secondChild.layoutOptions = { x: 1, y: 0 };
+          thirdChild.layoutOptions = { x: 0, y: 1 };
+
+          const firstParent = new Node( {
+            children: [
+              firstChild,
+              createLabeledBox( 'First parent', null, 400, 200 )
+            ]
+          } );
+          const secondParent = new Node( {
+            children: [
+              secondChild,
+              createLabeledBox( 'Second parent', null, 400, 200 )
+            ],
+            scale: 0.75
+          } );
+          const thirdParent = new Node( {
+            children: [
+              thirdChild,
+              createLabeledBox( 'Third parent', null, 400, 200 )
+            ],
+            scale: 0.5
+          } );
+
+          const scene = new Node( {
+            children: [ firstParent, secondParent, thirdParent ]
+          } );
+
+          // Directly create the constraint, specifying a layoutOrigin to position the content
+          const constraint = new GridConstraint( scene, {
+            layoutOriginProperty: new Property( new Vector2( 10, 10 ) ),
+            xAlign: 'left',
+            yAlign: 'top',
+            spacing: 10
+          } );
+
+          // For the grid, cells are created and added (they can be removed/disposed later).
+          constraint.addCell( new GridCell( constraint, firstChild, null ) );
+          constraint.addCell( new GridCell( constraint, secondChild, null ) );
+          constraint.addCell( new GridCell( constraint, thirdChild, null ) );
+          constraint.updateLayout();
+          /*END*/
+          return scene;
+        } )();
+        scene.addChild( new ResizableNode( display, box, {} ) );
+      } );
+    </script>
+
+    <h2 id="AlignBox" class="index">AlignBox</h2>
+
+    <h3 class="index">alignBounds</h3>
+
+    <p>AlignBox on its own will position content within a specific bounding box (its <code>alignBounds</code>):</p>
+
+    <div id="simpleAlignBox-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'simpleAlignBox-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const rect = new Rectangle( 0, 0, 50, 50, {
+            fill: 'red'
+          } );
+          return new AlignBox( rect, {
+            alignBounds: new Bounds2( 0, 0, 100, 100 )
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new Node( {
+          children: [
+            box,
+            new Rectangle( {
+              rectBounds: box.bounds,
+              stroke: 'black'
+            } )
+          ]
+        } ) );
+      } );
+    </script>
+
+    <h3 class="index">Alignment</h3>
+
+    <p>Content can be aligned within this:</p>
+
+    <div id="alignBoxAlign-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'alignBoxAlign-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const rect = new Rectangle( 0, 0, 50, 50, {
+            fill: 'red'
+          } );
+          return new AlignBox( rect, {
+            alignBounds: new Bounds2( 0, 0, 100, 100 ),
+            xAlign: 'left',
+            yAlign: 'bottom'
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new Node( {
+          children: [
+            box,
+            new Rectangle( {
+              rectBounds: box.bounds,
+              stroke: 'black'
+            } )
+          ]
+        } ) );
+      } );
+    </script>
+
+    <h3 class="index">Margins</h3>
+
+    <p>And margins can be specified on each side:</p>
+
+    <div id="alignBoxMargins-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'alignBoxMargins-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const rect = new Rectangle( 0, 0, 50, 50, {
+            fill: 'red'
+          } );
+          return new AlignBox( rect, {
+            alignBounds: new Bounds2( 0, 0, 100, 100 ),
+            xAlign: 'left',
+            yAlign: 'bottom',
+            leftMargin: 5,
+            bottomMargin: 10
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new Node( {
+          children: [
+            box,
+            new Rectangle( {
+              rectBounds: box.bounds,
+              stroke: 'black'
+            } )
+          ]
+        } ) );
+      } );
+    </script>
+
+    <p>
+      Margins can also be used on their own (without <code>alignBounds</code> / <code>align</code>) to just create a
+      Node with larger bounds:
+    </p>
+
+    <div id="alignBoxOnlyMargins-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'alignBoxOnlyMargins-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const rect = new Rectangle( 0, 0, 50, 50, {
+            fill: 'red'
+          } );
+          return new AlignBox( rect, {
+            topMargin: 30,
+            xMargin: 10
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new Node( {
+          children: [
+            box,
+            new Rectangle( {
+              rectBounds: box.bounds,
+              stroke: 'black'
+            } )
+          ]
+        } ) );
+      } );
+    </script>
+
+    <p>AlignBox can also be used with preferred dimensions instead of an explicit <code>alignBounds</code>:</p>
+
+    <div id="alignBoxPreferred-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'alignBoxPreferred-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const rect = new Rectangle( 0, 0, 50, 50, {
+            fill: 'red'
+          } );
+          return new AlignBox( rect, {
+            preferredWidth: 100,
+            preferredHeight: 100,
+            xAlign: 'left',
+            yAlign: 'bottom'
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new Node( {
+          children: [
+            box,
+            new Rectangle( {
+              rectBounds: box.bounds,
+              stroke: 'black'
+            } )
+          ]
+        } ) );
+      } );
+    </script>
+
+    <p>
+      and can be dynamically resizable (off by default because it's usually not used for that purpose in legacy
+      code):
+    </p>
+
+    <div id="alignBoxSizable-example"></div>
+    <script type="text/javascript">
+      createSandbox( 'alignBoxSizable-example', ( scene, stepEmitter, display ) => {
+        const box = ( () => {
+          /*START*/
+          const rect = new Rectangle( 0, 0, 50, 50, {
+            fill: 'red'
+          } );
+          return new AlignBox( rect, {
+            xAlign: 'left',
+            yAlign: 'bottom',
+            sizable: true,
+            margin: 10
+          } );
+          /*END*/
+        } )();
+        scene.addChild( new ResizableNode( display, box, {
+          widthResizable: true,
+          heightResizable: true
+        } ) );
+      } );
+    </script>
+
+  </div>
+  <div class="span2"></div>
+</div>
+
+<footer style="background-color: #191919;">
+  <a class="brand" href="/scenery">Scenery</a>
+</footer>
+
+<script>
+  generateAPIList();
+</script>
+</body>
+</html>

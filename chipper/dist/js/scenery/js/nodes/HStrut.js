@@ -1,0 +1,23 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * A Node meant to just take up horizontal space (usually for layout purposes).
+ * It is never displayed, and cannot have children.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { scenery, Spacer } from '../imports.js';
+export default class HStrut extends Spacer {
+  /**
+   * Creates a strut with x in the range [0,width] and y=0.
+   *
+   * @param width - Width of the strut
+   * @param [options] - Passed to Spacer/Node
+   */
+  constructor(width, options) {
+    super(width, 0, options);
+  }
+}
+scenery.register('HStrut', HStrut);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5IiwiU3BhY2VyIiwiSFN0cnV0IiwiY29uc3RydWN0b3IiLCJ3aWR0aCIsIm9wdGlvbnMiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkhTdHJ1dC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNS0yMDIyLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBBIE5vZGUgbWVhbnQgdG8ganVzdCB0YWtlIHVwIGhvcml6b250YWwgc3BhY2UgKHVzdWFsbHkgZm9yIGxheW91dCBwdXJwb3NlcykuXHJcbiAqIEl0IGlzIG5ldmVyIGRpc3BsYXllZCwgYW5kIGNhbm5vdCBoYXZlIGNoaWxkcmVuLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IHsgc2NlbmVyeSwgU3BhY2VyLCBTcGFjZXJPcHRpb25zIH0gZnJvbSAnLi4vaW1wb3J0cy5qcyc7XHJcblxyXG5leHBvcnQgdHlwZSBIU3RydXRPcHRpb25zID0gU3BhY2VyT3B0aW9ucztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEhTdHJ1dCBleHRlbmRzIFNwYWNlciB7XHJcbiAgLyoqXHJcbiAgICogQ3JlYXRlcyBhIHN0cnV0IHdpdGggeCBpbiB0aGUgcmFuZ2UgWzAsd2lkdGhdIGFuZCB5PTAuXHJcbiAgICpcclxuICAgKiBAcGFyYW0gd2lkdGggLSBXaWR0aCBvZiB0aGUgc3RydXRcclxuICAgKiBAcGFyYW0gW29wdGlvbnNdIC0gUGFzc2VkIHRvIFNwYWNlci9Ob2RlXHJcbiAgICovXHJcbiAgcHVibGljIGNvbnN0cnVjdG9yKCB3aWR0aDogbnVtYmVyLCBvcHRpb25zPzogSFN0cnV0T3B0aW9ucyApIHtcclxuICAgIHN1cGVyKCB3aWR0aCwgMCwgb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuc2NlbmVyeS5yZWdpc3RlciggJ0hTdHJ1dCcsIEhTdHJ1dCApO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUFTQSxPQUFPLEVBQUVDLE1BQU0sUUFBdUIsZUFBZTtBQUk5RCxlQUFlLE1BQU1DLE1BQU0sU0FBU0QsTUFBTSxDQUFDO0VBQ3pDO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNTRSxXQUFXQSxDQUFFQyxLQUFhLEVBQUVDLE9BQXVCLEVBQUc7SUFDM0QsS0FBSyxDQUFFRCxLQUFLLEVBQUUsQ0FBQyxFQUFFQyxPQUFRLENBQUM7RUFDNUI7QUFDRjtBQUVBTCxPQUFPLENBQUNNLFFBQVEsQ0FBRSxRQUFRLEVBQUVKLE1BQU8sQ0FBQyJ9

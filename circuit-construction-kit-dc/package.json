@@ -1,0 +1,42 @@
+{
+  "name": "circuit-construction-kit-dc",
+  "version": "1.4.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/circuit-construction-kit-dc.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "CIRCUIT_CONSTRUCTION_KIT_DC",
+    "phetLibs": [
+      "circuit-construction-kit-common",
+      "twixt",
+      "griddle",
+      "bamboo"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet",
+      "phet-io"
+    ],
+    "simulation": true,
+    "simFeatures": {
+      "supportsSound": false,
+      "supportsInteractiveDescription": true,
+      "supportsInteractiveHighlights": false,
+      "supportsDynamicLocale": true
+    },
+    "supportsOutputJS": true,
+    "published": true,
+    "phet-io": {
+      "compareDesignedAPIChanges": true
+    }
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

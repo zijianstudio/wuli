@@ -1,0 +1,48 @@
+{
+  "name": "molecule-shapes-basics",
+  "version": "1.7.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/molecule-shapes-basics.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "MOLECULE_SHAPES_BASICS",
+    "phetLibs": [
+      "mobius",
+      "molecule-shapes",
+      "nitroglycerin"
+    ],
+    "preload": [
+      "../sherpa/lib/typedarray-44f09cf.js",
+      "../sherpa/lib/three-r71.js",
+      "../sherpa/lib/three-r71-Projector.js",
+      "../sherpa/lib/three-r71-CanvasRenderer.js",
+      "../sherpa/lib/liberation-sans-regular-subset-numeric-degrees.js"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "phet-io",
+      "adapted-from-phet"
+    ],
+    "simulation": true,
+    "supportsOutputJS": true,
+    "simFeatures": {
+      "colorProfiles": [
+        "basics",
+        "projector"
+      ]
+    },
+    "published": true,
+    "phet-io": {
+      "compareDesignedAPIChanges": true
+    }
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

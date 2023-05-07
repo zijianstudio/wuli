@@ -1,0 +1,10 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+import '../../axon/js/main.js';
+import '../../dot/js/main.js';
+import '../../phet-core/js/main.js';
+import './main.js';
+if (!window.hasOwnProperty('_')) {
+  throw new Error('Underscore/Lodash not found: _');
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ3aW5kb3ciLCJoYXNPd25Qcm9wZXJ0eSIsIkVycm9yIl0sInNvdXJjZXMiOlsia2l0ZS1tYWluLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE2LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuaW1wb3J0ICcuLi8uLi9heG9uL2pzL21haW4uanMnO1xyXG5pbXBvcnQgJy4uLy4uL2RvdC9qcy9tYWluLmpzJztcclxuaW1wb3J0ICcuLi8uLi9waGV0LWNvcmUvanMvbWFpbi5qcyc7XHJcbmltcG9ydCAnLi9tYWluLmpzJztcclxuXHJcbmlmICggIXdpbmRvdy5oYXNPd25Qcm9wZXJ0eSggJ18nICkgKSB7XHJcbiAgdGhyb3cgbmV3IEVycm9yKCAnVW5kZXJzY29yZS9Mb2Rhc2ggbm90IGZvdW5kOiBfJyApO1xyXG59XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUEsT0FBTyx1QkFBdUI7QUFDOUIsT0FBTyxzQkFBc0I7QUFDN0IsT0FBTyw0QkFBNEI7QUFDbkMsT0FBTyxXQUFXO0FBRWxCLElBQUssQ0FBQ0EsTUFBTSxDQUFDQyxjQUFjLENBQUUsR0FBSSxDQUFDLEVBQUc7RUFDbkMsTUFBTSxJQUFJQyxLQUFLLENBQUUsZ0NBQWlDLENBQUM7QUFDckQifQ==

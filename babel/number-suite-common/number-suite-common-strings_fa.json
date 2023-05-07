@@ -1,0 +1,255 @@
+{
+  "zero": {
+    "value": "صفر",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "صفر"
+      }
+    ]
+  },
+  "one": {
+    "value": "یک",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "یک"
+      }
+    ]
+  },
+  "two": {
+    "value": "دو",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "دو"
+      }
+    ]
+  },
+  "three": {
+    "value": "سه",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "سه"
+      }
+    ]
+  },
+  "four": {
+    "value": "چهار",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "چهار"
+      }
+    ]
+  },
+  "five": {
+    "value": "پنج",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "پنج"
+      }
+    ]
+  },
+  "six": {
+    "value": "شش",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "شش"
+      }
+    ]
+  },
+  "seven": {
+    "value": "هفت",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "هفت"
+      }
+    ]
+  },
+  "eight": {
+    "value": "هشت",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "هشت"
+      }
+    ]
+  },
+  "nine": {
+    "value": "نه",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "نه"
+      }
+    ]
+  },
+  "ten": {
+    "value": "ده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "ده"
+      }
+    ]
+  },
+  "eleven": {
+    "value": "یازده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "یازده"
+      }
+    ]
+  },
+  "twelve": {
+    "value": "دوازده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "دوازده"
+      }
+    ]
+  },
+  "thirteen": {
+    "value": "سیزده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "سیزده"
+      }
+    ]
+  },
+  "fourteen": {
+    "value": "چهارده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "چهارده"
+      }
+    ]
+  },
+  "fifteen": {
+    "value": "پانزده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "پانزده"
+      }
+    ]
+  },
+  "sixteen": {
+    "value": "شانزده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "شانزده"
+      }
+    ]
+  },
+  "seventeen": {
+    "value": "هفده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "هفده"
+      }
+    ]
+  },
+  "eighteen": {
+    "value": "هجده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "هجده"
+      }
+    ]
+  },
+  "nineteen": {
+    "value": "نوزده",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "نوزده"
+      }
+    ]
+  },
+  "twenty": {
+    "value": "بیست",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "بیست"
+      }
+    ]
+  },
+  "objects": {
+    "value": "شی ها",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "شی ها"
+      }
+    ]
+  },
+  "total": {
+    "value": "کل",
+    "history": [
+      {
+        "userId": 641432,
+        "timestamp": 1660059197626,
+        "oldValue": "",
+        "newValue": "کل"
+      }
+    ]
+  }
+}

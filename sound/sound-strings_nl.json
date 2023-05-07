@@ -1,0 +1,92 @@
+{
+  "sound.title": {
+    "value": "Geluidsgolven"
+  },
+  "singleSource.title": {
+  	"value": "Luister naar één speaker"
+  },
+  "singleSource.help.listener": {
+  	"value": "Listener can be moved left and right"
+  },
+  "measure.title": {
+  	"value": "Meten"
+  },
+  "measure.clearWaves": {
+    "value": "Verwijder golf"
+  },
+  "measure.help.stick": {
+  	"value": "Use meter stick to measure waves"
+  },
+  "measure.help.blueLines": {
+  	"value": "Blue lines can be moved left and right to help mark measurement points on waves"
+  },
+  "twoSource.title": {
+  	"value": "Luister naar twee speakers"
+  },
+  "twoSource.help.upperSpeaker": {
+  	"value": "Upper speaker can be moved up and down"
+  },
+  "twoSource.help.listener": {
+  	"value": "Listener can be moved in all directions"
+  },
+  "reflection.title": {
+  	"value": "Geluid met reflectie tegen muur"
+  },
+  "atm": {
+	 "value": "ATM"
+  },
+  "hz": {
+    "value": "Hz"
+  },
+  "airPressure.title": {
+  	"value": "Luister terwijl de luchtdruk in de speaker verandert"
+  },
+  "audioControlPanel.title": {
+    "value": "Geluid"
+  },
+  "audioControlPanel.audioEnabled": {
+    "value": "Aan"
+  },
+  "audioControlPanel.speaker": {
+    "value": "Uit speaker"
+  },
+  "audioControlPanel.listener": {
+    "value": "Hoort luisteraar"
+  },
+  "soundModeControlPanel.title": {
+    "value": "Geluid"
+  },
+  "soundModeControlPanel.continuous": {
+    "value": "Continu"
+  },
+  "soundModeControlPanel.pulse": {
+    "value":  "Puls"
+  },
+  "soundModeControlPanel.firePulse": {
+    "value": "Eén puls uit speaker"
+  },
+  "reflectionControlPanel.positionSlider": {
+    "value": "Plaats wand"
+  },
+  "reflectionControlPanel.rotationSlider": {
+    "value": "Hoek wand"
+  },
+  "airDensityControlPanel.title": {
+    "value": "Dichtheid lucht"
+  },
+  "airDensityControlPanel.removeAir": {
+    "value": "Remove Air from Box"
+  },
+  "airDensityControlPanel.addAir": {
+    "value": "Add Air to Box"
+  },
+  "airDensityControlPanel.reset": {
+    "value": "Reset"
+  },
+  "amplitude": {
+  	"value": "Amplitude"
+  },
+  "frequency": {
+  	"value": "Frequentie"
+  }
+}

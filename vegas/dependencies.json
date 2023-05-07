@@ -1,0 +1,99 @@
+{
+  "comment": "# vegas 1.0.0-dev.5 Wed Jun 02 2021 17:11:31 GMT-0600 (Mountain Daylight Time)",
+  "assert": {
+    "sha": "b163b8aefd34c93062c94974f1e6ec4a1e3286e8",
+    "branch": "master"
+  },
+  "axon": {
+    "sha": "0125a065e677cbcf4e6962b19bfc6e9b67592e8c",
+    "branch": "master"
+  },
+  "brand": {
+    "sha": "5f9da0428e3cbed5b5d5afb620832d08652af233",
+    "branch": "master"
+  },
+  "chipper": {
+    "sha": "cb0d287b7dec072d5014a82a886b24b9a8369310",
+    "branch": "master"
+  },
+  "dot": {
+    "sha": "31d54ab885c543066158ddce1136c7ce42da3308",
+    "branch": "master"
+  },
+  "joist": {
+    "sha": "7002f4f6c709dec2be9740c53b506d8b779e2b05",
+    "branch": "master"
+  },
+  "kite": {
+    "sha": "90b98ca2f13c1e7af42514bf9ad1e508ce3f6e91",
+    "branch": "master"
+  },
+  "phet-core": {
+    "sha": "fd11f3d3ea4ceb813c42176d8ea724c800770c81",
+    "branch": "master"
+  },
+  "phet-io": {
+    "sha": "071518dadd1441825282be74751454c9d9eb9d63",
+    "branch": "master"
+  },
+  "phet-io-client-guides": {
+    "sha": "4996d70bb084ea3319be9b40ffd27f9a2e421ba4",
+    "branch": "master"
+  },
+  "phet-io-wrappers": {
+    "sha": "fcfcb96ded64c29225be4b8d15a3c1674a173f52",
+    "branch": "master"
+  },
+  "phetcommon": {
+    "sha": "6a50b84b7fb7084546f2e7023ce59715789fbeb6",
+    "branch": "master"
+  },
+  "phetmarks": {
+    "sha": "5f8010bebab12c773d4e43fbe564e2012fd95729",
+    "branch": "master"
+  },
+  "query-string-machine": {
+    "sha": "9a9adacabf0f425e7fc0731015f2ffd25c0b9df7",
+    "branch": "master"
+  },
+  "scenery": {
+    "sha": "4598ab142f856119a855d323a061553e10a0022c",
+    "branch": "master"
+  },
+  "scenery-phet": {
+    "sha": "437c015bd31ad9a8e32786ec474331613fbf6003",
+    "branch": "master"
+  },
+  "sherpa": {
+    "sha": "51de2e5a2c53aa68462bba12946b0eb3a78dc718",
+    "branch": "master"
+  },
+  "studio": {
+    "sha": "6c9c5e8868e7b7fce04ca5984403bad0bd72b5a4",
+    "branch": "master"
+  },
+  "sun": {
+    "sha": "2d5657c67e7aa34155f75314486b16087ecc7fad",
+    "branch": "master"
+  },
+  "tambo": {
+    "sha": "ce378a4dc52241a7f1a60dbac8dc37c3fa2f1f30",
+    "branch": "master"
+  },
+  "tandem": {
+    "sha": "0f0c57ac93182954c305073e0ea4252e89967c04",
+    "branch": "master"
+  },
+  "twixt": {
+    "sha": "6cbaa586ddcf96ab04203e8937487c35a7f917ae",
+    "branch": "master"
+  },
+  "utterance-queue": {
+    "sha": "532a247a34f18f70d55950cbdc8222ad65247cbe",
+    "branch": "master"
+  },
+  "vegas": {
+    "sha": "1558a8017560c68526b0168cdfd365e78f75a544",
+    "branch": "master"
+  }
+}

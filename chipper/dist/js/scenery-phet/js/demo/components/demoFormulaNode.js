@@ -1,0 +1,29 @@
+// Copyright 2022, University of Colorado Boulder
+
+/**
+ * Demo for FormulaNode
+ */
+
+import FormulaNode from '../../FormulaNode.js';
+import { Node, Rectangle } from '../../../../scenery/js/imports.js';
+export default function demoFormulaNode(layoutBounds) {
+  const conditional = '\\forall \\mathbf{p}\\in\\mathbb{R}^2';
+  const leftVert = '\\left\\lVert';
+  const rightVert = '\\right\\rVert';
+  const matrix = '\\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}^{k+1}';
+  const sumExpr = `${leftVert}\\sum_{k=1}^{\\infty}kx^{k-1}${matrix}${rightVert}`;
+  const integral = '\\int_{0}^{2\\pi}\\overline{f(\\theta)}\\cos\\theta\\,\\mathrm{d}\\theta';
+  const invCos = '\\cos^{-1}\\left( \\frac{\\sqrt{\\varphi_2}}{\\sqrt{x_2^2+x_3^2}} \\right)';
+  const formulaNode = new FormulaNode(`${conditional}\\quad ${sumExpr} = ${invCos} + ${integral}`, {
+    center: layoutBounds.center,
+    scale: 1.3,
+    displayMode: true
+  });
+  const boundsRectangle = Rectangle.bounds(formulaNode.bounds, {
+    fill: 'rgba(0,0,0,0.1)'
+  });
+  return new Node({
+    children: [boundsRectangle, formulaNode]
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJGb3JtdWxhTm9kZSIsIk5vZGUiLCJSZWN0YW5nbGUiLCJkZW1vRm9ybXVsYU5vZGUiLCJsYXlvdXRCb3VuZHMiLCJjb25kaXRpb25hbCIsImxlZnRWZXJ0IiwicmlnaHRWZXJ0IiwibWF0cml4Iiwic3VtRXhwciIsImludGVncmFsIiwiaW52Q29zIiwiZm9ybXVsYU5vZGUiLCJjZW50ZXIiLCJzY2FsZSIsImRpc3BsYXlNb2RlIiwiYm91bmRzUmVjdGFuZ2xlIiwiYm91bmRzIiwiZmlsbCIsImNoaWxkcmVuIl0sInNvdXJjZXMiOlsiZGVtb0Zvcm11bGFOb2RlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIyLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBEZW1vIGZvciBGb3JtdWxhTm9kZVxyXG4gKi9cclxuXHJcbmltcG9ydCBGb3JtdWxhTm9kZSBmcm9tICcuLi8uLi9Gb3JtdWxhTm9kZS5qcyc7XHJcbmltcG9ydCBCb3VuZHMyIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9Cb3VuZHMyLmpzJztcclxuaW1wb3J0IHsgTm9kZSwgUmVjdGFuZ2xlIH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIGRlbW9Gb3JtdWxhTm9kZSggbGF5b3V0Qm91bmRzOiBCb3VuZHMyICk6IE5vZGUge1xyXG5cclxuICBjb25zdCBjb25kaXRpb25hbCA9ICdcXFxcZm9yYWxsIFxcXFxtYXRoYmZ7cH1cXFxcaW5cXFxcbWF0aGJie1J9XjInO1xyXG4gIGNvbnN0IGxlZnRWZXJ0ID0gJ1xcXFxsZWZ0XFxcXGxWZXJ0JztcclxuICBjb25zdCByaWdodFZlcnQgPSAnXFxcXHJpZ2h0XFxcXHJWZXJ0JztcclxuICBjb25zdCBtYXRyaXggPSAnXFxcXGJlZ2lue2JtYXRyaXh9IFxcXFxjb3NcXFxcdGhldGEgJiBcXFxcc2luXFxcXHRoZXRhIFxcXFxcXFxcIC1cXFxcc2luXFxcXHRoZXRhICYgXFxcXGNvc1xcXFx0aGV0YSBcXFxcZW5ke2JtYXRyaXh9XntrKzF9JztcclxuICBjb25zdCBzdW1FeHByID0gYCR7bGVmdFZlcnR9XFxcXHN1bV97az0xfV57XFxcXGluZnR5fWt4XntrLTF9JHttYXRyaXh9JHtyaWdodFZlcnR9YDtcclxuICBjb25zdCBpbnRlZ3JhbCA9ICdcXFxcaW50X3swfV57MlxcXFxwaX1cXFxcb3ZlcmxpbmV7ZihcXFxcdGhldGEpfVxcXFxjb3NcXFxcdGhldGFcXFxcLFxcXFxtYXRocm17ZH1cXFxcdGhldGEnO1xyXG4gIGNvbnN0IGludkNvcyA9ICdcXFxcY29zXnstMX1cXFxcbGVmdCggXFxcXGZyYWN7XFxcXHNxcnR7XFxcXHZhcnBoaV8yfX17XFxcXHNxcnR7eF8yXjIreF8zXjJ9fSBcXFxccmlnaHQpJztcclxuXHJcbiAgY29uc3QgZm9ybXVsYU5vZGUgPSBuZXcgRm9ybXVsYU5vZGUoIGAke2NvbmRpdGlvbmFsfVxcXFxxdWFkICR7c3VtRXhwcn0gPSAke2ludkNvc30gKyAke2ludGVncmFsfWAsIHtcclxuICAgIGNlbnRlcjogbGF5b3V0Qm91bmRzLmNlbnRlcixcclxuICAgIHNjYWxlOiAxLjMsXHJcbiAgICBkaXNwbGF5TW9kZTogdHJ1ZVxyXG4gIH0gKTtcclxuXHJcbiAgY29uc3QgYm91bmRzUmVjdGFuZ2xlID0gUmVjdGFuZ2xlLmJvdW5kcyggZm9ybXVsYU5vZGUuYm91bmRzLCB7XHJcbiAgICBmaWxsOiAncmdiYSgwLDAsMCwwLjEpJ1xyXG4gIH0gKTtcclxuXHJcbiAgcmV0dXJuIG5ldyBOb2RlKCB7XHJcbiAgICBjaGlsZHJlbjogWyBib3VuZHNSZWN0YW5nbGUsIGZvcm11bGFOb2RlIF1cclxuICB9ICk7XHJcbn0iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxXQUFXLE1BQU0sc0JBQXNCO0FBRTlDLFNBQVNDLElBQUksRUFBRUMsU0FBUyxRQUFRLG1DQUFtQztBQUVuRSxlQUFlLFNBQVNDLGVBQWVBLENBQUVDLFlBQXFCLEVBQVM7RUFFckUsTUFBTUMsV0FBVyxHQUFHLHVDQUF1QztFQUMzRCxNQUFNQyxRQUFRLEdBQUcsZUFBZTtFQUNoQyxNQUFNQyxTQUFTLEdBQUcsZ0JBQWdCO0VBQ2xDLE1BQU1DLE1BQU0sR0FBRyxxR0FBcUc7RUFDcEgsTUFBTUMsT0FBTyxHQUFJLEdBQUVILFFBQVMsZ0NBQStCRSxNQUFPLEdBQUVELFNBQVUsRUFBQztFQUMvRSxNQUFNRyxRQUFRLEdBQUcsMEVBQTBFO0VBQzNGLE1BQU1DLE1BQU0sR0FBRyw0RUFBNEU7RUFFM0YsTUFBTUMsV0FBVyxHQUFHLElBQUlaLFdBQVcsQ0FBRyxHQUFFSyxXQUFZLFVBQVNJLE9BQVEsTUFBS0UsTUFBTyxNQUFLRCxRQUFTLEVBQUMsRUFBRTtJQUNoR0csTUFBTSxFQUFFVCxZQUFZLENBQUNTLE1BQU07SUFDM0JDLEtBQUssRUFBRSxHQUFHO0lBQ1ZDLFdBQVcsRUFBRTtFQUNmLENBQUUsQ0FBQztFQUVILE1BQU1DLGVBQWUsR0FBR2QsU0FBUyxDQUFDZSxNQUFNLENBQUVMLFdBQVcsQ0FBQ0ssTUFBTSxFQUFFO0lBQzVEQyxJQUFJLEVBQUU7RUFDUixDQUFFLENBQUM7RUFFSCxPQUFPLElBQUlqQixJQUFJLENBQUU7SUFDZmtCLFFBQVEsRUFBRSxDQUFFSCxlQUFlLEVBQUVKLFdBQVc7RUFDMUMsQ0FBRSxDQUFDO0FBQ0wifQ==

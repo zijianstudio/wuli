@@ -1,0 +1,36 @@
+// Copyright 2022-2023, University of Colorado Boulder
+
+/**
+ * LabelColorIcon is an icon that consists of a label with a horizontal-colored line below it.
+ * It is used on radio button to indicate a graph or curve, and its associated stroke color.
+ *
+ * @author Chris Malley (PixelZoom, Inc,)
+ */
+
+import { AlignBox, Line, VBox } from '../../../../scenery/js/imports.js';
+import calculusGrapher from '../../calculusGrapher.js';
+export class LabelColorIcon extends VBox {
+  /**
+   * @param labelNode
+   * @param labelAlignGroup - to give labels the same effective size
+   * @param stroke
+   */
+  constructor(labelNode, labelAlignGroup, stroke) {
+    const alignBox = new AlignBox(labelNode, {
+      group: labelAlignGroup
+    });
+
+    // Horizontal line showing the color that is used to stroke graphType.
+    const colorLine = new Line(0, 0, 40, 0, {
+      stroke: stroke,
+      lineWidth: 3
+    });
+    super({
+      children: [alignBox, colorLine],
+      spacing: 7,
+      align: 'center'
+    });
+  }
+}
+calculusGrapher.register('LabelColorIcon', LabelColorIcon);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJBbGlnbkJveCIsIkxpbmUiLCJWQm94IiwiY2FsY3VsdXNHcmFwaGVyIiwiTGFiZWxDb2xvckljb24iLCJjb25zdHJ1Y3RvciIsImxhYmVsTm9kZSIsImxhYmVsQWxpZ25Hcm91cCIsInN0cm9rZSIsImFsaWduQm94IiwiZ3JvdXAiLCJjb2xvckxpbmUiLCJsaW5lV2lkdGgiLCJjaGlsZHJlbiIsInNwYWNpbmciLCJhbGlnbiIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiTGFiZWxDb2xvckljb24udHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjItMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTGFiZWxDb2xvckljb24gaXMgYW4gaWNvbiB0aGF0IGNvbnNpc3RzIG9mIGEgbGFiZWwgd2l0aCBhIGhvcml6b250YWwtY29sb3JlZCBsaW5lIGJlbG93IGl0LlxyXG4gKiBJdCBpcyB1c2VkIG9uIHJhZGlvIGJ1dHRvbiB0byBpbmRpY2F0ZSBhIGdyYXBoIG9yIGN1cnZlLCBhbmQgaXRzIGFzc29jaWF0ZWQgc3Ryb2tlIGNvbG9yLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMsKVxyXG4gKi9cclxuXHJcbmltcG9ydCB7IEFsaWduQm94LCBBbGlnbkdyb3VwLCBMaW5lLCBOb2RlLCBUQ29sb3IsIFZCb3ggfSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgY2FsY3VsdXNHcmFwaGVyIGZyb20gJy4uLy4uL2NhbGN1bHVzR3JhcGhlci5qcyc7XHJcblxyXG5leHBvcnQgY2xhc3MgTGFiZWxDb2xvckljb24gZXh0ZW5kcyBWQm94IHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIGxhYmVsTm9kZVxyXG4gICAqIEBwYXJhbSBsYWJlbEFsaWduR3JvdXAgLSB0byBnaXZlIGxhYmVscyB0aGUgc2FtZSBlZmZlY3RpdmUgc2l6ZVxyXG4gICAqIEBwYXJhbSBzdHJva2VcclxuICAgKi9cclxuICBwdWJsaWMgY29uc3RydWN0b3IoIGxhYmVsTm9kZTogTm9kZSwgbGFiZWxBbGlnbkdyb3VwOiBBbGlnbkdyb3VwLCBzdHJva2U6IFRDb2xvciApIHtcclxuXHJcbiAgICBjb25zdCBhbGlnbkJveCA9IG5ldyBBbGlnbkJveCggbGFiZWxOb2RlLCB7XHJcbiAgICAgIGdyb3VwOiBsYWJlbEFsaWduR3JvdXBcclxuICAgIH0gKTtcclxuXHJcbiAgICAvLyBIb3Jpem9udGFsIGxpbmUgc2hvd2luZyB0aGUgY29sb3IgdGhhdCBpcyB1c2VkIHRvIHN0cm9rZSBncmFwaFR5cGUuXHJcbiAgICBjb25zdCBjb2xvckxpbmUgPSBuZXcgTGluZSggMCwgMCwgNDAsIDAsIHtcclxuICAgICAgc3Ryb2tlOiBzdHJva2UsXHJcbiAgICAgIGxpbmVXaWR0aDogM1xyXG4gICAgfSApO1xyXG5cclxuICAgIHN1cGVyKCB7XHJcbiAgICAgIGNoaWxkcmVuOiBbIGFsaWduQm94LCBjb2xvckxpbmUgXSxcclxuICAgICAgc3BhY2luZzogNyxcclxuICAgICAgYWxpZ246ICdjZW50ZXInXHJcbiAgICB9ICk7XHJcbiAgfVxyXG59XHJcblxyXG5jYWxjdWx1c0dyYXBoZXIucmVnaXN0ZXIoICdMYWJlbENvbG9ySWNvbicsIExhYmVsQ29sb3JJY29uICk7XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLFFBQVEsRUFBY0MsSUFBSSxFQUFnQkMsSUFBSSxRQUFRLG1DQUFtQztBQUNsRyxPQUFPQyxlQUFlLE1BQU0sMEJBQTBCO0FBRXRELE9BQU8sTUFBTUMsY0FBYyxTQUFTRixJQUFJLENBQUM7RUFFdkM7QUFDRjtBQUNBO0FBQ0E7QUFDQTtFQUNTRyxXQUFXQSxDQUFFQyxTQUFlLEVBQUVDLGVBQTJCLEVBQUVDLE1BQWMsRUFBRztJQUVqRixNQUFNQyxRQUFRLEdBQUcsSUFBSVQsUUFBUSxDQUFFTSxTQUFTLEVBQUU7TUFDeENJLEtBQUssRUFBRUg7SUFDVCxDQUFFLENBQUM7O0lBRUg7SUFDQSxNQUFNSSxTQUFTLEdBQUcsSUFBSVYsSUFBSSxDQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsRUFBRSxFQUFFLENBQUMsRUFBRTtNQUN2Q08sTUFBTSxFQUFFQSxNQUFNO01BQ2RJLFNBQVMsRUFBRTtJQUNiLENBQUUsQ0FBQztJQUVILEtBQUssQ0FBRTtNQUNMQyxRQUFRLEVBQUUsQ0FBRUosUUFBUSxFQUFFRSxTQUFTLENBQUU7TUFDakNHLE9BQU8sRUFBRSxDQUFDO01BQ1ZDLEtBQUssRUFBRTtJQUNULENBQUUsQ0FBQztFQUNMO0FBQ0Y7QUFFQVosZUFBZSxDQUFDYSxRQUFRLENBQUUsZ0JBQWdCLEVBQUVaLGNBQWUsQ0FBQyJ9

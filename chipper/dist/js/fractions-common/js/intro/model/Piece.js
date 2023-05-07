@@ -1,0 +1,33 @@
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * Represents a floating piece that is not in a cell.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Vector2 from '../../../../dot/js/Vector2.js';
+import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import fractionsCommon from '../../fractionsCommon.js';
+class Piece {
+  /**
+   * @param {number} denominator
+   */
+  constructor(denominator) {
+    // @private {number} - If the denominator would ever change, this piece would just cease to exist.
+    this.denominator = denominator;
+
+    // @public {Cell|null} - Where this piece started
+    this.originCell = null;
+
+    // @public {Cell|null} - Where this piece will end up. If set to a cell, it will change the cell appearance when
+    // the piece goes away.
+    this.destinationCell = null;
+
+    // @public
+    this.positionProperty = new Vector2Property(Vector2.ZERO);
+  }
+}
+fractionsCommon.register('Piece', Piece);
+export default Piece;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwiVmVjdG9yMlByb3BlcnR5IiwiZnJhY3Rpb25zQ29tbW9uIiwiUGllY2UiLCJjb25zdHJ1Y3RvciIsImRlbm9taW5hdG9yIiwib3JpZ2luQ2VsbCIsImRlc3RpbmF0aW9uQ2VsbCIsInBvc2l0aW9uUHJvcGVydHkiLCJaRVJPIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJQaWVjZS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOC0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBSZXByZXNlbnRzIGEgZmxvYXRpbmcgcGllY2UgdGhhdCBpcyBub3QgaW4gYSBjZWxsLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IFZlY3RvcjIgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjIuanMnO1xyXG5pbXBvcnQgVmVjdG9yMlByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9WZWN0b3IyUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgZnJhY3Rpb25zQ29tbW9uIGZyb20gJy4uLy4uL2ZyYWN0aW9uc0NvbW1vbi5qcyc7XHJcblxyXG5jbGFzcyBQaWVjZSB7XHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGRlbm9taW5hdG9yXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGRlbm9taW5hdG9yICkge1xyXG5cclxuICAgIC8vIEBwcml2YXRlIHtudW1iZXJ9IC0gSWYgdGhlIGRlbm9taW5hdG9yIHdvdWxkIGV2ZXIgY2hhbmdlLCB0aGlzIHBpZWNlIHdvdWxkIGp1c3QgY2Vhc2UgdG8gZXhpc3QuXHJcbiAgICB0aGlzLmRlbm9taW5hdG9yID0gZGVub21pbmF0b3I7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7Q2VsbHxudWxsfSAtIFdoZXJlIHRoaXMgcGllY2Ugc3RhcnRlZFxyXG4gICAgdGhpcy5vcmlnaW5DZWxsID0gbnVsbDtcclxuXHJcbiAgICAvLyBAcHVibGljIHtDZWxsfG51bGx9IC0gV2hlcmUgdGhpcyBwaWVjZSB3aWxsIGVuZCB1cC4gSWYgc2V0IHRvIGEgY2VsbCwgaXQgd2lsbCBjaGFuZ2UgdGhlIGNlbGwgYXBwZWFyYW5jZSB3aGVuXHJcbiAgICAvLyB0aGUgcGllY2UgZ29lcyBhd2F5LlxyXG4gICAgdGhpcy5kZXN0aW5hdGlvbkNlbGwgPSBudWxsO1xyXG5cclxuICAgIC8vIEBwdWJsaWNcclxuICAgIHRoaXMucG9zaXRpb25Qcm9wZXJ0eSA9IG5ldyBWZWN0b3IyUHJvcGVydHkoIFZlY3RvcjIuWkVSTyApO1xyXG4gIH1cclxufVxyXG5cclxuZnJhY3Rpb25zQ29tbW9uLnJlZ2lzdGVyKCAnUGllY2UnLCBQaWVjZSApO1xyXG5leHBvcnQgZGVmYXVsdCBQaWVjZTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLCtCQUErQjtBQUNuRCxPQUFPQyxlQUFlLE1BQU0sdUNBQXVDO0FBQ25FLE9BQU9DLGVBQWUsTUFBTSwwQkFBMEI7QUFFdEQsTUFBTUMsS0FBSyxDQUFDO0VBQ1Y7QUFDRjtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFdBQVcsRUFBRztJQUV6QjtJQUNBLElBQUksQ0FBQ0EsV0FBVyxHQUFHQSxXQUFXOztJQUU5QjtJQUNBLElBQUksQ0FBQ0MsVUFBVSxHQUFHLElBQUk7O0lBRXRCO0lBQ0E7SUFDQSxJQUFJLENBQUNDLGVBQWUsR0FBRyxJQUFJOztJQUUzQjtJQUNBLElBQUksQ0FBQ0MsZ0JBQWdCLEdBQUcsSUFBSVAsZUFBZSxDQUFFRCxPQUFPLENBQUNTLElBQUssQ0FBQztFQUM3RDtBQUNGO0FBRUFQLGVBQWUsQ0FBQ1EsUUFBUSxDQUFFLE9BQU8sRUFBRVAsS0FBTSxDQUFDO0FBQzFDLGVBQWVBLEtBQUsifQ==

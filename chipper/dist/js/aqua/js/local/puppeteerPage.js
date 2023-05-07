@@ -1,0 +1,20 @@
+// Copyright 2018-2022, University of Colorado Boulder
+
+const puppeteerLoad = require('../../../perennial-alias/js/common/puppeteerLoad');
+module.exports = async function puppeteerPage(browser, targetURL, timeout) {
+  try {
+    await puppeteerLoad(targetURL, {
+      waitAfterLoad: timeout,
+      browser: browser
+    });
+    return {
+      ok: true
+    };
+  } catch (e) {
+    return {
+      ok: false,
+      message: `caught exception: ${e}`
+    };
+  }
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwdXBwZXRlZXJMb2FkIiwicmVxdWlyZSIsIm1vZHVsZSIsImV4cG9ydHMiLCJwdXBwZXRlZXJQYWdlIiwiYnJvd3NlciIsInRhcmdldFVSTCIsInRpbWVvdXQiLCJ3YWl0QWZ0ZXJMb2FkIiwib2siLCJlIiwibWVzc2FnZSJdLCJzb3VyY2VzIjpbInB1cHBldGVlclBhZ2UuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTgtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG5jb25zdCBwdXBwZXRlZXJMb2FkID0gcmVxdWlyZSggJy4uLy4uLy4uL3BlcmVubmlhbC1hbGlhcy9qcy9jb21tb24vcHVwcGV0ZWVyTG9hZCcgKTtcclxuXHJcbm1vZHVsZS5leHBvcnRzID0gYXN5bmMgZnVuY3Rpb24gcHVwcGV0ZWVyUGFnZSggYnJvd3NlciwgdGFyZ2V0VVJMLCB0aW1lb3V0ICkge1xyXG5cclxuICB0cnkge1xyXG4gICAgYXdhaXQgcHVwcGV0ZWVyTG9hZCggdGFyZ2V0VVJMLCB7XHJcbiAgICAgIHdhaXRBZnRlckxvYWQ6IHRpbWVvdXQsXHJcbiAgICAgIGJyb3dzZXI6IGJyb3dzZXJcclxuICAgIH0gKTtcclxuICAgIHJldHVybiB7IG9rOiB0cnVlIH07XHJcbiAgfVxyXG4gIGNhdGNoKCBlICkge1xyXG4gICAgcmV0dXJuIHsgb2s6IGZhbHNlLCBtZXNzYWdlOiBgY2F1Z2h0IGV4Y2VwdGlvbjogJHtlfWAgfTtcclxuICB9XHJcbn07Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQSxNQUFNQSxhQUFhLEdBQUdDLE9BQU8sQ0FBRSxrREFBbUQsQ0FBQztBQUVuRkMsTUFBTSxDQUFDQyxPQUFPLEdBQUcsZUFBZUMsYUFBYUEsQ0FBRUMsT0FBTyxFQUFFQyxTQUFTLEVBQUVDLE9BQU8sRUFBRztFQUUzRSxJQUFJO0lBQ0YsTUFBTVAsYUFBYSxDQUFFTSxTQUFTLEVBQUU7TUFDOUJFLGFBQWEsRUFBRUQsT0FBTztNQUN0QkYsT0FBTyxFQUFFQTtJQUNYLENBQUUsQ0FBQztJQUNILE9BQU87TUFBRUksRUFBRSxFQUFFO0lBQUssQ0FBQztFQUNyQixDQUFDLENBQ0QsT0FBT0MsQ0FBQyxFQUFHO0lBQ1QsT0FBTztNQUFFRCxFQUFFLEVBQUUsS0FBSztNQUFFRSxPQUFPLEVBQUcscUJBQW9CRCxDQUFFO0lBQUUsQ0FBQztFQUN6RDtBQUNGLENBQUMifQ==

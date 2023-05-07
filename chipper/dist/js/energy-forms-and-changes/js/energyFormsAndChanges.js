@@ -1,0 +1,12 @@
+// Copyright 2016-2020, University of Colorado Boulder
+
+/**
+ * Create energyFormsAndChanges namespace
+ *
+ * @author Jesse Greenberg
+ * @author Andrew Adare
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('energyFormsAndChanges');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJlbmVyZ3lGb3Jtc0FuZENoYW5nZXMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTYtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ3JlYXRlIGVuZXJneUZvcm1zQW5kQ2hhbmdlcyBuYW1lc3BhY2VcclxuICpcclxuICogQGF1dGhvciBKZXNzZSBHcmVlbmJlcmdcclxuICogQGF1dGhvciBBbmRyZXcgQWRhcmVcclxuICovXHJcblxyXG5pbXBvcnQgTmFtZXNwYWNlIGZyb20gJy4uLy4uL3BoZXQtY29yZS9qcy9OYW1lc3BhY2UuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgbmV3IE5hbWVzcGFjZSggJ2VuZXJneUZvcm1zQW5kQ2hhbmdlcycgKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxTQUFTLE1BQU0saUNBQWlDO0FBRXZELGVBQWUsSUFBSUEsU0FBUyxDQUFFLHVCQUF3QixDQUFDIn0=

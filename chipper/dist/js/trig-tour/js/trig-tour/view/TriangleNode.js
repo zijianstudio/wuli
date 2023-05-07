@@ -1,0 +1,43 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * Simple triangle graphic
+ * Used as arrow heads on curves in GraphView
+ *
+ * @author Michael Dubson (PhET developer) on 6/23/2015.
+ */
+
+import Utils from '../../../../dot/js/Utils.js';
+import { Shape } from '../../../../kite/js/imports.js';
+import { Node, Path } from '../../../../scenery/js/imports.js';
+import trigTour from '../../trigTour.js';
+class TriangleNode extends Node {
+  /**
+   * Constructor for TriangleNode, which draws a simple triangle with center of base at (0, 0)
+   * Used as arrow heads on ends of curves in GraphView
+   *
+   * @param {number} length - length triangle in view coordinates
+   * @param {number} width - width of triangle in view coordinates
+   * @param {string} color - string, e.g. '#0F0'
+   * @param {number} rotationInDegrees - rotation of node about (0,0)
+   */
+  constructor(length, width, color, rotationInDegrees) {
+    // Call the super constructor
+    super();
+    this.rotation = Utils.toRadians(rotationInDegrees); // Node.rotation is in radians
+
+    // draw horizontal arrow pointing right
+    const triangleShape = new Shape();
+    triangleShape.moveTo(0, 0).lineTo(0, width / 2).lineTo(length, 0).lineTo(0, -width / 2).close();
+    const trianglePath = new Path(triangleShape, {
+      lineWidth: 1,
+      fill: color
+    });
+    this.addChild(trianglePath);
+    trianglePath.x = -1; // reference point is 1 pixel inside the arrow head, to guarantee connection with adjacent line
+  }
+}
+
+trigTour.register('TriangleNode', TriangleNode);
+export default TriangleNode;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJVdGlscyIsIlNoYXBlIiwiTm9kZSIsIlBhdGgiLCJ0cmlnVG91ciIsIlRyaWFuZ2xlTm9kZSIsImNvbnN0cnVjdG9yIiwibGVuZ3RoIiwid2lkdGgiLCJjb2xvciIsInJvdGF0aW9uSW5EZWdyZWVzIiwicm90YXRpb24iLCJ0b1JhZGlhbnMiLCJ0cmlhbmdsZVNoYXBlIiwibW92ZVRvIiwibGluZVRvIiwiY2xvc2UiLCJ0cmlhbmdsZVBhdGgiLCJsaW5lV2lkdGgiLCJmaWxsIiwiYWRkQ2hpbGQiLCJ4IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJUcmlhbmdsZU5vZGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogU2ltcGxlIHRyaWFuZ2xlIGdyYXBoaWNcclxuICogVXNlZCBhcyBhcnJvdyBoZWFkcyBvbiBjdXJ2ZXMgaW4gR3JhcGhWaWV3XHJcbiAqXHJcbiAqIEBhdXRob3IgTWljaGFlbCBEdWJzb24gKFBoRVQgZGV2ZWxvcGVyKSBvbiA2LzIzLzIwMTUuXHJcbiAqL1xyXG5cclxuaW1wb3J0IFV0aWxzIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9VdGlscy5qcyc7XHJcbmltcG9ydCB7IFNoYXBlIH0gZnJvbSAnLi4vLi4vLi4vLi4va2l0ZS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IHsgTm9kZSwgUGF0aCB9IGZyb20gJy4uLy4uLy4uLy4uL3NjZW5lcnkvanMvaW1wb3J0cy5qcyc7XHJcbmltcG9ydCB0cmlnVG91ciBmcm9tICcuLi8uLi90cmlnVG91ci5qcyc7XHJcblxyXG5jbGFzcyBUcmlhbmdsZU5vZGUgZXh0ZW5kcyBOb2RlIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQ29uc3RydWN0b3IgZm9yIFRyaWFuZ2xlTm9kZSwgd2hpY2ggZHJhd3MgYSBzaW1wbGUgdHJpYW5nbGUgd2l0aCBjZW50ZXIgb2YgYmFzZSBhdCAoMCwgMClcclxuICAgKiBVc2VkIGFzIGFycm93IGhlYWRzIG9uIGVuZHMgb2YgY3VydmVzIGluIEdyYXBoVmlld1xyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGxlbmd0aCAtIGxlbmd0aCB0cmlhbmdsZSBpbiB2aWV3IGNvb3JkaW5hdGVzXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IHdpZHRoIC0gd2lkdGggb2YgdHJpYW5nbGUgaW4gdmlldyBjb29yZGluYXRlc1xyXG4gICAqIEBwYXJhbSB7c3RyaW5nfSBjb2xvciAtIHN0cmluZywgZS5nLiAnIzBGMCdcclxuICAgKiBAcGFyYW0ge251bWJlcn0gcm90YXRpb25JbkRlZ3JlZXMgLSByb3RhdGlvbiBvZiBub2RlIGFib3V0ICgwLDApXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGxlbmd0aCwgd2lkdGgsIGNvbG9yLCByb3RhdGlvbkluRGVncmVlcyApIHtcclxuXHJcbiAgICAvLyBDYWxsIHRoZSBzdXBlciBjb25zdHJ1Y3RvclxyXG4gICAgc3VwZXIoKTtcclxuXHJcbiAgICB0aGlzLnJvdGF0aW9uID0gVXRpbHMudG9SYWRpYW5zKCByb3RhdGlvbkluRGVncmVlcyApOyAvLyBOb2RlLnJvdGF0aW9uIGlzIGluIHJhZGlhbnNcclxuXHJcbiAgICAvLyBkcmF3IGhvcml6b250YWwgYXJyb3cgcG9pbnRpbmcgcmlnaHRcclxuICAgIGNvbnN0IHRyaWFuZ2xlU2hhcGUgPSBuZXcgU2hhcGUoKTtcclxuICAgIHRyaWFuZ2xlU2hhcGUubW92ZVRvKCAwLCAwICkubGluZVRvKCAwLCB3aWR0aCAvIDIgKS5saW5lVG8oIGxlbmd0aCwgMCApLmxpbmVUbyggMCwgLXdpZHRoIC8gMiApLmNsb3NlKCk7XHJcbiAgICBjb25zdCB0cmlhbmdsZVBhdGggPSBuZXcgUGF0aCggdHJpYW5nbGVTaGFwZSwgeyBsaW5lV2lkdGg6IDEsIGZpbGw6IGNvbG9yIH0gKTtcclxuICAgIHRoaXMuYWRkQ2hpbGQoIHRyaWFuZ2xlUGF0aCApO1xyXG4gICAgdHJpYW5nbGVQYXRoLnggPSAtMTsgLy8gcmVmZXJlbmNlIHBvaW50IGlzIDEgcGl4ZWwgaW5zaWRlIHRoZSBhcnJvdyBoZWFkLCB0byBndWFyYW50ZWUgY29ubmVjdGlvbiB3aXRoIGFkamFjZW50IGxpbmVcclxuXHJcbiAgfVxyXG59XHJcblxyXG50cmlnVG91ci5yZWdpc3RlciggJ1RyaWFuZ2xlTm9kZScsIFRyaWFuZ2xlTm9kZSApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgVHJpYW5nbGVOb2RlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSw2QkFBNkI7QUFDL0MsU0FBU0MsS0FBSyxRQUFRLGdDQUFnQztBQUN0RCxTQUFTQyxJQUFJLEVBQUVDLElBQUksUUFBUSxtQ0FBbUM7QUFDOUQsT0FBT0MsUUFBUSxNQUFNLG1CQUFtQjtBQUV4QyxNQUFNQyxZQUFZLFNBQVNILElBQUksQ0FBQztFQUU5QjtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUksV0FBV0EsQ0FBRUMsTUFBTSxFQUFFQyxLQUFLLEVBQUVDLEtBQUssRUFBRUMsaUJBQWlCLEVBQUc7SUFFckQ7SUFDQSxLQUFLLENBQUMsQ0FBQztJQUVQLElBQUksQ0FBQ0MsUUFBUSxHQUFHWCxLQUFLLENBQUNZLFNBQVMsQ0FBRUYsaUJBQWtCLENBQUMsQ0FBQyxDQUFDOztJQUV0RDtJQUNBLE1BQU1HLGFBQWEsR0FBRyxJQUFJWixLQUFLLENBQUMsQ0FBQztJQUNqQ1ksYUFBYSxDQUFDQyxNQUFNLENBQUUsQ0FBQyxFQUFFLENBQUUsQ0FBQyxDQUFDQyxNQUFNLENBQUUsQ0FBQyxFQUFFUCxLQUFLLEdBQUcsQ0FBRSxDQUFDLENBQUNPLE1BQU0sQ0FBRVIsTUFBTSxFQUFFLENBQUUsQ0FBQyxDQUFDUSxNQUFNLENBQUUsQ0FBQyxFQUFFLENBQUNQLEtBQUssR0FBRyxDQUFFLENBQUMsQ0FBQ1EsS0FBSyxDQUFDLENBQUM7SUFDdkcsTUFBTUMsWUFBWSxHQUFHLElBQUlkLElBQUksQ0FBRVUsYUFBYSxFQUFFO01BQUVLLFNBQVMsRUFBRSxDQUFDO01BQUVDLElBQUksRUFBRVY7SUFBTSxDQUFFLENBQUM7SUFDN0UsSUFBSSxDQUFDVyxRQUFRLENBQUVILFlBQWEsQ0FBQztJQUM3QkEsWUFBWSxDQUFDSSxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsQ0FBQztFQUV2QjtBQUNGOztBQUVBakIsUUFBUSxDQUFDa0IsUUFBUSxDQUFFLGNBQWMsRUFBRWpCLFlBQWEsQ0FBQztBQUVqRCxlQUFlQSxZQUFZIn0=

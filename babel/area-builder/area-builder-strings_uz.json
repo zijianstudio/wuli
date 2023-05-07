@@ -1,0 +1,268 @@
+{
+  "values": {
+    "value": "qiymatlar",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "qiymatlar"
+      }
+    ]
+  },
+  "area": {
+    "value": "Yuza",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Maydon"
+      },
+      {
+        "userId": 641649,
+        "timestamp": 1617624084304,
+        "oldValue": "Maydon",
+        "newValue": "Yuza"
+      }
+    ]
+  },
+  "perimeter": {
+    "value": "Perimeter:",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Perimeter:"
+      }
+    ]
+  },
+  "explore": {
+    "value": "O‘rganmoq",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "O'rganmoq"
+      },
+      {
+        "userId": 641649,
+        "timestamp": 1617366918672,
+        "oldValue": "O'rganmoq",
+        "newValue": "O‘rganmoq"
+      }
+    ]
+  },
+  "level": {
+    "value": "Daraja {0}",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1617624084304,
+        "oldValue": "",
+        "newValue": "Daraja {0}"
+      }
+    ]
+  },
+  "pattern.0challenge.1max": {
+    "value": "{1} tadan {0} ta",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "{1} tadan {0} ta"
+      }
+    ]
+  },
+  "areaEquals": {
+    "value": "Yuza = {0}",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1617624084304,
+        "oldValue": "",
+        "newValue": "Yuza = {0}"
+      }
+    ]
+  },
+  "perimeterEquals": {
+    "value": "Perimeter = {0}",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1617624084304,
+        "oldValue": "",
+        "newValue": "Perimeter = {0}"
+      }
+    ]
+  },
+  "chooseYourLevel": {
+    "value": "Darajangizni tanlang",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Darajangizni tanlang"
+      }
+    ]
+  },
+  "youBuilt": {
+    "value": "Siz yasagansiz:",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Siz yasagansiz:"
+      }
+    ]
+  },
+  "youEntered": {
+    "value": "Siz kiritgansiz:",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Siz kiritgansiz:"
+      }
+    ]
+  },
+  "areaQuestion": {
+    "value": "Yuza?",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yuza?"
+      }
+    ]
+  },
+  "aSolutionColon": {
+    "value": "Yechim",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yechim"
+      }
+    ]
+  },
+  "aSolution": {
+    "value": "Yechim",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yechim"
+      }
+    ]
+  },
+  "buildIt": {
+    "value": "Yasang",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yasang"
+      }
+    ]
+  },
+  "findTheArea": {
+    "value": "Yuzani toping",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yuzani toping"
+      }
+    ]
+  },
+  "solutionColon": {
+    "value": "Yechim",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yechim"
+      }
+    ]
+  },
+  "solution": {
+    "value": "Yechim",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Yechim"
+      }
+    ]
+  },
+  "startOver": {
+    "value": "Boshlamoq",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Boshlamoq"
+      }
+    ]
+  },
+  "yourGoal": {
+    "value": "Maqsadingiz",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Maqsadingiz"
+      }
+    ]
+  },
+  "game": {
+    "value": "O‘yin",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "O'yin"
+      },
+      {
+        "userId": 641649,
+        "timestamp": 1617366918672,
+        "oldValue": "O'yin",
+        "newValue": "O‘yin"
+      }
+    ]
+  },
+  "area-builder.title": {
+    "value": "Yuza yasovchi",
+    "history": [
+      {
+        "userId": 641649,
+        "timestamp": 1615447356458,
+        "oldValue": "",
+        "newValue": "Maydon quruvchi"
+      },
+      {
+        "userId": 641649,
+        "timestamp": 1619701652499,
+        "oldValue": "Maydon quruvchi",
+        "newValue": "Yuza yasovchi"
+      }
+    ]
+  }
+}

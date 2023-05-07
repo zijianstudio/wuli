@@ -1,0 +1,43 @@
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * Generalized support for mutating objects that take ES5 getters/setters, similar to Node.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import phetCore from './phetCore.js';
+
+/**
+ * For example:
+ *
+ * mutate( something, [ 'left', 'right', 'top', 'bottom' ], { top: 0, left: 5 } );
+ *
+ * will be equivalent to:
+ *
+ * something.left = 5;
+ * something.top = 0;
+ *
+ * @param {*} target - The object to mutate
+ * @param {Array.<string>} orderedKeys
+ * @param {Object} [options]
+ *
+ */
+function mutate(target, orderedKeys, options) {
+  assert && assert(target);
+  assert && assert(Array.isArray(orderedKeys));
+  if (!options) {
+    return;
+  }
+  assert && assert(Object.getPrototypeOf(options) === Object.prototype, 'Extra prototype on options object is a code smell');
+  _.each(orderedKeys, key => {
+    // See https://github.com/phetsims/scenery/issues/580 for more about passing undefined.
+    assert && assert(!options.hasOwnProperty(key) || options[key] !== undefined, `Undefined not allowed for key: ${key}`);
+    if (options[key] !== undefined) {
+      target[key] = options[key];
+    }
+  });
+}
+phetCore.register('mutate', mutate);
+export default mutate;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwaGV0Q29yZSIsIm11dGF0ZSIsInRhcmdldCIsIm9yZGVyZWRLZXlzIiwib3B0aW9ucyIsImFzc2VydCIsIkFycmF5IiwiaXNBcnJheSIsIk9iamVjdCIsImdldFByb3RvdHlwZU9mIiwicHJvdG90eXBlIiwiXyIsImVhY2giLCJrZXkiLCJoYXNPd25Qcm9wZXJ0eSIsInVuZGVmaW5lZCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsibXV0YXRlLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBHZW5lcmFsaXplZCBzdXBwb3J0IGZvciBtdXRhdGluZyBvYmplY3RzIHRoYXQgdGFrZSBFUzUgZ2V0dGVycy9zZXR0ZXJzLCBzaW1pbGFyIHRvIE5vZGUuXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9uYXRoYW4gT2xzb24gPGpvbmF0aGFuLm9sc29uQGNvbG9yYWRvLmVkdT5cclxuICovXHJcblxyXG5pbXBvcnQgcGhldENvcmUgZnJvbSAnLi9waGV0Q29yZS5qcyc7XHJcblxyXG4vKipcclxuICogRm9yIGV4YW1wbGU6XHJcbiAqXHJcbiAqIG11dGF0ZSggc29tZXRoaW5nLCBbICdsZWZ0JywgJ3JpZ2h0JywgJ3RvcCcsICdib3R0b20nIF0sIHsgdG9wOiAwLCBsZWZ0OiA1IH0gKTtcclxuICpcclxuICogd2lsbCBiZSBlcXVpdmFsZW50IHRvOlxyXG4gKlxyXG4gKiBzb21ldGhpbmcubGVmdCA9IDU7XHJcbiAqIHNvbWV0aGluZy50b3AgPSAwO1xyXG4gKlxyXG4gKiBAcGFyYW0geyp9IHRhcmdldCAtIFRoZSBvYmplY3QgdG8gbXV0YXRlXHJcbiAqIEBwYXJhbSB7QXJyYXkuPHN0cmluZz59IG9yZGVyZWRLZXlzXHJcbiAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICpcclxuICovXHJcbmZ1bmN0aW9uIG11dGF0ZSggdGFyZ2V0LCBvcmRlcmVkS2V5cywgb3B0aW9ucyApIHtcclxuICBhc3NlcnQgJiYgYXNzZXJ0KCB0YXJnZXQgKTtcclxuICBhc3NlcnQgJiYgYXNzZXJ0KCBBcnJheS5pc0FycmF5KCBvcmRlcmVkS2V5cyApICk7XHJcblxyXG4gIGlmICggIW9wdGlvbnMgKSB7XHJcbiAgICByZXR1cm47XHJcbiAgfVxyXG5cclxuICBhc3NlcnQgJiYgYXNzZXJ0KCBPYmplY3QuZ2V0UHJvdG90eXBlT2YoIG9wdGlvbnMgKSA9PT0gT2JqZWN0LnByb3RvdHlwZSxcclxuICAgICdFeHRyYSBwcm90b3R5cGUgb24gb3B0aW9ucyBvYmplY3QgaXMgYSBjb2RlIHNtZWxsJyApO1xyXG5cclxuICBfLmVhY2goIG9yZGVyZWRLZXlzLCBrZXkgPT4ge1xyXG5cclxuICAgIC8vIFNlZSBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvc2NlbmVyeS9pc3N1ZXMvNTgwIGZvciBtb3JlIGFib3V0IHBhc3NpbmcgdW5kZWZpbmVkLlxyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggIW9wdGlvbnMuaGFzT3duUHJvcGVydHkoIGtleSApIHx8IG9wdGlvbnNbIGtleSBdICE9PSB1bmRlZmluZWQsIGBVbmRlZmluZWQgbm90IGFsbG93ZWQgZm9yIGtleTogJHtrZXl9YCApO1xyXG5cclxuICAgIGlmICggb3B0aW9uc1sga2V5IF0gIT09IHVuZGVmaW5lZCApIHtcclxuICAgICAgdGFyZ2V0WyBrZXkgXSA9IG9wdGlvbnNbIGtleSBdO1xyXG4gICAgfVxyXG4gIH0gKTtcclxufVxyXG5cclxucGhldENvcmUucmVnaXN0ZXIoICdtdXRhdGUnLCBtdXRhdGUgKTtcclxuZXhwb3J0IGRlZmF1bHQgbXV0YXRlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0sZUFBZTs7QUFFcEM7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsU0FBU0MsTUFBTUEsQ0FBRUMsTUFBTSxFQUFFQyxXQUFXLEVBQUVDLE9BQU8sRUFBRztFQUM5Q0MsTUFBTSxJQUFJQSxNQUFNLENBQUVILE1BQU8sQ0FBQztFQUMxQkcsTUFBTSxJQUFJQSxNQUFNLENBQUVDLEtBQUssQ0FBQ0MsT0FBTyxDQUFFSixXQUFZLENBQUUsQ0FBQztFQUVoRCxJQUFLLENBQUNDLE9BQU8sRUFBRztJQUNkO0VBQ0Y7RUFFQUMsTUFBTSxJQUFJQSxNQUFNLENBQUVHLE1BQU0sQ0FBQ0MsY0FBYyxDQUFFTCxPQUFRLENBQUMsS0FBS0ksTUFBTSxDQUFDRSxTQUFTLEVBQ3JFLG1EQUFvRCxDQUFDO0VBRXZEQyxDQUFDLENBQUNDLElBQUksQ0FBRVQsV0FBVyxFQUFFVSxHQUFHLElBQUk7SUFFMUI7SUFDQVIsTUFBTSxJQUFJQSxNQUFNLENBQUUsQ0FBQ0QsT0FBTyxDQUFDVSxjQUFjLENBQUVELEdBQUksQ0FBQyxJQUFJVCxPQUFPLENBQUVTLEdBQUcsQ0FBRSxLQUFLRSxTQUFTLEVBQUcsa0NBQWlDRixHQUFJLEVBQUUsQ0FBQztJQUUzSCxJQUFLVCxPQUFPLENBQUVTLEdBQUcsQ0FBRSxLQUFLRSxTQUFTLEVBQUc7TUFDbENiLE1BQU0sQ0FBRVcsR0FBRyxDQUFFLEdBQUdULE9BQU8sQ0FBRVMsR0FBRyxDQUFFO0lBQ2hDO0VBQ0YsQ0FBRSxDQUFDO0FBQ0w7QUFFQWIsUUFBUSxDQUFDZ0IsUUFBUSxDQUFFLFFBQVEsRUFBRWYsTUFBTyxDQUFDO0FBQ3JDLGVBQWVBLE1BQU0ifQ==

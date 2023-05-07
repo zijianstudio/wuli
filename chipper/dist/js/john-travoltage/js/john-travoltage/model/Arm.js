@@ -1,0 +1,57 @@
+// Copyright 2013-2020, University of Colorado Boulder
+
+/**
+ * Model for John Travoltage's arm, which can rotate about the shoulder.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Vasily Shakhov (Mlearner)
+ */
+
+import Range from '../../../../dot/js/Range.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
+import johnTravoltage from '../../johnTravoltage.js';
+import Appendage from './Appendage.js';
+class Arm extends Appendage {
+  /**
+   * @param {Tandem} tandem
+   */
+  constructor(tandem) {
+    // position determined empirically with DebugUtils
+    const pivotPoint = new Vector2(423.6179673321235, 229.84969476984);
+    super(pivotPoint, tandem, {
+      // with mouse interaction, arm rotates from -pi to pi. With the keyboard, there are specific positions where
+      // '0' is at the doorknob, and so the value goes from -pi + 0.41 to pi + 0.41. So this includes the full
+      // range, see https://github.com/phetsims/john-travoltage/issues/268
+      range: new Range(-Math.PI + 0.41, Math.PI + 0.41)
+      // precision: 7
+    });
+
+    // Exact finger position sampled using DebugUtils.js
+    // var finger = new Vector2( 534.3076703633706, 206.63766358806117 );
+    const finger = new Vector2(534.3076704, 206.6376636);
+
+    // @public (read-only) - vector from pivot point to the finger
+    this.fingerVector = finger.minus(this.position);
+  }
+
+  /**
+   * Reset the arm.
+   * @public
+   */
+  reset() {
+    this.angleProperty.reset();
+    super.reset();
+  }
+
+  /**
+   * Gets the position of the finger with the current appendage rotation.
+   * @returns {Vector2}
+   * @public
+   */
+  getFingerPosition() {
+    return this.fingerVector.rotated(this.angleProperty.get()).plus(this.position);
+  }
+}
+johnTravoltage.register('Arm', Arm);
+export default Arm;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJSYW5nZSIsIlZlY3RvcjIiLCJqb2huVHJhdm9sdGFnZSIsIkFwcGVuZGFnZSIsIkFybSIsImNvbnN0cnVjdG9yIiwidGFuZGVtIiwicGl2b3RQb2ludCIsInJhbmdlIiwiTWF0aCIsIlBJIiwiZmluZ2VyIiwiZmluZ2VyVmVjdG9yIiwibWludXMiLCJwb3NpdGlvbiIsInJlc2V0IiwiYW5nbGVQcm9wZXJ0eSIsImdldEZpbmdlclBvc2l0aW9uIiwicm90YXRlZCIsImdldCIsInBsdXMiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkFybS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxMy0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBNb2RlbCBmb3IgSm9obiBUcmF2b2x0YWdlJ3MgYXJtLCB3aGljaCBjYW4gcm90YXRlIGFib3V0IHRoZSBzaG91bGRlci5cclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICogQGF1dGhvciBWYXNpbHkgU2hha2hvdiAoTWxlYXJuZXIpXHJcbiAqL1xyXG5cclxuaW1wb3J0IFJhbmdlIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9SYW5nZS5qcyc7XHJcbmltcG9ydCBWZWN0b3IyIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9WZWN0b3IyLmpzJztcclxuaW1wb3J0IGpvaG5UcmF2b2x0YWdlIGZyb20gJy4uLy4uL2pvaG5UcmF2b2x0YWdlLmpzJztcclxuaW1wb3J0IEFwcGVuZGFnZSBmcm9tICcuL0FwcGVuZGFnZS5qcyc7XHJcblxyXG5jbGFzcyBBcm0gZXh0ZW5kcyBBcHBlbmRhZ2Uge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge1RhbmRlbX0gdGFuZGVtXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHRhbmRlbSApIHtcclxuXHJcbiAgICAvLyBwb3NpdGlvbiBkZXRlcm1pbmVkIGVtcGlyaWNhbGx5IHdpdGggRGVidWdVdGlsc1xyXG4gICAgY29uc3QgcGl2b3RQb2ludCA9IG5ldyBWZWN0b3IyKCA0MjMuNjE3OTY3MzMyMTIzNSwgMjI5Ljg0OTY5NDc2OTg0ICk7XHJcblxyXG4gICAgc3VwZXIoIHBpdm90UG9pbnQsIHRhbmRlbSwge1xyXG5cclxuICAgICAgLy8gd2l0aCBtb3VzZSBpbnRlcmFjdGlvbiwgYXJtIHJvdGF0ZXMgZnJvbSAtcGkgdG8gcGkuIFdpdGggdGhlIGtleWJvYXJkLCB0aGVyZSBhcmUgc3BlY2lmaWMgcG9zaXRpb25zIHdoZXJlXHJcbiAgICAgIC8vICcwJyBpcyBhdCB0aGUgZG9vcmtub2IsIGFuZCBzbyB0aGUgdmFsdWUgZ29lcyBmcm9tIC1waSArIDAuNDEgdG8gcGkgKyAwLjQxLiBTbyB0aGlzIGluY2x1ZGVzIHRoZSBmdWxsXHJcbiAgICAgIC8vIHJhbmdlLCBzZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2pvaG4tdHJhdm9sdGFnZS9pc3N1ZXMvMjY4XHJcbiAgICAgIHJhbmdlOiBuZXcgUmFuZ2UoIC1NYXRoLlBJICsgMC40MSwgTWF0aC5QSSArIDAuNDEgKVxyXG4gICAgICAvLyBwcmVjaXNpb246IDdcclxuICAgIH0gKTtcclxuXHJcbiAgICAvLyBFeGFjdCBmaW5nZXIgcG9zaXRpb24gc2FtcGxlZCB1c2luZyBEZWJ1Z1V0aWxzLmpzXHJcbiAgICAvLyB2YXIgZmluZ2VyID0gbmV3IFZlY3RvcjIoIDUzNC4zMDc2NzAzNjMzNzA2LCAyMDYuNjM3NjYzNTg4MDYxMTcgKTtcclxuICAgIGNvbnN0IGZpbmdlciA9IG5ldyBWZWN0b3IyKCA1MzQuMzA3NjcwNCwgMjA2LjYzNzY2MzYgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIChyZWFkLW9ubHkpIC0gdmVjdG9yIGZyb20gcGl2b3QgcG9pbnQgdG8gdGhlIGZpbmdlclxyXG4gICAgdGhpcy5maW5nZXJWZWN0b3IgPSBmaW5nZXIubWludXMoIHRoaXMucG9zaXRpb24gKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFJlc2V0IHRoZSBhcm0uXHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIHJlc2V0KCkge1xyXG4gICAgdGhpcy5hbmdsZVByb3BlcnR5LnJlc2V0KCk7XHJcbiAgICBzdXBlci5yZXNldCgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0cyB0aGUgcG9zaXRpb24gb2YgdGhlIGZpbmdlciB3aXRoIHRoZSBjdXJyZW50IGFwcGVuZGFnZSByb3RhdGlvbi5cclxuICAgKiBAcmV0dXJucyB7VmVjdG9yMn1cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0RmluZ2VyUG9zaXRpb24oKSB7XHJcbiAgICByZXR1cm4gdGhpcy5maW5nZXJWZWN0b3Iucm90YXRlZCggdGhpcy5hbmdsZVByb3BlcnR5LmdldCgpICkucGx1cyggdGhpcy5wb3NpdGlvbiApO1xyXG4gIH1cclxufVxyXG5cclxuam9oblRyYXZvbHRhZ2UucmVnaXN0ZXIoICdBcm0nLCBBcm0gKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEFybTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxLQUFLLE1BQU0sNkJBQTZCO0FBQy9DLE9BQU9DLE9BQU8sTUFBTSwrQkFBK0I7QUFDbkQsT0FBT0MsY0FBYyxNQUFNLHlCQUF5QjtBQUNwRCxPQUFPQyxTQUFTLE1BQU0sZ0JBQWdCO0FBRXRDLE1BQU1DLEdBQUcsU0FBU0QsU0FBUyxDQUFDO0VBRTFCO0FBQ0Y7QUFDQTtFQUNFRSxXQUFXQSxDQUFFQyxNQUFNLEVBQUc7SUFFcEI7SUFDQSxNQUFNQyxVQUFVLEdBQUcsSUFBSU4sT0FBTyxDQUFFLGlCQUFpQixFQUFFLGVBQWdCLENBQUM7SUFFcEUsS0FBSyxDQUFFTSxVQUFVLEVBQUVELE1BQU0sRUFBRTtNQUV6QjtNQUNBO01BQ0E7TUFDQUUsS0FBSyxFQUFFLElBQUlSLEtBQUssQ0FBRSxDQUFDUyxJQUFJLENBQUNDLEVBQUUsR0FBRyxJQUFJLEVBQUVELElBQUksQ0FBQ0MsRUFBRSxHQUFHLElBQUs7TUFDbEQ7SUFDRixDQUFFLENBQUM7O0lBRUg7SUFDQTtJQUNBLE1BQU1DLE1BQU0sR0FBRyxJQUFJVixPQUFPLENBQUUsV0FBVyxFQUFFLFdBQVksQ0FBQzs7SUFFdEQ7SUFDQSxJQUFJLENBQUNXLFlBQVksR0FBR0QsTUFBTSxDQUFDRSxLQUFLLENBQUUsSUFBSSxDQUFDQyxRQUFTLENBQUM7RUFDbkQ7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUMsS0FBS0EsQ0FBQSxFQUFHO0lBQ04sSUFBSSxDQUFDQyxhQUFhLENBQUNELEtBQUssQ0FBQyxDQUFDO0lBQzFCLEtBQUssQ0FBQ0EsS0FBSyxDQUFDLENBQUM7RUFDZjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0VBQ0VFLGlCQUFpQkEsQ0FBQSxFQUFHO0lBQ2xCLE9BQU8sSUFBSSxDQUFDTCxZQUFZLENBQUNNLE9BQU8sQ0FBRSxJQUFJLENBQUNGLGFBQWEsQ0FBQ0csR0FBRyxDQUFDLENBQUUsQ0FBQyxDQUFDQyxJQUFJLENBQUUsSUFBSSxDQUFDTixRQUFTLENBQUM7RUFDcEY7QUFDRjtBQUVBWixjQUFjLENBQUNtQixRQUFRLENBQUUsS0FBSyxFQUFFakIsR0FBSSxDQUFDO0FBRXJDLGVBQWVBLEdBQUcifQ==

@@ -1,0 +1,27 @@
+// Copyright 2016-2023, University of Colorado Boulder
+
+/**
+ * Node that displays the fontawesome 'eye_close' icon.
+ * Wrapper around Font Awesome to guard against changes that were made in
+ * https://github.com/phetsims/function-builder/issues/102
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import { Path } from '../../../../scenery/js/imports.js';
+import eyeSlashSolidShape from '../../../../sherpa/js/fontawesome-5/eyeSlashSolidShape.js';
+import functionBuilder from '../../functionBuilder.js';
+export default class EyeCloseNode extends Path {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = merge({
+      fill: 'black'
+    }, options);
+    super(eyeSlashSolidShape, options);
+  }
+}
+functionBuilder.register('EyeCloseNode', EyeCloseNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIlBhdGgiLCJleWVTbGFzaFNvbGlkU2hhcGUiLCJmdW5jdGlvbkJ1aWxkZXIiLCJFeWVDbG9zZU5vZGUiLCJjb25zdHJ1Y3RvciIsIm9wdGlvbnMiLCJmaWxsIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJFeWVDbG9zZU5vZGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTYtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTm9kZSB0aGF0IGRpc3BsYXlzIHRoZSBmb250YXdlc29tZSAnZXllX2Nsb3NlJyBpY29uLlxyXG4gKiBXcmFwcGVyIGFyb3VuZCBGb250IEF3ZXNvbWUgdG8gZ3VhcmQgYWdhaW5zdCBjaGFuZ2VzIHRoYXQgd2VyZSBtYWRlIGluXHJcbiAqIGh0dHBzOi8vZ2l0aHViLmNvbS9waGV0c2ltcy9mdW5jdGlvbi1idWlsZGVyL2lzc3Vlcy8xMDJcclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5pbXBvcnQgbWVyZ2UgZnJvbSAnLi4vLi4vLi4vLi4vcGhldC1jb3JlL2pzL21lcmdlLmpzJztcclxuaW1wb3J0IHsgUGF0aCB9IGZyb20gJy4uLy4uLy4uLy4uL3NjZW5lcnkvanMvaW1wb3J0cy5qcyc7XHJcbmltcG9ydCBleWVTbGFzaFNvbGlkU2hhcGUgZnJvbSAnLi4vLi4vLi4vLi4vc2hlcnBhL2pzL2ZvbnRhd2Vzb21lLTUvZXllU2xhc2hTb2xpZFNoYXBlLmpzJztcclxuaW1wb3J0IGZ1bmN0aW9uQnVpbGRlciBmcm9tICcuLi8uLi9mdW5jdGlvbkJ1aWxkZXIuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgRXllQ2xvc2VOb2RlIGV4dGVuZHMgUGF0aCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3Rvciggb3B0aW9ucyApIHtcclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICBmaWxsOiAnYmxhY2snXHJcbiAgICB9LCBvcHRpb25zICk7XHJcbiAgICBzdXBlciggZXllU2xhc2hTb2xpZFNoYXBlLCBvcHRpb25zICk7XHJcbiAgfVxyXG59XHJcblxyXG5mdW5jdGlvbkJ1aWxkZXIucmVnaXN0ZXIoICdFeWVDbG9zZU5vZGUnLCBFeWVDbG9zZU5vZGUgKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsU0FBU0MsSUFBSSxRQUFRLG1DQUFtQztBQUN4RCxPQUFPQyxrQkFBa0IsTUFBTSwyREFBMkQ7QUFDMUYsT0FBT0MsZUFBZSxNQUFNLDBCQUEwQjtBQUV0RCxlQUFlLE1BQU1DLFlBQVksU0FBU0gsSUFBSSxDQUFDO0VBRTdDO0FBQ0Y7QUFDQTtFQUNFSSxXQUFXQSxDQUFFQyxPQUFPLEVBQUc7SUFDckJBLE9BQU8sR0FBR04sS0FBSyxDQUFFO01BQ2ZPLElBQUksRUFBRTtJQUNSLENBQUMsRUFBRUQsT0FBUSxDQUFDO0lBQ1osS0FBSyxDQUFFSixrQkFBa0IsRUFBRUksT0FBUSxDQUFDO0VBQ3RDO0FBQ0Y7QUFFQUgsZUFBZSxDQUFDSyxRQUFRLENBQUUsY0FBYyxFQUFFSixZQUFhLENBQUMifQ==

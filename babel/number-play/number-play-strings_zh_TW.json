@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "遊戲",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "遊戲"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "10以內的數",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "10以內的數"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "20以內的數",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "20以內的數"
+      }
+    ]
+  },
+  "ones": {
+    "value": "用 1 表示",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "用 1 表示"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "數框",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "數框"
+      }
+    ]
+  },
+  "word": {
+    "value": "單字",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "單字"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "單字（{{language}}）",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "單字（{{language}}）"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "選擇一個遊戲！",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "選擇一個遊戲！"
+      }
+    ]
+  },
+  "games": {
+    "value": "遊戲",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "遊戲"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Number Play_認識數目",
+    "history": [
+      {
+        "userId": 184096,
+        "timestamp": 1651498554353,
+        "oldValue": "",
+        "newValue": "Number Play_認識數目"
+      }
+    ]
+  }
+}

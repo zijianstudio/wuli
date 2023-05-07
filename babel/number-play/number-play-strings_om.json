@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Tapha",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Tapha"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Kudhan",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Kudhan"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Diigdama",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Diigdama"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Tokkee",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Tokkee"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Fireemi Kudhan ",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Fireemi Kudhan "
+      }
+    ]
+  },
+  "word": {
+    "value": "Jecha",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Jecha"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Jecha ({{language}})",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Jecha ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Tapha Keessan Filadhaa!",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Tapha Keessan Filadhaa!"
+      }
+    ]
+  },
+  "games": {
+    "value": "Taphoota",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Taphoota"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Tapha Lakkoofsaa",
+    "history": [
+      {
+        "userId": 164117,
+        "timestamp": 1668436999805,
+        "oldValue": "",
+        "newValue": "Tapha Lakkoofsaa"
+      }
+    ]
+  }
+}

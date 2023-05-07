@@ -1,0 +1,823 @@
+{
+  "menuItem.about": {
+    "value": "Tentang simulasi",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tentang Simulasi",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Tentang Simulasi",
+        "newValue": "Tentang simulasi"
+      }
+    ]
+  },
+  "preferences.tabs.visual.interactiveHighlightsDescription": {
+    "value": "Tambah sorotan visual untuk tetikus dan sentuh semasa anda berinteraksi.",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Tambah sorotan visual untuk tetikus dan sentuh semasa anda bermain."
+      },
+      {
+        "userId": 964085,
+        "timestamp": 1664171438008,
+        "oldValue": "Tambah sorotan visual untuk tetikus dan sentuh semasa anda bermain.",
+        "newValue": "Tambah sorotan visual untuk tetikus dan sentuh semasa anda berinteraksi."
+      }
+    ]
+  },
+  "preferences.tabs.audio.title": {
+    "value": "Audio",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Audio"
+      }
+    ]
+  },
+  "preferences.tabs.audio.audioFeatures.title": {
+    "value": "Ciri Audio",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Ciri Audio"
+      }
+    ]
+  },
+  "menuItem.getUpdate": {
+    "value": "Semak kemas kini...",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Semak kemas kini...",
+        "explanation": null
+      }
+    ]
+  },
+  "updates.checking": {
+    "value": "Sedang menyemak kemas kini...",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Sedang menyemak kemas kini...",
+        "explanation": null
+      }
+    ]
+  },
+  "credits.contributors": {
+    "value": "Penyumbang: {0}",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "",
+        "newValue": "Penyumbang: {0}"
+      }
+    ]
+  },
+  "credits.title": {
+    "value": "Penghargaan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Hak Cipta",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Hak Cipta",
+        "newValue": "Penghargaan"
+      }
+    ]
+  },
+  "menuItem.enhancedSound": {
+    "value": "Bunyi Dipertingkat",
+    "history": [
+      {
+        "userId": 1050674,
+        "timestamp": 1650072540152,
+        "oldValue": "",
+        "newValue": "Bunyi Dipertingkat"
+      }
+    ]
+  },
+  "preferences.tabs.audio.sounds.extraSounds.title": {
+    "value": "Bunyi Dipertingkat",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Bunyi Dipertingkat"
+      }
+    ]
+  },
+  "menuItem.fullscreen": {
+    "value": "Layar Penuh",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Layar Penuh",
+        "explanation": null
+      }
+    ]
+  },
+  "preferences.tabs.general.title": {
+    "value": "Umum",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Umum"
+      }
+    ]
+  },
+  "updates.getUpdate": {
+    "value": "Dapatkan kemas kini...",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Dapatkan Kemas Kini",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Dapatkan Kemas Kini",
+        "newValue": "Dapatkan kemas kini..."
+      }
+    ]
+  },
+  "credits.graphicArts": {
+    "value": "Seni Grafik: {0}",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623232361627,
+        "oldValue": "",
+        "newValue": "Seni Grafik: {0}"
+      }
+    ]
+  },
+  "preferences.tabs.input.title": {
+    "value": "Input",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664171438008,
+        "oldValue": "",
+        "newValue": "Input"
+      }
+    ]
+  },
+  "preferences.tabs.visual.interactiveHighlights": {
+    "value": "Sorotan Interaktif",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Sorotan Interaktif"
+      }
+    ]
+  },
+  "ieErrorPage.ieIsNotSupported": {
+    "value": "Tidak disokong Internet Explorer",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "",
+        "newValue": "Pelayar tidak disokong"
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664199410839,
+        "oldValue": "Pelayar tidak disokong",
+        "newValue": "Tidak disokong Internet Explorer"
+      }
+    ]
+  },
+  "queryParametersWarningDialog.invalidQueryParameters": {
+    "value": "Parameter Adalah Tidak Sah",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "",
+        "newValue": "Parameter Adalah Tidak Sah"
+      }
+    ]
+  },
+  "keyboardShortcuts.title": {
+    "value": "Pintasan Papan Kekunci",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623563824114,
+        "oldValue": "",
+        "newValue": "Pintasan papan kekunci"
+      },
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "Pintasan papan kekunci",
+        "newValue": "Pintasan Papan Kekunci"
+      }
+    ]
+  },
+  "credits.leadDesign": {
+    "value": "Ketua Rekaan: {0}",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1474732029819,
+        "oldValue": "",
+        "newValue": "Ketua Reka Bentuk: {0}",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Ketua Reka Bentuk: {0}",
+        "newValue": "Ketua Rekaan: {0}"
+      }
+    ]
+  },
+  "updates.outOfDate": {
+    "value": "Dapatkan versi baru",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Ada Versi Terkini",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Ada Versi Terkini",
+        "newValue": "Dapatkan versi baru"
+      }
+    ]
+  },
+  "updates.noThanks": {
+    "value": "Tidak, Terima Kasih",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tidak, Terima Kasih",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Tidak, Terima Kasih",
+        "newValue": "Tidak mengapa"
+      },
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "Tidak mengapa",
+        "newValue": "Tidak Mengapa"
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664119541113,
+        "oldValue": "Tidak Mengapa",
+        "newValue": "Tidak, Terima Kasih"
+      },
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "Tidak, Terima Kasih",
+        "newValue": "Tidak Mengapa"
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664199410839,
+        "oldValue": "Tidak Mengapa",
+        "newValue": "Tidak, Terima Kasih"
+      }
+    ]
+  },
+  "queryParametersWarningDialog.oneOrMoreQueryParameters": {
+    "value": "Satu atau lebih parameter mempunyai <br> nilai yang tidak sah",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "",
+        "newValue": "Satu atau lebih parameter mempunyai <br> nilai yang tidak sah"
+      }
+    ]
+  },
+  "options.title": {
+    "value": "Pilihan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Pilihan",
+        "explanation": null
+      }
+    ]
+  },
+  "menuItem.options": {
+    "value": "Pilihan...",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Pilihan...",
+        "explanation": null
+      }
+    ]
+  },
+  "menuItem.phetWebsite": {
+    "value": "Laman Web PhET",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Laman Web PhET",
+        "explanation": null
+      }
+    ]
+  },
+  "ieErrorPage.platformError": {
+    "value": "Ralat Platform",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "",
+        "newValue": "Ralat Platform"
+      }
+    ]
+  },
+  "preferences.tabs.audio.sounds.extraSounds.description": {
+    "value": "\tMainkan bunyi tambahan yang mungkin berguna untuk sesetengah pelajar.",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "\tMainkan bunyi tambahan yang mungkin berguna untuk sesetengah pelajar."
+      }
+    ]
+  },
+  "preferences.tabs.audio.sounds.description": {
+    "value": "Mainkan sonifikasi dan kesan bunyi semasa anda berinteraksi.",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Mainkan sonifikasi dan kesan bunyi semasa anda berinteraksi."
+      }
+    ]
+  },
+  "ieErrorPage.useDifferentBrowser": {
+    "value": "Sila gunakan pelayar yang lain untuk mulakan simulasi.",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "",
+        "newValue": "Sila gunakan pelayar yang lain untuk mulakan simulasi"
+      },
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "Sila gunakan pelayar yang lain untuk mulakan simulasi",
+        "newValue": "Sila gunakan pelayar yang lain untuk mulakan simulasi."
+      }
+    ]
+  },
+  "preferences.title": {
+    "value": "Keutamaan",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Keutamaan"
+      }
+    ]
+  },
+  "credits.qualityAssurance": {
+    "value": "Jaminan Kualiti: {0}",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623232361627,
+        "oldValue": "",
+        "newValue": "Jaminan Kualiti: {0}"
+      }
+    ]
+  },
+  "menuItem.reportAProblem": {
+    "value": "Laporkan Masalah...",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Lapor Masalah",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Lapor Masalah",
+        "newValue": "Laporkan Masalah..."
+      }
+    ]
+  },
+  "menuItem.screenshot": {
+    "value": "Tangkap Layar",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tangkap Layar",
+        "explanation": null
+      }
+    ]
+  },
+  "credits.softwareDevelopment": {
+    "value": "Pembangunan Aplikasi: {0}",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473838915121,
+        "oldValue": "",
+        "newValue": "Pembangunan Aplikasi: {0}",
+        "explanation": null
+      }
+    ]
+  },
+  "credits.soundDesign": {
+    "value": "Rekabentuk bunyi: {0}",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664100128541,
+        "oldValue": "",
+        "newValue": "Rekabentuk bunyi: {0}"
+      }
+    ]
+  },
+  "preferences.tabs.audio.sounds.title": {
+    "value": "Bunyi",
+    "history": [
+      {
+        "userId": 981130,
+        "timestamp": 1643005593924,
+        "oldValue": "",
+        "newValue": "Bunyi"
+      }
+    ]
+  },
+  "credits.team": {
+    "value": "Ahli Kumpulan:{0}",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tim:{0}",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Tim:{0}",
+        "newValue": "Ahli Kumpulan:{0}"
+      }
+    ]
+  },
+  "termsPrivacyAndLicensing": {
+    "value": "Terma, Privasi & Pelesenan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Terma, Privasi & Pelesenan",
+        "explanation": null
+      }
+    ]
+  },
+  "credits.thanks": {
+    "value": "Terima Kasih",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Terima Kasih",
+        "explanation": null
+      }
+    ]
+  },
+  "queryParametersWarningDialog.theSimulationWillStart": {
+    "value": "Simulasi dimulakan dengan nilai tetap<br>bagi parameter yang diberi.",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623834898806,
+        "oldValue": "",
+        "newValue": "Simulasi dimulakan dengan nilai tetap<br>bagi parameter yang diberi."
+      }
+    ]
+  },
+  "updates.newVersionAvailable": {
+    "value": "Terdapat versi baru: {0}",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473838915121,
+        "oldValue": "",
+        "newValue": "Tiada versi terbaru: {0}",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Tiada versi terbaru: {0}",
+        "newValue": "Terdapat versi baru: {0}"
+      }
+    ]
+  },
+  "thirdParty.credits.link": {
+    "value": "Hak Cipta Pihak Ketiga",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Hak Cipta Pihak Ketiga",
+        "explanation": null
+      }
+    ]
+  },
+  "updates.upToDate": {
+    "value": "Simulasi ini sudah dikemas kini.",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Simulasi ini sudah dikemas kini",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1623230863692,
+        "oldValue": "Simulasi ini sudah dikemas kini",
+        "newValue": "Simulasi ini sudah dikemas kini."
+      }
+    ]
+  },
+  "preferences.tabs.general.moreAccessibility": {
+    "value": "Untuk mencari simulasi lain termasuk ciri - cirinya, cari Akses dan Kemasukan pada halaman penapis simulasi dan tapis mengikut ciri-cirinya.",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557281,
+        "oldValue": "",
+        "newValue": "Untuk mencari simulasi lain termasuk ciri - cirinya, cari Akses dan Kemasukan pada halaman penapis simulasi dan tapis mengikut ciri - cirinya."
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664211732338,
+        "oldValue": "Untuk mencari simulasi lain termasuk ciri - cirinya, cari Akses dan Kemasukan pada halaman penapis simulasi dan tapis mengikut ciri - cirinya.",
+        "newValue": "Untuk mencari simulasi lain termasuk ciri - cirinya, cari Akses dan Kemasukan pada halaman penapis simulasi dan tapis mengikut ciri-cirinya."
+      }
+    ]
+  },
+  "keyboardShortcuts.toGetStarted": {
+    "value": "untuk mula",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623905556076,
+        "oldValue": "",
+        "newValue": "untuk mula"
+      }
+    ]
+  },
+  "translation.credits.link": {
+    "value": "Hak Cipta Terjemahan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Hak Cipta Terjemahan",
+        "explanation": null
+      }
+    ]
+  },
+  "updates.offline": {
+    "value": "Tidak boleh menyemak kemas kini.",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tidak boleh menyemak kemas kini.",
+        "explanation": null
+      }
+    ]
+  },
+  "versionPattern": {
+    "value": "versi {0}",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Versi {0}",
+        "explanation": null
+      },
+      {
+        "userId": 951608,
+        "timestamp": 1624012826823,
+        "oldValue": "Versi {0}",
+        "newValue": "versi {0}"
+      }
+    ]
+  },
+  "preferences.tabs.visual.title": {
+    "value": "Visual",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557282,
+        "oldValue": "",
+        "newValue": "Visual"
+      }
+    ]
+  },
+  "preferences.tabs.general.accessibilityIntro": {
+    "value": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk semak semula atau ubah tetapan a",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664162557282,
+        "oldValue": "",
+        "newValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk menyemak semula atau mengubah te"
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664214224023,
+        "oldValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk menyemak semula atau mengubah te",
+        "newValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk menyemak semula atau mengubah tetapan asal pembentangan."
+      },
+      {
+        "userId": 964085,
+        "timestamp": 1664679528138,
+        "oldValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk menyemak semula atau mengubah tetapan asal pembentangan.",
+        "newValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Teroka menu ini untuk menyemak semula atau mengubah tetapan asal. "
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664781678352,
+        "oldValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Teroka menu ini untuk menyemak semula atau mengubah tetapan asal. ",
+        "newValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk menyemak semula atau mengubah te"
+      },
+      {
+        "userId": 275815,
+        "timestamp": 1664871763541,
+        "oldValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk menyemak semula atau mengubah te",
+        "newValue": "\tKami menambah ciri-ciri kepada simulasi kami untuk menjadikannya lebih inklusif. Beberapa ciri ini menyokong kebolehcapaian untuk pelajar dengan pelbagai keperluan dan dalam persekitaran yang pelbagai. Kaji menu ini untuk semak semula atau ubah tetapan a"
+      }
+    ]
+  },
+  "updates.yourCurrentVersion": {
+    "value": "Versi terkini anda ialah: {0}",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Versi terkini anda ialah: {0}",
+        "explanation": null
+      }
+    ]
+  },
+  "simTitleWithScreenNamePattern": {
+    "value": "{{simName}} — {{screenName}}",
+    "history": [
+      {
+        "userId": 964085,
+        "timestamp": 1664164615018,
+        "oldValue": "",
+        "newValue": "{{simName}} — {{screenName}}"
+      }
+    ]
+  },
+  "credits.translation": {
+    "value": "Terjemahan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Terjemahan",
+        "explanation": null
+      }
+    ]
+  },
+  "done": {
+    "value": "Selesai",
+    "history": [
+      {
+        "userId": 951608,
+        "timestamp": 1623250688207,
+        "oldValue": "",
+        "newValue": "Selesai"
+      }
+    ]
+  },
+  "title.settings": {
+    "value": "Tetapan",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tetapan",
+        "explanation": null
+      }
+    ]
+  },
+  "showPointers": {
+    "value": "Tunjukkan Petunjuk",
+    "history": [
+      {
+        "userId": 275815,
+        "timestamp": 1664119541113,
+        "oldValue": "",
+        "newValue": "Tunjukkan Petunjuk"
+      }
+    ]
+  },
+  "projectorMode": {
+    "value": "Mod Projektor",
+    "history": [
+      {
+        "userId": 1050674,
+        "timestamp": 1650072540152,
+        "oldValue": "",
+        "newValue": "Mod Projektor"
+      }
+    ]
+  },
+  "menuItem.settings": {
+    "value": "Tetapan...",
+    "history": [
+      {
+        "userId": 158829,
+        "timestamp": 1473833963061,
+        "oldValue": "",
+        "newValue": "Tetapan...",
+        "explanation": null
+      }
+    ]
+  }
+}

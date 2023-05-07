@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Spiel",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268902,
+        "oldValue": "",
+        "newValue": "Spiel"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Zehn",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268902,
+        "oldValue": "",
+        "newValue": "Zehn"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Zwanzig",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268902,
+        "oldValue": "",
+        "newValue": "Zwanzig"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Einer",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268902,
+        "oldValue": "",
+        "newValue": "Einer"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Zehner-Rahmen",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268902,
+        "oldValue": "",
+        "newValue": "Zehner-Rahmen"
+      }
+    ]
+  },
+  "word": {
+    "value": "Wort",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "Wort"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Wort ({{language}})",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "Wort ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Wähle dein Spiel.",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "Wähle dein Spiel."
+      }
+    ]
+  },
+  "games": {
+    "value": "Spiele",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "Spiele"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Zahlenspiel",
+    "history": [
+      {
+        "userId": 920037,
+        "timestamp": 1651578268903,
+        "oldValue": "",
+        "newValue": "Zahlenspiel"
+      }
+    ]
+  }
+}

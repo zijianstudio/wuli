@@ -1,0 +1,25 @@
+// Copyright 2017-2021, University of Colorado Boulder
+
+/**
+ * A connection with a switch
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import capacitorLabBasics from '../../capacitorLabBasics.js';
+class Connection {
+  /**
+   * @param {Vector3} position
+   * @param {CircuitState} type
+   */
+  constructor(position, type) {
+    // @public {Vector3}
+    this.position = position;
+
+    // @public {CircuitState}
+    this.type = type;
+  }
+}
+capacitorLabBasics.register('Connection', Connection);
+export default Connection;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjYXBhY2l0b3JMYWJCYXNpY3MiLCJDb25uZWN0aW9uIiwiY29uc3RydWN0b3IiLCJwb3NpdGlvbiIsInR5cGUiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkNvbm5lY3Rpb24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMSwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSBjb25uZWN0aW9uIHdpdGggYSBzd2l0Y2hcclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCBjYXBhY2l0b3JMYWJCYXNpY3MgZnJvbSAnLi4vLi4vY2FwYWNpdG9yTGFiQmFzaWNzLmpzJztcclxuXHJcbmNsYXNzIENvbm5lY3Rpb24ge1xyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7VmVjdG9yM30gcG9zaXRpb25cclxuICAgKiBAcGFyYW0ge0NpcmN1aXRTdGF0ZX0gdHlwZVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBwb3NpdGlvbiwgdHlwZSApIHtcclxuICAgIC8vIEBwdWJsaWMge1ZlY3RvcjN9XHJcbiAgICB0aGlzLnBvc2l0aW9uID0gcG9zaXRpb247XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7Q2lyY3VpdFN0YXRlfVxyXG4gICAgdGhpcy50eXBlID0gdHlwZTtcclxuICB9XHJcbn1cclxuXHJcbmNhcGFjaXRvckxhYkJhc2ljcy5yZWdpc3RlciggJ0Nvbm5lY3Rpb24nLCBDb25uZWN0aW9uICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBDb25uZWN0aW9uO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0Esa0JBQWtCLE1BQU0sNkJBQTZCO0FBRTVELE1BQU1DLFVBQVUsQ0FBQztFQUNmO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFFBQVEsRUFBRUMsSUFBSSxFQUFHO0lBQzVCO0lBQ0EsSUFBSSxDQUFDRCxRQUFRLEdBQUdBLFFBQVE7O0lBRXhCO0lBQ0EsSUFBSSxDQUFDQyxJQUFJLEdBQUdBLElBQUk7RUFDbEI7QUFDRjtBQUVBSixrQkFBa0IsQ0FBQ0ssUUFBUSxDQUFFLFlBQVksRUFBRUosVUFBVyxDQUFDO0FBRXZELGVBQWVBLFVBQVUifQ==

@@ -1,0 +1,28 @@
+// Copyright 2017-2020, University of Colorado Boulder
+
+/**
+ * Responsible for the creation of the arrowNodes associated with the masses and visibility panels.
+ *
+ * @author Denzell Barnett (PhET Interactive Simulations)
+ */
+
+import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
+import massesAndSprings from '../../massesAndSprings.js';
+class VectorArrow extends ArrowNode {
+  /**
+   * @param {Color} color
+   */
+  constructor(color) {
+    super(10, 0, 34, 0, {
+      fill: color,
+      stroke: 'black',
+      centerY: 0,
+      tailWidth: 8,
+      headWidth: 14,
+      pickable: false
+    });
+  }
+}
+massesAndSprings.register('VectorArrow', VectorArrow);
+export default VectorArrow;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJBcnJvd05vZGUiLCJtYXNzZXNBbmRTcHJpbmdzIiwiVmVjdG9yQXJyb3ciLCJjb25zdHJ1Y3RvciIsImNvbG9yIiwiZmlsbCIsInN0cm9rZSIsImNlbnRlclkiLCJ0YWlsV2lkdGgiLCJoZWFkV2lkdGgiLCJwaWNrYWJsZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiVmVjdG9yQXJyb3cuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTctMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogUmVzcG9uc2libGUgZm9yIHRoZSBjcmVhdGlvbiBvZiB0aGUgYXJyb3dOb2RlcyBhc3NvY2lhdGVkIHdpdGggdGhlIG1hc3NlcyBhbmQgdmlzaWJpbGl0eSBwYW5lbHMuXHJcbiAqXHJcbiAqIEBhdXRob3IgRGVuemVsbCBCYXJuZXR0IChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCBBcnJvd05vZGUgZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS1waGV0L2pzL0Fycm93Tm9kZS5qcyc7XHJcbmltcG9ydCBtYXNzZXNBbmRTcHJpbmdzIGZyb20gJy4uLy4uL21hc3Nlc0FuZFNwcmluZ3MuanMnO1xyXG5cclxuY2xhc3MgVmVjdG9yQXJyb3cgZXh0ZW5kcyBBcnJvd05vZGUge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge0NvbG9yfSBjb2xvclxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBjb2xvciApIHtcclxuICAgIHN1cGVyKCAxMCwgMCwgMzQsIDAsIHtcclxuICAgICAgZmlsbDogY29sb3IsXHJcbiAgICAgIHN0cm9rZTogJ2JsYWNrJyxcclxuICAgICAgY2VudGVyWTogMCxcclxuICAgICAgdGFpbFdpZHRoOiA4LFxyXG4gICAgICBoZWFkV2lkdGg6IDE0LFxyXG4gICAgICBwaWNrYWJsZTogZmFsc2VcclxuICAgIH0gKTtcclxuICB9XHJcbn1cclxuXHJcbm1hc3Nlc0FuZFNwcmluZ3MucmVnaXN0ZXIoICdWZWN0b3JBcnJvdycsIFZlY3RvckFycm93ICk7XHJcbmV4cG9ydCBkZWZhdWx0IFZlY3RvckFycm93OyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxTQUFTLE1BQU0sMENBQTBDO0FBQ2hFLE9BQU9DLGdCQUFnQixNQUFNLDJCQUEyQjtBQUV4RCxNQUFNQyxXQUFXLFNBQVNGLFNBQVMsQ0FBQztFQUVsQztBQUNGO0FBQ0E7RUFDRUcsV0FBV0EsQ0FBRUMsS0FBSyxFQUFHO0lBQ25CLEtBQUssQ0FBRSxFQUFFLEVBQUUsQ0FBQyxFQUFFLEVBQUUsRUFBRSxDQUFDLEVBQUU7TUFDbkJDLElBQUksRUFBRUQsS0FBSztNQUNYRSxNQUFNLEVBQUUsT0FBTztNQUNmQyxPQUFPLEVBQUUsQ0FBQztNQUNWQyxTQUFTLEVBQUUsQ0FBQztNQUNaQyxTQUFTLEVBQUUsRUFBRTtNQUNiQyxRQUFRLEVBQUU7SUFDWixDQUFFLENBQUM7RUFDTDtBQUNGO0FBRUFULGdCQUFnQixDQUFDVSxRQUFRLENBQUUsYUFBYSxFQUFFVCxXQUFZLENBQUM7QUFDdkQsZUFBZUEsV0FBVyJ9

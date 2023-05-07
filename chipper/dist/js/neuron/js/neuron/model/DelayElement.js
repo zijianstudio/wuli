@@ -1,0 +1,31 @@
+// Copyright 2014-2020, University of Colorado Boulder
+/**
+ * DelayElements are used as the individual entries in a DelayBuffer.  Each delay element consists of a value and a time
+ * difference, generally from the time of the previous entry.
+ *
+ * @author John Blanco
+ * @author Sharfudeen Ashraf (for Ghent University)
+ */
+
+import neuron from '../../neuron.js';
+class DelayElement {
+  /**
+   * @param {number} value
+   * @param {number} deltaTime
+   */
+  constructor(value, deltaTime) {
+    value = value || 0;
+    deltaTime = deltaTime || 0;
+    this.value = value;
+    this.deltaTime = deltaTime;
+  }
+
+  // @public
+  setValueAndTime(value, deltaTime) {
+    this.value = value;
+    this.deltaTime = deltaTime;
+  }
+}
+neuron.register('DelayElement', DelayElement);
+export default DelayElement;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJuZXVyb24iLCJEZWxheUVsZW1lbnQiLCJjb25zdHJ1Y3RvciIsInZhbHVlIiwiZGVsdGFUaW1lIiwic2V0VmFsdWVBbmRUaW1lIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJEZWxheUVsZW1lbnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcbi8qKlxyXG4gKiBEZWxheUVsZW1lbnRzIGFyZSB1c2VkIGFzIHRoZSBpbmRpdmlkdWFsIGVudHJpZXMgaW4gYSBEZWxheUJ1ZmZlci4gIEVhY2ggZGVsYXkgZWxlbWVudCBjb25zaXN0cyBvZiBhIHZhbHVlIGFuZCBhIHRpbWVcclxuICogZGlmZmVyZW5jZSwgZ2VuZXJhbGx5IGZyb20gdGhlIHRpbWUgb2YgdGhlIHByZXZpb3VzIGVudHJ5LlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvaG4gQmxhbmNvXHJcbiAqIEBhdXRob3IgU2hhcmZ1ZGVlbiBBc2hyYWYgKGZvciBHaGVudCBVbml2ZXJzaXR5KVxyXG4gKi9cclxuXHJcbmltcG9ydCBuZXVyb24gZnJvbSAnLi4vLi4vbmV1cm9uLmpzJztcclxuXHJcbmNsYXNzIERlbGF5RWxlbWVudCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB2YWx1ZVxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBkZWx0YVRpbWVcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggdmFsdWUsIGRlbHRhVGltZSApIHtcclxuICAgIHZhbHVlID0gdmFsdWUgfHwgMDtcclxuICAgIGRlbHRhVGltZSA9IGRlbHRhVGltZSB8fCAwO1xyXG4gICAgdGhpcy52YWx1ZSA9IHZhbHVlO1xyXG4gICAgdGhpcy5kZWx0YVRpbWUgPSBkZWx0YVRpbWU7XHJcbiAgfVxyXG5cclxuICAvLyBAcHVibGljXHJcbiAgc2V0VmFsdWVBbmRUaW1lKCB2YWx1ZSwgZGVsdGFUaW1lICkge1xyXG4gICAgdGhpcy52YWx1ZSA9IHZhbHVlO1xyXG4gICAgdGhpcy5kZWx0YVRpbWUgPSBkZWx0YVRpbWU7XHJcbiAgfVxyXG59XHJcblxyXG5uZXVyb24ucmVnaXN0ZXIoICdEZWxheUVsZW1lbnQnLCBEZWxheUVsZW1lbnQgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IERlbGF5RWxlbWVudDsiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsTUFBTSxNQUFNLGlCQUFpQjtBQUVwQyxNQUFNQyxZQUFZLENBQUM7RUFFakI7QUFDRjtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsS0FBSyxFQUFFQyxTQUFTLEVBQUc7SUFDOUJELEtBQUssR0FBR0EsS0FBSyxJQUFJLENBQUM7SUFDbEJDLFNBQVMsR0FBR0EsU0FBUyxJQUFJLENBQUM7SUFDMUIsSUFBSSxDQUFDRCxLQUFLLEdBQUdBLEtBQUs7SUFDbEIsSUFBSSxDQUFDQyxTQUFTLEdBQUdBLFNBQVM7RUFDNUI7O0VBRUE7RUFDQUMsZUFBZUEsQ0FBRUYsS0FBSyxFQUFFQyxTQUFTLEVBQUc7SUFDbEMsSUFBSSxDQUFDRCxLQUFLLEdBQUdBLEtBQUs7SUFDbEIsSUFBSSxDQUFDQyxTQUFTLEdBQUdBLFNBQVM7RUFDNUI7QUFDRjtBQUVBSixNQUFNLENBQUNNLFFBQVEsQ0FBRSxjQUFjLEVBQUVMLFlBQWEsQ0FBQztBQUUvQyxlQUFlQSxZQUFZIn0=

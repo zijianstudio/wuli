@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "Juego",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Juego"
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Diez",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Diez"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Veinte",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Veinte"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Unos",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Unos"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Cuadro de diez",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Cuadro de diez"
+      }
+    ]
+  },
+  "word": {
+    "value": "Palabra",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Palabra"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Palabra ({{language}})",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Palabra ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "¡Escoge tu juego!",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "¡Escoge tu juego!"
+      }
+    ]
+  },
+  "games": {
+    "value": "Juegos",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Juegos"
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Juego de números",
+    "history": [
+      {
+        "userId": 133358,
+        "timestamp": 1651000447991,
+        "oldValue": "",
+        "newValue": "Juego de números"
+      }
+    ]
+  }
+}

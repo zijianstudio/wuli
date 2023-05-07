@@ -1,0 +1,112 @@
+{
+  "screen.game": {
+    "value": "খেলা ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "খেলা "
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "দশ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "দশ "
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "বিশ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "বিশ "
+      }
+    ]
+  },
+  "ones": {
+    "value": "বেশী",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "বেশী"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "দশটি  ফ্রেম",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "দশটি  ফ্রেম"
+      }
+    ]
+  },
+  "word": {
+    "value": "শব্দ ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "শব্দ "
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Word ({{language}})",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "Word ({{language}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "তোমার গেম পছন্দ করো ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382834,
+        "oldValue": "",
+        "newValue": "তোমার গেম পছন্দ করো "
+      }
+    ]
+  },
+  "games": {
+    "value": "গেম ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382835,
+        "oldValue": "",
+        "newValue": "গেম "
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "সংখ্যার খেলা ",
+    "history": [
+      {
+        "userId": 652918,
+        "timestamp": 1664288382835,
+        "oldValue": "",
+        "newValue": "সংখ্যার খেলা "
+      }
+    ]
+  }
+}

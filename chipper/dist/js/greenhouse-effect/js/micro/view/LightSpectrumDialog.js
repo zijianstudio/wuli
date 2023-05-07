@@ -1,0 +1,31 @@
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * The Dialog that shows the light spectrum diagram, with a ruler showing wavelength's of
+ * the light spectrum, arrows indicating frequency, energy, and wavelength, and a chirp
+ * node that represents wavelength in the spectrum.
+ *
+ * The LightSpectrumDialog takes content, and lays it out with a close button at the
+ * bottom of the dialog.
+ *
+ * @author Jesse Greenberg
+ */
+
+import Dialog from '../../../../sun/js/Dialog.js';
+import greenhouseEffect from '../../greenhouseEffect.js';
+class LightSpectrumDialog extends Dialog {
+  /**
+   * @param {Node} content - content for the dialog
+   * @param {Tandem} tandem
+   */
+  constructor(content, tandem) {
+    super(content, {
+      // phet-io
+      tandem: tandem,
+      phetioDynamicElement: true
+    });
+  }
+}
+greenhouseEffect.register('LightSpectrumDialog', LightSpectrumDialog);
+export default LightSpectrumDialog;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJEaWFsb2ciLCJncmVlbmhvdXNlRWZmZWN0IiwiTGlnaHRTcGVjdHJ1bURpYWxvZyIsImNvbnN0cnVjdG9yIiwiY29udGVudCIsInRhbmRlbSIsInBoZXRpb0R5bmFtaWNFbGVtZW50IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJMaWdodFNwZWN0cnVtRGlhbG9nLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBUaGUgRGlhbG9nIHRoYXQgc2hvd3MgdGhlIGxpZ2h0IHNwZWN0cnVtIGRpYWdyYW0sIHdpdGggYSBydWxlciBzaG93aW5nIHdhdmVsZW5ndGgncyBvZlxyXG4gKiB0aGUgbGlnaHQgc3BlY3RydW0sIGFycm93cyBpbmRpY2F0aW5nIGZyZXF1ZW5jeSwgZW5lcmd5LCBhbmQgd2F2ZWxlbmd0aCwgYW5kIGEgY2hpcnBcclxuICogbm9kZSB0aGF0IHJlcHJlc2VudHMgd2F2ZWxlbmd0aCBpbiB0aGUgc3BlY3RydW0uXHJcbiAqXHJcbiAqIFRoZSBMaWdodFNwZWN0cnVtRGlhbG9nIHRha2VzIGNvbnRlbnQsIGFuZCBsYXlzIGl0IG91dCB3aXRoIGEgY2xvc2UgYnV0dG9uIGF0IHRoZVxyXG4gKiBib3R0b20gb2YgdGhlIGRpYWxvZy5cclxuICpcclxuICogQGF1dGhvciBKZXNzZSBHcmVlbmJlcmdcclxuICovXHJcblxyXG5pbXBvcnQgRGlhbG9nIGZyb20gJy4uLy4uLy4uLy4uL3N1bi9qcy9EaWFsb2cuanMnO1xyXG5pbXBvcnQgZ3JlZW5ob3VzZUVmZmVjdCBmcm9tICcuLi8uLi9ncmVlbmhvdXNlRWZmZWN0LmpzJztcclxuXHJcbmNsYXNzIExpZ2h0U3BlY3RydW1EaWFsb2cgZXh0ZW5kcyBEaWFsb2cge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge05vZGV9IGNvbnRlbnQgLSBjb250ZW50IGZvciB0aGUgZGlhbG9nXHJcbiAgICogQHBhcmFtIHtUYW5kZW19IHRhbmRlbVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBjb250ZW50LCB0YW5kZW0gKSB7XHJcblxyXG4gICAgc3VwZXIoIGNvbnRlbnQsIHtcclxuXHJcbiAgICAgIC8vIHBoZXQtaW9cclxuICAgICAgdGFuZGVtOiB0YW5kZW0sXHJcbiAgICAgIHBoZXRpb0R5bmFtaWNFbGVtZW50OiB0cnVlXHJcbiAgICB9ICk7XHJcbiAgfVxyXG59XHJcblxyXG5ncmVlbmhvdXNlRWZmZWN0LnJlZ2lzdGVyKCAnTGlnaHRTcGVjdHJ1bURpYWxvZycsIExpZ2h0U3BlY3RydW1EaWFsb2cgKTtcclxuZXhwb3J0IGRlZmF1bHQgTGlnaHRTcGVjdHJ1bURpYWxvZzsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE1BQU0sTUFBTSw4QkFBOEI7QUFDakQsT0FBT0MsZ0JBQWdCLE1BQU0sMkJBQTJCO0FBRXhELE1BQU1DLG1CQUFtQixTQUFTRixNQUFNLENBQUM7RUFFdkM7QUFDRjtBQUNBO0FBQ0E7RUFDRUcsV0FBV0EsQ0FBRUMsT0FBTyxFQUFFQyxNQUFNLEVBQUc7SUFFN0IsS0FBSyxDQUFFRCxPQUFPLEVBQUU7TUFFZDtNQUNBQyxNQUFNLEVBQUVBLE1BQU07TUFDZEMsb0JBQW9CLEVBQUU7SUFDeEIsQ0FBRSxDQUFDO0VBQ0w7QUFDRjtBQUVBTCxnQkFBZ0IsQ0FBQ00sUUFBUSxDQUFFLHFCQUFxQixFQUFFTCxtQkFBb0IsQ0FBQztBQUN2RSxlQUFlQSxtQkFBbUIifQ==

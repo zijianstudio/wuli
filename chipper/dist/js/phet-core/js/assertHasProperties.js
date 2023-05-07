@@ -1,0 +1,37 @@
+// Copyright 2020-2023, University of Colorado Boulder
+
+/**
+ * Throws an assertion error if specified object doesn't have all provided properties. This will also work for anything
+ * defined on class prototypes (like Node.prototype.setOpacity)
+ *
+ * @example
+ * assertHasProperties( { tree:1, flower:2 }, [ 'tree' ] ) => no error
+ * assertHasProperties( { flower:2 }, [ 'tree' ] ) => error
+ * assertHasProperties( { tree:1, flower:2 }, [ 'tree', 'flower' ] ) => no error
+ * assertHasProperties( { tree:1 }, [ 'tree', 'flower' ] ) => error
+ * assertHasProperties( new phet.scenery.Node(), [ 'getOpacity','opacity', '_opacity' ] ) => no error
+ *
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+import inheritance from './inheritance.js';
+import phetCore from './phetCore.js';
+
+/**
+ * @param {Object|null|undefined|any} object - an object to test property existence
+ * @param {string[]} properties - a list of properties to assert exist
+ */
+const assertHasProperties = (object, properties) => {
+  if (assert && object) {
+    properties.forEach(property => {
+      assert && assert(Object.getOwnPropertyDescriptor(object, property) ||
+      // support fields directly on the object
+
+      // test up the class hierarchy for if the property is defined on a prototype.
+      _.some(inheritance(object.constructor).map(type => Object.getOwnPropertyDescriptor(type.prototype, property))), `property not defined: ${property}`);
+    });
+  }
+};
+phetCore.register('assertHasProperties', assertHasProperties);
+export default assertHasProperties;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJpbmhlcml0YW5jZSIsInBoZXRDb3JlIiwiYXNzZXJ0SGFzUHJvcGVydGllcyIsIm9iamVjdCIsInByb3BlcnRpZXMiLCJhc3NlcnQiLCJmb3JFYWNoIiwicHJvcGVydHkiLCJPYmplY3QiLCJnZXRPd25Qcm9wZXJ0eURlc2NyaXB0b3IiLCJfIiwic29tZSIsImNvbnN0cnVjdG9yIiwibWFwIiwidHlwZSIsInByb3RvdHlwZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiYXNzZXJ0SGFzUHJvcGVydGllcy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMC0yMDIzLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBUaHJvd3MgYW4gYXNzZXJ0aW9uIGVycm9yIGlmIHNwZWNpZmllZCBvYmplY3QgZG9lc24ndCBoYXZlIGFsbCBwcm92aWRlZCBwcm9wZXJ0aWVzLiBUaGlzIHdpbGwgYWxzbyB3b3JrIGZvciBhbnl0aGluZ1xyXG4gKiBkZWZpbmVkIG9uIGNsYXNzIHByb3RvdHlwZXMgKGxpa2UgTm9kZS5wcm90b3R5cGUuc2V0T3BhY2l0eSlcclxuICpcclxuICogQGV4YW1wbGVcclxuICogYXNzZXJ0SGFzUHJvcGVydGllcyggeyB0cmVlOjEsIGZsb3dlcjoyIH0sIFsgJ3RyZWUnIF0gKSA9PiBubyBlcnJvclxyXG4gKiBhc3NlcnRIYXNQcm9wZXJ0aWVzKCB7IGZsb3dlcjoyIH0sIFsgJ3RyZWUnIF0gKSA9PiBlcnJvclxyXG4gKiBhc3NlcnRIYXNQcm9wZXJ0aWVzKCB7IHRyZWU6MSwgZmxvd2VyOjIgfSwgWyAndHJlZScsICdmbG93ZXInIF0gKSA9PiBubyBlcnJvclxyXG4gKiBhc3NlcnRIYXNQcm9wZXJ0aWVzKCB7IHRyZWU6MSB9LCBbICd0cmVlJywgJ2Zsb3dlcicgXSApID0+IGVycm9yXHJcbiAqIGFzc2VydEhhc1Byb3BlcnRpZXMoIG5ldyBwaGV0LnNjZW5lcnkuTm9kZSgpLCBbICdnZXRPcGFjaXR5Jywnb3BhY2l0eScsICdfb3BhY2l0eScgXSApID0+IG5vIGVycm9yXHJcbiAqXHJcbiAqIEBhdXRob3IgTWljaGFlbCBLYXV6bWFubiAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgaW5oZXJpdGFuY2UgZnJvbSAnLi9pbmhlcml0YW5jZS5qcyc7XHJcbmltcG9ydCBwaGV0Q29yZSBmcm9tICcuL3BoZXRDb3JlLmpzJztcclxuXHJcbi8qKlxyXG4gKiBAcGFyYW0ge09iamVjdHxudWxsfHVuZGVmaW5lZHxhbnl9IG9iamVjdCAtIGFuIG9iamVjdCB0byB0ZXN0IHByb3BlcnR5IGV4aXN0ZW5jZVxyXG4gKiBAcGFyYW0ge3N0cmluZ1tdfSBwcm9wZXJ0aWVzIC0gYSBsaXN0IG9mIHByb3BlcnRpZXMgdG8gYXNzZXJ0IGV4aXN0XHJcbiAqL1xyXG5jb25zdCBhc3NlcnRIYXNQcm9wZXJ0aWVzID0gKCBvYmplY3QsIHByb3BlcnRpZXMgKSA9PiB7XHJcbiAgaWYgKCBhc3NlcnQgJiYgb2JqZWN0ICkge1xyXG5cclxuXHJcbiAgICBwcm9wZXJ0aWVzLmZvckVhY2goIHByb3BlcnR5ID0+IHtcclxuXHJcbiAgICAgIGFzc2VydCAmJiBhc3NlcnQoIE9iamVjdC5nZXRPd25Qcm9wZXJ0eURlc2NyaXB0b3IoIG9iamVjdCwgcHJvcGVydHkgKSB8fCAvLyBzdXBwb3J0IGZpZWxkcyBkaXJlY3RseSBvbiB0aGUgb2JqZWN0XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvLyB0ZXN0IHVwIHRoZSBjbGFzcyBoaWVyYXJjaHkgZm9yIGlmIHRoZSBwcm9wZXJ0eSBpcyBkZWZpbmVkIG9uIGEgcHJvdG90eXBlLlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBfLnNvbWUoIGluaGVyaXRhbmNlKCBvYmplY3QuY29uc3RydWN0b3IgKS5tYXAoIHR5cGUgPT4gT2JqZWN0LmdldE93blByb3BlcnR5RGVzY3JpcHRvciggdHlwZS5wcm90b3R5cGUsIHByb3BlcnR5ICkgKSApLFxyXG4gICAgICAgIGBwcm9wZXJ0eSBub3QgZGVmaW5lZDogJHtwcm9wZXJ0eX1gICk7XHJcbiAgICB9ICk7XHJcbiAgfVxyXG59O1xyXG5cclxucGhldENvcmUucmVnaXN0ZXIoICdhc3NlcnRIYXNQcm9wZXJ0aWVzJywgYXNzZXJ0SGFzUHJvcGVydGllcyApO1xyXG5leHBvcnQgZGVmYXVsdCBhc3NlcnRIYXNQcm9wZXJ0aWVzOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsV0FBVyxNQUFNLGtCQUFrQjtBQUMxQyxPQUFPQyxRQUFRLE1BQU0sZUFBZTs7QUFFcEM7QUFDQTtBQUNBO0FBQ0E7QUFDQSxNQUFNQyxtQkFBbUIsR0FBR0EsQ0FBRUMsTUFBTSxFQUFFQyxVQUFVLEtBQU07RUFDcEQsSUFBS0MsTUFBTSxJQUFJRixNQUFNLEVBQUc7SUFHdEJDLFVBQVUsQ0FBQ0UsT0FBTyxDQUFFQyxRQUFRLElBQUk7TUFFOUJGLE1BQU0sSUFBSUEsTUFBTSxDQUFFRyxNQUFNLENBQUNDLHdCQUF3QixDQUFFTixNQUFNLEVBQUVJLFFBQVMsQ0FBQztNQUFJOztNQUV2RDtNQUNBRyxDQUFDLENBQUNDLElBQUksQ0FBRVgsV0FBVyxDQUFFRyxNQUFNLENBQUNTLFdBQVksQ0FBQyxDQUFDQyxHQUFHLENBQUVDLElBQUksSUFBSU4sTUFBTSxDQUFDQyx3QkFBd0IsQ0FBRUssSUFBSSxDQUFDQyxTQUFTLEVBQUVSLFFBQVMsQ0FBRSxDQUFFLENBQUMsRUFDckkseUJBQXdCQSxRQUFTLEVBQUUsQ0FBQztJQUN6QyxDQUFFLENBQUM7RUFDTDtBQUNGLENBQUM7QUFFRE4sUUFBUSxDQUFDZSxRQUFRLENBQUUscUJBQXFCLEVBQUVkLG1CQUFvQixDQUFDO0FBQy9ELGVBQWVBLG1CQUFtQiJ9

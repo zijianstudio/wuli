@@ -1,0 +1,10 @@
+// Copyright 2014-2022, University of Colorado Boulder
+
+/**
+ * Possible choices in the 'Views' control panel.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+export const ViewModeValues = ['particles', 'graph', 'hideViews'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWaWV3TW9kZVZhbHVlcyJdLCJzb3VyY2VzIjpbIlZpZXdNb2RlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFBvc3NpYmxlIGNob2ljZXMgaW4gdGhlICdWaWV3cycgY29udHJvbCBwYW5lbC5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5leHBvcnQgY29uc3QgVmlld01vZGVWYWx1ZXMgPSBbICdwYXJ0aWNsZXMnLCAnZ3JhcGgnLCAnaGlkZVZpZXdzJyBdIGFzIGNvbnN0O1xyXG5leHBvcnQgdHlwZSBWaWV3TW9kZSA9ICggdHlwZW9mIFZpZXdNb2RlVmFsdWVzIClbbnVtYmVyXTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBTyxNQUFNQSxjQUFjLEdBQUcsQ0FBRSxXQUFXLEVBQUUsT0FBTyxFQUFFLFdBQVcsQ0FBVyJ9

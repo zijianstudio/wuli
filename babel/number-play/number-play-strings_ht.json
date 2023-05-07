@@ -1,0 +1,130 @@
+{
+  "screen.game": {
+    "value": "Jwèt ",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Jwèt "
+      }
+    ]
+  },
+  "screen.ten": {
+    "value": "Dis",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Dis"
+      }
+    ]
+  },
+  "screen.twenty": {
+    "value": "Ven",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Ven"
+      }
+    ]
+  },
+  "ones": {
+    "value": "Sa yo",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Sa yo"
+      }
+    ]
+  },
+  "tenFrame": {
+    "value": "Dis kad",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Dis cad"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "Dis cad",
+        "newValue": "Dis kad"
+      }
+    ]
+  },
+  "word": {
+    "value": "Mo",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Mo"
+      }
+    ]
+  },
+  "wordLanguage": {
+    "value": "Mo ({{language}})",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Mo ( {{langue}} )"
+      },
+      {
+        "userId": 973833,
+        "timestamp": 1670426955945,
+        "oldValue": "Mo ( {{langue}} )",
+        "newValue": "Mo ({{language}})"
+      },
+      {
+        "userId": 520137,
+        "timestamp": 1670679156561,
+        "oldValue": "Mo ({{language}})",
+        "newValue": "Mo ({{langue}})"
+      }
+    ]
+  },
+  "chooseYourGame": {
+    "value": "Chwazi jwèt ou a",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Chwazi jwèt ou a"
+      }
+    ]
+  },
+  "games": {
+    "value": "Jwèt ",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Jwèt "
+      }
+    ]
+  },
+  "number-play.title": {
+    "value": "Jwèt ak nonb",
+    "history": [
+      {
+        "userId": 520137,
+        "timestamp": 1669871694511,
+        "oldValue": "",
+        "newValue": "Jwèt ak nonb"
+      }
+    ]
+  }
+}

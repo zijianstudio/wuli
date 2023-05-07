@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Runs arbitrary content in an iframe (that presumably loads pageload-connector.js) and reports if it successfully loads
+  and runs for a short amount of time without erroring
+-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <title>Pageload Test</title>
+</head>
+
+<body>
+<script src="../../sherpa/lib/lodash-4.17.4.min.js"></script>
+<script src="../build/QueryStringMachine.js"></script>
+<script src="../js/client/client.js"></script>
+
+<script src="../../sherpa/lib/source-map-0.7.3.js"></script>
+<script src="../../sherpa/lib/stack-trace-parser-0.1.7.js"></script>
+
+<script src="../js/client/transpileStacktrace.js"></script>
+<script src="../js/client/pageload-test.js"></script>
+</body>
+</html>

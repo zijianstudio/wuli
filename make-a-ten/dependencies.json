@@ -1,0 +1,79 @@
+{
+  "comment": "# make-a-ten 1.0.0-dev.15 Tue Jan 10 2017 00:01:47 GMT-0700 (Mountain Standard Time)",
+  "assert": {
+    "sha": "a707328cc11048787a807714496af23e0bd25be1",
+    "branch": "master"
+  },
+  "axon": {
+    "sha": "ec87493fcb22648c50de6aa63b3c43f68107ae9b",
+    "branch": "master"
+  },
+  "brand": {
+    "sha": "0be722ee4e70a5689a86a246e86651f1b844574d",
+    "branch": "master"
+  },
+  "chipper": {
+    "sha": "ae15c0936c402f6c208689834dffcde6c4efdc80",
+    "branch": "master"
+  },
+  "dot": {
+    "sha": "2b15e064999bb86ae5cf6d22ecf014f4144f13f9",
+    "branch": "master"
+  },
+  "joist": {
+    "sha": "6b7e99df943c020eb410f1c00e8707839f7bb84d",
+    "branch": "master"
+  },
+  "kite": {
+    "sha": "197fef793822240fbc3a0e3b1edfb593c4e6050c",
+    "branch": "master"
+  },
+  "make-a-ten": {
+    "sha": "24aa1f7990da814086575f10791aab0e832fda4c",
+    "branch": "master"
+  },
+  "phet-core": {
+    "sha": "84747dff066a54fc6f6220aabd2b1a2195ebb6e6",
+    "branch": "master"
+  },
+  "phetcommon": {
+    "sha": "1cb33196c7b03661a71e82d189e66d95c92cc061",
+    "branch": "master"
+  },
+  "query-string-machine": {
+    "sha": "d8a4ff18a12aff003e4896213c1dfed5a79c1a30",
+    "branch": "master"
+  },
+  "scenery": {
+    "sha": "9d165389714b1bacdd221e9a40efee6c8ef9a3ed",
+    "branch": "master"
+  },
+  "scenery-phet": {
+    "sha": "e8dd9772ffaad21939fe7d60e65d425ffd336308",
+    "branch": "master"
+  },
+  "sherpa": {
+    "sha": "785a536c157f34ab1af195b0d40cff3fff023a2b",
+    "branch": "master"
+  },
+  "sun": {
+    "sha": "26fa8dc33b824b24e8fed44c7173db0bbaf346ee",
+    "branch": "master"
+  },
+  "tandem": {
+    "sha": "5b598f04c187b0c8a91da216d1961b584acca7a9",
+    "branch": "master"
+  },
+  "twixt": {
+    "sha": "cbe4c1aa78a061d6e7e28af25f1fca9ab2f8eac8",
+    "branch": "master"
+  },
+  "vegas": {
+    "sha": "f67a6f3ed40b1fded80f36a2b85b0fc590c401ef",
+    "branch": "master"
+  },
+  "vibe": {
+    "sha": "22223265a58ccd406cf60446efad04b5cb4aa842",
+    "branch": "master"
+  }
+}

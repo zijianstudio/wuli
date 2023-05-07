@@ -1,0 +1,85 @@
+// Copyright 2014-2020, University of Colorado Boulder
+
+/**
+ * Model for the Galton Board (also known as a bean machine). It consists of a triangular lattice of pegs.
+ *
+ * @author Martin Veillette (Berea College)
+ */
+
+import Vector2 from '../../../../dot/js/Vector2.js';
+import plinkoProbability from '../../plinkoProbability.js';
+import PlinkoProbabilityConstants from '../PlinkoProbabilityConstants.js';
+class GaltonBoard {
+  /**
+   * @param {Property.<number>} numberOfRowsProperty - number of rows of pegs
+   */
+  constructor(numberOfRowsProperty) {
+    // @public
+    this.bounds = PlinkoProbabilityConstants.GALTON_BOARD_BOUNDS;
+    let rowNumber; // {number} a non negative integer
+    let columnNumber; // {number} a non negative  integer
+    this.pegs = []; // @public (read-only)
+
+    // creates all the pegs (up to the maximum number of possible rows)
+    for (rowNumber = 0; rowNumber <= PlinkoProbabilityConstants.ROWS_RANGE.max; rowNumber++) {
+      for (columnNumber = 0; columnNumber <= rowNumber; columnNumber++) {
+        const peg = {
+          rowNumber: rowNumber,
+          // an integer starting at zero
+          columnNumber: columnNumber // an integer starting at zero
+        };
+
+        this.pegs.push(peg);
+      }
+    }
+
+    // link the numberOrRows to adjust the spacing between pegs (and size)
+    // link is present for the lifetime of the sum
+    numberOfRowsProperty.link(numberOfRows => {
+      this.pegs.forEach(peg => {
+        // for performance reasons, we don't throw out the pegs, we simply update their visibility
+        peg.isVisible = isPegVisible(peg.rowNumber, numberOfRows);
+        if (peg.isVisible) {
+          // update the position of the pegs on the Galton Board.
+          peg.position = getPegPosition(peg.rowNumber, peg.columnNumber, numberOfRows);
+        }
+      });
+    });
+  }
+
+  /**
+   * Gets the horizontal spacing between two pegs on the same row on the Galton board.
+   *
+   * @param {number} numberOfRows
+   * @returns {number}
+   * @public
+   * @static
+   */
+  static getPegSpacing(numberOfRows) {
+    return PlinkoProbabilityConstants.GALTON_BOARD_BOUNDS.width / (numberOfRows + 1);
+  }
+}
+plinkoProbability.register('GaltonBoard', GaltonBoard);
+
+/**
+ * Gets the x and y coordinates of a peg, in reference to the galton board.
+ *
+ * @param {number} rowNumber - integer starting at zero
+ * @param {number} columnNumber - index of the column, integer starting at zero
+ * @param {number} numberOfRows - the number of rows on the screen
+ * @returns {Vector2}
+ * @public
+ */
+const getPegPosition = (rowNumber, columnNumber, numberOfRows) => new Vector2(-rowNumber / 2 + columnNumber, -rowNumber - 2 * PlinkoProbabilityConstants.PEG_HEIGHT_FRACTION_OFFSET).divideScalar(numberOfRows + 1);
+
+/**
+ * Is the specified peg visible?
+ *
+ * @param {number} rowNumber - index of row, integer starting at zero
+ * @param {number} numberOfRows - number of rows
+ * @returns {boolean}
+ * @public
+ */
+const isPegVisible = (rowNumber, numberOfRows) => rowNumber < numberOfRows;
+export default GaltonBoard;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwicGxpbmtvUHJvYmFiaWxpdHkiLCJQbGlua29Qcm9iYWJpbGl0eUNvbnN0YW50cyIsIkdhbHRvbkJvYXJkIiwiY29uc3RydWN0b3IiLCJudW1iZXJPZlJvd3NQcm9wZXJ0eSIsImJvdW5kcyIsIkdBTFRPTl9CT0FSRF9CT1VORFMiLCJyb3dOdW1iZXIiLCJjb2x1bW5OdW1iZXIiLCJwZWdzIiwiUk9XU19SQU5HRSIsIm1heCIsInBlZyIsInB1c2giLCJsaW5rIiwibnVtYmVyT2ZSb3dzIiwiZm9yRWFjaCIsImlzVmlzaWJsZSIsImlzUGVnVmlzaWJsZSIsInBvc2l0aW9uIiwiZ2V0UGVnUG9zaXRpb24iLCJnZXRQZWdTcGFjaW5nIiwid2lkdGgiLCJyZWdpc3RlciIsIlBFR19IRUlHSFRfRlJBQ1RJT05fT0ZGU0VUIiwiZGl2aWRlU2NhbGFyIl0sInNvdXJjZXMiOlsiR2FsdG9uQm9hcmQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogTW9kZWwgZm9yIHRoZSBHYWx0b24gQm9hcmQgKGFsc28ga25vd24gYXMgYSBiZWFuIG1hY2hpbmUpLiBJdCBjb25zaXN0cyBvZiBhIHRyaWFuZ3VsYXIgbGF0dGljZSBvZiBwZWdzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIE1hcnRpbiBWZWlsbGV0dGUgKEJlcmVhIENvbGxlZ2UpXHJcbiAqL1xyXG5cclxuaW1wb3J0IFZlY3RvcjIgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjIuanMnO1xyXG5pbXBvcnQgcGxpbmtvUHJvYmFiaWxpdHkgZnJvbSAnLi4vLi4vcGxpbmtvUHJvYmFiaWxpdHkuanMnO1xyXG5pbXBvcnQgUGxpbmtvUHJvYmFiaWxpdHlDb25zdGFudHMgZnJvbSAnLi4vUGxpbmtvUHJvYmFiaWxpdHlDb25zdGFudHMuanMnO1xyXG5cclxuY2xhc3MgR2FsdG9uQm9hcmQge1xyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7UHJvcGVydHkuPG51bWJlcj59IG51bWJlck9mUm93c1Byb3BlcnR5IC0gbnVtYmVyIG9mIHJvd3Mgb2YgcGVnc1xyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBudW1iZXJPZlJvd3NQcm9wZXJ0eSApIHtcclxuXHJcbiAgICAvLyBAcHVibGljXHJcbiAgICB0aGlzLmJvdW5kcyA9IFBsaW5rb1Byb2JhYmlsaXR5Q29uc3RhbnRzLkdBTFRPTl9CT0FSRF9CT1VORFM7XHJcblxyXG4gICAgbGV0IHJvd051bWJlcjsgLy8ge251bWJlcn0gYSBub24gbmVnYXRpdmUgaW50ZWdlclxyXG4gICAgbGV0IGNvbHVtbk51bWJlcjsgLy8ge251bWJlcn0gYSBub24gbmVnYXRpdmUgIGludGVnZXJcclxuICAgIHRoaXMucGVncyA9IFtdOyAvLyBAcHVibGljIChyZWFkLW9ubHkpXHJcblxyXG4gICAgLy8gY3JlYXRlcyBhbGwgdGhlIHBlZ3MgKHVwIHRvIHRoZSBtYXhpbXVtIG51bWJlciBvZiBwb3NzaWJsZSByb3dzKVxyXG4gICAgZm9yICggcm93TnVtYmVyID0gMDsgcm93TnVtYmVyIDw9IFBsaW5rb1Byb2JhYmlsaXR5Q29uc3RhbnRzLlJPV1NfUkFOR0UubWF4OyByb3dOdW1iZXIrKyApIHtcclxuICAgICAgZm9yICggY29sdW1uTnVtYmVyID0gMDsgY29sdW1uTnVtYmVyIDw9IHJvd051bWJlcjsgY29sdW1uTnVtYmVyKysgKSB7XHJcbiAgICAgICAgY29uc3QgcGVnID0ge1xyXG4gICAgICAgICAgcm93TnVtYmVyOiByb3dOdW1iZXIsIC8vIGFuIGludGVnZXIgc3RhcnRpbmcgYXQgemVyb1xyXG4gICAgICAgICAgY29sdW1uTnVtYmVyOiBjb2x1bW5OdW1iZXIgLy8gYW4gaW50ZWdlciBzdGFydGluZyBhdCB6ZXJvXHJcbiAgICAgICAgfTtcclxuICAgICAgICB0aGlzLnBlZ3MucHVzaCggcGVnICk7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAvLyBsaW5rIHRoZSBudW1iZXJPclJvd3MgdG8gYWRqdXN0IHRoZSBzcGFjaW5nIGJldHdlZW4gcGVncyAoYW5kIHNpemUpXHJcbiAgICAvLyBsaW5rIGlzIHByZXNlbnQgZm9yIHRoZSBsaWZldGltZSBvZiB0aGUgc3VtXHJcbiAgICBudW1iZXJPZlJvd3NQcm9wZXJ0eS5saW5rKCBudW1iZXJPZlJvd3MgPT4ge1xyXG5cclxuICAgICAgdGhpcy5wZWdzLmZvckVhY2goIHBlZyA9PiB7XHJcbiAgICAgICAgLy8gZm9yIHBlcmZvcm1hbmNlIHJlYXNvbnMsIHdlIGRvbid0IHRocm93IG91dCB0aGUgcGVncywgd2Ugc2ltcGx5IHVwZGF0ZSB0aGVpciB2aXNpYmlsaXR5XHJcbiAgICAgICAgcGVnLmlzVmlzaWJsZSA9IGlzUGVnVmlzaWJsZSggcGVnLnJvd051bWJlciwgbnVtYmVyT2ZSb3dzICk7XHJcbiAgICAgICAgaWYgKCBwZWcuaXNWaXNpYmxlICkge1xyXG4gICAgICAgICAgLy8gdXBkYXRlIHRoZSBwb3NpdGlvbiBvZiB0aGUgcGVncyBvbiB0aGUgR2FsdG9uIEJvYXJkLlxyXG4gICAgICAgICAgcGVnLnBvc2l0aW9uID0gZ2V0UGVnUG9zaXRpb24oIHBlZy5yb3dOdW1iZXIsIHBlZy5jb2x1bW5OdW1iZXIsIG51bWJlck9mUm93cyApO1xyXG4gICAgICAgIH1cclxuICAgICAgfSApO1xyXG4gICAgfSApO1xyXG4gIH1cclxuXHJcblxyXG4gIC8qKlxyXG4gICAqIEdldHMgdGhlIGhvcml6b250YWwgc3BhY2luZyBiZXR3ZWVuIHR3byBwZWdzIG9uIHRoZSBzYW1lIHJvdyBvbiB0aGUgR2FsdG9uIGJvYXJkLlxyXG4gICAqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IG51bWJlck9mUm93c1xyXG4gICAqIEByZXR1cm5zIHtudW1iZXJ9XHJcbiAgICogQHB1YmxpY1xyXG4gICAqIEBzdGF0aWNcclxuICAgKi9cclxuICBzdGF0aWMgZ2V0UGVnU3BhY2luZyggbnVtYmVyT2ZSb3dzICkge1xyXG4gICAgcmV0dXJuIFBsaW5rb1Byb2JhYmlsaXR5Q29uc3RhbnRzLkdBTFRPTl9CT0FSRF9CT1VORFMud2lkdGggLyAoIG51bWJlck9mUm93cyArIDEgKTtcclxuICB9XHJcbn1cclxuXHJcbnBsaW5rb1Byb2JhYmlsaXR5LnJlZ2lzdGVyKCAnR2FsdG9uQm9hcmQnLCBHYWx0b25Cb2FyZCApO1xyXG5cclxuLyoqXHJcbiAqIEdldHMgdGhlIHggYW5kIHkgY29vcmRpbmF0ZXMgb2YgYSBwZWcsIGluIHJlZmVyZW5jZSB0byB0aGUgZ2FsdG9uIGJvYXJkLlxyXG4gKlxyXG4gKiBAcGFyYW0ge251bWJlcn0gcm93TnVtYmVyIC0gaW50ZWdlciBzdGFydGluZyBhdCB6ZXJvXHJcbiAqIEBwYXJhbSB7bnVtYmVyfSBjb2x1bW5OdW1iZXIgLSBpbmRleCBvZiB0aGUgY29sdW1uLCBpbnRlZ2VyIHN0YXJ0aW5nIGF0IHplcm9cclxuICogQHBhcmFtIHtudW1iZXJ9IG51bWJlck9mUm93cyAtIHRoZSBudW1iZXIgb2Ygcm93cyBvbiB0aGUgc2NyZWVuXHJcbiAqIEByZXR1cm5zIHtWZWN0b3IyfVxyXG4gKiBAcHVibGljXHJcbiAqL1xyXG5jb25zdCBnZXRQZWdQb3NpdGlvbiA9ICggcm93TnVtYmVyLCBjb2x1bW5OdW1iZXIsIG51bWJlck9mUm93cyApID0+IG5ldyBWZWN0b3IyKFxyXG4gIC1yb3dOdW1iZXIgLyAyICsgY29sdW1uTnVtYmVyLFxyXG4gIC1yb3dOdW1iZXIgLSAyICogUGxpbmtvUHJvYmFiaWxpdHlDb25zdGFudHMuUEVHX0hFSUdIVF9GUkFDVElPTl9PRkZTRVQgKVxyXG4gIC5kaXZpZGVTY2FsYXIoIG51bWJlck9mUm93cyArIDEgKTtcclxuXHJcbi8qKlxyXG4gKiBJcyB0aGUgc3BlY2lmaWVkIHBlZyB2aXNpYmxlP1xyXG4gKlxyXG4gKiBAcGFyYW0ge251bWJlcn0gcm93TnVtYmVyIC0gaW5kZXggb2Ygcm93LCBpbnRlZ2VyIHN0YXJ0aW5nIGF0IHplcm9cclxuICogQHBhcmFtIHtudW1iZXJ9IG51bWJlck9mUm93cyAtIG51bWJlciBvZiByb3dzXHJcbiAqIEByZXR1cm5zIHtib29sZWFufVxyXG4gKiBAcHVibGljXHJcbiAqL1xyXG5jb25zdCBpc1BlZ1Zpc2libGUgPSAoIHJvd051bWJlciwgbnVtYmVyT2ZSb3dzICkgPT4gcm93TnVtYmVyIDwgbnVtYmVyT2ZSb3dzO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgR2FsdG9uQm9hcmQ7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE9BQU8sTUFBTSwrQkFBK0I7QUFDbkQsT0FBT0MsaUJBQWlCLE1BQU0sNEJBQTRCO0FBQzFELE9BQU9DLDBCQUEwQixNQUFNLGtDQUFrQztBQUV6RSxNQUFNQyxXQUFXLENBQUM7RUFDaEI7QUFDRjtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLG9CQUFvQixFQUFHO0lBRWxDO0lBQ0EsSUFBSSxDQUFDQyxNQUFNLEdBQUdKLDBCQUEwQixDQUFDSyxtQkFBbUI7SUFFNUQsSUFBSUMsU0FBUyxDQUFDLENBQUM7SUFDZixJQUFJQyxZQUFZLENBQUMsQ0FBQztJQUNsQixJQUFJLENBQUNDLElBQUksR0FBRyxFQUFFLENBQUMsQ0FBQzs7SUFFaEI7SUFDQSxLQUFNRixTQUFTLEdBQUcsQ0FBQyxFQUFFQSxTQUFTLElBQUlOLDBCQUEwQixDQUFDUyxVQUFVLENBQUNDLEdBQUcsRUFBRUosU0FBUyxFQUFFLEVBQUc7TUFDekYsS0FBTUMsWUFBWSxHQUFHLENBQUMsRUFBRUEsWUFBWSxJQUFJRCxTQUFTLEVBQUVDLFlBQVksRUFBRSxFQUFHO1FBQ2xFLE1BQU1JLEdBQUcsR0FBRztVQUNWTCxTQUFTLEVBQUVBLFNBQVM7VUFBRTtVQUN0QkMsWUFBWSxFQUFFQSxZQUFZLENBQUM7UUFDN0IsQ0FBQzs7UUFDRCxJQUFJLENBQUNDLElBQUksQ0FBQ0ksSUFBSSxDQUFFRCxHQUFJLENBQUM7TUFDdkI7SUFDRjs7SUFFQTtJQUNBO0lBQ0FSLG9CQUFvQixDQUFDVSxJQUFJLENBQUVDLFlBQVksSUFBSTtNQUV6QyxJQUFJLENBQUNOLElBQUksQ0FBQ08sT0FBTyxDQUFFSixHQUFHLElBQUk7UUFDeEI7UUFDQUEsR0FBRyxDQUFDSyxTQUFTLEdBQUdDLFlBQVksQ0FBRU4sR0FBRyxDQUFDTCxTQUFTLEVBQUVRLFlBQWEsQ0FBQztRQUMzRCxJQUFLSCxHQUFHLENBQUNLLFNBQVMsRUFBRztVQUNuQjtVQUNBTCxHQUFHLENBQUNPLFFBQVEsR0FBR0MsY0FBYyxDQUFFUixHQUFHLENBQUNMLFNBQVMsRUFBRUssR0FBRyxDQUFDSixZQUFZLEVBQUVPLFlBQWEsQ0FBQztRQUNoRjtNQUNGLENBQUUsQ0FBQztJQUNMLENBQUUsQ0FBQztFQUNMOztFQUdBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRSxPQUFPTSxhQUFhQSxDQUFFTixZQUFZLEVBQUc7SUFDbkMsT0FBT2QsMEJBQTBCLENBQUNLLG1CQUFtQixDQUFDZ0IsS0FBSyxJQUFLUCxZQUFZLEdBQUcsQ0FBQyxDQUFFO0VBQ3BGO0FBQ0Y7QUFFQWYsaUJBQWlCLENBQUN1QixRQUFRLENBQUUsYUFBYSxFQUFFckIsV0FBWSxDQUFDOztBQUV4RDtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxNQUFNa0IsY0FBYyxHQUFHQSxDQUFFYixTQUFTLEVBQUVDLFlBQVksRUFBRU8sWUFBWSxLQUFNLElBQUloQixPQUFPLENBQzdFLENBQUNRLFNBQVMsR0FBRyxDQUFDLEdBQUdDLFlBQVksRUFDN0IsQ0FBQ0QsU0FBUyxHQUFHLENBQUMsR0FBR04sMEJBQTBCLENBQUN1QiwwQkFBMkIsQ0FBQyxDQUN2RUMsWUFBWSxDQUFFVixZQUFZLEdBQUcsQ0FBRSxDQUFDOztBQUVuQztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsTUFBTUcsWUFBWSxHQUFHQSxDQUFFWCxTQUFTLEVBQUVRLFlBQVksS0FBTVIsU0FBUyxHQUFHUSxZQUFZO0FBRTVFLGVBQWViLFdBQVcifQ==

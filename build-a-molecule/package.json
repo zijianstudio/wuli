@@ -1,0 +1,43 @@
+{
+  "name": "build-a-molecule",
+  "version": "1.1.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/build-a-molecule.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "BUILD_A_MOLECULE",
+    "phetLibs": [
+      "mobius",
+      "nitroglycerin",
+      "vegas"
+    ],
+    "preload": [
+      "../sherpa/lib/three-r104.js"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "simFeatures": {
+      "supportsSound": true
+    },
+    "simulation": true,
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "globals": {
+      "THREE": "readonly"
+    },
+    "rules": {
+      "no-view-imported-from-model": "off"
+    }
+  }
+}

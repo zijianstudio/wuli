@@ -1,0 +1,76 @@
+// Copyright 2022-2023, University of Colorado Boulder
+
+/**
+ * toFixedPointString is a version of Number.toFixed that avoids rounding problems and floating-point errors that exist
+ * in Number.toFixed and phet.dot.Utils.toFixed. It converts a number of a string, then modifies that string based on the
+ * number of decimal places desired. It performs symmetric rounding based on only the 2 specific digits that should be
+ * considered when rounding. Values that are not finite are converted using Number.toFixed.
+ *
+ * See https://github.com/phetsims/dot/issues/113
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import dot from './dot.js';
+function toFixedPointString(value, decimalPlaces) {
+  assert && assert(isFinite(decimalPlaces) && decimalPlaces >= 0);
+
+  // If value is not finite, then delegate to Number.toFixed and return immediately.
+  if (!isFinite(value)) {
+    return value.toFixed(decimalPlaces); // eslint-disable-line bad-sim-text
+  }
+
+  // Convert the value to a string.
+  let stringValue = value.toString();
+
+  // Find the decimal point in the string.
+  const decimalPointIndex = stringValue.indexOf('.');
+
+  // If there is a decimal point...
+  if (decimalPointIndex !== -1) {
+    const actualDecimalPlaces = stringValue.length - decimalPointIndex - 1;
+    if (actualDecimalPlaces < decimalPlaces) {
+      // There are not enough decimal places, so pad with 0's to the right of decimal point
+      for (let i = 0; i < decimalPlaces - actualDecimalPlaces; i++) {
+        stringValue += '0';
+      }
+    } else if (actualDecimalPlaces > decimalPlaces) {
+      // There are too many decimal places, so round symmetric.
+
+      // Save the digit that is to the right of the last digit that we'll be saving.
+      // It determines whether we round up the last digit.
+      const nextDigit = Number(stringValue[decimalPointIndex + decimalPlaces + 1]);
+
+      // Chop off everything to the right of the last digit.
+      stringValue = stringValue.substring(0, stringValue.length - (actualDecimalPlaces - decimalPlaces));
+
+      // If we chopped off all of the decimal places, remove the decimal point too.
+      if (stringValue.endsWith('.')) {
+        stringValue = stringValue.substring(0, stringValue.length - 1);
+      }
+
+      // Round up the last digit.
+      if (nextDigit >= 5) {
+        const lastDecimal = Number(stringValue[stringValue.length - 1]) + 1;
+        stringValue = stringValue.replace(/.$/, lastDecimal.toString());
+      }
+    }
+  } else {
+    // There is no decimal point, add it and pad with zeros.
+    if (decimalPlaces > 0) {
+      stringValue += '.';
+      for (let i = 0; i < decimalPlaces; i++) {
+        stringValue += '0';
+      }
+    }
+  }
+
+  // Remove negative sign from -0 values.
+  if (Number(stringValue) === 0 && stringValue.startsWith('-')) {
+    stringValue = stringValue.substring(1, stringValue.length);
+  }
+  return stringValue;
+}
+dot.register('toFixedPointString', toFixedPointString);
+export default toFixedPointString;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJkb3QiLCJ0b0ZpeGVkUG9pbnRTdHJpbmciLCJ2YWx1ZSIsImRlY2ltYWxQbGFjZXMiLCJhc3NlcnQiLCJpc0Zpbml0ZSIsInRvRml4ZWQiLCJzdHJpbmdWYWx1ZSIsInRvU3RyaW5nIiwiZGVjaW1hbFBvaW50SW5kZXgiLCJpbmRleE9mIiwiYWN0dWFsRGVjaW1hbFBsYWNlcyIsImxlbmd0aCIsImkiLCJuZXh0RGlnaXQiLCJOdW1iZXIiLCJzdWJzdHJpbmciLCJlbmRzV2l0aCIsImxhc3REZWNpbWFsIiwicmVwbGFjZSIsInN0YXJ0c1dpdGgiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbInRvRml4ZWRQb2ludFN0cmluZy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMi0yMDIzLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiB0b0ZpeGVkUG9pbnRTdHJpbmcgaXMgYSB2ZXJzaW9uIG9mIE51bWJlci50b0ZpeGVkIHRoYXQgYXZvaWRzIHJvdW5kaW5nIHByb2JsZW1zIGFuZCBmbG9hdGluZy1wb2ludCBlcnJvcnMgdGhhdCBleGlzdFxyXG4gKiBpbiBOdW1iZXIudG9GaXhlZCBhbmQgcGhldC5kb3QuVXRpbHMudG9GaXhlZC4gSXQgY29udmVydHMgYSBudW1iZXIgb2YgYSBzdHJpbmcsIHRoZW4gbW9kaWZpZXMgdGhhdCBzdHJpbmcgYmFzZWQgb24gdGhlXHJcbiAqIG51bWJlciBvZiBkZWNpbWFsIHBsYWNlcyBkZXNpcmVkLiBJdCBwZXJmb3JtcyBzeW1tZXRyaWMgcm91bmRpbmcgYmFzZWQgb24gb25seSB0aGUgMiBzcGVjaWZpYyBkaWdpdHMgdGhhdCBzaG91bGQgYmVcclxuICogY29uc2lkZXJlZCB3aGVuIHJvdW5kaW5nLiBWYWx1ZXMgdGhhdCBhcmUgbm90IGZpbml0ZSBhcmUgY29udmVydGVkIHVzaW5nIE51bWJlci50b0ZpeGVkLlxyXG4gKlxyXG4gKiBTZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2RvdC9pc3N1ZXMvMTEzXHJcbiAqXHJcbiAqIEBhdXRob3IgQ2hyaXMgTWFsbGV5IChQaXhlbFpvb20sIEluYy4pXHJcbiAqL1xyXG5cclxuaW1wb3J0IGRvdCBmcm9tICcuL2RvdC5qcyc7XHJcblxyXG5mdW5jdGlvbiB0b0ZpeGVkUG9pbnRTdHJpbmcoIHZhbHVlOiBudW1iZXIsIGRlY2ltYWxQbGFjZXM6IG51bWJlciApOiBzdHJpbmcge1xyXG4gIGFzc2VydCAmJiBhc3NlcnQoIGlzRmluaXRlKCBkZWNpbWFsUGxhY2VzICkgJiYgZGVjaW1hbFBsYWNlcyA+PSAwICk7XHJcblxyXG4gIC8vIElmIHZhbHVlIGlzIG5vdCBmaW5pdGUsIHRoZW4gZGVsZWdhdGUgdG8gTnVtYmVyLnRvRml4ZWQgYW5kIHJldHVybiBpbW1lZGlhdGVseS5cclxuICBpZiAoICFpc0Zpbml0ZSggdmFsdWUgKSApIHtcclxuICAgIHJldHVybiB2YWx1ZS50b0ZpeGVkKCBkZWNpbWFsUGxhY2VzICk7IC8vIGVzbGludC1kaXNhYmxlLWxpbmUgYmFkLXNpbS10ZXh0XHJcbiAgfVxyXG5cclxuICAvLyBDb252ZXJ0IHRoZSB2YWx1ZSB0byBhIHN0cmluZy5cclxuICBsZXQgc3RyaW5nVmFsdWUgPSB2YWx1ZS50b1N0cmluZygpO1xyXG5cclxuICAvLyBGaW5kIHRoZSBkZWNpbWFsIHBvaW50IGluIHRoZSBzdHJpbmcuXHJcbiAgY29uc3QgZGVjaW1hbFBvaW50SW5kZXggPSBzdHJpbmdWYWx1ZS5pbmRleE9mKCAnLicgKTtcclxuXHJcbiAgLy8gSWYgdGhlcmUgaXMgYSBkZWNpbWFsIHBvaW50Li4uXHJcbiAgaWYgKCBkZWNpbWFsUG9pbnRJbmRleCAhPT0gLTEgKSB7XHJcblxyXG4gICAgY29uc3QgYWN0dWFsRGVjaW1hbFBsYWNlcyA9IHN0cmluZ1ZhbHVlLmxlbmd0aCAtIGRlY2ltYWxQb2ludEluZGV4IC0gMTtcclxuICAgIGlmICggYWN0dWFsRGVjaW1hbFBsYWNlcyA8IGRlY2ltYWxQbGFjZXMgKSB7XHJcblxyXG4gICAgICAvLyBUaGVyZSBhcmUgbm90IGVub3VnaCBkZWNpbWFsIHBsYWNlcywgc28gcGFkIHdpdGggMCdzIHRvIHRoZSByaWdodCBvZiBkZWNpbWFsIHBvaW50XHJcbiAgICAgIGZvciAoIGxldCBpID0gMDsgaSA8IGRlY2ltYWxQbGFjZXMgLSBhY3R1YWxEZWNpbWFsUGxhY2VzOyBpKysgKSB7XHJcbiAgICAgICAgc3RyaW5nVmFsdWUgKz0gJzAnO1xyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgICBlbHNlIGlmICggYWN0dWFsRGVjaW1hbFBsYWNlcyA+IGRlY2ltYWxQbGFjZXMgKSB7XHJcblxyXG4gICAgICAvLyBUaGVyZSBhcmUgdG9vIG1hbnkgZGVjaW1hbCBwbGFjZXMsIHNvIHJvdW5kIHN5bW1ldHJpYy5cclxuICAgICAgXHJcbiAgICAgIC8vIFNhdmUgdGhlIGRpZ2l0IHRoYXQgaXMgdG8gdGhlIHJpZ2h0IG9mIHRoZSBsYXN0IGRpZ2l0IHRoYXQgd2UnbGwgYmUgc2F2aW5nLlxyXG4gICAgICAvLyBJdCBkZXRlcm1pbmVzIHdoZXRoZXIgd2Ugcm91bmQgdXAgdGhlIGxhc3QgZGlnaXQuXHJcbiAgICAgIGNvbnN0IG5leHREaWdpdCA9IE51bWJlciggc3RyaW5nVmFsdWVbIGRlY2ltYWxQb2ludEluZGV4ICsgZGVjaW1hbFBsYWNlcyArIDEgXSApO1xyXG5cclxuICAgICAgLy8gQ2hvcCBvZmYgZXZlcnl0aGluZyB0byB0aGUgcmlnaHQgb2YgdGhlIGxhc3QgZGlnaXQuXHJcbiAgICAgIHN0cmluZ1ZhbHVlID0gc3RyaW5nVmFsdWUuc3Vic3RyaW5nKCAwLCBzdHJpbmdWYWx1ZS5sZW5ndGggLSAoIGFjdHVhbERlY2ltYWxQbGFjZXMgLSBkZWNpbWFsUGxhY2VzICkgKTtcclxuXHJcbiAgICAgIC8vIElmIHdlIGNob3BwZWQgb2ZmIGFsbCBvZiB0aGUgZGVjaW1hbCBwbGFjZXMsIHJlbW92ZSB0aGUgZGVjaW1hbCBwb2ludCB0b28uXHJcbiAgICAgIGlmICggc3RyaW5nVmFsdWUuZW5kc1dpdGgoICcuJyApICkge1xyXG4gICAgICAgIHN0cmluZ1ZhbHVlID0gc3RyaW5nVmFsdWUuc3Vic3RyaW5nKCAwLCBzdHJpbmdWYWx1ZS5sZW5ndGggLSAxICk7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC8vIFJvdW5kIHVwIHRoZSBsYXN0IGRpZ2l0LlxyXG4gICAgICBpZiAoIG5leHREaWdpdCA+PSA1ICkge1xyXG4gICAgICAgIGNvbnN0IGxhc3REZWNpbWFsID0gTnVtYmVyKCBzdHJpbmdWYWx1ZVsgc3RyaW5nVmFsdWUubGVuZ3RoIC0gMSBdICkgKyAxO1xyXG4gICAgICAgIHN0cmluZ1ZhbHVlID0gc3RyaW5nVmFsdWUucmVwbGFjZSggLy4kLywgbGFzdERlY2ltYWwudG9TdHJpbmcoKSApO1xyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG4gIGVsc2Uge1xyXG5cclxuICAgIC8vIFRoZXJlIGlzIG5vIGRlY2ltYWwgcG9pbnQsIGFkZCBpdCBhbmQgcGFkIHdpdGggemVyb3MuXHJcbiAgICBpZiAoIGRlY2ltYWxQbGFjZXMgPiAwICkge1xyXG4gICAgICBzdHJpbmdWYWx1ZSArPSAnLic7XHJcbiAgICAgIGZvciAoIGxldCBpID0gMDsgaSA8IGRlY2ltYWxQbGFjZXM7IGkrKyApIHtcclxuICAgICAgICBzdHJpbmdWYWx1ZSArPSAnMCc7XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcblxyXG4gIC8vIFJlbW92ZSBuZWdhdGl2ZSBzaWduIGZyb20gLTAgdmFsdWVzLlxyXG4gIGlmICggTnVtYmVyKCBzdHJpbmdWYWx1ZSApID09PSAwICYmIHN0cmluZ1ZhbHVlLnN0YXJ0c1dpdGgoICctJyApICkge1xyXG4gICAgc3RyaW5nVmFsdWUgPSBzdHJpbmdWYWx1ZS5zdWJzdHJpbmcoIDEsIHN0cmluZ1ZhbHVlLmxlbmd0aCApO1xyXG4gIH1cclxuXHJcbiAgcmV0dXJuIHN0cmluZ1ZhbHVlO1xyXG59XHJcblxyXG5kb3QucmVnaXN0ZXIoICd0b0ZpeGVkUG9pbnRTdHJpbmcnLCB0b0ZpeGVkUG9pbnRTdHJpbmcgKTtcclxuZXhwb3J0IGRlZmF1bHQgdG9GaXhlZFBvaW50U3RyaW5nO1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEdBQUcsTUFBTSxVQUFVO0FBRTFCLFNBQVNDLGtCQUFrQkEsQ0FBRUMsS0FBYSxFQUFFQyxhQUFxQixFQUFXO0VBQzFFQyxNQUFNLElBQUlBLE1BQU0sQ0FBRUMsUUFBUSxDQUFFRixhQUFjLENBQUMsSUFBSUEsYUFBYSxJQUFJLENBQUUsQ0FBQzs7RUFFbkU7RUFDQSxJQUFLLENBQUNFLFFBQVEsQ0FBRUgsS0FBTSxDQUFDLEVBQUc7SUFDeEIsT0FBT0EsS0FBSyxDQUFDSSxPQUFPLENBQUVILGFBQWMsQ0FBQyxDQUFDLENBQUM7RUFDekM7O0VBRUE7RUFDQSxJQUFJSSxXQUFXLEdBQUdMLEtBQUssQ0FBQ00sUUFBUSxDQUFDLENBQUM7O0VBRWxDO0VBQ0EsTUFBTUMsaUJBQWlCLEdBQUdGLFdBQVcsQ0FBQ0csT0FBTyxDQUFFLEdBQUksQ0FBQzs7RUFFcEQ7RUFDQSxJQUFLRCxpQkFBaUIsS0FBSyxDQUFDLENBQUMsRUFBRztJQUU5QixNQUFNRSxtQkFBbUIsR0FBR0osV0FBVyxDQUFDSyxNQUFNLEdBQUdILGlCQUFpQixHQUFHLENBQUM7SUFDdEUsSUFBS0UsbUJBQW1CLEdBQUdSLGFBQWEsRUFBRztNQUV6QztNQUNBLEtBQU0sSUFBSVUsQ0FBQyxHQUFHLENBQUMsRUFBRUEsQ0FBQyxHQUFHVixhQUFhLEdBQUdRLG1CQUFtQixFQUFFRSxDQUFDLEVBQUUsRUFBRztRQUM5RE4sV0FBVyxJQUFJLEdBQUc7TUFDcEI7SUFDRixDQUFDLE1BQ0ksSUFBS0ksbUJBQW1CLEdBQUdSLGFBQWEsRUFBRztNQUU5Qzs7TUFFQTtNQUNBO01BQ0EsTUFBTVcsU0FBUyxHQUFHQyxNQUFNLENBQUVSLFdBQVcsQ0FBRUUsaUJBQWlCLEdBQUdOLGFBQWEsR0FBRyxDQUFDLENBQUcsQ0FBQzs7TUFFaEY7TUFDQUksV0FBVyxHQUFHQSxXQUFXLENBQUNTLFNBQVMsQ0FBRSxDQUFDLEVBQUVULFdBQVcsQ0FBQ0ssTUFBTSxJQUFLRCxtQkFBbUIsR0FBR1IsYUFBYSxDQUFHLENBQUM7O01BRXRHO01BQ0EsSUFBS0ksV0FBVyxDQUFDVSxRQUFRLENBQUUsR0FBSSxDQUFDLEVBQUc7UUFDakNWLFdBQVcsR0FBR0EsV0FBVyxDQUFDUyxTQUFTLENBQUUsQ0FBQyxFQUFFVCxXQUFXLENBQUNLLE1BQU0sR0FBRyxDQUFFLENBQUM7TUFDbEU7O01BRUE7TUFDQSxJQUFLRSxTQUFTLElBQUksQ0FBQyxFQUFHO1FBQ3BCLE1BQU1JLFdBQVcsR0FBR0gsTUFBTSxDQUFFUixXQUFXLENBQUVBLFdBQVcsQ0FBQ0ssTUFBTSxHQUFHLENBQUMsQ0FBRyxDQUFDLEdBQUcsQ0FBQztRQUN2RUwsV0FBVyxHQUFHQSxXQUFXLENBQUNZLE9BQU8sQ0FBRSxJQUFJLEVBQUVELFdBQVcsQ0FBQ1YsUUFBUSxDQUFDLENBQUUsQ0FBQztNQUNuRTtJQUNGO0VBQ0YsQ0FBQyxNQUNJO0lBRUg7SUFDQSxJQUFLTCxhQUFhLEdBQUcsQ0FBQyxFQUFHO01BQ3ZCSSxXQUFXLElBQUksR0FBRztNQUNsQixLQUFNLElBQUlNLENBQUMsR0FBRyxDQUFDLEVBQUVBLENBQUMsR0FBR1YsYUFBYSxFQUFFVSxDQUFDLEVBQUUsRUFBRztRQUN4Q04sV0FBVyxJQUFJLEdBQUc7TUFDcEI7SUFDRjtFQUNGOztFQUVBO0VBQ0EsSUFBS1EsTUFBTSxDQUFFUixXQUFZLENBQUMsS0FBSyxDQUFDLElBQUlBLFdBQVcsQ0FBQ2EsVUFBVSxDQUFFLEdBQUksQ0FBQyxFQUFHO0lBQ2xFYixXQUFXLEdBQUdBLFdBQVcsQ0FBQ1MsU0FBUyxDQUFFLENBQUMsRUFBRVQsV0FBVyxDQUFDSyxNQUFPLENBQUM7RUFDOUQ7RUFFQSxPQUFPTCxXQUFXO0FBQ3BCO0FBRUFQLEdBQUcsQ0FBQ3FCLFFBQVEsQ0FBRSxvQkFBb0IsRUFBRXBCLGtCQUFtQixDQUFDO0FBQ3hELGVBQWVBLGtCQUFrQiJ9

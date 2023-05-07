@@ -1,0 +1,10 @@
+// Copyright 2014-2022, University of Colorado Boulder
+
+/**
+ * Possible choices in the 'Tools' control panel.
+ *
+ * @author Chris Malley (PixelZoom, Inc)
+ */
+
+export const ToolModeValues = ['pHMeter', 'pHPaper', 'conductivity'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJUb29sTW9kZVZhbHVlcyJdLCJzb3VyY2VzIjpbIlRvb2xNb2RlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE0LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFBvc3NpYmxlIGNob2ljZXMgaW4gdGhlICdUb29scycgY29udHJvbCBwYW5lbC5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jKVxyXG4gKi9cclxuXHJcbmV4cG9ydCBjb25zdCBUb29sTW9kZVZhbHVlcyA9IFsgJ3BITWV0ZXInLCAncEhQYXBlcicsICdjb25kdWN0aXZpdHknIF0gYXMgY29uc3Q7XHJcbmV4cG9ydCB0eXBlIFRvb2xNb2RlID0gKCB0eXBlb2YgVG9vbE1vZGVWYWx1ZXMgKVtudW1iZXJdOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPLE1BQU1BLGNBQWMsR0FBRyxDQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsY0FBYyxDQUFXIn0=

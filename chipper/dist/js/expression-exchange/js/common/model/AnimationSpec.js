@@ -1,0 +1,32 @@
+// Copyright 2017-2020, University of Colorado Boulder
+
+/**
+ * type that specifies the attributes of an animation
+ *
+ * @author John Blanco
+ */
+
+import expressionExchange from '../../expressionExchange.js';
+class AnimationSpec {
+  /**
+   * @param {Vector2} startPosition - the position from which the animation should begin
+   * @param {Vector2} travelVector - the path from the start to the destination
+   * @param {number} totalDuration - in seconds, amount of time that the animation should take
+   */
+  constructor(startPosition, travelVector, totalDuration) {
+    // @public (read-only) {Vector2}
+    this.startPosition = startPosition;
+
+    // @public (read-only) {Vector2}
+    this.travelVector = travelVector;
+
+    // @public (read-only) {number}
+    this.totalDuration = totalDuration;
+
+    // @public (read-only) {number} - time that has passed since the animation was initiated
+    this.timeSoFar = 0;
+  }
+}
+expressionExchange.register('AnimationSpec', AnimationSpec);
+export default AnimationSpec;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzaW9uRXhjaGFuZ2UiLCJBbmltYXRpb25TcGVjIiwiY29uc3RydWN0b3IiLCJzdGFydFBvc2l0aW9uIiwidHJhdmVsVmVjdG9yIiwidG90YWxEdXJhdGlvbiIsInRpbWVTb0ZhciIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiQW5pbWF0aW9uU3BlYy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNy0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiB0eXBlIHRoYXQgc3BlY2lmaWVzIHRoZSBhdHRyaWJ1dGVzIG9mIGFuIGFuaW1hdGlvblxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvaG4gQmxhbmNvXHJcbiAqL1xyXG5cclxuaW1wb3J0IGV4cHJlc3Npb25FeGNoYW5nZSBmcm9tICcuLi8uLi9leHByZXNzaW9uRXhjaGFuZ2UuanMnO1xyXG5cclxuY2xhc3MgQW5pbWF0aW9uU3BlYyB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7VmVjdG9yMn0gc3RhcnRQb3NpdGlvbiAtIHRoZSBwb3NpdGlvbiBmcm9tIHdoaWNoIHRoZSBhbmltYXRpb24gc2hvdWxkIGJlZ2luXHJcbiAgICogQHBhcmFtIHtWZWN0b3IyfSB0cmF2ZWxWZWN0b3IgLSB0aGUgcGF0aCBmcm9tIHRoZSBzdGFydCB0byB0aGUgZGVzdGluYXRpb25cclxuICAgKiBAcGFyYW0ge251bWJlcn0gdG90YWxEdXJhdGlvbiAtIGluIHNlY29uZHMsIGFtb3VudCBvZiB0aW1lIHRoYXQgdGhlIGFuaW1hdGlvbiBzaG91bGQgdGFrZVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBzdGFydFBvc2l0aW9uLCB0cmF2ZWxWZWN0b3IsIHRvdGFsRHVyYXRpb24gKSB7XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7VmVjdG9yMn1cclxuICAgIHRoaXMuc3RhcnRQb3NpdGlvbiA9IHN0YXJ0UG9zaXRpb247XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7VmVjdG9yMn1cclxuICAgIHRoaXMudHJhdmVsVmVjdG9yID0gdHJhdmVsVmVjdG9yO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSkge251bWJlcn1cclxuICAgIHRoaXMudG90YWxEdXJhdGlvbiA9IHRvdGFsRHVyYXRpb247XHJcblxyXG4gICAgLy8gQHB1YmxpYyAocmVhZC1vbmx5KSB7bnVtYmVyfSAtIHRpbWUgdGhhdCBoYXMgcGFzc2VkIHNpbmNlIHRoZSBhbmltYXRpb24gd2FzIGluaXRpYXRlZFxyXG4gICAgdGhpcy50aW1lU29GYXIgPSAwO1xyXG4gIH1cclxufVxyXG5cclxuZXhwcmVzc2lvbkV4Y2hhbmdlLnJlZ2lzdGVyKCAnQW5pbWF0aW9uU3BlYycsIEFuaW1hdGlvblNwZWMgKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEFuaW1hdGlvblNwZWM7XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxrQkFBa0IsTUFBTSw2QkFBNkI7QUFFNUQsTUFBTUMsYUFBYSxDQUFDO0VBRWxCO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsYUFBYSxFQUFFQyxZQUFZLEVBQUVDLGFBQWEsRUFBRztJQUV4RDtJQUNBLElBQUksQ0FBQ0YsYUFBYSxHQUFHQSxhQUFhOztJQUVsQztJQUNBLElBQUksQ0FBQ0MsWUFBWSxHQUFHQSxZQUFZOztJQUVoQztJQUNBLElBQUksQ0FBQ0MsYUFBYSxHQUFHQSxhQUFhOztJQUVsQztJQUNBLElBQUksQ0FBQ0MsU0FBUyxHQUFHLENBQUM7RUFDcEI7QUFDRjtBQUVBTixrQkFBa0IsQ0FBQ08sUUFBUSxDQUFFLGVBQWUsRUFBRU4sYUFBYyxDQUFDO0FBRTdELGVBQWVBLGFBQWEifQ==

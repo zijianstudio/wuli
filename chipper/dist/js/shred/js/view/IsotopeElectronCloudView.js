@@ -1,0 +1,130 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * Node that represents the electron shells in an isotope as a "cloud" that grows and shrinks depending on the number
+ * of electrons that it contains.  This particular class implements behavior needed for the Isotopes simulation, which
+ * is somewhat different from that needed for Build an Atom.
+ *
+ * @author John Blanco
+ * @author Jesse Greenberg
+ * @author Aadish Gupta
+ */
+
+import LinearFunction from '../../../dot/js/LinearFunction.js';
+import merge from '../../../phet-core/js/merge.js';
+import { Circle, RadialGradient } from '../../../scenery/js/imports.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import shred from '../shred.js';
+
+// constants
+const MAX_ELECTRONS = 10; // For neon.
+
+class IsotopeElectronCloudView extends Circle {
+  /**
+   * Constructor for the Isotope Electron Cloud.
+   *
+   * @param {NumberAtom} numberAtom
+   * @param {ModelViewTransform2} modelViewTransform
+   * @param {Object} [options]
+   */
+  constructor(numberAtom, modelViewTransform, options) {
+    options = merge({
+      pickable: false,
+      tandem: Tandem.REQUIRED
+    }, options);
+    assert && assert(!options.pickable, 'IsotopeElectronCloudView cannot be pickable');
+
+    // Call super constructor using dummy radius and actual is updated below.
+    super(1, options);
+    const updateNode = numElectrons => {
+      if (numElectrons === 0) {
+        this.radius = 1E-5; // Arbitrary non-zero value.
+        this.fill = 'transparent';
+      } else {
+        this.radius = modelViewTransform.modelToViewDeltaX(this.getElectronShellDiameter(numElectrons) / 2);
+        // empirically determined adjustment factor according to the weighing scale
+        this.radius = this.radius * 1.2;
+        this.fill = new RadialGradient(0, 0, 0, 0, 0, this.radius).addColorStop(0, 'rgba( 0, 0, 255, 0 )').addColorStop(1, 'rgba( 0, 0, 255, 0.4 )');
+      }
+    };
+    updateNode(numberAtom.electronCountProperty.get());
+
+    // Update the cloud size as electrons come and go.
+    numberAtom.protonCountProperty.link(updateNode);
+
+    // @private
+    this.disposeIsotopeElectronCloudView = function () {
+      numberAtom.protonCountProperty.unlink(updateNode);
+    };
+  }
+
+  /**
+   * @public
+   * @override
+   */
+  dispose() {
+    this.disposeIsotopeElectronCloudView();
+    super.dispose();
+  }
+
+  /**
+   * Maps a number of electrons to a diameter in screen coordinates for the electron shell.  This mapping function is
+   * based on the real size relationships between the various atoms, but has some tweakable parameters to reduce the
+   * range and scale to provide values that are usable for our needs on the canvas.
+   * @param {number} numElectrons
+   * @public
+   */
+  getElectronShellDiameter(numElectrons) {
+    // This data structure maps the number of electrons to a radius for an atom.  It assumes a stable, neutral atom.
+    // The basic values are the covalent radii, and were taken from a Wikipedia entry entitled "Atomic radii of the
+    // elements" which, at the time of this writing, can be found here:
+    // https://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page).
+    // The values are in picometers.  In practice, the difference between the radii worked out to be a bit too much
+    // visually, so there are some 'tweak factors' for a few of the elements.
+    const mapElectronCountToRadius = {
+      1: 38,
+      2: 32,
+      3: 134 * 0.75,
+      4: 90 * 0.97,
+      5: 82,
+      6: 77,
+      7: 75,
+      8: 73,
+      9: 71,
+      10: 69
+    };
+
+    // Determine the min and max radii of the supported atoms.
+    let minShellRadius = Number.MAX_VALUE;
+    let maxShellRadius = 0;
+    for (const radius in mapElectronCountToRadius) {
+      if (radius > maxShellRadius) {
+        maxShellRadius = radius;
+      }
+      if (radius < minShellRadius) {
+        minShellRadius = radius;
+      }
+    }
+
+    // This method increases the value of the smaller radius values and decreases the value of the larger ones.
+    // This effectively reduces the range of radii values used.
+    // This is a very specialized function for the purposes of this class.
+    const reduceRadiusRange = function (value) {
+      // The following two factors define the way in which an input value is increased or decreased.  These values
+      // can be adjusted as needed to make the cloud size appear as desired.
+      const minChangedRadius = 40;
+      const maxChangedRadius = 55;
+      const compressionFunction = new LinearFunction(minShellRadius, maxShellRadius, minChangedRadius, maxChangedRadius);
+      return compressionFunction.evaluate(value);
+    };
+    if (numElectrons in mapElectronCountToRadius) {
+      return reduceRadiusRange(mapElectronCountToRadius[numElectrons]);
+    } else {
+      assert && assert(numElectrons <= MAX_ELECTRONS, `Atom has more than supported number of electrons, ${numElectrons}`);
+      return 0;
+    }
+  }
+}
+shred.register('IsotopeElectronCloudView', IsotopeElectronCloudView);
+export default IsotopeElectronCloudView;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJMaW5lYXJGdW5jdGlvbiIsIm1lcmdlIiwiQ2lyY2xlIiwiUmFkaWFsR3JhZGllbnQiLCJUYW5kZW0iLCJzaHJlZCIsIk1BWF9FTEVDVFJPTlMiLCJJc290b3BlRWxlY3Ryb25DbG91ZFZpZXciLCJjb25zdHJ1Y3RvciIsIm51bWJlckF0b20iLCJtb2RlbFZpZXdUcmFuc2Zvcm0iLCJvcHRpb25zIiwicGlja2FibGUiLCJ0YW5kZW0iLCJSRVFVSVJFRCIsImFzc2VydCIsInVwZGF0ZU5vZGUiLCJudW1FbGVjdHJvbnMiLCJyYWRpdXMiLCJmaWxsIiwibW9kZWxUb1ZpZXdEZWx0YVgiLCJnZXRFbGVjdHJvblNoZWxsRGlhbWV0ZXIiLCJhZGRDb2xvclN0b3AiLCJlbGVjdHJvbkNvdW50UHJvcGVydHkiLCJnZXQiLCJwcm90b25Db3VudFByb3BlcnR5IiwibGluayIsImRpc3Bvc2VJc290b3BlRWxlY3Ryb25DbG91ZFZpZXciLCJ1bmxpbmsiLCJkaXNwb3NlIiwibWFwRWxlY3Ryb25Db3VudFRvUmFkaXVzIiwibWluU2hlbGxSYWRpdXMiLCJOdW1iZXIiLCJNQVhfVkFMVUUiLCJtYXhTaGVsbFJhZGl1cyIsInJlZHVjZVJhZGl1c1JhbmdlIiwidmFsdWUiLCJtaW5DaGFuZ2VkUmFkaXVzIiwibWF4Q2hhbmdlZFJhZGl1cyIsImNvbXByZXNzaW9uRnVuY3Rpb24iLCJldmFsdWF0ZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiSXNvdG9wZUVsZWN0cm9uQ2xvdWRWaWV3LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE1LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE5vZGUgdGhhdCByZXByZXNlbnRzIHRoZSBlbGVjdHJvbiBzaGVsbHMgaW4gYW4gaXNvdG9wZSBhcyBhIFwiY2xvdWRcIiB0aGF0IGdyb3dzIGFuZCBzaHJpbmtzIGRlcGVuZGluZyBvbiB0aGUgbnVtYmVyXHJcbiAqIG9mIGVsZWN0cm9ucyB0aGF0IGl0IGNvbnRhaW5zLiAgVGhpcyBwYXJ0aWN1bGFyIGNsYXNzIGltcGxlbWVudHMgYmVoYXZpb3IgbmVlZGVkIGZvciB0aGUgSXNvdG9wZXMgc2ltdWxhdGlvbiwgd2hpY2hcclxuICogaXMgc29tZXdoYXQgZGlmZmVyZW50IGZyb20gdGhhdCBuZWVkZWQgZm9yIEJ1aWxkIGFuIEF0b20uXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9obiBCbGFuY29cclxuICogQGF1dGhvciBKZXNzZSBHcmVlbmJlcmdcclxuICogQGF1dGhvciBBYWRpc2ggR3VwdGFcclxuICovXHJcblxyXG5pbXBvcnQgTGluZWFyRnVuY3Rpb24gZnJvbSAnLi4vLi4vLi4vZG90L2pzL0xpbmVhckZ1bmN0aW9uLmpzJztcclxuaW1wb3J0IG1lcmdlIGZyb20gJy4uLy4uLy4uL3BoZXQtY29yZS9qcy9tZXJnZS5qcyc7XHJcbmltcG9ydCB7IENpcmNsZSwgUmFkaWFsR3JhZGllbnQgfSBmcm9tICcuLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgVGFuZGVtIGZyb20gJy4uLy4uLy4uL3RhbmRlbS9qcy9UYW5kZW0uanMnO1xyXG5pbXBvcnQgc2hyZWQgZnJvbSAnLi4vc2hyZWQuanMnO1xyXG5cclxuLy8gY29uc3RhbnRzXHJcbmNvbnN0IE1BWF9FTEVDVFJPTlMgPSAxMDsgLy8gRm9yIG5lb24uXHJcblxyXG5jbGFzcyBJc290b3BlRWxlY3Ryb25DbG91ZFZpZXcgZXh0ZW5kcyBDaXJjbGUge1xyXG5cclxuICAvKipcclxuICAgKiBDb25zdHJ1Y3RvciBmb3IgdGhlIElzb3RvcGUgRWxlY3Ryb24gQ2xvdWQuXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge051bWJlckF0b219IG51bWJlckF0b21cclxuICAgKiBAcGFyYW0ge01vZGVsVmlld1RyYW5zZm9ybTJ9IG1vZGVsVmlld1RyYW5zZm9ybVxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggbnVtYmVyQXRvbSwgbW9kZWxWaWV3VHJhbnNmb3JtLCBvcHRpb25zICkge1xyXG5cclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICBwaWNrYWJsZTogZmFsc2UsXHJcbiAgICAgIHRhbmRlbTogVGFuZGVtLlJFUVVJUkVEXHJcbiAgICB9LCBvcHRpb25zICk7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCAhb3B0aW9ucy5waWNrYWJsZSwgJ0lzb3RvcGVFbGVjdHJvbkNsb3VkVmlldyBjYW5ub3QgYmUgcGlja2FibGUnICk7XHJcblxyXG4gICAgLy8gQ2FsbCBzdXBlciBjb25zdHJ1Y3RvciB1c2luZyBkdW1teSByYWRpdXMgYW5kIGFjdHVhbCBpcyB1cGRhdGVkIGJlbG93LlxyXG4gICAgc3VwZXIoIDEsIG9wdGlvbnMgKTtcclxuXHJcbiAgICBjb25zdCB1cGRhdGVOb2RlID0gbnVtRWxlY3Ryb25zID0+IHtcclxuICAgICAgaWYgKCBudW1FbGVjdHJvbnMgPT09IDAgKSB7XHJcbiAgICAgICAgdGhpcy5yYWRpdXMgPSAxRS01OyAvLyBBcmJpdHJhcnkgbm9uLXplcm8gdmFsdWUuXHJcbiAgICAgICAgdGhpcy5maWxsID0gJ3RyYW5zcGFyZW50JztcclxuICAgICAgfVxyXG4gICAgICBlbHNlIHtcclxuICAgICAgICB0aGlzLnJhZGl1cyA9IG1vZGVsVmlld1RyYW5zZm9ybS5tb2RlbFRvVmlld0RlbHRhWCggdGhpcy5nZXRFbGVjdHJvblNoZWxsRGlhbWV0ZXIoIG51bUVsZWN0cm9ucyApIC8gMiApO1xyXG4gICAgICAgIC8vIGVtcGlyaWNhbGx5IGRldGVybWluZWQgYWRqdXN0bWVudCBmYWN0b3IgYWNjb3JkaW5nIHRvIHRoZSB3ZWlnaGluZyBzY2FsZVxyXG4gICAgICAgIHRoaXMucmFkaXVzID0gdGhpcy5yYWRpdXMgKiAxLjI7XHJcbiAgICAgICAgdGhpcy5maWxsID0gbmV3IFJhZGlhbEdyYWRpZW50KCAwLCAwLCAwLCAwLCAwLCB0aGlzLnJhZGl1cyApXHJcbiAgICAgICAgICAuYWRkQ29sb3JTdG9wKCAwLCAncmdiYSggMCwgMCwgMjU1LCAwICknIClcclxuICAgICAgICAgIC5hZGRDb2xvclN0b3AoIDEsICdyZ2JhKCAwLCAwLCAyNTUsIDAuNCApJyApO1xyXG4gICAgICB9XHJcbiAgICB9O1xyXG4gICAgdXBkYXRlTm9kZSggbnVtYmVyQXRvbS5lbGVjdHJvbkNvdW50UHJvcGVydHkuZ2V0KCkgKTtcclxuXHJcbiAgICAvLyBVcGRhdGUgdGhlIGNsb3VkIHNpemUgYXMgZWxlY3Ryb25zIGNvbWUgYW5kIGdvLlxyXG4gICAgbnVtYmVyQXRvbS5wcm90b25Db3VudFByb3BlcnR5LmxpbmsoIHVwZGF0ZU5vZGUgKTtcclxuXHJcbiAgICAvLyBAcHJpdmF0ZVxyXG4gICAgdGhpcy5kaXNwb3NlSXNvdG9wZUVsZWN0cm9uQ2xvdWRWaWV3ID0gZnVuY3Rpb24oKSB7XHJcbiAgICAgIG51bWJlckF0b20ucHJvdG9uQ291bnRQcm9wZXJ0eS51bmxpbmsoIHVwZGF0ZU5vZGUgKTtcclxuICAgIH07XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBAcHVibGljXHJcbiAgICogQG92ZXJyaWRlXHJcbiAgICovXHJcbiAgZGlzcG9zZSgpIHtcclxuICAgIHRoaXMuZGlzcG9zZUlzb3RvcGVFbGVjdHJvbkNsb3VkVmlldygpO1xyXG4gICAgc3VwZXIuZGlzcG9zZSgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogTWFwcyBhIG51bWJlciBvZiBlbGVjdHJvbnMgdG8gYSBkaWFtZXRlciBpbiBzY3JlZW4gY29vcmRpbmF0ZXMgZm9yIHRoZSBlbGVjdHJvbiBzaGVsbC4gIFRoaXMgbWFwcGluZyBmdW5jdGlvbiBpc1xyXG4gICAqIGJhc2VkIG9uIHRoZSByZWFsIHNpemUgcmVsYXRpb25zaGlwcyBiZXR3ZWVuIHRoZSB2YXJpb3VzIGF0b21zLCBidXQgaGFzIHNvbWUgdHdlYWthYmxlIHBhcmFtZXRlcnMgdG8gcmVkdWNlIHRoZVxyXG4gICAqIHJhbmdlIGFuZCBzY2FsZSB0byBwcm92aWRlIHZhbHVlcyB0aGF0IGFyZSB1c2FibGUgZm9yIG91ciBuZWVkcyBvbiB0aGUgY2FudmFzLlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBudW1FbGVjdHJvbnNcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0RWxlY3Ryb25TaGVsbERpYW1ldGVyKCBudW1FbGVjdHJvbnMgKSB7XHJcblxyXG4gICAgLy8gVGhpcyBkYXRhIHN0cnVjdHVyZSBtYXBzIHRoZSBudW1iZXIgb2YgZWxlY3Ryb25zIHRvIGEgcmFkaXVzIGZvciBhbiBhdG9tLiAgSXQgYXNzdW1lcyBhIHN0YWJsZSwgbmV1dHJhbCBhdG9tLlxyXG4gICAgLy8gVGhlIGJhc2ljIHZhbHVlcyBhcmUgdGhlIGNvdmFsZW50IHJhZGlpLCBhbmQgd2VyZSB0YWtlbiBmcm9tIGEgV2lraXBlZGlhIGVudHJ5IGVudGl0bGVkIFwiQXRvbWljIHJhZGlpIG9mIHRoZVxyXG4gICAgLy8gZWxlbWVudHNcIiB3aGljaCwgYXQgdGhlIHRpbWUgb2YgdGhpcyB3cml0aW5nLCBjYW4gYmUgZm91bmQgaGVyZTpcclxuICAgIC8vIGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0F0b21pY19yYWRpaV9vZl90aGVfZWxlbWVudHNfKGRhdGFfcGFnZSkuXHJcbiAgICAvLyBUaGUgdmFsdWVzIGFyZSBpbiBwaWNvbWV0ZXJzLiAgSW4gcHJhY3RpY2UsIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4gdGhlIHJhZGlpIHdvcmtlZCBvdXQgdG8gYmUgYSBiaXQgdG9vIG11Y2hcclxuICAgIC8vIHZpc3VhbGx5LCBzbyB0aGVyZSBhcmUgc29tZSAndHdlYWsgZmFjdG9ycycgZm9yIGEgZmV3IG9mIHRoZSBlbGVtZW50cy5cclxuICAgIGNvbnN0IG1hcEVsZWN0cm9uQ291bnRUb1JhZGl1cyA9IHtcclxuICAgICAgMTogMzgsXHJcbiAgICAgIDI6IDMyLFxyXG4gICAgICAzOiAxMzQgKiAwLjc1LFxyXG4gICAgICA0OiA5MCAqIDAuOTcsXHJcbiAgICAgIDU6IDgyLFxyXG4gICAgICA2OiA3NyxcclxuICAgICAgNzogNzUsXHJcbiAgICAgIDg6IDczLFxyXG4gICAgICA5OiA3MSxcclxuICAgICAgMTA6IDY5XHJcbiAgICB9O1xyXG5cclxuICAgIC8vIERldGVybWluZSB0aGUgbWluIGFuZCBtYXggcmFkaWkgb2YgdGhlIHN1cHBvcnRlZCBhdG9tcy5cclxuICAgIGxldCBtaW5TaGVsbFJhZGl1cyA9IE51bWJlci5NQVhfVkFMVUU7XHJcbiAgICBsZXQgbWF4U2hlbGxSYWRpdXMgPSAwO1xyXG5cclxuICAgIGZvciAoIGNvbnN0IHJhZGl1cyBpbiBtYXBFbGVjdHJvbkNvdW50VG9SYWRpdXMgKSB7XHJcbiAgICAgIGlmICggcmFkaXVzID4gbWF4U2hlbGxSYWRpdXMgKSB7XHJcbiAgICAgICAgbWF4U2hlbGxSYWRpdXMgPSByYWRpdXM7XHJcbiAgICAgIH1cclxuICAgICAgaWYgKCByYWRpdXMgPCBtaW5TaGVsbFJhZGl1cyApIHtcclxuICAgICAgICBtaW5TaGVsbFJhZGl1cyA9IHJhZGl1cztcclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIC8vIFRoaXMgbWV0aG9kIGluY3JlYXNlcyB0aGUgdmFsdWUgb2YgdGhlIHNtYWxsZXIgcmFkaXVzIHZhbHVlcyBhbmQgZGVjcmVhc2VzIHRoZSB2YWx1ZSBvZiB0aGUgbGFyZ2VyIG9uZXMuXHJcbiAgICAvLyBUaGlzIGVmZmVjdGl2ZWx5IHJlZHVjZXMgdGhlIHJhbmdlIG9mIHJhZGlpIHZhbHVlcyB1c2VkLlxyXG4gICAgLy8gVGhpcyBpcyBhIHZlcnkgc3BlY2lhbGl6ZWQgZnVuY3Rpb24gZm9yIHRoZSBwdXJwb3NlcyBvZiB0aGlzIGNsYXNzLlxyXG4gICAgY29uc3QgcmVkdWNlUmFkaXVzUmFuZ2UgPSBmdW5jdGlvbiggdmFsdWUgKSB7XHJcbiAgICAgIC8vIFRoZSBmb2xsb3dpbmcgdHdvIGZhY3RvcnMgZGVmaW5lIHRoZSB3YXkgaW4gd2hpY2ggYW4gaW5wdXQgdmFsdWUgaXMgaW5jcmVhc2VkIG9yIGRlY3JlYXNlZC4gIFRoZXNlIHZhbHVlc1xyXG4gICAgICAvLyBjYW4gYmUgYWRqdXN0ZWQgYXMgbmVlZGVkIHRvIG1ha2UgdGhlIGNsb3VkIHNpemUgYXBwZWFyIGFzIGRlc2lyZWQuXHJcbiAgICAgIGNvbnN0IG1pbkNoYW5nZWRSYWRpdXMgPSA0MDtcclxuICAgICAgY29uc3QgbWF4Q2hhbmdlZFJhZGl1cyA9IDU1O1xyXG5cclxuICAgICAgY29uc3QgY29tcHJlc3Npb25GdW5jdGlvbiA9IG5ldyBMaW5lYXJGdW5jdGlvbiggbWluU2hlbGxSYWRpdXMsIG1heFNoZWxsUmFkaXVzLCBtaW5DaGFuZ2VkUmFkaXVzLCBtYXhDaGFuZ2VkUmFkaXVzICk7XHJcbiAgICAgIHJldHVybiBjb21wcmVzc2lvbkZ1bmN0aW9uLmV2YWx1YXRlKCB2YWx1ZSApO1xyXG4gICAgfTtcclxuXHJcbiAgICBpZiAoIG51bUVsZWN0cm9ucyBpbiBtYXBFbGVjdHJvbkNvdW50VG9SYWRpdXMgKSB7XHJcbiAgICAgIHJldHVybiByZWR1Y2VSYWRpdXNSYW5nZSggbWFwRWxlY3Ryb25Db3VudFRvUmFkaXVzWyBudW1FbGVjdHJvbnMgXSApO1xyXG4gICAgfVxyXG4gICAgZWxzZSB7XHJcbiAgICAgIGFzc2VydCAmJiBhc3NlcnQoIG51bUVsZWN0cm9ucyA8PSBNQVhfRUxFQ1RST05TLCBgQXRvbSBoYXMgbW9yZSB0aGFuIHN1cHBvcnRlZCBudW1iZXIgb2YgZWxlY3Ryb25zLCAke251bUVsZWN0cm9uc31gICk7XHJcbiAgICAgIHJldHVybiAwO1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuc2hyZWQucmVnaXN0ZXIoICdJc290b3BlRWxlY3Ryb25DbG91ZFZpZXcnLCBJc290b3BlRWxlY3Ryb25DbG91ZFZpZXcgKTtcclxuZXhwb3J0IGRlZmF1bHQgSXNvdG9wZUVsZWN0cm9uQ2xvdWRWaWV3OyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FB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

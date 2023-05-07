@@ -1,0 +1,17 @@
+// Copyright 2017-2022, University of Colorado Boulder
+
+/**
+ * Unit tests for tandem. Please run once in phet brand and once in brand=phet-io to cover all functionality.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import qunitStart from '../../chipper/js/sim-tests/qunitStart.js';
+import './PhetioActionTests.js';
+import './PhetioGroupTests.js';
+import './PhetioObjectTests.js';
+import './TandemTests.js';
+import './types/IOTypeTests.js';
+import './types/InfiniteNumberIOTests.js';
+qunitStart();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJxdW5pdFN0YXJ0Il0sInNvdXJjZXMiOlsidGFuZGVtLXRlc3RzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFVuaXQgdGVzdHMgZm9yIHRhbmRlbS4gUGxlYXNlIHJ1biBvbmNlIGluIHBoZXQgYnJhbmQgYW5kIG9uY2UgaW4gYnJhbmQ9cGhldC1pbyB0byBjb3ZlciBhbGwgZnVuY3Rpb25hbGl0eS5cclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgcXVuaXRTdGFydCBmcm9tICcuLi8uLi9jaGlwcGVyL2pzL3NpbS10ZXN0cy9xdW5pdFN0YXJ0LmpzJztcclxuaW1wb3J0ICcuL1BoZXRpb0FjdGlvblRlc3RzLmpzJztcclxuaW1wb3J0ICcuL1BoZXRpb0dyb3VwVGVzdHMuanMnO1xyXG5pbXBvcnQgJy4vUGhldGlvT2JqZWN0VGVzdHMuanMnO1xyXG5pbXBvcnQgJy4vVGFuZGVtVGVzdHMuanMnO1xyXG5pbXBvcnQgJy4vdHlwZXMvSU9UeXBlVGVzdHMuanMnO1xyXG5pbXBvcnQgJy4vdHlwZXMvSW5maW5pdGVOdW1iZXJJT1Rlc3RzLmpzJztcclxuXHJcbnF1bml0U3RhcnQoKTsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsVUFBVSxNQUFNLDBDQUEwQztBQUNqRSxPQUFPLHdCQUF3QjtBQUMvQixPQUFPLHVCQUF1QjtBQUM5QixPQUFPLHdCQUF3QjtBQUMvQixPQUFPLGtCQUFrQjtBQUN6QixPQUFPLHdCQUF3QjtBQUMvQixPQUFPLGtDQUFrQztBQUV6Q0EsVUFBVSxDQUFDLENBQUMifQ==

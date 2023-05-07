@@ -1,0 +1,1 @@
+The assets for this simulation can be found in https://github.com/phetsims/equality-explorer/tree/master/assets.

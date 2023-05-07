@@ -1,0 +1,59 @@
+// Copyright 2020-2021, University of Colorado Boulder
+
+/**
+ * NOTE: This is just a stub because coulombs law is not yet implemented with interactive
+ * descriptions, but has shared code with the gravity force lab sims.
+ *
+ * This describer is responsible for the descriptions associated with the movable ruler. Unlike other describers, this
+ * type also alerts based on the movement of the ruler. This is a bit non-traditional, but made sense based on the
+ * modularity of ruler specific content.
+ *
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+import Alerter from '../../../../../scenery-phet/js/accessibility/describers/Alerter.js';
+import coulombsLaw from '../../../coulombsLaw.js';
+class CoulombsLawRulerDescriber extends Alerter {
+  /**
+   * @param {CoulombsLawCommonModel} model
+   * @param {string} object1Label
+   * @param {string} object2Label
+   * @param {Object} [options]
+   */
+  constructor(model, object1Label, object2Label, options) {
+    super(options);
+  }
+
+  // @private
+  onDrag() {}
+
+  // @private
+  getRegionAndDistance() {
+    return '';
+  }
+
+  // @private
+  getRulerGrabbedAlertable() {
+    return '';
+  }
+
+  // @private
+  onGrab() {}
+
+  // @private
+  alertJumpHome() {}
+
+  // @private
+  getJumpCenterMassAlert() {
+    return '';
+  }
+
+  // @private
+  alertJumpCenterMass() {}
+
+  // @private
+  reset() {}
+}
+coulombsLaw.register('CoulombsLawRulerDescriber', CoulombsLawRulerDescriber);
+export default CoulombsLawRulerDescriber;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJBbGVydGVyIiwiY291bG9tYnNMYXciLCJDb3Vsb21ic0xhd1J1bGVyRGVzY3JpYmVyIiwiY29uc3RydWN0b3IiLCJtb2RlbCIsIm9iamVjdDFMYWJlbCIsIm9iamVjdDJMYWJlbCIsIm9wdGlvbnMiLCJvbkRyYWciLCJnZXRSZWdpb25BbmREaXN0YW5jZSIsImdldFJ1bGVyR3JhYmJlZEFsZXJ0YWJsZSIsIm9uR3JhYiIsImFsZXJ0SnVtcEhvbWUiLCJnZXRKdW1wQ2VudGVyTWFzc0FsZXJ0IiwiYWxlcnRKdW1wQ2VudGVyTWFzcyIsInJlc2V0IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJDb3Vsb21ic0xhd1J1bGVyRGVzY3JpYmVyLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIwLTIwMjEsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE5PVEU6IFRoaXMgaXMganVzdCBhIHN0dWIgYmVjYXVzZSBjb3Vsb21icyBsYXcgaXMgbm90IHlldCBpbXBsZW1lbnRlZCB3aXRoIGludGVyYWN0aXZlXHJcbiAqIGRlc2NyaXB0aW9ucywgYnV0IGhhcyBzaGFyZWQgY29kZSB3aXRoIHRoZSBncmF2aXR5IGZvcmNlIGxhYiBzaW1zLlxyXG4gKlxyXG4gKiBUaGlzIGRlc2NyaWJlciBpcyByZXNwb25zaWJsZSBmb3IgdGhlIGRlc2NyaXB0aW9ucyBhc3NvY2lhdGVkIHdpdGggdGhlIG1vdmFibGUgcnVsZXIuIFVubGlrZSBvdGhlciBkZXNjcmliZXJzLCB0aGlzXHJcbiAqIHR5cGUgYWxzbyBhbGVydHMgYmFzZWQgb24gdGhlIG1vdmVtZW50IG9mIHRoZSBydWxlci4gVGhpcyBpcyBhIGJpdCBub24tdHJhZGl0aW9uYWwsIGJ1dCBtYWRlIHNlbnNlIGJhc2VkIG9uIHRoZVxyXG4gKiBtb2R1bGFyaXR5IG9mIHJ1bGVyIHNwZWNpZmljIGNvbnRlbnQuXHJcbiAqXHJcbiAqIEBhdXRob3IgTWljaGFlbCBLYXV6bWFubiAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgQWxlcnRlciBmcm9tICcuLi8uLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvYWNjZXNzaWJpbGl0eS9kZXNjcmliZXJzL0FsZXJ0ZXIuanMnO1xyXG5pbXBvcnQgY291bG9tYnNMYXcgZnJvbSAnLi4vLi4vLi4vY291bG9tYnNMYXcuanMnO1xyXG5cclxuY2xhc3MgQ291bG9tYnNMYXdSdWxlckRlc2NyaWJlciBleHRlbmRzIEFsZXJ0ZXIge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge0NvdWxvbWJzTGF3Q29tbW9uTW9kZWx9IG1vZGVsXHJcbiAgICogQHBhcmFtIHtzdHJpbmd9IG9iamVjdDFMYWJlbFxyXG4gICAqIEBwYXJhbSB7c3RyaW5nfSBvYmplY3QyTGFiZWxcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIG1vZGVsLCBvYmplY3QxTGFiZWwsIG9iamVjdDJMYWJlbCwgb3B0aW9ucyApIHtcclxuICAgIHN1cGVyKCBvcHRpb25zICk7XHJcbiAgfVxyXG5cclxuICAvLyBAcHJpdmF0ZVxyXG4gIG9uRHJhZygpIHt9XHJcblxyXG4gIC8vIEBwcml2YXRlXHJcbiAgZ2V0UmVnaW9uQW5kRGlzdGFuY2UoKSB7cmV0dXJuICcnOyB9XHJcblxyXG4gIC8vIEBwcml2YXRlXHJcbiAgZ2V0UnVsZXJHcmFiYmVkQWxlcnRhYmxlKCkge3JldHVybiAnJzsgfVxyXG5cclxuICAvLyBAcHJpdmF0ZVxyXG4gIG9uR3JhYigpIHsgfVxyXG5cclxuICAvLyBAcHJpdmF0ZVxyXG4gIGFsZXJ0SnVtcEhvbWUoKSB7IH1cclxuXHJcbiAgLy8gQHByaXZhdGVcclxuICBnZXRKdW1wQ2VudGVyTWFzc0FsZXJ0KCkgeyByZXR1cm4gJyc7IH1cclxuXHJcbiAgLy8gQHByaXZhdGVcclxuICBhbGVydEp1bXBDZW50ZXJNYXNzKCkgeyB9XHJcblxyXG4gIC8vIEBwcml2YXRlXHJcbiAgcmVzZXQoKSB7IH1cclxufVxyXG5cclxuY291bG9tYnNMYXcucmVnaXN0ZXIoICdDb3Vsb21ic0xhd1J1bGVyRGVzY3JpYmVyJywgQ291bG9tYnNMYXdSdWxlckRlc2NyaWJlciApO1xyXG5leHBvcnQgZGVmYXVsdCBDb3Vsb21ic0xhd1J1bGVyRGVzY3JpYmVyOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLG9FQUFvRTtBQUN4RixPQUFPQyxXQUFXLE1BQU0seUJBQXlCO0FBRWpELE1BQU1DLHlCQUF5QixTQUFTRixPQUFPLENBQUM7RUFFOUM7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VHLFdBQVdBLENBQUVDLEtBQUssRUFBRUMsWUFBWSxFQUFFQyxZQUFZLEVBQUVDLE9BQU8sRUFBRztJQUN4RCxLQUFLLENBQUVBLE9BQVEsQ0FBQztFQUNsQjs7RUFFQTtFQUNBQyxNQUFNQSxDQUFBLEVBQUcsQ0FBQzs7RUFFVjtFQUNBQyxvQkFBb0JBLENBQUEsRUFBRztJQUFDLE9BQU8sRUFBRTtFQUFFOztFQUVuQztFQUNBQyx3QkFBd0JBLENBQUEsRUFBRztJQUFDLE9BQU8sRUFBRTtFQUFFOztFQUV2QztFQUNBQyxNQUFNQSxDQUFBLEVBQUcsQ0FBRTs7RUFFWDtFQUNBQyxhQUFhQSxDQUFBLEVBQUcsQ0FBRTs7RUFFbEI7RUFDQUMsc0JBQXNCQSxDQUFBLEVBQUc7SUFBRSxPQUFPLEVBQUU7RUFBRTs7RUFFdEM7RUFDQUMsbUJBQW1CQSxDQUFBLEVBQUcsQ0FBRTs7RUFFeEI7RUFDQUMsS0FBS0EsQ0FBQSxFQUFHLENBQUU7QUFDWjtBQUVBZCxXQUFXLENBQUNlLFFBQVEsQ0FBRSwyQkFBMkIsRUFBRWQseUJBQTBCLENBQUM7QUFDOUUsZUFBZUEseUJBQXlCIn0=

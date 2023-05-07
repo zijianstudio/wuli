@@ -1,0 +1,112 @@
+{
+  "en": {
+    "keplers-laws.title": {
+      "value": "Kepler's Laws"
+    },
+    "screen.firstLaw": {
+      "value": "First Law"
+    },
+    "screen.secondLaw": {
+      "value": "Second Law"
+    },
+    "screen.thirdLaw": {
+      "value": "Third Law"
+    },
+    "screen.lab": {
+      "value": "Lab"
+    },
+    "undefined": {
+      "value": "undefined"
+    },
+    "circularOrbit": {
+      "value": "Always circular"
+    },
+    "axis": {
+      "value": "Axes"
+    },
+    "foci": {
+      "value": "Foci"
+    },
+    "strings": {
+      "value": "String"
+    },
+    "semiaxis": {
+      "value": "Semiaxes"
+    },
+    "eccentricity": {
+      "value": "Eccentricity"
+    },
+    "eccentricityEquation": {
+      "value": "Eccentricity ="
+    },
+    "apoapsis": {
+      "value": "Apoapsis"
+    },
+    "periapsis": {
+      "value": "Periapsis"
+    },
+    "starMass": {
+      "value": "Star Mass"
+    },
+    "ourSun": {
+      "value": "Our Sun"
+    },
+    "period": {
+      "value": "Period"
+    },
+    "area.periodDivision": {
+      "value": "Period Divisions"
+    },
+    "area.values": {
+      "value": "Area Values"
+    },
+    "area.areaUnits": {
+      "value": "Area (AU<sup>2</sup>)"
+    },
+    "sweptArea": {
+      "value": "Swept Area"
+    },
+    "graph.title": {
+      "value": "a{{axisPower}} vs T{{periodPower}} Graph"
+    },
+    "graph.a": {
+      "value": "Semimajor Axis (a)"
+    },
+    "graph.t": {
+      "value": "Period (T)"
+    },
+    "symbols.semiMajorAxis": {
+      "value": "a"
+    },
+    "symbols.semiMinorAxis": {
+      "value": "b"
+    },
+    "symbols.focalDistance": {
+      "value": "c"
+    },
+    "symbols.period": {
+      "value": "T"
+    },
+    "symbols.radius": {
+      "value": "r"
+    },
+    "symbols.distance1": {
+      "value": "d<sub>1</sub>"
+    },
+    "symbols.distance2": {
+      "value": "d<sub>2</sub>"
+    },
+    "pattern.textEqualsValueUnits": {
+      "value": "{{text}} = {{value}} {{units}}"
+    },
+    "warning.warning": {
+      "value": "Warning"
+    },
+    "warning.crashOrbit": {
+      "value": "The body will crash into the sun"
+    },
+    "warning.escapeOrbit": {
+      "value": "The body will escape the system"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+// Copyright 2020, University of Colorado Boulder
+
+/**
+ * Immutable data point class that contains information about the position of a generic moving object at a given elapsed
+ * time of the simulation.
+ *
+ * Used with both Balls and the CenterOfMass for rendering the trailing 'Path' of the moving object as time progresses.
+ * PathDataPoints are rendered as a fading line if the 'Path' checkbox is checked, meaning PathDataPoints are removed
+ * after a set amount of time. See https://github.com/phetsims/collision-lab/issues/61.
+ *
+ * @author Brandon Li
+ */
+
+import Vector2 from '../../../../dot/js/Vector2.js';
+import collisionLab from '../../collisionLab.js';
+class PathDataPoint {
+  /**
+   * @param {number} time - the total elapsed time of the simulation, in seconds.
+   * @param {Vector2} position - position of the Ball or CenterOfMass moving object, in meter coordinates.
+   */
+  constructor(time, position) {
+    assert && assert(typeof time === 'number' && time >= 0, `invalid time: ${time}`);
+    assert && assert(position instanceof Vector2, `invalid position: ${position}`);
+
+    // @public (read-only) {number}
+    this.time = time;
+
+    // @public (read-only) {Vector2}
+    this.position = position;
+  }
+
+  /**
+   * Debugging string for the PathDataPoint.
+   * @public
+   *
+   * @returns {string}
+   */
+  toString() {
+    return `PathDataPoint[ time: ${this.time}, position: ${this.position.toString()} ]`;
+  }
+}
+collisionLab.register('PathDataPoint', PathDataPoint);
+export default PathDataPoint;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwiY29sbGlzaW9uTGFiIiwiUGF0aERhdGFQb2ludCIsImNvbnN0cnVjdG9yIiwidGltZSIsInBvc2l0aW9uIiwiYXNzZXJ0IiwidG9TdHJpbmciLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIlBhdGhEYXRhUG9pbnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEltbXV0YWJsZSBkYXRhIHBvaW50IGNsYXNzIHRoYXQgY29udGFpbnMgaW5mb3JtYXRpb24gYWJvdXQgdGhlIHBvc2l0aW9uIG9mIGEgZ2VuZXJpYyBtb3Zpbmcgb2JqZWN0IGF0IGEgZ2l2ZW4gZWxhcHNlZFxyXG4gKiB0aW1lIG9mIHRoZSBzaW11bGF0aW9uLlxyXG4gKlxyXG4gKiBVc2VkIHdpdGggYm90aCBCYWxscyBhbmQgdGhlIENlbnRlck9mTWFzcyBmb3IgcmVuZGVyaW5nIHRoZSB0cmFpbGluZyAnUGF0aCcgb2YgdGhlIG1vdmluZyBvYmplY3QgYXMgdGltZSBwcm9ncmVzc2VzLlxyXG4gKiBQYXRoRGF0YVBvaW50cyBhcmUgcmVuZGVyZWQgYXMgYSBmYWRpbmcgbGluZSBpZiB0aGUgJ1BhdGgnIGNoZWNrYm94IGlzIGNoZWNrZWQsIG1lYW5pbmcgUGF0aERhdGFQb2ludHMgYXJlIHJlbW92ZWRcclxuICogYWZ0ZXIgYSBzZXQgYW1vdW50IG9mIHRpbWUuIFNlZSBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvY29sbGlzaW9uLWxhYi9pc3N1ZXMvNjEuXHJcbiAqXHJcbiAqIEBhdXRob3IgQnJhbmRvbiBMaVxyXG4gKi9cclxuXHJcbmltcG9ydCBWZWN0b3IyIGZyb20gJy4uLy4uLy4uLy4uL2RvdC9qcy9WZWN0b3IyLmpzJztcclxuaW1wb3J0IGNvbGxpc2lvbkxhYiBmcm9tICcuLi8uLi9jb2xsaXNpb25MYWIuanMnO1xyXG5cclxuY2xhc3MgUGF0aERhdGFQb2ludCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSB0aW1lIC0gdGhlIHRvdGFsIGVsYXBzZWQgdGltZSBvZiB0aGUgc2ltdWxhdGlvbiwgaW4gc2Vjb25kcy5cclxuICAgKiBAcGFyYW0ge1ZlY3RvcjJ9IHBvc2l0aW9uIC0gcG9zaXRpb24gb2YgdGhlIEJhbGwgb3IgQ2VudGVyT2ZNYXNzIG1vdmluZyBvYmplY3QsIGluIG1ldGVyIGNvb3JkaW5hdGVzLlxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCB0aW1lLCBwb3NpdGlvbiApIHtcclxuICAgIGFzc2VydCAmJiBhc3NlcnQoIHR5cGVvZiB0aW1lID09PSAnbnVtYmVyJyAmJiB0aW1lID49IDAsIGBpbnZhbGlkIHRpbWU6ICR7dGltZX1gICk7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBwb3NpdGlvbiBpbnN0YW5jZW9mIFZlY3RvcjIsIGBpbnZhbGlkIHBvc2l0aW9uOiAke3Bvc2l0aW9ufWAgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIChyZWFkLW9ubHkpIHtudW1iZXJ9XHJcbiAgICB0aGlzLnRpbWUgPSB0aW1lO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSkge1ZlY3RvcjJ9XHJcbiAgICB0aGlzLnBvc2l0aW9uID0gcG9zaXRpb247XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBEZWJ1Z2dpbmcgc3RyaW5nIGZvciB0aGUgUGF0aERhdGFQb2ludC5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcmV0dXJucyB7c3RyaW5nfVxyXG4gICAqL1xyXG4gIHRvU3RyaW5nKCkge1xyXG4gICAgcmV0dXJuIGBQYXRoRGF0YVBvaW50WyB0aW1lOiAke3RoaXMudGltZX0sIHBvc2l0aW9uOiAke3RoaXMucG9zaXRpb24udG9TdHJpbmcoKX0gXWA7XHJcbiAgfVxyXG59XHJcblxyXG5jb2xsaXNpb25MYWIucmVnaXN0ZXIoICdQYXRoRGF0YVBvaW50JywgUGF0aERhdGFQb2ludCApO1xyXG5leHBvcnQgZGVmYXVsdCBQYXRoRGF0YVBvaW50OyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsT0FBTyxNQUFNLCtCQUErQjtBQUNuRCxPQUFPQyxZQUFZLE1BQU0sdUJBQXVCO0FBRWhELE1BQU1DLGFBQWEsQ0FBQztFQUVsQjtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxJQUFJLEVBQUVDLFFBQVEsRUFBRztJQUM1QkMsTUFBTSxJQUFJQSxNQUFNLENBQUUsT0FBT0YsSUFBSSxLQUFLLFFBQVEsSUFBSUEsSUFBSSxJQUFJLENBQUMsRUFBRyxpQkFBZ0JBLElBQUssRUFBRSxDQUFDO0lBQ2xGRSxNQUFNLElBQUlBLE1BQU0sQ0FBRUQsUUFBUSxZQUFZTCxPQUFPLEVBQUcscUJBQW9CSyxRQUFTLEVBQUUsQ0FBQzs7SUFFaEY7SUFDQSxJQUFJLENBQUNELElBQUksR0FBR0EsSUFBSTs7SUFFaEI7SUFDQSxJQUFJLENBQUNDLFFBQVEsR0FBR0EsUUFBUTtFQUMxQjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUUsUUFBUUEsQ0FBQSxFQUFHO0lBQ1QsT0FBUSx3QkFBdUIsSUFBSSxDQUFDSCxJQUFLLGVBQWMsSUFBSSxDQUFDQyxRQUFRLENBQUNFLFFBQVEsQ0FBQyxDQUFFLElBQUc7RUFDckY7QUFDRjtBQUVBTixZQUFZLENBQUNPLFFBQVEsQ0FBRSxlQUFlLEVBQUVOLGFBQWMsQ0FBQztBQUN2RCxlQUFlQSxhQUFhIn0=

@@ -1,0 +1,38 @@
+// Copyright 2014-2022, University of Colorado Boulder
+
+/**
+ * Defines a simple grid with horizontal and vertical lines, and no enclosing
+ * lines on the outer edges.
+ *
+ * @author John Blanco
+ */
+
+import { Shape } from '../../../../kite/js/imports.js';
+import { Path } from '../../../../scenery/js/imports.js';
+import areaBuilder from '../../areaBuilder.js';
+class Grid extends Path {
+  /**
+   * @param {Bounds2} bounds
+   * @param {number} spacing
+   * @param {Object} [options]
+   */
+  constructor(bounds, spacing, options) {
+    const gridShape = new Shape();
+
+    // Add the vertical lines
+    for (let i = bounds.minX + spacing; i < bounds.minX + bounds.width; i += spacing) {
+      gridShape.moveTo(i, bounds.minY);
+      gridShape.lineTo(i, bounds.minY + bounds.height);
+    }
+
+    // Add the horizontal lines
+    for (let i = bounds.minY + spacing; i < bounds.minY + bounds.height; i += spacing) {
+      gridShape.moveTo(bounds.minX, i);
+      gridShape.lineTo(bounds.minX + bounds.width, i);
+    }
+    super(gridShape, options);
+  }
+}
+areaBuilder.register('Grid', Grid);
+export default Grid;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTaGFwZSIsIlBhdGgiLCJhcmVhQnVpbGRlciIsIkdyaWQiLCJjb25zdHJ1Y3RvciIsImJvdW5kcyIsInNwYWNpbmciLCJvcHRpb25zIiwiZ3JpZFNoYXBlIiwiaSIsIm1pblgiLCJ3aWR0aCIsIm1vdmVUbyIsIm1pblkiLCJsaW5lVG8iLCJoZWlnaHQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkdyaWQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogRGVmaW5lcyBhIHNpbXBsZSBncmlkIHdpdGggaG9yaXpvbnRhbCBhbmQgdmVydGljYWwgbGluZXMsIGFuZCBubyBlbmNsb3NpbmdcclxuICogbGluZXMgb24gdGhlIG91dGVyIGVkZ2VzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvaG4gQmxhbmNvXHJcbiAqL1xyXG5cclxuaW1wb3J0IHsgU2hhcGUgfSBmcm9tICcuLi8uLi8uLi8uLi9raXRlL2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgeyBQYXRoIH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IGFyZWFCdWlsZGVyIGZyb20gJy4uLy4uL2FyZWFCdWlsZGVyLmpzJztcclxuXHJcbmNsYXNzIEdyaWQgZXh0ZW5kcyBQYXRoIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtCb3VuZHMyfSBib3VuZHNcclxuICAgKiBAcGFyYW0ge251bWJlcn0gc3BhY2luZ1xyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggYm91bmRzLCBzcGFjaW5nLCBvcHRpb25zICkge1xyXG4gICAgY29uc3QgZ3JpZFNoYXBlID0gbmV3IFNoYXBlKCk7XHJcblxyXG4gICAgLy8gQWRkIHRoZSB2ZXJ0aWNhbCBsaW5lc1xyXG4gICAgZm9yICggbGV0IGkgPSBib3VuZHMubWluWCArIHNwYWNpbmc7IGkgPCBib3VuZHMubWluWCArIGJvdW5kcy53aWR0aDsgaSArPSBzcGFjaW5nICkge1xyXG4gICAgICBncmlkU2hhcGUubW92ZVRvKCBpLCBib3VuZHMubWluWSApO1xyXG4gICAgICBncmlkU2hhcGUubGluZVRvKCBpLCBib3VuZHMubWluWSArIGJvdW5kcy5oZWlnaHQgKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBBZGQgdGhlIGhvcml6b250YWwgbGluZXNcclxuICAgIGZvciAoIGxldCBpID0gYm91bmRzLm1pblkgKyBzcGFjaW5nOyBpIDwgYm91bmRzLm1pblkgKyBib3VuZHMuaGVpZ2h0OyBpICs9IHNwYWNpbmcgKSB7XHJcbiAgICAgIGdyaWRTaGFwZS5tb3ZlVG8oIGJvdW5kcy5taW5YLCBpICk7XHJcbiAgICAgIGdyaWRTaGFwZS5saW5lVG8oIGJvdW5kcy5taW5YICsgYm91bmRzLndpZHRoLCBpICk7XHJcbiAgICB9XHJcblxyXG4gICAgc3VwZXIoIGdyaWRTaGFwZSwgb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuYXJlYUJ1aWxkZXIucmVnaXN0ZXIoICdHcmlkJywgR3JpZCApO1xyXG5leHBvcnQgZGVmYXVsdCBHcmlkOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLEtBQUssUUFBUSxnQ0FBZ0M7QUFDdEQsU0FBU0MsSUFBSSxRQUFRLG1DQUFtQztBQUN4RCxPQUFPQyxXQUFXLE1BQU0sc0JBQXNCO0FBRTlDLE1BQU1DLElBQUksU0FBU0YsSUFBSSxDQUFDO0VBRXRCO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUcsV0FBV0EsQ0FBRUMsTUFBTSxFQUFFQyxPQUFPLEVBQUVDLE9BQU8sRUFBRztJQUN0QyxNQUFNQyxTQUFTLEdBQUcsSUFBSVIsS0FBSyxDQUFDLENBQUM7O0lBRTdCO0lBQ0EsS0FBTSxJQUFJUyxDQUFDLEdBQUdKLE1BQU0sQ0FBQ0ssSUFBSSxHQUFHSixPQUFPLEVBQUVHLENBQUMsR0FBR0osTUFBTSxDQUFDSyxJQUFJLEdBQUdMLE1BQU0sQ0FBQ00sS0FBSyxFQUFFRixDQUFDLElBQUlILE9BQU8sRUFBRztNQUNsRkUsU0FBUyxDQUFDSSxNQUFNLENBQUVILENBQUMsRUFBRUosTUFBTSxDQUFDUSxJQUFLLENBQUM7TUFDbENMLFNBQVMsQ0FBQ00sTUFBTSxDQUFFTCxDQUFDLEVBQUVKLE1BQU0sQ0FBQ1EsSUFBSSxHQUFHUixNQUFNLENBQUNVLE1BQU8sQ0FBQztJQUNwRDs7SUFFQTtJQUNBLEtBQU0sSUFBSU4sQ0FBQyxHQUFHSixNQUFNLENBQUNRLElBQUksR0FBR1AsT0FBTyxFQUFFRyxDQUFDLEdBQUdKLE1BQU0sQ0FBQ1EsSUFBSSxHQUFHUixNQUFNLENBQUNVLE1BQU0sRUFBRU4sQ0FBQyxJQUFJSCxPQUFPLEVBQUc7TUFDbkZFLFNBQVMsQ0FBQ0ksTUFBTSxDQUFFUCxNQUFNLENBQUNLLElBQUksRUFBRUQsQ0FBRSxDQUFDO01BQ2xDRCxTQUFTLENBQUNNLE1BQU0sQ0FBRVQsTUFBTSxDQUFDSyxJQUFJLEdBQUdMLE1BQU0sQ0FBQ00sS0FBSyxFQUFFRixDQUFFLENBQUM7SUFDbkQ7SUFFQSxLQUFLLENBQUVELFNBQVMsRUFBRUQsT0FBUSxDQUFDO0VBQzdCO0FBQ0Y7QUFFQUwsV0FBVyxDQUFDYyxRQUFRLENBQUUsTUFBTSxFQUFFYixJQUFLLENBQUM7QUFDcEMsZUFBZUEsSUFBSSJ9

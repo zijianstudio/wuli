@@ -1,0 +1,49 @@
+// Copyright 2017-2020, University of Colorado Boulder
+
+/**
+ * Base type for the model in both screens.
+ * See https://github.com/phetsims/color-vision/issues/117
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ * @abstract
+ */
+
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import StringProperty from '../../../../axon/js/StringProperty.js';
+import colorVision from '../../colorVision.js';
+class ColorVisionModel {
+  /**
+   * @param {Tandem} tandem
+   */
+  constructor(tandem) {
+    // @public {Property.<boolean>} is the model running?
+    this.playingProperty = new BooleanProperty(true, {
+      tandem: tandem.createTandem('playingProperty')
+    });
+
+    // @public {Property.<string>} which head view to show
+    this.headModeProperty = new StringProperty('no-brain', {
+      validValues: ['brain', 'no-brain'],
+      tandem: tandem.createTandem('headModeProperty')
+    });
+
+    // @public {DerivedProperty.<Color|string>}
+    // the color perceived by the viewer, must be defined by the subtype.
+    this.perceivedColorProperty = null;
+  }
+
+  // @public
+  reset() {
+    this.playingProperty.reset();
+    this.headModeProperty.reset();
+  }
+
+  // @public @abstract
+  // step one frame, assuming 60fps
+  manualStep() {
+    throw new Error('must be defined by subtype');
+  }
+}
+colorVision.register('ColorVisionModel', ColorVisionModel);
+export default ColorVisionModel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCb29sZWFuUHJvcGVydHkiLCJTdHJpbmdQcm9wZXJ0eSIsImNvbG9yVmlzaW9uIiwiQ29sb3JWaXNpb25Nb2RlbCIsImNvbnN0cnVjdG9yIiwidGFuZGVtIiwicGxheWluZ1Byb3BlcnR5IiwiY3JlYXRlVGFuZGVtIiwiaGVhZE1vZGVQcm9wZXJ0eSIsInZhbGlkVmFsdWVzIiwicGVyY2VpdmVkQ29sb3JQcm9wZXJ0eSIsInJlc2V0IiwibWFudWFsU3RlcCIsIkVycm9yIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJDb2xvclZpc2lvbk1vZGVsLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEJhc2UgdHlwZSBmb3IgdGhlIG1vZGVsIGluIGJvdGggc2NyZWVucy5cclxuICogU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9waGV0c2ltcy9jb2xvci12aXNpb24vaXNzdWVzLzExN1xyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKiBAYWJzdHJhY3RcclxuICovXHJcblxyXG5pbXBvcnQgQm9vbGVhblByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvQm9vbGVhblByb3BlcnR5LmpzJztcclxuaW1wb3J0IFN0cmluZ1Byb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvU3RyaW5nUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgY29sb3JWaXNpb24gZnJvbSAnLi4vLi4vY29sb3JWaXNpb24uanMnO1xyXG5cclxuY2xhc3MgQ29sb3JWaXNpb25Nb2RlbCB7XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSB7VGFuZGVtfSB0YW5kZW1cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggdGFuZGVtICkge1xyXG5cclxuICAgIC8vIEBwdWJsaWMge1Byb3BlcnR5Ljxib29sZWFuPn0gaXMgdGhlIG1vZGVsIHJ1bm5pbmc/XHJcbiAgICB0aGlzLnBsYXlpbmdQcm9wZXJ0eSA9IG5ldyBCb29sZWFuUHJvcGVydHkoIHRydWUsIHtcclxuICAgICAgdGFuZGVtOiB0YW5kZW0uY3JlYXRlVGFuZGVtKCAncGxheWluZ1Byb3BlcnR5JyApXHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7UHJvcGVydHkuPHN0cmluZz59IHdoaWNoIGhlYWQgdmlldyB0byBzaG93XHJcbiAgICB0aGlzLmhlYWRNb2RlUHJvcGVydHkgPSBuZXcgU3RyaW5nUHJvcGVydHkoICduby1icmFpbicsIHtcclxuICAgICAgdmFsaWRWYWx1ZXM6IFsgJ2JyYWluJywgJ25vLWJyYWluJyBdLFxyXG4gICAgICB0YW5kZW06IHRhbmRlbS5jcmVhdGVUYW5kZW0oICdoZWFkTW9kZVByb3BlcnR5JyApXHJcbiAgICB9ICk7XHJcblxyXG4gICAgLy8gQHB1YmxpYyB7RGVyaXZlZFByb3BlcnR5LjxDb2xvcnxzdHJpbmc+fVxyXG4gICAgLy8gdGhlIGNvbG9yIHBlcmNlaXZlZCBieSB0aGUgdmlld2VyLCBtdXN0IGJlIGRlZmluZWQgYnkgdGhlIHN1YnR5cGUuXHJcbiAgICB0aGlzLnBlcmNlaXZlZENvbG9yUHJvcGVydHkgPSBudWxsO1xyXG4gIH1cclxuXHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICByZXNldCgpIHtcclxuICAgIHRoaXMucGxheWluZ1Byb3BlcnR5LnJlc2V0KCk7XHJcbiAgICB0aGlzLmhlYWRNb2RlUHJvcGVydHkucmVzZXQoKTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWMgQGFic3RyYWN0XHJcbiAgLy8gc3RlcCBvbmUgZnJhbWUsIGFzc3VtaW5nIDYwZnBzXHJcbiAgbWFudWFsU3RlcCgpIHtcclxuICAgIHRocm93IG5ldyBFcnJvciggJ211c3QgYmUgZGVmaW5lZCBieSBzdWJ0eXBlJyApO1xyXG4gIH1cclxufVxyXG5cclxuY29sb3JWaXNpb24ucmVnaXN0ZXIoICdDb2xvclZpc2lvbk1vZGVsJywgQ29sb3JWaXNpb25Nb2RlbCApO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQ29sb3JWaXNpb25Nb2RlbDsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLGVBQWUsTUFBTSx3Q0FBd0M7QUFDcEUsT0FBT0MsY0FBYyxNQUFNLHVDQUF1QztBQUNsRSxPQUFPQyxXQUFXLE1BQU0sc0JBQXNCO0FBRTlDLE1BQU1DLGdCQUFnQixDQUFDO0VBRXJCO0FBQ0Y7QUFDQTtFQUNFQyxXQUFXQSxDQUFFQyxNQUFNLEVBQUc7SUFFcEI7SUFDQSxJQUFJLENBQUNDLGVBQWUsR0FBRyxJQUFJTixlQUFlLENBQUUsSUFBSSxFQUFFO01BQ2hESyxNQUFNLEVBQUVBLE1BQU0sQ0FBQ0UsWUFBWSxDQUFFLGlCQUFrQjtJQUNqRCxDQUFFLENBQUM7O0lBRUg7SUFDQSxJQUFJLENBQUNDLGdCQUFnQixHQUFHLElBQUlQLGNBQWMsQ0FBRSxVQUFVLEVBQUU7TUFDdERRLFdBQVcsRUFBRSxDQUFFLE9BQU8sRUFBRSxVQUFVLENBQUU7TUFDcENKLE1BQU0sRUFBRUEsTUFBTSxDQUFDRSxZQUFZLENBQUUsa0JBQW1CO0lBQ2xELENBQUUsQ0FBQzs7SUFFSDtJQUNBO0lBQ0EsSUFBSSxDQUFDRyxzQkFBc0IsR0FBRyxJQUFJO0VBQ3BDOztFQUdBO0VBQ0FDLEtBQUtBLENBQUEsRUFBRztJQUNOLElBQUksQ0FBQ0wsZUFBZSxDQUFDSyxLQUFLLENBQUMsQ0FBQztJQUM1QixJQUFJLENBQUNILGdCQUFnQixDQUFDRyxLQUFLLENBQUMsQ0FBQztFQUMvQjs7RUFFQTtFQUNBO0VBQ0FDLFVBQVVBLENBQUEsRUFBRztJQUNYLE1BQU0sSUFBSUMsS0FBSyxDQUFFLDRCQUE2QixDQUFDO0VBQ2pEO0FBQ0Y7QUFFQVgsV0FBVyxDQUFDWSxRQUFRLENBQUUsa0JBQWtCLEVBQUVYLGdCQUFpQixDQUFDO0FBRTVELGVBQWVBLGdCQUFnQiJ9

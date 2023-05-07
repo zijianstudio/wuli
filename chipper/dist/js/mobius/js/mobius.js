@@ -1,0 +1,15 @@
+// Copyright 2013-2022, University of Colorado Boulder
+
+/**
+ * The main 'mobius' namespace object for the exported (non-Require.js) API. Used internally
+ * since it prevents Require.js issues with circular dependencies.
+ *
+ * The returned mobius object namespace may be incomplete if not all modules are listed as
+ * dependencies. Please use the 'main' module for that purpose if all of Scenery is desired.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Namespace from '../../phet-core/js/Namespace.js';
+export default new Namespace('mobius');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOYW1lc3BhY2UiXSwic291cmNlcyI6WyJtb2JpdXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTMtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVGhlIG1haW4gJ21vYml1cycgbmFtZXNwYWNlIG9iamVjdCBmb3IgdGhlIGV4cG9ydGVkIChub24tUmVxdWlyZS5qcykgQVBJLiBVc2VkIGludGVybmFsbHlcclxuICogc2luY2UgaXQgcHJldmVudHMgUmVxdWlyZS5qcyBpc3N1ZXMgd2l0aCBjaXJjdWxhciBkZXBlbmRlbmNpZXMuXHJcbiAqXHJcbiAqIFRoZSByZXR1cm5lZCBtb2JpdXMgb2JqZWN0IG5hbWVzcGFjZSBtYXkgYmUgaW5jb21wbGV0ZSBpZiBub3QgYWxsIG1vZHVsZXMgYXJlIGxpc3RlZCBhc1xyXG4gKiBkZXBlbmRlbmNpZXMuIFBsZWFzZSB1c2UgdGhlICdtYWluJyBtb2R1bGUgZm9yIHRoYXQgcHVycG9zZSBpZiBhbGwgb2YgU2NlbmVyeSBpcyBkZXNpcmVkLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IE5hbWVzcGFjZSBmcm9tICcuLi8uLi9waGV0LWNvcmUvanMvTmFtZXNwYWNlLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IG5ldyBOYW1lc3BhY2UoICdtb2JpdXMnICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsU0FBUyxNQUFNLGlDQUFpQztBQUV2RCxlQUFlLElBQUlBLFNBQVMsQ0FBRSxRQUFTLENBQUMifQ==

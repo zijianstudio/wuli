@@ -1,0 +1,51 @@
+// Copyright 2014-2022, University of Colorado Boulder
+
+/**
+ * Class that defines a capture zone that contains nothing.  This is useful when wanting to avoid having to do a bunch
+ * of null checks.
+ *
+ * @author John Blanco
+ * @author Sharfudeen Ashraf (for Ghent University)
+ */
+
+import { Shape } from '../../../../kite/js/imports.js';
+import neuron from '../../neuron.js';
+import CaptureZone from './CaptureZone.js';
+class NullCaptureZone extends CaptureZone {
+  constructor() {
+    super({});
+  }
+
+  // @public
+  getShape() {
+    return new Shape().ellipse(0, 0, 0, 0);
+  }
+
+  // @public
+  isPointInZone(x, y) {
+    return false;
+  }
+
+  // @public - assign a random point that is somewhere within the shape.
+  assignNewParticlePosition(particle) {
+    particle.setPosition(0, 0);
+  }
+
+  // @public
+  getOriginPoint() {
+    return null;
+  }
+
+  // @public
+  setRotationalAngle(angle) {
+    // necessary to override, but does nothing in this particular subclass
+  }
+
+  // @public
+  setOriginPoint(centerPoint) {
+    // necessary to override, but does nothing in this particular subclass
+  }
+}
+neuron.register('NullCaptureZone', NullCaptureZone);
+export default NullCaptureZone;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTaGFwZSIsIm5ldXJvbiIsIkNhcHR1cmVab25lIiwiTnVsbENhcHR1cmVab25lIiwiY29uc3RydWN0b3IiLCJnZXRTaGFwZSIsImVsbGlwc2UiLCJpc1BvaW50SW5ab25lIiwieCIsInkiLCJhc3NpZ25OZXdQYXJ0aWNsZVBvc2l0aW9uIiwicGFydGljbGUiLCJzZXRQb3NpdGlvbiIsImdldE9yaWdpblBvaW50Iiwic2V0Um90YXRpb25hbEFuZ2xlIiwiYW5nbGUiLCJzZXRPcmlnaW5Qb2ludCIsImNlbnRlclBvaW50IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJOdWxsQ2FwdHVyZVpvbmUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTQtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQ2xhc3MgdGhhdCBkZWZpbmVzIGEgY2FwdHVyZSB6b25lIHRoYXQgY29udGFpbnMgbm90aGluZy4gIFRoaXMgaXMgdXNlZnVsIHdoZW4gd2FudGluZyB0byBhdm9pZCBoYXZpbmcgdG8gZG8gYSBidW5jaFxyXG4gKiBvZiBudWxsIGNoZWNrcy5cclxuICpcclxuICogQGF1dGhvciBKb2huIEJsYW5jb1xyXG4gKiBAYXV0aG9yIFNoYXJmdWRlZW4gQXNocmFmIChmb3IgR2hlbnQgVW5pdmVyc2l0eSlcclxuICovXHJcblxyXG5pbXBvcnQgeyBTaGFwZSB9IGZyb20gJy4uLy4uLy4uLy4uL2tpdGUvanMvaW1wb3J0cy5qcyc7XHJcbmltcG9ydCBuZXVyb24gZnJvbSAnLi4vLi4vbmV1cm9uLmpzJztcclxuaW1wb3J0IENhcHR1cmVab25lIGZyb20gJy4vQ2FwdHVyZVpvbmUuanMnO1xyXG5cclxuY2xhc3MgTnVsbENhcHR1cmVab25lIGV4dGVuZHMgQ2FwdHVyZVpvbmUge1xyXG5cclxuICBjb25zdHJ1Y3RvcigpIHtcclxuICAgIHN1cGVyKCB7fSApO1xyXG4gIH1cclxuXHJcbiAgLy8gQHB1YmxpY1xyXG4gIGdldFNoYXBlKCkge1xyXG4gICAgcmV0dXJuIG5ldyBTaGFwZSgpLmVsbGlwc2UoIDAsIDAsIDAsIDAgKTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICBpc1BvaW50SW5ab25lKCB4LCB5ICkge1xyXG4gICAgcmV0dXJuIGZhbHNlO1xyXG4gIH1cclxuXHJcbiAgLy8gQHB1YmxpYyAtIGFzc2lnbiBhIHJhbmRvbSBwb2ludCB0aGF0IGlzIHNvbWV3aGVyZSB3aXRoaW4gdGhlIHNoYXBlLlxyXG4gIGFzc2lnbk5ld1BhcnRpY2xlUG9zaXRpb24oIHBhcnRpY2xlICkge1xyXG4gICAgcGFydGljbGUuc2V0UG9zaXRpb24oIDAsIDAgKTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICBnZXRPcmlnaW5Qb2ludCgpIHtcclxuICAgIHJldHVybiBudWxsO1xyXG4gIH1cclxuXHJcbiAgLy8gQHB1YmxpY1xyXG4gIHNldFJvdGF0aW9uYWxBbmdsZSggYW5nbGUgKSB7XHJcbiAgICAvLyBuZWNlc3NhcnkgdG8gb3ZlcnJpZGUsIGJ1dCBkb2VzIG5vdGhpbmcgaW4gdGhpcyBwYXJ0aWN1bGFyIHN1YmNsYXNzXHJcbiAgfVxyXG5cclxuICAvLyBAcHVibGljXHJcbiAgc2V0T3JpZ2luUG9pbnQoIGNlbnRlclBvaW50ICkge1xyXG4gICAgLy8gbmVjZXNzYXJ5IHRvIG92ZXJyaWRlLCBidXQgZG9lcyBub3RoaW5nIGluIHRoaXMgcGFydGljdWxhciBzdWJjbGFzc1xyXG4gIH1cclxufVxyXG5cclxubmV1cm9uLnJlZ2lzdGVyKCAnTnVsbENhcHR1cmVab25lJywgTnVsbENhcHR1cmVab25lICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBOdWxsQ2FwdHVyZVpvbmU7XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsU0FBU0EsS0FBSyxRQUFRLGdDQUFnQztBQUN0RCxPQUFPQyxNQUFNLE1BQU0saUJBQWlCO0FBQ3BDLE9BQU9DLFdBQVcsTUFBTSxrQkFBa0I7QUFFMUMsTUFBTUMsZUFBZSxTQUFTRCxXQUFXLENBQUM7RUFFeENFLFdBQVdBLENBQUEsRUFBRztJQUNaLEtBQUssQ0FBRSxDQUFDLENBQUUsQ0FBQztFQUNiOztFQUVBO0VBQ0FDLFFBQVFBLENBQUEsRUFBRztJQUNULE9BQU8sSUFBSUwsS0FBSyxDQUFDLENBQUMsQ0FBQ00sT0FBTyxDQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUUsQ0FBQztFQUMxQzs7RUFFQTtFQUNBQyxhQUFhQSxDQUFFQyxDQUFDLEVBQUVDLENBQUMsRUFBRztJQUNwQixPQUFPLEtBQUs7RUFDZDs7RUFFQTtFQUNBQyx5QkFBeUJBLENBQUVDLFFBQVEsRUFBRztJQUNwQ0EsUUFBUSxDQUFDQyxXQUFXLENBQUUsQ0FBQyxFQUFFLENBQUUsQ0FBQztFQUM5Qjs7RUFFQTtFQUNBQyxjQUFjQSxDQUFBLEVBQUc7SUFDZixPQUFPLElBQUk7RUFDYjs7RUFFQTtFQUNBQyxrQkFBa0JBLENBQUVDLEtBQUssRUFBRztJQUMxQjtFQUFBOztFQUdGO0VBQ0FDLGNBQWNBLENBQUVDLFdBQVcsRUFBRztJQUM1QjtFQUFBO0FBRUo7QUFFQWhCLE1BQU0sQ0FBQ2lCLFFBQVEsQ0FBRSxpQkFBaUIsRUFBRWYsZUFBZ0IsQ0FBQztBQUVyRCxlQUFlQSxlQUFlIn0=

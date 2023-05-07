@@ -1,0 +1,26 @@
+// Copyright 2015-2023, University of Colorado Boulder
+
+/**
+ * Base class for cards. Other than providing 'input' information to the builder, cards have no responsibility
+ * for what is displayed on them. That is handled by CardNode and its subtypes.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../../phet-core/js/merge.js';
+import functionBuilder from '../../../functionBuilder.js';
+import FBConstants from '../../FBConstants.js';
+import FBMovable from '../FBMovable.js';
+export default class Card extends FBMovable {
+  /**
+   * @param {Object} [options]
+   */
+  constructor(options) {
+    options = merge({
+      animationSpeed: FBConstants.CARD_ANIMATION_SPEED // {number} distance/second when animating
+    }, options);
+    super(options);
+  }
+}
+functionBuilder.register('Card', Card);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsImZ1bmN0aW9uQnVpbGRlciIsIkZCQ29uc3RhbnRzIiwiRkJNb3ZhYmxlIiwiQ2FyZCIsImNvbnN0cnVjdG9yIiwib3B0aW9ucyIsImFuaW1hdGlvblNwZWVkIiwiQ0FSRF9BTklNQVRJT05fU1BFRUQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkNhcmQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMywgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQmFzZSBjbGFzcyBmb3IgY2FyZHMuIE90aGVyIHRoYW4gcHJvdmlkaW5nICdpbnB1dCcgaW5mb3JtYXRpb24gdG8gdGhlIGJ1aWxkZXIsIGNhcmRzIGhhdmUgbm8gcmVzcG9uc2liaWxpdHlcclxuICogZm9yIHdoYXQgaXMgZGlzcGxheWVkIG9uIHRoZW0uIFRoYXQgaXMgaGFuZGxlZCBieSBDYXJkTm9kZSBhbmQgaXRzIHN1YnR5cGVzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCBtZXJnZSBmcm9tICcuLi8uLi8uLi8uLi8uLi9waGV0LWNvcmUvanMvbWVyZ2UuanMnO1xyXG5pbXBvcnQgZnVuY3Rpb25CdWlsZGVyIGZyb20gJy4uLy4uLy4uL2Z1bmN0aW9uQnVpbGRlci5qcyc7XHJcbmltcG9ydCBGQkNvbnN0YW50cyBmcm9tICcuLi8uLi9GQkNvbnN0YW50cy5qcyc7XHJcbmltcG9ydCBGQk1vdmFibGUgZnJvbSAnLi4vRkJNb3ZhYmxlLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIENhcmQgZXh0ZW5kcyBGQk1vdmFibGUge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIG9wdGlvbnMgKSB7XHJcblxyXG4gICAgb3B0aW9ucyA9IG1lcmdlKCB7XHJcbiAgICAgIGFuaW1hdGlvblNwZWVkOiBGQkNvbnN0YW50cy5DQVJEX0FOSU1BVElPTl9TUEVFRCAgLy8ge251bWJlcn0gZGlzdGFuY2Uvc2Vjb25kIHdoZW4gYW5pbWF0aW5nXHJcbiAgICB9LCBvcHRpb25zICk7XHJcblxyXG4gICAgc3VwZXIoIG9wdGlvbnMgKTtcclxuICB9XHJcbn1cclxuXHJcbmZ1bmN0aW9uQnVpbGRlci5yZWdpc3RlciggJ0NhcmQnLCBDYXJkICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUEsT0FBT0EsS0FBSyxNQUFNLHNDQUFzQztBQUN4RCxPQUFPQyxlQUFlLE1BQU0sNkJBQTZCO0FBQ3pELE9BQU9DLFdBQVcsTUFBTSxzQkFBc0I7QUFDOUMsT0FBT0MsU0FBUyxNQUFNLGlCQUFpQjtBQUV2QyxlQUFlLE1BQU1DLElBQUksU0FBU0QsU0FBUyxDQUFDO0VBRTFDO0FBQ0Y7QUFDQTtFQUNFRSxXQUFXQSxDQUFFQyxPQUFPLEVBQUc7SUFFckJBLE9BQU8sR0FBR04sS0FBSyxDQUFFO01BQ2ZPLGNBQWMsRUFBRUwsV0FBVyxDQUFDTSxvQkFBb0IsQ0FBRTtJQUNwRCxDQUFDLEVBQUVGLE9BQVEsQ0FBQztJQUVaLEtBQUssQ0FBRUEsT0FBUSxDQUFDO0VBQ2xCO0FBQ0Y7QUFFQUwsZUFBZSxDQUFDUSxRQUFRLENBQUUsTUFBTSxFQUFFTCxJQUFLLENBQUMifQ==

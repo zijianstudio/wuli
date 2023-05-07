@@ -1,0 +1,255 @@
+{
+  "zero": {
+    "value": "సున్నా",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "సున్నా"
+      }
+    ]
+  },
+  "one": {
+    "value": "ఒకటి",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "ఒకటి"
+      }
+    ]
+  },
+  "two": {
+    "value": "రెండు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "రెండు"
+      }
+    ]
+  },
+  "three": {
+    "value": "మూడు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "మూడు"
+      }
+    ]
+  },
+  "four": {
+    "value": "నాలుగు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "నాలుగు"
+      }
+    ]
+  },
+  "five": {
+    "value": "ఐదు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "ఐదు"
+      }
+    ]
+  },
+  "six": {
+    "value": "ఆరు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "ఆరు"
+      }
+    ]
+  },
+  "seven": {
+    "value": "ఏడు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "ఏడు"
+      }
+    ]
+  },
+  "eight": {
+    "value": "ఎనిమిది",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "ఎనిమిది"
+      }
+    ]
+  },
+  "nine": {
+    "value": "తొమ్మిది",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "తొమ్మిది"
+      }
+    ]
+  },
+  "ten": {
+    "value": "పది",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పది"
+      }
+    ]
+  },
+  "eleven": {
+    "value": "పదకొండు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పదకొండు"
+      }
+    ]
+  },
+  "twelve": {
+    "value": "పన్నెండు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పన్నెండు"
+      }
+    ]
+  },
+  "thirteen": {
+    "value": "పదమూడు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పదమూడు"
+      }
+    ]
+  },
+  "fourteen": {
+    "value": "పద్నాలుగు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పద్నాలుగు"
+      }
+    ]
+  },
+  "fifteen": {
+    "value": "పదిహేను",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పదిహేను"
+      }
+    ]
+  },
+  "sixteen": {
+    "value": "పదహారు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పదహారు"
+      }
+    ]
+  },
+  "seventeen": {
+    "value": "పదిహేడు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పదిహేడు"
+      }
+    ]
+  },
+  "eighteen": {
+    "value": "పద్దెనిమిది",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పద్దెనిమిది"
+      }
+    ]
+  },
+  "nineteen": {
+    "value": "పందొమ్మిది",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "పందొమ్మిది"
+      }
+    ]
+  },
+  "twenty": {
+    "value": "ఇరవై",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "ఇరవై"
+      }
+    ]
+  },
+  "objects": {
+    "value": "వస్తువులు",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "వస్తువులు"
+      }
+    ]
+  },
+  "total": {
+    "value": "మొత్తం",
+    "history": [
+      {
+        "userId": 789806,
+        "timestamp": 1658084477347,
+        "oldValue": "",
+        "newValue": "మొత్తం"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+This simulation is a subset of the Wave Interference simulation, which shows one scene per screen.

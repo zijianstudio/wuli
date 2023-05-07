@@ -1,0 +1,19 @@
+// Copyright 2021-2022, University of Colorado Boulder
+
+/**
+ * OriginNode is a debugging Node used to show where the origin is of something in the view, by drawing a small red dot.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import { Circle } from '../../../../scenery/js/imports.js';
+import geometricOptics from '../../geometricOptics.js';
+export default class OriginNode extends Circle {
+  constructor() {
+    super(3, {
+      fill: 'red'
+    });
+  }
+}
+geometricOptics.register('OriginNode', OriginNode);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJDaXJjbGUiLCJnZW9tZXRyaWNPcHRpY3MiLCJPcmlnaW5Ob2RlIiwiY29uc3RydWN0b3IiLCJmaWxsIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJPcmlnaW5Ob2RlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIxLTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIE9yaWdpbk5vZGUgaXMgYSBkZWJ1Z2dpbmcgTm9kZSB1c2VkIHRvIHNob3cgd2hlcmUgdGhlIG9yaWdpbiBpcyBvZiBzb21ldGhpbmcgaW4gdGhlIHZpZXcsIGJ5IGRyYXdpbmcgYSBzbWFsbCByZWQgZG90LlxyXG4gKlxyXG4gKiBAYXV0aG9yIENocmlzIE1hbGxleSAoUGl4ZWxab29tLCBJbmMuKVxyXG4gKi9cclxuXHJcbmltcG9ydCB7IENpcmNsZSB9IGZyb20gJy4uLy4uLy4uLy4uL3NjZW5lcnkvanMvaW1wb3J0cy5qcyc7XHJcbmltcG9ydCBnZW9tZXRyaWNPcHRpY3MgZnJvbSAnLi4vLi4vZ2VvbWV0cmljT3B0aWNzLmpzJztcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIE9yaWdpbk5vZGUgZXh0ZW5kcyBDaXJjbGUge1xyXG4gIHB1YmxpYyBjb25zdHJ1Y3RvcigpIHtcclxuICAgIHN1cGVyKCAzLCB7XHJcbiAgICAgIGZpbGw6ICdyZWQnXHJcbiAgICB9ICk7XHJcbiAgfVxyXG59XHJcblxyXG5nZW9tZXRyaWNPcHRpY3MucmVnaXN0ZXIoICdPcmlnaW5Ob2RlJywgT3JpZ2luTm9kZSApOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUFTQSxNQUFNLFFBQVEsbUNBQW1DO0FBQzFELE9BQU9DLGVBQWUsTUFBTSwwQkFBMEI7QUFFdEQsZUFBZSxNQUFNQyxVQUFVLFNBQVNGLE1BQU0sQ0FBQztFQUN0Q0csV0FBV0EsQ0FBQSxFQUFHO0lBQ25CLEtBQUssQ0FBRSxDQUFDLEVBQUU7TUFDUkMsSUFBSSxFQUFFO0lBQ1IsQ0FBRSxDQUFDO0VBQ0w7QUFDRjtBQUVBSCxlQUFlLENBQUNJLFFBQVEsQ0FBRSxZQUFZLEVBQUVILFVBQVcsQ0FBQyJ9

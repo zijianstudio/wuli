@@ -1,0 +1,48 @@
+// Copyright 2014-2021, University of Colorado Boulder
+
+/**
+ * Model for cartoon face that is used to provide feedback in the 'Arithmetic' simulation.
+ *
+ * @author Andrey Zelenkov (MLearner)
+ */
+
+import Emitter from '../../../../axon/js/Emitter.js';
+import Property from '../../../../axon/js/Property.js';
+import arithmetic from '../../arithmetic.js';
+class FaceModel {
+  constructor() {
+    // @public - Points to be displayed near the face.  In this simulation, the user gets 1 point when they get a
+    // challenge correct on the first try, zero otherwise.
+    this.pointsToDisplayProperty = new Property(1);
+
+    // @public - flag that controls the expression that the face should depict
+    this.isSmileProperty = new Property(true);
+
+    // @public - emitters for showing and hiding the face
+    this.showFaceEmitter = new Emitter();
+    this.hideFaceEmitter = new Emitter();
+  }
+
+  // @public
+  showFace() {
+    // Use an emitter to indicate that the face should be shown rather than a property, since by design it is shown
+    // and then fades.
+    this.showFaceEmitter.emit();
+  }
+
+  // @public
+  hideFace() {
+    // Emit an event that indicates that the face should be hidden, should be ignored if the face is not currently
+    // shown.
+    this.hideFaceEmitter.emit();
+  }
+
+  // @public
+  reset() {
+    this.pointsToDisplayProperty.reset();
+    this.isSmileProperty.reset();
+  }
+}
+arithmetic.register('FaceModel', FaceModel);
+export default FaceModel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFbWl0dGVyIiwiUHJvcGVydHkiLCJhcml0aG1ldGljIiwiRmFjZU1vZGVsIiwiY29uc3RydWN0b3IiLCJwb2ludHNUb0Rpc3BsYXlQcm9wZXJ0eSIsImlzU21pbGVQcm9wZXJ0eSIsInNob3dGYWNlRW1pdHRlciIsImhpZGVGYWNlRW1pdHRlciIsInNob3dGYWNlIiwiZW1pdCIsImhpZGVGYWNlIiwicmVzZXQiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkZhY2VNb2RlbC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxNC0yMDIxLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBNb2RlbCBmb3IgY2FydG9vbiBmYWNlIHRoYXQgaXMgdXNlZCB0byBwcm92aWRlIGZlZWRiYWNrIGluIHRoZSAnQXJpdGhtZXRpYycgc2ltdWxhdGlvbi5cclxuICpcclxuICogQGF1dGhvciBBbmRyZXkgWmVsZW5rb3YgKE1MZWFybmVyKVxyXG4gKi9cclxuXHJcbmltcG9ydCBFbWl0dGVyIGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvRW1pdHRlci5qcyc7XHJcbmltcG9ydCBQcm9wZXJ0eSBmcm9tICcuLi8uLi8uLi8uLi9heG9uL2pzL1Byb3BlcnR5LmpzJztcclxuaW1wb3J0IGFyaXRobWV0aWMgZnJvbSAnLi4vLi4vYXJpdGhtZXRpYy5qcyc7XHJcblxyXG5jbGFzcyBGYWNlTW9kZWwge1xyXG5cclxuICBjb25zdHJ1Y3RvcigpIHtcclxuXHJcbiAgICAvLyBAcHVibGljIC0gUG9pbnRzIHRvIGJlIGRpc3BsYXllZCBuZWFyIHRoZSBmYWNlLiAgSW4gdGhpcyBzaW11bGF0aW9uLCB0aGUgdXNlciBnZXRzIDEgcG9pbnQgd2hlbiB0aGV5IGdldCBhXHJcbiAgICAvLyBjaGFsbGVuZ2UgY29ycmVjdCBvbiB0aGUgZmlyc3QgdHJ5LCB6ZXJvIG90aGVyd2lzZS5cclxuICAgIHRoaXMucG9pbnRzVG9EaXNwbGF5UHJvcGVydHkgPSBuZXcgUHJvcGVydHkoIDEgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIC0gZmxhZyB0aGF0IGNvbnRyb2xzIHRoZSBleHByZXNzaW9uIHRoYXQgdGhlIGZhY2Ugc2hvdWxkIGRlcGljdFxyXG4gICAgdGhpcy5pc1NtaWxlUHJvcGVydHkgPSBuZXcgUHJvcGVydHkoIHRydWUgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIC0gZW1pdHRlcnMgZm9yIHNob3dpbmcgYW5kIGhpZGluZyB0aGUgZmFjZVxyXG4gICAgdGhpcy5zaG93RmFjZUVtaXR0ZXIgPSBuZXcgRW1pdHRlcigpO1xyXG4gICAgdGhpcy5oaWRlRmFjZUVtaXR0ZXIgPSBuZXcgRW1pdHRlcigpO1xyXG4gIH1cclxuXHJcbiAgLy8gQHB1YmxpY1xyXG4gIHNob3dGYWNlKCkge1xyXG4gICAgLy8gVXNlIGFuIGVtaXR0ZXIgdG8gaW5kaWNhdGUgdGhhdCB0aGUgZmFjZSBzaG91bGQgYmUgc2hvd24gcmF0aGVyIHRoYW4gYSBwcm9wZXJ0eSwgc2luY2UgYnkgZGVzaWduIGl0IGlzIHNob3duXHJcbiAgICAvLyBhbmQgdGhlbiBmYWRlcy5cclxuICAgIHRoaXMuc2hvd0ZhY2VFbWl0dGVyLmVtaXQoKTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICBoaWRlRmFjZSgpIHtcclxuICAgIC8vIEVtaXQgYW4gZXZlbnQgdGhhdCBpbmRpY2F0ZXMgdGhhdCB0aGUgZmFjZSBzaG91bGQgYmUgaGlkZGVuLCBzaG91bGQgYmUgaWdub3JlZCBpZiB0aGUgZmFjZSBpcyBub3QgY3VycmVudGx5XHJcbiAgICAvLyBzaG93bi5cclxuICAgIHRoaXMuaGlkZUZhY2VFbWl0dGVyLmVtaXQoKTtcclxuICB9XHJcblxyXG4gIC8vIEBwdWJsaWNcclxuICByZXNldCgpIHtcclxuICAgIHRoaXMucG9pbnRzVG9EaXNwbGF5UHJvcGVydHkucmVzZXQoKTtcclxuICAgIHRoaXMuaXNTbWlsZVByb3BlcnR5LnJlc2V0KCk7XHJcbiAgfVxyXG59XHJcblxyXG5hcml0aG1ldGljLnJlZ2lzdGVyKCAnRmFjZU1vZGVsJywgRmFjZU1vZGVsICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBGYWNlTW9kZWw7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE9BQU8sTUFBTSxnQ0FBZ0M7QUFDcEQsT0FBT0MsUUFBUSxNQUFNLGlDQUFpQztBQUN0RCxPQUFPQyxVQUFVLE1BQU0scUJBQXFCO0FBRTVDLE1BQU1DLFNBQVMsQ0FBQztFQUVkQyxXQUFXQSxDQUFBLEVBQUc7SUFFWjtJQUNBO0lBQ0EsSUFBSSxDQUFDQyx1QkFBdUIsR0FBRyxJQUFJSixRQUFRLENBQUUsQ0FBRSxDQUFDOztJQUVoRDtJQUNBLElBQUksQ0FBQ0ssZUFBZSxHQUFHLElBQUlMLFFBQVEsQ0FBRSxJQUFLLENBQUM7O0lBRTNDO0lBQ0EsSUFBSSxDQUFDTSxlQUFlLEdBQUcsSUFBSVAsT0FBTyxDQUFDLENBQUM7SUFDcEMsSUFBSSxDQUFDUSxlQUFlLEdBQUcsSUFBSVIsT0FBTyxDQUFDLENBQUM7RUFDdEM7O0VBRUE7RUFDQVMsUUFBUUEsQ0FBQSxFQUFHO0lBQ1Q7SUFDQTtJQUNBLElBQUksQ0FBQ0YsZUFBZSxDQUFDRyxJQUFJLENBQUMsQ0FBQztFQUM3Qjs7RUFFQTtFQUNBQyxRQUFRQSxDQUFBLEVBQUc7SUFDVDtJQUNBO0lBQ0EsSUFBSSxDQUFDSCxlQUFlLENBQUNFLElBQUksQ0FBQyxDQUFDO0VBQzdCOztFQUVBO0VBQ0FFLEtBQUtBLENBQUEsRUFBRztJQUNOLElBQUksQ0FBQ1AsdUJBQXVCLENBQUNPLEtBQUssQ0FBQyxDQUFDO0lBQ3BDLElBQUksQ0FBQ04sZUFBZSxDQUFDTSxLQUFLLENBQUMsQ0FBQztFQUM5QjtBQUNGO0FBRUFWLFVBQVUsQ0FBQ1csUUFBUSxDQUFFLFdBQVcsRUFBRVYsU0FBVSxDQUFDO0FBRTdDLGVBQWVBLFNBQVMifQ==

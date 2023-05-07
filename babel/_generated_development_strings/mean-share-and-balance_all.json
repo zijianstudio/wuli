@@ -1,0 +1,901 @@
+{
+  "am": {
+    "screen.intro": {
+      "value": "መግቢያ"
+    },
+    "introQuestion": {
+      "value": "በአንድ ኮንቴይነር አማካይ የውሃ መጠን ስንት ነው?"
+    },
+    "predictMean": {
+      "value": "አማካኝ ትንበያ"
+    },
+    "mean": {
+      "value": "አማካኝ"
+    },
+    "tickMarks": {
+      "value": "ምልክት ማድረጊያ"
+    },
+    "cupWaterLevel": {
+      "value": "ምልክት ማድረጊያ"
+    },
+    "numberOfCups": {
+      "value": "የኩባያዎች ቁጥር"
+    },
+    "mean-share-and-balance.title": {
+      "value": "አማካኝ፡ ሚዛናዊ እና ማካፈል "
+    }
+  },
+  "ar_MA": {
+    "screen.intro": {
+      "value": "تقديم"
+    },
+    "introQuestion": {
+      "value": "ما هو متوسط كمية الماء لكل وعاء؟"
+    },
+    "predictMean": {
+      "value": "توقع قيمة المعدل"
+    },
+    "mean": {
+      "value": "المعدل"
+    },
+    "tickMarks": {
+      "value": "تدريجات القياس"
+    },
+    "cupWaterLevel": {
+      "value": "مستوى سطح الماء"
+    },
+    "numberOfCups": {
+      "value": "عدد الأكواب"
+    },
+    "mean-share-and-balance.title": {
+      "value": "المعدل: المشاركة والتوازن"
+    }
+  },
+  "az": {
+    "screen.intro": {
+      "value": "Giriş"
+    },
+    "introQuestion": {
+      "value": "Bir konteynerə düşən suyun orta miqdarı nə qədərdir?"
+    },
+    "predictMean": {
+      "value": "Ədədi ortanı təxmin et"
+    },
+    "mean": {
+      "value": "Ədədi orta"
+    },
+    "tickMarks": {
+      "value": "Hissələri işarələ"
+    },
+    "cupWaterLevel": {
+      "value": "Fincanın su səviyyəsi"
+    },
+    "numberOfCups": {
+      "value": "Fincanların sayı"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Ədədi orta: Paylaş və balanslaşdır"
+    }
+  },
+  "ca": {
+    "screen.intro": {
+      "value": "Introducció"
+    },
+    "introQuestion": {
+      "value": "Quina és la quantitat mitjana d'aigua per recipient?"
+    },
+    "predictMean": {
+      "value": "Predir mitjana"
+    },
+    "mean": {
+      "value": "Mitjana"
+    },
+    "tickMarks": {
+      "value": "Marques de comprovació"
+    },
+    "cupWaterLevel": {
+      "value": "Nivell d'aigua del got"
+    },
+    "numberOfCups": {
+      "value": "Nombre de gots"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Mitjana: distribueix i equilibra"
+    }
+  },
+  "da": {
+    "screen.intro": {
+      "value": "Intro"
+    },
+    "introQuestion": {
+      "value": "Hvad er den gennemsnitlige mængde vand pr. glas?"
+    },
+    "predictMean": {
+      "value": "Forudsig gennemsnit"
+    },
+    "mean": {
+      "value": "Gennemsnit"
+    },
+    "tickMarks": {
+      "value": "Måleglas"
+    },
+    "cupWaterLevel": {
+      "value": "Vandstand ved start"
+    },
+    "numberOfCups": {
+      "value": "Antal glas"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Gennemsnit: Andel og ligevægt"
+    }
+  },
+  "de": {
+    "screen.intro": {
+      "value": "Einführung"
+    },
+    "introQuestion": {
+      "value": "Wie groß ist die durchschnittliche Wassermenge pro Behälter?"
+    },
+    "predictMean": {
+      "value": "Mittelwert vorhersagen"
+    },
+    "mean": {
+      "value": "Mittelwert"
+    },
+    "tickMarks": {
+      "value": "Markierungen"
+    },
+    "cupWaterLevel": {
+      "value": "Wasserstände der Behälter"
+    },
+    "numberOfCups": {
+      "value": "Anzahl der Behälter"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Mittelwert: Anteil und Durchschnitt"
+    }
+  },
+  "el": {
+    "screen.intro": {
+      "value": "Εισαγωγή"
+    },
+    "introQuestion": {
+      "value": "Ποια είναι η μέση ποσότητα νερού ανά δοχείο;"
+    },
+    "predictMean": {
+      "value": "Πρόβλεψη μέσου όρου"
+    },
+    "mean": {
+      "value": "Μέσος όρος"
+    },
+    "tickMarks": {
+      "value": "Σημεία μέτρησης"
+    },
+    "cupWaterLevel": {
+      "value": "Αρχικό επίπεδο νερού στο δοχείο"
+    },
+    "numberOfCups": {
+      "value": "Αριθμός δοχείων"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Μέσος όρος: "
+    }
+  },
+  "es": {
+    "screen.intro": {
+      "value": "Intro"
+    },
+    "introQuestion": {
+      "value": "¿Cuál es la cantidad promedio de agua por recipiente?"
+    },
+    "predictMean": {
+      "value": "Predecir la Media"
+    },
+    "mean": {
+      "value": "Media"
+    },
+    "tickMarks": {
+      "value": "Graduaciones"
+    },
+    "cupWaterLevel": {
+      "value": "Nivel de Agua del Contenedor"
+    },
+    "numberOfCups": {
+      "value": "Número de Contenedores"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Media: Distribuye y Equilibra"
+    }
+  },
+  "es_PE": {
+    "screen.intro": {
+      "value": "Introducción"
+    },
+    "introQuestion": {
+      "value": "¿Cuál es la cantidad promedio de agua por recipiente?"
+    },
+    "predictMean": {
+      "value": "Predecir la media"
+    },
+    "mean": {
+      "value": "Media"
+    },
+    "tickMarks": {
+      "value": "Marcas de verificación"
+    },
+    "cupWaterLevel": {
+      "value": "Nivel de agua de la copa"
+    },
+    "numberOfCups": {
+      "value": "Número de copas"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Media: Comparte y equilibra"
+    }
+  },
+  "eu": {
+    "screen.intro": {
+      "value": "Sarrera"
+    },
+    "introQuestion": {
+      "value": "Zein da ontzi guztien batez besteko ur kantitatea?"
+    },
+    "predictMean": {
+      "value": "Batez bestekoa aurreikusi"
+    },
+    "mean": {
+      "value": "Batez bestekoa"
+    },
+    "tickMarks": {
+      "value": "Neurri-markak"
+    },
+    "cupWaterLevel": {
+      "value": "Kopako ur maila"
+    },
+    "numberOfCups": {
+      "value": "Kopa kopurua"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Batez bestekoa: partitu eta berdindu"
+    }
+  },
+  "fr": {
+    "screen.intro": {
+      "value": "Introduction"
+    },
+    "introQuestion": {
+      "value": "Quel est la moyenne d'eau par bocal?"
+    },
+    "predictMean": {
+      "value": "Moyenne prédite"
+    },
+    "mean": {
+      "value": "Moyenne"
+    },
+    "tickMarks": {
+      "value": "Marques de graduations"
+    },
+    "cupWaterLevel": {
+      "value": "Niveau d'eau du bocal"
+    },
+    "numberOfCups": {
+      "value": "Nombre de bocaux"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Moyenne: Distribution et équilibre"
+    }
+  },
+  "gu": {
+    "screen.intro": {
+      "value": "પ્રસ્તાવના"
+    },
+    "introQuestion": {
+      "value": "કન્ટેનર દીઠ પાણીની સરેરાશ માત્રા કેટલી છે?"
+    },
+    "predictMean": {
+      "value": "સરેરાશ ની આગાહી કરો"
+    },
+    "mean": {
+      "value": "સરેરાશ"
+    },
+    "tickMarks": {
+      "value": "ટીક માર્કસ"
+    },
+    "cupWaterLevel": {
+      "value": "કપનાં પાણીનું લેવલ"
+    },
+    "numberOfCups": {
+      "value": "કપની સંખ્યા"
+    },
+    "mean-share-and-balance.title": {
+      "value": "સરેરાશ: શેર અને બેલેન્સ"
+    }
+  },
+  "ha": {
+    "screen.intro": {
+      "value": "Gabatarwa"
+    },
+    "introQuestion": {
+      "value": "Menene matsakaicin yawan ruwa a ko wani mazubi"
+    },
+    "predictMean": {
+      "value": "Hasashe matsakaicin"
+    },
+    "mean": {
+      "value": "Matsakaici"
+    },
+    "tickMarks": {
+      "value": "Ja maki"
+    },
+    "cupWaterLevel": {
+      "value": "Lebul na ruwa a kofi"
+    },
+    "numberOfCups": {
+      "value": "Lamban kofuna "
+    },
+    "mean-share-and-balance.title": {
+      "value": "Matsakaici: rabo da addadin yawan"
+    }
+  },
+  "hi": {
+    "screen.intro": {
+      "value": "परिचय"
+    },
+    "introQuestion": {
+      "value": "प्रति कंटेनर पानी की औसत मात्रा कितनी है?"
+    },
+    "predictMean": {
+      "value": "माध्य का अनुमान लगाएं"
+    },
+    "mean": {
+      "value": "माध्य"
+    },
+    "tickMarks": {
+      "value": "चिह्नित करें"
+    },
+    "cupWaterLevel": {
+      "value": "कप जल स्तर"
+    },
+    "numberOfCups": {
+      "value": "कपों की संख्या"
+    },
+    "mean-share-and-balance.title": {
+      "value": "माध्य: सांझा एवं शेष"
+    }
+  },
+  "hr": {
+    "screen.intro": {
+      "value": "Uvod"
+    },
+    "introQuestion": {
+      "value": "Kolika je prosječna količina vode po posudi?"
+    },
+    "predictMean": {
+      "value": "Predvidi srednju vrijednost"
+    },
+    "mean": {
+      "value": "Srednja vrijednost "
+    },
+    "tickMarks": {
+      "value": "Oznake "
+    },
+    "cupWaterLevel": {
+      "value": "Razina vode u šalici"
+    },
+    "numberOfCups": {
+      "value": "Broj šalica"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Srednja vrijednost: Podijeli i uravnoteži"
+    }
+  },
+  "ig": {
+    "screen.intro": {
+      "value": "Okwu mmalite"
+    },
+    "introQuestion": {
+      "value": "Kedu nkezi oke mmiri n'ime otu akpa?"
+    },
+    "predictMean": {
+      "value": "Kọwaa Nkezi"
+    },
+    "mean": {
+      "value": "Nkezi"
+    },
+    "tickMarks": {
+      "value": "Tinye akara"
+    },
+    "cupWaterLevel": {
+      "value": "Ọkwa mmiri iko"
+    },
+    "numberOfCups": {
+      "value": "Ọnụọgụ nke iko"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Nkezi: Kekọrịta na itule"
+    }
+  },
+  "it": {
+    "screen.intro": {
+      "value": "Introduzione"
+    },
+    "introQuestion": {
+      "value": "Qual è la quantità media di acqua per recipiente?"
+    },
+    "predictMean": {
+      "value": "Predici la media"
+    },
+    "mean": {
+      "value": "Media"
+    },
+    "tickMarks": {
+      "value": "Tacche"
+    },
+    "cupWaterLevel": {
+      "value": "Livello dell'acqua nel recipiente"
+    },
+    "numberOfCups": {
+      "value": "Numero di recipienti"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Media: Distribuzione e Bilanciamento"
+    }
+  },
+  "iw": {
+    "screen.intro": {
+      "value": "מבוא"
+    },
+    "introQuestion": {
+      "value": "מה ממוצע כמות המים הממוצעת במיכלים?"
+    },
+    "predictMean": {
+      "value": "שערו מה הממוצע"
+    },
+    "mean": {
+      "value": "ממוצע"
+    },
+    "tickMarks": {
+      "value": "סימוני שנתות"
+    },
+    "cupWaterLevel": {
+      "value": "גובה המים בכוס"
+    },
+    "numberOfCups": {
+      "value": "מספר כוסות"
+    },
+    "mean-share-and-balance.title": {
+      "value": "ממוצע: חלוקה ואיזון"
+    }
+  },
+  "ko": {
+    "screen.intro": {
+      "value": "서언"
+    },
+    "introQuestion": {
+      "value": "그릇당 물의 평균량은 얼마인가?"
+    },
+    "predictMean": {
+      "value": "평균 예측"
+    },
+    "mean": {
+      "value": "평균"
+    },
+    "tickMarks": {
+      "value": "마크하기"
+    },
+    "cupWaterLevel": {
+      "value": "컵의 물 높이"
+    },
+    "numberOfCups": {
+      "value": "물의 컵수"
+    },
+    "mean-share-and-balance.title": {
+      "value": "평균: 공유하고 균형잡기"
+    }
+  },
+  "lg": {
+    "screen.intro": {
+      "value": "Enyanjula"
+    },
+    "introQuestion": {
+      "value": "Mu kugerageranya, ekidomola kirina bungi ki obwamazzi?"
+    },
+    "predictMean": {
+      "value": "Lagula mean"
+    },
+    "mean": {
+      "value": "Mean "
+    },
+    "tickMarks": {
+      "value": "Obubonero bwa Tick"
+    },
+    "cupWaterLevel": {
+      "value": "Amazzi g’ekikopo"
+    },
+    "numberOfCups": {
+      "value": "Omuwendo gw’Ebikopo"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Mean: Okugabanya no' kwekanya"
+    }
+  },
+  "mn": {
+    "screen.intro": {
+      "value": "Танилц"
+    },
+    "introQuestion": {
+      "value": "Савуудад дунджаар хэр хэмжээний ус байна вэ?"
+    },
+    "predictMean": {
+      "value": "Таамаглах Дундаж"
+    },
+    "mean": {
+      "value": "Дундаж"
+    },
+    "tickMarks": {
+      "value": "Хэмжээс тэмдэг"
+    },
+    "cupWaterLevel": {
+      "value": "Усны төвшин"
+    },
+    "numberOfCups": {
+      "value": "Савны тоо"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Дундаж: Харилцах савны Тэнцвэр"
+    }
+  },
+  "ny": {
+    "screen.intro": {
+      "value": "chiyambi"
+    },
+    "introQuestion": {
+      "value": "Kodi avareji ya madzi pa chidebe chilichonse ndi angati?"
+    },
+    "predictMean": {
+      "value": "Nenani mean"
+    },
+    "mean": {
+      "value": "Mean"
+    },
+    "tickMarks": {
+      "value": "Zizindikiro"
+    },
+    "cupWaterLevel": {
+      "value": "Mlingo wa madzi mu kapu"
+    },
+    "numberOfCups": {
+      "value": "Nambala ya Makapu"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Mean: Gawani ndi Kulinganiza"
+    }
+  },
+  "pl": {
+    "screen.intro": {
+      "value": "Wstęp"
+    },
+    "introQuestion": {
+      "value": "Jaka jest średnia ilość wody na pojemnik?"
+    },
+    "predictMean": {
+      "value": "Przewiduj średnią"
+    },
+    "mean": {
+      "value": "Średnia"
+    },
+    "tickMarks": {
+      "value": "Pokaż znaczniki"
+    },
+    "cupWaterLevel": {
+      "value": "Poziom wody w naczyniu"
+    },
+    "numberOfCups": {
+      "value": "Liczba naczyń"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Średnia: rozdziel po równo"
+    }
+  },
+  "pt_BR": {
+    "screen.intro": {
+      "value": "Intro"
+    },
+    "introQuestion": {
+      "value": "Qual a média de água em cada copo?"
+    },
+    "predictMean": {
+      "value": "Prever Média"
+    },
+    "mean": {
+      "value": "Ver Média"
+    },
+    "tickMarks": {
+      "value": "Ver Graduação"
+    },
+    "cupWaterLevel": {
+      "value": "Destacar Nível d'Água"
+    },
+    "numberOfCups": {
+      "value": "Número de Copos"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Média: Distribuição e Equilíbrio"
+    }
+  },
+  "ro": {
+    "screen.intro": {
+      "value": "Introducere"
+    },
+    "introQuestion": {
+      "value": "Care este cantitatea medie de apă pe recipient?"
+    },
+    "predictMean": {
+      "value": "Estimează media"
+    },
+    "mean": {
+      "value": "Medie"
+    },
+    "tickMarks": {
+      "value": "Gradații"
+    },
+    "cupWaterLevel": {
+      "value": "Nivelul apei în pahar"
+    },
+    "numberOfCups": {
+      "value": "Numărul de pahare"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Medie: distribuie și egalează"
+    }
+  },
+  "rw": {
+    "screen.intro": {
+      "value": "Intangiriro"
+    },
+    "introQuestion": {
+      "value": "Ni iyihe mpuzandengo y'amazi muri buri gitwara?"
+    },
+    "predictMean": {
+      "value": "Vuga mbere impuzandengo?"
+    },
+    "mean": {
+      "value": "Impuzandengo"
+    },
+    "tickMarks": {
+      "value": "Shyiraho amanota?"
+    },
+    "cupWaterLevel": {
+      "value": "Aho amazi agera"
+    },
+    "numberOfCups": {
+      "value": "Umubare w'ibikombe"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Impuzandengo:Kugabanya no gupima"
+    }
+  },
+  "sk": {
+    "screen.intro": {
+      "value": "Úvod"
+    },
+    "introQuestion": {
+      "value": "Aké je priemerné množstvo vody na nádobu?"
+    },
+    "predictMean": {
+      "value": "Predveď priemeru"
+    },
+    "mean": {
+      "value": "Priemer"
+    },
+    "tickMarks": {
+      "value": "Značky"
+    },
+    "cupWaterLevel": {
+      "value": "Hladina vody v pohári"
+    },
+    "numberOfCups": {
+      "value": "Počet pohárov"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Priemer: Rozdelenie a vyrovnanie"
+    }
+  },
+  "sr": {
+    "screen.intro": {
+      "value": "Увод"
+    },
+    "introQuestion": {
+      "value": "Колика је просечна количина воде по посуди?"
+    },
+    "predictMean": {
+      "value": "Предвиди средњу вредност"
+    },
+    "mean": {
+      "value": "Средња вредност"
+    },
+    "tickMarks": {
+      "value": "Ознаке нивоа"
+    },
+    "cupWaterLevel": {
+      "value": "Ниво воде у посуди"
+    },
+    "numberOfCups": {
+      "value": "Број посуда"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Средња вредност: Подели и уравнотежи"
+    }
+  },
+  "st": {
+    "screen.intro": {
+      "value": "selelekela"
+    },
+    "introQuestion": {
+      "value": "kakaretso metsi ho ea ka nkho ka 'ngoe ke bokae"
+    },
+    "predictMean": {
+      "value": "bolela e sale pele ho boleloa"
+    },
+    "mean": {
+      "value": "bolela"
+    },
+    "tickMarks": {
+      "value": "t'soaea limaraka"
+    },
+    "cupWaterLevel": {
+      "value": "boemo ba metsi ka koping"
+    },
+    "numberOfCups": {
+      "value": "lipalo tsa likopi"
+    },
+    "mean-share-and-balance.title": {
+      "value": "bolela: karolelano le ho leka-lekana"
+    }
+  },
+  "sw": {
+    "screen.intro": {
+      "value": "Utangulizi"
+    },
+    "introQuestion": {
+      "value": "Ni upi wastani wa kipimo cha maji katika kila chombo?"
+    },
+    "predictMean": {
+      "value": "Kisia Wastani"
+    },
+    "mean": {
+      "value": "Wastani"
+    },
+    "tickMarks": {
+      "value": "Alama za tiki"
+    },
+    "cupWaterLevel": {
+      "value": "Usawa wa maji katika kikombe"
+    },
+    "numberOfCups": {
+      "value": "Namba ya vikombe"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Wastani: Gawana na Sawazisha"
+    }
+  },
+  "te": {
+    "screen.intro": {
+      "value": "పరిచయం"
+    },
+    "introQuestion": {
+      "value": "పాత్ర ఒక్కింటిలో  నీటి సగటు పరిమాణం"
+    },
+    "predictMean": {
+      "value": "సగటు ను అంచనా వేయండి"
+    },
+    "mean": {
+      "value": "సగటు"
+    },
+    "tickMarks": {
+      "value": "క్రమాంకనాలు"
+    },
+    "cupWaterLevel": {
+      "value": "పాత్ర లోని నీటి మట్టం "
+    },
+    "numberOfCups": {
+      "value": "పాత్రల సంఖ్య"
+    },
+    "mean-share-and-balance.title": {
+      "value": " సగటు: వినిమయం మరియు సమతుల్యం"
+    }
+  },
+  "tr": {
+    "screen.intro": {
+      "value": "Giriş"
+    },
+    "introQuestion": {
+      "value": "Konteyner başına ortalama su miktarı nedir?"
+    },
+    "predictMean": {
+      "value": "Ortalamayı Tahmin Et"
+    },
+    "mean": {
+      "value": "Ortalama"
+    },
+    "tickMarks": {
+      "value": "Ölçü İşaretleri"
+    },
+    "cupWaterLevel": {
+      "value": "Bardaktaki Su Seviyesi"
+    },
+    "numberOfCups": {
+      "value": "Bardak Sayısı"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Ortalama: Paylaş ve Dengele"
+    }
+  },
+  "zh_TW": {
+    "screen.intro": {
+      "value": "介紹"
+    },
+    "introQuestion": {
+      "value": "每個容器內的水量的平均是多少？"
+    },
+    "predictMean": {
+      "value": "預測平均"
+    },
+    "mean": {
+      "value": "平均"
+    },
+    "tickMarks": {
+      "value": "刻度"
+    },
+    "cupWaterLevel": {
+      "value": "杯內原水量"
+    },
+    "numberOfCups": {
+      "value": "杯子數量"
+    },
+    "mean-share-and-balance.title": {
+      "value": "Mean: Share and Balance_平均：分享與平衡"
+    }
+  },
+  "en": {
+    "mean-share-and-balance.title": {
+      "value": "Mean: Share and Balance"
+    },
+    "screen.intro": {
+      "value": "Intro"
+    },
+    "screen.levelingOut": {
+      "value": "Leveling Out"
+    },
+    "predictMean": {
+      "value": "Predict Mean"
+    },
+    "mean": {
+      "value": "Mean"
+    },
+    "tickMarks": {
+      "value": "Tick Marks"
+    },
+    "cupWaterLevel": {
+      "value": "Cup Water Level"
+    },
+    "sync": {
+      "value": "Sync"
+    },
+    "numberOfCups": {
+      "value": "Number of Cups"
+    },
+    "introQuestion": {
+      "value": "What is the average amount of water per container?"
+    },
+    "levelingOutQuestion": {
+      "value": "What is the average number of chocolate bars per person?"
+    },
+    "numberOfPeople": {
+      "value": "Number of People"
+    },
+    "meanEquals": {
+      "value": "mean = "
+    }
+  }
+}

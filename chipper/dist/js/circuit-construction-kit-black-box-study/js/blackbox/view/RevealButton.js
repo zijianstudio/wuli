@@ -1,0 +1,47 @@
+// Copyright 2016-2022, University of Colorado Boulder
+
+/**
+ * A press-and-hold button that shows the true black box circuit.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+import { Path, Text, VBox } from '../../../../scenery/js/imports.js';
+import eyeSolidShape from '../../../../sherpa/js/fontawesome-5/eyeSolidShape.js';
+import RoundMomentaryButton from '../../../../sun/js/buttons/RoundMomentaryButton.js';
+import circuitConstructionKitBlackBoxStudy from '../../circuitConstructionKitBlackBoxStudy.js';
+
+// constants
+const LIGHT_GREEN = '#91e053';
+const MARGIN = 15;
+class RevealButton extends RoundMomentaryButton {
+  /**
+   * @param {BooleanProperty} revealingProperty - true if the user is revealing the true black box circuit
+   * @param {BooleanProperty} enabledProperty - true if the reveal button is enabled (when the user attaches a component
+   *                                          - to the interior of the black box)
+   * @param {Tandem} tandem
+   */
+  constructor(revealingProperty, enabledProperty, tandem) {
+    super(revealingProperty, false, true, {
+      tandem: tandem,
+      baseColor: 'yellow',
+      xMargin: MARGIN,
+      yMargin: MARGIN,
+      content: new VBox({
+        spacing: 5,
+        children: [new Path(eyeSolidShape, {
+          fill: 'black',
+          maxWidth: 33.6
+        }), new Text('Reveal', {
+          fontSize: 15
+        })]
+      })
+    });
+    enabledProperty.linkAttribute(this, 'enabled');
+    const self = this;
+    revealingProperty.link(revealing => self.setBaseColor(revealing ? LIGHT_GREEN : 'yellow'));
+  }
+}
+circuitConstructionKitBlackBoxStudy.register('RevealButton', RevealButton);
+export default RevealButton;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQYXRoIiwiVGV4dCIsIlZCb3giLCJleWVTb2xpZFNoYXBlIiwiUm91bmRNb21lbnRhcnlCdXR0b24iLCJjaXJjdWl0Q29uc3RydWN0aW9uS2l0QmxhY2tCb3hTdHVkeSIsIkxJR0hUX0dSRUVOIiwiTUFSR0lOIiwiUmV2ZWFsQnV0dG9uIiwiY29uc3RydWN0b3IiLCJyZXZlYWxpbmdQcm9wZXJ0eSIsImVuYWJsZWRQcm9wZXJ0eSIsInRhbmRlbSIsImJhc2VDb2xvciIsInhNYXJnaW4iLCJ5TWFyZ2luIiwiY29udGVudCIsInNwYWNpbmciLCJjaGlsZHJlbiIsImZpbGwiLCJtYXhXaWR0aCIsImZvbnRTaXplIiwibGlua0F0dHJpYnV0ZSIsInNlbGYiLCJsaW5rIiwicmV2ZWFsaW5nIiwic2V0QmFzZUNvbG9yIiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJSZXZlYWxCdXR0b24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTYtMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogQSBwcmVzcy1hbmQtaG9sZCBidXR0b24gdGhhdCBzaG93cyB0aGUgdHJ1ZSBibGFjayBib3ggY2lyY3VpdC5cclxuICpcclxuICogQGF1dGhvciBTYW0gUmVpZCAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgeyBQYXRoLCBUZXh0LCBWQm94IH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IGV5ZVNvbGlkU2hhcGUgZnJvbSAnLi4vLi4vLi4vLi4vc2hlcnBhL2pzL2ZvbnRhd2Vzb21lLTUvZXllU29saWRTaGFwZS5qcyc7XHJcbmltcG9ydCBSb3VuZE1vbWVudGFyeUJ1dHRvbiBmcm9tICcuLi8uLi8uLi8uLi9zdW4vanMvYnV0dG9ucy9Sb3VuZE1vbWVudGFyeUJ1dHRvbi5qcyc7XHJcbmltcG9ydCBjaXJjdWl0Q29uc3RydWN0aW9uS2l0QmxhY2tCb3hTdHVkeSBmcm9tICcuLi8uLi9jaXJjdWl0Q29uc3RydWN0aW9uS2l0QmxhY2tCb3hTdHVkeS5qcyc7XHJcblxyXG4vLyBjb25zdGFudHNcclxuY29uc3QgTElHSFRfR1JFRU4gPSAnIzkxZTA1Myc7XHJcbmNvbnN0IE1BUkdJTiA9IDE1O1xyXG5cclxuY2xhc3MgUmV2ZWFsQnV0dG9uIGV4dGVuZHMgUm91bmRNb21lbnRhcnlCdXR0b24ge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge0Jvb2xlYW5Qcm9wZXJ0eX0gcmV2ZWFsaW5nUHJvcGVydHkgLSB0cnVlIGlmIHRoZSB1c2VyIGlzIHJldmVhbGluZyB0aGUgdHJ1ZSBibGFjayBib3ggY2lyY3VpdFxyXG4gICAqIEBwYXJhbSB7Qm9vbGVhblByb3BlcnR5fSBlbmFibGVkUHJvcGVydHkgLSB0cnVlIGlmIHRoZSByZXZlYWwgYnV0dG9uIGlzIGVuYWJsZWQgKHdoZW4gdGhlIHVzZXIgYXR0YWNoZXMgYSBjb21wb25lbnRcclxuICAgKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0gdG8gdGhlIGludGVyaW9yIG9mIHRoZSBibGFjayBib3gpXHJcbiAgICogQHBhcmFtIHtUYW5kZW19IHRhbmRlbVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCByZXZlYWxpbmdQcm9wZXJ0eSwgZW5hYmxlZFByb3BlcnR5LCB0YW5kZW0gKSB7XHJcbiAgICBzdXBlciggcmV2ZWFsaW5nUHJvcGVydHksIGZhbHNlLCB0cnVlLCB7XHJcbiAgICAgIHRhbmRlbTogdGFuZGVtLFxyXG4gICAgICBiYXNlQ29sb3I6ICd5ZWxsb3cnLFxyXG4gICAgICB4TWFyZ2luOiBNQVJHSU4sXHJcbiAgICAgIHlNYXJnaW46IE1BUkdJTixcclxuICAgICAgY29udGVudDogbmV3IFZCb3goIHtcclxuICAgICAgICBzcGFjaW5nOiA1LFxyXG4gICAgICAgIGNoaWxkcmVuOiBbXHJcbiAgICAgICAgICBuZXcgUGF0aCggZXllU29saWRTaGFwZSwgeyBmaWxsOiAnYmxhY2snLCBtYXhXaWR0aDogMzMuNiB9ICksXHJcbiAgICAgICAgICBuZXcgVGV4dCggJ1JldmVhbCcsIHsgZm9udFNpemU6IDE1IH0gKVxyXG4gICAgICAgIF1cclxuICAgICAgfSApXHJcbiAgICB9ICk7XHJcbiAgICBlbmFibGVkUHJvcGVydHkubGlua0F0dHJpYnV0ZSggdGhpcywgJ2VuYWJsZWQnICk7XHJcblxyXG4gICAgY29uc3Qgc2VsZiA9IHRoaXM7XHJcbiAgICByZXZlYWxpbmdQcm9wZXJ0eS5saW5rKCByZXZlYWxpbmcgPT4gc2VsZi5zZXRCYXNlQ29sb3IoIHJldmVhbGluZyA/IExJR0hUX0dSRUVOIDogJ3llbGxvdycgKSApO1xyXG4gIH1cclxufVxyXG5cclxuY2lyY3VpdENvbnN0cnVjdGlvbktpdEJsYWNrQm94U3R1ZHkucmVnaXN0ZXIoICdSZXZlYWxCdXR0b24nLCBSZXZlYWxCdXR0b24gKTtcclxuZXhwb3J0IGRlZmF1bHQgUmV2ZWFsQnV0dG9uOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUFTQSxJQUFJLEVBQUVDLElBQUksRUFBRUMsSUFBSSxRQUFRLG1DQUFtQztBQUNwRSxPQUFPQyxhQUFhLE1BQU0sc0RBQXNEO0FBQ2hGLE9BQU9DLG9CQUFvQixNQUFNLG9EQUFvRDtBQUNyRixPQUFPQyxtQ0FBbUMsTUFBTSw4Q0FBOEM7O0FBRTlGO0FBQ0EsTUFBTUMsV0FBVyxHQUFHLFNBQVM7QUFDN0IsTUFBTUMsTUFBTSxHQUFHLEVBQUU7QUFFakIsTUFBTUMsWUFBWSxTQUFTSixvQkFBb0IsQ0FBQztFQUU5QztBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUssV0FBV0EsQ0FBRUMsaUJBQWlCLEVBQUVDLGVBQWUsRUFBRUMsTUFBTSxFQUFHO0lBQ3hELEtBQUssQ0FBRUYsaUJBQWlCLEVBQUUsS0FBSyxFQUFFLElBQUksRUFBRTtNQUNyQ0UsTUFBTSxFQUFFQSxNQUFNO01BQ2RDLFNBQVMsRUFBRSxRQUFRO01BQ25CQyxPQUFPLEVBQUVQLE1BQU07TUFDZlEsT0FBTyxFQUFFUixNQUFNO01BQ2ZTLE9BQU8sRUFBRSxJQUFJZCxJQUFJLENBQUU7UUFDakJlLE9BQU8sRUFBRSxDQUFDO1FBQ1ZDLFFBQVEsRUFBRSxDQUNSLElBQUlsQixJQUFJLENBQUVHLGFBQWEsRUFBRTtVQUFFZ0IsSUFBSSxFQUFFLE9BQU87VUFBRUMsUUFBUSxFQUFFO1FBQUssQ0FBRSxDQUFDLEVBQzVELElBQUluQixJQUFJLENBQUUsUUFBUSxFQUFFO1VBQUVvQixRQUFRLEVBQUU7UUFBRyxDQUFFLENBQUM7TUFFMUMsQ0FBRTtJQUNKLENBQUUsQ0FBQztJQUNIVixlQUFlLENBQUNXLGFBQWEsQ0FBRSxJQUFJLEVBQUUsU0FBVSxDQUFDO0lBRWhELE1BQU1DLElBQUksR0FBRyxJQUFJO0lBQ2pCYixpQkFBaUIsQ0FBQ2MsSUFBSSxDQUFFQyxTQUFTLElBQUlGLElBQUksQ0FBQ0csWUFBWSxDQUFFRCxTQUFTLEdBQUduQixXQUFXLEdBQUcsUUFBUyxDQUFFLENBQUM7RUFDaEc7QUFDRjtBQUVBRCxtQ0FBbUMsQ0FBQ3NCLFFBQVEsQ0FBRSxjQUFjLEVBQUVuQixZQUFhLENBQUM7QUFDNUUsZUFBZUEsWUFBWSJ9

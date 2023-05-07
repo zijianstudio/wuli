@@ -1,0 +1,51 @@
+// Copyright 2019-2020, University of Colorado Boulder
+
+/**
+ * an object that is used to keep a record of energy that is exchanged between two model elements
+ *
+ * @author John Blanco
+ */
+
+import energyFormsAndChanges from '../../energyFormsAndChanges.js';
+class EnergyBalanceRecord {
+  /**
+   * inner type which defines the structure where energy exchanges are tracked
+   * @param {string} fromID
+   * @param {string} toID
+   * @param {number} energyAmount - in joules
+   */
+  constructor(fromID, toID, energyAmount) {
+    // objects can't exchange energy with themselves
+    assert && assert(fromID !== toID);
+
+    // For ease of locating the exchange records, they are set up so that the 'from' ID precedes the 'to' ID in lexical
+    // order.  That is checked here.
+    assert && assert(fromID < toID, 'fromID must precede toID in lexical order');
+
+    // @public (read-only) {string} - id of the entity from which the energy was transferred
+    this.fromID = fromID;
+
+    // @public (read-only) {string} - id of the entity to which the energy was transferred
+    this.toID = toID;
+
+    // @public {number} - amount of energy transferred, negative values indicate reverse direction
+    this.energyBalance = energyAmount;
+
+    // @public {boolean} - flag that is used to mark whether energy was recently transferred
+    this.recentlyUpdated = true;
+  }
+
+  /**
+   * get the other ID in this record
+   * @param {string} id
+   * @returns {string}
+   * @public
+   */
+  getOtherID(id) {
+    assert && assert(id === this.fromID || id === this.toID, 'provided ID not in record');
+    return id === this.fromID ? this.toID : this.fromID;
+  }
+}
+energyFormsAndChanges.register('EnergyBalanceRecord', EnergyBalanceRecord);
+export default EnergyBalanceRecord;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJlbmVyZ3lGb3Jtc0FuZENoYW5nZXMiLCJFbmVyZ3lCYWxhbmNlUmVjb3JkIiwiY29uc3RydWN0b3IiLCJmcm9tSUQiLCJ0b0lEIiwiZW5lcmd5QW1vdW50IiwiYXNzZXJ0IiwiZW5lcmd5QmFsYW5jZSIsInJlY2VudGx5VXBkYXRlZCIsImdldE90aGVySUQiLCJpZCIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiRW5lcmd5QmFsYW5jZVJlY29yZC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOS0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBhbiBvYmplY3QgdGhhdCBpcyB1c2VkIHRvIGtlZXAgYSByZWNvcmQgb2YgZW5lcmd5IHRoYXQgaXMgZXhjaGFuZ2VkIGJldHdlZW4gdHdvIG1vZGVsIGVsZW1lbnRzXHJcbiAqXHJcbiAqIEBhdXRob3IgSm9obiBCbGFuY29cclxuICovXHJcblxyXG5pbXBvcnQgZW5lcmd5Rm9ybXNBbmRDaGFuZ2VzIGZyb20gJy4uLy4uL2VuZXJneUZvcm1zQW5kQ2hhbmdlcy5qcyc7XHJcblxyXG5jbGFzcyBFbmVyZ3lCYWxhbmNlUmVjb3JkIHtcclxuXHJcbiAgLyoqXHJcbiAgICogaW5uZXIgdHlwZSB3aGljaCBkZWZpbmVzIHRoZSBzdHJ1Y3R1cmUgd2hlcmUgZW5lcmd5IGV4Y2hhbmdlcyBhcmUgdHJhY2tlZFxyXG4gICAqIEBwYXJhbSB7c3RyaW5nfSBmcm9tSURcclxuICAgKiBAcGFyYW0ge3N0cmluZ30gdG9JRFxyXG4gICAqIEBwYXJhbSB7bnVtYmVyfSBlbmVyZ3lBbW91bnQgLSBpbiBqb3VsZXNcclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggZnJvbUlELCB0b0lELCBlbmVyZ3lBbW91bnQgKSB7XHJcblxyXG4gICAgLy8gb2JqZWN0cyBjYW4ndCBleGNoYW5nZSBlbmVyZ3kgd2l0aCB0aGVtc2VsdmVzXHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBmcm9tSUQgIT09IHRvSUQgKTtcclxuXHJcbiAgICAvLyBGb3IgZWFzZSBvZiBsb2NhdGluZyB0aGUgZXhjaGFuZ2UgcmVjb3JkcywgdGhleSBhcmUgc2V0IHVwIHNvIHRoYXQgdGhlICdmcm9tJyBJRCBwcmVjZWRlcyB0aGUgJ3RvJyBJRCBpbiBsZXhpY2FsXHJcbiAgICAvLyBvcmRlci4gIFRoYXQgaXMgY2hlY2tlZCBoZXJlLlxyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggZnJvbUlEIDwgdG9JRCwgJ2Zyb21JRCBtdXN0IHByZWNlZGUgdG9JRCBpbiBsZXhpY2FsIG9yZGVyJyApO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSkge3N0cmluZ30gLSBpZCBvZiB0aGUgZW50aXR5IGZyb20gd2hpY2ggdGhlIGVuZXJneSB3YXMgdHJhbnNmZXJyZWRcclxuICAgIHRoaXMuZnJvbUlEID0gZnJvbUlEO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgKHJlYWQtb25seSkge3N0cmluZ30gLSBpZCBvZiB0aGUgZW50aXR5IHRvIHdoaWNoIHRoZSBlbmVyZ3kgd2FzIHRyYW5zZmVycmVkXHJcbiAgICB0aGlzLnRvSUQgPSB0b0lEO1xyXG5cclxuICAgIC8vIEBwdWJsaWMge251bWJlcn0gLSBhbW91bnQgb2YgZW5lcmd5IHRyYW5zZmVycmVkLCBuZWdhdGl2ZSB2YWx1ZXMgaW5kaWNhdGUgcmV2ZXJzZSBkaXJlY3Rpb25cclxuICAgIHRoaXMuZW5lcmd5QmFsYW5jZSA9IGVuZXJneUFtb3VudDtcclxuXHJcbiAgICAvLyBAcHVibGljIHtib29sZWFufSAtIGZsYWcgdGhhdCBpcyB1c2VkIHRvIG1hcmsgd2hldGhlciBlbmVyZ3kgd2FzIHJlY2VudGx5IHRyYW5zZmVycmVkXHJcbiAgICB0aGlzLnJlY2VudGx5VXBkYXRlZCA9IHRydWU7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBnZXQgdGhlIG90aGVyIElEIGluIHRoaXMgcmVjb3JkXHJcbiAgICogQHBhcmFtIHtzdHJpbmd9IGlkXHJcbiAgICogQHJldHVybnMge3N0cmluZ31cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgZ2V0T3RoZXJJRCggaWQgKSB7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBpZCA9PT0gdGhpcy5mcm9tSUQgfHwgaWQgPT09IHRoaXMudG9JRCwgJ3Byb3ZpZGVkIElEIG5vdCBpbiByZWNvcmQnICk7XHJcbiAgICByZXR1cm4gaWQgPT09IHRoaXMuZnJvbUlEID8gdGhpcy50b0lEIDogdGhpcy5mcm9tSUQ7XHJcbiAgfVxyXG59XHJcblxyXG5lbmVyZ3lGb3Jtc0FuZENoYW5nZXMucmVnaXN0ZXIoICdFbmVyZ3lCYWxhbmNlUmVjb3JkJywgRW5lcmd5QmFsYW5jZVJlY29yZCApO1xyXG5leHBvcnQgZGVmYXVsdCBFbmVyZ3lCYWxhbmNlUmVjb3JkOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxxQkFBcUIsTUFBTSxnQ0FBZ0M7QUFFbEUsTUFBTUMsbUJBQW1CLENBQUM7RUFFeEI7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLE1BQU0sRUFBRUMsSUFBSSxFQUFFQyxZQUFZLEVBQUc7SUFFeEM7SUFDQUMsTUFBTSxJQUFJQSxNQUFNLENBQUVILE1BQU0sS0FBS0MsSUFBSyxDQUFDOztJQUVuQztJQUNBO0lBQ0FFLE1BQU0sSUFBSUEsTUFBTSxDQUFFSCxNQUFNLEdBQUdDLElBQUksRUFBRSwyQ0FBNEMsQ0FBQzs7SUFFOUU7SUFDQSxJQUFJLENBQUNELE1BQU0sR0FBR0EsTUFBTTs7SUFFcEI7SUFDQSxJQUFJLENBQUNDLElBQUksR0FBR0EsSUFBSTs7SUFFaEI7SUFDQSxJQUFJLENBQUNHLGFBQWEsR0FBR0YsWUFBWTs7SUFFakM7SUFDQSxJQUFJLENBQUNHLGVBQWUsR0FBRyxJQUFJO0VBQzdCOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFQyxVQUFVQSxDQUFFQyxFQUFFLEVBQUc7SUFDZkosTUFBTSxJQUFJQSxNQUFNLENBQUVJLEVBQUUsS0FBSyxJQUFJLENBQUNQLE1BQU0sSUFBSU8sRUFBRSxLQUFLLElBQUksQ0FBQ04sSUFBSSxFQUFFLDJCQUE0QixDQUFDO0lBQ3ZGLE9BQU9NLEVBQUUsS0FBSyxJQUFJLENBQUNQLE1BQU0sR0FBRyxJQUFJLENBQUNDLElBQUksR0FBRyxJQUFJLENBQUNELE1BQU07RUFDckQ7QUFDRjtBQUVBSCxxQkFBcUIsQ0FBQ1csUUFBUSxDQUFFLHFCQUFxQixFQUFFVixtQkFBb0IsQ0FBQztBQUM1RSxlQUFlQSxtQkFBbUIifQ==

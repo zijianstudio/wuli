@@ -1,0 +1,42 @@
+// Copyright 2017-2023, University of Colorado Boulder
+
+/**
+ * Button used to start and stop a race in the 'Racing Lab' screen.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
+ */
+
+import merge from '../../../../phet-core/js/merge.js';
+import StopSignNode from '../../../../scenery-phet/js/StopSignNode.js';
+import { Image } from '../../../../scenery/js/imports.js';
+import BooleanRoundToggleButton from '../../../../sun/js/buttons/BooleanRoundToggleButton.js';
+import goButtonIcon_png from '../../../images/goButtonIcon_png.js';
+import unitRates from '../../unitRates.js';
+export default class StartStopButton extends BooleanRoundToggleButton {
+  /**
+   * @param {Property.<boolean>} runningProperty
+   * @param {Object} [options]
+   */
+  constructor(runningProperty, options) {
+    options = merge({
+      radius: 45,
+      xMargin: 8,
+      yMargin: 8
+    }, options);
+    const goIcon = new Image(goButtonIcon_png, {
+      scale: 0.5
+    });
+    const stopIcon = new StopSignNode({
+      fillRadius: 25
+    });
+    super(runningProperty, stopIcon, goIcon, options);
+
+    // adjust button color based on runningProperty
+    // unlink not needed, exists for sim lifetime
+    runningProperty.link(running => {
+      this.baseColor = running ? '#6D6E70' : '#85d4a6';
+    });
+  }
+}
+unitRates.register('StartStopButton', StartStopButton);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIlN0b3BTaWduTm9kZSIsIkltYWdlIiwiQm9vbGVhblJvdW5kVG9nZ2xlQnV0dG9uIiwiZ29CdXR0b25JY29uX3BuZyIsInVuaXRSYXRlcyIsIlN0YXJ0U3RvcEJ1dHRvbiIsImNvbnN0cnVjdG9yIiwicnVubmluZ1Byb3BlcnR5Iiwib3B0aW9ucyIsInJhZGl1cyIsInhNYXJnaW4iLCJ5TWFyZ2luIiwiZ29JY29uIiwic2NhbGUiLCJzdG9wSWNvbiIsImZpbGxSYWRpdXMiLCJsaW5rIiwicnVubmluZyIsImJhc2VDb2xvciIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiU3RhcnRTdG9wQnV0dG9uLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE3LTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIEJ1dHRvbiB1c2VkIHRvIHN0YXJ0IGFuZCBzdG9wIGEgcmFjZSBpbiB0aGUgJ1JhY2luZyBMYWInIHNjcmVlbi5cclxuICpcclxuICogQGF1dGhvciBDaHJpcyBNYWxsZXkgKFBpeGVsWm9vbSwgSW5jLilcclxuICovXHJcblxyXG5pbXBvcnQgbWVyZ2UgZnJvbSAnLi4vLi4vLi4vLi4vcGhldC1jb3JlL2pzL21lcmdlLmpzJztcclxuaW1wb3J0IFN0b3BTaWduTm9kZSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5LXBoZXQvanMvU3RvcFNpZ25Ob2RlLmpzJztcclxuaW1wb3J0IHsgSW1hZ2UgfSBmcm9tICcuLi8uLi8uLi8uLi9zY2VuZXJ5L2pzL2ltcG9ydHMuanMnO1xyXG5pbXBvcnQgQm9vbGVhblJvdW5kVG9nZ2xlQnV0dG9uIGZyb20gJy4uLy4uLy4uLy4uL3N1bi9qcy9idXR0b25zL0Jvb2xlYW5Sb3VuZFRvZ2dsZUJ1dHRvbi5qcyc7XHJcbmltcG9ydCBnb0J1dHRvbkljb25fcG5nIGZyb20gJy4uLy4uLy4uL2ltYWdlcy9nb0J1dHRvbkljb25fcG5nLmpzJztcclxuaW1wb3J0IHVuaXRSYXRlcyBmcm9tICcuLi8uLi91bml0UmF0ZXMuanMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgU3RhcnRTdG9wQnV0dG9uIGV4dGVuZHMgQm9vbGVhblJvdW5kVG9nZ2xlQnV0dG9uIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtQcm9wZXJ0eS48Ym9vbGVhbj59IHJ1bm5pbmdQcm9wZXJ0eVxyXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9uc11cclxuICAgKi9cclxuICBjb25zdHJ1Y3RvciggcnVubmluZ1Byb3BlcnR5LCBvcHRpb25zICkge1xyXG5cclxuICAgIG9wdGlvbnMgPSBtZXJnZSgge1xyXG4gICAgICByYWRpdXM6IDQ1LFxyXG4gICAgICB4TWFyZ2luOiA4LFxyXG4gICAgICB5TWFyZ2luOiA4XHJcbiAgICB9LCBvcHRpb25zICk7XHJcblxyXG4gICAgY29uc3QgZ29JY29uID0gbmV3IEltYWdlKCBnb0J1dHRvbkljb25fcG5nLCB7IHNjYWxlOiAwLjUgfSApO1xyXG4gICAgY29uc3Qgc3RvcEljb24gPSBuZXcgU3RvcFNpZ25Ob2RlKCB7IGZpbGxSYWRpdXM6IDI1IH0gKTtcclxuXHJcbiAgICBzdXBlciggcnVubmluZ1Byb3BlcnR5LCBzdG9wSWNvbiwgZ29JY29uLCBvcHRpb25zICk7XHJcblxyXG4gICAgLy8gYWRqdXN0IGJ1dHRvbiBjb2xvciBiYXNlZCBvbiBydW5uaW5nUHJvcGVydHlcclxuICAgIC8vIHVubGluayBub3QgbmVlZGVkLCBleGlzdHMgZm9yIHNpbSBsaWZldGltZVxyXG4gICAgcnVubmluZ1Byb3BlcnR5LmxpbmsoIHJ1bm5pbmcgPT4ge1xyXG4gICAgICB0aGlzLmJhc2VDb2xvciA9ICggcnVubmluZyA/ICcjNkQ2RTcwJyA6ICcjODVkNGE2JyApO1xyXG4gICAgfSApO1xyXG4gIH1cclxufVxyXG5cclxudW5pdFJhdGVzLnJlZ2lzdGVyKCAnU3RhcnRTdG9wQnV0dG9uJywgU3RhcnRTdG9wQnV0dG9uICk7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxtQ0FBbUM7QUFDckQsT0FBT0MsWUFBWSxNQUFNLDZDQUE2QztBQUN0RSxTQUFTQyxLQUFLLFFBQVEsbUNBQW1DO0FBQ3pELE9BQU9DLHdCQUF3QixNQUFNLHdEQUF3RDtBQUM3RixPQUFPQyxnQkFBZ0IsTUFBTSxxQ0FBcUM7QUFDbEUsT0FBT0MsU0FBUyxNQUFNLG9CQUFvQjtBQUUxQyxlQUFlLE1BQU1DLGVBQWUsU0FBU0gsd0JBQXdCLENBQUM7RUFFcEU7QUFDRjtBQUNBO0FBQ0E7RUFDRUksV0FBV0EsQ0FBRUMsZUFBZSxFQUFFQyxPQUFPLEVBQUc7SUFFdENBLE9BQU8sR0FBR1QsS0FBSyxDQUFFO01BQ2ZVLE1BQU0sRUFBRSxFQUFFO01BQ1ZDLE9BQU8sRUFBRSxDQUFDO01BQ1ZDLE9BQU8sRUFBRTtJQUNYLENBQUMsRUFBRUgsT0FBUSxDQUFDO0lBRVosTUFBTUksTUFBTSxHQUFHLElBQUlYLEtBQUssQ0FBRUUsZ0JBQWdCLEVBQUU7TUFBRVUsS0FBSyxFQUFFO0lBQUksQ0FBRSxDQUFDO0lBQzVELE1BQU1DLFFBQVEsR0FBRyxJQUFJZCxZQUFZLENBQUU7TUFBRWUsVUFBVSxFQUFFO0lBQUcsQ0FBRSxDQUFDO0lBRXZELEtBQUssQ0FBRVIsZUFBZSxFQUFFTyxRQUFRLEVBQUVGLE1BQU0sRUFBRUosT0FBUSxDQUFDOztJQUVuRDtJQUNBO0lBQ0FELGVBQWUsQ0FBQ1MsSUFBSSxDQUFFQyxPQUFPLElBQUk7TUFDL0IsSUFBSSxDQUFDQyxTQUFTLEdBQUtELE9BQU8sR0FBRyxTQUFTLEdBQUcsU0FBVztJQUN0RCxDQUFFLENBQUM7RUFDTDtBQUNGO0FBRUFiLFNBQVMsQ0FBQ2UsUUFBUSxDQUFFLGlCQUFpQixFQUFFZCxlQUFnQixDQUFDIn0=

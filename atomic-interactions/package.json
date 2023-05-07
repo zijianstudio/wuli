@@ -1,0 +1,36 @@
+{
+  "name": "atomic-interactions",
+  "version": "1.3.0-dev.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/atomic-interactions.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "requirejsNamespace": "ATOMIC_INTERACTIONS",
+    "phetLibs": [
+      "states-of-matter",
+      "nitroglycerin"
+    ],
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
+    "simFeatures": {
+      "colorProfiles": [
+        "default",
+        "projector"
+      ]
+    },
+    "simulation": true,
+    "supportsOutputJS": true,
+    "published": true
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/sim_eslintrc.js"
+  }
+}

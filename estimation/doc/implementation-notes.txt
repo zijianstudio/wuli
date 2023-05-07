@@ -1,0 +1,8 @@
+For this simulation, the location of a model shape is defined as the left
+bottom of the shape.
+
+In the Explore tab, all shapes are created initially and added to both the
+model and view, and their visibility is changed to make them appear and
+disappear.
+
+Properties are named with the suffix 'Property', e.g. positionProperty.

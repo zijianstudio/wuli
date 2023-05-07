@@ -1,0 +1,15 @@
+<div class="components">
+{{#each entries as |entry|}}
+    <section class="component">
+        <h1>{{@key}}</h1>
+    {{#each entry as |imgList|}}
+        <p>{{@key}}</p>
+        <ul>
+        {{#each imgList}}
+            <li><img src="{{this}}"></li>
+        {{/each}}
+        </ul>
+    {{/each}}
+    </section>
+{{/each}}
+</div>

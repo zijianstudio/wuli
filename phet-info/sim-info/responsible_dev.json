@@ -1,0 +1,1540 @@
+{
+  "a11y-research": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "acid-base-solutions": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "aqua": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "area-builder": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "area-model-algebra": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "area-model-common": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "area-model-decimals": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "area-model-introduction": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "area-model-multiplication": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "arithmetic": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "assert": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "atomic-interactions": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "axon": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "babel": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "balancing-act": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "balancing-chemical-equations": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "balloons-and-static-electricity": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "bamboo": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "beaker": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "beers-law-lab": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "bending-light": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "binder": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "blackbody-spectrum": {
+    "responsibleDevs": [
+      "@AgustinVallejo",
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "blast": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "brand": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "build-a-fraction": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "build-a-molecule": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "build-a-nucleus": {
+    "responsibleDevs": [
+      "@Luisav1",
+      "@marlitas"
+    ],
+    "responsibleDesigners": []
+  },
+  "build-an-atom": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "bumper": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "buoyancy": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "calculus-grapher": {
+    "responsibleDevs": [
+      "@veillette",
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "capacitor-lab-basics": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "center-and-variability": {
+    "responsibleDevs": [
+      "@samreid",
+      "@marlitas"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "chains": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "charges-and-fields": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "chipper": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "circuit-construction-ios-app": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "circuit-construction-kit-ac": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "circuit-construction-kit-ac-virtual-lab": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "circuit-construction-kit-basics": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "circuit-construction-kit-black-box-study": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "circuit-construction-kit-common": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "circuit-construction-kit-dc": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "circuit-construction-kit-dc-virtual-lab": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "collision-lab": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "color-vision": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "community": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@BLFiedler"
+    ]
+  },
+  "concentration": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "coulombs-law": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "counting-common": {
+    "responsibleDevs": [
+      "@marlitas"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "curve-fitting": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "decaf": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "density": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "density-buoyancy-common": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "diffusion": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "dot": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "eating-exercise-and-energy": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "energy-forms-and-changes": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "energy-skate-park": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "energy-skate-park-basics": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "equality-explorer": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "equality-explorer-basics": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "equality-explorer-two-variables": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "estimation": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "example-sim": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "expression-exchange": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "faraday": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "faradays-law": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "fenster": {
+    "responsibleDevs": [
+      "@jbphet",
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "fluid-pressure-and-flow": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "forces-and-motion-basics": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "fourier-making-waves": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "fraction-comparison": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "fraction-matcher": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "fractions-common": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "fractions-equality": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "fractions-intro": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "fractions-mixed-numbers": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "friction": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "function-builder": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "function-builder-basics": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "gas-properties": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "gases-intro": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "gene-expression-essentials": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "geometric-optics": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "geometric-optics-basics": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "graphing-lines": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "graphing-quadratics": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "graphing-slope-intercept": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "gravity-and-orbits": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "gravity-force-lab": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "gravity-force-lab-basics": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "greenhouse-effect": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "griddle": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "hookes-law": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "interaction-dashboard": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "inverse-square-law-common": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "isotopes-and-atomic-mass": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "john-travoltage": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "joist": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "keplers-laws": {
+    "responsibleDevs": [
+      "@AgustinVallejo",
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "kite": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "least-squares-regression": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "make-a-ten": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "masses-and-springs": {
+    "responsibleDevs": [
+      "@matthew-blackman"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar",
+      "@matthew-blackman"
+    ]
+  },
+  "masses-and-springs-basics": {
+    "responsibleDevs": [
+      "@matthew-blackman"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "mean-share-and-balance": {
+    "responsibleDevs": [
+      "@marlitas",
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "mobius": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "models-of-the-hydrogen-atom": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "molarity": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "molecule-polarity": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "molecule-shapes": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "molecule-shapes-basics": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "molecules-and-light": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "my-solar-system": {
+    "responsibleDevs": [
+      "@AgustinVallejo",
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "natural-selection": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "neuron": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "nitroglycerin": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "normal-modes": {
+    "responsibleDevs": [],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "number-compare": {
+    "responsibleDevs": [
+      "@marlitas"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "number-line-common": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "number-line-distance": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "number-line-integers": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "number-line-operations": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "number-play": {
+    "responsibleDevs": [
+      "@marlitas"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "number-suite-common": {
+    "responsibleDevs": [
+      "@marlitas"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "ohms-law": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "optics-lab": {
+    "responsibleDevs": [
+      "@veillette",
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "paper-land": {
+    "responsibleDevs": [
+      "@jbphet",
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@BLFiedler"
+    ]
+  },
+  "pendulum-lab": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "perennial": {
+    "responsibleDevs": [
+      "@mattpen",
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "ph-scale": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "ph-scale-basics": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "phet-android-app": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-core": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-global-initiative": {
+    "responsibleDevs": [
+      "@kathy-phet"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-info": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-sim-specific": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "phet-io-test-sim": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-website": {
+    "responsibleDevs": [
+      "@chrisklus"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-wrapper-classroom-activity": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-wrapper-haptics": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-wrapper-hookes-law-energy": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-wrapper-lab-book": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-io-wrappers": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-ios-app": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-ios-vibtest-app": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-lib": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-office-add-in": {
+    "responsibleDevs": [
+      "@oliver-phet"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-partnerships": {
+    "responsibleDevs": [
+      "@kathy-phet"
+    ],
+    "responsibleDesigners": []
+  },
+  "phet-sublime-plugin": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "phetcommon": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "phetmarks": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "phettest": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "plinko-probability": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "projectile-motion": {
+    "responsibleDevs": [
+      "@matthew-blackman"
+    ],
+    "responsibleDesigners": [
+      "@matthew-blackman",
+      "@catherinecarter",
+      "@arouinfar"
+    ]
+  },
+  "proportion-playground": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "protein-synthesis": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "qa": {
+    "responsibleDevs": [
+      "@KatieWoe"
+    ],
+    "responsibleDesigners": []
+  },
+  "quadrilateral": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "quake": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "query-string-machine": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "ratio-and-proportion": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": [
+      "@BLFiedler"
+    ]
+  },
+  "reactants-products-and-leftovers": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "resistance-in-a-wire": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "rosetta": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "rutherford-scattering": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "seasons": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "scenery": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "scenery-phet": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "sherpa": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": []
+  },
+  "shred": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "skiffle": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "simula-rasa": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "smithers": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "solar-system-common": {
+    "responsibleDevs": [
+      "@AgustinVallejo",
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "sound": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "special-ops": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "states-of-matter": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "states-of-matter-basics": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "studio": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "sugar-and-salt-solutions": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "sun": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "tambo": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "tandem": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "tangible": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "tappi": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "tasks": {
+    "responsibleDevs": [
+      "@zepumph"
+    ],
+    "responsibleDesigners": []
+  },
+  "trig-tour": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": [
+      "@amanda-phet"
+    ]
+  },
+  "twixt": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "under-pressure": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@DianaTavares"
+    ]
+  },
+  "unit-rates": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "utterance-queue": {
+    "responsibleDevs": [
+      "@jessegreenberg"
+    ],
+    "responsibleDesigners": []
+  },
+  "vector-addition": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "vector-addition-equations": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "vegas": {
+    "responsibleDevs": [
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "vibe": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "wave-interference": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "wave-on-a-string": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "waves-intro": {
+    "responsibleDevs": [
+      "@samreid"
+    ],
+    "responsibleDesigners": [
+      "@arouinfar"
+    ]
+  },
+  "website": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "website-docker": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "website-direct": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "website-meteor": {
+    "responsibleDevs": [
+      "@mattpen"
+    ],
+    "responsibleDesigners": []
+  },
+  "website-scenery": {
+    "responsibleDevs": [
+      "@chrisklus"
+    ],
+    "responsibleDesigners": []
+  },
+  "weddell": {
+    "responsibleDevs": [
+      "@jbphet"
+    ],
+    "responsibleDesigners": []
+  },
+  "wilder": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  },
+  "xray-diffraction": {
+    "responsibleDevs": [
+      "@heldentodd",
+      "@pixelzoom"
+    ],
+    "responsibleDesigners": []
+  },
+  "yotta": {
+    "responsibleDevs": [
+      "@jonathanolson"
+    ],
+    "responsibleDesigners": []
+  }
+}

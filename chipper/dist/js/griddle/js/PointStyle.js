@@ -1,0 +1,47 @@
+// Copyright 2019-2022, University of Colorado Boulder
+
+/**
+ * A collection of styles that can be applied to a single point of a scatter styled plot. Can control things like
+ * point visibility, stroke, size, and opacity for an individual point.
+ *
+ * @author Jesse Greenberg
+ */
+
+import deprecationWarning from '../../phet-core/js/deprecationWarning.js';
+import merge from '../../phet-core/js/merge.js';
+import griddle from './griddle.js';
+
+/**
+ * @deprecated - please use BAMBOO/GridLineSet
+ */
+class PointStyle {
+  /**
+   * @param {object} [options]
+   */
+  constructor(options) {
+    assert && deprecationWarning('Please use bamboo');
+    options = merge({
+      // {number|null}
+      opacity: null,
+      // {boolean} - if false, this point won't be drawn
+      visible: true,
+      // {Color|null} - if specified, the data point will be stroked with this Color, which must be a Color instance
+      // so we can determine the CSS strokeStyle
+      strokeStyle: null,
+      // {number} - lineWidth for the stroke, only relevant if strokeStyle is provided
+      lineWidth: 1,
+      // {number|null} - radius of the data point, if null the radius will be determined by the container
+      radius: null
+    }, options);
+
+    // @public - see options for documentation
+    this.opacity = options.opacity;
+    this.radius = options.radius;
+    this.visible = options.visible;
+    this.lineWidth = options.lineWidth;
+    this.strokeStyle = options.strokeStyle;
+  }
+}
+griddle.register('PointStyle', PointStyle);
+export default PointStyle;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJkZXByZWNhdGlvbldhcm5pbmciLCJtZXJnZSIsImdyaWRkbGUiLCJQb2ludFN0eWxlIiwiY29uc3RydWN0b3IiLCJvcHRpb25zIiwiYXNzZXJ0Iiwib3BhY2l0eSIsInZpc2libGUiLCJzdHJva2VTdHlsZSIsImxpbmVXaWR0aCIsInJhZGl1cyIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiUG9pbnRTdHlsZS5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOS0yMDIyLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBBIGNvbGxlY3Rpb24gb2Ygc3R5bGVzIHRoYXQgY2FuIGJlIGFwcGxpZWQgdG8gYSBzaW5nbGUgcG9pbnQgb2YgYSBzY2F0dGVyIHN0eWxlZCBwbG90LiBDYW4gY29udHJvbCB0aGluZ3MgbGlrZVxyXG4gKiBwb2ludCB2aXNpYmlsaXR5LCBzdHJva2UsIHNpemUsIGFuZCBvcGFjaXR5IGZvciBhbiBpbmRpdmlkdWFsIHBvaW50LlxyXG4gKlxyXG4gKiBAYXV0aG9yIEplc3NlIEdyZWVuYmVyZ1xyXG4gKi9cclxuXHJcbmltcG9ydCBkZXByZWNhdGlvbldhcm5pbmcgZnJvbSAnLi4vLi4vcGhldC1jb3JlL2pzL2RlcHJlY2F0aW9uV2FybmluZy5qcyc7XHJcbmltcG9ydCBtZXJnZSBmcm9tICcuLi8uLi9waGV0LWNvcmUvanMvbWVyZ2UuanMnO1xyXG5pbXBvcnQgZ3JpZGRsZSBmcm9tICcuL2dyaWRkbGUuanMnO1xyXG5cclxuLyoqXHJcbiAqIEBkZXByZWNhdGVkIC0gcGxlYXNlIHVzZSBCQU1CT08vR3JpZExpbmVTZXRcclxuICovXHJcbmNsYXNzIFBvaW50U3R5bGUge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge29iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIG9wdGlvbnMgKSB7XHJcbiAgICBhc3NlcnQgJiYgZGVwcmVjYXRpb25XYXJuaW5nKCAnUGxlYXNlIHVzZSBiYW1ib28nICk7XHJcblxyXG4gICAgb3B0aW9ucyA9IG1lcmdlKCB7XHJcblxyXG4gICAgICAvLyB7bnVtYmVyfG51bGx9XHJcbiAgICAgIG9wYWNpdHk6IG51bGwsXHJcblxyXG4gICAgICAvLyB7Ym9vbGVhbn0gLSBpZiBmYWxzZSwgdGhpcyBwb2ludCB3b24ndCBiZSBkcmF3blxyXG4gICAgICB2aXNpYmxlOiB0cnVlLFxyXG5cclxuICAgICAgLy8ge0NvbG9yfG51bGx9IC0gaWYgc3BlY2lmaWVkLCB0aGUgZGF0YSBwb2ludCB3aWxsIGJlIHN0cm9rZWQgd2l0aCB0aGlzIENvbG9yLCB3aGljaCBtdXN0IGJlIGEgQ29sb3IgaW5zdGFuY2VcclxuICAgICAgLy8gc28gd2UgY2FuIGRldGVybWluZSB0aGUgQ1NTIHN0cm9rZVN0eWxlXHJcbiAgICAgIHN0cm9rZVN0eWxlOiBudWxsLFxyXG5cclxuICAgICAgLy8ge251bWJlcn0gLSBsaW5lV2lkdGggZm9yIHRoZSBzdHJva2UsIG9ubHkgcmVsZXZhbnQgaWYgc3Ryb2tlU3R5bGUgaXMgcHJvdmlkZWRcclxuICAgICAgbGluZVdpZHRoOiAxLFxyXG5cclxuICAgICAgLy8ge251bWJlcnxudWxsfSAtIHJhZGl1cyBvZiB0aGUgZGF0YSBwb2ludCwgaWYgbnVsbCB0aGUgcmFkaXVzIHdpbGwgYmUgZGV0ZXJtaW5lZCBieSB0aGUgY29udGFpbmVyXHJcbiAgICAgIHJhZGl1czogbnVsbFxyXG4gICAgfSwgb3B0aW9ucyApO1xyXG5cclxuICAgIC8vIEBwdWJsaWMgLSBzZWUgb3B0aW9ucyBmb3IgZG9jdW1lbnRhdGlvblxyXG4gICAgdGhpcy5vcGFjaXR5ID0gb3B0aW9ucy5vcGFjaXR5O1xyXG4gICAgdGhpcy5yYWRpdXMgPSBvcHRpb25zLnJhZGl1cztcclxuICAgIHRoaXMudmlzaWJsZSA9IG9wdGlvbnMudmlzaWJsZTtcclxuICAgIHRoaXMubGluZVdpZHRoID0gb3B0aW9ucy5saW5lV2lkdGg7XHJcbiAgICB0aGlzLnN0cm9rZVN0eWxlID0gb3B0aW9ucy5zdHJva2VTdHlsZTtcclxuICB9XHJcbn1cclxuXHJcbmdyaWRkbGUucmVnaXN0ZXIoICdQb2ludFN0eWxlJywgUG9pbnRTdHlsZSApO1xyXG5leHBvcnQgZGVmYXVsdCBQb2ludFN0eWxlOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLGtCQUFrQixNQUFNLDBDQUEwQztBQUN6RSxPQUFPQyxLQUFLLE1BQU0sNkJBQTZCO0FBQy9DLE9BQU9DLE9BQU8sTUFBTSxjQUFjOztBQUVsQztBQUNBO0FBQ0E7QUFDQSxNQUFNQyxVQUFVLENBQUM7RUFFZjtBQUNGO0FBQ0E7RUFDRUMsV0FBV0EsQ0FBRUMsT0FBTyxFQUFHO0lBQ3JCQyxNQUFNLElBQUlOLGtCQUFrQixDQUFFLG1CQUFvQixDQUFDO0lBRW5ESyxPQUFPLEdBQUdKLEtBQUssQ0FBRTtNQUVmO01BQ0FNLE9BQU8sRUFBRSxJQUFJO01BRWI7TUFDQUMsT0FBTyxFQUFFLElBQUk7TUFFYjtNQUNBO01BQ0FDLFdBQVcsRUFBRSxJQUFJO01BRWpCO01BQ0FDLFNBQVMsRUFBRSxDQUFDO01BRVo7TUFDQUMsTUFBTSxFQUFFO0lBQ1YsQ0FBQyxFQUFFTixPQUFRLENBQUM7O0lBRVo7SUFDQSxJQUFJLENBQUNFLE9BQU8sR0FBR0YsT0FBTyxDQUFDRSxPQUFPO0lBQzlCLElBQUksQ0FBQ0ksTUFBTSxHQUFHTixPQUFPLENBQUNNLE1BQU07SUFDNUIsSUFBSSxDQUFDSCxPQUFPLEdBQUdILE9BQU8sQ0FBQ0csT0FBTztJQUM5QixJQUFJLENBQUNFLFNBQVMsR0FBR0wsT0FBTyxDQUFDSyxTQUFTO0lBQ2xDLElBQUksQ0FBQ0QsV0FBVyxHQUFHSixPQUFPLENBQUNJLFdBQVc7RUFDeEM7QUFDRjtBQUVBUCxPQUFPLENBQUNVLFFBQVEsQ0FBRSxZQUFZLEVBQUVULFVBQVcsQ0FBQztBQUM1QyxlQUFlQSxVQUFVIn0=

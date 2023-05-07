@@ -1,0 +1,25 @@
+// Copyright 2017, University of Colorado Boulder
+
+/**
+ * Lints a runnable repository and its dependencies.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+const execute = require('./execute');
+const gruntCommand = require('./gruntCommand');
+const winston = require('winston');
+
+/**
+ * Builds a repository.
+ * @public
+ *
+ * @param {string} repo
+ * @returns {Promise.<string>} - The stdout of the process
+ * @rejects {ExecuteError}
+ */
+module.exports = async function (repo) {
+  winston.info(`linting ${repo}`);
+  return execute(gruntCommand, ['lint-all'], `../${repo}`);
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleGVjdXRlIiwicmVxdWlyZSIsImdydW50Q29tbWFuZCIsIndpbnN0b24iLCJtb2R1bGUiLCJleHBvcnRzIiwicmVwbyIsImluZm8iXSwic291cmNlcyI6WyJsaW50QWxsUnVubmFibGUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTcsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIExpbnRzIGEgcnVubmFibGUgcmVwb3NpdG9yeSBhbmQgaXRzIGRlcGVuZGVuY2llcy5cclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmNvbnN0IGV4ZWN1dGUgPSByZXF1aXJlKCAnLi9leGVjdXRlJyApO1xyXG5jb25zdCBncnVudENvbW1hbmQgPSByZXF1aXJlKCAnLi9ncnVudENvbW1hbmQnICk7XHJcbmNvbnN0IHdpbnN0b24gPSByZXF1aXJlKCAnd2luc3RvbicgKTtcclxuXHJcbi8qKlxyXG4gKiBCdWlsZHMgYSByZXBvc2l0b3J5LlxyXG4gKiBAcHVibGljXHJcbiAqXHJcbiAqIEBwYXJhbSB7c3RyaW5nfSByZXBvXHJcbiAqIEByZXR1cm5zIHtQcm9taXNlLjxzdHJpbmc+fSAtIFRoZSBzdGRvdXQgb2YgdGhlIHByb2Nlc3NcclxuICogQHJlamVjdHMge0V4ZWN1dGVFcnJvcn1cclxuICovXHJcbm1vZHVsZS5leHBvcnRzID0gYXN5bmMgZnVuY3Rpb24oIHJlcG8gKSB7XHJcbiAgd2luc3Rvbi5pbmZvKCBgbGludGluZyAke3JlcG99YCApO1xyXG5cclxuICByZXR1cm4gZXhlY3V0ZSggZ3J1bnRDb21tYW5kLCBbICdsaW50LWFsbCcgXSwgYC4uLyR7cmVwb31gICk7XHJcbn07XHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxNQUFNQSxPQUFPLEdBQUdDLE9BQU8sQ0FBRSxXQUFZLENBQUM7QUFDdEMsTUFBTUMsWUFBWSxHQUFHRCxPQUFPLENBQUUsZ0JBQWlCLENBQUM7QUFDaEQsTUFBTUUsT0FBTyxHQUFHRixPQUFPLENBQUUsU0FBVSxDQUFDOztBQUVwQztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0FHLE1BQU0sQ0FBQ0MsT0FBTyxHQUFHLGdCQUFnQkMsSUFBSSxFQUFHO0VBQ3RDSCxPQUFPLENBQUNJLElBQUksQ0FBRyxXQUFVRCxJQUFLLEVBQUUsQ0FBQztFQUVqQyxPQUFPTixPQUFPLENBQUVFLFlBQVksRUFBRSxDQUFFLFVBQVUsQ0FBRSxFQUFHLE1BQUtJLElBQUssRUFBRSxDQUFDO0FBQzlELENBQUMifQ==

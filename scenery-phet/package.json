@@ -1,0 +1,63 @@
+{
+  "name": "scenery-phet",
+  "version": "1.0.0-dev.21",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phetsims/scenery-phet.git"
+  },
+  "devDependencies": {
+    "grunt": "~1.5.3"
+  },
+  "phet": {
+    "generatedUnitTests": true,
+    "requirejsNamespace": "SCENERY_PHET",
+    "preload": [
+      "../sherpa/lib/katex-0.11.0-css-all.js",
+      "../sherpa/lib/katex-0.11.0.min.js"
+    ],
+    "phetLibs": [
+      "twixt"
+    ],
+    "runnable": true,
+    "simFeatures": {
+      "supportsSound": true,
+      "supportsInteractiveDescription": true,
+      "supportsDynamicLocale": true
+    },
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet",
+      "phet-io"
+    ],
+    "supportsOutputJS": true,
+    "phet-io": {
+      "validation": false
+    }
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/phet-library_eslintrc.js",
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts"
+        ],
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "error",
+          "@typescript-eslint/ban-ts-comment": [
+            "error",
+            {
+              "ts-expect-error": "allow-with-description",
+              "ts-ignore": true,
+              "ts-check": true,
+              "ts-nocheck": true
+            }
+          ]
+        }
+      }
+    ],
+    "globals": {
+      "katex": "readonly"
+    }
+  }
+}

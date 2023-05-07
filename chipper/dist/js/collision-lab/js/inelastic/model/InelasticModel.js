@@ -1,0 +1,83 @@
+// Copyright 2019-2020, University of Colorado Boulder
+
+/**
+ * Top level model for the 'Inelastic' screen.
+ *
+ * @author Brandon Li
+ */
+
+import collisionLab from '../../collisionLab.js';
+import CollisionLabModel from '../../common/model/CollisionLabModel.js';
+import InelasticBallSystem from './InelasticBallSystem.js';
+import InelasticCollisionEngine from './InelasticCollisionEngine.js';
+import InelasticPlayArea from './InelasticPlayArea.js';
+class InelasticModel extends CollisionLabModel {
+  /**
+   * Creates the PlayArea for the 'Inelastic' screen, which uses a screen-specific sub-type of PlayArea. Called in the
+   * constructor of the super-class, which uses the Factory Method Pattern.
+   * @override
+   * @protected
+   *
+   * @returns {InelasticPlayArea}
+   */
+  createPlayArea() {
+    return new InelasticPlayArea();
+  }
+
+  /**
+   * Creates the BallSystem for the 'Inelastic' screen, which uses a screen-specific sub-type of BallSystem. Called in
+   * the constructor of the super-class, which uses the Factory Method Pattern.
+   * @override
+   * @protected
+   *
+   * @param {InelasticPlayArea} playArea
+   * @returns {InelasticBallSystem}
+   */
+  createBallSystem(playArea) {
+    assert && assert(playArea instanceof InelasticPlayArea, `invalid playArea: ${playArea}`);
+    return new InelasticBallSystem(playArea, this.elapsedTimeProperty, this.isPlayingProperty);
+  }
+
+  /**
+   * Creates the CollisionEngine for the 'Inelastic' screen, which uses a screen-specific sub-type of CollisionEngine.
+   * Called in the constructor of the super-class, which uses the Factory Method Pattern.
+   * @override
+   * @protected
+   *
+   * @param {InelasticPlayArea} playArea
+   * @param {InelasticBallSystem} ballSystem
+   * @returns {InelasticCollisionEngine}
+   */
+  createCollisionEngine(playArea, ballSystem) {
+    assert && assert(playArea instanceof InelasticPlayArea, `invalid playArea: ${playArea}`);
+    assert && assert(ballSystem instanceof InelasticBallSystem, `invalid ballSystem: ${ballSystem}`);
+    return new InelasticCollisionEngine(playArea, ballSystem);
+  }
+
+  //----------------------------------------------------------------------------------------
+
+  /**
+   * Resets the 'Inelastic' screen. Called when the reset-all button is pressed.
+   *
+   * @override
+   * @public
+   */
+  reset() {
+    super.reset();
+    this.collisionEngine.reset();
+  }
+
+  /**
+   * Resets the 'Inelastic' screen.
+   * @public
+   *
+   * See https://github.com/phetsims/collision-lab/issues/76 for context on the differences between reset and restart.
+   */
+  restart() {
+    super.restart();
+    this.collisionEngine.reset();
+  }
+}
+collisionLab.register('InelasticModel', InelasticModel);
+export default InelasticModel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb2xsaXNpb25MYWIiLCJDb2xsaXNpb25MYWJNb2RlbCIsIkluZWxhc3RpY0JhbGxTeXN0ZW0iLCJJbmVsYXN0aWNDb2xsaXNpb25FbmdpbmUiLCJJbmVsYXN0aWNQbGF5QXJlYSIsIkluZWxhc3RpY01vZGVsIiwiY3JlYXRlUGxheUFyZWEiLCJjcmVhdGVCYWxsU3lzdGVtIiwicGxheUFyZWEiLCJhc3NlcnQiLCJlbGFwc2VkVGltZVByb3BlcnR5IiwiaXNQbGF5aW5nUHJvcGVydHkiLCJjcmVhdGVDb2xsaXNpb25FbmdpbmUiLCJiYWxsU3lzdGVtIiwicmVzZXQiLCJjb2xsaXNpb25FbmdpbmUiLCJyZXN0YXJ0IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJJbmVsYXN0aWNNb2RlbC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOS0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBUb3AgbGV2ZWwgbW9kZWwgZm9yIHRoZSAnSW5lbGFzdGljJyBzY3JlZW4uXHJcbiAqXHJcbiAqIEBhdXRob3IgQnJhbmRvbiBMaVxyXG4gKi9cclxuXHJcbmltcG9ydCBjb2xsaXNpb25MYWIgZnJvbSAnLi4vLi4vY29sbGlzaW9uTGFiLmpzJztcclxuaW1wb3J0IENvbGxpc2lvbkxhYk1vZGVsIGZyb20gJy4uLy4uL2NvbW1vbi9tb2RlbC9Db2xsaXNpb25MYWJNb2RlbC5qcyc7XHJcbmltcG9ydCBJbmVsYXN0aWNCYWxsU3lzdGVtIGZyb20gJy4vSW5lbGFzdGljQmFsbFN5c3RlbS5qcyc7XHJcbmltcG9ydCBJbmVsYXN0aWNDb2xsaXNpb25FbmdpbmUgZnJvbSAnLi9JbmVsYXN0aWNDb2xsaXNpb25FbmdpbmUuanMnO1xyXG5pbXBvcnQgSW5lbGFzdGljUGxheUFyZWEgZnJvbSAnLi9JbmVsYXN0aWNQbGF5QXJlYS5qcyc7XHJcblxyXG5jbGFzcyBJbmVsYXN0aWNNb2RlbCBleHRlbmRzIENvbGxpc2lvbkxhYk1vZGVsIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQ3JlYXRlcyB0aGUgUGxheUFyZWEgZm9yIHRoZSAnSW5lbGFzdGljJyBzY3JlZW4sIHdoaWNoIHVzZXMgYSBzY3JlZW4tc3BlY2lmaWMgc3ViLXR5cGUgb2YgUGxheUFyZWEuIENhbGxlZCBpbiB0aGVcclxuICAgKiBjb25zdHJ1Y3RvciBvZiB0aGUgc3VwZXItY2xhc3MsIHdoaWNoIHVzZXMgdGhlIEZhY3RvcnkgTWV0aG9kIFBhdHRlcm4uXHJcbiAgICogQG92ZXJyaWRlXHJcbiAgICogQHByb3RlY3RlZFxyXG4gICAqXHJcbiAgICogQHJldHVybnMge0luZWxhc3RpY1BsYXlBcmVhfVxyXG4gICAqL1xyXG4gIGNyZWF0ZVBsYXlBcmVhKCkge1xyXG4gICAgcmV0dXJuIG5ldyBJbmVsYXN0aWNQbGF5QXJlYSgpO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogQ3JlYXRlcyB0aGUgQmFsbFN5c3RlbSBmb3IgdGhlICdJbmVsYXN0aWMnIHNjcmVlbiwgd2hpY2ggdXNlcyBhIHNjcmVlbi1zcGVjaWZpYyBzdWItdHlwZSBvZiBCYWxsU3lzdGVtLiBDYWxsZWQgaW5cclxuICAgKiB0aGUgY29uc3RydWN0b3Igb2YgdGhlIHN1cGVyLWNsYXNzLCB3aGljaCB1c2VzIHRoZSBGYWN0b3J5IE1ldGhvZCBQYXR0ZXJuLlxyXG4gICAqIEBvdmVycmlkZVxyXG4gICAqIEBwcm90ZWN0ZWRcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7SW5lbGFzdGljUGxheUFyZWF9IHBsYXlBcmVhXHJcbiAgICogQHJldHVybnMge0luZWxhc3RpY0JhbGxTeXN0ZW19XHJcbiAgICovXHJcbiAgY3JlYXRlQmFsbFN5c3RlbSggcGxheUFyZWEgKSB7XHJcbiAgICBhc3NlcnQgJiYgYXNzZXJ0KCBwbGF5QXJlYSBpbnN0YW5jZW9mIEluZWxhc3RpY1BsYXlBcmVhLCBgaW52YWxpZCBwbGF5QXJlYTogJHtwbGF5QXJlYX1gICk7XHJcblxyXG4gICAgcmV0dXJuIG5ldyBJbmVsYXN0aWNCYWxsU3lzdGVtKCBwbGF5QXJlYSwgdGhpcy5lbGFwc2VkVGltZVByb3BlcnR5LCB0aGlzLmlzUGxheWluZ1Byb3BlcnR5ICk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBDcmVhdGVzIHRoZSBDb2xsaXNpb25FbmdpbmUgZm9yIHRoZSAnSW5lbGFzdGljJyBzY3JlZW4sIHdoaWNoIHVzZXMgYSBzY3JlZW4tc3BlY2lmaWMgc3ViLXR5cGUgb2YgQ29sbGlzaW9uRW5naW5lLlxyXG4gICAqIENhbGxlZCBpbiB0aGUgY29uc3RydWN0b3Igb2YgdGhlIHN1cGVyLWNsYXNzLCB3aGljaCB1c2VzIHRoZSBGYWN0b3J5IE1ldGhvZCBQYXR0ZXJuLlxyXG4gICAqIEBvdmVycmlkZVxyXG4gICAqIEBwcm90ZWN0ZWRcclxuICAgKlxyXG4gICAqIEBwYXJhbSB7SW5lbGFzdGljUGxheUFyZWF9IHBsYXlBcmVhXHJcbiAgICogQHBhcmFtIHtJbmVsYXN0aWNCYWxsU3lzdGVtfSBiYWxsU3lzdGVtXHJcbiAgICogQHJldHVybnMge0luZWxhc3RpY0NvbGxpc2lvbkVuZ2luZX1cclxuICAgKi9cclxuICBjcmVhdGVDb2xsaXNpb25FbmdpbmUoIHBsYXlBcmVhLCBiYWxsU3lzdGVtICkge1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggcGxheUFyZWEgaW5zdGFuY2VvZiBJbmVsYXN0aWNQbGF5QXJlYSwgYGludmFsaWQgcGxheUFyZWE6ICR7cGxheUFyZWF9YCApO1xyXG4gICAgYXNzZXJ0ICYmIGFzc2VydCggYmFsbFN5c3RlbSBpbnN0YW5jZW9mIEluZWxhc3RpY0JhbGxTeXN0ZW0sIGBpbnZhbGlkIGJhbGxTeXN0ZW06ICR7YmFsbFN5c3RlbX1gICk7XHJcblxyXG4gICAgcmV0dXJuIG5ldyBJbmVsYXN0aWNDb2xsaXNpb25FbmdpbmUoIHBsYXlBcmVhLCBiYWxsU3lzdGVtICk7XHJcbiAgfVxyXG5cclxuICAvLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cclxuXHJcbiAgLyoqXHJcbiAgICogUmVzZXRzIHRoZSAnSW5lbGFzdGljJyBzY3JlZW4uIENhbGxlZCB3aGVuIHRoZSByZXNldC1hbGwgYnV0dG9uIGlzIHByZXNzZWQuXHJcbiAgICpcclxuICAgKiBAb3ZlcnJpZGVcclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgcmVzZXQoKSB7XHJcbiAgICBzdXBlci5yZXNldCgpO1xyXG4gICAgdGhpcy5jb2xsaXNpb25FbmdpbmUucmVzZXQoKTtcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFJlc2V0cyB0aGUgJ0luZWxhc3RpYycgc2NyZWVuLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKlxyXG4gICAqIFNlZSBodHRwczovL2dpdGh1Yi5jb20vcGhldHNpbXMvY29sbGlzaW9uLWxhYi9pc3N1ZXMvNzYgZm9yIGNvbnRleHQgb24gdGhlIGRpZmZlcmVuY2VzIGJldHdlZW4gcmVzZXQgYW5kIHJlc3RhcnQuXHJcbiAgICovXHJcbiAgcmVzdGFydCgpIHtcclxuICAgIHN1cGVyLnJlc3RhcnQoKTtcclxuICAgIHRoaXMuY29sbGlzaW9uRW5naW5lLnJlc2V0KCk7XHJcbiAgfVxyXG59XHJcblxyXG5jb2xsaXNpb25MYWIucmVnaXN0ZXIoICdJbmVsYXN0aWNNb2RlbCcsIEluZWxhc3RpY01vZGVsICk7XHJcbmV4cG9ydCBkZWZhdWx0IEluZWxhc3RpY01vZGVsOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxZQUFZLE1BQU0sdUJBQXVCO0FBQ2hELE9BQU9DLGlCQUFpQixNQUFNLHlDQUF5QztBQUN2RSxPQUFPQyxtQkFBbUIsTUFBTSwwQkFBMEI7QUFDMUQsT0FBT0Msd0JBQXdCLE1BQU0sK0JBQStCO0FBQ3BFLE9BQU9DLGlCQUFpQixNQUFNLHdCQUF3QjtBQUV0RCxNQUFNQyxjQUFjLFNBQVNKLGlCQUFpQixDQUFDO0VBRTdDO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7RUFDRUssY0FBY0EsQ0FBQSxFQUFHO0lBQ2YsT0FBTyxJQUFJRixpQkFBaUIsQ0FBQyxDQUFDO0VBQ2hDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtFQUNFRyxnQkFBZ0JBLENBQUVDLFFBQVEsRUFBRztJQUMzQkMsTUFBTSxJQUFJQSxNQUFNLENBQUVELFFBQVEsWUFBWUosaUJBQWlCLEVBQUcscUJBQW9CSSxRQUFTLEVBQUUsQ0FBQztJQUUxRixPQUFPLElBQUlOLG1CQUFtQixDQUFFTSxRQUFRLEVBQUUsSUFBSSxDQUFDRSxtQkFBbUIsRUFBRSxJQUFJLENBQUNDLGlCQUFrQixDQUFDO0VBQzlGOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLHFCQUFxQkEsQ0FBRUosUUFBUSxFQUFFSyxVQUFVLEVBQUc7SUFDNUNKLE1BQU0sSUFBSUEsTUFBTSxDQUFFRCxRQUFRLFlBQVlKLGlCQUFpQixFQUFHLHFCQUFvQkksUUFBUyxFQUFFLENBQUM7SUFDMUZDLE1BQU0sSUFBSUEsTUFBTSxDQUFFSSxVQUFVLFlBQVlYLG1CQUFtQixFQUFHLHVCQUFzQlcsVUFBVyxFQUFFLENBQUM7SUFFbEcsT0FBTyxJQUFJVix3QkFBd0IsQ0FBRUssUUFBUSxFQUFFSyxVQUFXLENBQUM7RUFDN0Q7O0VBRUE7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VDLEtBQUtBLENBQUEsRUFBRztJQUNOLEtBQUssQ0FBQ0EsS0FBSyxDQUFDLENBQUM7SUFDYixJQUFJLENBQUNDLGVBQWUsQ0FBQ0QsS0FBSyxDQUFDLENBQUM7RUFDOUI7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0VFLE9BQU9BLENBQUEsRUFBRztJQUNSLEtBQUssQ0FBQ0EsT0FBTyxDQUFDLENBQUM7SUFDZixJQUFJLENBQUNELGVBQWUsQ0FBQ0QsS0FBSyxDQUFDLENBQUM7RUFDOUI7QUFDRjtBQUVBZCxZQUFZLENBQUNpQixRQUFRLENBQUUsZ0JBQWdCLEVBQUVaLGNBQWUsQ0FBQztBQUN6RCxlQUFlQSxjQUFjIn0=

@@ -1,0 +1,42 @@
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * A stack that holds NumberPieces.
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import Vector2 from '../../../../dot/js/Vector2.js';
+import fractionsCommon from '../../fractionsCommon.js';
+import BuildingType from './BuildingType.js';
+import Stack from './Stack.js';
+class NumberStack extends Stack {
+  /**
+   * @param {number} number
+   * @param {number} layoutQuantity
+   * @param {boolean} [isMutable]
+   */
+  constructor(number, layoutQuantity, isMutable = true) {
+    super(BuildingType.NUMBER, layoutQuantity, isMutable);
+
+    // @public {number}
+    this.number = number;
+
+    // @public {ObservableArrayDef.<NumberPiece>} - NOTE: These should only ever be popped/pushed.
+    this.numberPieces = this.array;
+  }
+
+  /**
+   * Returns the desired visual offset of an item in the stack from the base.
+   * @public
+   *
+   * @param {number} index
+   * @returns {Vector2}
+   */
+  static getOffset(index) {
+    return new Vector2(4 * index, 4 * index);
+  }
+}
+fractionsCommon.register('NumberStack', NumberStack);
+export default NumberStack;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJWZWN0b3IyIiwiZnJhY3Rpb25zQ29tbW9uIiwiQnVpbGRpbmdUeXBlIiwiU3RhY2siLCJOdW1iZXJTdGFjayIsImNvbnN0cnVjdG9yIiwibnVtYmVyIiwibGF5b3V0UXVhbnRpdHkiLCJpc011dGFibGUiLCJOVU1CRVIiLCJudW1iZXJQaWVjZXMiLCJhcnJheSIsImdldE9mZnNldCIsImluZGV4IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJOdW1iZXJTdGFjay5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAxOC0yMDIwLCBVbml2ZXJzaXR5IG9mIENvbG9yYWRvIEJvdWxkZXJcclxuXHJcbi8qKlxyXG4gKiBBIHN0YWNrIHRoYXQgaG9sZHMgTnVtYmVyUGllY2VzLlxyXG4gKlxyXG4gKiBAYXV0aG9yIEpvbmF0aGFuIE9sc29uIDxqb25hdGhhbi5vbHNvbkBjb2xvcmFkby5lZHU+XHJcbiAqL1xyXG5cclxuaW1wb3J0IFZlY3RvcjIgZnJvbSAnLi4vLi4vLi4vLi4vZG90L2pzL1ZlY3RvcjIuanMnO1xyXG5pbXBvcnQgZnJhY3Rpb25zQ29tbW9uIGZyb20gJy4uLy4uL2ZyYWN0aW9uc0NvbW1vbi5qcyc7XHJcbmltcG9ydCBCdWlsZGluZ1R5cGUgZnJvbSAnLi9CdWlsZGluZ1R5cGUuanMnO1xyXG5pbXBvcnQgU3RhY2sgZnJvbSAnLi9TdGFjay5qcyc7XHJcblxyXG5jbGFzcyBOdW1iZXJTdGFjayBleHRlbmRzIFN0YWNrIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcn0gbnVtYmVyXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGxheW91dFF1YW50aXR5XHJcbiAgICogQHBhcmFtIHtib29sZWFufSBbaXNNdXRhYmxlXVxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKCBudW1iZXIsIGxheW91dFF1YW50aXR5LCBpc011dGFibGUgPSB0cnVlICkge1xyXG4gICAgc3VwZXIoIEJ1aWxkaW5nVHlwZS5OVU1CRVIsIGxheW91dFF1YW50aXR5LCBpc011dGFibGUgKTtcclxuXHJcbiAgICAvLyBAcHVibGljIHtudW1iZXJ9XHJcbiAgICB0aGlzLm51bWJlciA9IG51bWJlcjtcclxuXHJcbiAgICAvLyBAcHVibGljIHtPYnNlcnZhYmxlQXJyYXlEZWYuPE51bWJlclBpZWNlPn0gLSBOT1RFOiBUaGVzZSBzaG91bGQgb25seSBldmVyIGJlIHBvcHBlZC9wdXNoZWQuXHJcbiAgICB0aGlzLm51bWJlclBpZWNlcyA9IHRoaXMuYXJyYXk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBSZXR1cm5zIHRoZSBkZXNpcmVkIHZpc3VhbCBvZmZzZXQgb2YgYW4gaXRlbSBpbiB0aGUgc3RhY2sgZnJvbSB0aGUgYmFzZS5cclxuICAgKiBAcHVibGljXHJcbiAgICpcclxuICAgKiBAcGFyYW0ge251bWJlcn0gaW5kZXhcclxuICAgKiBAcmV0dXJucyB7VmVjdG9yMn1cclxuICAgKi9cclxuICBzdGF0aWMgZ2V0T2Zmc2V0KCBpbmRleCApIHtcclxuICAgIHJldHVybiBuZXcgVmVjdG9yMiggNCAqIGluZGV4LCA0ICogaW5kZXggKTtcclxuICB9XHJcbn1cclxuXHJcbmZyYWN0aW9uc0NvbW1vbi5yZWdpc3RlciggJ051bWJlclN0YWNrJywgTnVtYmVyU3RhY2sgKTtcclxuZXhwb3J0IGRlZmF1bHQgTnVtYmVyU3RhY2s7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLE9BQU8sTUFBTSwrQkFBK0I7QUFDbkQsT0FBT0MsZUFBZSxNQUFNLDBCQUEwQjtBQUN0RCxPQUFPQyxZQUFZLE1BQU0sbUJBQW1CO0FBQzVDLE9BQU9DLEtBQUssTUFBTSxZQUFZO0FBRTlCLE1BQU1DLFdBQVcsU0FBU0QsS0FBSyxDQUFDO0VBQzlCO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7RUFDRUUsV0FBV0EsQ0FBRUMsTUFBTSxFQUFFQyxjQUFjLEVBQUVDLFNBQVMsR0FBRyxJQUFJLEVBQUc7SUFDdEQsS0FBSyxDQUFFTixZQUFZLENBQUNPLE1BQU0sRUFBRUYsY0FBYyxFQUFFQyxTQUFVLENBQUM7O0lBRXZEO0lBQ0EsSUFBSSxDQUFDRixNQUFNLEdBQUdBLE1BQU07O0lBRXBCO0lBQ0EsSUFBSSxDQUFDSSxZQUFZLEdBQUcsSUFBSSxDQUFDQyxLQUFLO0VBQ2hDOztFQUVBO0FBQ0Y7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0VBQ0UsT0FBT0MsU0FBU0EsQ0FBRUMsS0FBSyxFQUFHO0lBQ3hCLE9BQU8sSUFBSWIsT0FBTyxDQUFFLENBQUMsR0FBR2EsS0FBSyxFQUFFLENBQUMsR0FBR0EsS0FBTSxDQUFDO0VBQzVDO0FBQ0Y7QUFFQVosZUFBZSxDQUFDYSxRQUFRLENBQUUsYUFBYSxFQUFFVixXQUFZLENBQUM7QUFDdEQsZUFBZUEsV0FBVyJ9

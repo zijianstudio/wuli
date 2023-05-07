@@ -1,0 +1,30 @@
+// Copyright 2019-2020, University of Colorado Boulder
+
+/**
+ * Panel with reusable style.
+ *
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+import merge from '../../../phet-core/js/merge.js';
+import Panel from '../../../sun/js/Panel.js';
+import inverseSquareLawCommon from '../inverseSquareLawCommon.js';
+class ISLCPanel extends Panel {
+  /**
+   * @param {Node} content
+   * @param {Object} [options]
+   */
+  constructor(content, options) {
+    options = merge({
+      fill: '#FDF498',
+      xMargin: 10,
+      yMargin: 10,
+      minWidth: 170,
+      backgroundPickable: true // when the rule is behind panels, see https://github.com/phetsims/gravity-force-lab/issues/253
+    }, options);
+    super(content, options);
+  }
+}
+inverseSquareLawCommon.register('ISLCPanel', ISLCPanel);
+export default ISLCPanel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtZXJnZSIsIlBhbmVsIiwiaW52ZXJzZVNxdWFyZUxhd0NvbW1vbiIsIklTTENQYW5lbCIsImNvbnN0cnVjdG9yIiwiY29udGVudCIsIm9wdGlvbnMiLCJmaWxsIiwieE1hcmdpbiIsInlNYXJnaW4iLCJtaW5XaWR0aCIsImJhY2tncm91bmRQaWNrYWJsZSIsInJlZ2lzdGVyIl0sInNvdXJjZXMiOlsiSVNMQ1BhbmVsLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE5LTIwMjAsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFBhbmVsIHdpdGggcmV1c2FibGUgc3R5bGUuXHJcbiAqXHJcbiAqIEBhdXRob3IgTWljaGFlbCBLYXV6bWFubiAoUGhFVCBJbnRlcmFjdGl2ZSBTaW11bGF0aW9ucylcclxuICovXHJcblxyXG5pbXBvcnQgbWVyZ2UgZnJvbSAnLi4vLi4vLi4vcGhldC1jb3JlL2pzL21lcmdlLmpzJztcclxuaW1wb3J0IFBhbmVsIGZyb20gJy4uLy4uLy4uL3N1bi9qcy9QYW5lbC5qcyc7XHJcbmltcG9ydCBpbnZlcnNlU3F1YXJlTGF3Q29tbW9uIGZyb20gJy4uL2ludmVyc2VTcXVhcmVMYXdDb21tb24uanMnO1xyXG5cclxuY2xhc3MgSVNMQ1BhbmVsIGV4dGVuZHMgUGFuZWwge1xyXG5cclxuICAvKipcclxuICAgKiBAcGFyYW0ge05vZGV9IGNvbnRlbnRcclxuICAgKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGNvbnRlbnQsIG9wdGlvbnMgKSB7XHJcblxyXG4gICAgb3B0aW9ucyA9IG1lcmdlKCB7XHJcbiAgICAgIGZpbGw6ICcjRkRGNDk4JyxcclxuICAgICAgeE1hcmdpbjogMTAsXHJcbiAgICAgIHlNYXJnaW46IDEwLFxyXG4gICAgICBtaW5XaWR0aDogMTcwLFxyXG4gICAgICBiYWNrZ3JvdW5kUGlja2FibGU6IHRydWUgLy8gd2hlbiB0aGUgcnVsZSBpcyBiZWhpbmQgcGFuZWxzLCBzZWUgaHR0cHM6Ly9naXRodWIuY29tL3BoZXRzaW1zL2dyYXZpdHktZm9yY2UtbGFiL2lzc3Vlcy8yNTNcclxuICAgIH0sIG9wdGlvbnMgKTtcclxuXHJcbiAgICBzdXBlciggY29udGVudCwgb3B0aW9ucyApO1xyXG4gIH1cclxufVxyXG5cclxuaW52ZXJzZVNxdWFyZUxhd0NvbW1vbi5yZWdpc3RlciggJ0lTTENQYW5lbCcsIElTTENQYW5lbCApO1xyXG5leHBvcnQgZGVmYXVsdCBJU0xDUGFuZWw7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSxnQ0FBZ0M7QUFDbEQsT0FBT0MsS0FBSyxNQUFNLDBCQUEwQjtBQUM1QyxPQUFPQyxzQkFBc0IsTUFBTSw4QkFBOEI7QUFFakUsTUFBTUMsU0FBUyxTQUFTRixLQUFLLENBQUM7RUFFNUI7QUFDRjtBQUNBO0FBQ0E7RUFDRUcsV0FBV0EsQ0FBRUMsT0FBTyxFQUFFQyxPQUFPLEVBQUc7SUFFOUJBLE9BQU8sR0FBR04sS0FBSyxDQUFFO01BQ2ZPLElBQUksRUFBRSxTQUFTO01BQ2ZDLE9BQU8sRUFBRSxFQUFFO01BQ1hDLE9BQU8sRUFBRSxFQUFFO01BQ1hDLFFBQVEsRUFBRSxHQUFHO01BQ2JDLGtCQUFrQixFQUFFLElBQUksQ0FBQztJQUMzQixDQUFDLEVBQUVMLE9BQVEsQ0FBQztJQUVaLEtBQUssQ0FBRUQsT0FBTyxFQUFFQyxPQUFRLENBQUM7RUFDM0I7QUFDRjtBQUVBSixzQkFBc0IsQ0FBQ1UsUUFBUSxDQUFFLFdBQVcsRUFBRVQsU0FBVSxDQUFDO0FBQ3pELGVBQWVBLFNBQVMifQ==

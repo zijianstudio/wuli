@@ -1,0 +1,62 @@
+// Copyright 2015-2020, University of Colorado Boulder
+
+/**
+ * Timer with stop, stop and restart method. Used for managing fade in and fade out of labels (though it is generic)
+ *
+ * @author Sharfudeen Ashraf
+ * @author John Blanco
+ * @author Aadish Gupta
+ */
+
+import Property from '../../../../axon/js/Property.js';
+import stepTimer from '../../../../axon/js/stepTimer.js';
+import geneExpressionEssentials from '../../geneExpressionEssentials.js';
+class FadeTimer {
+  /**
+   * @param {number} interval in milliseconds
+   * @param {Function} listener
+   */
+  constructor(interval, listener) {
+    this.interval = interval; // milliseconds // @private
+    this.listener = listener; // @private
+    this.isRunningProperty = new Property(false); // @public
+    this._intervalId = null; // @private
+  }
+
+  /**
+   * Starts the timer. This is a no-op if the timer is already running.
+   * @public
+   */
+  start() {
+    if (!this.isRunningProperty.get()) {
+      this._intervalId = stepTimer.setInterval(() => {
+        this.listener();
+      }, this.interval);
+      this.isRunningProperty.set(true);
+    }
+  }
+
+  /**
+   * Stops the timer. This is a no-op if the timer is already stopped.
+   * @public
+   */
+  stop() {
+    if (this.isRunningProperty.get()) {
+      stepTimer.clearInterval(this._intervalId);
+      this._intervalId = null;
+      this.isRunningProperty.set(false);
+    }
+  }
+
+  /**
+   * Convenience function for restarting the timer.
+   * @public
+   */
+  restart() {
+    this.stop();
+    this.start();
+  }
+}
+geneExpressionEssentials.register('FadeTimer', FadeTimer);
+export default FadeTimer;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJQcm9wZXJ0eSIsInN0ZXBUaW1lciIsImdlbmVFeHByZXNzaW9uRXNzZW50aWFscyIsIkZhZGVUaW1lciIsImNvbnN0cnVjdG9yIiwiaW50ZXJ2YWwiLCJsaXN0ZW5lciIsImlzUnVubmluZ1Byb3BlcnR5IiwiX2ludGVydmFsSWQiLCJzdGFydCIsImdldCIsInNldEludGVydmFsIiwic2V0Iiwic3RvcCIsImNsZWFySW50ZXJ2YWwiLCJyZXN0YXJ0IiwicmVnaXN0ZXIiXSwic291cmNlcyI6WyJGYWRlVGltZXIuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gQ29weXJpZ2h0IDIwMTUtMjAyMCwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKipcclxuICogVGltZXIgd2l0aCBzdG9wLCBzdG9wIGFuZCByZXN0YXJ0IG1ldGhvZC4gVXNlZCBmb3IgbWFuYWdpbmcgZmFkZSBpbiBhbmQgZmFkZSBvdXQgb2YgbGFiZWxzICh0aG91Z2ggaXQgaXMgZ2VuZXJpYylcclxuICpcclxuICogQGF1dGhvciBTaGFyZnVkZWVuIEFzaHJhZlxyXG4gKiBAYXV0aG9yIEpvaG4gQmxhbmNvXHJcbiAqIEBhdXRob3IgQWFkaXNoIEd1cHRhXHJcbiAqL1xyXG5cclxuaW1wb3J0IFByb3BlcnR5IGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvUHJvcGVydHkuanMnO1xyXG5pbXBvcnQgc3RlcFRpbWVyIGZyb20gJy4uLy4uLy4uLy4uL2F4b24vanMvc3RlcFRpbWVyLmpzJztcclxuaW1wb3J0IGdlbmVFeHByZXNzaW9uRXNzZW50aWFscyBmcm9tICcuLi8uLi9nZW5lRXhwcmVzc2lvbkVzc2VudGlhbHMuanMnO1xyXG5cclxuY2xhc3MgRmFkZVRpbWVyIHtcclxuXHJcbiAgLyoqXHJcbiAgICogQHBhcmFtIHtudW1iZXJ9IGludGVydmFsIGluIG1pbGxpc2Vjb25kc1xyXG4gICAqIEBwYXJhbSB7RnVuY3Rpb259IGxpc3RlbmVyXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIGludGVydmFsLCBsaXN0ZW5lciApIHtcclxuICAgIHRoaXMuaW50ZXJ2YWwgPSBpbnRlcnZhbDsgLy8gbWlsbGlzZWNvbmRzIC8vIEBwcml2YXRlXHJcbiAgICB0aGlzLmxpc3RlbmVyID0gbGlzdGVuZXI7IC8vIEBwcml2YXRlXHJcbiAgICB0aGlzLmlzUnVubmluZ1Byb3BlcnR5ID0gbmV3IFByb3BlcnR5KCBmYWxzZSApOyAvLyBAcHVibGljXHJcbiAgICB0aGlzLl9pbnRlcnZhbElkID0gbnVsbDsgLy8gQHByaXZhdGVcclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFN0YXJ0cyB0aGUgdGltZXIuIFRoaXMgaXMgYSBuby1vcCBpZiB0aGUgdGltZXIgaXMgYWxyZWFkeSBydW5uaW5nLlxyXG4gICAqIEBwdWJsaWNcclxuICAgKi9cclxuICBzdGFydCgpIHtcclxuICAgIGlmICggIXRoaXMuaXNSdW5uaW5nUHJvcGVydHkuZ2V0KCkgKSB7XHJcbiAgICAgIHRoaXMuX2ludGVydmFsSWQgPSBzdGVwVGltZXIuc2V0SW50ZXJ2YWwoICgpID0+IHtcclxuICAgICAgICB0aGlzLmxpc3RlbmVyKCk7XHJcbiAgICAgIH0sIHRoaXMuaW50ZXJ2YWwgKTtcclxuICAgICAgdGhpcy5pc1J1bm5pbmdQcm9wZXJ0eS5zZXQoIHRydWUgKTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIFN0b3BzIHRoZSB0aW1lci4gVGhpcyBpcyBhIG5vLW9wIGlmIHRoZSB0aW1lciBpcyBhbHJlYWR5IHN0b3BwZWQuXHJcbiAgICogQHB1YmxpY1xyXG4gICAqL1xyXG4gIHN0b3AoKSB7XHJcbiAgICBpZiAoIHRoaXMuaXNSdW5uaW5nUHJvcGVydHkuZ2V0KCkgKSB7XHJcbiAgICAgIHN0ZXBUaW1lci5jbGVhckludGVydmFsKCB0aGlzLl9pbnRlcnZhbElkICk7XHJcbiAgICAgIHRoaXMuX2ludGVydmFsSWQgPSBudWxsO1xyXG4gICAgICB0aGlzLmlzUnVubmluZ1Byb3BlcnR5LnNldCggZmFsc2UgKTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC8qKlxyXG4gICAqIENvbnZlbmllbmNlIGZ1bmN0aW9uIGZvciByZXN0YXJ0aW5nIHRoZSB0aW1lci5cclxuICAgKiBAcHVibGljXHJcbiAgICovXHJcbiAgcmVzdGFydCgpIHtcclxuICAgIHRoaXMuc3RvcCgpO1xyXG4gICAgdGhpcy5zdGFydCgpO1xyXG4gIH1cclxufVxyXG5cclxuZ2VuZUV4cHJlc3Npb25Fc3NlbnRpYWxzLnJlZ2lzdGVyKCAnRmFkZVRpbWVyJywgRmFkZVRpbWVyICk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBGYWRlVGltZXI7Il0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxPQUFPQSxRQUFRLE1BQU0saUNBQWlDO0FBQ3RELE9BQU9DLFNBQVMsTUFBTSxrQ0FBa0M7QUFDeEQsT0FBT0Msd0JBQXdCLE1BQU0sbUNBQW1DO0FBRXhFLE1BQU1DLFNBQVMsQ0FBQztFQUVkO0FBQ0Y7QUFDQTtBQUNBO0VBQ0VDLFdBQVdBLENBQUVDLFFBQVEsRUFBRUMsUUFBUSxFQUFHO0lBQ2hDLElBQUksQ0FBQ0QsUUFBUSxHQUFHQSxRQUFRLENBQUMsQ0FBQztJQUMxQixJQUFJLENBQUNDLFFBQVEsR0FBR0EsUUFBUSxDQUFDLENBQUM7SUFDMUIsSUFBSSxDQUFDQyxpQkFBaUIsR0FBRyxJQUFJUCxRQUFRLENBQUUsS0FBTSxDQUFDLENBQUMsQ0FBQztJQUNoRCxJQUFJLENBQUNRLFdBQVcsR0FBRyxJQUFJLENBQUMsQ0FBQztFQUMzQjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFQyxLQUFLQSxDQUFBLEVBQUc7SUFDTixJQUFLLENBQUMsSUFBSSxDQUFDRixpQkFBaUIsQ0FBQ0csR0FBRyxDQUFDLENBQUMsRUFBRztNQUNuQyxJQUFJLENBQUNGLFdBQVcsR0FBR1AsU0FBUyxDQUFDVSxXQUFXLENBQUUsTUFBTTtRQUM5QyxJQUFJLENBQUNMLFFBQVEsQ0FBQyxDQUFDO01BQ2pCLENBQUMsRUFBRSxJQUFJLENBQUNELFFBQVMsQ0FBQztNQUNsQixJQUFJLENBQUNFLGlCQUFpQixDQUFDSyxHQUFHLENBQUUsSUFBSyxDQUFDO0lBQ3BDO0VBQ0Y7O0VBRUE7QUFDRjtBQUNBO0FBQ0E7RUFDRUMsSUFBSUEsQ0FBQSxFQUFHO0lBQ0wsSUFBSyxJQUFJLENBQUNOLGlCQUFpQixDQUFDRyxHQUFHLENBQUMsQ0FBQyxFQUFHO01BQ2xDVCxTQUFTLENBQUNhLGFBQWEsQ0FBRSxJQUFJLENBQUNOLFdBQVksQ0FBQztNQUMzQyxJQUFJLENBQUNBLFdBQVcsR0FBRyxJQUFJO01BQ3ZCLElBQUksQ0FBQ0QsaUJBQWlCLENBQUNLLEdBQUcsQ0FBRSxLQUFNLENBQUM7SUFDckM7RUFDRjs7RUFFQTtBQUNGO0FBQ0E7QUFDQTtFQUNFRyxPQUFPQSxDQUFBLEVBQUc7SUFDUixJQUFJLENBQUNGLElBQUksQ0FBQyxDQUFDO0lBQ1gsSUFBSSxDQUFDSixLQUFLLENBQUMsQ0FBQztFQUNkO0FBQ0Y7QUFFQVAsd0JBQXdCLENBQUNjLFFBQVEsQ0FBRSxXQUFXLEVBQUViLFNBQVUsQ0FBQztBQUUzRCxlQUFlQSxTQUFTIn0=

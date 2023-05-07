@@ -1,0 +1,34 @@
+// Copyright 2015-2022, University of Colorado Boulder
+
+/**
+ * X shape representing the focal point
+ * @author Michael Dubson (PhET Interactive Simulations)
+ */
+
+import Utils from '../../../../dot/js/Utils.js';
+import { Line, Node } from '../../../../scenery/js/imports.js';
+import opticsLab from '../../opticsLab.js';
+class FocalPointGraphic extends Node {
+  /**
+   * @param {number|null} size
+   */
+  constructor(size) {
+    let R = Utils.roundSymmetric(size / 2);
+    if (size === undefined) {
+      R = 30;
+    }
+    const lineOptions = {
+      stroke: 'yellow',
+      lineWidth: 4,
+      lineCap: 'butt'
+    };
+    const line1 = new Line(-R, -R, R, R, lineOptions);
+    const line2 = new Line(R, -R, -R, R, lineOptions);
+    super({
+      children: [line1, line2]
+    });
+  }
+}
+opticsLab.register('FocalPointGraphic', FocalPointGraphic);
+export default FocalPointGraphic;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJVdGlscyIsIkxpbmUiLCJOb2RlIiwib3B0aWNzTGFiIiwiRm9jYWxQb2ludEdyYXBoaWMiLCJjb25zdHJ1Y3RvciIsInNpemUiLCJSIiwicm91bmRTeW1tZXRyaWMiLCJ1bmRlZmluZWQiLCJsaW5lT3B0aW9ucyIsInN0cm9rZSIsImxpbmVXaWR0aCIsImxpbmVDYXAiLCJsaW5lMSIsImxpbmUyIiwiY2hpbGRyZW4iLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbIkZvY2FsUG9pbnRHcmFwaGljLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDE1LTIwMjIsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFggc2hhcGUgcmVwcmVzZW50aW5nIHRoZSBmb2NhbCBwb2ludFxyXG4gKiBAYXV0aG9yIE1pY2hhZWwgRHVic29uIChQaEVUIEludGVyYWN0aXZlIFNpbXVsYXRpb25zKVxyXG4gKi9cclxuXHJcbmltcG9ydCBVdGlscyBmcm9tICcuLi8uLi8uLi8uLi9kb3QvanMvVXRpbHMuanMnO1xyXG5pbXBvcnQgeyBMaW5lLCBOb2RlIH0gZnJvbSAnLi4vLi4vLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuaW1wb3J0IG9wdGljc0xhYiBmcm9tICcuLi8uLi9vcHRpY3NMYWIuanMnO1xyXG5cclxuY2xhc3MgRm9jYWxQb2ludEdyYXBoaWMgZXh0ZW5kcyBOb2RlIHtcclxuICAvKipcclxuICAgKiBAcGFyYW0ge251bWJlcnxudWxsfSBzaXplXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoIHNpemUgKSB7XHJcblxyXG4gICAgbGV0IFIgPSBVdGlscy5yb3VuZFN5bW1ldHJpYyggc2l6ZSAvIDIgKTtcclxuICAgIGlmICggc2l6ZSA9PT0gdW5kZWZpbmVkICkge1xyXG4gICAgICBSID0gMzA7XHJcbiAgICB9XHJcbiAgICBjb25zdCBsaW5lT3B0aW9ucyA9IHsgc3Ryb2tlOiAneWVsbG93JywgbGluZVdpZHRoOiA0LCBsaW5lQ2FwOiAnYnV0dCcgfTtcclxuICAgIGNvbnN0IGxpbmUxID0gbmV3IExpbmUoIC1SLCAtUiwgUiwgUiwgbGluZU9wdGlvbnMgKTtcclxuICAgIGNvbnN0IGxpbmUyID0gbmV3IExpbmUoIFIsIC1SLCAtUiwgUiwgbGluZU9wdGlvbnMgKTtcclxuICAgIHN1cGVyKCB7IGNoaWxkcmVuOiBbIGxpbmUxLCBsaW5lMiBdIH0gKTtcclxuXHJcbiAgfVxyXG5cclxufVxyXG5cclxub3B0aWNzTGFiLnJlZ2lzdGVyKCAnRm9jYWxQb2ludEdyYXBoaWMnLCBGb2NhbFBvaW50R3JhcGhpYyApO1xyXG5leHBvcnQgZGVmYXVsdCBGb2NhbFBvaW50R3JhcGhpYzsiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLE9BQU9BLEtBQUssTUFBTSw2QkFBNkI7QUFDL0MsU0FBU0MsSUFBSSxFQUFFQyxJQUFJLFFBQVEsbUNBQW1DO0FBQzlELE9BQU9DLFNBQVMsTUFBTSxvQkFBb0I7QUFFMUMsTUFBTUMsaUJBQWlCLFNBQVNGLElBQUksQ0FBQztFQUNuQztBQUNGO0FBQ0E7RUFDRUcsV0FBV0EsQ0FBRUMsSUFBSSxFQUFHO0lBRWxCLElBQUlDLENBQUMsR0FBR1AsS0FBSyxDQUFDUSxjQUFjLENBQUVGLElBQUksR0FBRyxDQUFFLENBQUM7SUFDeEMsSUFBS0EsSUFBSSxLQUFLRyxTQUFTLEVBQUc7TUFDeEJGLENBQUMsR0FBRyxFQUFFO0lBQ1I7SUFDQSxNQUFNRyxXQUFXLEdBQUc7TUFBRUMsTUFBTSxFQUFFLFFBQVE7TUFBRUMsU0FBUyxFQUFFLENBQUM7TUFBRUMsT0FBTyxFQUFFO0lBQU8sQ0FBQztJQUN2RSxNQUFNQyxLQUFLLEdBQUcsSUFBSWIsSUFBSSxDQUFFLENBQUNNLENBQUMsRUFBRSxDQUFDQSxDQUFDLEVBQUVBLENBQUMsRUFBRUEsQ0FBQyxFQUFFRyxXQUFZLENBQUM7SUFDbkQsTUFBTUssS0FBSyxHQUFHLElBQUlkLElBQUksQ0FBRU0sQ0FBQyxFQUFFLENBQUNBLENBQUMsRUFBRSxDQUFDQSxDQUFDLEVBQUVBLENBQUMsRUFBRUcsV0FBWSxDQUFDO0lBQ25ELEtBQUssQ0FBRTtNQUFFTSxRQUFRLEVBQUUsQ0FBRUYsS0FBSyxFQUFFQyxLQUFLO0lBQUcsQ0FBRSxDQUFDO0VBRXpDO0FBRUY7QUFFQVosU0FBUyxDQUFDYyxRQUFRLENBQUUsbUJBQW1CLEVBQUViLGlCQUFrQixDQUFDO0FBQzVELGVBQWVBLGlCQUFpQiJ9

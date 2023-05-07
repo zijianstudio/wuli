@@ -1,0 +1,52 @@
+{
+  "light": {
+    "value": "Mwanga",
+    "history": [
+      {
+        "userId": 688388,
+        "timestamp": 1658714893352,
+        "oldValue": "",
+        "newValue": "Mwanga"
+      }
+    ]
+  },
+  "sound": {
+    "value": "Sauti",
+    "history": [
+      {
+        "userId": 688388,
+        "timestamp": 1658714893352,
+        "oldValue": "",
+        "newValue": "Sauti"
+      }
+    ]
+  },
+  "water": {
+    "value": "Maji",
+    "history": [
+      {
+        "userId": 688388,
+        "timestamp": 1658714893352,
+        "oldValue": "",
+        "newValue": "Maji"
+      }
+    ]
+  },
+  "waves-intro.title": {
+    "value": "Mawimbi Utangulizi",
+    "history": [
+      {
+        "userId": 688388,
+        "timestamp": 1658714893352,
+        "oldValue": "",
+        "newValue": "Utangulizi wa Mawimbi"
+      },
+      {
+        "userId": 1085625,
+        "timestamp": 1666088089051,
+        "oldValue": "Utangulizi wa Mawimbi",
+        "newValue": "Mawimbi Utangulizi"
+      }
+    ]
+  }
+}

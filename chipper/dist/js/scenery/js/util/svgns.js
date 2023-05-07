@@ -1,0 +1,13 @@
+// Copyright 2020-2023, University of Colorado Boulder
+
+/**
+ * SVG namespace, used for document.createElementNS( svgns, name );
+ *
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
+import { scenery } from '../imports.js';
+const svgns = 'http://www.w3.org/2000/svg';
+scenery.register('svgns', svgns);
+export default svgns;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzY2VuZXJ5Iiwic3ZnbnMiLCJyZWdpc3RlciJdLCJzb3VyY2VzIjpbInN2Z25zLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAyMDIwLTIwMjMsIFVuaXZlcnNpdHkgb2YgQ29sb3JhZG8gQm91bGRlclxyXG5cclxuLyoqXHJcbiAqIFNWRyBuYW1lc3BhY2UsIHVzZWQgZm9yIGRvY3VtZW50LmNyZWF0ZUVsZW1lbnROUyggc3ZnbnMsIG5hbWUgKTtcclxuICpcclxuICogQGF1dGhvciBKb25hdGhhbiBPbHNvbiA8am9uYXRoYW4ub2xzb25AY29sb3JhZG8uZWR1PlxyXG4gKi9cclxuXHJcbmltcG9ydCB7IHNjZW5lcnkgfSBmcm9tICcuLi9pbXBvcnRzLmpzJztcclxuXHJcbmNvbnN0IHN2Z25zID0gJ2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJztcclxuXHJcbnNjZW5lcnkucmVnaXN0ZXIoICdzdmducycsIHN2Z25zICk7XHJcbmV4cG9ydCBkZWZhdWx0IHN2Z25zOyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSxTQUFTQSxPQUFPLFFBQVEsZUFBZTtBQUV2QyxNQUFNQyxLQUFLLEdBQUcsNEJBQTRCO0FBRTFDRCxPQUFPLENBQUNFLFFBQVEsQ0FBRSxPQUFPLEVBQUVELEtBQU0sQ0FBQztBQUNsQyxlQUFlQSxLQUFLIn0=

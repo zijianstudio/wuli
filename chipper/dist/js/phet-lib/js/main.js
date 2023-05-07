@@ -1,0 +1,11 @@
+// Copyright 2022, University of Colorado Boulder
+
+/* eslint-disable default-import-match-filename,no-unused-vars,bad-sim-text */
+
+import axon from '../../axon/js/main.js';
+import dot from '../../dot/js/main.js';
+import kite from '../../kite/js/main.js';
+import phetCore from '../../phet-core/js/main.js';
+import utteranceQueue from '../../utterance-queue/js/main.js';
+import { scenery } from '../../scenery/js/imports.js';
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJheG9uIiwiZG90Iiwia2l0ZSIsInBoZXRDb3JlIiwidXR0ZXJhbmNlUXVldWUiLCJzY2VuZXJ5Il0sInNvdXJjZXMiOlsibWFpbi5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgMjAyMiwgVW5pdmVyc2l0eSBvZiBDb2xvcmFkbyBCb3VsZGVyXHJcblxyXG4vKiBlc2xpbnQtZGlzYWJsZSBkZWZhdWx0LWltcG9ydC1tYXRjaC1maWxlbmFtZSxuby11bnVzZWQtdmFycyxiYWQtc2ltLXRleHQgKi9cclxuXHJcbmltcG9ydCBheG9uIGZyb20gJy4uLy4uL2F4b24vanMvbWFpbi5qcyc7XHJcbmltcG9ydCBkb3QgZnJvbSAnLi4vLi4vZG90L2pzL21haW4uanMnO1xyXG5pbXBvcnQga2l0ZSBmcm9tICcuLi8uLi9raXRlL2pzL21haW4uanMnO1xyXG5pbXBvcnQgcGhldENvcmUgZnJvbSAnLi4vLi4vcGhldC1jb3JlL2pzL21haW4uanMnO1xyXG5pbXBvcnQgdXR0ZXJhbmNlUXVldWUgZnJvbSAnLi4vLi4vdXR0ZXJhbmNlLXF1ZXVlL2pzL21haW4uanMnO1xyXG5pbXBvcnQgeyBzY2VuZXJ5IH0gZnJvbSAnLi4vLi4vc2NlbmVyeS9qcy9pbXBvcnRzLmpzJztcclxuIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTs7QUFFQSxPQUFPQSxJQUFJLE1BQU0sdUJBQXVCO0FBQ3hDLE9BQU9DLEdBQUcsTUFBTSxzQkFBc0I7QUFDdEMsT0FBT0MsSUFBSSxNQUFNLHVCQUF1QjtBQUN4QyxPQUFPQyxRQUFRLE1BQU0sNEJBQTRCO0FBQ2pELE9BQU9DLGNBQWMsTUFBTSxrQ0FBa0M7QUFDN0QsU0FBU0MsT0FBTyxRQUFRLDZCQUE2QiJ9

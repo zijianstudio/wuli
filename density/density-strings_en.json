@@ -1,0 +1,14 @@
+{
+  "density.title": {
+    "value": "Density"
+  },
+  "screen.intro": {
+    "value": "Intro"
+  },
+  "screen.compare": {
+    "value": "Compare"
+  },
+  "screen.mystery": {
+    "value": "Mystery"
+  }
+}

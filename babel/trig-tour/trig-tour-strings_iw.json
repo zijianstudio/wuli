@@ -1,0 +1,326 @@
+{
+  "pi": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "π",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "π",
+        "newValue": ""
+      }
+    ]
+  },
+  "cos": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "cos",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "cos",
+        "newValue": ""
+      }
+    ]
+  },
+  "sin": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "sin",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "sin",
+        "newValue": ""
+      }
+    ]
+  },
+  "tan": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "tan",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "tan",
+        "newValue": ""
+      }
+    ]
+  },
+  "labels": {
+    "value": "תוויות",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "תוויות",
+        "explanation": null
+      }
+    ]
+  },
+  "grid": {
+    "value": "רשת",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "רשת",
+        "explanation": null
+      }
+    ]
+  },
+  "specialAngles": {
+    "value": "זויות מיוחדות",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "זויות מיוחדות",
+        "explanation": null
+      }
+    ]
+  },
+  "theta": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "θ",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "θ",
+        "newValue": ""
+      }
+    ]
+  },
+  "numberPiPattern": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "{0}{1}",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "{0}{1}",
+        "newValue": ""
+      }
+    ]
+  },
+  "vs": {
+    "value": "לעומת",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "לעומת",
+        "explanation": null
+      }
+    ]
+  },
+  "infinitySymbol": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "∞",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "∞",
+        "newValue": ""
+      }
+    ]
+  },
+  "plusMinus": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "±",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "±",
+        "newValue": ""
+      }
+    ]
+  },
+  "x": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "x",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "x",
+        "newValue": ""
+      }
+    ]
+  },
+  "y": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "y",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "y",
+        "newValue": ""
+      }
+    ]
+  },
+  "angle": {
+    "value": "זוית",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "זוית",
+        "explanation": null
+      }
+    ]
+  },
+  "rads": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "rads",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "rads",
+        "newValue": ""
+      }
+    ]
+  },
+  "valueUnitPattern": {
+    "value": "",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "{0} {1}",
+        "explanation": null
+      },
+      {
+        "userId": 282815,
+        "timestamp": 1651864691986,
+        "oldValue": "{0} {1}",
+        "newValue": ""
+      }
+    ]
+  },
+  "degrees": {
+    "value": "מעלות",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "מעלות",
+        "explanation": null
+      }
+    ]
+  },
+  "radians": {
+    "value": "ראדיאנים",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "ראדיאנים",
+        "explanation": null
+      }
+    ]
+  },
+  "values": {
+    "value": "ערכים",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "ערכים",
+        "explanation": null
+      }
+    ]
+  },
+  "trig-tour.title": {
+    "value": "סיור טריגו",
+    "history": [
+      {
+        "userId": 322219,
+        "timestamp": 1465743311075,
+        "oldValue": "",
+        "newValue": "סיור טריגו",
+        "explanation": null
+      }
+    ]
+  }
+}
