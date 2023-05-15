@@ -8,7 +8,6 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludePattern pattern="build" />
       <excludePattern pattern="node_modules" />
-      <excludePattern pattern="dist" />
       <excludePattern pattern="images" />
       <excludePattern pattern="sounds" />
       <excludePattern pattern="mipmaps" />

@@ -37,7 +37,7 @@ export default class RelativityModel implements TModel {
    * @param dt - time step, in seconds
    */
   public step( dt: number ): void {
-    //console.log("model dt"); works
+    //console.log("model dt"); //works
   }
 }
 

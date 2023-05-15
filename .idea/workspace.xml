@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="015a6cec-8e4c-469a-93f0-97b271ece7c3" name="Changes" comment="update copyright dates from daily grunt work&#10;configure ban-ts-comment in package.json, https://github.com/phetsims/chipper/issues/1389">
-      <change afterPath="$PROJECT_DIR$/simula-rasa/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenery" beforeDir="false" afterPath="$PROJECT_DIR$/scenery" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenery/examples/creator-pattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/scenery/examples/creator-pattern.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simula-rasa" beforeDir="false" afterPath="$PROJECT_DIR$/simula-rasa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vector-addition" beforeDir="false" afterPath="$PROJECT_DIR$/vector-addition" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vector-addition/js/common/view/GraphNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/vector-addition/js/common/view/GraphNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vector-addition/js/explore1D/view/Explore1DScreenView.js" beforeDir="false" afterPath="$PROJECT_DIR$/vector-addition/js/explore1D/view/Explore1DScreenView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relativity/package.json.bk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Wuli.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Wuli.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/relativity/js/relativity/model/RelativityModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/relativity/js/relativity/model/RelativityModel.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,15 +48,18 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Wuli/relativity/js/relativity/view",
+    "last_opened_file_path": "C:/Wuli/chipper/package.json",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "settings.editor.selected.configurable": "web-ide.project.structure",
     "ts.external.directory.path": "C:\\Wuli\\chipper\\node_modules\\typescript\\lib",
+    "two.files.diff.last.used.file": "C:/Wuli/chipper/package.json",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -77,6 +78,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Student 2021\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="015a6cec-8e4c-469a-93f0-97b271ece7c3" name="Changes" comment="" />
@@ -86,6 +90,11 @@
       <updated>1683291751365</updated>
       <workItem from="1683291752504" duration="48588000" />
       <workItem from="1683410132421" duration="30084000" />
+      <workItem from="1683443089227" duration="2198000" />
+      <workItem from="1683447250230" duration="1798000" />
+      <workItem from="1684176488847" duration="2402000" />
+      <workItem from="1684178947805" duration="259000" />
+      <workItem from="1684179228274" duration="1525000" />
     </task>
     <servers />
   </component>
