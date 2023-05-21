@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="015a6cec-8e4c-469a-93f0-97b271ece7c3" name="Changes" comment="update relativty version 1.0" />
+    <list default="true" id="015a6cec-8e4c-469a-93f0-97b271ece7c3" name="Changes" comment="update relativty version 1.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +103,7 @@
       <workItem from="1684178947805" duration="259000" />
       <workItem from="1684179228274" duration="2592000" />
       <workItem from="1684509651275" duration="18558000" />
-      <workItem from="1684582144819" duration="54143000" />
+      <workItem from="1684582144819" duration="54781000" />
     </task>
     <task id="LOCAL-00001" summary="update relativty version 1.0">
       <created>1684638745240</created>

@@ -19401,11 +19401,11 @@
   },
   "../keplers-laws/images/periodTimerBackground_png.js": {
     "sourceMD5": "594354845772b1021168c2659ec6501b",
-    "targetMilliseconds": 1684596311920
+    "targetMilliseconds": 1684639471274
   },
   "../keplers-laws/images/periodTimerBackground_png.ts": {
     "sourceMD5": "88354651ed0dc7cb77004d2d15c7612b",
-    "targetMilliseconds": 1684596311980
+    "targetMilliseconds": 1684639471329
   },
   "../keplers-laws/images/semiaxisIcon_png.ts": {
     "sourceMD5": "461730885dc47f4263b8ea4061f53610",
@@ -47909,7 +47909,7 @@
   },
   "../relativity/js/relativity/model/RelativityModel.ts": {
     "sourceMD5": "dc66d40b58dbfb61cc5e59cb9f705561",
-    "targetMilliseconds": 1684584404134
+    "targetMilliseconds": 1684639625143
   },
   "../relativity/js/relativity/RelativityScreen.ts": {
     "sourceMD5": "81d2fa818545097effc8bf5e4a1e5e54",
@@ -47917,7 +47917,7 @@
   },
   "../relativity/js/relativity/view/RelativityScreenView.ts": {
     "sourceMD5": "18f863724e0cbfe789ec14fe6ba3c466",
-    "targetMilliseconds": 1684638527778
+    "targetMilliseconds": 1684639625337
   },
   "../relativity/js/relativity-main.ts": {
     "sourceMD5": "6b1ffa5f6b2e6aec658b4583336e71ab",
@@ -47937,19 +47937,19 @@
   },
   "../relativity/js/relativity/model/Plane.ts": {
     "sourceMD5": "2a350a7e23971e2c86a5e7287ab0e153",
-    "targetMilliseconds": 1684583901226
+    "targetMilliseconds": 1684639625106
   },
   "../relativity/js/relativity/view/PlaneView.ts": {
     "sourceMD5": "653a87c80f428f0c9613ddabf9b1e30d",
-    "targetMilliseconds": 1684585590260
+    "targetMilliseconds": 1684639625236
   },
   "../relativity/js/relativity/view/XAxisView.ts": {
     "sourceMD5": "4b1d70a1b75a0320e734e57f4216ee43",
-    "targetMilliseconds": 1684610961009
+    "targetMilliseconds": 1684639625391
   },
   "../relativity/js/relativity/view/ControlPanelView.ts": {
     "sourceMD5": "249a3dd1474812c9bbf77a585f73b0de",
-    "targetMilliseconds": 1684637544510
+    "targetMilliseconds": 1684639625201
   },
   "../relativity/images/earth_png.ts": {
     "sourceMD5": "4d403ba71f65a580ec865cff3f9d0180",
