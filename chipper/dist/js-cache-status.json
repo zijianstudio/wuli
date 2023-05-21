@@ -19169,7 +19169,7 @@
   },
   "../joist/js/simLauncher.ts": {
     "sourceMD5": "341aa7bc0ed6d02e540f8df0894762e2",
-    "targetMilliseconds": 1683284701435
+    "targetMilliseconds": 1684638797139
   },
   "../joist/js/splash.js": {
     "sourceMD5": "2a62c128c105c6b03a958d77d2ad1bcb",
@@ -19401,11 +19401,11 @@
   },
   "../keplers-laws/images/periodTimerBackground_png.js": {
     "sourceMD5": "594354845772b1021168c2659ec6501b",
-    "targetMilliseconds": 1684180763582
+    "targetMilliseconds": 1684596311920
   },
   "../keplers-laws/images/periodTimerBackground_png.ts": {
     "sourceMD5": "88354651ed0dc7cb77004d2d15c7612b",
-    "targetMilliseconds": 1684180763635
+    "targetMilliseconds": 1684596311980
   },
   "../keplers-laws/images/semiaxisIcon_png.ts": {
     "sourceMD5": "461730885dc47f4263b8ea4061f53610",
@@ -45153,7 +45153,7 @@
   },
   "../sun/js/Panel.ts": {
     "sourceMD5": "5deb6e016b5c8d9f42400a1349e936ff",
-    "targetMilliseconds": 1683286015737
+    "targetMilliseconds": 1684638797204
   },
   "../sun/js/Popupable.ts": {
     "sourceMD5": "fac17dc249ea03be2c15bb352beb601c",
@@ -47908,16 +47908,16 @@
     "targetMilliseconds": 1684180766402
   },
   "../relativity/js/relativity/model/RelativityModel.ts": {
-    "sourceMD5": "18b858841eb66832641e7b70f40bc2e7",
-    "targetMilliseconds": 1684180766510
+    "sourceMD5": "dc66d40b58dbfb61cc5e59cb9f705561",
+    "targetMilliseconds": 1684584404134
   },
   "../relativity/js/relativity/RelativityScreen.ts": {
     "sourceMD5": "81d2fa818545097effc8bf5e4a1e5e54",
     "targetMilliseconds": 1684180766552
   },
   "../relativity/js/relativity/view/RelativityScreenView.ts": {
-    "sourceMD5": "c078387fa61514a55a8d8b21e63af63e",
-    "targetMilliseconds": 1684180766752
+    "sourceMD5": "18f863724e0cbfe789ec14fe6ba3c466",
+    "targetMilliseconds": 1684638527778
   },
   "../relativity/js/relativity-main.ts": {
     "sourceMD5": "6b1ffa5f6b2e6aec658b4583336e71ab",
@@ -47931,28 +47931,52 @@
     "sourceMD5": "a8037190e7492b603ce096def8407d20",
     "targetMilliseconds": 1684180766896
   },
-  "../relativity/images/plane_png.ts": {
-    "sourceMD5": "3adc91a3c6d54b6590735afa66646c26",
-    "targetMilliseconds": 1684180766933
-  },
   "../relativity/js/relativity/model/plane.ts": {
     "sourceMD5": "6582e7680410d6792fc6009ace729671",
     "targetMilliseconds": 1683356226567
   },
   "../relativity/js/relativity/model/Plane.ts": {
-    "sourceMD5": "df689aaaf5092d7af2db16f49cd69615",
-    "targetMilliseconds": 1684180766464
+    "sourceMD5": "2a350a7e23971e2c86a5e7287ab0e153",
+    "targetMilliseconds": 1684583901226
   },
   "../relativity/js/relativity/view/PlaneView.ts": {
-    "sourceMD5": "19646d9d29f3ce3c2de89766e3fea5b4",
-    "targetMilliseconds": 1684180766643
+    "sourceMD5": "653a87c80f428f0c9613ddabf9b1e30d",
+    "targetMilliseconds": 1684585590260
   },
   "../relativity/js/relativity/view/XAxisView.ts": {
-    "sourceMD5": "7310621d32f750d7aa15176a79fb9739",
-    "targetMilliseconds": 1684180766790
+    "sourceMD5": "4b1d70a1b75a0320e734e57f4216ee43",
+    "targetMilliseconds": 1684610961009
   },
   "../relativity/js/relativity/view/ControlPanelView.ts": {
-    "sourceMD5": "63fb3cafddc51031ae2f85fa3474ff14",
-    "targetMilliseconds": 1684180766605
+    "sourceMD5": "249a3dd1474812c9bbf77a585f73b0de",
+    "targetMilliseconds": 1684637544510
+  },
+  "../relativity/images/earth_png.ts": {
+    "sourceMD5": "4d403ba71f65a580ec865cff3f9d0180",
+    "targetMilliseconds": 1684585540635
+  },
+  "../relativity/images/space_shuttle_png.ts": {
+    "sourceMD5": "19affb496e6d39ed4f2a997cd06c1b5f",
+    "targetMilliseconds": 1684585520314
+  },
+  "../relativity/js/relativity/view/EarthView.ts": {
+    "sourceMD5": "1817fad2e0e5ca2c4fec751a93f9d4ea",
+    "targetMilliseconds": 1684584293099
+  },
+  "../relativity/images/lorentz.ts": {
+    "sourceMD5": "4799736705b52655fbbf480f31eb87cb",
+    "targetMilliseconds": 1684619639390
+  },
+  "../relativity/js/relativity/view/LorentzView.ts": {
+    "sourceMD5": "b948c948fd3bd7237c4a546bbe6d4583",
+    "targetMilliseconds": 1684623932264
+  },
+  "../relativity/js/relativity/view/LorentzPanel.ts": {
+    "sourceMD5": "a6d10b6a12c6b5a05ed33c5679cbc039",
+    "targetMilliseconds": 1684624002975
+  },
+  "../relativity/js/relativity/view/HintPanelView.ts": {
+    "sourceMD5": "4bc5eeac2d6f18357726139649f2a511",
+    "targetMilliseconds": 1684638661950
   }
 }
