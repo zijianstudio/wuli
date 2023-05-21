@@ -1,0 +1,281 @@
+// Copyright 2023, University of Colorado Boulder
+
+/**
+ * TODO Describe this class and its responsibilities.
+ *
+ * @author Zijian Wang
+ */
+
+import ScreenView, {ScreenViewOptions} from '../../../../joist/js/ScreenView.js';
+import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
+import RelativityConstants from '../../common/RelativityConstants.js';
+import relativity from '../../relativity.js';
+import RelativityModel from '../model/RelativityModel.js';
+import optionize from '../../../../phet-core/js/optionize.js';
+import Vector2 from "../../../../dot/js/Vector2.js";
+import PlaneView from "./PlaneView.js";
+import {Rectangle, Color, Line, Path, Node, Text, scenery} from "../../../../scenery/js/imports.js";
+import XAxisView from "./XAxisView.js";
+import ControlPanelView from "./ControlPanelView.js";
+import Matrix3 from "../../../../dot/js/Matrix3.js";
+import EarthView from "./EarthView.js";
+import SceneryCopy from "../../../../scenery/js/util/sceneryCopy.js";
+
+type SelfOptions = {
+    //TODO add options that are specific to RelativityScreenView here
+};
+
+type RelativityScreenViewOptions = SelfOptions & ScreenViewOptions;
+
+export default class RelativityScreenView extends ScreenView {
+    private controlPanel: ControlPanelView;
+
+    private nodeA: Node = new Node();
+    private nodeB: Node = new Node();
+    private nodeC: Node = new Node();
+    private nodeD: Node = new Node();
+    private matA = new Matrix3();
+    private matB = new Matrix3();
+    private matC = new Matrix3();
+    private matD = new Matrix3();
+
+    private tA: Text[] = [];
+    private tB: Text[] = [];
+    private tC: Text[] = [];
+    private tD: Text[] = [];
+    private tAValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    private tBValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    private tCValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    private tDValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    private vScala = 30;
+    private unitSpace = 70
+    private planeView = new PlaneView()
+    private earthView = new EarthView()
+
+
+    public constructor(model: RelativityModel, providedOptions: RelativityScreenViewOptions) {
+
+        const options = optionize<RelativityScreenViewOptions, SelfOptions, ScreenViewOptions>()({
+            //TODO add default values for optional SelfOptions here
+            //TODO add default values for optional ScreenViewOptions here
+        }, providedOptions);
+
+        super(options);
+        const center = new Vector2(this.layoutBounds.width / 2, this.layoutBounds.height / 2);
+        console.log(this.nodeA)
+        const TIME_FONT = 20;
+
+        //this.addChild(new Rectangle(1, 1, this.layoutBounds.width, this.layoutBounds.height, {fill: 'rgb( 250, 250, 250 )'})) test layout
+
+        this.nodeA.addChild(this.planeView);
+        this.nodeB.addChild(this.earthView);
+        this.nodeC.addChild(this.planeView);
+        this.nodeD.addChild(this.earthView);
+
+        //add Watch A
+        for (let i = -5; i <= 5; i += 1) {
+            const t = new Text("0.00", {centerX: i * this.unitSpace, centerY: -3 * TIME_FONT, fontSize: TIME_FONT});
+            this.tA.push(t);
+            this.nodeA.addChild(t)
+            this.nodeA.addChild(new Text(i, {
+                centerX: i * this.unitSpace,
+                centerY: TIME_FONT,
+                fontSize: TIME_FONT - 4
+            }));
+        }
+        this.nodeA.addChild(new Text("t' /s =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: -3 * TIME_FONT,
+            fontSize: TIME_FONT
+        }))
+        this.nodeA.addChild(new Text("x' /ly =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: TIME_FONT,
+            fontSize: TIME_FONT -4
+        }))
+
+        //add Watch B
+        for (let i = -5; i <= 5; i += 1) {
+            const t = new Text("0.00", {centerX: i * this.unitSpace, centerY: 2 * TIME_FONT, fontSize: TIME_FONT});
+            this.tB.push(t)
+            this.nodeB.addChild(t)
+            this.nodeB.addChild(new Text(i, {
+                centerX: i * this.unitSpace,
+                centerY: -TIME_FONT,
+                fontSize: TIME_FONT - 4
+            }));
+        }
+        this.nodeB.addChild(new Text("t /s =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: 2 * TIME_FONT,
+            fontSize: TIME_FONT
+        }))
+        this.nodeB.addChild(new Text("x /ly =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: -TIME_FONT,
+            fontSize: TIME_FONT -4
+        }))
+
+        //add Watch C
+        for (let i = -5; i <= 5; i += 1) {
+            const t = new Text("0.00", {centerX: i * this.unitSpace, centerY: -3 * TIME_FONT, fontSize: TIME_FONT});
+            this.tC.push(t);
+            this.nodeC.addChild(t)
+            this.nodeC.addChild(new Text(i, {
+                centerX: i * this.unitSpace,
+                centerY: TIME_FONT,
+                fontSize: TIME_FONT - 4
+            }));
+        }
+        this.nodeC.addChild(new Text("t' /s =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: -3 * TIME_FONT,
+            fontSize: TIME_FONT
+        }))
+        this.nodeC.addChild(new Text("x' /ly =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: TIME_FONT,
+            fontSize: TIME_FONT -4
+        }))
+
+        //add Watch D
+        for (let i = -5; i <= 5; i += 1) {
+            const t = new Text("0.00", {centerX: i * this.unitSpace, centerY: 2 * TIME_FONT, fontSize: TIME_FONT});
+            this.tD.push(t)
+            this.nodeD.addChild(t)
+            this.nodeD.addChild(new Text(i, {
+                centerX: i * this.unitSpace,
+                centerY: -TIME_FONT,
+                fontSize: TIME_FONT - 4
+            }));
+        }
+        this.nodeD.addChild(new Text("t /s =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: 2 * TIME_FONT,
+            fontSize: TIME_FONT
+        }))
+        this.nodeD.addChild(new Text("x /ly =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: -TIME_FONT,
+            fontSize: TIME_FONT -4
+        }))
+
+        //add Coord
+        this.nodeA.addChild(new XAxisView("x'", "y'", -5, 5, 0, 0.5, this.unitSpace))
+        this.nodeB.addChild(new XAxisView("x", "y", -5, 5, 0, 0.5, this.unitSpace))
+        this.nodeC.addChild(new XAxisView("x'", "y'", -5, 5, 0, 0.5, this.unitSpace))
+        this.nodeD.addChild(new XAxisView("x", "y", -5, 5, 0, 0.5, this.unitSpace))
+
+        this.matA.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y - this.unitSpace * 3, 1])
+        this.matB.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y - this.unitSpace * 2, 1])
+        this.matC.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y + this.unitSpace * 2, 1])
+        this.matD.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y + this.unitSpace * 3, 1])
+
+        this.nodeA.setMatrix(this.matA)
+        this.nodeB.setMatrix(this.matB)
+        this.nodeC.setMatrix(this.matC)
+        this.nodeD.setMatrix(this.matD)
+
+        this.addChild(this.nodeA);
+        this.addChild(this.nodeB);
+        this.addChild(this.nodeC);
+        this.addChild(this.nodeD);
+
+        this.controlPanel = new ControlPanelView({
+            right: this.layoutBounds.maxX - RelativityConstants.SCREEN_VIEW_X_MARGIN,
+            centerY: this.layoutBounds.centerY,
+            maxWidth: 200,
+            maxHeight: 350
+        });
+        this.addChild(this.controlPanel);
+
+
+        const resetAllButton = new ResetAllButton({
+            listener: () => {
+                this.interruptSubtreeInput(); // cancel interactions that may be in progress
+                model.reset();
+                this.reset();
+            },
+            right: this.layoutBounds.maxX - RelativityConstants.SCREEN_VIEW_X_MARGIN,
+            bottom: this.layoutBounds.maxY - RelativityConstants.SCREEN_VIEW_Y_MARGIN,
+            tandem: options.tandem.createTandem('resetAllButton')
+        });
+        this.addChild(resetAllButton);
+    }
+
+    /**
+     * Resets the view.
+     */
+    public reset(): void {
+        //TODO
+        this.controlPanel.isPlaying = false
+        this.controlPanel.aChecked = true
+
+        const center = new Vector2(this.layoutBounds.width / 2, this.layoutBounds.height / 2);
+
+        this.matA.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y - this.unitSpace * 2.5, 1])
+        this.matB.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y - this.unitSpace * 1.5, 1])
+        this.matC.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y + this.unitSpace * 1.5, 1])
+        this.matD.setArray([1, 0, 0, 0, 1, 0, center.x - 80, center.y + this.unitSpace * 2.5, 1])
+
+        this.tAValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        this.tBValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (let i in this.tA) {
+            let tt = this.tBValue[i] * Math.sqrt(1 - this.controlPanel.velocity ** 2) - (i - 6) * this.controlPanel.velocity / this.vScala
+            this.tA[i].setString(tt.toFixed(2));
+        }
+        for (let i in this.tB) {
+            this.tB[i].setString(this.tBValue[i].toFixed(2));
+        }
+    }
+
+    /**
+     * Steps the view.
+     * @param dt - time step, in seconds
+     */
+    public override step(dt: number): void {
+        let one_over_gamma = Math.sqrt(1 - this.controlPanel.velocity ** 2)
+
+        if (this.controlPanel.velocity < 0 && this.planeView.isRight || this.controlPanel.velocity >= 0 && !this.planeView.isRight) {
+            this.planeView.flip()
+        }
+
+        if (this.controlPanel.isPlaying) {
+            this.matA.set02(this.matA.m02() + this.vScala * dt * this.controlPanel.velocity)
+            this.matD.set02(this.matD.m02() - this.vScala * dt * this.controlPanel.velocity)
+
+            for (var i = 0; i < this.tAValue.length; i++) {
+                this.tAValue[i] += one_over_gamma * dt / (this.unitSpace / this.vScala);
+                this.tBValue[i] += dt / (this.unitSpace / this.vScala);
+                this.tCValue[i] += dt / (this.unitSpace / this.vScala);
+                this.tDValue[i] += one_over_gamma * dt / (this.unitSpace / this.vScala);
+            }
+        }
+
+        this.matA.set00(one_over_gamma)
+        this.matB.set00(1)
+        this.matC.set00(1)
+        this.matD.set00(one_over_gamma)
+        this.nodeA.setMatrix(this.matA)
+        this.nodeB.setMatrix(this.matB)
+        this.nodeC.setMatrix(this.matC)
+        this.nodeD.setMatrix(this.matD)
+
+        for (let i in this.tA) {
+            let tt = this.tAValue[i] - (i - 5) * this.controlPanel.velocity
+            this.tA[i].setString(tt.toFixed(2));
+        }
+        for (let i in this.tB) {
+            this.tB[i].setString(this.tBValue[i].toFixed(2));
+        }
+        for (let i in this.tC) {
+            this.tC[i].setString(this.tCValue[i].toFixed(2));
+        }
+        for (let i in this.tD) {
+            let tt = this.tDValue[i] + (i - 5) * this.controlPanel.velocity
+            this.tD[i].setString(tt.toFixed(2));
+        }
+    }
+}
+
+relativity.register('RelativityScreenView', RelativityScreenView);

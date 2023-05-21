@@ -6,229 +6,227 @@
  * @author Zijian Wang
  */
 
-import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
+import ScreenView, {ScreenViewOptions} from '../../../../joist/js/ScreenView.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import RelativityConstants from '../../common/RelativityConstants.js';
 import relativity from '../../relativity.js';
 import RelativityModel from '../model/RelativityModel.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import Vector2 from "../../../../dot/js/Vector2.js";
-import ModelViewTransform2 from "../../../../phetcommon/js/view/ModelViewTransform2.js";
 import PlaneView from "./PlaneView.js";
-import {Rectangle, Color, Line, Path, Node, Text} from "../../../../scenery/js/imports.js";
+import {Rectangle, Node, Text} from "../../../../scenery/js/imports.js";
 import XAxisView from "./XAxisView.js";
 import ControlPanelView from "./ControlPanelView.js";
-import Panel from "../../../../sun/js/Panel.js";
 import Matrix3 from "../../../../dot/js/Matrix3.js";
-import MathSymbolFont from "../../../../scenery-phet/js/MathSymbolFont.js";
+import EarthView from "./EarthView.js";
+import LorentzPanelView from "./LorentzPanel.js";
+import HintPanelView from "./HintPanelView.js";
 
 type SelfOptions = {
- //TODO add options that are specific to RelativityScreenView here
+    //TODO add options that are specific to RelativityScreenView here
 };
 
 type RelativityScreenViewOptions = SelfOptions & ScreenViewOptions;
 
 export default class RelativityScreenView extends ScreenView {
-  private controlPanel: ControlPanelView;
-  private nodeA: Node = new Node();
-  private nodeAc : Node = new Node();
-  private nodeB: Node = new Node(new Vector2(0,0));
-  private nodeBc : Node = new Node();
-  private mat = new Matrix3();
-  private mat0  = new Matrix3();
-  private tA: Text[] = [];
-  private tB: Text[] = [];
-  private tAValue = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-  private tBValue = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-  private timeScala = 0;
-  private vScala= 30;
+    private readonly controlPanel: ControlPanelView;
 
-  public constructor( model: RelativityModel, providedOptions: RelativityScreenViewOptions ) {
+    private nodeA: Node = new Node();
+    private nodeB: Node = new Node();
+    private matA = new Matrix3();
+    private matB = new Matrix3();
 
-    const options = optionize<RelativityScreenViewOptions, SelfOptions, ScreenViewOptions>()( {
-      //TODO add default values for optional SelfOptions here
-      //TODO add default values for optional ScreenViewOptions here
-    }, providedOptions );
+    private tA: Text[] = [];
+    private tB: Text[] = [];
+    private tSpace_shuttle = 0
+    private tEarth = 0
+    private vScala = 30;
+    private unitSpace = 80
+    private planeView = new PlaneView()
+    private earthView = new EarthView()
+    private x0=0
+    private y0=0
+    private distance = 0
 
-    super( options );
-    //console.log(this.mat0)
-    const center = new Vector2( this.layoutBounds.width/ 2, this.layoutBounds.height / 2 );
+    public constructor(model: RelativityModel, providedOptions: RelativityScreenViewOptions) {
 
-    const modelViewTransform = ModelViewTransform2.createOffsetScaleMapping( center, 1 );
+        const options = optionize<RelativityScreenViewOptions, SelfOptions, ScreenViewOptions>()({
+            //TODO add default values for optional SelfOptions here
+            //TODO add default values for optional ScreenViewOptions here
+        }, providedOptions);
 
-    const GRAPH_BACKGROUND_COLOR = Color.white;
-    const GRAPH_MAJOR_LINE_COLOR = 'rgb( 212, 212, 212 )'; // gray
-    const GRAPH_MINOR_LINE_COLOR = 'rgb( 225, 225, 225 )'; // lighter gray
-    const MAJOR_GRID_LINE_WIDTH = 1.5; // view units
-    const MINOR_GRID_LINE_WIDTH = 0.7; // view units
-    const MAJOR_TICK_SPACING = 5; // model units
-    const MINOR_TICK_SPACING = 1;
-    const SCALE_FACTOR = 15;
-    const MIN_X = 20;
-    const MIN_Y = 20;
-    const WIDTH = 12 * SCALE_FACTOR * MAJOR_TICK_SPACING;
-    const HEIGHT = 2 * SCALE_FACTOR * MAJOR_TICK_SPACING;
-    this.timeScala = HEIGHT/2/30;
+        super(options);
+        this.x0 = this.layoutBounds.centerX
+        this.y0 = this.layoutBounds.centerY
 
-    let COUNT = 0;
-    // Vertical lines
-    for (let xValue = -WIDTH/2; xValue <= WIDTH/2 ; xValue += MINOR_TICK_SPACING * SCALE_FACTOR) {
-      if(COUNT % MAJOR_TICK_SPACING==0 ){
-        this.nodeA.addChild(new Line(xValue, -HEIGHT/2, xValue,HEIGHT/2, {
-          stroke: GRAPH_MAJOR_LINE_COLOR, lineWidth: MAJOR_GRID_LINE_WIDTH,
-        }));
-        const t = new Text("0",{x:xValue-15,y:-15,font: new MathSymbolFont( 28 ),});
-        this.tA.push(t);
-        this.nodeA.addChild(t)
-      }else {
-        this.nodeA.addChild(new Line(xValue, -HEIGHT/2, xValue,HEIGHT/2, {
-          stroke: GRAPH_MINOR_LINE_COLOR, lineWidth: MINOR_GRID_LINE_WIDTH,
-        }));
-        //console.log(this.nodeA.x)
-      }
-      COUNT += 1;
-    }
-    // Horizontal lines
-    COUNT = 0;
-    for (let yValue = -HEIGHT/2; yValue <= HEIGHT/2; yValue +=  MINOR_TICK_SPACING * SCALE_FACTOR) {
-      if(COUNT%MAJOR_TICK_SPACING==0){
-        this.nodeA.addChild(new Line(-WIDTH/2, yValue, WIDTH/2,yValue, {
-          stroke: GRAPH_MAJOR_LINE_COLOR, lineWidth: MAJOR_GRID_LINE_WIDTH,
-        }));
-      }else {
-        this.nodeA.addChild(new Line(-WIDTH/2, yValue, WIDTH/2,yValue, {
-          stroke: GRAPH_MINOR_LINE_COLOR, lineWidth: MINOR_GRID_LINE_WIDTH,
-        }));
-      }
-      COUNT += 1;
-    }
-    this.nodeA.addChild(new XAxisView("x, t (A系)",-WIDTH/2-30,0,WIDTH/2+30,0))
+        const TIME_FONT = 16;
+        this.addChild(new Rectangle(1, 1, this.layoutBounds.width, this.layoutBounds.height, {fill: 'rgb( 222, 222, 222 )'})) //test layout
 
+        this.nodeA.addChild(this.planeView);
+        this.nodeB.addChild(this.earthView);
 
-    COUNT = 0;
-    // Vertical lines
-    for (let xValue = -WIDTH/2; xValue <= WIDTH/2 ; xValue += MINOR_TICK_SPACING * SCALE_FACTOR) {
-      if(COUNT % MAJOR_TICK_SPACING==0 ){
-        this.nodeB.addChild(new Line(xValue, -HEIGHT/2, xValue,HEIGHT/2, {
-          stroke: GRAPH_MAJOR_LINE_COLOR, lineWidth: MAJOR_GRID_LINE_WIDTH,
-        }));
-        const t = new Text("0",{x:xValue-15,y:-15,font: new MathSymbolFont( 28 ),});
-        this.tB.push(t)
-        this.nodeB.addChild(t)
-      }else {
-        this.nodeB.addChild(new Line(xValue, -HEIGHT/2, xValue,HEIGHT/2, {
-          stroke: GRAPH_MINOR_LINE_COLOR, lineWidth: MINOR_GRID_LINE_WIDTH,
-        }));
-        //console.log(this.nodeB.x)
-      }
-      COUNT += 1;
-    }
-    // Horizontal lines
-    COUNT = 0;
-    for (let yValue = -HEIGHT/2; yValue <= HEIGHT/2; yValue +=  MINOR_TICK_SPACING * SCALE_FACTOR) {
-      if(COUNT%MAJOR_TICK_SPACING==0){
-        this.nodeB.addChild(new Line(-WIDTH/2, yValue, WIDTH/2,yValue, {
-          stroke: GRAPH_MAJOR_LINE_COLOR, lineWidth: MAJOR_GRID_LINE_WIDTH,
-        }));
-      }else {
-        this.nodeB.addChild(new Line(-WIDTH/2, yValue, WIDTH/2,yValue, {
-          stroke: GRAPH_MINOR_LINE_COLOR, lineWidth: MINOR_GRID_LINE_WIDTH,
-        }));
-      }
-      COUNT += 1;
-    }
-    this.nodeB.addChild(new XAxisView("x', t' (B系)",-WIDTH/2-30,0,WIDTH/2+30,0))
+        //add Watch A
+        for (let i = -5; i <= 5; i += 1) {
+            const t = new Text("0.00", {centerX: i * this.unitSpace, centerY: -4 * TIME_FONT, fontSize: TIME_FONT});
+            this.tA.push(t);
+            this.nodeA.addChild(t)
+            this.nodeA.addChild(new Text(i, {
+                centerX: i * this.unitSpace,
+                centerY: 20,
+                fontSize: TIME_FONT
+            }));
+        }
+        this.nodeA.addChild(new Text("t' /s =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: -4 * TIME_FONT,
+            fontSize: TIME_FONT
+        }))
+        this.nodeA.addChild(new Text("x' /ly =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: 20,
+            fontSize: TIME_FONT
+        }))
 
+        //add Watch B
+        for (let i = -5; i <= 5; i += 1) {
+            const t = new Text("0.00", {centerX: i * this.unitSpace, centerY: 3 * TIME_FONT, fontSize: TIME_FONT});
+            this.tB.push(t)
+            this.nodeB.addChild(t)
+            this.nodeB.addChild(new Text(i, {
+                centerX: i * this.unitSpace,
+                centerY: -20,
+                fontSize: TIME_FONT
+            }));
+        }
+        this.nodeB.addChild(new Text("t /s =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: 3 * TIME_FONT,
+            fontSize: TIME_FONT
+        }))
+        this.nodeB.addChild(new Text("x /ly =", {
+            right: -5 * this.unitSpace - 24,
+            centerY: -20,
+            fontSize: TIME_FONT
+        }))
 
-    this.nodeAc.addChild(this.nodeA)
-    this.nodeBc.addChild(this.nodeB)
+        //add Coord
+        this.nodeA.addChild(new XAxisView("x'", "y'", -5, 5, 0, 0.5, this.unitSpace))
+        this.nodeB.addChild(new XAxisView("x", "y", -5, 5, 0, 0.5, this.unitSpace))
 
-    this.nodeAc.setX(center.x);
-    this.nodeAc.setY(center.y-1.2*HEIGHT);
-    this.nodeBc.setX(center.x)
-    this.nodeBc.setY(center.y)
+        this.addChild(this.nodeA);
+        this.addChild(this.nodeB);
 
-    this.addChild(this.nodeAc);
-    this.addChild(this.nodeBc);
+        this.controlPanel = new ControlPanelView({
+            right: 2 * this.x0 - RelativityConstants.SCREEN_VIEW_X_MARGIN - 255,
+            bottom: 2 * this.y0 - RelativityConstants.SCREEN_VIEW_Y_MARGIN - 104,
+            //maxWidth: 200,
+        });
+        this.addChild(this.controlPanel)
 
-    this.addChild(new PlaneView(new Vector2(0,-80), modelViewTransform));
+        let lorentzPanel = new LorentzPanelView({
+            right: 2 * this.x0 - RelativityConstants.SCREEN_VIEW_X_MARGIN - 58,
+            bottom: 2 * this.y0 - RelativityConstants.SCREEN_VIEW_Y_MARGIN,
+            //maxWidth: 200,
+        });
+        this.addChild(lorentzPanel)
 
-    this.controlPanel = new ControlPanelView( {
-          left: RelativityConstants.SCREEN_VIEW_X_MARGIN,
-          bottom: this.layoutBounds.maxY - RelativityConstants.SCREEN_VIEW_Y_MARGIN,
-    } );
-    this.addChild(this.controlPanel);
+        let hintPanel = new HintPanelView({
+            left: 20 ,
+            bottom: 2 * this.y0 - RelativityConstants.SCREEN_VIEW_Y_MARGIN,
+            //maxWidth: 580,
+        });
+        this.addChild(hintPanel)
 
-    const resetAllButton = new ResetAllButton( {
-      listener: () => {
-        this.interruptSubtreeInput(); // cancel interactions that may be in progress
-        model.reset();
-        this.reset();
-      },
-      right: this.layoutBounds.maxX - RelativityConstants.SCREEN_VIEW_X_MARGIN,
-      bottom: this.layoutBounds.maxY - RelativityConstants.SCREEN_VIEW_Y_MARGIN,
-      tandem: options.tandem.createTandem( 'resetAllButton' )
-    } );
-    this.addChild( resetAllButton );
-  }
+        const resetAllButton = new ResetAllButton({
+            listener: () => {
+                this.interruptSubtreeInput(); // cancel interactions that may be in progress
+                model.reset();
+                this.reset();
+            },
+            right: 2 * this.x0 - RelativityConstants.SCREEN_VIEW_X_MARGIN,
+            bottom: 2 * this.y0 - RelativityConstants.SCREEN_VIEW_Y_MARGIN,
+            tandem: options.tandem.createTandem('resetAllButton')
+        });
+        this.addChild(resetAllButton);
 
-  /**
-   * Resets the view.
-   */
-  public reset(): void {
-    //TODO
-  }
-
-  /**
-   * Steps the view.
-   * @param dt - time step, in seconds
-   */
-  public override step( dt: number ): void {
-    //TODO
-    //console.log(this.nodeB.x,",",this.nodeB.y);
-    if(this.controlPanel.isPlaying){
-      if(this.controlPanel.aChecked){
-        this.nodeBc.x += this.vScala* dt * this.controlPanel.velocity;
-      }else{
-        this.nodeAc.x += - this.vScala* dt * this.controlPanel.velocity;
-      }
-
-      for (let i in this.tAValue) {
-        this.tAValue[i] += dt/this.timeScala;
-      }
-      for (let i in this.tBValue) {
-        this.tBValue[i] += dt/this.timeScala;
-      }
+        this.reset()
     }
 
-    if(this.controlPanel.aChecked){
-      let scaleX = Math.sqrt(1-this.controlPanel.velocity ** 2);
-      this.mat.setArray([scaleX,0,0,0,1,0,0,0,1]);
-      this.nodeA.setMatrix(this.mat0)
-      this.nodeB.setMatrix(this.mat);
+    /**
+     * Resets the view.
+     */
+    public reset(): void {
+        //TODO
+        this.controlPanel.isPlaying.value = false
+        this.matA.setArray([1, 0, 0, 0, 1, 0, this.x0, this.y0 - this.unitSpace * 2.5, 1])
+        this.matB.setArray([1, 0, 0, 0, 1, 0, this.x0, this.y0 - this.unitSpace * 1.5, 1])
 
-      for (let i in this.tA) {
-        this.tA[i].setString(this.tAValue[i].toFixed(2));
-      }
-      for (let i in this.tB) {
-        let tt = this.tAValue[i]*Math.sqrt(1-this.controlPanel.velocity ** 2)+(i-6)*this.controlPanel.velocity/this.vScala
-        this.tB[i].setString(tt.toFixed(2));
-      }
-    }else {
-      let scaleX = Math.sqrt(1-this.controlPanel.velocity ** 2);
-      this.mat.setArray([scaleX,0,0,0,1,0,0,0,1]);
-      this.nodeB.setMatrix(this.mat0)
-      this.nodeA.setMatrix(this.mat);
+        this.nodeA.setMatrix(this.matA)
+        this.nodeB.setMatrix(this.matB)
 
-      for (let i in this.tA) {
-        let tt = this.tBValue[i]*Math.sqrt(1-this.controlPanel.velocity ** 2)-(i-6)*this.controlPanel.velocity/this.vScala
-        this.tA[i].setString(tt.toFixed(2));
-      }
-      for (let i in this.tB) {
-        this.tB[i].setString(this.tBValue[i].toFixed(2));
-      }
+        this.distance = 0
+        this.tSpace_shuttle = 0
+        this.tEarth = 0
     }
-  }
+
+    /**
+     * Steps the view.
+     * @param dt - time step, in seconds
+     */
+    public override step(dt: number): void {
+        let one_over_gamma = Math.sqrt(1 - this.controlPanel.velocity ** 2)
+
+        if (this.controlPanel.velocity < 0 && this.planeView.isRight || this.controlPanel.velocity >= 0 && !this.planeView.isRight) {
+            this.planeView.flip()
+        }
+        if (this.controlPanel.isPlaying.value) {
+
+            if (this.controlPanel.aChecked.value) {
+                this.tSpace_shuttle += one_over_gamma * dt / (this.unitSpace / this.vScala);
+                this.tEarth += dt / (this.unitSpace / this.vScala);
+                this.distance += this.vScala * dt * this.controlPanel.velocity
+            } else {
+                this.matA.set02(this.matA.m02() + this.vScala * dt * this.controlPanel.velocity)
+                this.tSpace_shuttle += dt / (this.unitSpace / this.vScala);
+                this.tEarth += dt / (this.unitSpace / this.vScala) / one_over_gamma;
+                this.distance += this.vScala * dt * this.controlPanel.velocity / one_over_gamma
+            }
+        }
+
+        if (this.controlPanel.aChecked.value) {
+            this.matA.set00(one_over_gamma)
+            this.matB.set00(1)
+            this.matA.set02(this.x0 + this.distance);
+            this.matB.set02(this.x0)
+            this.nodeA.setMatrix(this.matA)
+            this.nodeB.setMatrix(this.matB)
+            for(let i =0; i<this.tA.length; i++){
+                let tt = this.tSpace_shuttle - (i - 5) * this.controlPanel.velocity
+                this.tA[i].setString(tt.toFixed(3));
+            }
+            for (let i in this.tB) {
+                this.tB[i].setString(this.tEarth.toFixed(3));
+            }
+        } else {
+            this.matA.set00(1)
+            this.matB.set00(one_over_gamma)
+            this.matA.set02(this.x0);
+            this.matB.set02(this.x0 - one_over_gamma * this.distance)
+            this.nodeA.setMatrix(this.matA)
+            this.nodeB.setMatrix(this.matB)
+            for (let i in this.tA) {
+                this.tA[i].setString(this.tSpace_shuttle.toFixed(3));
+            }
+            //console.log(this.distance/this.unitSpace)
+            for(let i =0; i<this.tB.length; i++){
+                let tt = this.tEarth + (i - this.distance/this.unitSpace - 5) * this.controlPanel.velocity
+                this.tB[i].setString(tt.toFixed(3));
+            }
+        }
+        this.controlPanel.space_shuttle_t_ = this.tSpace_shuttle
+        this.controlPanel.space_shuttle_t = this.tEarth
+        this.controlPanel.space_shuttle_x = this.distance / this.unitSpace
+        this.controlPanel.setText();
+    }
 }
 
-relativity.register( 'RelativityScreenView', RelativityScreenView );
+relativity.register('RelativityScreenView', RelativityScreenView);

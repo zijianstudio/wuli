@@ -11,7 +11,7 @@ import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import PickRequired from '../../../../phet-core/js/types/PickRequired.js';
 import TModel from '../../../../joist/js/TModel.js';
 import Property from '../../../../axon/js/Property.js';
-import Vector2 from "../../../../dot/js/Vector2";
+import Vector2 from "../../../../dot/js/Vector2.js";
 
 export default class Plane implements TModel {
   public positionProperty: Property<Vector2>;

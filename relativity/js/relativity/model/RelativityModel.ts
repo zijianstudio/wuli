@@ -21,8 +21,6 @@ export default class RelativityModel implements TModel {
 
   public constructor( providedOptions: RelativityModelOptions ) {
     //TODO
-    this.coord1 = 1;
-    this.coord2 = 1;
   }
 
   /**
