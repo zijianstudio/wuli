@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="015a6cec-8e4c-469a-93f0-97b271ece7c3" name="Changes" comment="update relativty version 1.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/relativity/js/relativity/view/HintPanelView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/relativity/js/relativity/view/HintPanelView.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/relativity/js/relativity/view/RelativityScreenView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/relativity/js/relativity/view/RelativityScreenView.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,6 +107,7 @@
       <workItem from="1684509651275" duration="18558000" />
       <workItem from="1684582144819" duration="55456000" />
       <workItem from="1684776634306" duration="801000" />
+      <workItem from="1684777912860" duration="1324000" />
     </task>
     <task id="LOCAL-00001" summary="update relativty version 1.0">
       <created>1684638745240</created>

@@ -57,3 +57,21 @@
   <build-brand-adapted-from-phet time="23393ms"/>
 </grunt-build time="26338ms">
 
+<grunt-build date="5/22/2023, 11:57:15 AM">
+  <tsc time="1ms"/>
+  <transpile time="2348ms"/>
+    <webpack time="3576ms"/>
+    <minify-production time="17178ms"/>
+    <minify-debug time="0ms"/>
+  <build-brand-adapted-from-phet time="22653ms"/>
+</grunt-build time="25006ms">
+
+<grunt-build date="5/22/2023, 12:08:25 PM">
+  <tsc time="1ms"/>
+  <transpile time="2085ms"/>
+    <webpack time="3592ms"/>
+    <minify-production time="16006ms"/>
+    <minify-debug time="0ms"/>
+  <build-brand-adapted-from-phet time="21468ms"/>
+</grunt-build time="23556ms">
+

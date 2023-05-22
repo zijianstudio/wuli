@@ -185,7 +185,6 @@ export default class RelativityScreenView extends ScreenView {
                 this.tEarth += dt / (this.unitSpace / this.vScala);
                 this.distance += this.vScala * dt * this.controlPanel.velocity
             } else {
-                this.matA.set02(this.matA.m02() + this.vScala * dt * this.controlPanel.velocity)
                 this.tSpace_shuttle += dt / (this.unitSpace / this.vScala);
                 this.tEarth += dt / (this.unitSpace / this.vScala) / one_over_gamma;
                 this.distance += this.vScala * dt * this.controlPanel.velocity / one_over_gamma
@@ -202,8 +201,6 @@ export default class RelativityScreenView extends ScreenView {
             for(let i =0; i<this.tA.length; i++){
                 let tt = this.tSpace_shuttle - (i - 5) * this.controlPanel.velocity
                 this.tA[i].setString(tt.toFixed(3));
-            }
-            for (let i in this.tB) {
                 this.tB[i].setString(this.tEarth.toFixed(3));
             }
         } else {
@@ -213,12 +210,9 @@ export default class RelativityScreenView extends ScreenView {
             this.matB.set02(this.x0 - one_over_gamma * this.distance)
             this.nodeA.setMatrix(this.matA)
             this.nodeB.setMatrix(this.matB)
-            for (let i in this.tA) {
-                this.tA[i].setString(this.tSpace_shuttle.toFixed(3));
-            }
-            //console.log(this.distance/this.unitSpace)
             for(let i =0; i<this.tB.length; i++){
                 let tt = this.tEarth + (i - this.distance/this.unitSpace - 5) * this.controlPanel.velocity
+                this.tA[i].setString(this.tSpace_shuttle.toFixed(3));
                 this.tB[i].setString(tt.toFixed(3));
             }
         }

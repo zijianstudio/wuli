@@ -19401,11 +19401,11 @@
   },
   "../keplers-laws/images/periodTimerBackground_png.js": {
     "sourceMD5": "594354845772b1021168c2659ec6501b",
-    "targetMilliseconds": 1684776928238
+    "targetMilliseconds": 1684778220147
   },
   "../keplers-laws/images/periodTimerBackground_png.ts": {
     "sourceMD5": "88354651ed0dc7cb77004d2d15c7612b",
-    "targetMilliseconds": 1684776928315
+    "targetMilliseconds": 1684778220201
   },
   "../keplers-laws/images/semiaxisIcon_png.ts": {
     "sourceMD5": "461730885dc47f4263b8ea4061f53610",
@@ -47916,8 +47916,8 @@
     "targetMilliseconds": 1684180766552
   },
   "../relativity/js/relativity/view/RelativityScreenView.ts": {
-    "sourceMD5": "7145fb992310d7c4e6a3afe965d0a399",
-    "targetMilliseconds": 1684776875546
+    "sourceMD5": "45b119bb92cf7d7a8767fd36712d3fb0",
+    "targetMilliseconds": 1684778236378
   },
   "../relativity/js/relativity-main.ts": {
     "sourceMD5": "6b1ffa5f6b2e6aec658b4583336e71ab",
@@ -47976,7 +47976,7 @@
     "targetMilliseconds": 1684624002975
   },
   "../relativity/js/relativity/view/HintPanelView.ts": {
-    "sourceMD5": "4bc5eeac2d6f18357726139649f2a511",
-    "targetMilliseconds": 1684638661950
+    "sourceMD5": "66dc506bdbdecd79f607f958015e43ba",
+    "targetMilliseconds": 1684778905771
   }
 }
