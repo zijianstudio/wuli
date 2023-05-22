@@ -80,7 +80,7 @@ export default class RelativityScreenView extends ScreenView {
             centerY: -4 * TIME_FONT,
             fontSize: TIME_FONT
         }))
-        this.nodeA.addChild(new Text("x' /ly =", {
+        this.nodeA.addChild(new Text("x' /ls =", {
             right: -5 * this.unitSpace - 24,
             centerY: 20,
             fontSize: TIME_FONT
@@ -102,7 +102,7 @@ export default class RelativityScreenView extends ScreenView {
             centerY: 3 * TIME_FONT,
             fontSize: TIME_FONT
         }))
-        this.nodeB.addChild(new Text("x /ly =", {
+        this.nodeB.addChild(new Text("x /ls =", {
             right: -5 * this.unitSpace - 24,
             centerY: -20,
             fontSize: TIME_FONT

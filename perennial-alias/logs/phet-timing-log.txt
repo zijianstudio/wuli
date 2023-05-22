@@ -48,3 +48,12 @@
   <transpile time="2598ms"/>
     <webpack time="3886ms"/>
     <minify-production time="16188ms"/>
+<grunt-build date="5/22/2023, 11:34:34 AM">
+  <tsc time="2ms"/>
+  <transpile time="2941ms"/>
+    <webpack time="3718ms"/>
+    <minify-production time="17616ms"/>
+    <minify-debug time="0ms"/>
+  <build-brand-adapted-from-phet time="23393ms"/>
+</grunt-build time="26338ms">
+
